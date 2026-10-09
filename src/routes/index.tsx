@@ -305,6 +305,11 @@ Gostaria de agendar uma visita guiada com você para conhecer o local!`;
                   loading="lazy"
                   className="w-full h-44 sm:h-48 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105 select-none"
                 />
+                {item.storage ? (
+                  <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
+                    {item.storage}
+                  </span>
+                ) : null}
               </div>
 
               {/* Info */}

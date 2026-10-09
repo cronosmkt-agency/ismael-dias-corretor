@@ -8,7 +8,7 @@ export function WhatsFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp com o corretor Ismael Dias"
-      className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] left-3.5 sm:bottom-6 sm:left-6 z-40 group flex items-center gap-2 p-1.5 sm:p-2 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
+      className="fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] right-3.5 sm:bottom-6 sm:right-6 z-40 group flex items-center gap-2 p-1.5 sm:p-2 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
       style={{
         background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
         boxShadow: "0 6px 22px rgba(34, 197, 94, 0.4)",

@@ -205,62 +205,62 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Compass className="w-3.5 h-3.5 text-sky-400" />
-                  Área / Metragem
+                  <Compass className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Área / Metragem</span>
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
                   {areaDisplay}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Trees className="w-3.5 h-3.5 text-emerald-400" />
-                  Topografia & Terreno
+                  <Trees className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Topografia & Terreno</span>
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-emerald-600 dark:text-emerald-400">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-emerald-600 dark:text-emerald-400 leading-snug break-words">
                   {product.battery || "Pronto para Construir"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
-                  Incorporação / Construtora
+                  <ShieldCheck className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Incorporação / Construtora</span>
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-blue-600 dark:text-sky-300 truncate">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-blue-600 dark:text-sky-300 leading-snug break-words">
                   {product.warranty || "Angeleti Construtora"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <MapPin className="w-3.5 h-3.5 text-sky-400" />
-                  Localização
+                  <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Localização</span>
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
                   {product.screen || "Teresópolis - RJ"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Trees className="w-3.5 h-3.5 text-sky-400" />
-                  Lazer & Vista
+                  <Trees className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Lazer & Vista</span>
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
                   {product.camera || "Vista Deslumbrante"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <CreditCard className="w-3.5 h-3.5 text-sky-400" />
-                  Pagamento Facilitado
+                  <CreditCard className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Pagamento Facilitado</span>
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
                   {product.chip || "15% + 120 parcelas"}
                 </div>
               </div>

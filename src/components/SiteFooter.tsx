@@ -17,7 +17,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
   return (
     <footer
       id="contato"
-      className="pt-20 pb-28 sm:pb-12 px-4 sm:px-6"
+      className="pt-20 pb-32 sm:pb-12 px-4 sm:px-6"
       style={{
         background: "var(--glass-bg)",
         backdropFilter: "var(--glass-blur)",

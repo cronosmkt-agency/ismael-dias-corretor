@@ -10,10 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CursorEffects } from "../components/CursorEffects";
 import { Toaster } from "@/components/ui/sonner";
-import { TawkFloatingWidget } from "@/components/TawkFloatingWidget";
 
 function NotFoundComponent() {
   return (
@@ -158,7 +156,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <CursorEffects />
-      <TawkFloatingWidget />
       <Toaster position="top-center" offset="84px" duration={1400} richColors />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
