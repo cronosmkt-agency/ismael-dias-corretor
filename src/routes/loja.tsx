@@ -208,12 +208,11 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between p-1.5 sm:p-2.5 rounded-2xl transition-all duration-200 cursor-pointer text-center select-none shadow-xs active:scale-95 ${
+                  className={`group relative flex flex-col items-center justify-between w-full h-[82px] sm:h-[88px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
                     isActive
-                      ? "btn-primary-glow text-white shadow-md border-blue-500 scale-[1.02] ring-2 ring-blue-500/20"
-                      : "bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
+                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
+                      : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
                   }`}
-                  style={{ minHeight: "76px" }}
                 >
                   {/* Badge Contador no Canto Superior Direito */}
                   <span
