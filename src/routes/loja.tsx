@@ -31,6 +31,35 @@ import {
   PHONE_DISPLAY,
 } from "@/data/storeData";
 
+const imoveisCategoryMeta: Record<
+  string,
+  {
+    icon: React.ComponentType<{ className?: string }>;
+    label: string;
+    line2?: string;
+  }
+> = {
+  "Todos": {
+    icon: LayoutGrid,
+    label: "Todos",
+  },
+  "Casas em Condomínio": {
+    icon: ShieldCheck,
+    label: "Casas em",
+    line2: "Condomínio",
+  },
+  "Coberturas & Apartamentos": {
+    icon: Building2,
+    label: "Coberturas",
+    line2: "& Aptos",
+  },
+  "Casas de Campo": {
+    icon: Trees,
+    label: "Casas de",
+    line2: "Campo",
+  },
+};
+
 export const Route = createFileRoute("/loja")({
   head: () => ({
     meta: [
@@ -164,9 +193,122 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           </div>
         </div>
 
-        {/* Barra de Busca Desktop */}
-        <div className="hidden sm:flex mt-6 max-w-2xl mx-auto items-center gap-3">
-          <div className="relative w-full">
+        {/* Seletor de Categorias — Uma do lado da outra com ícone em cima e texto pequeno */}
+        <div className="mt-5 sm:mt-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5">
+            {imoveisFilters.map((fl) => {
+              const meta = imoveisCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
+              const Icon = meta.icon;
+              const count =
+                fl === "Todos"
+                  ? productList.length
+                  : productList.filter((p) => p.cat === fl).length;
+              const isActive = activeFilter === fl;
+              return (
+                <button
+                  key={fl}
+                  onClick={() => setActiveFilter(fl)}
+                  className={`group relative flex flex-col items-center justify-between p-1.5 sm:p-2.5 rounded-2xl transition-all duration-200 cursor-pointer text-center select-none shadow-xs active:scale-95 ${
+                    isActive
+                      ? "btn-primary-glow text-white shadow-md border-blue-500 scale-[1.02] ring-2 ring-blue-500/20"
+                      : "bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
+                  }`}
+                  style={{ minHeight: "76px" }}
+                >
+                  {/* Badge Contador no Canto Superior Direito */}
+                  <span
+                    className={`absolute top-1 right-1 sm:top-1.5 sm:right-1.5 text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
+                      isActive
+                        ? "bg-white/30 text-white"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
+                    }`}
+                  >
+                    {count}
+                  </span>
+
+                  {/* Ícone em Cima */}
+                  <div
+                    className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 ${
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-110"
+                    }`}
+                  >
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  </div>
+
+                  {/* Texto Pequeno Embaixo */}
+                  <div className="flex flex-col items-center justify-center leading-tight">
+                    <span className="text-[10px] sm:text-xs font-bold tracking-tight">
+                      {meta.label}
+                    </span>
+                    {meta.line2 ? (
+                      <span className="text-[10px] sm:text-xs font-bold tracking-tight opacity-90">
+                        {meta.line2}
+                      </span>
+                    ) : (
+                      <span className="invisible text-[10px] sm:text-xs leading-none select-none">&nbsp;</span>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Linha Combinada Mobile: Barra de busca + Modo Grade/Vitrine */}
+        <div className="sm:hidden mt-3 flex items-center gap-2">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Buscar imóvel avulso..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+
+          <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
+            <button
+              onClick={() => setViewMode("compact")}
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "compact"
+                  ? "btn-primary-glow text-white shadow-xs"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+              }`}
+              title="Grade 2 por linha"
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span className="text-[10px]">Grade</span>
+            </button>
+
+            <button
+              onClick={() => setViewMode("showcase")}
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "showcase"
+                  ? "btn-primary-glow text-white shadow-xs"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+              }`}
+              title="Vitrine 1 por linha"
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span className="text-[10px]">Vitrine</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Controles Desktop: Barra de Busca + Contagem */}
+        <div className="hidden sm:flex mt-5 max-w-2xl mx-auto items-center justify-between gap-3">
+          <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
@@ -184,131 +326,10 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               </button>
             )}
           </div>
-        </div>
 
-        {/* Controles Mobile: Categorias em Grade 2 Colunas (Sem corte, 100% visível) */}
-        <div className="sm:hidden mt-4 flex flex-col gap-2.5">
-          {/* Grade 2 Colunas de Categorias */}
-          <div className="grid grid-cols-2 gap-1.5">
-            {imoveisFilters.map((fl) => {
-              const count =
-                fl === "Todos"
-                  ? productList.length
-                  : productList.filter((p) => p.cat === fl).length;
-              const isActive = activeFilter === fl;
-              return (
-                <button
-                  key={fl}
-                  onClick={() => setActiveFilter(fl)}
-                  className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs ${
-                    isActive
-                      ? "btn-primary-glow text-white shadow-md font-black"
-                      : "bg-slate-100/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200/70 dark:border-slate-800/70"
-                  }`}
-                >
-                  <span className="truncate">{fl}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ml-1 shrink-0 ${
-                      isActive
-                        ? "bg-white/25 text-white"
-                        : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Linha Combinada: Barra de busca + Modo Grade/Vitrine */}
-          <div className="flex items-center gap-2">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Buscar imóvel avulso..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-
-            <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
-              <button
-                onClick={() => setViewMode("compact")}
-                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === "compact"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Grade 2 por linha"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span className="text-[10px]">Grade</span>
-              </button>
-
-              <button
-                onClick={() => setViewMode("showcase")}
-                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === "showcase"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Vitrine 1 por linha"
-              >
-                <Home className="w-3.5 h-3.5" />
-                <span className="text-[10px]">Vitrine</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Filtros Desktop */}
-        <div className="hidden sm:flex mt-8 items-center justify-between gap-4">
-          <div className="flex items-center gap-2 flex-wrap">
-            {imoveisFilters.map((fl) => {
-              const count =
-                fl === "Todos"
-                  ? productList.length
-                  : productList.filter((p) => p.cat === fl).length;
-              const isActive = activeFilter === fl;
-              return (
-                <button
-                  key={fl}
-                  onClick={() => setActiveFilter(fl)}
-                  className={`px-4 py-2 text-xs sm:text-sm font-extrabold rounded-full transition-all flex items-center gap-2 cursor-pointer shadow-xs ${
-                    isActive
-                      ? "btn-primary-glow text-white shadow-lg scale-105"
-                      : "section-pill hover:scale-105"
-                  }`}
-                >
-                  <span>{fl}</span>
-                  <span
-                    className={`text-xs px-2 py-0.5 rounded-full font-black ${
-                      isActive
-                        ? "bg-white/25 text-white"
-                        : "bg-blue-100 text-blue-800 dark:bg-sky-400/25 dark:text-sky-200 border border-blue-200/50 dark:border-sky-400/30"
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{filtered.length} imóveis avulsos disponíveis</span>
+            <span>{filtered.length} imóveis disponíveis</span>
           </div>
         </div>
 
