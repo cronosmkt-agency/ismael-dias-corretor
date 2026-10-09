@@ -80,11 +80,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Habittat House Imobiliária — Terrenos Angeleti & Imóveis em Teresópolis" },
-      { name: "description", content: "Habittat House Imobiliária: Terrenos residenciais nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora em Teresópolis/RJ. Entrada de 10% e até 120 parcelas direto com a incorporadora." },
-      { name: "author", content: "Habittat House Imobiliária" },
-      { property: "og:title", content: "Habittat House Imobiliária — Terrenos & Imóveis em Teresópolis" },
-      { property: "og:description", content: "Condomínios fechados com segurança 24h, lazer completo e vistas para o Dedo de Deus na Região Serrana. Agende sua visita." },
+      { title: "Ismael Dias — Corretor de Imóveis | Habittat House Teresópolis" },
+      { name: "description", content: "Ismael Dias, corretor de imóveis credenciado na Habittat House. Terrenos residenciais nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora em Teresópolis/RJ. Entrada de 10% e até 120 parcelas direto." },
+      { name: "author", content: "Ismael Dias — Corretor Habittat House" },
+      { property: "og:title", content: "Ismael Dias — Corretor de Imóveis | Habittat House Teresópolis" },
+      { property: "og:description", content: "Consultoria imobiliária especializada com Ismael Dias. Condomínios fechados da Angeleti Construtora com lazer completo e segurança 24h na serra." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -93,13 +93,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" },
-      {
-        rel: "preload",
-        as: "image",
-        href: "https://ik.imagekit.io/zinma/tr:w-800,f-webp,q-85/Terephones-iphone.png",
-        type: "image/webp",
-        fetchPriority: "high",
-      },
     ],
     scripts: [
       {
@@ -108,17 +101,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@graph": [
             {
-              "@type": "Organization",
-              name: "Terephones",
-              alternateName: "Terephones iPhones Teresópolis",
-              telephone: "+5521964639999",
+              "@type": "RealEstateAgent",
+              name: "Ismael Dias — Corretor de Imóveis | Habittat House",
+              alternateName: "Ismael Dias Corretor",
+              telephone: "+5521973546445",
               areaServed: "Teresópolis, RJ",
-              logo: "https://ik.imagekit.io/zinma/tr:w-600,f-auto,q-85/TerePhones-Logo.png",
-              image: "https://ik.imagekit.io/zinma/tr:w-600,f-auto,q-85/TerePhones-Logo.png",
             },
             {
               "@type": "WebSite",
-              name: "Terephones",
+              name: "Ismael Dias Corretor Habittat House",
               inLanguage: "pt-BR",
             },
           ],
@@ -141,12 +132,11 @@ function RootShell({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                var t = localStorage.getItem('terephones_theme');
+                var t = localStorage.getItem('habittat_theme') || localStorage.getItem('terephones_theme');
                 if (t === 'black-piano') {
                   document.documentElement.classList.add('theme-black-piano', 'dark');
-                } else if (t === 'white') {
+                } else {
                   document.documentElement.classList.add('theme-white');
-                  document.documentElement.classList.remove('dark');
                 }
               } catch (e) {}
             `,

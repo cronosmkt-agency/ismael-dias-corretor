@@ -42,9 +42,9 @@ export function BrandLogo({
       {/* Wordmark */}
       {showText && (
         <div className="flex flex-col justify-center leading-none">
-          <div className="flex items-center text-lg sm:text-xl font-black tracking-tight">
+          <div className="flex items-center text-sm sm:text-base font-black tracking-tight">
             <span style={{ color: dark ? "#FFFFFF" : "#0f172a" }}>
-              HABITTAT
+              ISMAEL
             </span>
             <span
               style={{
@@ -54,14 +54,14 @@ export function BrandLogo({
               }}
               className="ml-1"
             >
-              HOUSE
+              DIAS
             </span>
           </div>
           <span
-            className="text-[9px] uppercase font-bold tracking-[0.2em] mt-0.5"
-            style={{ color: dark ? "#94a3b8" : "#64748b" }}
+            className="text-[8px] sm:text-[9.5px] uppercase font-black tracking-wider mt-0.5"
+            style={{ color: dark ? "#38bdf8" : "#0284c7" }}
           >
-            IMOBILIÁRIA • TERESÓPOLIS
+            CORRETOR DA HABITTAT HOUSE
           </span>
         </div>
       )}

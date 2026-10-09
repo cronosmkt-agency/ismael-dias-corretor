@@ -42,17 +42,17 @@ const heroHouse = "/imoveis/mansao-neoclassica.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Habittat House Imobiliária — Terrenos Angeleti & Imóveis de Alto Padrão em Teresópolis" },
+      { title: "Ismael Dias — Corretor de Imóveis | Habittat House Teresópolis" },
       {
         name: "description",
         content:
-          "Encontre terrenos prontos para construir nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora. Entrada de 10% e até 120x direto com a incorporadora em Teresópolis/RJ.",
+          "Encontre lotes e casas em condomínio fechado em Teresópolis com o corretor Ismael Dias na Habittat House. Especialista nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora. Entrada de 10% e saldo em até 120x direto com a incorporadora.",
       },
-      { property: "og:title", content: "Habittat House Imobiliária — Terrenos & Imóveis em Teresópolis" },
+      { property: "og:title", content: "Ismael Dias — Corretor de Imóveis | Habittat House" },
       {
         property: "og:description",
         content:
-          "Condomínios fechados com segurança 24h, lazer completo e vistas para o Dedo de Deus. Agende sua visita VIP.",
+          "Consultoria imobiliária especializada em Teresópolis com Ismael Dias. Condomínios fechados da Angeleti Construtora com lazer completo e segurança 24h.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -102,7 +102,7 @@ function TiltHouse() {
       />
       <img
         src={heroHouse}
-        alt="Empreendimentos Habittat House em destaque"
+        alt="Empreendimentos em destaque com Ismael Dias"
         fetchPriority="high"
         decoding="async"
         width={540}
@@ -156,7 +156,7 @@ function SectionTitle({
 }
 
 /* =========================================================================
-   1. HERO SECTION (High-Value Real Estate Landing Page)
+   1. HERO SECTION (Ismael Dias Corretor Habittat House)
    ========================================================================= */
 function Hero() {
   return (
@@ -170,7 +170,7 @@ function Hero() {
           {/* Eyebrow Pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 mx-auto lg:mx-0 w-fit">
             <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
-            <span>Habittat House • Parceria Angeleti Construtora</span>
+            <span>Ismael Dias • Corretor de Imóveis na Habittat House</span>
           </div>
 
           {/* Main Title */}
@@ -185,13 +185,15 @@ function Hero() {
 
           {/* Value Prop Subtitle */}
           <p className="mt-3 sm:mt-5 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Terrenos amplos com vistas deslumbrantes nos empreendimentos{" "}
+            Consultoria imobiliária personalizada com o corretor{" "}
+            <strong className="text-slate-900 dark:text-white font-bold">Ismael Dias</strong>.
+            Terrenos amplos com vistas deslumbrantes nos condomínios{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Golden Green</strong>,{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Vale dos Pássaros</strong> e{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Montares</strong>.
             Entrada facilitada a partir de 10% e{" "}
             <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">
-              saldo em até 120 parcelas direto com a incorporadora!
+              saldo em até 120 parcelas direto com a incorporadora Angeleti!
             </strong> 🏔️🌲
           </p>
 
@@ -212,27 +214,27 @@ function Hero() {
               className="inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md active:scale-95 transition"
             >
               <WhatsAppIcon className="w-4 h-4 fill-white" />
-              <span>Agendar Visita no WhatsApp</span>
+              <span>Falar com Ismael no WhatsApp</span>
             </a>
           </div>
 
           {/* Micro Trust Indicators */}
           <div className="mt-5 sm:mt-8 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-xs font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 text-emerald-600 dark:text-emerald-400 font-black">
+              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+              <span>Ismael Dias (CRECI Ativo)</span>
+            </div>
             <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
               <Building2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-              <span>Angeleti (+20 anos)</span>
+              <span>Habittat House Imobiliária</span>
             </div>
             <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
               <Trees className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-              <span>Lazer Completo</span>
+              <span>Angeleti (+20 anos)</span>
             </div>
             <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
               <DollarSign className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
               <span>10% + 120x Direto</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 text-emerald-600 dark:text-emerald-400 font-black">
-              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-              <span>CRECI Credenciado</span>
             </div>
           </div>
         </div>
@@ -259,7 +261,7 @@ function FeaturedProducts({
   const featured = products && products.length > 0 ? products : defaultProducts;
 
   const handleBuyWhatsApp = (prod: ProductItem) => {
-    const text = `Olá, equipe Habittat House! Vi este imóvel em destaque no site e gostaria de mais informações:
+    const text = `Olá, Ismael Dias! Vi este imóvel em destaque no seu site e gostaria de mais informações:
 
 🏡 *Empreendimento:* ${prod.name}
 📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
@@ -267,7 +269,7 @@ function FeaturedProducts({
 💰 *Valor:* A partir de ${fmt(prod.price)}
 ✨ *Condição:* ${prod.chip || "10% entrada + parcelas"}
 
-Gostaria de agendar uma visita e receber a planta/tabela atualizada!`;
+Gostaria de agendar uma visita guiada com você para conhecer o local!`;
 
     window.open(`https://wa.me/5521973546445?text=${encodeURIComponent(text)}`, "_blank");
   };
@@ -277,9 +279,9 @@ Gostaria de agendar uma visita e receber a planta/tabela atualizada!`;
       <div className="max-w-6xl mx-auto">
         <SectionTitle
           badge="Oportunidades em Teresópolis"
-          eyebrow="Empreendimentos em Destaque"
+          eyebrow="Carteira de Imóveis & Lotes"
           title="Condomínios & Imóveis Selecionados"
-          subtitle="Lotes amplos com topografia privilegiada, estrutura completa de lazer e total segurança para sua família."
+          subtitle="Lotes amplos com topografia privilegiada, estrutura completa de lazer e assessoria exclusiva do corretor Ismael Dias."
         />
 
         {/* Property Cards Grid */}
@@ -391,7 +393,142 @@ Gostaria de agendar uma visita e receber a planta/tabela atualizada!`;
 }
 
 /* =========================================================================
-   3. TRUST & PILLARS
+   3. PERFIL DO CORRETOR — ISMAEL DIAS (HABITTAT HOUSE)
+   ========================================================================= */
+function BrokerProfileSection() {
+  return (
+    <section id="sobre-corretor" className="py-10 sm:py-16 px-4 sm:px-6 relative scroll-mt-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="glass-card rounded-3xl p-6 sm:p-12 border border-blue-500/25 relative overflow-hidden shadow-2xl">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            {/* Left presentation */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-blue-50/90 dark:bg-sky-950/70 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 mb-4 shadow-xs">
+                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <span>Corretor Credenciado • Habittat House Imobiliária</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white leading-tight">
+                Olá, sou <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 dark:from-sky-400 dark:via-blue-400 dark:to-teal-300">Ismael Dias</span>.
+                <br />
+                Seu corretor de confiança na serra.
+              </h2>
+
+              <p className="mt-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Atuo como corretor imobiliário credenciado na <strong>Habittat House</strong>, focado em trazer transparência, segurança jurídica e as melhores oportunidades em condomínios fechados na serra de Teresópolis. Especialista nos condomínios da <strong>Angeleti Construtora</strong> e nos melhores imóveis de alto padrão da região.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-3.5 mt-6">
+                <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
+                  <div className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Compass className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span>Visita Técnica Guiada</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Análise presencial da melhor topografia, insolação e potencial arquitetônico de cada lote.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
+                  <div className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Building2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span>Parceria Oficial Angeleti</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Acesso direto às tabelas de Golden Green, Vale dos Pássaros e Montares (10% + 120x).
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
+                  <div className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-indigo-500 shrink-0" />
+                    <span>Segurança Jurídica & RGI</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Certidões negativas, análise contratual e acompanhamento completo em cartório com CRECI ativo.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
+                  <div className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Phone className="w-4 h-4 text-sky-500 shrink-0" />
+                    <span>Atendimento Pessoal Direto</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Comunicação rápida diretamente comigo pelo WhatsApp, sem filas ou robôs impessoais.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary-glow py-3 px-6 rounded-full font-bold text-xs sm:text-sm text-white inline-flex items-center gap-2 shadow-md active:scale-95 transition"
+                >
+                  <WhatsAppIcon className="w-4 h-4 fill-white" />
+                  <span>Falar com Ismael Dias no WhatsApp</span>
+                </a>
+
+                <Link
+                  to="/loja"
+                  className="py-3 px-6 rounded-full font-bold text-xs sm:text-sm border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 inline-flex items-center gap-2 transition"
+                >
+                  <Compass className="w-4 h-4" />
+                  <span>Explorar Imóveis & Lotes</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Card / Visual Credential */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-blue-600/10 via-sky-500/5 to-transparent border border-blue-500/20 text-center relative shadow-lg">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-gradient-to-br from-blue-600 via-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-xl mb-4">
+                  <Home className="w-10 h-10 sm:w-12 sm:h-12 text-white" strokeWidth={2.2} />
+                </div>
+
+                <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  Ismael Dias
+                </div>
+                <div className="text-xs font-bold text-blue-600 dark:text-sky-400 uppercase tracking-wider mt-0.5">
+                  Corretor de Imóveis • Habittat House
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 text-xs text-slate-600 dark:text-slate-300 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span>Imobiliária:</span>
+                    <strong className="text-slate-900 dark:text-white">Habittat House</strong>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Atuação:</span>
+                    <strong className="text-slate-900 dark:text-white">Teresópolis & Região Serrana</strong>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Credencial:</span>
+                    <strong className="text-emerald-600 dark:text-emerald-400 font-black">CRECI Ativo ✅</strong>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Telefone / WhatsApp:</span>
+                    <strong className="text-blue-600 dark:text-sky-400 font-extrabold">{PHONE_DISPLAY}</strong>
+                  </div>
+                </div>
+
+                <div className="mt-5 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center justify-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Plantão de Vendas & Atendimento Ativo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================================
+   4. TRUST & PILLARS
    ========================================================================= */
 function TrustAndHybrid() {
   const pillars = [
@@ -709,13 +846,16 @@ function BrandStore() {
           onSelectProduct={handleOpenDetail}
         />
 
-        {/* 3. Diferenciais & Parceria Angeleti */}
+        {/* 3. Apresentação do Corretor Ismael Dias (Habittat House) */}
+        <BrokerProfileSection />
+
+        {/* 4. Diferenciais & Parceria Angeleti */}
         <TrustAndHybrid />
 
-        {/* 4. Financiamento Direto em até 120x */}
+        {/* 5. Financiamento Direto em até 120x */}
         <FinanciamentoDireto />
 
-        {/* 5. Depoimentos e Localização */}
+        {/* 6. Depoimentos e Localização */}
         <ReviewsAndLocation />
       </main>
 

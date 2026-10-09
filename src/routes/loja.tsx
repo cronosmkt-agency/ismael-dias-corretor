@@ -12,6 +12,7 @@ import {
   Filter,
   Trees,
   MapPin,
+  Sparkles,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -26,23 +27,24 @@ import {
   fmt,
   WHATSAPP,
   WHATSAPP_NUMBER,
+  PHONE_DISPLAY,
 } from "@/data/storeData";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/loja")({
   head: () => ({
     meta: [
-      { title: "Catálogo — Terrenos em Condomínio & Imóveis | Habittat House" },
+      { title: "Catálogo de Imóveis & Lotes — Ismael Dias | Corretor Habittat House" },
       {
         name: "description",
         content:
-          "Veja todos os terrenos disponíveis nos condomínios Golden Green, Vale dos Pássaros e Montares em Teresópolis - RJ. Entrada de 10% e parcelamento direto com a Angeleti.",
+          "Veja todos os terrenos e imóveis disponíveis com o corretor Ismael Dias na Habittat House em Teresópolis - RJ. Condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti.",
       },
-      { property: "og:title", content: "Catálogo de Imóveis em Teresópolis — Habittat House" },
+      { property: "og:title", content: "Catálogo de Imóveis em Teresópolis — Ismael Dias Corretor" },
       {
         property: "og:description",
         content:
-          "Catálogo de lotes e imóveis de alto padrão na Região Serrana com fotos, topografia, metragens e condições comerciais.",
+          "Catálogo de lotes e imóveis de alto padrão na Região Serrana com metragens, topografia e condições de parcelamento com a Angeleti.",
       },
     ],
   }),
@@ -99,45 +101,32 @@ function LojaPage() {
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
-    const text = `Olá, equipe Habittat House! Vi este imóvel no catálogo e gostaria de informações:
+    const text = `Olá, Ismael Dias! Vi este imóvel no seu catálogo e gostaria de informações:
 
 🏡 *Empreendimento:* ${prod.name}
 📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
 📐 *Metragem:* ${prod.storage || "Lote Residencial"}
 💰 *Valor:* A partir de ${fmt(prod.price)}
-✨ *Condições:* ${prod.chip || "10% entrada + até 120 parcelas"}
+✨ *Condições:* ${prod.chip || "10% entrada + até 120 parcelas com a Angeleti"}
 
-Gostaria de agendar uma visita e receber a tabela atualizada!`;
+Gostaria de agendar uma visita com você para conhecer o local!`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
-
   // Filter & Search
-  const filtered = productList
-    .filter((item) => {
-      const matchCat =
-        activeFilter === "Todos" ||
-        item.cat === activeFilter ||
-        (activeFilter === "Lacrados" && (item.cat === "Novos" || item.cat === "Lacrados")) ||
-        (activeFilter === "Novos" && (item.cat === "Novos" || item.cat === "Lacrados")) ||
-        (activeFilter === "Seminovos" && item.cat === "Seminovos");
-      const matchSearch =
-        searchQuery.trim() === "" ||
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchCat && matchSearch;
-    })
-    .sort((a, b) => {
-      if (activeFilter === "Todos") {
-        const is17A = a.name.toLowerCase().includes("iphone 17");
-        const is17B = b.name.toLowerCase().includes("iphone 17");
-        if (is17A && !is17B) return -1;
-        if (!is17A && is17B) return 1;
-      }
-      return 0;
-    });
+  const filtered = productList.filter((item) => {
+    const matchCat =
+      activeFilter === "Todos" ||
+      item.cat === activeFilter;
+    const matchSearch =
+      searchQuery.trim() === "" ||
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchCat && matchSearch;
+  });
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -261,7 +250,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                 }`}
                 title="Vitrine 1 por linha"
               >
-                <Smartphone className="w-3.5 h-3.5" />
+                <Home className="w-3.5 h-3.5" />
                 <span className="text-[10px]">Vitrine</span>
               </button>
             </div>
@@ -275,8 +264,6 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
               const count =
                 fl === "Todos"
                   ? productList.length
-                  : fl === "Lacrados"
-                  ? productList.filter((p) => p.cat === "Novos" || p.cat === "Lacrados").length
                   : productList.filter((p) => p.cat === fl).length;
               const isActive = activeFilter === fl;
               return (
@@ -306,17 +293,17 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
 
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{filtered.length} aparelhos prontos para entrega imediata</span>
+            <span>{filtered.length} empreendimentos e imóveis disponíveis</span>
           </div>
         </div>
 
         {/* Grade de Produtos */}
         {filtered.length === 0 ? (
           <div className="mt-16 text-center py-16 glass rounded-3xl border border-slate-200 dark:border-slate-800">
-            <Smartphone className="w-12 h-12 mx-auto text-slate-400 mb-3" />
-            <h3 className="text-lg font-bold">Nenhum iPhone encontrado para essa busca</h3>
+            <Building2 className="w-12 h-12 mx-auto text-slate-400 mb-3" />
+            <h3 className="text-lg font-bold">Nenhum lote ou imóvel encontrado para essa busca</h3>
             <p className="text-sm text-slate-500 mt-1">
-              Tente buscar por outro modelo ou limpe o filtro de busca.
+              Tente buscar por outro termo ou limpe o filtro de busca.
             </p>
             <button
               onClick={() => {
@@ -325,7 +312,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
               }}
               className="mt-4 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer hover:bg-blue-700"
             >
-              Ver todos os modelos
+              Ver todos os empreendimentos
             </button>
           </div>
         ) : (
@@ -341,38 +328,42 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
               >
                 {/* Badge Superior */}
                 <div className="flex items-center justify-between gap-1 mb-1.5 sm:mb-2">
-                  <span className="text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40">
+                  <span className="text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40 truncate">
                     {prod.badge}
                   </span>
-                  {prod.quantity && prod.quantity > 1 ? (
-                    <span className="text-[10px] font-black text-blue-600 dark:text-sky-400 shrink-0">
-                      {prod.quantity} un.
-                    </span>
-                  ) : prod.storage ? (
+                  {prod.storage ? (
                     <span className="text-[10px] font-bold text-slate-400 shrink-0">
                       {prod.storage}
                     </span>
                   ) : null}
                 </div>
 
-                {/* Imagem do Aparelho */}
-                <div className="relative aspect-4/5 w-full flex items-center justify-center p-1 sm:p-4 mb-2 sm:mb-3">
+                {/* Imagem do Imóvel */}
+                <div
+                  onClick={() => handleOpenDetail(prod)}
+                  className="relative aspect-4/3 w-full flex items-center justify-center p-1 sm:p-2 mb-2 sm:mb-3 cursor-pointer overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-900/40"
+                >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="max-h-full max-w-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                    className="max-h-full max-w-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 
-                {/* Dados do Aparelho */}
+                {/* Dados do Imóvel */}
                 <div>
-                  <h3 className="text-xs sm:text-sm font-black line-clamp-1 text-slate-900 dark:text-white" title={prod.name}>
+                  <h3
+                    onClick={() => handleOpenDetail(prod)}
+                    className="text-xs sm:text-sm font-black line-clamp-2 text-slate-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition"
+                    title={prod.name}
+                  >
                     {prod.name}
                   </h3>
 
-                  <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
-                    {prod.specs || "Garantia Terephones • Testado"}
+                  <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                    <span>{prod.screen || "Teresópolis/RJ"}</span>
                   </p>
 
                   <div className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800/60">
@@ -380,12 +371,9 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                       <span className="text-sm sm:text-lg font-black text-blue-600 dark:text-sky-400">
                         {fmt(prod.price)}
                       </span>
-                      <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase">
-                        no PIX
-                      </span>
                     </div>
-                    <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                      ou 12x de {fmt(Math.round((prod.price * 1.15) / 12))}
+                    <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                      {prod.chip || "10% entrada + parcelamento direto"}
                     </p>
                   </div>
                 </div>
@@ -397,7 +385,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                     className="w-full py-1.5 sm:py-2 px-1 sm:px-2 rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1 shadow-sm transition active:scale-95 cursor-pointer"
                   >
                     <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
-                    <span>Pedir</span>
+                    <span>WhatsApp</span>
                   </button>
 
                   <button
@@ -405,7 +393,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                     className="w-full py-1.5 sm:py-2 px-1 sm:px-2 rounded-xl text-[11px] sm:text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-1 transition cursor-pointer"
                   >
                     <Info className="w-3.5 h-3.5" />
-                    <span>Info</span>
+                    <span>Ficha</span>
                   </button>
                 </div>
               </div>
@@ -413,7 +401,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
           </div>
         )}
 
-        {/* Modo Vitrine Mobile (1 card horizontal compacto por linha) */}
+        {/* Modo Vitrine Mobile */}
         {viewMode === "showcase" && (
           <div className="sm:hidden mt-4 space-y-2.5">
             {filtered.map((prod, idx) => (
@@ -421,8 +409,11 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                 key={prod.name + idx + "-showcase"}
                 className="rounded-2xl glass p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md"
               >
-                {/* Imagem do Aparelho à esquerda */}
-                <div className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100/60 dark:bg-slate-900/60 p-1.5 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50">
+                {/* Imagem do Imóvel à esquerda */}
+                <div
+                  onClick={() => handleOpenDetail(prod)}
+                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100/60 dark:bg-slate-900/60 p-1.5 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer"
+                >
                   <img
                     src={prod.img}
                     alt={prod.name}
@@ -438,22 +429,23 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40 truncate">
                         {prod.badge}
                       </span>
-                      {prod.quantity && prod.quantity > 1 ? (
-                        <span className="text-[10px] font-black text-blue-600 dark:text-sky-400 shrink-0">
-                          {prod.quantity} un.
-                        </span>
-                      ) : prod.storage ? (
+                      {prod.storage ? (
                         <span className="text-[10px] font-black text-slate-400 shrink-0">
                           {prod.storage}
                         </span>
                       ) : null}
                     </div>
 
-                    <h3 className="text-xs sm:text-sm font-black text-slate-900 dark:text-white truncate" title={prod.name}>
+                    <h3
+                      onClick={() => handleOpenDetail(prod)}
+                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white truncate cursor-pointer"
+                      title={prod.name}
+                    >
                       {prod.name}
                     </h3>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
-                      {prod.specs || "Garantia Terephones • Testado"}
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5 flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                      <span>{prod.screen || "Teresópolis/RJ"}</span>
                     </p>
                   </div>
 
@@ -463,12 +455,9 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                         <span className="text-sm font-black text-blue-600 dark:text-sky-400">
                           {fmt(prod.price)}
                         </span>
-                        <span className="text-[9px] font-bold text-slate-400 uppercase">
-                          PIX
-                        </span>
                       </div>
                       <p className="text-[9px] text-slate-500 dark:text-slate-400 truncate">
-                        ou 12x de {fmt(Math.round((prod.price * 1.15) / 12))}
+                        {prod.chip || "10% + 120x com Angeleti"}
                       </p>
                     </div>
 
@@ -485,7 +474,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
                         className="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] flex items-center gap-1 shadow-xs transition active:scale-95 cursor-pointer"
                       >
                         <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
-                        <span>Pedir</span>
+                        <span>WhatsApp</span>
                       </button>
                     </div>
                   </div>
@@ -495,18 +484,18 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
           </div>
         )}
 
-        {/* Banner de Atendimento WhatsApp & Dúvidas */}
-        <div className="mt-16 rounded-3xl p-6 sm:p-10 glass border border-emerald-500/30 shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Banner de Consultoria com Ismael Dias */}
+        <div className="mt-16 rounded-3xl p-6 sm:p-10 glass border border-blue-500/30 shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-3 border border-emerald-500/20">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-sky-400 mb-3 border border-blue-500/20">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Atendimento Direto & Imediato</span>
+              <span>Consultoria Imobiliária com Ismael Dias</span>
             </div>
             <h2 className="text-xl sm:text-3xl font-black text-slate-900 dark:text-white">
-              Em dúvida sobre qual iPhone escolher?
+              Dúvidas sobre qual lote ou condomínio escolher?
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2">
-              Chame nossa equipe no WhatsApp para tirar dúvidas ou use o botão flutuante de chat no canto da tela. Entregamos em até 1h em Teresópolis!
+              Fale diretamente com Ismael Dias, corretor credenciado na Habittat House. Te apresento as opções de Golden Green, Vale dos Pássaros e Montares com detalhes de topografia, insolação e condições comerciais facilitadas.
             </p>
           </div>
 
@@ -517,7 +506,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
             className="shrink-0 px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-lg flex items-center gap-2 hover:scale-105 transition"
           >
             <WhatsAppIcon className="w-5 h-5 text-white" />
-            <span>Falar no WhatsApp</span>
+            <span>Falar com Ismael Dias</span>
           </a>
         </div>
       </main>
@@ -527,7 +516,7 @@ Gostaria de agendar uma visita e receber a tabela atualizada!`;
         product={selectedProduct}
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        whatsappNumber="5521964639999"
+        whatsappNumber={WHATSAPP_NUMBER}
       />
 
       <SiteFooter currentTheme={currentTheme} />

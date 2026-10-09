@@ -32,11 +32,11 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="text-sm mt-4 leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Assessoria imobiliária especializada em condomínios de alto padrão e terrenos na Região Serrana. Parceria exclusiva com a Angeleti Construtora em Teresópolis - RJ.
+              Consultoria imobiliária especializada com o corretor <strong>Ismael Dias</strong> na Habittat House. Lotes e terrenos em condomínio de alto padrão com a Angeleti Construtora em Teresópolis - RJ.
             </p>
             <div className="mt-4 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-semibold">
               <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span>Corretor Credenciado • CRECI Ativo</span>
+              <span>Ismael Dias • Corretor Credenciado (CRECI)</span>
             </div>
           </div>
 
@@ -206,7 +206,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
           style={{ color: "var(--text-muted)" }}
         >
           <div>
-            © {new Date().getFullYear()} Habittat House Imobiliária — Teresópolis, RJ. Todos os direitos reservados.
+            © {new Date().getFullYear()} Ismael Dias — Corretor de Imóveis | Habittat House Imobiliária (Teresópolis, RJ). Todos os direitos reservados.
           </div>
           <div>
             Parceria Oficial Angeleti Construtora • Terrenos e Imóveis de Alto Padrão

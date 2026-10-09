@@ -10,7 +10,10 @@ import {
   CalendarCheck,
 } from "lucide-react";
 
-export const STORE_NAME = "Habittat House Imobiliária";
+export const STORE_NAME = "Ismael Dias — Corretor de Imóveis | Habittat House";
+export const BROKER_NAME = "Ismael Dias";
+export const BROKER_ROLE = "Corretor de Imóveis Credenciado";
+export const REAL_ESTATE_AGENCY = "Habittat House Imobiliária";
 export const WHATSAPP_NUMBER = "5521973546445";
 export const WHATSAPP = "https://wa.me/" + WHATSAPP_NUMBER;
 export const PHONE_DISPLAY = "(21) 97354-6445";
@@ -51,13 +54,13 @@ export const differentials = [
   },
   {
     icon: KeyRound,
-    title: "Assessoria Completa com CRECI",
-    desc: "Acompanhamento consultivo especializado em todas as etapas, desde a escolha do lote até a escritura e RGI.",
+    title: "Assessoria com Ismael Dias (CRECI)",
+    desc: "Acompanhamento consultivo e seguro em todas as etapas, desde a escolha do lote até a escritura e RGI.",
   },
   {
     icon: CalendarCheck,
     title: "Agendamento de Visita VIP",
-    desc: "Venha conhecer os condomínios pessoalmente em Teresópolis e escolha a melhor posição solar para sua casa.",
+    desc: "Venha conhecer os condomínios pessoalmente em Teresópolis com Ismael Dias e escolha a melhor posição solar para sua casa.",
   },
 ];
 
@@ -65,27 +68,27 @@ export const reviews = [
   {
     name: "Carlos Eduardo & Patrícia",
     neighborhood: "Albuquerque",
-    text: "Adquirimos nosso lote no Golden Green com a assessoria da Habittat House. O terreno é espetacular, com vista maravilhosa para o Dedo de Deus e a flexibilidade de parcelamento direto com a Angeleti facilitou muito nosso planejamento.",
+    text: "Adquirimos nosso lote no Golden Green com a assessoria do corretor Ismael Dias na Habittat House. O terreno é espetacular, com vista maravilhosa para o Dedo de Deus e a flexibilidade de parcelamento direto com a Angeleti facilitou muito nosso planejamento.",
   },
   {
     name: "Marcelo Guimarães",
     neighborhood: "Prata",
-    text: "O Vale dos Pássaros é simplesmente perfeito para quem tem filhos. O clube de lazer com piscina semiolímpica e quadras de tênis nos conquistou. O atendimento do corretor Zinma foi transparente e ágil do início ao fim.",
+    text: "O Vale dos Pássaros é simplesmente perfeito para quem tem filhos. O clube de lazer com piscina semiolímpica e quadras de tênis nos conquistou. O atendimento do corretor Ismael Dias foi transparente e ágil do início ao fim.",
   },
   {
     name: "Renata Vasconcellos",
     neighborhood: "Vargem Grande",
-    text: "Conhecemos o projeto do Montares e ficamos encantados com a proposta do universo equestre e o contato direto com a natureza. Lotes amplos e um conceito único que faltava na serra fluminense.",
+    text: "Conhecemos o projeto do Montares com o Ismael e ficamos encantados com a proposta do universo equestre e o contato direto com a natureza. Lotes amplos e um conceito único que faltava na serra fluminense.",
   },
   {
     name: "Felipe Siqueira",
     neighborhood: "Alto",
-    text: "Excelente carteira de imóveis de alto padrão. Encontrei uma casa em condomínio exatamente como procurava, com segurança jurídica e atendimento pontual. Recomendo de olhos fechados!",
+    text: "Excelente consultoria imobiliária. Encontrei uma casa em condomínio exatamente como procurava através do Ismael Dias na Habittat House, com segurança jurídica e atendimento pontual. Recomendo de olhos fechados!",
   },
   {
     name: "Juliana Esteves",
     neighborhood: "Agriões",
-    text: "Melhor consultoria imobiliária da serra. Visitei os três condomínios parceiros e recebi todas as orientações sobre topografia, insolação, ventilação e condições de pagamento.",
+    text: "Melhor consultoria imobiliária da serra. O corretor Ismael Dias me acompanhou nos três condomínios parceiros e recebi todas as orientações sobre topografia, insolação, ventilação e condições de pagamento.",
   },
 ];
 
