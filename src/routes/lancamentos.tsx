@@ -141,11 +141,12 @@ Gostaria de agendar uma visita guiada com você no local!`;
             Terrenos em condomínio fechado com infraestrutura de alto padrão e financiamento direto em até 120 parcelas
           </p>
 
-          {/* Destaque Condições — Compacto em 1 Linha */}
-          <div className="mt-3.5 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 dark:bg-sky-950/60 border border-blue-200/80 dark:border-sky-800/80 text-xs shadow-2xs text-blue-800 dark:text-sky-300 font-bold">
+          {/* Destaque Condições — 1 Linha Garantida no Mobile com whitespace-nowrap */}
+          <div className="mt-3.5 flex justify-center px-1">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50/90 dark:bg-sky-950/60 border border-blue-200/80 dark:border-sky-800/80 text-[11px] sm:text-xs shadow-2xs text-blue-800 dark:text-sky-300 font-bold whitespace-nowrap">
               <DollarSign className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400 shrink-0" />
-              <span>15% Entrada + 120x Direto com a Incorporadora Angeleti</span>
+              <span className="hidden sm:inline">15% Entrada + 120x Direto com a Incorporadora Angeleti</span>
+              <span className="sm:hidden">15% Entrada + 120x Direto • Angeleti</span>
               <span className="hidden sm:inline text-slate-400">• Lazer & Segurança 24h</span>
             </div>
           </div>
