@@ -12,6 +12,7 @@ import {
   Filter,
   Trees,
   MapPin,
+  ArrowRight,
   Sparkles,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -22,29 +23,28 @@ import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
 import { ProductDetailModal, type ProductItem } from "@/components/ProductDetailModal";
 import {
-  defaultProducts,
-  filters,
+  imoveisAvulsosProducts,
+  imoveisFilters,
   fmt,
   WHATSAPP,
   WHATSAPP_NUMBER,
   PHONE_DISPLAY,
 } from "@/data/storeData";
-import { toast } from "sonner";
 
 export const Route = createFileRoute("/loja")({
   head: () => ({
     meta: [
-      { title: "Catálogo de Imóveis & Lotes — Ismael Dias | Corretor Habittat House" },
+      { title: "Imóveis Avulsos em Teresópolis — Ismael Dias | Habittat House" },
       {
         name: "description",
         content:
-          "Veja todos os terrenos e imóveis disponíveis com o corretor Ismael Dias na Habittat House em Teresópolis - RJ. Condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti.",
+          "Casas em condomínio, coberturas duplex e residências exclusivas prontas para morar em Teresópolis - RJ. Atendimento com o corretor Ismael Dias na Habittat House.",
       },
-      { property: "og:title", content: "Catálogo de Imóveis em Teresópolis — Ismael Dias Corretor" },
+      { property: "og:title", content: "Imóveis Avulsos — Ismael Dias | Habittat House" },
       {
         property: "og:description",
         content:
-          "Catálogo de lotes e imóveis de alto padrão na Região Serrana com metragens, topografia e condições de parcelamento com a Angeleti.",
+          "Catálogo de casas de alto padrão e coberturas na serra fluminense com documentação garantida.",
       },
     ],
   }),
@@ -53,8 +53,7 @@ export const Route = createFileRoute("/loja")({
 
 function LojaPage() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
-  const [productList, setProductList] = useState<ProductItem[]>(defaultProducts);
-  const [loading, setLoading] = useState(false);
+  const [productList, setProductList] = useState<ProductItem[]>(imoveisAvulsosProducts);
   const [activeFilter, setActiveFilter] = useState<string>("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
@@ -89,10 +88,6 @@ function LojaPage() {
     }
     localStorage.setItem("habittat_theme", next);
     window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
-    toast.success(next === "black-piano" ? "Modo Noturno ativado" : "Modo Claro ativado", {
-      id: "theme-toggle",
-      duration: 1200,
-    });
   };
 
   const handleOpenDetail = (prod: ProductItem) => {
@@ -101,15 +96,15 @@ function LojaPage() {
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
-    const text = `Olá, Ismael Dias! Vi este imóvel no seu catálogo e gostaria de informações:
+    const text = `Olá, Ismael Dias! Vi este imóvel avulso no seu catálogo e gostaria de informações:
 
-🏡 *Empreendimento:* ${prod.name}
+🏡 *Imóvel:* ${prod.name}
 📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
-📐 *Metragem:* ${prod.storage || "Lote Residencial"}
+📐 *Área:* ${prod.storage || "Área Privativa"}
 💰 *Valor:* A partir de ${fmt(prod.price)}
-✨ *Condições:* ${prod.chip || "10% entrada + até 120 parcelas com a Angeleti"}
+✨ *Destaque:* ${prod.badge}
 
-Gostaria de agendar uma visita com você para conhecer o local!`;
+Gostaria de agendar uma visita com você para conhecer o imóvel!`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
@@ -134,19 +129,36 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
       <main className="pt-20 sm:pt-32 pb-24 sm:pb-16 px-3 sm:px-6 max-w-7xl mx-auto">
-        {/* Header da Loja */}
+        {/* Header da Página de Imóveis */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold glass mb-2 border border-blue-500/20 text-blue-600 dark:text-sky-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Empreendimentos & Oportunidades ({filtered.length} disponíveis)</span>
+            <span>Imóveis Avulsos ({filtered.length} disponíveis)</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-            Catálogo de <span className="text-gradient-blue">Terrenos & Imóveis</span>
+            Casas, Coberturas & <span className="text-gradient-blue">Residências</span>
           </h1>
           <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-            Condomínios fechados da Angeleti Construtora e imóveis selecionados em Teresópolis - RJ
+            Carteira selecionada de imóveis avulsos prontos para morar em Teresópolis — RJ com o corretor Ismael Dias
           </p>
+
+          {/* Banner Chamada para Lançamentos */}
+          <div className="mt-4 inline-flex items-center gap-2 p-1.5 sm:p-2 pr-3.5 rounded-full bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 text-xs">
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-extrabold text-[10px]">
+              NOVO
+            </span>
+            <span className="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
+              Procurando lotes em condomínio fechado?
+            </span>
+            <Link
+              to="/lancamentos"
+              className="font-bold text-blue-600 dark:text-sky-400 hover:underline flex items-center gap-1 text-[11px] sm:text-xs"
+            >
+              <span>Ver Lançamentos</span>
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
         </div>
 
         {/* Barra de Busca Desktop */}
@@ -155,7 +167,7 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Buscar por condomínio, bairro ou tipo (ex: Golden Green, Prata, 400m²)..."
+              placeholder="Buscar por bairro ou tipo (ex: Albuquerque, 4 suítes, Agriões, Quebra Frascos)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
@@ -171,11 +183,11 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
           </div>
         </div>
 
-        {/* Controles Mobile: Filtros de Categoria */}
-        <div className="sm:hidden mt-3.5 flex flex-col gap-2">
-          {/* Categorias Pills */}
-          <div className="flex flex-wrap gap-1 p-1 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 shadow-inner backdrop-blur-md">
-            {filters.map((fl) => {
+        {/* Controles Mobile: Filtros de Categoria (Scroll Horizontal Perfeito sem quebra) */}
+        <div className="sm:hidden mt-4 flex flex-col gap-2.5">
+          {/* Scroll Horizontal de Categorias */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 scroll-smooth -mx-1 px-1">
+            {imoveisFilters.map((fl) => {
               const count =
                 fl === "Todos"
                   ? productList.length
@@ -185,18 +197,18 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-2 text-xs rounded-xl transition-all cursor-pointer whitespace-nowrap ${
+                  className={`shrink-0 flex items-center gap-1.5 py-2 px-3.5 text-xs rounded-full transition-all cursor-pointer whitespace-nowrap shadow-xs ${
                     isActive
-                      ? "btn-primary-glow text-white shadow-md font-black"
-                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-bold"
+                      ? "btn-primary-glow text-white shadow-md font-black scale-102"
+                      : "bg-slate-100/90 dark:bg-slate-900/90 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-bold border border-slate-200/70 dark:border-slate-800/70"
                   }`}
                 >
-                  <span className="whitespace-nowrap">{fl}</span>
+                  <span>{fl}</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.2 rounded-full font-black shrink-0 ${
                       isActive
                         ? "bg-white/25 text-white"
-                        : "bg-slate-200/90 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                        : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
                     }`}
                   >
                     {count}
@@ -206,13 +218,13 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
             })}
           </div>
 
-          {/* Linha Combinada: Barra de busca à esquerda + Grade/Vitrine à direita */}
+          {/* Linha Combinada: Barra de busca + Modo Grade/Vitrine */}
           <div className="flex items-center gap-2">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
               <input
                 type="text"
-                placeholder="Buscar modelo..."
+                placeholder="Buscar imóvel avulso..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
@@ -259,8 +271,8 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
 
         {/* Filtros Desktop */}
         <div className="hidden sm:flex mt-8 items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            {filters.map((fl) => {
+          <div className="flex items-center gap-2 flex-wrap">
+            {imoveisFilters.map((fl) => {
               const count =
                 fl === "Todos"
                   ? productList.length
@@ -270,7 +282,7 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`px-5 py-2.5 text-sm font-extrabold rounded-full transition-all flex items-center gap-2 cursor-pointer ${
+                  className={`px-4 py-2 text-xs sm:text-sm font-extrabold rounded-full transition-all flex items-center gap-2 cursor-pointer shadow-xs ${
                     isActive
                       ? "btn-primary-glow text-white shadow-lg scale-105"
                       : "section-pill hover:scale-105"
@@ -293,15 +305,15 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
 
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{filtered.length} empreendimentos e imóveis disponíveis</span>
+            <span>{filtered.length} imóveis avulsos disponíveis</span>
           </div>
         </div>
 
-        {/* Grade de Produtos */}
+        {/* Grade de Imóveis */}
         {filtered.length === 0 ? (
           <div className="mt-16 text-center py-16 glass rounded-3xl border border-slate-200 dark:border-slate-800">
             <Building2 className="w-12 h-12 mx-auto text-slate-400 mb-3" />
-            <h3 className="text-lg font-bold">Nenhum lote ou imóvel encontrado para essa busca</h3>
+            <h3 className="text-lg font-bold">Nenhum imóvel encontrado para essa busca</h3>
             <p className="text-sm text-slate-500 mt-1">
               Tente buscar por outro termo ou limpe o filtro de busca.
             </p>
@@ -312,7 +324,7 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
               }}
               className="mt-4 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer hover:bg-blue-700"
             >
-              Ver todos os empreendimentos
+              Ver todos os imóveis
             </button>
           </div>
         ) : (
@@ -373,7 +385,7 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
                       </span>
                     </div>
                     <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
-                      {prod.chip || "10% entrada + parcelamento direto"}
+                      {prod.chip || "Condições facilitadas com Habittat House"}
                     </p>
                   </div>
                 </div>
@@ -457,7 +469,7 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
                         </span>
                       </div>
                       <p className="text-[9px] text-slate-500 dark:text-slate-400 truncate">
-                        {prod.chip || "10% + 120x com Angeleti"}
+                        {prod.chip || "Condições facilitadas"}
                       </p>
                     </div>
 
@@ -484,18 +496,18 @@ Gostaria de agendar uma visita com você para conhecer o local!`;
           </div>
         )}
 
-        {/* Banner de Consultoria com Ismael Dias */}
+        {/* Banner de Atendimento com Ismael Dias */}
         <div className="mt-16 rounded-3xl p-6 sm:p-10 glass border border-blue-500/30 shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-sky-400 mb-3 border border-blue-500/20">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Consultoria Imobiliária com Ismael Dias</span>
+              <span>Atendimento com Ismael Dias</span>
             </div>
             <h2 className="text-xl sm:text-3xl font-black text-slate-900 dark:text-white">
-              Dúvidas sobre qual lote ou condomínio escolher?
+              Quer agendar uma visita a um dos imóveis?
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2">
-              Fale diretamente com Ismael Dias, corretor credenciado na Habittat House. Te apresento as opções de Golden Green, Vale dos Pássaros e Montares com detalhes de topografia, insolação e condições comerciais facilitadas.
+              Fale diretamente com Ismael Dias na Habittat House. Te acompanho pessoalmente na visita aos imóveis, tirando dúvidas sobre documentação, estrutura e localização.
             </p>
           </div>
 

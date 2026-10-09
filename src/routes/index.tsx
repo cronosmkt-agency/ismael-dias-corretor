@@ -170,7 +170,7 @@ function Hero() {
           {/* Eyebrow Pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 mx-auto lg:mx-0 w-fit">
             <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
-            <span>Ismael Dias • Corretor de Imóveis na Habittat House</span>
+            <span>Parceria Oficial Angeleti Construtora (+20 anos) • Teresópolis/RJ</span>
           </div>
 
           {/* Main Title */}
@@ -185,9 +185,7 @@ function Hero() {
 
           {/* Value Prop Subtitle */}
           <p className="mt-3 sm:mt-5 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Consultoria imobiliária personalizada com o corretor{" "}
-            <strong className="text-slate-900 dark:text-white font-bold">Ismael Dias</strong>.
-            Terrenos amplos com vistas deslumbrantes nos condomínios{" "}
+            Encontre o terreno ou residência ideal para você e sua família nos condomínios{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Golden Green</strong>,{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Vale dos Pássaros</strong> e{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Montares</strong>.
@@ -200,11 +198,19 @@ function Hero() {
           {/* Action CTAs */}
           <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center lg:justify-start">
             <Link
-              to="/loja"
+              to="/lancamentos"
               className="btn-primary-glow inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm text-white shadow-lg active:scale-95 transition"
             >
-              <Compass className="w-4 h-4" />
-              <span>Ver Terrenos & Imóveis</span>
+              <Trees className="w-4 h-4" />
+              <span>Ver Lançamentos</span>
+            </Link>
+
+            <Link
+              to="/loja"
+              className="inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 shadow-sm active:scale-95 transition"
+            >
+              <Home className="w-4 h-4" />
+              <span>Imóveis Avulsos</span>
             </Link>
 
             <a
@@ -214,7 +220,7 @@ function Hero() {
               className="inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md active:scale-95 transition"
             >
               <WhatsAppIcon className="w-4 h-4 fill-white" />
-              <span>Falar com Ismael no WhatsApp</span>
+              <span>WhatsApp</span>
             </a>
           </div>
 
@@ -222,7 +228,7 @@ function Hero() {
           <div className="mt-5 sm:mt-8 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-xs font-semibold text-slate-700 dark:text-slate-300">
             <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 text-emerald-600 dark:text-emerald-400 font-black">
               <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-              <span>Ismael Dias (CRECI Ativo)</span>
+              <span>Atendimento de Confiança</span>
             </div>
             <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
               <Building2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
@@ -445,7 +451,7 @@ function BrokerProfileSection() {
                     <span>Segurança Jurídica & RGI</span>
                   </div>
                   <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
-                    Certidões negativas, análise contratual e acompanhamento completo em cartório com CRECI ativo.
+                    Certidões negativas, análise contratual e acompanhamento completo de documentação em cartório.
                   </p>
                 </div>
 
@@ -505,8 +511,8 @@ function BrokerProfileSection() {
                     <strong className="text-slate-900 dark:text-white">Teresópolis & Região Serrana</strong>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Credencial:</span>
-                    <strong className="text-emerald-600 dark:text-emerald-400 font-black">CRECI Ativo ✅</strong>
+                    <span>Status:</span>
+                    <strong className="text-emerald-600 dark:text-emerald-400 font-black">Habittat House ✅</strong>
                   </div>
                   <div className="flex items-center justify-between">
                     <span>Telefone / WhatsApp:</span>
@@ -668,7 +674,7 @@ function FinanciamentoDireto() {
         </div>
 
         <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-3">
-          Atendimento personalizado com corretor credenciado (CRECI).
+          Atendimento personalizado com o corretor Ismael Dias na Habittat House.
         </p>
       </div>
     </section>
@@ -819,10 +825,6 @@ function BrandStore() {
     }
     localStorage.setItem("habittat_theme", next);
     window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
-    toast.success(next === "black-piano" ? "Modo Noturno ativado" : "Modo Claro ativado", {
-      id: "theme-toggle",
-      duration: 1200,
-    });
   };
 
   const handleOpenDetail = (product: ProductItem) => {

@@ -88,7 +88,7 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
     "Infraestrutura completa com água, luz e saneamento",
     "Segurança 24 horas com portaria e controle rigoroso de acesso",
     "Escritura definitiva com procedência jurídica garantida",
-    "Assessoria completa de corretor credenciado (CRECI)",
+    "Assessoria completa com o corretor Ismael Dias na Habittat House",
     "Agendamento de visita VIP no local para conhecer a vista e topografia",
   ];
 
@@ -192,7 +192,7 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
               {/* Agendamento notice */}
               <div className="mt-2 flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-600 dark:text-emerald-400 font-bold">
                 <CalendarCheck className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
-                <span>Agende sua visita no local com corretor credenciado</span>
+                <span>Agende sua visita no local com Ismael Dias</span>
               </div>
             </div>
           </div>
@@ -295,7 +295,7 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
             </div>
             <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
               <CalendarCheck className="w-4 h-4 text-indigo-400 shrink-0" />
-              <span>Agende sua visita com corretor credenciado</span>
+              <span>Agende sua visita diretamente com Ismael Dias</span>
             </div>
           </div>
         </div>

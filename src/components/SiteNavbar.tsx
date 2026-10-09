@@ -56,7 +56,8 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
 
   const navLinks = [
     { label: "Início", path: "/" },
-    { label: "Imóveis & Lotes", path: "/loja", hasDot: true },
+    { label: "Lançamentos", path: "/lancamentos", hasDot: true },
+    { label: "Imóveis", path: "/loja" },
   ];
 
   return (
@@ -153,7 +154,7 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
             <Link
               to="/"
               className="flex items-center transition-opacity hover:opacity-90 active:scale-95"
-              aria-label="Página Inicial Terephones"
+              aria-label="Página Inicial - Ismael Dias Corretor Habittat House"
             >
               <BrandLogo height={34} showText={true} dark={isDark} />
             </Link>

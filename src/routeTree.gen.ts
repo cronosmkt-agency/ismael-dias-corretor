@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChatRouteImport } from './routes/chat'
+import { Route as LancamentosRouteImport } from './routes/lancamentos'
 import { Route as LojaRouteImport } from './routes/loja'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const ChatRoute = ChatRouteImport.update({
   id: '/chat',
   path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LancamentosRoute = LancamentosRouteImport.update({
+  id: '/lancamentos',
+  path: '/lancamentos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LojaRoute = LojaRouteImport.update({
@@ -38,12 +44,14 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/lancamentos': typeof LancamentosRoute
   '/loja': typeof LojaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/lancamentos': typeof LancamentosRoute
   '/loja': typeof LojaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/lancamentos': typeof LancamentosRoute
   '/loja': typeof LojaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chat' | '/loja' | '/sitemap.xml'
+  fullPaths: '/' | '/chat' | '/lancamentos' | '/loja' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chat' | '/loja' | '/sitemap.xml'
-  id: '__root__' | '/' | '/chat' | '/loja' | '/sitemap.xml'
+  to: '/' | '/chat' | '/lancamentos' | '/loja' | '/sitemap.xml'
+  id: '__root__' | '/' | '/chat' | '/lancamentos' | '/loja' | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChatRoute: typeof ChatRoute
+  LancamentosRoute: typeof LancamentosRoute
   LojaRoute: typeof LojaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/chat'
       fullPath: '/chat'
       preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lancamentos': {
+      id: '/lancamentos'
+      path: '/lancamentos'
+      fullPath: '/lancamentos'
+      preLoaderRoute: typeof LancamentosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/loja': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChatRoute: ChatRoute,
+  LancamentosRoute: LancamentosRoute,
   LojaRoute: LojaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

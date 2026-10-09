@@ -32,11 +32,11 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="text-sm mt-4 leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Consultoria imobiliária especializada com o corretor <strong>Ismael Dias</strong> na Habittat House. Lotes e terrenos em condomínio de alto padrão com a Angeleti Construtora em Teresópolis - RJ.
+              Atendimento imobiliário com o corretor <strong>Ismael Dias</strong> na Habittat House. Lotes e terrenos em condomínio de alto padrão com a Angeleti Construtora em Teresópolis - RJ.
             </p>
             <div className="mt-4 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-semibold">
               <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span>Ismael Dias • Corretor Credenciado (CRECI)</span>
+              <span>Ismael Dias • Corretor Habittat House</span>
             </div>
           </div>
 
@@ -50,7 +50,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  to="/loja"
+                  to="/lancamentos"
                   className="transition hover:text-blue-600 font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
@@ -59,7 +59,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               </li>
               <li>
                 <Link
-                  to="/loja"
+                  to="/lancamentos"
                   className="transition hover:text-blue-600 font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
@@ -68,7 +68,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               </li>
               <li>
                 <Link
-                  to="/loja"
+                  to="/lancamentos"
                   className="transition hover:text-blue-600 font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
