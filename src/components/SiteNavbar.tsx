@@ -56,7 +56,7 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
 
   const navLinks = [
     { label: "Início", path: "/" },
-    { label: "Loja", path: "/loja" },
+    { label: "Imóveis & Lotes", path: "/loja", hasDot: true },
   ];
 
   return (
@@ -100,8 +100,8 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
 
             <div className="badge-aberto text-xs py-1 px-3">
               {afterHours
-                ? "Fechado — Abre amanhã às 10:00"
-                : "Aberto até 18:00"}
+                ? "Plantão Online • Atendimento WhatsApp"
+                : "Plantão de Vendas Aberto"}
             </div>
 
             <span
@@ -113,10 +113,10 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pedir-agora text-xs py-2 px-4 rounded-full flex items-center gap-1.5"
+              className="btn-pedir-agora text-xs py-2 px-4 rounded-full flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white"
             >
               <WhatsAppIcon className="w-3.5 h-3.5" />
-              <span>Pedir no WhatsApp</span>
+              <span>Agendar Visita</span>
             </a>
           </div>
         </nav>

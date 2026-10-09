@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
-
-export const TEREPHONES_LOGO_URL = "https://ik.imagekit.io/zinma/tr:w-160,f-auto,q-85/TerePhones-Logo.png";
+import { Building2, Home } from "lucide-react";
 
 interface BrandLogoProps {
   height?: number;
@@ -24,47 +23,45 @@ export function BrandLogo({
       className={`flex items-center gap-2.5 select-none ${className}`}
       style={style}
     >
-      {/* Insígnia Oficial Terephones */}
-      <img
-        src={TEREPHONES_LOGO_URL}
-        alt="Terephones"
-        width={iconSize}
-        height={iconSize}
-        className="shrink-0 object-contain rounded-full transition-transform hover:scale-105 duration-200"
+      {/* Insígnia Oficial Habittat House */}
+      <div
+        className="shrink-0 rounded-2xl flex items-center justify-center transition-transform hover:scale-105 duration-200"
         style={{
           width: iconSize,
           height: iconSize,
-          filter: dark
-            ? "drop-shadow(0 2px 8px rgba(0,0,0,0.5)) drop-shadow(0 0 10px rgba(56,189,248,0.25))"
-            : "drop-shadow(0 2px 6px rgba(13,27,62,0.18))",
+          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%)",
+          boxShadow: dark
+            ? "0 4px 15px rgba(2, 132, 199, 0.35), 0 0 1px rgba(255,255,255,0.2) inset"
+            : "0 4px 12px rgba(15, 23, 42, 0.15)",
+          border: "1px solid rgba(255,255,255,0.15)",
         }}
-        loading="eager"
-        decoding="async"
-      />
+      >
+        <Home className="w-5 h-5 text-white drop-shadow-sm" strokeWidth={2.2} />
+      </div>
 
       {/* Wordmark */}
       {showText && (
         <div className="flex flex-col justify-center leading-none">
           <div className="flex items-center text-lg sm:text-xl font-black tracking-tight">
-            <span style={{ color: dark ? "#FFFFFF" : "var(--text-primary, #0D1B3E)" }}>
-              TERE
+            <span style={{ color: dark ? "#FFFFFF" : "#0f172a" }}>
+              HABITTAT
             </span>
             <span
               style={{
-                background: "linear-gradient(135deg, #1A6FE8 0%, #2979FF 100%)",
+                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
-              className="ml-0.5"
+              className="ml-1"
             >
-              PHONES
+              HOUSE
             </span>
           </div>
           <span
-            className="text-[9px] uppercase font-bold tracking-[0.22em] mt-0.5"
-            style={{ color: dark ? "#94A3B8" : "var(--text-muted, #64748B)" }}
+            className="text-[9px] uppercase font-bold tracking-[0.2em] mt-0.5"
+            style={{ color: dark ? "#94a3b8" : "#64748b" }}
           >
-            TERESÓPOLIS • RJ
+            IMOBILIÁRIA • TERESÓPOLIS
           </span>
         </div>
       )}
@@ -73,3 +70,4 @@ export function BrandLogo({
 }
 
 export default BrandLogo;
+

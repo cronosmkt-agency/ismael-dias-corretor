@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Smartphone } from "lucide-react";
+import { Home, Compass } from "lucide-react";
 
 export function MobileBottomNav() {
   const routerState = useRouterState();
@@ -31,7 +31,7 @@ export function MobileBottomNav() {
           <span className="text-[11px] leading-none">Início</span>
         </Link>
 
-        {/* Loja */}
+        {/* Imóveis */}
         <Link
           to="/loja"
           className={`flex flex-col items-center justify-center gap-1 py-1 rounded-xl transition-all ${
@@ -40,14 +40,15 @@ export function MobileBottomNav() {
               : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-semibold"
           }`}
         >
-          <Smartphone
+          <Compass
             className={`w-5 h-5 transition-transform ${
               isLoja ? "scale-110 stroke-[2.5]" : "stroke-[1.8]"
             }`}
           />
-          <span className="text-[11px] leading-none">Loja</span>
+          <span className="text-[11px] leading-none">Imóveis</span>
         </Link>
       </div>
     </nav>
   );
 }
+

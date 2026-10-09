@@ -1,17 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
-  Smartphone,
+  Home,
   LayoutGrid,
   Search,
   MessageCircle,
   Info,
   Check,
-  Zap,
   ShieldCheck,
-  Truck,
   Building2,
   Filter,
+  Trees,
+  MapPin,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -20,29 +20,29 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
 import { ProductDetailModal, type ProductItem } from "@/components/ProductDetailModal";
-import { fetchGoogleSheetInventory } from "@/services/googleSheets";
 import {
   defaultProducts,
   filters,
   fmt,
   WHATSAPP,
+  WHATSAPP_NUMBER,
 } from "@/data/storeData";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/loja")({
   head: () => ({
     meta: [
-      { title: "Loja — iPhones Disponíveis a Pronta Entrega | Terephones" },
+      { title: "Catálogo — Terrenos em Condomínio & Imóveis | Habittat House" },
       {
         name: "description",
         content:
-          "Veja todos os iPhones novos e seminovos disponíveis hoje em Teresópolis - RJ. Entrega Express em até 1h ou retirada na SejaDelta.",
+          "Veja todos os terrenos disponíveis nos condomínios Golden Green, Vale dos Pássaros e Montares em Teresópolis - RJ. Entrada de 10% e parcelamento direto com a Angeleti.",
       },
-      { property: "og:title", content: "Loja de iPhones em Teresópolis — Terephones" },
+      { property: "og:title", content: "Catálogo de Imóveis em Teresópolis — Habittat House" },
       {
         property: "og:description",
         content:
-          "Catálogo completo de iPhones pronta entrega com fotos reais, bateria testada e garantia. Pague só na entrega.",
+          "Catálogo de lotes e imóveis de alto padrão na Região Serrana com fotos, topografia, metragens e condições comerciais.",
       },
     ],
   }),
@@ -61,7 +61,7 @@ function LojaPage() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("terephones_theme") as ThemeMode | null;
+      const saved = localStorage.getItem("habittat_theme") as ThemeMode | null;
       if (saved === "black-piano" || saved === "white") {
         setCurrentTheme(saved);
         const root = document.documentElement;
@@ -72,17 +72,6 @@ function LojaPage() {
           root.classList.add("theme-white");
         }
       }
-
-      // Sync Google Sheets
-      setLoading(true);
-      fetchGoogleSheetInventory()
-        .then((items) => {
-          if (items && items.length > 0) {
-            setProductList(items);
-          }
-        })
-        .catch(() => {})
-        .finally(() => setLoading(false));
     }
   }, []);
 
@@ -96,9 +85,9 @@ function LojaPage() {
     } else {
       root.classList.add("theme-white");
     }
-    localStorage.setItem("terephones_theme", next);
+    localStorage.setItem("habittat_theme", next);
     window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
-    toast.success(next === "black-piano" ? "Modo Black ativado" : "Modo Branco ativado", {
+    toast.success(next === "black-piano" ? "Modo Noturno ativado" : "Modo Claro ativado", {
       id: "theme-toggle",
       duration: 1200,
     });
@@ -110,24 +99,19 @@ function LojaPage() {
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
-    const isNovo = prod.cat === "Novos" || prod.badge.toLowerCase().includes("lacrado");
-    const storageDisplay =
-      prod.storage || prod.name.match(/\d+(gb|tb)/i)?.[0]?.toUpperCase() || "128GB";
-    const condText = isNovo
-      ? "Novo Lacrado de Fábrica"
-      : `Seminovo Grade A+${prod.battery ? ` (Saúde da Bateria: ${prod.battery})` : ""}`;
+    const text = `Olá, equipe Habittat House! Vi este imóvel no catálogo e gostaria de informações:
 
-    const text = `Olá, equipe Terephones! Gostaria de pedir este iPhone que vi na Loja:
+🏡 *Empreendimento:* ${prod.name}
+📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
+📐 *Metragem:* ${prod.storage || "Lote Residencial"}
+💰 *Valor:* A partir de ${fmt(prod.price)}
+✨ *Condições:* ${prod.chip || "10% entrada + até 120 parcelas"}
 
-📱 *Aparelho:* ${prod.name}
-💰 *Valor à vista:* ${fmt(prod.price)} (ou até 18x no cartão)
-💾 *Capacidade:* ${storageDisplay}
-✨ *Condição:* ${condText}
+Gostaria de agendar uma visita e receber a tabela atualizada!`;
 
-Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
-
-    window.open(`https://wa.me/5521964639999?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
+
 
   // Filter & Search
   const filtered = productList
@@ -165,12 +149,15 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold glass mb-2 border border-blue-500/20 text-blue-600 dark:text-sky-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Estoque Hoje ({filtered.length} disponíveis)</span>
+            <span>Empreendimentos & Oportunidades ({filtered.length} disponíveis)</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-            Catálogo Completo de <span className="text-gradient-blue">iPhones</span>
+            Catálogo de <span className="text-gradient-blue">Terrenos & Imóveis</span>
           </h1>
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+            Condomínios fechados da Angeleti Construtora e imóveis selecionados em Teresópolis - RJ
+          </p>
         </div>
 
         {/* Barra de Busca Desktop */}
@@ -179,7 +166,7 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Buscar modelo (ex: 16 Pro, 15, 256GB)..."
+              placeholder="Buscar por condomínio, bairro ou tipo (ex: Golden Green, Prata, 400m²)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
@@ -195,23 +182,21 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
           </div>
         </div>
 
-        {/* Controles Mobile: Filtros de Categoria + Barra de Busca à esquerda dos botões Grade/Vitrine */}
+        {/* Controles Mobile: Filtros de Categoria */}
         <div className="sm:hidden mt-3.5 flex flex-col gap-2">
           {/* Categorias Pills */}
-          <div className="grid grid-cols-3 p-1 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 shadow-inner backdrop-blur-md">
+          <div className="flex flex-wrap gap-1 p-1 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 shadow-inner backdrop-blur-md">
             {filters.map((fl) => {
               const count =
                 fl === "Todos"
                   ? productList.length
-                  : fl === "Lacrados"
-                  ? productList.filter((p) => p.cat === "Novos" || p.cat === "Lacrados").length
                   : productList.filter((p) => p.cat === fl).length;
               const isActive = activeFilter === fl;
               return (
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`flex items-center justify-center gap-1.5 py-1.5 px-1 text-xs rounded-xl transition-all cursor-pointer whitespace-nowrap ${
+                  className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-2 text-xs rounded-xl transition-all cursor-pointer whitespace-nowrap ${
                     isActive
                       ? "btn-primary-glow text-white shadow-md font-black"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-bold"

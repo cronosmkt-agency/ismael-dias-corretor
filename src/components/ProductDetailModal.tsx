@@ -2,18 +2,18 @@ import { useEffect } from "react";
 import {
   X,
   ShieldCheck,
-  Truck,
   Building2,
-  Battery,
-  Cpu,
-  Camera,
-  Smartphone,
-  Gift,
   CheckCircle2,
   CreditCard,
-  Zap,
+  Trees,
+  Compass,
+  MapPin,
+  CalendarCheck,
+  Home,
+  FileCheck2,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
 
 export interface ProductItem {
   name: string;
@@ -48,7 +48,7 @@ export function ProductDetailModal({
   product,
   isOpen,
   onClose,
-  whatsappNumber = "5521964639999",
+  whatsappNumber = WHATSAPP_NUMBER,
 }: ProductDetailModalProps) {
   useEffect(() => {
     if (!isOpen) return;
@@ -67,49 +67,32 @@ export function ProductDetailModal({
 
   if (!isOpen || !product) return null;
 
-  const isNovo = product.cat === "Novos" || product.badge.toLowerCase().includes("lacrado");
-
-  const storageDisplay =
-    product.storage || product.name.match(/\d+(gb|tb)/i)?.[0]?.toUpperCase() || "128GB";
+  const areaDisplay = product.storage || "Lote Residencial";
 
   const handleWhatsApp = () => {
-    const condText = isNovo
-      ? "Novo Lacrado de Fábrica"
-      : `Seminovo Grade A+${product.battery ? ` (Saúde da Bateria: ${product.battery})` : ""}`;
+    const text = `Olá, equipe Habittat House! Vi este imóvel no site e tenho interesse:
 
-    const text = `Olá, equipe Terephones! Gostaria de pedir este iPhone que vi no site:
+🏡 *Empreendimento:* ${product.name}
+📍 *Localização:* ${product.screen || "Teresópolis/RJ"}
+📐 *Metragem / Área:* ${areaDisplay}
+💰 *Valor:* A partir de ${fmt(product.price)}
+✨ *Destaque:* ${product.camera || product.badge}
 
-📱 *Aparelho:* ${product.name}
-💰 *Valor à vista:* ${fmt(product.price)} (ou até 18x no cartão)
-💾 *Capacidade:* ${storageDisplay}
-✨ *Condição:* ${condText}
-
-Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
+Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!`;
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
 
-  const defaultBoxItems = isNovo
-    ? [
-        "Aparelho iPhone Novo Lacrado de Fábrica",
-        "Cabo original Apple USB-C / Lightning trançado",
-        "Documentação oficial & chave de chip",
-        "Brinde Terephones: Película 3D de alta proteção instalada",
-        "Brinde Terephones: Capa protetora anti-impacto MagSafe",
-      ]
-    : [
-        "Aparelho iPhone Seminovo Grade A+ Impecável",
-        "Cabo de carregamento Turbo homologado",
-        "Certificado de revisão técnica em 25+ itens",
-        "Brinde Terephones: Película 3D instalada na hora",
-        "Brinde Terephones: Capa protetora anti-impacto MagSafe",
-      ];
+  const defaultBoxItems = [
+    "Infraestrutura completa com água, luz e saneamento",
+    "Segurança 24 horas com portaria e controle rigoroso de acesso",
+    "Escritura definitiva com procedência jurídica garantida",
+    "Assessoria completa de corretor credenciado (CRECI)",
+    "Agendamento de visita VIP no local para conhecer a vista e topografia",
+  ];
 
   const boxList = product.boxItems && product.boxItems.length > 0 ? product.boxItems : defaultBoxItems;
-
-  const hasBatteryInBadge =
-    product.badge.toLowerCase().includes("bateria") || product.badge.toLowerCase().includes("bat");
 
   return (
     <div
@@ -126,32 +109,18 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
 
       {/* Modal Container */}
       <div
-        className="relative w-full max-w-[94vw] sm:max-w-[720px] my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/10"
+        className="relative w-full max-w-[94vw] sm:max-w-[760px] my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header bar com badges e botão fechar */}
         <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
           <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-            <span
-              className={`text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs ${
-                isNovo ? "product-badge-novo" : "product-badge-seminovo"
-              }`}
-            >
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs product-badge-novo bg-blue-600/10 text-blue-600 dark:text-sky-400 border border-blue-500/20">
               {product.badge}
             </span>
-            {product.battery && !hasBatteryInBadge && (
-              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-                <Battery className="w-3 h-3 text-emerald-500 shrink-0" />
-                <span>Bateria {product.battery}</span>
-              </span>
-            )}
-            {product.quantity && product.quantity > 1 && (
-              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center gap-1">
-                <span>📦 {product.quantity} un. em estoque</span>
-              </span>
-            )}
-            <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 hidden xs:inline">
-              {product.cat}
+            <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+              <Trees className="w-3 h-3 text-emerald-500 shrink-0" />
+              <span>{product.cat}</span>
             </span>
           </div>
 
@@ -168,12 +137,10 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
         <div className="overflow-y-auto px-3.5 sm:px-6 py-3.5 sm:py-5 space-y-4 sm:space-y-6">
           {/* Top Section: Imagem + Título + Preço */}
           <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-6 items-center">
-            {/* Foto do Aparelho */}
+            {/* Foto do Empreendimento */}
             <div
               className="relative rounded-2xl p-3 sm:p-5 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-50/70 dark:bg-slate-900/50"
-              style={{
-                minHeight: "140px",
-              }}
+              style={{ minHeight: "180px" }}
             >
               <div
                 className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-30"
@@ -184,8 +151,8 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
               <img
                 src={product.img}
                 alt={product.name}
-                className="max-h-32 sm:max-h-48 md:max-h-52 w-auto object-contain transition-transform hover:scale-105 duration-300 relative z-1"
-                style={{ filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.28))" }}
+                className="max-h-44 sm:max-h-52 w-auto object-contain transition-transform hover:scale-105 duration-300 relative z-1 rounded-xl"
+                style={{ filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.22))" }}
               />
             </div>
 
@@ -199,113 +166,112 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
               </h2>
 
               <p className="text-xs sm:text-sm font-semibold mt-1 text-slate-600 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
-                <span>{storageDisplay}</span>
-                <span>•</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold">Pronta Entrega em até 1h</span>
+                <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                <span>{product.screen || "Teresópolis/RJ"}</span>
               </p>
 
               {/* Preço em Destaque */}
-              <div className="mt-2.5 sm:mt-3 product-modal-price-box p-3 sm:p-4 rounded-xl">
+              <div className="mt-2.5 sm:mt-3 product-modal-price-box p-3 sm:p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/60 border border-slate-200/70 dark:border-white/10">
                 <div className="flex items-center justify-between">
                   <span className="price-label text-[10px] sm:text-[11px] uppercase font-extrabold tracking-wider text-slate-500 dark:text-sky-300">
-                    Valor à vista no PIX
+                    A partir de
                   </span>
                   <span className="text-[10px] font-black px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                    DESCONTO PIX
+                    DIRETO C/ INCORPORADORA
                   </span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-gradient-blue mt-0.5">
+                <div className="text-2xl sm:text-3xl font-black text-gradient-blue mt-0.5 text-blue-600 dark:text-sky-400">
                   {fmt(product.price)}
                 </div>
                 <div className="price-installments mt-1 flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-700 dark:text-slate-200 font-medium">
                   <CreditCard className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                  <span>ou até 12x de {fmt(product.price / 12)} (até 18x no cartão)</span>
+                  <span>{product.chip || "10% de entrada e saldo em até 120 parcelas"}</span>
                 </div>
               </div>
 
-              {/* Trade-in notice */}
+              {/* Agendamento notice */}
               <div className="mt-2 flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-600 dark:text-emerald-400 font-bold">
-                <Zap className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
-                <span>Aceitamos seu iPhone usado na troca (Trade-In)</span>
+                <CalendarCheck className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
+                <span>Agende sua visita no local com corretor credenciado</span>
               </div>
             </div>
           </div>
 
-          {/* Ficha Técnica / Especificações em Grid */}
+          {/* Ficha Técnica / Características */}
           <div>
             <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-slate-100 mb-2 sm:mb-3 flex items-center gap-1.5">
-              <Smartphone className="w-4 h-4 text-sky-400" />
-              Especificações Técnicas
+              <Home className="w-4 h-4 text-sky-400" />
+              Ficha do Imóvel & Diferenciais
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
-              <div className="product-modal-box p-2.5 sm:p-3">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Smartphone className="w-3.5 h-3.5 text-sky-400" />
-                  Armazenamento
+                  <Compass className="w-3.5 h-3.5 text-sky-400" />
+                  Área / Metragem
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white">
-                  {storageDisplay}
+                  {areaDisplay}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Battery className="w-3.5 h-3.5 text-emerald-400" />
-                  Saúde da Bateria
+                  <Trees className="w-3.5 h-3.5 text-emerald-400" />
+                  Topografia & Terreno
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-emerald-600 dark:text-emerald-400">
-                  {product.battery || (isNovo ? "100% (Lacrado)" : "88% a 100% (Original)")}
+                  {product.battery || "Pronto para Construir"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
                   <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
-                  Garantia
+                  Incorporação / Construtora
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-blue-600 dark:text-sky-300 truncate">
-                  {product.warranty || (isNovo ? "1 Ano Apple" : "90 Dias Terephones")}
+                  {product.warranty || "Angeleti Construtora"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Smartphone className="w-3.5 h-3.5 text-sky-400" />
-                  Tela
+                  <MapPin className="w-3.5 h-3.5 text-sky-400" />
+                  Localização
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
-                  {product.screen || "Super Retina XDR"}
+                  {product.screen || "Teresópolis - RJ"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Camera className="w-3.5 h-3.5 text-sky-400" />
-                  Câmeras
+                  <Trees className="w-3.5 h-3.5 text-sky-400" />
+                  Lazer & Vista
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
-                  {product.camera || "Apple Pro / 4K"}
+                  {product.camera || "Vista Deslumbrante"}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Cpu className="w-3.5 h-3.5 text-sky-400" />
-                  Chip
+                  <CreditCard className="w-3.5 h-3.5 text-sky-400" />
+                  Pagamento Facilitado
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
-                  {product.chip || "Apple Bionic / Pro"}
+                  {product.chip || "10% + 120 parcelas"}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* O que vem na embalagem / Pedido */}
-          <div className="product-modal-box p-3.5 sm:p-5">
+          {/* O que o empreendimento oferece */}
+          <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
             <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
-              <Gift className="w-4 h-4 text-emerald-400" />
-              O que você recebe no seu pedido:
+              <FileCheck2 className="w-4 h-4 text-emerald-400" />
+              Infraestrutura & Vantagens Inclusas:
             </h3>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-100 font-medium">
               {boxList.map((item, idx) => (
@@ -319,49 +285,36 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
 
           {/* Compromissos de Segurança */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700 dark:text-slate-200 font-semibold">
-            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2">
-              <Truck className="w-4 h-4 text-sky-400 shrink-0" />
-              <span>Entrega Express em até 1h em Teresópolis</span>
+            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <Building2 className="w-4 h-4 text-sky-400 shrink-0" />
+              <span>Angeleti Construtora: +20 anos de tradição</span>
             </div>
-            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2">
+            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Pague somente na entrega após testar</span>
+              <span>Segurança jurídica com RGI e escritura</span>
             </div>
-            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2">
-              <Building2 className="w-4 h-4 text-indigo-400 shrink-0" />
-              <span>Retirada presencial na SejaDelta</span>
+            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <CalendarCheck className="w-4 h-4 text-indigo-400 shrink-0" />
+              <span>Agende sua visita com corretor credenciado</span>
             </div>
           </div>
         </div>
 
-        {/* Footer Actions (Responsivo e com Botão de Chat no Site) */}
+        {/* Footer Actions */}
         <div className="product-modal-footer px-3.5 sm:px-6 py-2.5 sm:py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 shrink-0 border-t border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
-          {/* Mobile trust info */}
-          <div className="flex sm:hidden items-center justify-between w-full text-[11px] text-slate-500 dark:text-slate-300">
+          {/* Trust info */}
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-300">
             <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold whitespace-nowrap">
               <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-              <span>Pague só na entrega</span>
+              <span>Habittat House Imobiliária</span>
             </div>
             <span className="text-slate-300 dark:text-slate-700">•</span>
             <div className="text-slate-600 dark:text-slate-300 font-medium whitespace-nowrap">
-              Zap: <span className="font-extrabold text-slate-900 dark:text-sky-300">(21) 96463-9999</span>
-            </div>
-          </div>
-
-          {/* Desktop trust info */}
-          <div className="hidden sm:flex items-center gap-2.5 text-xs text-slate-500 dark:text-slate-300 shrink-0">
-            <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold whitespace-nowrap">
-              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-              <span>Pague após testar na mão</span>
-            </div>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <div className="text-slate-600 dark:text-slate-300 font-medium whitespace-nowrap">
-              WhatsApp: <span className="font-extrabold text-slate-900 dark:text-sky-300">(21) 96463-9999</span>
+              WhatsApp: <span className="font-extrabold text-slate-900 dark:text-sky-300">{PHONE_DISPLAY}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-            {/* Botão Fechar / Voltar */}
             <button
               onClick={onClose}
               className="px-4 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-center"
@@ -369,13 +322,12 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
               Fechar
             </button>
 
-            {/* Botão Pedir no WhatsApp */}
             <button
               onClick={handleWhatsApp}
-              className="flex-1 sm:flex-none btn-whatsapp px-5 sm:px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap"
+              className="flex-1 sm:flex-none btn-whatsapp px-5 sm:px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap bg-emerald-600 hover:bg-emerald-500"
             >
               <WhatsAppIcon className="w-4 h-4 shrink-0 text-white" />
-              <span>Pedir no WhatsApp</span>
+              <span>Consultar / Agendar Visita</span>
             </button>
           </div>
         </div>
@@ -383,5 +335,6 @@ Gostaria de confirmar a disponibilidade para entrega hoje em Teresópolis!`;
     </div>
   );
 }
+
 export default ProductDetailModal;
 

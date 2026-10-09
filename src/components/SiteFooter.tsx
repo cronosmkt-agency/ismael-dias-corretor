@@ -6,8 +6,9 @@ import {
   PHONE_DISPLAY,
   INSTAGRAM_URL,
   INSTAGRAM_HANDLE,
+  ADDRESS_DISPLAY,
 } from "@/data/storeData";
-import { Phone, Instagram, Clock } from "lucide-react";
+import { Phone, Instagram, Clock, MapPin, Building2, ShieldCheck } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
@@ -31,10 +32,12 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="text-sm mt-4 leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              A sua melhor experiência na compra de iPhones novos e seminovos em
-              Teresópolis com entrega express no mesmo dia ou retirada na loja
-              parceira SejaDelta.
+              Assessoria imobiliária especializada em condomínios de alto padrão e terrenos na Região Serrana. Parceria exclusiva com a Angeleti Construtora em Teresópolis - RJ.
             </p>
+            <div className="mt-4 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Corretor Credenciado • CRECI Ativo</span>
+            </div>
           </div>
 
           <div>
@@ -42,16 +45,16 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="font-bold mb-4"
               style={{ color: "var(--text-primary)" }}
             >
-              Navegação
+              Empreendimentos
             </div>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  to="/"
-                  className="transition hover:text-blue-600"
+                  to="/loja"
+                  className="transition hover:text-blue-600 font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
-                  Página Inicial
+                  Golden Green Residencial (Albuquerque)
                 </Link>
               </li>
               <li>
@@ -60,7 +63,25 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
                   className="transition hover:text-blue-600 font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
-                  Loja de iPhones (Estoque Real)
+                  Vale dos Pássaros (Prata)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/loja"
+                  className="transition hover:text-blue-600 font-semibold"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Montares Residencial (Vargem Grande)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/loja"
+                  className="transition hover:text-blue-600"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Casas & Coberturas em Teresópolis
                 </Link>
               </li>
               <li>
@@ -72,34 +93,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
                   style={{ color: "var(--text-secondary)" }}
                 >
                   <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Atendimento no WhatsApp</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#delivery"
-                  className="transition hover:text-blue-600"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Entrega Express em 1h
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#retirada"
-                  className="transition hover:text-blue-600"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Retirada na SejaDelta
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#troca"
-                  className="transition hover:text-blue-600"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Troca com Troco (Trade-In)
+                  <span>Plantão de Vendas no WhatsApp</span>
                 </a>
               </li>
             </ul>
@@ -110,46 +104,33 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="font-bold mb-4"
               style={{ color: "var(--text-primary)" }}
             >
-              Institucional
+              Diferenciais & Condições
             </div>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
-                  href="/#sobre"
-                  className="transition hover:text-blue-600"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Sobre a Terephones
-                </a>
+                <span style={{ color: "var(--text-secondary)" }}>
+                  Financiamento direto em até 120x
+                </span>
               </li>
               <li>
-                <a
-                  href="/#retirada"
-                  className="transition hover:text-blue-600"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Ponto Parceiro SejaDelta
-                </a>
+                <span style={{ color: "var(--text-secondary)" }}>
+                  Entrada facilitada a partir de 10%
+                </span>
               </li>
               <li>
-                <a
-                  href="/#diferenciais"
-                  className="transition hover:text-blue-600"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Garantia & Procedência
-                </a>
+                <span style={{ color: "var(--text-secondary)" }}>
+                  Angeleti Construtora: +20 anos
+                </span>
               </li>
               <li>
-                <a
-                  href={WHATSAPP}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition hover:text-emerald-500"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  WhatsApp Oficial
-                </a>
+                <span style={{ color: "var(--text-secondary)" }}>
+                  Segurança 24h & Lazer Completo
+                </span>
+              </li>
+              <li>
+                <span style={{ color: "var(--text-secondary)" }}>
+                  Vistas para o Dedo de Deus
+                </span>
               </li>
             </ul>
           </div>
@@ -159,12 +140,16 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="font-bold mb-4"
               style={{ color: "var(--text-primary)" }}
             >
-              Atendimento
+              Atendimento & Localização
             </div>
             <div
               className="text-sm space-y-2.5"
               style={{ color: "var(--text-secondary)" }}
             >
+              <div className="flex items-start gap-2 text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                <MapPin className="w-4 h-4 shrink-0 text-blue-500 mt-0.5" />
+                <span>{ADDRESS_DISPLAY}</span>
+              </div>
               <a
                 href={WHATSAPP}
                 target="_blank"
@@ -172,8 +157,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
                 className="flex items-center gap-2 hover:text-emerald-500 transition font-medium"
               >
                 <Phone
-                  className="w-4 h-4 shrink-0"
-                  style={{ color: "var(--blue-primary)" }}
+                  className="w-4 h-4 shrink-0 text-emerald-500"
                 />
                 <span>{PHONE_DISPLAY}</span>
               </a>
@@ -184,8 +168,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
                 className="flex items-center gap-2 hover:text-sky-400 transition"
               >
                 <Instagram
-                  className="w-4 h-4 shrink-0"
-                  style={{ color: "var(--blue-primary)" }}
+                  className="w-4 h-4 shrink-0 text-sky-500"
                 />{" "}
                 {INSTAGRAM_HANDLE}
               </a>
@@ -193,8 +176,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
                 className="flex items-center gap-2 text-xs"
                 style={{ color: "var(--text-muted)" }}
               >
-                <Clock className="w-3.5 h-3.5 shrink-0" /> Seg a Sáb das 10h às
-                18h
+                <Clock className="w-3.5 h-3.5 shrink-0" /> Seg a Sáb das 9h às 18h (Plantão aos domingos)
               </div>
             </div>
           </div>
@@ -205,7 +187,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-3xl sm:text-4xl font-black text-gradient-blue hover:opacity-80 transition"
+            className="text-2xl sm:text-3xl font-black text-gradient-blue hover:opacity-80 transition"
           >
             {INSTAGRAM_HANDLE}
           </a>
@@ -224,14 +206,16 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
           style={{ color: "var(--text-muted)" }}
         >
           <div>
-            © {new Date().getFullYear()} Terephones — Teresópolis, RJ. Todos os
-            direitos reservados.
+            © {new Date().getFullYear()} Habittat House Imobiliária — Teresópolis, RJ. Todos os direitos reservados.
           </div>
           <div>
-            Entrega no mesmo dia • Retirada na loja física parceira SejaDelta
+            Parceria Oficial Angeleti Construtora • Terrenos e Imóveis de Alto Padrão
           </div>
         </div>
       </div>
     </footer>
   );
 }
+
+export default SiteFooter;
+
