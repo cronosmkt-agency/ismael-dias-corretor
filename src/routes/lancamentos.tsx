@@ -36,7 +36,7 @@ export const Route = createFileRoute("/lancamentos")({
       {
         name: "description",
         content:
-          "Lançamentos residenciais da Angeleti Construtora em Teresópolis: Golden Green, Vale dos Pássaros e Montares. Terrenos em condomínio fechado com entrada de 10% e até 120 parcelas direto com a incorporadora.",
+          "Lançamentos residenciais da Angeleti Construtora em Teresópolis: Golden Green, Vale dos Pássaros e Montares. Terrenos em condomínio fechado com entrada de 15% e até 120 parcelas direto com a incorporadora.",
       },
       { property: "og:title", content: "Lançamentos e Condomínios Fechados — Habittat House" },
       {
@@ -100,7 +100,7 @@ function LancamentosPage() {
 📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
 📐 *Metragem:* ${prod.storage || "Lote Residencial"}
 💰 *Valor:* A partir de ${fmt(prod.price)}
-✨ *Condição:* ${prod.chip || "10% de entrada + saldo em até 120 parcelas"}
+✨ *Condição:* ${prod.chip || "15% de entrada + saldo em até 120 parcelas"}
 
 Gostaria de agendar uma visita guiada com você no local!`;
 
@@ -143,9 +143,9 @@ Gostaria de agendar uma visita guiada com você no local!`;
 
           {/* Destaque Condições */}
           <div className="mt-4 flex flex-wrap justify-center items-center gap-2 text-xs text-slate-600 dark:text-slate-300 font-semibold">
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 dark:bg-sky-950/60 border border-blue-200/60 dark:border-sky-800/60 text-blue-700 dark:text-sky-300">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 dark:bg-sky-950/60 border border-blue-200/60 dark:border-sky-800/60 text-blue-700 dark:text-sky-300 font-bold">
               <DollarSign className="w-3.5 h-3.5" />
-              10% Entrada + 120x Direto
+              15% Entrada + 120x Direto
             </span>
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300">
               <Trees className="w-3.5 h-3.5" />
@@ -180,10 +180,10 @@ Gostaria de agendar uma visita guiada com você no local!`;
           </div>
         </div>
 
-        {/* Controles Mobile: Filtros de Categoria (Scroll Horizontal Fluido sem quebra) */}
+        {/* Controles Mobile: Categorias em Grade 2 Colunas (Sem corte, 100% visível) */}
         <div className="sm:hidden mt-4 flex flex-col gap-2.5">
-          {/* Scroll Horizontal de Categorias */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 scroll-smooth -mx-1 px-1">
+          {/* Grade 2 Colunas de Categorias */}
+          <div className="grid grid-cols-2 gap-1.5">
             {lancamentosFilters.map((fl) => {
               const count =
                 fl === "Todos"
@@ -194,15 +194,15 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`shrink-0 flex items-center gap-1.5 py-2 px-3.5 text-xs rounded-full transition-all cursor-pointer whitespace-nowrap shadow-xs ${
+                  className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs ${
                     isActive
-                      ? "btn-primary-glow text-white shadow-md font-black scale-102"
-                      : "bg-slate-100/90 dark:bg-slate-900/90 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-bold border border-slate-200/70 dark:border-slate-800/70"
+                      ? "btn-primary-glow text-white shadow-md font-black"
+                      : "bg-slate-100/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200/70 dark:border-slate-800/70"
                   }`}
                 >
-                  <span>{fl}</span>
+                  <span className="truncate">{fl}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-black shrink-0 ${
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ml-1 shrink-0 ${
                       isActive
                         ? "bg-white/25 text-white"
                         : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
@@ -382,7 +382,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
                       </span>
                     </div>
                     <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
-                      {prod.chip || "10% entrada + até 120 parcelas direto"}
+                      {prod.chip || "15% entrada + até 120 parcelas direto"}
                     </p>
                   </div>
                 </div>
@@ -466,7 +466,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
                         </span>
                       </div>
                       <p className="text-[9px] text-slate-500 dark:text-slate-400 truncate">
-                        {prod.chip || "10% + 120x com a Angeleti"}
+                        {prod.chip || "15% + 120x com a Angeleti"}
                       </p>
                     </div>
 

@@ -14,9 +14,9 @@ export const STORE_NAME = "Ismael Dias — Corretor de Imóveis | Habittat House
 export const BROKER_NAME = "Ismael Dias";
 export const BROKER_ROLE = "Corretor de Imóveis na Habittat House";
 export const REAL_ESTATE_AGENCY = "Habittat House Imobiliária";
-export const WHATSAPP_NUMBER = "5521973546445";
+export const WHATSAPP_NUMBER = "5521964639999";
 export const WHATSAPP = "https://wa.me/" + WHATSAPP_NUMBER;
-export const PHONE_DISPLAY = "(21) 97354-6445";
+export const PHONE_DISPLAY = "(21) 96463-9999";
 export const INSTAGRAM_HANDLE = "@habittathouse";
 export const INSTAGRAM_URL = "https://instagram.com/habittathouse";
 export const ADDRESS_DISPLAY = "Rodovia Dr. Rogério Moura Estevão, 3835 - Albuquerque, Teresópolis/RJ";
@@ -68,7 +68,7 @@ export const differentials = [
   {
     icon: DollarSign,
     title: "Financiamento Direto sem Burocracia",
-    desc: "Condições facilitadas: 10% de entrada e saldo em até 120 parcelas diretamente com a incorporadora.",
+    desc: "Condições facilitadas: 15% de entrada e saldo em até 120 parcelas diretamente com a incorporadora.",
   },
   {
     icon: KeyRound,
@@ -120,14 +120,14 @@ export const lancamentosProducts: ProductItem[] = [
     cat: "Lotes Panorâmicos",
     badge: "Vista Dedo de Deus",
     img: "/imoveis/casa-condominio.png",
-    specs: "400 m² a 1.500 m² • Entrada 10% • 120x Direto • Vista Panorâmica",
+    specs: "400 m² a 1.500 m² • Entrada 15% • 120x Direto • Vista Panorâmica",
     storage: "400 m² a 1.500 m²",
     condition: "Condomínio Fechado de Alto Padrão em Albuquerque",
     warranty: "Angeleti Construtora (+20 anos)",
     battery: "Topografia Plana e Suave Aclive",
     screen: "Albuquerque — Teresópolis/RJ (~10 min do Centro)",
     camera: "Vista Dedo de Deus e Mulher de Pedra",
-    chip: "10% Entrada + até 120x (IPCA + 1% a.m.)",
+    chip: "15% Entrada + até 120x (IPCA + 1% a.m.)",
     boxItems: [
       "Lote demarcado e pronto para projeto arquitetônico",
       "Infraestrutura completa de água, esgoto e energia elétrica",
@@ -149,7 +149,7 @@ export const lancamentosProducts: ProductItem[] = [
     battery: "Lotes Prontos para Construir",
     screen: "Prata — Teresópolis/RJ (~5 min do Centro)",
     camera: "Piscina Semiolímpica, Quadras de Tênis, Academia e Sauna",
-    chip: "10% Entrada + até 120x (IGP-M + 1%) ou até 36x sem juros",
+    chip: "15% Entrada + até 120x (IGP-M + 1%) ou até 36x sem juros",
     boxItems: [
       "Acesso completo ao clube de lazer para toda a família",
       "Piscina adulto semiolímpica e infantil com solário",
@@ -171,7 +171,7 @@ export const lancamentosProducts: ProductItem[] = [
     battery: "Terrenos Planos e Arborizados",
     screen: "Vargem Grande — Teresópolis/RJ (Antigo Equiprime)",
     camera: "Fazendinha, Baias para Cavalos, Pista e Trilhas ao Ar Livre",
-    chip: "Condições Especiais de Lançamento Direto com a Incorporadora",
+    chip: "15% Entrada + até 120x Direto com a Incorporadora",
     boxItems: [
       "Estrutura completa com baias e pista para cavalos",
       "Trilhas exclusivas integradas à natureza da Região Serrana",
@@ -186,14 +186,14 @@ export const lancamentosProducts: ProductItem[] = [
     cat: "Lotes Panorâmicos",
     badge: "Sol da Manhã",
     img: "/imoveis/casa-condominio.png",
-    specs: "520 m² • Vista Serra dos Órgãos • 10% + 120x • Pronto para Projeto",
+    specs: "520 m² • Vista Serra dos Órgãos • 15% + 120x • Pronto para Projeto",
     storage: "520 m² Privativos",
     condition: "Lote de Esquina em Condomínio Fechado",
     warranty: "Angeleti Construtora",
     battery: "Topografia 100% Plana",
     screen: "Albuquerque — Teresópolis/RJ",
     camera: "Vista Panorâmica Privilegiada para a Cadeia de Montanhas",
-    chip: "10% Entrada + até 120x com a Incorporadora",
+    chip: "15% Entrada + até 120x com a Incorporadora",
     boxItems: [
       "Posição solar privilegiada: sol da manhã",
       "Terreno de esquina com maior flexibilidade arquitetônica",

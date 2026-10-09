@@ -185,7 +185,7 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
                 </div>
                 <div className="price-installments mt-1 flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-700 dark:text-slate-200 font-medium">
                   <CreditCard className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                  <span>{product.chip || "10% de entrada e saldo em até 120 parcelas"}</span>
+                  <span>{product.chip || "15% de entrada e saldo em até 120 parcelas"}</span>
                 </div>
               </div>
 
@@ -261,7 +261,7 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
                   Pagamento Facilitado
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-0.5 text-slate-900 dark:text-white truncate">
-                  {product.chip || "10% + 120 parcelas"}
+                  {product.chip || "15% + 120 parcelas"}
                 </div>
               </div>
             </div>

@@ -114,7 +114,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               </li>
               <li>
                 <span style={{ color: "var(--text-secondary)" }}>
-                  Entrada facilitada a partir de 10%
+                  Entrada facilitada a partir de 15%
                 </span>
               </li>
               <li>

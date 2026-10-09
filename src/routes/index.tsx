@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Encontre lotes e casas em condomínio fechado em Teresópolis com o corretor Ismael Dias na Habittat House. Especialista nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora. Entrada de 10% e saldo em até 120x direto com a incorporadora.",
+          "Encontre lotes e casas em condomínio fechado em Teresópolis com o corretor Ismael Dias na Habittat House. Especialista nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora. Entrada de 15% e saldo em até 120x direto com a incorporadora.",
       },
       { property: "og:title", content: "Ismael Dias — Corretor de Imóveis | Habittat House" },
       {
@@ -167,10 +167,11 @@ function Hero() {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-20 my-auto">
         {/* Left Column */}
         <div className="lg:col-span-7 text-center lg:text-left flex flex-col justify-center">
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 mx-auto lg:mx-0 w-fit">
-            <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
-            <span>Parceria Oficial Angeleti Construtora (+20 anos) • Teresópolis/RJ</span>
+          {/* Eyebrow Pill — Single Line Responsiva */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 mx-auto lg:mx-0 whitespace-nowrap">
+            <Building2 className="w-3.5 h-3.5 shrink-0 text-blue-600 dark:text-sky-400" />
+            <span className="hidden sm:inline">Parceria Oficial Angeleti Construtora (+20 anos) • Teresópolis/RJ</span>
+            <span className="sm:hidden">Angeleti Construtora (+20 anos) • Teresópolis</span>
           </div>
 
           {/* Main Title */}
@@ -189,13 +190,13 @@ function Hero() {
             <strong className="text-slate-900 dark:text-white font-bold">Golden Green</strong>,{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Vale dos Pássaros</strong> e{" "}
             <strong className="text-slate-900 dark:text-white font-bold">Montares</strong>.
-            Entrada facilitada a partir de 10% e{" "}
+            Entrada a partir de 15% e{" "}
             <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">
               saldo em até 120 parcelas direto com a incorporadora Angeleti!
             </strong> 🏔️🌲
           </p>
 
-          {/* Action CTAs */}
+          {/* Action CTAs — Clean (Apenas 2 botões elegantes) */}
           <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center lg:justify-start">
             <Link
               to="/lancamentos"
@@ -212,35 +213,21 @@ function Hero() {
               <Home className="w-4 h-4" />
               <span>Imóveis Avulsos</span>
             </Link>
-
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md active:scale-95 transition"
-            >
-              <WhatsAppIcon className="w-4 h-4 fill-white" />
-              <span>WhatsApp</span>
-            </a>
           </div>
 
-          {/* Micro Trust Indicators */}
-          <div className="mt-5 sm:mt-8 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-xs font-semibold text-slate-700 dark:text-slate-300">
-            <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 text-emerald-600 dark:text-emerald-400 font-black">
-              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-              <span>Atendimento de Confiança</span>
+          {/* Micro Trust Indicators — Sem Atendimento de Confianca e com 15% + 120x Direto */}
+          <div className="mt-5 sm:mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 font-black shadow-2xs">
+              <DollarSign className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <span>15% + 120x Direto</span>
             </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
               <Building2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
               <span>Habittat House Imobiliária</span>
             </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
               <Trees className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
               <span>Angeleti (+20 anos)</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
-              <DollarSign className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-              <span>10% + 120x Direto</span>
             </div>
           </div>
         </div>
@@ -273,11 +260,11 @@ function FeaturedProducts({
 📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
 📐 *Metragem:* ${prod.storage || "Lote Residencial"}
 💰 *Valor:* A partir de ${fmt(prod.price)}
-✨ *Condição:* ${prod.chip || "10% entrada + parcelas"}
+✨ *Condição:* ${prod.chip || "15% entrada + parcelas"}
 
 Gostaria de agendar uma visita guiada com você para conhecer o local!`;
 
-    window.open(`https://wa.me/5521973546445?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   return (
@@ -346,7 +333,7 @@ Gostaria de agendar uma visita guiada com você para conhecer o local!`;
                     </div>
                   </div>
                   <span className="text-[10px] font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                    {item.chip ? "10% + 120x" : "Facilitado"}
+                    {item.chip ? "15% + 120x" : "Facilitado"}
                   </span>
                 </div>
               </div>
@@ -441,7 +428,7 @@ function BrokerProfileSection() {
                     <span>Parceria Oficial Angeleti</span>
                   </div>
                   <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
-                    Acesso direto às tabelas de Golden Green, Vale dos Pássaros e Montares (10% + 120x).
+                    Acesso direto às tabelas de Golden Green, Vale dos Pássaros e Montares (15% + 120x).
                   </p>
                 </div>
 
@@ -548,7 +535,7 @@ function TrustAndHybrid() {
       icon: DollarSign,
       color: "from-emerald-500 to-teal-600",
       title: "Financiamento em até 120x",
-      desc: "Compre direto com a incorporadora com apenas 10% de entrada. Condições flexíveis sem a lentidão dos bancos tradicionais.",
+      desc: "Compre direto com a incorporadora com apenas 15% de entrada. Condições flexíveis sem a lentidão dos bancos tradicionais.",
     },
     {
       icon: Trees,
@@ -571,7 +558,7 @@ function TrustAndHybrid() {
           badge="Segurança & Tradição"
           eyebrow="Por que escolher a Habittat House?"
           title="A Melhor Experiência Imobiliária de Teresópolis"
-          subtitle="Comprar seu lote ou casa com transparência jurídica, consultoria credenciada e condições facilitadas de pagamento."
+          subtitle="Comprar seu lote ou casa com transparência jurídica, consultoria especializada e condições facilitadas de pagamento."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
@@ -621,8 +608,8 @@ function FinanciamentoDireto() {
     },
     {
       num: "2",
-      title: "Entrada Facilitada (10%)",
-      desc: "Inicie seu investimento com entrada a partir de 10% e fluxo flexível.",
+      title: "Entrada Facilitada (15%)",
+      desc: "Inicie seu investimento com entrada a partir de 15% e fluxo flexível.",
     },
     {
       num: "3",
@@ -638,7 +625,7 @@ function FinanciamentoDireto() {
           badge="Condições Diretas"
           eyebrow="Financiamento Facilitado"
           title="Seu Terreno na Serra em até 120 Parcelas"
-          subtitle="Compre seu lote residencial com entrada a partir de 10% e parcelamento direto com a construtora."
+          subtitle="Compre seu lote residencial com entrada a partir de 15% e parcelamento direto com a construtora."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5 mt-4 text-left">
