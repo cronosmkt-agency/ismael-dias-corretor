@@ -1,12 +1,12 @@
-# 📱 Terephones — iPhones em Teresópolis
+# 🏡 Ismael Dias — Corretor de Imóveis | Habittat House
 
-Site oficial da **Terephones**, operação de venda de iPhones novos e seminovos em Teresópolis/RJ.
+Site oficial do corretor de imóveis **Ismael Dias**, especialista em condomínios fechados, lançamentos e residências de alto padrão em Teresópolis/RJ.
 
-## 🚀 Proposta de Valor
-- **Entrega Express em até 2 horas** na porta em qualquer bairro de Teresópolis.
-- **Ponto de Retirada Presencial** na loja física parceira **SejaDelta**.
-- **Garantia:** 1 ano oficial Apple (lacrados) / 90 dias loja (seminovos selecionados).
-- **Pagamento Seguro:** PIX com super desconto ou até 18x no cartão no ato do recebimento.
+## 🌟 Destaques & Diferenciais
+- **Parceria Oficial Angeleti Construtora (+20 anos):** Condomínios Golden Green, Vale dos Pássaros e Montares.
+- **Condições Exclusivas:** 15% de entrada + até 120 parcelas direto com a incorporadora.
+- **Carteira Selecionada:** Casas em condomínio fechado, coberturas duplex e residências exclusivas.
+- **Assessoria Completa:** Consultoria imobiliária personalizada, agendamento de visitas VIP e segurança jurídica.
 
 ## 🛠️ Stack Tecnológica
 - React 19 + TypeScript
@@ -14,4 +14,9 @@ Site oficial da **Terephones**, operação de venda de iPhones novos e seminovos
 - TanStack Router / TanStack Start
 - Tailwind CSS v4
 - Lucide React + Sonner
+- Tawk.to Live Chat
 - Hospedagem na Vercel
+
+## 🚀 Links
+- **Produção:** [https://ismael-dias-corretor.vercel.app](https://ismael-dias-corretor.vercel.app)
+- **GitHub:** [https://github.com/cronosmkt-agency/ismael-dias-corretor](https://github.com/cronosmkt-agency/ismael-dias-corretor)
