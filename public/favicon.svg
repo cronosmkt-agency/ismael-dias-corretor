@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="45%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0284c7" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background Squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="4"/>
+
+  <!-- Architectural House Insignia -->
+  <g filter="url(#shadow)">
+    <!-- Chimney -->
+    <rect x="320" y="145" width="28" height="55" rx="4" fill="url(#skyGrad)"/>
+    
+    <!-- Roof Eaves -->
+    <path d="M256 122 L396 238 L370 262 L256 168 L142 262 L116 238 Z" fill="#FFFFFF"/>
+    
+    <!-- Main House Body -->
+    <rect x="165" y="240" width="182" height="152" rx="16" fill="#FFFFFF"/>
+    
+    <!-- Arched Portal Door -->
+    <path d="M226 392 V314 A30 30 0 0 1 286 314 V392 Z" fill="url(#skyGrad)"/>
+    
+    <!-- Modern Windows -->
+    <rect x="194" y="272" width="40" height="40" rx="8" fill="#0284c7" fill-opacity="0.85"/>
+    <rect x="278" y="272" width="40" height="40" rx="8" fill="#0284c7" fill-opacity="0.85"/>
+  </g>
+</svg>
