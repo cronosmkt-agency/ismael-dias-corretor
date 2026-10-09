@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { CursorEffects } from "../components/CursorEffects";
 import { Toaster } from "@/components/ui/sonner";
 import { TawkFloatingWidget } from "@/components/TawkFloatingWidget";
+import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -125,7 +126,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

@@ -26,6 +26,7 @@ import {
   defaultProducts,
   fmt,
   WHATSAPP,
+  WHATSAPP_NUMBER,
   PHONE_DISPLAY,
   ADDRESS_DISPLAY,
   reviews,
