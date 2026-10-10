@@ -180,13 +180,13 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
         </div>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto px-3.5 sm:px-6 py-3.5 sm:py-5 space-y-4 sm:space-y-6">
+        <div className="overflow-y-auto overflow-x-hidden px-3.5 sm:px-6 py-3.5 sm:py-5 space-y-4 sm:space-y-6 w-full min-w-0">
           {/* Top Section: Imagem + Título + Preço */}
-          <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-6 items-center">
+          <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-6 items-center w-full min-w-0">
             {/* Foto do Empreendimento com Galeria */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full min-w-0 overflow-hidden">
               <div
-                className="relative rounded-2xl p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-100/70 dark:bg-slate-900/50"
+                className="relative rounded-2xl p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-100/70 dark:bg-slate-900/50 w-full"
                 style={{ minHeight: "200px", maxHeight: "240px" }}
               >
                 <img
@@ -223,7 +223,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
 
               {/* Thumbnails Strip */}
               {imagesList.length > 1 && (
-                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full">
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 w-full min-w-0">
                   {imagesList.slice(0, 8).map((imgUrl, i) => (
                     <button
                       key={imgUrl + i}
@@ -413,22 +413,22 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
             </div>
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-end min-w-0">
             <button
               onClick={onClose}
-              className="px-4 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-center"
+              className="px-3.5 py-2 sm:py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-center shrink-0"
             >
               Fechar
             </button>
 
             <button
               onClick={handleWhatsApp}
-              className={`flex-1 sm:flex-none btn-whatsapp px-5 sm:px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap ${
+              className={`flex-1 sm:flex-none btn-whatsapp px-3 sm:px-6 py-2 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap min-w-0 ${
                 isSold ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500"
               }`}
             >
               <WhatsAppIcon className="w-4 h-4 shrink-0 text-white" />
-              <span>{isSold ? "Consultar Opções Semelhantes" : "Consultar / Agendar Visita"}</span>
+              <span className="truncate">{isSold ? "Opções Semelhantes" : "Consultar / Agendar Visita"}</span>
             </button>
           </div>
         </div>

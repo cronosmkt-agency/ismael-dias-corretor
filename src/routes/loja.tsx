@@ -170,8 +170,9 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
       item.cat === activeFilter;
     const matchBairro =
       selectedBairro === "Todos" ||
-      (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase())) ||
-      (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase());
+      (selectedBairro === "Teresópolis (Todos)" && ((item.screen && item.screen.toLowerCase().includes("teresópolis")) || item.bairro === "Teresópolis")) ||
+      (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase()) ||
+      (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase()));
     const matchSearch =
       searchQuery.trim() === "" ||
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -425,7 +426,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
             {filtered.map((prod, idx) => (
               <div
                 key={prod.name + idx}
-                className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1"
+                className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1 overflow-hidden min-w-0"
               >
                 {/* Badge Superior com SKU */}
                 <div className="flex items-center justify-between gap-1 mb-1.5">
@@ -481,8 +482,8 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                   </div>
 
                   <div className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800/60">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-sm sm:text-lg font-black text-blue-600 dark:text-sky-400">
+                    <div className="flex items-baseline gap-1 min-w-0">
+                      <span className="text-[13px] sm:text-lg font-black text-blue-600 dark:text-sky-400 truncate">
                         {fmt(prod.price)}
                       </span>
                     </div>
@@ -496,17 +497,17 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 <div className="mt-2.5 sm:mt-3 grid grid-cols-2 gap-1.5 pt-1.5 sm:pt-2">
                   <button
                     onClick={() => handleOrderWhatsApp(prod)}
-                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1 shadow-sm transition active:scale-95 cursor-pointer whitespace-nowrap"
+                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1 shadow-sm transition active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
                   >
-                    <WhatsAppIcon className="w-3.5 h-3.5 text-white shrink-0" />
-                    <span>WhatsApp</span>
+                    <WhatsAppIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white shrink-0" />
+                    <span className="truncate">WhatsApp</span>
                   </button>
 
                   <button
                     onClick={() => handleOpenDetail(prod)}
-                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[11px] sm:text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap"
+                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
                   >
-                    <Info className="w-3.5 h-3.5 shrink-0" />
+                    <Info className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <span>Ficha</span>
                   </button>
                 </div>
@@ -517,11 +518,11 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
 
         {/* Modo Vitrine Mobile (1 por linha) — Sem sobreposicao de botoes e precos */}
         {viewMode === "showcase" && (
-          <div className="sm:hidden mt-4 space-y-3">
+          <div className="sm:hidden mt-4 space-y-3 w-full min-w-0">
             {filtered.map((prod, idx) => (
               <div
                 key={prod.name + idx + "-showcase"}
-                className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md"
+                className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md w-full min-w-0 overflow-hidden"
               >
                 {/* Imagem do Imóvel à esquerda */}
                 <div
@@ -572,31 +573,31 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                     </p>
                   </div>
 
-                  {/* Linha Inferior: Preço e Ações Sem Sobreposição */}
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
-                    <div className="min-w-0">
-                      <span className="text-sm font-black text-blue-600 dark:text-sky-400 block whitespace-nowrap">
+                  {/* Linha Inferior: Preço + Condições e Botões Abaixo (Sem Sobreposição) */}
+                  <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
+                    <div className="flex items-baseline justify-between gap-1 min-w-0">
+                      <span className="text-[13px] font-black text-blue-600 dark:text-sky-400 truncate">
                         {fmt(prod.price)}
                       </span>
-                      <p className="text-[9px] text-slate-500 dark:text-slate-400 truncate">
+                      <span className="text-[9px] text-slate-500 dark:text-slate-400 truncate text-right">
                         {prod.chip || "Facilitado"}
-                      </p>
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-1 shrink-0">
-                      <button
-                        onClick={() => handleOpenDetail(prod)}
-                        className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-                        title="Ver ficha técnica"
-                      >
-                        <Info className="w-3.5 h-3.5" />
-                      </button>
+                    <div className="grid grid-cols-2 gap-1.5">
                       <button
                         onClick={() => handleOrderWhatsApp(prod)}
-                        className="px-2 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center gap-1 shadow-xs transition active:scale-95 cursor-pointer whitespace-nowrap"
+                        className="py-1 px-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center justify-center gap-1 shadow-xs transition active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
                       >
-                        <WhatsAppIcon className="w-3.5 h-3.5 text-white shrink-0" />
-                        <span>WhatsApp</span>
+                        <WhatsAppIcon className="w-3 h-3 text-white shrink-0" />
+                        <span className="truncate">WhatsApp</span>
+                      </button>
+                      <button
+                        onClick={() => handleOpenDetail(prod)}
+                        className="py-1 px-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-[10px] font-bold flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
+                      >
+                        <Info className="w-3 h-3 shrink-0" />
+                        <span>Ficha</span>
                       </button>
                     </div>
                   </div>
