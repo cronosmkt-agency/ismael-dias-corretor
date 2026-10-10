@@ -360,13 +360,13 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 {/* Imagem do Terreno com Metragem Sobreposta */}
                 <div
                   onClick={() => handleOpenDetail(prod)}
-                  className="relative aspect-4/3 w-full flex items-center justify-center p-1 sm:p-2 mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/50"
+                  className="relative aspect-4/3 w-full flex items-center justify-center mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50"
                 >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="max-h-full max-w-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {prod.storage ? (
                     <span className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">

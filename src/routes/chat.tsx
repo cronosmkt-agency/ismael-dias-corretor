@@ -49,11 +49,11 @@ export const Route = createFileRoute("/chat")({
   },
   head: () => ({
     meta: [
-      { title: "Chat & Atendimento Online — Terephones Teresópolis" },
+      { title: "Atendimento Online — Ismael Dias | Habittat House Teresópolis" },
       {
         name: "description",
         content:
-          "Tire suas dúvidas ou faça seu pedido de iPhone diretamente pelo Chat oficial da Terephones. Entrega em 1h ou retirada na SejaDelta.",
+          "Tire suas dúvidas sobre imóveis ou agende uma visita diretamente com o corretor Ismael Dias na Habittat House.",
       },
     ],
   }),

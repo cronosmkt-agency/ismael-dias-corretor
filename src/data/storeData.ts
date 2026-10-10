@@ -1,4 +1,5 @@
 import type { ProductItem } from "@/components/ProductDetailModal";
+import { allImoveisData } from "@/data/imoveisData";
 import {
   Building2,
   ShieldCheck,
@@ -37,16 +38,20 @@ export const lancamentosFilters = [
 export const imoveisFilters = [
   "Todos",
   "Casas em Condomínio",
-  "Coberturas & Apartamentos",
-  "Casas de Campo",
+  "Casas",
+  "Apartamentos",
+  "Terrenos",
+  "Sítios & Rurais",
+  "Comerciais",
 ] as const;
 
 // Filtro legado para compatibilidade geral
 export const filters = [
   "Todos",
-  "Lançamentos",
   "Casas em Condomínio",
-  "Coberturas",
+  "Casas",
+  "Apartamentos",
+  "Terrenos",
 ] as const;
 
 export const differentials = [
@@ -204,99 +209,12 @@ export const lancamentosProducts: ProductItem[] = [
 ];
 
 /* -------------------------------------------------------------
-   PRODUTOS — IMÓVEIS AVULSOS (Casas, Coberturas e Residências)
+   PRODUTOS — CARTEIRA COMPLETA DE IMÓVEIS (175 Imóveis Reais)
 ------------------------------------------------------------- */
-export const imoveisAvulsosProducts: ProductItem[] = [
-  {
-    name: "Casa Moderna em Condomínio — Albuquerque",
-    price: 1250000,
-    cat: "Casas em Condomínio",
-    badge: "Pronta para Morar",
-    img: "/imoveis/casa-condominio.png",
-    specs: "4 Suítes • 320 m² • Terreno 650 m² • Área Gourmet e Piscina",
-    storage: "Área Construída: 320 m²",
-    condition: "Construção Nova em Condomínio Fechado de Luxo",
-    warranty: "Habittat House Imobiliária",
-    battery: "Acabamento em Madeira Nobre e Porcelanato 120x120",
-    screen: "Albuquerque — Teresópolis/RJ",
-    camera: "Vista Panorâmica Privilegiada para a Mata Atlântica",
-    chip: "Aceita Financiamento Bancário e Estuda Propostas",
-    boxItems: [
-      "4 Suítes amplas (Master com closet e hidromassagem)",
-      "Espaço gourmet moderno com churrasqueira e forno de pizza",
-      "Piscina aquecida com borda infinita e deck molhado",
-      "Garagem coberta para 3 veículos com ponto de recarga elétrica",
-      "Documentação 100% legalizada com RGI e Habite-se",
-    ],
-  },
-  {
-    name: "Cobertura Duplex Panorâmica — Agriões",
-    price: 980000,
-    cat: "Coberturas & Apartamentos",
-    badge: "Vista 360° Serra",
-    img: "/imoveis/cobertura-mar.png",
-    specs: "3 Quartos (2 Suítes) • 210 m² • Terraço Privativo com Spa • 2 Vagas",
-    storage: "Área Privativa: 210 m²",
-    condition: "Imóvel Decorado em Localização Nobre",
-    warranty: "Habittat House Imobiliária",
-    battery: "Sol da Manhã e Terraço Gourmet com Hidromassagem",
-    screen: "Agriões — Teresópolis/RJ (Bairro Nobre Central)",
-    camera: "Vista Indevassável para a Serra dos Órgãos e Dedo de Deus",
-    chip: "Condições de Pagamento Facilitadas e Carta de Crédito",
-    boxItems: [
-      "Living integrado em 2 ambientes com piso em tábua corrida",
-      "Terraço com churrasqueira a carvão e jacuzzi aquecida",
-      "Cozinha planejada com armários embutidos de primeira linha",
-      "2 Vagas de garagem cobertas na escritura",
-      "Edifício com elevador, salão de festas e portaria segura",
-    ],
-  },
-  {
-    name: "Casa de Campo Estilo Rústico — Quebra Frascos",
-    price: 850000,
-    cat: "Casas de Campo",
-    badge: "Refúgio na Serra",
-    img: "/imoveis/mansao-neoclassica.png",
-    specs: "3 Quartos (1 Suíte) • Terreno 1.200 m² • Lareira e Pomar",
-    storage: "Área Construída: 180 m²",
-    condition: "Residência Aconchegante com Amplo Terreno Arborizado",
-    warranty: "Habittat House Imobiliária",
-    battery: "Terreno Suave Aclive com Paisagismo",
-    screen: "Quebra Frascos — Teresópolis/RJ",
-    camera: "Cercada de Mata Nativa e Clima Europeu",
-    chip: "Estuda Permuta e Aceita Financiamento",
-    boxItems: [
-      "Sala ampla com lareira de pedra e pé direito duplo",
-      "Cozinha mineira com fogão a lenha e varandão gourmet",
-      "Terreno de 1.200 m² com árvores frutíferas e riacho nos fundos",
-      "Bairro tradicionalmente nobre e residencial de Teresópolis",
-    ],
-  },
-  {
-    name: "Apartamento Alto Padrão Decorado — Golfe",
-    price: 680000,
-    cat: "Coberturas & Apartamentos",
-    badge: "Mobiliado",
-    img: "/imoveis/apartamento-decorado.png",
-    specs: "2 Suítes • 88 m² • Varanda Gourmet com Vista para o Clube",
-    storage: "Área Privativa: 88 m²",
-    condition: "Apartamento Novo Totalmente Mobiliado e Decorado",
-    warranty: "Habittat House Imobiliária",
-    battery: "Andar Alto e Sol da Manhã",
-    screen: "Golfe — Teresópolis/RJ",
-    camera: "Vista Livre para o Teresópolis Golf Club",
-    chip: "Pronto para Morar ou Rentabilizar",
-    boxItems: [
-      "2 Suítes com armários planejados e ar-condicionado split",
-      "Varanda gourmet integrada fechada com cortina de vidro",
-      "1 Vaga de garagem demarcada na escritura",
-      "Condomínio com piscina, sauna e segurança 24h",
-    ],
-  },
-];
+export const imoveisAvulsosProducts: ProductItem[] = allImoveisData;
 
-// Portfólio unificado para buscas e exibição na página inicial
+// Portfólio unificado e destaques para exibição na página inicial
 export const defaultProducts: ProductItem[] = [
   ...lancamentosProducts,
-  ...imoveisAvulsosProducts,
+  ...allImoveisData.slice(0, 12),
 ];

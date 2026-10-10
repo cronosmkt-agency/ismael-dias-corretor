@@ -14,6 +14,7 @@ import {
   MapPin,
   ArrowRight,
   Sparkles,
+  Mountain,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -30,6 +31,7 @@ import {
   WHATSAPP_NUMBER,
   PHONE_DISPLAY,
 } from "@/data/storeData";
+import { ALL_BAIRROS } from "@/data/imoveisData";
 
 const imoveisCategoryMeta: Record<
   string,
@@ -48,15 +50,29 @@ const imoveisCategoryMeta: Record<
     label: "Casas em",
     line2: "Condomínio",
   },
-  "Coberturas & Apartamentos": {
-    icon: Building2,
-    label: "Coberturas",
-    line2: "& Aptos",
+  "Casas": {
+    icon: Home,
+    label: "Casas",
   },
-  "Casas de Campo": {
+  "Apartamentos": {
+    icon: Building2,
+    label: "Aparta-",
+    line2: "mentos",
+  },
+  "Terrenos": {
+    icon: Mountain,
+    label: "Terrenos",
+    line2: "& Lotes",
+  },
+  "Sítios & Rurais": {
     icon: Trees,
-    label: "Casas de",
-    line2: "Campo",
+    label: "Sítios &",
+    line2: "Rurais",
+  },
+  "Comerciais": {
+    icon: Sparkles,
+    label: "Comer-",
+    line2: "ciais",
   },
 };
 
@@ -84,6 +100,7 @@ function LojaPage() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
   const [productList, setProductList] = useState<ProductItem[]>(imoveisAvulsosProducts);
   const [activeFilter, setActiveFilter] = useState<string>("Todos");
+  const [selectedBairro, setSelectedBairro] = useState<string>("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
@@ -125,15 +142,23 @@ function LojaPage() {
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
-    const text = `Olá, Ismael Dias! Vi este imóvel avulso no seu catálogo e gostaria de informações:
+    let text = "";
+    if (prod.badge === "VENDIDA" || prod.condition?.includes("VENDIDA")) {
+      text = `Olá, Ismael Dias! Vi no seu catálogo que o imóvel *${prod.name}* (Cód. #${prod.sku || ""}) foi vendido.
+
+Gostaria de saber se você tem outras opções semelhantes disponíveis na mesma região (${prod.screen || "Teresópolis"})!`;
+    } else {
+      text = `Olá, Ismael Dias! Vi este imóvel no seu catálogo e gostaria de informações:
 
 🏡 *Imóvel:* ${prod.name}
+🔢 *Código:* #${prod.sku || "Habittat"}
 📍 *Localização:* ${prod.screen || "Teresópolis/RJ"}
 📐 *Área:* ${prod.storage || "Área Privativa"}
-💰 *Valor:* A partir de ${fmt(prod.price)}
+💰 *Valor:* ${fmt(prod.price)}
 ✨ *Destaque:* ${prod.badge}
 
 Gostaria de agendar uma visita com você para conhecer o imóvel!`;
+    }
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
@@ -143,13 +168,18 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
     const matchCat =
       activeFilter === "Todos" ||
       item.cat === activeFilter;
+    const matchBairro =
+      selectedBairro === "Todos" ||
+      (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase())) ||
+      (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase());
     const matchSearch =
       searchQuery.trim() === "" ||
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
       (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchCat && matchSearch;
+      (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.sku && item.sku.includes(searchQuery.trim()));
+    return matchCat && matchBairro && matchSearch;
   });
 
   return (
@@ -193,9 +223,9 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           </div>
         </div>
 
-        {/* Seletor de Categorias — Uma do lado da outra com ícone em cima e texto pequeno */}
-        <div className="mt-5 sm:mt-6 max-w-2xl mx-auto">
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5">
+        {/* Seletor de Categorias — 7 categorias com ícones e contadores */}
+        <div className="mt-5 sm:mt-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5 sm:gap-2">
             {imoveisFilters.map((fl) => {
               const meta = imoveisCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
               const Icon = meta.icon;
@@ -208,7 +238,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-full h-[82px] sm:h-[88px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
+                  className={`group relative flex flex-col items-center justify-between w-full h-[80px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
                     isActive
                       ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
                       : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
@@ -216,7 +246,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 >
                   {/* Badge Contador no Canto Superior Direito */}
                   <span
-                    className={`absolute top-1 right-1 sm:top-1.5 sm:right-1.5 text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
+                    className={`absolute top-1 right-1 sm:top-1 sm:right-1 text-[9px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
                       isActive
                         ? "bg-white/30 text-white"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
@@ -227,26 +257,26 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
 
                   {/* Ícone em Cima */}
                   <div
-                    className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 ${
+                    className={`p-1.5 rounded-xl transition-all duration-200 ${
                       isActive
                         ? "bg-white/20 text-white"
                         : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-110"
                     }`}
                   >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
                   </div>
 
                   {/* Texto Pequeno Embaixo */}
                   <div className="flex flex-col items-center justify-center leading-tight">
-                    <span className="text-[10px] sm:text-xs font-bold tracking-tight">
+                    <span className="text-[10px] sm:text-[11px] font-bold tracking-tight">
                       {meta.label}
                     </span>
                     {meta.line2 ? (
-                      <span className="text-[10px] sm:text-xs font-bold tracking-tight opacity-90">
+                      <span className="text-[9px] sm:text-[10px] font-bold tracking-tight opacity-90">
                         {meta.line2}
                       </span>
                     ) : (
-                      <span className="invisible text-[10px] sm:text-xs leading-none select-none">&nbsp;</span>
+                      <span className="invisible text-[9px] leading-none select-none">&nbsp;</span>
                     )}
                   </div>
                 </button>
@@ -255,63 +285,82 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           </div>
         </div>
 
-        {/* Linha Combinada Mobile: Barra de busca + Modo Grade/Vitrine */}
-        <div className="sm:hidden mt-3 flex items-center gap-2">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Buscar imóvel avulso..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
-            />
-            {searchQuery && (
+        {/* Linha Combinada Mobile: Barra de busca + Bairro + Modo Grade/Vitrine */}
+        <div className="sm:hidden mt-3 space-y-2">
+          <div className="flex items-center gap-2">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Buscar por código, rua..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
               <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                onClick={() => setViewMode("compact")}
+                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  viewMode === "compact"
+                    ? "btn-primary-glow text-white shadow-xs"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                }`}
+                title="Grade 2 por linha"
               >
-                ✕
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span className="text-[10px]">Grade</span>
               </button>
-            )}
+
+              <button
+                onClick={() => setViewMode("showcase")}
+                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  viewMode === "showcase"
+                    ? "btn-primary-glow text-white shadow-xs"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                }`}
+                title="Vitrine 1 por linha"
+              >
+                <Home className="w-3.5 h-3.5" />
+                <span className="text-[10px]">Vitrine</span>
+              </button>
+            </div>
           </div>
 
-          <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
-            <button
-              onClick={() => setViewMode("compact")}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                viewMode === "compact"
-                  ? "btn-primary-glow text-white shadow-xs"
-                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-              }`}
-              title="Grade 2 por linha"
+          {/* Filtro por Bairro no Mobile */}
+          <div className="flex items-center gap-1.5">
+            <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+            <select
+              value={selectedBairro}
+              onChange={(e) => setSelectedBairro(e.target.value)}
+              className="w-full py-1.5 px-2.5 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 cursor-pointer focus:ring-2 focus:ring-blue-500"
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span className="text-[10px]">Grade</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode("showcase")}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                viewMode === "showcase"
-                  ? "btn-primary-glow text-white shadow-xs"
-                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-              }`}
-              title="Vitrine 1 por linha"
-            >
-              <Home className="w-3.5 h-3.5" />
-              <span className="text-[10px]">Vitrine</span>
-            </button>
+              <option value="Todos">📍 Todos os Bairros ({filtered.length} imóveis)</option>
+              {ALL_BAIRROS.filter((b) => b !== "Todos").map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        {/* Controles Desktop: Barra de Busca + Contagem */}
-        <div className="hidden sm:flex mt-5 max-w-2xl mx-auto items-center justify-between gap-3">
+        {/* Controles Desktop: Barra de Busca + Filtro Bairro + Contagem */}
+        <div className="hidden sm:flex mt-5 max-w-4xl mx-auto items-center justify-between gap-3">
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Buscar por bairro ou tipo (ex: Albuquerque, 4 suítes, Agriões, Quebra Frascos)..."
+              placeholder="Buscar por código (#SKU), condomínio, suítes ou características..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
@@ -324,6 +373,22 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 Limpar
               </button>
             )}
+          </div>
+
+          <div className="flex items-center gap-1.5 shrink-0">
+            <MapPin className="w-4 h-4 text-blue-500 shrink-0" />
+            <select
+              value={selectedBairro}
+              onChange={(e) => setSelectedBairro(e.target.value)}
+              className="py-2.5 px-3 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 cursor-pointer focus:ring-2 focus:ring-blue-500 shadow-xs max-w-[210px]"
+            >
+              <option value="Todos">📍 Todos os Bairros</option>
+              {ALL_BAIRROS.filter((b) => b !== "Todos").map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0">
@@ -344,6 +409,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               onClick={() => {
                 setSearchQuery("");
                 setActiveFilter("Todos");
+                setSelectedBairro("Todos");
               }}
               className="mt-4 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer hover:bg-blue-700"
             >
@@ -361,23 +427,34 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 key={prod.name + idx}
                 className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1"
               >
-                {/* Badge Superior — Linha Própria com texto completo */}
+                {/* Badge Superior com SKU */}
                 <div className="flex items-center justify-between gap-1 mb-1.5">
-                  <span className="text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60">
+                  <span
+                    className={`text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-md border ${
+                      prod.badge === "VENDIDA"
+                        ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
+                        : "bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60"
+                    }`}
+                  >
                     {prod.badge}
                   </span>
+                  {prod.sku && (
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                      #{prod.sku}
+                    </span>
+                  )}
                 </div>
 
                 {/* Imagem do Imóvel com Metragem Sobreposta */}
                 <div
                   onClick={() => handleOpenDetail(prod)}
-                  className="relative aspect-4/3 w-full flex items-center justify-center p-1 sm:p-2 mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/50"
+                  className="relative aspect-4/3 w-full flex items-center justify-center mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50"
                 >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="max-h-full max-w-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {prod.storage ? (
                     <span className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
@@ -449,13 +526,13 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 {/* Imagem do Imóvel à esquerda */}
                 <div
                   onClick={() => handleOpenDetail(prod)}
-                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100/60 dark:bg-slate-900/60 p-1 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden"
+                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden"
                 >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="max-h-full max-w-full object-contain drop-shadow-md"
+                    className="w-full h-full object-cover"
                   />
                   {prod.storage ? (
                     <span className="absolute bottom-1 left-1 px-1.5 py-0.2 rounded text-[8px] font-black bg-slate-900/85 text-white backdrop-blur-xs">
@@ -468,9 +545,18 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
                   <div>
                     <div className="flex items-center gap-1 mb-1">
-                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40">
+                      <span
+                        className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full border ${
+                          prod.badge === "VENDIDA"
+                            ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
+                            : "bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40"
+                        }`}
+                      >
                         {prod.badge}
                       </span>
+                      {prod.sku && (
+                        <span className="text-[10px] font-bold text-slate-400">#{prod.sku}</span>
+                      )}
                     </div>
 
                     <h3

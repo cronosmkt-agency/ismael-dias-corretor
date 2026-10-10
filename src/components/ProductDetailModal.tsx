@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   X,
   ShieldCheck,
@@ -11,6 +11,10 @@ import {
   CalendarCheck,
   Home,
   FileCheck2,
+  ChevronLeft,
+  ChevronRight,
+  Hash,
+  AlignLeft,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
@@ -21,6 +25,7 @@ export interface ProductItem {
   cat: string;
   badge: string;
   img: string;
+  images?: string[];
   specs?: string;
   storage?: string;
   condition?: string;
@@ -33,6 +38,10 @@ export interface ProductItem {
   features?: string[];
   quantity?: number;
   imeis?: string[];
+  sku?: string;
+  description?: string;
+  bairro?: string;
+  url?: string;
 }
 
 interface ProductDetailModalProps {
@@ -50,11 +59,25 @@ export function ProductDetailModal({
   onClose,
   whatsappNumber = WHATSAPP_NUMBER,
 }: ProductDetailModalProps) {
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveImgIndex(0);
+  }, [product]);
+
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") {
+        setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : prev));
+      }
+      if (e.key === "ArrowRight") {
+        if (product?.images && product.images.length > 0) {
+          setActiveImgIndex((prev) => (prev < product.images!.length - 1 ? prev + 1 : prev));
+        }
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
@@ -63,22 +86,33 @@ export function ProductDetailModal({
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, product]);
 
   if (!isOpen || !product) return null;
 
+  const isSold = product.badge === "VENDIDA" || product.condition?.includes("VENDIDA");
   const areaDisplay = product.storage || "Lote Residencial";
+  const imagesList = product.images && product.images.length > 0 ? product.images : [product.img];
+  const currentImg = imagesList[activeImgIndex] || product.img;
 
   const handleWhatsApp = () => {
-    const text = `Olá, equipe Habittat House! Vi este imóvel no site e tenho interesse:
+    let text = "";
+    if (isSold) {
+      text = `Olá, Ismael Dias! Vi no seu catálogo que o imóvel *${product.name}* (Cód. #${product.sku || ""}) foi vendido.
 
-🏡 *Empreendimento:* ${product.name}
+Gostaria de saber se você tem outras opções semelhantes disponíveis na mesma região (${product.screen || "Teresópolis"})!`;
+    } else {
+      text = `Olá, Ismael Dias! Vi este imóvel no seu site e tenho interesse:
+
+🏡 *Imóvel:* ${product.name}
+🔢 *Código:* #${product.sku || "Habittat"}
 📍 *Localização:* ${product.screen || "Teresópolis/RJ"}
 📐 *Metragem / Área:* ${areaDisplay}
-💰 *Valor:* A partir de ${fmt(product.price)}
+💰 *Valor:* ${fmt(product.price)}
 ✨ *Destaque:* ${product.camera || product.badge}
 
-Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!`;
+Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
+    }
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
@@ -86,10 +120,10 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
 
   const defaultBoxItems = [
     "Infraestrutura completa com água, luz e saneamento",
-    "Segurança 24 horas com portaria e controle rigoroso de acesso",
-    "Escritura definitiva com procedência jurídica garantida",
+    "Segurança e tranquilidade na serra fluminense",
+    "Escritura e procedência jurídica garantida",
     "Assessoria completa com o corretor Ismael Dias na Habittat House",
-    "Agendamento de visita VIP no local para conhecer a vista e topografia",
+    "Agendamento de visita VIP no local para conhecer todos os detalhes",
   ];
 
   const boxList = product.boxItems && product.boxItems.length > 0 ? product.boxItems : defaultBoxItems;
@@ -115,13 +149,25 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
         {/* Header bar com badges e botão fechar */}
         <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
           <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs product-badge-novo bg-blue-600/10 text-blue-600 dark:text-sky-400 border border-blue-500/20">
+            <span
+              className={`text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs border ${
+                isSold
+                  ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
+                  : "bg-blue-600/10 text-blue-600 dark:text-sky-400 border-blue-500/20"
+              }`}
+            >
               {product.badge}
             </span>
             <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
               <Trees className="w-3 h-3 text-emerald-500 shrink-0" />
               <span>{product.cat}</span>
             </span>
+            {product.sku && (
+              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-0.5">
+                <Hash className="w-3 h-3 text-slate-400 shrink-0" />
+                <span>{product.sku}</span>
+              </span>
+            )}
           </div>
 
           <button
@@ -137,23 +183,63 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
         <div className="overflow-y-auto px-3.5 sm:px-6 py-3.5 sm:py-5 space-y-4 sm:space-y-6">
           {/* Top Section: Imagem + Título + Preço */}
           <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-6 items-center">
-            {/* Foto do Empreendimento */}
-            <div
-              className="relative rounded-2xl p-3 sm:p-5 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-50/70 dark:bg-slate-900/50"
-              style={{ minHeight: "180px" }}
-            >
+            {/* Foto do Empreendimento com Galeria */}
+            <div className="flex flex-col gap-2">
               <div
-                className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-30"
-                style={{
-                  background: "radial-gradient(circle at center, rgba(56, 189, 248, 0.3), rgba(0,0,0,0) 70%)",
-                }}
-              />
-              <img
-                src={product.img}
-                alt={product.name}
-                className="max-h-44 sm:max-h-52 w-auto object-contain transition-transform hover:scale-105 duration-300 relative z-1 rounded-xl"
-                style={{ filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.22))" }}
-              />
+                className="relative rounded-2xl p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-100/70 dark:bg-slate-900/50"
+                style={{ minHeight: "200px", maxHeight: "240px" }}
+              >
+                <img
+                  src={currentImg}
+                  alt={product.name}
+                  className="w-full h-48 sm:h-52 object-cover transition-transform duration-300 relative z-1 rounded-xl"
+                />
+
+                {/* Setas de Navegação se tiver mais de 1 foto */}
+                {imagesList.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : imagesList.length - 1))}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/80 transition cursor-pointer backdrop-blur-xs"
+                      aria-label="Foto anterior"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveImgIndex((prev) => (prev < imagesList.length - 1 ? prev + 1 : 0))}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/80 transition cursor-pointer backdrop-blur-xs"
+                      aria-label="Próxima foto"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                    <div className="absolute bottom-3 right-3 z-10 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold backdrop-blur-xs">
+                      {activeImgIndex + 1} / {imagesList.length}
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Thumbnails Strip */}
+              {imagesList.length > 1 && (
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full">
+                  {imagesList.slice(0, 8).map((imgUrl, i) => (
+                    <button
+                      key={imgUrl + i}
+                      type="button"
+                      onClick={() => setActiveImgIndex(i)}
+                      className={`relative w-11 h-11 shrink-0 rounded-lg overflow-hidden border-2 transition cursor-pointer ${
+                        activeImgIndex === i
+                          ? "border-blue-600 dark:border-sky-400 scale-105"
+                          : "border-transparent opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <img src={imgUrl} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Informações Principais & Preço */}
@@ -267,6 +353,19 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
             </div>
           </div>
 
+          {/* Descrição Completa do Imóvel se disponível */}
+          {product.description ? (
+            <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
+              <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
+                <AlignLeft className="w-4 h-4 text-sky-400" />
+                Descrição Completa:
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed whitespace-pre-line font-normal max-h-56 overflow-y-auto pr-1">
+                {product.description}
+              </p>
+            </div>
+          ) : null}
+
           {/* O que o empreendimento oferece */}
           <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
             <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
@@ -324,10 +423,12 @@ Gostaria de agendar uma visita e receber a tabela de disponibilidade atualizada!
 
             <button
               onClick={handleWhatsApp}
-              className="flex-1 sm:flex-none btn-whatsapp px-5 sm:px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap bg-emerald-600 hover:bg-emerald-500"
+              className={`flex-1 sm:flex-none btn-whatsapp px-5 sm:px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap ${
+                isSold ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500"
+              }`}
             >
               <WhatsAppIcon className="w-4 h-4 shrink-0 text-white" />
-              <span>Consultar / Agendar Visita</span>
+              <span>{isSold ? "Consultar Opções Semelhantes" : "Consultar / Agendar Visita"}</span>
             </button>
           </div>
         </div>
