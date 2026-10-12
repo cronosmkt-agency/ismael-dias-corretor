@@ -119,6 +119,7 @@ interface FilterDropdownProps {
   onChange: (val: string) => void;
   searchable?: boolean;
   className?: string;
+  align?: "left" | "center" | "right";
 }
 
 function FilterDropdown({
@@ -129,6 +130,7 @@ function FilterDropdown({
   onChange,
   searchable = false,
   className = "",
+  align = "left",
 }: FilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -142,13 +144,16 @@ function FilterDropdown({
       }
     }
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside);
+      const timer = setTimeout(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("touchstart", handleClickOutside);
+      }, 50);
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("touchstart", handleClickOutside);
+      };
     }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
   }, [isOpen]);
 
   const selectedOpt = options.find((o) => o.value === value);
@@ -160,6 +165,13 @@ function FilterDropdown({
       ? options.filter((o) => o.label.toLowerCase().includes(searchTerm.toLowerCase()))
       : options;
 
+  const alignmentClass =
+    align === "center"
+      ? "left-1/2 -translate-x-1/2"
+      : align === "right"
+      ? "right-0 left-auto"
+      : "left-0 right-auto";
+
   return (
     <div ref={dropdownRef} className={`relative ${className}`}>
       <button
@@ -168,7 +180,7 @@ function FilterDropdown({
           setIsOpen((prev) => !prev);
           setSearchTerm("");
         }}
-        className={`flex items-center justify-between gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none shrink-0 whitespace-nowrap ${
+        className={`flex items-center justify-between gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none shrink-0 whitespace-nowrap focus:outline-hidden outline-none ${
           !isDefault
             ? "bg-blue-50/90 dark:bg-sky-950/70 border-blue-400 dark:border-sky-600 text-blue-700 dark:text-sky-300 ring-2 ring-blue-500/20"
             : "glass border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 bg-white/90 dark:bg-slate-900/90"
@@ -176,7 +188,7 @@ function FilterDropdown({
       >
         <div className="flex items-center gap-1 min-w-0">
           <Icon className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-          <span className="truncate max-w-[100px] sm:max-w-[140px] text-left">
+          <span className="truncate max-w-[90px] sm:max-w-[140px] text-left">
             {displayText}
           </span>
         </div>
@@ -188,7 +200,9 @@ function FilterDropdown({
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 sm:left-auto sm:right-0 top-full mt-1.5 z-50 min-w-[210px] max-w-[280px] rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 max-h-72 flex flex-col">
+        <div
+          className={`absolute ${alignmentClass} top-full mt-1.5 z-[100] min-w-[210px] sm:min-w-[230px] max-w-[calc(100vw-28px)] rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 max-h-72 flex flex-col`}
+        >
           {searchable && (
             <div className="p-1 mb-1 border-b border-slate-100 dark:border-slate-800">
               <input
@@ -496,29 +510,63 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
         </div>
 
         {/* Container Unificado de Busca & Filtros (Compacto e Integrado) */}
-        <div className="mt-4 sm:mt-5 max-w-xl mx-auto glass rounded-2xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2">
-          {/* Barra de Busca Compacta e Encurtada */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Buscar código (#SKU), condomínio, rua..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8.5 sm:pl-9 pr-14 py-1.5 sm:py-2 rounded-xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white"
-            />
-            {searchQuery && (
+        <div className="mt-4 sm:mt-5 max-w-xl mx-auto glass rounded-2xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
+          {/* Linha 1: Barra de Busca + Alternador Grade/Vitrine no mobile (oculto no web) */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="relative flex-1 min-w-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Buscar código (#SKU), condomínio, rua..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-8.5 sm:pl-9 pr-14 py-1.5 sm:py-2 rounded-xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] sm:text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer font-bold"
+                >
+                  Limpar
+                </button>
+              )}
+            </div>
+
+            {/* Alternador Grade / Vitrine: VISÍVEL SOMENTE NO MOBILE (sm:hidden), JUNTO DA BARRA DE PESQUISA */}
+            <div className="flex sm:hidden items-center p-0.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shrink-0">
               <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] sm:text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer font-bold"
+                type="button"
+                onClick={() => setViewMode("compact")}
+                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                  viewMode === "compact"
+                    ? "btn-primary-glow text-white shadow-xs"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                }`}
+                title="Grade (2 por linha)"
               >
-                Limpar
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Grade</span>
               </button>
-            )}
+
+              <button
+                type="button"
+                onClick={() => setViewMode("showcase")}
+                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                  viewMode === "showcase"
+                    ? "btn-primary-glow text-white shadow-xs"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                }`}
+                title="Vitrine (1 por linha)"
+              >
+                <Home className="w-3.5 h-3.5" />
+                <span>Vitrine</span>
+              </button>
+            </div>
           </div>
 
-          {/* Filtros em Linha Coesa com Rolagem Suave no Mobile */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scrollbar-none py-0.5 justify-start sm:justify-center">
+          {/* Linha 2: Filtros Dropdown (Bairro, Preço, Ordenar) — SEM overflow-x-auto para NUNCA cortar as opções */}
+          <div className="flex items-center gap-1.5 sm:gap-2 justify-center py-0.5 relative z-20">
             {/* Dropdown Bairro */}
             <FilterDropdown
               icon={MapPin}
@@ -527,6 +575,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               options={BAIRRO_OPTIONS}
               onChange={setSelectedBairro}
               searchable={true}
+              align="left"
             />
 
             {/* Dropdown Faixa de Preço */}
@@ -536,6 +585,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               value={selectedPriceRange}
               options={PRICE_RANGE_OPTIONS}
               onChange={setSelectedPriceRange}
+              align="center"
             />
 
             {/* Dropdown Ordenação */}
@@ -545,46 +595,19 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               value={sortBy}
               options={SORT_OPTIONS}
               onChange={setSortBy}
+              align="right"
             />
-
-            {/* Alternador Grade / Vitrine */}
-            <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shrink-0">
-              <button
-                onClick={() => setViewMode("compact")}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === "compact"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Grade 2 por linha"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span className="text-[10px] sm:text-xs">Grade</span>
-              </button>
-
-              <button
-                onClick={() => setViewMode("showcase")}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === "showcase"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Vitrine 1 por linha"
-              >
-                <Home className="w-3.5 h-3.5" />
-                <span className="text-[10px] sm:text-xs">Vitrine</span>
-              </button>
-            </div>
 
             {/* Botão Limpar Filtros quando algum filtro estiver ativo */}
             {hasActiveFilters && (
               <button
+                type="button"
                 onClick={handleClearAllFilters}
-                className="flex items-center gap-1 px-2 py-1 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-rose-200/70 dark:border-rose-900/50 transition cursor-pointer shrink-0 shadow-2xs"
+                className="flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-rose-200/70 dark:border-rose-900/50 transition cursor-pointer shrink-0 shadow-2xs"
                 title="Limpar todos os filtros e busca"
               >
                 <RotateCcw className="w-3 h-3" />
-                <span className="text-[10px]">Limpar</span>
+                <span className="text-[10px] sm:text-xs">Limpar</span>
               </button>
             )}
           </div>
