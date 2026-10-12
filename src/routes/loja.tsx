@@ -85,36 +85,88 @@ const imoveisCategoryMeta: Record<
   },
 };
 
-const BAIRRO_OPTIONS = [
-  { value: "Todos", label: "Todos os Bairros" },
-  { value: "Teresópolis (Todos)", label: "Teresópolis (Todos)" },
+interface FilterOption {
+  value: string;
+  label: string;
+  shortLabel?: string;
+}
+
+const SHORT_BAIRRO_MAP: Record<string, string> = {
+  "Todos": "Bairro",
+  "Teresópolis (Todos)": "Teresópolis",
+  "Cascata dos Amores": "C. Amores",
+  "Cascata do Imbuí": "C. Imbuí",
+  "Cascata Guarani": "C. Guarani",
+  "Parque do Imbuí": "Pq. Imbuí",
+  "Parque São Luiz": "Pq. S. Luiz",
+  "Quinta da Barra": "Qta. Barra",
+  "Vale do Paraíso": "V. Paraíso",
+  "Fazenda Alpina": "Fz. Alpina",
+  "Vargem Grande": "V. Grande",
+  "Carlos Guinle": "C. Guinle",
+  "Quebra Frascos": "Q. Frascos",
+  "Granja Guarani": "G. Guarani",
+  "Green Valley": "Green Valley",
+  "Nova Friburgo": "Friburgo",
+  "Nova Iguaçu": "N. Iguaçu",
+  "Bonsucesso": "Bonsucesso",
+  "Albuquerque": "Albuquerque",
+  "Agriões": "Agriões",
+  "Alto": "Alto",
+  "Centro": "Centro",
+  "Várzea": "Várzea",
+  "Tijuca": "Tijuca",
+  "Golfe": "Golfe",
+  "Posse": "Posse",
+  "Prata": "Prata",
+  "Andradas": "Andradas",
+  "Bom Retiro": "Bom Retiro",
+  "Caxangá": "Caxangá",
+  "Pimenteiras": "Pimenteiras",
+  "São Pedro": "São Pedro",
+  "Taumaturgo": "Taumaturgo",
+  "Venda Nova": "Venda Nova",
+  "Vila Muqui": "Vila Muqui",
+};
+
+function formatShortBairro(name: string): string {
+  if (SHORT_BAIRRO_MAP[name]) return SHORT_BAIRRO_MAP[name];
+  if (name.includes("/")) return name.split("/")[0].trim();
+  if (name.length <= 11) return name;
+  return name.slice(0, 10);
+}
+
+const BAIRRO_OPTIONS: FilterOption[] = [
+  { value: "Todos", label: "Todos os Bairros", shortLabel: "Bairro" },
+  { value: "Teresópolis (Todos)", label: "Teresópolis (Todos)", shortLabel: "Teresópolis" },
   ...ALL_BAIRROS.filter((b) => b !== "Todos" && b !== "Teresópolis (Todos)").map((b) => ({
     value: b,
     label: b,
+    shortLabel: formatShortBairro(b),
   })),
 ];
 
-const PRICE_RANGE_OPTIONS = [
-  { value: "all", label: "Todas as faixas de valor" },
-  { value: "under-300", label: "Até R$ 300 mil" },
-  { value: "300-600", label: "R$ 300 mil a R$ 600 mil" },
-  { value: "600-1000", label: "R$ 600 mil a R$ 1 Milhão" },
-  { value: "1000-2000", label: "R$ 1 Milhão a R$ 2 Milhões" },
-  { value: "over-2000", label: "Acima de R$ 2 Milhões" },
+const PRICE_RANGE_OPTIONS: FilterOption[] = [
+  { value: "all", label: "Todas as faixas de valor", shortLabel: "Preço" },
+  { value: "under-300", label: "Até R$ 300 mil", shortLabel: "Até 300k" },
+  { value: "300-600", label: "R$ 300 mil a R$ 600 mil", shortLabel: "300k-600k" },
+  { value: "600-1000", label: "R$ 600 mil a R$ 1 Milhão", shortLabel: "600k-1M" },
+  { value: "1000-2000", label: "R$ 1 Milhão a R$ 2 Milhões", shortLabel: "1M-2M" },
+  { value: "over-2000", label: "Acima de R$ 2 Milhões", shortLabel: "+ 2M" },
 ];
 
-const SORT_OPTIONS = [
-  { value: "default", label: "Destaques (Padrão)" },
-  { value: "price-asc", label: "Menor Valor" },
-  { value: "price-desc", label: "Maior Valor" },
-  { value: "name-asc", label: "Nome (A - Z)" },
+const SORT_OPTIONS: FilterOption[] = [
+  { value: "default", label: "Destaques (Padrão)", shortLabel: "Ordenar" },
+  { value: "price-asc", label: "Menor Valor", shortLabel: "Menor $" },
+  { value: "price-desc", label: "Maior Valor", shortLabel: "Maior $" },
+  { value: "name-asc", label: "Nome (A - Z)", shortLabel: "Nome A-Z" },
 ];
 
 interface FilterDropdownProps {
   icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
-  options: { value: string; label: string }[];
+  options: FilterOption[];
   onChange: (val: string) => void;
   searchable?: boolean;
   className?: string;
@@ -157,7 +209,7 @@ function FilterDropdown({
 
   const selectedOpt = options.find((o) => o.value === value);
   const isDefault = !selectedOpt || selectedOpt.value === options[0]?.value;
-  const displayText = isDefault ? label : selectedOpt.label;
+  const displayText = isDefault ? label : selectedOpt.shortLabel || selectedOpt.label;
 
   const filteredOptions =
     searchable && searchTerm.trim()
@@ -172,22 +224,23 @@ function FilterDropdown({
       : "left-0 right-auto";
 
   return (
-    <div ref={dropdownRef} className={`relative ${className}`}>
+    <div ref={dropdownRef} className={`relative w-full min-w-0 ${className}`}>
       <button
         type="button"
+        title={isDefault ? label : selectedOpt?.label}
         onClick={() => {
           setIsOpen((prev) => !prev);
           setSearchTerm("");
         }}
-        className={`flex items-center justify-between gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none shrink-0 whitespace-nowrap focus:outline-hidden outline-none ${
+        className={`w-full flex items-center justify-between gap-1 px-1.5 sm:px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none min-w-0 focus:outline-hidden outline-none ${
           !isDefault
             ? "bg-blue-50/90 dark:bg-sky-950/70 border-blue-400 dark:border-sky-600 text-blue-700 dark:text-sky-300 ring-2 ring-blue-500/20"
             : "glass border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 bg-white/90 dark:bg-slate-900/90"
         }`}
       >
-        <div className="flex items-center gap-1 min-w-0">
+        <div className="flex items-center gap-1 min-w-0 flex-1 justify-center sm:justify-start">
           <Icon className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-          <span className="truncate max-w-[110px] sm:max-w-[150px] text-left">
+          <span className="truncate text-center sm:text-left">
             {displayText}
           </span>
         </div>
@@ -564,8 +617,8 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
             </div>
           </div>
 
-          {/* Linha 2: Filtros Dropdown (Bairro, Preço, Ordenar) — SEM overflow-x-auto para NUNCA cortar as opções */}
-          <div className="flex items-center gap-1.5 sm:gap-2 justify-center py-0.5 relative z-20">
+          {/* Linha 2: Filtros Dropdown (Bairro, Preço, Ordenar) — Grid 3 colunas para manter proporção perfeita e nunca estourar */}
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 w-full py-0.5 relative z-20">
             {/* Dropdown Bairro */}
             <FilterDropdown
               icon={MapPin}
