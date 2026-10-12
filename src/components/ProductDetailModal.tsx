@@ -16,6 +16,7 @@ import {
   Hash,
   AlignLeft,
   Instagram,
+  Maximize2,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
@@ -63,22 +64,30 @@ export function ProductDetailModal({
   whatsappNumber = WHATSAPP_NUMBER,
 }: ProductDetailModalProps) {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     setActiveImgIndex(0);
+    setIsLightboxOpen(false);
   }, [product]);
 
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        if (isLightboxOpen) {
+          setIsLightboxOpen(false);
+        } else {
+          onClose();
+        }
+      }
       if (e.key === "ArrowLeft") {
-        setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : prev));
+        setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : (product?.images?.length || 1) - 1));
       }
       if (e.key === "ArrowRight") {
         if (product?.images && product.images.length > 0) {
-          setActiveImgIndex((prev) => (prev < product.images!.length - 1 ? prev + 1 : prev));
+          setActiveImgIndex((prev) => (prev < product.images!.length - 1 ? prev + 1 : 0));
         }
       }
     };
@@ -89,7 +98,7 @@ export function ProductDetailModal({
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [isOpen, onClose, product]);
+  }, [isOpen, onClose, product, isLightboxOpen]);
 
   if (!isOpen || !product) return null;
 
@@ -132,97 +141,119 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
   const boxList = product.boxItems && product.boxItems.length > 0 ? product.boxItems : defaultBoxItems;
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="product-modal-title"
-      className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto"
-    >
-      {/* Backdrop */}
+    <>
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fade-in"
-        onClick={onClose}
-      />
-
-      {/* Modal Container */}
-      <div
-        className="relative w-full max-w-[94vw] sm:max-w-[760px] my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/10"
-        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-modal-title"
+        className="fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-4 md:p-6 overflow-y-auto"
       >
-        {/* Header bar com badges e botão fechar */}
-        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
-          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-            <span
-              className={`text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs border ${
-                isSold
-                  ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
-                  : "bg-blue-600/10 text-blue-600 dark:text-sky-400 border-blue-500/20"
-              }`}
-            >
-              {product.badge}
-            </span>
-            <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-              <Trees className="w-3 h-3 text-emerald-500 shrink-0" />
-              <span>{product.cat}</span>
-            </span>
-            {product.sku && (
-              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-0.5">
-                <Hash className="w-3 h-3 text-slate-400 shrink-0" />
-                <span>{product.sku}</span>
+        {/* Backdrop */}
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fade-in"
+          onClick={onClose}
+        />
+
+        {/* Modal Container — 100% da tela no Mobile */}
+        <div
+          className="relative w-full h-[100dvh] sm:h-auto sm:max-w-[760px] my-0 sm:my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[100dvh] sm:max-h-[88vh] flex flex-col rounded-none sm:rounded-3xl border-0 sm:border border-slate-200/80 dark:border-white/10"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header bar com badges e botão fechar */}
+          <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <span
+                className={`text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs border ${
+                  isSold
+                    ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
+                    : "bg-blue-600/10 text-blue-600 dark:text-sky-400 border-blue-500/20"
+                }`}
+              >
+                {product.badge}
               </span>
-            )}
+              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                <Trees className="w-3 text-emerald-500 shrink-0" />
+                <span>{product.cat}</span>
+              </span>
+              {product.sku && (
+                <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-0.5">
+                  <Hash className="w-3 h-3 text-slate-400 shrink-0" />
+                  <span>{product.sku}</span>
+                </span>
+              )}
+            </div>
+
+            <button
+              onClick={onClose}
+              aria-label="Fechar detalhes"
+              className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            >
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
           </div>
 
-          <button
-            onClick={onClose}
-            aria-label="Fechar detalhes"
-            className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-          >
-            <X className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-        </div>
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden px-3.5 sm:px-6 py-3.5 sm:py-5 space-y-4 sm:space-y-6 w-full min-w-0">
+            {/* Top Section: Imagem + Título + Preço */}
+            <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-6 items-center w-full min-w-0">
+              {/* Foto do Empreendimento com Galeria */}
+              <div className="flex flex-col gap-2 w-full min-w-0 overflow-hidden">
+                <div
+                  onClick={() => setIsLightboxOpen(true)}
+                  className="relative rounded-2xl p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-100/70 dark:bg-slate-900/50 w-full cursor-zoom-in group"
+                  style={{ minHeight: "200px", maxHeight: "240px" }}
+                >
+                  <img
+                    src={currentImg}
+                    alt={product.name}
+                    className="w-full h-48 sm:h-52 object-cover transition-transform duration-300 relative z-1 rounded-xl group-hover:scale-102"
+                  />
 
-        {/* Scrollable Content */}
-        <div className="overflow-y-auto overflow-x-hidden px-3.5 sm:px-6 py-3.5 sm:py-5 space-y-4 sm:space-y-6 w-full min-w-0">
-          {/* Top Section: Imagem + Título + Preço */}
-          <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-6 items-center w-full min-w-0">
-            {/* Foto do Empreendimento com Galeria */}
-            <div className="flex flex-col gap-2 w-full min-w-0 overflow-hidden">
-              <div
-                className="relative rounded-2xl p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-slate-200/60 dark:border-white/10 bg-slate-100/70 dark:bg-slate-900/50 w-full"
-                style={{ minHeight: "200px", maxHeight: "240px" }}
-              >
-                <img
-                  src={currentImg}
-                  alt={product.name}
-                  className="w-full h-48 sm:h-52 object-cover transition-transform duration-300 relative z-1 rounded-xl"
-                />
+                  {/* Botão Ver em Tela Cheia */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsLightboxOpen(true);
+                    }}
+                    className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2 py-1 rounded-lg bg-black/70 hover:bg-black/90 text-white text-[10px] font-bold backdrop-blur-xs transition shadow-md cursor-pointer"
+                    title="Ver fotos em tela cheia"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    <span>Tela cheia</span>
+                  </button>
 
-                {/* Setas de Navegação se tiver mais de 1 foto */}
-                {imagesList.length > 1 && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : imagesList.length - 1))}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/80 transition cursor-pointer backdrop-blur-xs"
-                      aria-label="Foto anterior"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveImgIndex((prev) => (prev < imagesList.length - 1 ? prev + 1 : 0))}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/80 transition cursor-pointer backdrop-blur-xs"
-                      aria-label="Próxima foto"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                    <div className="absolute bottom-3 right-3 z-10 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold backdrop-blur-xs">
-                      {activeImgIndex + 1} / {imagesList.length}
-                    </div>
-                  </>
-                )}
-              </div>
+                  {/* Setas de Navegação se tiver mais de 1 foto */}
+                  {imagesList.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : imagesList.length - 1));
+                        }}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/80 transition cursor-pointer backdrop-blur-xs"
+                        aria-label="Foto anterior"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveImgIndex((prev) => (prev < imagesList.length - 1 ? prev + 1 : 0));
+                        }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 text-white hover:bg-black/80 transition cursor-pointer backdrop-blur-xs"
+                        aria-label="Próxima foto"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                      <div className="absolute bottom-3 right-3 z-10 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold backdrop-blur-xs">
+                        {activeImgIndex + 1} / {imagesList.length}
+                      </div>
+                    </>
+                  )}
+                </div>
 
               {/* Thumbnails Strip */}
               {imagesList.length > 1 && (
@@ -309,7 +340,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               Ficha do Imóvel & Diferenciais
             </h3>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
               <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
                   <Compass className="w-3.5 h-3.5 text-sky-400 shrink-0" />
@@ -332,31 +363,11 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
 
               <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <ShieldCheck className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                  <span>Incorporação / Construtora</span>
-                </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-blue-600 dark:text-sky-300 leading-snug break-words">
-                  {product.warranty || "Angeleti Construtora"}
-                </div>
-              </div>
-
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
-                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
                   <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                   <span>Localização</span>
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
                   {product.screen || "Teresópolis - RJ"}
-                </div>
-              </div>
-
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
-                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Trees className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                  <span>Lazer & Vista</span>
-                </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
-                  {product.camera || "Vista Deslumbrante"}
                 </div>
               </div>
 
@@ -480,6 +491,90 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
         </div>
       </div>
     </div>
+
+      {/* Lightbox / Galeria em Tela Cheia */}
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-3 sm:p-6 animate-fade-in"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          {/* Barra Superior do Lightbox */}
+          <div className="w-full flex items-center justify-between z-10 text-white max-w-6xl mx-auto pb-2 border-b border-white/10 shrink-0">
+            <div className="min-w-0 pr-3">
+              <h4 className="text-xs sm:text-sm font-black truncate text-white">{product.name}</h4>
+              <p className="text-[10px] sm:text-xs text-white/60 truncate">{product.screen || "Teresópolis/RJ"}</p>
+            </div>
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <span className="text-xs font-bold text-white/80 px-2 py-0.5 rounded-md bg-white/10">
+                {activeImgIndex + 1} / {imagesList.length}
+              </span>
+              <button
+                onClick={() => setIsLightboxOpen(false)}
+                className="p-1.5 sm:p-2 rounded-full bg-white/10 hover:bg-white/25 transition cursor-pointer text-white"
+                title="Fechar tela cheia (Esc)"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Imagem Central Grande */}
+          <div
+            className="relative flex-1 w-full max-w-6xl mx-auto flex items-center justify-center p-2 min-h-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={currentImg}
+              alt={product.name}
+              className="max-h-[72vh] sm:max-h-[78vh] max-w-[96vw] object-contain rounded-xl select-none shadow-2xl"
+            />
+
+            {imagesList.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : imagesList.length - 1))}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/70 hover:bg-black/90 text-white transition cursor-pointer backdrop-blur-md shadow-lg"
+                  aria-label="Foto anterior"
+                >
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveImgIndex((prev) => (prev < imagesList.length - 1 ? prev + 1 : 0))}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/70 hover:bg-black/90 text-white transition cursor-pointer backdrop-blur-md shadow-lg"
+                  aria-label="Próxima foto"
+                >
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Miniaturas Inferiores */}
+          {imagesList.length > 1 && (
+            <div
+              className="w-full max-w-4xl mx-auto flex items-center justify-center gap-1.5 sm:gap-2 overflow-x-auto py-2 z-10 shrink-0"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {imagesList.map((imgUrl, i) => (
+                <button
+                  key={imgUrl + i}
+                  onClick={() => setActiveImgIndex(i)}
+                  className={`relative w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-lg overflow-hidden border-2 transition cursor-pointer ${
+                    activeImgIndex === i
+                      ? "border-blue-500 scale-105 shadow-md"
+                      : "border-transparent opacity-50 hover:opacity-100"
+                  }`}
+                >
+                  <img src={imgUrl} alt="" className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 

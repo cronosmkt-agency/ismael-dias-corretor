@@ -39,6 +39,7 @@ export const imoveisFilters = [
   "Casas em Condomínio",
   "Casas",
   "Apartamentos",
+  "Coberturas",
   "Terrenos",
   "Sítios & Rurais",
   "Comerciais",
