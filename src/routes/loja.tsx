@@ -18,7 +18,6 @@ import {
   ChevronDown,
   DollarSign,
   ArrowUpDown,
-  RotateCcw,
   Crown,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -188,7 +187,7 @@ function FilterDropdown({
       >
         <div className="flex items-center gap-1 min-w-0">
           <Icon className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-          <span className="truncate max-w-[90px] sm:max-w-[140px] text-left">
+          <span className="truncate max-w-[110px] sm:max-w-[150px] text-left">
             {displayText}
           </span>
         </div>
@@ -597,19 +596,6 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               onChange={setSortBy}
               align="right"
             />
-
-            {/* Botão Limpar Filtros quando algum filtro estiver ativo */}
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={handleClearAllFilters}
-                className="flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-rose-200/70 dark:border-rose-900/50 transition cursor-pointer shrink-0 shadow-2xs"
-                title="Limpar todos os filtros e busca"
-              >
-                <RotateCcw className="w-3 h-3" />
-                <span className="text-[10px] sm:text-xs">Limpar</span>
-              </button>
-            )}
           </div>
         </div>
 
