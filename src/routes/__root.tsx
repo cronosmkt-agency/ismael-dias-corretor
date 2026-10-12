@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Ismael Dias — Corretor de Imóveis | Habittat House Teresópolis" },
-      { name: "description", content: "Ismael Dias, corretor de imóveis na Habittat House. Terrenos residenciais nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora em Teresópolis/RJ. Entrada de 15% e até 120 parcelas direto." },
+      { name: "description", content: "Ismael Dias, corretor de imóveis na Habittat House. Terrenos residenciais nos condomínios Golden Green e Vale dos Pássaros da Angeleti Construtora em Teresópolis/RJ. Entrada de 15% e até 120 parcelas direto." },
       { name: "author", content: "Ismael Dias — Corretor Habittat House" },
       { property: "og:title", content: "Ismael Dias — Corretor de Imóveis | Habittat House Teresópolis" },
       { property: "og:description", content: "Consultoria imobiliária especializada com Ismael Dias. Condomínios fechados da Angeleti Construtora com lazer completo e segurança 24h na serra." },

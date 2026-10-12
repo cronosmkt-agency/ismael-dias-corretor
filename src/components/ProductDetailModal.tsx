@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Hash,
   AlignLeft,
+  Instagram,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
@@ -42,6 +43,8 @@ export interface ProductItem {
   description?: string;
   bairro?: string;
   url?: string;
+  instagram?: string;
+  instagramUrl?: string;
 }
 
 interface ProductDetailModalProps {
@@ -275,6 +278,22 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
                 </div>
               </div>
 
+              {/* Instagram Oficial se houver */}
+              {product.instagramUrl && (
+                <div className="mt-2.5">
+                  <a
+                    href={product.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/10 border border-pink-500/30 text-pink-600 dark:text-pink-400 text-xs font-bold hover:scale-102 transition-all shadow-2xs group"
+                  >
+                    <Instagram className="w-3.5 h-3.5 text-pink-500 shrink-0 group-hover:scale-110 transition-transform" />
+                    <span>Instagram Oficial: {product.instagram || "@instagram"}</span>
+                    <span className="text-[10px] text-pink-500/80 font-normal underline ml-0.5">Acessar perfil ↗</span>
+                  </a>
+                </div>
+              )}
+
               {/* Agendamento notice */}
               <div className="mt-2 flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-600 dark:text-emerald-400 font-bold">
                 <CalendarCheck className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
@@ -397,6 +416,33 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               <span>Agende sua visita diretamente com Ismael Dias</span>
             </div>
           </div>
+
+          {/* Banner Instagram Oficial do Empreendimento */}
+          {product.instagramUrl && (
+            <a
+              href={product.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="product-modal-box p-3 sm:p-4 flex items-center justify-between gap-3 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/5 rounded-xl border border-pink-500/25 hover:border-pink-500/50 transition-all text-xs cursor-pointer group shadow-2xs"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                  <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white truncate">
+                    Acompanhe as obras de {product.name}
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-pink-600 dark:text-pink-400 font-bold truncate">
+                    Instagram Oficial: {product.instagram}
+                  </div>
+                </div>
+              </div>
+              <span className="text-[11px] sm:text-xs font-black px-3 py-1 rounded-full bg-pink-600 hover:bg-pink-500 text-white shadow-xs transition shrink-0 whitespace-nowrap">
+                Ver Perfil ↗
+              </span>
+            </a>
+          )}
         </div>
 
         {/* Footer Actions */}

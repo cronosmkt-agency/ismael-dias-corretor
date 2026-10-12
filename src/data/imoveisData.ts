@@ -47,42 +47,6 @@ export const ALL_BAIRROS = [
 
 export const allImoveisData: ProductItem[] = [
   {
-    "sku": "163110",
-    "name": "Vale dos Pássaros",
-    "price": 250000,
-    "cat": "Casas",
-    "badge": "Lançamento Clube",
-    "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260224171547/WhatsApp%20Image%202026-02-24%20at%2014.10.06%20(2)-original.webp",
-    "images": [
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260224171547/WhatsApp%20Image%202026-02-24%20at%2014.10.06%20(2)-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260224171546/WhatsApp%20Image%202026-02-24%20at%2014.10.06%20(3)-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132528/IMG-20240831-WA0003-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132534/IMG-20240831-WA0005-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132543/IMG-20240905-WA0064-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132559/IMG-20240905-WA0070-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132630/Imagem%20do%20WhatsApp%20de%202024-09-01%20%C3%A0%28s%29%2017.08.45_2ea2437c-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132613/IMG-20240905-WA0066-original.webp"
-    ],
-    "specs": "Teresópolis - RJ",
-    "storage": "Área Construída",
-    "condition": "Pronto para Morar",
-    "warranty": "Angeleti Construtora",
-    "battery": "Excelente Posição Solar",
-    "screen": "Prata, Teresópolis - RJ",
-    "camera": "Lazer e Sossego",
-    "chip": "15% Entrada + até 120x Direto",
-    "boxItems": [
-      "Localização privilegiada em Teresópolis - RJ",
-      "Documentação e procedência jurídica garantida",
-      "Assessoria completa com o corretor Ismael Dias",
-      "Agendamento de visita VIP no local",
-      "Excelente potencial de valorização na Região Serrana"
-    ],
-    "description": "O Condomínio Residencial Vale dos Pássaros é um empreendimento desenvolvido pela Angeleti Incorporadora e Construtora, projetado para oferecer conforto, tranquilidade e contato direto com a natureza, sem abrir mão de segurança e organização urbana.\n\nImplantado em uma área de topografia favorável e solo firme, o condomínio conta com lotes bem dimensionados, que permitem excelente aproveitamento construtivo, atendendo tanto projetos residenciais quanto oportunidades de investimento. Sua concepção prioriza a harmonia com o entorno natural, proporcionando um ambiente agradável, silencioso e visualmente valorizado.\n\nO Vale dos Pássaros é ideal para quem busca moradia definitiva, casa de veraneio ou valorização patrimonial, contando ainda com fluxo de pagamento facilitado direto com a incorporadora, sem intermediação bancária, reforçando a proposta de simplicidade, transparência e segurança jurídica.",
-    "url": "https://habittathouse.com.br/imovel/163110",
-    "bairro": "Prata"
-  },
-  {
     "sku": "268624",
     "name": "Terreno na cidade para construção de Prédio residencial Minha Casa Minha Vida",
     "price": 3500000,
@@ -3271,42 +3235,6 @@ export const allImoveisData: ProductItem[] = [
     "description": "Apartamento em Albuquerque, Teresópolis – RJ. Habittat House Imobiliária.",
     "url": "https://habittathouse.com.br/imovel/323586",
     "bairro": "Albuquerque"
-  },
-  {
-    "sku": "324009",
-    "name": "Golden Green",
-    "price": 250000,
-    "cat": "Casas",
-    "badge": "Vista Panorâmica",
-    "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135444/ARTE%20TERRENO%2003-original.webp",
-    "images": [
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135444/ARTE%20TERRENO%2003-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135444/ARTE%20TERRENO%2002-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135445/ARTE%20TERRENO%2001-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135437/INSTITUCIONAL%20GOLDEN%20GREEN%2001-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135442/ARTE%20TERRENO%2005-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135434/INSTITUCIONAL%20GOLDEN%20GREEN%2004-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135436/INSTITUCIONAL%20GOLDEN%20GREEN%2008-original.webp",
-      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135440/CARROSSEL%20INSTITUCIONAL%20GOLDEN%20GREEN%2003-original.webp"
-    ],
-    "specs": "Teresópolis - RJ",
-    "storage": "Área Construída",
-    "condition": "Pronto para Morar",
-    "warranty": "Habittat House Imobiliária",
-    "battery": "Excelente Posição Solar",
-    "screen": "Teresópolis - RJ",
-    "camera": "Vista Panorâmica da Serra",
-    "chip": "Aceita Financiamento Bancário",
-    "boxItems": [
-      "Localização privilegiada em Teresópolis - RJ",
-      "Documentação e procedência jurídica garantida",
-      "Assessoria completa com o corretor Ismael Dias",
-      "Agendamento de visita VIP no local",
-      "Excelente potencial de valorização na Região Serrana"
-    ],
-    "description": "Empreendimento localizado no KM 4,5 da estrada Teresópolis x Friburgo com vista 360º para as montanhas e belezas naturais.",
-    "url": "https://habittathouse.com.br/imovel/324009",
-    "bairro": "Teresópolis"
   },
   {
     "sku": "324430",

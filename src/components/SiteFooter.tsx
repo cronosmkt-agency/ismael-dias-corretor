@@ -68,15 +68,6 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               </li>
               <li>
                 <Link
-                  to="/lancamentos"
-                  className="transition hover:text-blue-600 font-semibold"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Montares Residencial (Vargem Grande)
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/loja"
                   className="transition hover:text-blue-600"
                   style={{ color: "var(--text-secondary)" }}

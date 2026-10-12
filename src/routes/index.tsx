@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Encontre lotes e casas em condomínio fechado em Teresópolis com o corretor Ismael Dias na Habittat House. Especialista nos condomínios Golden Green, Vale dos Pássaros e Montares da Angeleti Construtora. Entrada de 15% e saldo em até 120x direto com a incorporadora.",
+          "Encontre lotes e casas em condomínio fechado em Teresópolis com o corretor Ismael Dias na Habittat House. Especialista nos condomínios Golden Green e Vale dos Pássaros da Angeleti Construtora. Entrada de 15% e saldo em até 120x direto com a incorporadora.",
       },
       { property: "og:title", content: "Ismael Dias — Corretor de Imóveis | Habittat House" },
       {
@@ -188,9 +188,8 @@ function Hero() {
           {/* Value Prop Subtitle */}
           <p className="mt-3 sm:mt-5 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
             Encontre o terreno ou residência ideal para você e sua família nos condomínios{" "}
-            <strong className="text-slate-900 dark:text-white font-bold">Golden Green</strong>,{" "}
-            <strong className="text-slate-900 dark:text-white font-bold">Vale dos Pássaros</strong> e{" "}
-            <strong className="text-slate-900 dark:text-white font-bold">Montares</strong>.
+            <strong className="text-slate-900 dark:text-white font-bold">Golden Green</strong> e{" "}
+            <strong className="text-slate-900 dark:text-white font-bold">Vale dos Pássaros</strong>.
             Entrada a partir de 15% e{" "}
             <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">
               saldo em até 120 parcelas direto com a incorporadora Angeleti!
@@ -445,7 +444,7 @@ function BrokerProfileSection() {
                     <span>Parceria Oficial Angeleti</span>
                   </div>
                   <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
-                    Acesso direto às tabelas de Golden Green, Vale dos Pássaros e Montares (15% + 120x).
+                    Acesso direto às tabelas de Golden Green e Vale dos Pássaros (15% + 120x).
                   </p>
                 </div>
 
@@ -613,7 +612,7 @@ function TrustAndHybrid() {
    ========================================================================= */
 function FinanciamentoDireto() {
   const handleSimularWhatsApp = () => {
-    const text = `Olá, equipe Habittat House! Gostaria de fazer uma simulação de financiamento direto para compra de lote nos condomínios da Angeleti (Golden Green, Vale dos Pássaros ou Montares).`;
+    const text = `Olá, equipe Habittat House! Gostaria de fazer uma simulação de financiamento direto para compra de lote nos condomínios da Angeleti (Golden Green ou Vale dos Pássaros).`;
     window.open(`${WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
@@ -621,7 +620,7 @@ function FinanciamentoDireto() {
     {
       num: "1",
       title: "Escolha o Empreendimento",
-      desc: "Golden Green (Albuquerque), Vale dos Pássaros (Prata) ou Montares (Vargem Grande).",
+      desc: "Golden Green (Albuquerque) ou Vale dos Pássaros (Prata).",
     },
     {
       num: "2",
@@ -846,7 +845,7 @@ function BrandStore() {
         {/* 1. Hero com Empreendimentos e Imóveis */}
         <Hero />
 
-        {/* 2. Destaques: Lotes Golden Green, Vale dos Pássaros, Montares */}
+        {/* 2. Destaques: Lotes Golden Green e Vale dos Pássaros */}
         <FeaturedProducts
           products={productList}
           onSelectProduct={handleOpenDetail}

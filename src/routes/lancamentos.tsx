@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   ArrowRight,
   Mountain,
+  Instagram,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -47,11 +48,6 @@ const lancamentosCategoryMeta: Record<
     label: "Condomínio",
     line2: "Clube",
   },
-  "Condomínio Equestre": {
-    icon: Trees,
-    label: "Condomínio",
-    line2: "Equestre",
-  },
   "Lotes Panorâmicos": {
     icon: Mountain,
     label: "Lotes",
@@ -66,7 +62,7 @@ export const Route = createFileRoute("/lancamentos")({
       {
         name: "description",
         content:
-          "Lançamentos residenciais da Angeleti Construtora em Teresópolis: Golden Green, Vale dos Pássaros e Montares. Terrenos em condomínio fechado com entrada de 15% e até 120 parcelas direto com a incorporadora.",
+          "Lançamentos residenciais da Angeleti Construtora em Teresópolis: Golden Green e Vale dos Pássaros. Terrenos em condomínio fechado com entrada de 15% e até 120 parcelas direto com a incorporadora.",
       },
       { property: "og:title", content: "Lançamentos e Condomínios Fechados — Habittat House" },
       {
@@ -183,8 +179,8 @@ Gostaria de agendar uma visita guiada com você no local!`;
         </div>
 
         {/* Seletor de Categorias — Uma do lado da outra com ícone em cima e texto pequeno */}
-        <div className="mt-5 sm:mt-6 max-w-2xl mx-auto">
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5">
+        <div className="mt-5 sm:mt-6 max-w-xl mx-auto">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5">
             {lancamentosFilters.map((fl) => {
               const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
               const Icon = meta.icon;
@@ -300,7 +296,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Buscar por condomínio ou localização (ex: Golden Green, Vale dos Pássaros, Montares)..."
+              placeholder="Buscar por condomínio ou localização (ex: Golden Green, Vale dos Pássaros, Albuquerque, Prata)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
@@ -350,11 +346,25 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 key={prod.name + idx}
                 className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1"
               >
-                {/* Badge Superior — Linha Própria com texto completo */}
+                {/* Badge Superior — Linha Própria com texto completo e Instagram */}
                 <div className="flex items-center justify-between gap-1 mb-1.5">
                   <span className="text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60">
                     {prod.badge}
                   </span>
+                  {prod.instagramUrl && (
+                    <a
+                      href={prod.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-[10px] font-bold text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 px-2 py-0.5 rounded-md bg-pink-50/90 dark:bg-pink-950/40 border border-pink-200/60 dark:border-pink-800/40 transition hover:scale-105 active:scale-95 shadow-2xs"
+                      title={`Acompanhar no Instagram oficial: ${prod.instagram}`}
+                    >
+                      <Instagram className="w-3 h-3 text-pink-500 shrink-0" />
+                      <span className="hidden sm:inline">{prod.instagram}</span>
+                      <span className="sm:hidden">Insta</span>
+                    </a>
+                  )}
                 </div>
 
                 {/* Imagem do Terreno com Metragem Sobreposta */}
@@ -456,10 +466,22 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 {/* Informações e Botões à direita */}
                 <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
                   <div>
-                    <div className="flex items-center gap-1 mb-1">
+                    <div className="flex items-center justify-between gap-1 mb-1">
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40">
                         {prod.badge}
                       </span>
+                      {prod.instagramUrl && (
+                        <a
+                          href={prod.instagramUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 text-[9px] font-bold text-pink-600 dark:text-pink-400 px-1.5 py-0.5 rounded-md bg-pink-50 dark:bg-pink-950/40 border border-pink-200/60 dark:border-pink-800/40"
+                        >
+                          <Instagram className="w-2.5 h-2.5 text-pink-500 shrink-0" />
+                          <span>{prod.instagram}</span>
+                        </a>
+                      )}
                     </div>
 
                     <h3
