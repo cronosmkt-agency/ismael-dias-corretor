@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Home,
   LayoutGrid,
@@ -15,6 +15,10 @@ import {
   ArrowRight,
   Sparkles,
   Mountain,
+  ChevronDown,
+  DollarSign,
+  ArrowUpDown,
+  RotateCcw,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -76,6 +80,158 @@ const imoveisCategoryMeta: Record<
   },
 };
 
+const BAIRRO_OPTIONS = [
+  { value: "Todos", label: "Todos os Bairros" },
+  { value: "Teresópolis (Todos)", label: "Teresópolis (Todos)" },
+  ...ALL_BAIRROS.filter((b) => b !== "Todos" && b !== "Teresópolis (Todos)").map((b) => ({
+    value: b,
+    label: b,
+  })),
+];
+
+const PRICE_RANGE_OPTIONS = [
+  { value: "all", label: "Todas as faixas de valor" },
+  { value: "under-300", label: "Até R$ 300 mil" },
+  { value: "300-600", label: "R$ 300 mil a R$ 600 mil" },
+  { value: "600-1000", label: "R$ 600 mil a R$ 1 Milhão" },
+  { value: "1000-2000", label: "R$ 1 Milhão a R$ 2 Milhões" },
+  { value: "over-2000", label: "Acima de R$ 2 Milhões" },
+];
+
+const SORT_OPTIONS = [
+  { value: "default", label: "Destaques (Padrão)" },
+  { value: "price-asc", label: "Menor Valor" },
+  { value: "price-desc", label: "Maior Valor" },
+  { value: "name-asc", label: "Nome (A - Z)" },
+];
+
+interface FilterDropdownProps {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (val: string) => void;
+  searchable?: boolean;
+  className?: string;
+}
+
+function FilterDropdown({
+  icon: Icon,
+  label,
+  value,
+  options,
+  onChange,
+  searchable = false,
+  className = "",
+}: FilterDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+        setSearchTerm("");
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const selectedOpt = options.find((o) => o.value === value);
+  const isDefault = !selectedOpt || selectedOpt.value === options[0]?.value;
+  const displayText = isDefault ? label : selectedOpt.label;
+
+  const filteredOptions =
+    searchable && searchTerm.trim()
+      ? options.filter((o) => o.label.toLowerCase().includes(searchTerm.toLowerCase()))
+      : options;
+
+  return (
+    <div ref={dropdownRef} className={`relative ${className}`}>
+      <button
+        type="button"
+        onClick={() => {
+          setIsOpen((prev) => !prev);
+          setSearchTerm("");
+        }}
+        className={`flex items-center justify-between gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-xs border select-none ${
+          !isDefault
+            ? "bg-blue-50/90 dark:bg-sky-950/70 border-blue-400 dark:border-sky-600 text-blue-700 dark:text-sky-300 ring-2 ring-blue-500/20"
+            : "glass border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 bg-white/90 dark:bg-slate-900/90"
+        }`}
+      >
+        <div className="flex items-center gap-1.5 min-w-0">
+          <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500 shrink-0" />
+          <span className="truncate max-w-[120px] sm:max-w-[160px] text-left">
+            {displayText}
+          </span>
+        </div>
+        <ChevronDown
+          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0 ${
+            isOpen ? "rotate-180 text-blue-500" : ""
+          }`}
+        />
+      </button>
+
+      {isOpen && (
+        <div className="absolute left-0 sm:left-auto sm:right-0 top-full mt-1.5 z-50 min-w-[210px] max-w-[280px] rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 max-h-72 flex flex-col">
+          {searchable && (
+            <div className="p-1 mb-1 border-b border-slate-100 dark:border-slate-800">
+              <input
+                type="text"
+                autoFocus
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Buscar bairro..."
+                className="w-full px-2.5 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-none focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          )}
+          <div className="overflow-y-auto overscroll-contain flex-1 divide-y divide-slate-100/40 dark:divide-slate-800/40">
+            {filteredOptions.length === 0 ? (
+              <div className="px-3 py-2 text-xs text-slate-400 text-center">
+                Nenhuma opção encontrada
+              </div>
+            ) : (
+              filteredOptions.map((opt) => {
+                const isSelected = opt.value === value;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => {
+                      onChange(opt.value);
+                      setIsOpen(false);
+                      setSearchTerm("");
+                    }}
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer text-left ${
+                      isSelected
+                        ? "bg-blue-600 text-white font-bold"
+                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                    }`}
+                  >
+                    <span className="truncate">{opt.label}</span>
+                    {isSelected && <Check className="w-3.5 h-3.5 shrink-0 ml-1.5" />}
+                  </button>
+                );
+              })
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/loja")({
   head: () => ({
     meta: [
@@ -101,6 +257,8 @@ function LojaPage() {
   const [productList, setProductList] = useState<ProductItem[]>(imoveisAvulsosProducts);
   const [activeFilter, setActiveFilter] = useState<string>("Todos");
   const [selectedBairro, setSelectedBairro] = useState<string>("Todos");
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<string>("default");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
@@ -164,24 +322,69 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
   };
 
   // Filter & Search
-  const filtered = productList.filter((item) => {
-    const matchCat =
-      activeFilter === "Todos" ||
-      item.cat === activeFilter;
-    const matchBairro =
-      selectedBairro === "Todos" ||
-      (selectedBairro === "Teresópolis (Todos)" && ((item.screen && item.screen.toLowerCase().includes("teresópolis")) || item.bairro === "Teresópolis")) ||
-      (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase()) ||
-      (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase()));
-    const matchSearch =
-      searchQuery.trim() === "" ||
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.sku && item.sku.includes(searchQuery.trim()));
-    return matchCat && matchBairro && matchSearch;
-  });
+  const filtered = productList
+    .filter((item) => {
+      const matchCat =
+        activeFilter === "Todos" || item.cat === activeFilter;
+
+      const matchBairro =
+        selectedBairro === "Todos" ||
+        (selectedBairro === "Teresópolis (Todos)" &&
+          ((item.screen && item.screen.toLowerCase().includes("teresópolis")) ||
+            item.bairro === "Teresópolis")) ||
+        (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase()) ||
+        (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase()));
+
+      let matchPrice = true;
+      if (selectedPriceRange === "under-300") {
+        matchPrice = item.price <= 300000;
+      } else if (selectedPriceRange === "300-600") {
+        matchPrice = item.price > 300000 && item.price <= 600000;
+      } else if (selectedPriceRange === "600-1000") {
+        matchPrice = item.price > 600000 && item.price <= 1000000;
+      } else if (selectedPriceRange === "1000-2000") {
+        matchPrice = item.price > 1000000 && item.price <= 2000000;
+      } else if (selectedPriceRange === "over-2000") {
+        matchPrice = item.price > 2000000;
+      }
+
+      const matchSearch =
+        searchQuery.trim() === "" ||
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.sku && item.sku.includes(searchQuery.trim()));
+
+      return matchCat && matchBairro && matchPrice && matchSearch;
+    })
+    .sort((a, b) => {
+      if (sortBy === "price-asc") {
+        return a.price - b.price;
+      }
+      if (sortBy === "price-desc") {
+        return b.price - a.price;
+      }
+      if (sortBy === "name-asc") {
+        return a.name.localeCompare(b.name, "pt-BR");
+      }
+      return 0;
+    });
+
+  const hasActiveFilters =
+    activeFilter !== "Todos" ||
+    selectedBairro !== "Todos" ||
+    selectedPriceRange !== "all" ||
+    sortBy !== "default" ||
+    searchQuery.trim() !== "";
+
+  const handleClearAllFilters = () => {
+    setActiveFilter("Todos");
+    setSelectedBairro("Todos");
+    setSelectedPriceRange("all");
+    setSortBy("default");
+    setSearchQuery("");
+  };
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -193,7 +396,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold glass mb-2 border border-blue-500/20 text-blue-600 dark:text-sky-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Imóveis Avulsos ({filtered.length} disponíveis)</span>
+            <span>Imóveis Selecionados</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
@@ -286,85 +489,16 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           </div>
         </div>
 
-        {/* Linha Combinada Mobile: Barra de busca + Bairro + Modo Grade/Vitrine */}
-        <div className="sm:hidden mt-3 space-y-2">
-          <div className="flex items-center gap-2">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Buscar por código, rua..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-
-            <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
-              <button
-                onClick={() => setViewMode("compact")}
-                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === "compact"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Grade 2 por linha"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span className="text-[10px]">Grade</span>
-              </button>
-
-              <button
-                onClick={() => setViewMode("showcase")}
-                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === "showcase"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Vitrine 1 por linha"
-              >
-                <Home className="w-3.5 h-3.5" />
-                <span className="text-[10px]">Vitrine</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Filtro por Bairro no Mobile */}
-          <div className="flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-            <select
-              value={selectedBairro}
-              onChange={(e) => setSelectedBairro(e.target.value)}
-              className="w-full py-1.5 px-2.5 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 cursor-pointer focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="Todos">📍 Todos os Bairros ({filtered.length} imóveis)</option>
-              {ALL_BAIRROS.filter((b) => b !== "Todos").map((b) => (
-                <option key={b} value={b}>
-                  {b}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Controles Desktop: Barra de Busca + Filtro Bairro + Contagem */}
-        <div className="hidden sm:flex mt-5 max-w-4xl mx-auto items-center justify-between gap-3">
-          <div className="relative flex-1">
+        {/* Barra de Pesquisa Centralizada e Compacta */}
+        <div className="mt-5 sm:mt-6 max-w-md mx-auto">
+          <div className="relative">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Buscar por código (#SKU), condomínio, suítes ou características..."
+              placeholder="Buscar por código (#SKU), condomínio, rua..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
+              className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
             />
             {searchQuery && (
               <button
@@ -375,27 +509,78 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               </button>
             )}
           </div>
+        </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
-            <MapPin className="w-4 h-4 text-blue-500 shrink-0" />
-            <select
-              value={selectedBairro}
-              onChange={(e) => setSelectedBairro(e.target.value)}
-              className="py-2.5 px-3 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 cursor-pointer focus:ring-2 focus:ring-blue-500 shadow-xs max-w-[210px]"
+        {/* Barra de Filtros (Bairro, Faixa de Preço, Ordenar) + Modo Grade/Vitrine */}
+        <div className="mt-3.5 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-2">
+          {/* Dropdown Bairro (customizado, sem erro de seleção no clique) */}
+          <FilterDropdown
+            icon={MapPin}
+            label="Bairro"
+            value={selectedBairro}
+            options={BAIRRO_OPTIONS}
+            onChange={setSelectedBairro}
+            searchable={true}
+          />
+
+          {/* Dropdown Faixa de Preço */}
+          <FilterDropdown
+            icon={DollarSign}
+            label="Faixa de Preço"
+            value={selectedPriceRange}
+            options={PRICE_RANGE_OPTIONS}
+            onChange={setSelectedPriceRange}
+          />
+
+          {/* Dropdown Ordenação */}
+          <FilterDropdown
+            icon={ArrowUpDown}
+            label="Ordenar"
+            value={sortBy}
+            options={SORT_OPTIONS}
+            onChange={setSortBy}
+          />
+
+          {/* Alternador Grade / Vitrine */}
+          <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
+            <button
+              onClick={() => setViewMode("compact")}
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "compact"
+                  ? "btn-primary-glow text-white shadow-xs"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+              }`}
+              title="Grade 2 por linha"
             >
-              <option value="Todos">📍 Todos os Bairros</option>
-              {ALL_BAIRROS.filter((b) => b !== "Todos").map((b) => (
-                <option key={b} value={b}>
-                  {b}
-                </option>
-              ))}
-            </select>
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span className="text-[10px] sm:text-xs">Grade</span>
+            </button>
+
+            <button
+              onClick={() => setViewMode("showcase")}
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "showcase"
+                  ? "btn-primary-glow text-white shadow-xs"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+              }`}
+              title="Vitrine 1 por linha"
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span className="text-[10px] sm:text-xs">Vitrine</span>
+            </button>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{filtered.length} imóveis disponíveis</span>
-          </div>
+          {/* Botão Limpar Filtros quando algum filtro estiver ativo */}
+          {hasActiveFilters && (
+            <button
+              onClick={handleClearAllFilters}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-rose-200/70 dark:border-rose-900/50 transition cursor-pointer shadow-xs"
+              title="Limpar todos os filtros e busca"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Limpar</span>
+            </button>
+          )}
         </div>
 
         {/* Grade de Imóveis */}
@@ -407,11 +592,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               Tente buscar por outro termo ou limpe o filtro de busca.
             </p>
             <button
-              onClick={() => {
-                setSearchQuery("");
-                setActiveFilter("Todos");
-                setSelectedBairro("Todos");
-              }}
+              onClick={handleClearAllFilters}
               className="mt-4 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer hover:bg-blue-700"
             >
               Ver todos os imóveis

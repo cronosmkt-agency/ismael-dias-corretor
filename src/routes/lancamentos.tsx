@@ -13,7 +13,6 @@ import {
   ShieldCheck,
   ArrowRight,
   Mountain,
-  Instagram,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -157,7 +156,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold glass mb-2 border border-blue-500/20 text-blue-600 dark:text-sky-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Condomínios Fechados Angeleti ({filtered.length} empreendimentos)</span>
+            <span>Condomínios Fechados Angeleti</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
@@ -290,13 +289,13 @@ Gostaria de agendar uma visita guiada com você no local!`;
           </div>
         </div>
 
-        {/* Controles Desktop: Barra de Busca + Contagem */}
-        <div className="hidden sm:flex mt-5 max-w-2xl mx-auto items-center justify-between gap-3">
-          <div className="relative flex-1">
+        {/* Controles Desktop: Barra de Busca Centralizada */}
+        <div className="hidden sm:flex mt-5 max-w-md mx-auto items-center justify-center">
+          <div className="relative w-full">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Buscar por condomínio ou localização (ex: Golden Green, Vale dos Pássaros, Albuquerque, Prata)..."
+              placeholder="Buscar por condomínio ou localização..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
@@ -309,11 +308,6 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 Limpar
               </button>
             )}
-          </div>
-
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{filtered.length} empreendimentos disponíveis</span>
           </div>
         </div>
 
@@ -346,25 +340,11 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 key={prod.name + idx}
                 className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1"
               >
-                {/* Badge Superior — Linha Própria com texto completo e Instagram */}
+                {/* Badge Superior */}
                 <div className="flex items-center justify-between gap-1 mb-1.5">
                   <span className="text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60">
                     {prod.badge}
                   </span>
-                  {prod.instagramUrl && (
-                    <a
-                      href={prod.instagramUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 text-[10px] font-bold text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 px-2 py-0.5 rounded-md bg-pink-50/90 dark:bg-pink-950/40 border border-pink-200/60 dark:border-pink-800/40 transition hover:scale-105 active:scale-95 shadow-2xs"
-                      title={`Acompanhar no Instagram oficial: ${prod.instagram}`}
-                    >
-                      <Instagram className="w-3 h-3 text-pink-500 shrink-0" />
-                      <span className="hidden sm:inline">{prod.instagram}</span>
-                      <span className="sm:hidden">Insta</span>
-                    </a>
-                  )}
                 </div>
 
                 {/* Imagem do Terreno com Metragem Sobreposta */}
@@ -470,18 +450,6 @@ Gostaria de agendar uma visita guiada com você no local!`;
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40">
                         {prod.badge}
                       </span>
-                      {prod.instagramUrl && (
-                        <a
-                          href={prod.instagramUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 text-[9px] font-bold text-pink-600 dark:text-pink-400 px-1.5 py-0.5 rounded-md bg-pink-50 dark:bg-pink-950/40 border border-pink-200/60 dark:border-pink-800/40"
-                        >
-                          <Instagram className="w-2.5 h-2.5 text-pink-500 shrink-0" />
-                          <span>{prod.instagram}</span>
-                        </a>
-                      )}
                     </div>
 
                     <h3

@@ -120,8 +120,8 @@ export const reviews = [
 export const lancamentosProducts: ProductItem[] = [
   {
     sku: "324009",
-    name: "Golden Green Residencial — Lote Panorâmico",
-    price: 200000,
+    name: "Golden Green",
+    price: 267000,
     cat: "Lotes Panorâmicos",
     badge: "Vista Dedo de Deus",
     img: "/imoveis/golden-green-capa.jpg",
@@ -141,7 +141,7 @@ export const lancamentosProducts: ProductItem[] = [
     condition: "Condomínio Fechado de Alto Padrão em Albuquerque",
     warranty: "Angeleti Construtora (+20 anos)",
     battery: "Topografia Plana e Suave Aclive",
-    screen: "Albuquerque — Teresópolis/RJ (~10 min do Centro)",
+    screen: "Albuquerque — Teresópolis/RJ",
     camera: "Vista Dedo de Deus e Mulher de Pedra",
     chip: "15% Entrada + até 120x (IPCA + 1% a.m.)",
     instagram: "@goldengreenresidencial",
