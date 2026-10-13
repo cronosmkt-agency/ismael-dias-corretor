@@ -54,7 +54,17 @@ import {
   Layers,
   Phone,
   ShieldCheck,
+  Cloud,
+  RefreshCw,
 } from "lucide-react";
+import {
+  isSupabaseConfigured,
+  testSupabaseConnection,
+  syncAllPropertiesToSupabase,
+  setCustomSupabaseCredentials,
+  getSupabaseUrl,
+  getSupabaseAnonKey,
+} from "@/services/supabaseClient";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -110,8 +120,29 @@ export function AdminDashboardPage() {
   // Properties State
   const [properties, setProperties] = useState<ProductItem[]>([]);
   const [settings, setSettings] = useState<SiteSettings>(getSiteSettings());
-  const [settingsForm, setSettingsForm] = useState<SiteSettings>(getSiteSettings());
+  const [settingsForm, setSettingsForm] = useState<SiteSettings>(() => {
+    const cur = getSiteSettings();
+    return {
+      ...cur,
+      supabaseUrl: cur.supabaseUrl || getSupabaseUrl(),
+      supabaseAnonKey: cur.supabaseAnonKey || getSupabaseAnonKey(),
+    };
+  });
   const [showPin, setShowPin] = useState(false);
+
+  // Supabase Backend States
+  const [supabaseTesting, setSupabaseTesting] = useState(false);
+  const [supabaseStatus, setSupabaseStatus] = useState<{
+    tested: boolean;
+    success: boolean;
+    message: string;
+    count?: number;
+  }>({
+    tested: false,
+    success: false,
+    message: "",
+  });
+  const [supabaseSyncing, setSupabaseSyncing] = useState(false);
 
   // Filter & Search State
   const [searchQuery, setSearchQuery] = useState("");
@@ -488,9 +519,61 @@ export function AdminDashboardPage() {
   // Salvar Configurações
   const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
+    setCustomSupabaseCredentials(
+      settingsForm.supabaseUrl || "",
+      settingsForm.supabaseAnonKey || ""
+    );
     const updated = saveSiteSettings(settingsForm);
     setSettings(updated);
-    toast.success("Configurações do site salvas com sucesso!");
+    toast.success("Configurações do site e backend salvas com sucesso!");
+  };
+
+  // Testar Conexão com Supabase
+  const handleTestSupabase = async () => {
+    setSupabaseTesting(true);
+    setCustomSupabaseCredentials(
+      settingsForm.supabaseUrl || "",
+      settingsForm.supabaseAnonKey || ""
+    );
+    const res = await testSupabaseConnection();
+    setSupabaseStatus({
+      tested: true,
+      success: res.success,
+      message: res.message,
+      count: res.count,
+    });
+    setSupabaseTesting(false);
+    if (res.success) {
+      toast.success(
+        `Backend Supabase Conectado! ${res.count ?? 0} imóveis encontrados na nuvem.`
+      );
+    } else {
+      toast.error(`Falha no Supabase: ${res.message}`);
+    }
+  };
+
+  // Sincronizar catálogo para o Supabase
+  const handleSyncToSupabase = async () => {
+    if (!settingsForm.supabaseUrl || !settingsForm.supabaseAnonKey) {
+      toast.error(
+        "Preencha a URL e a Chave Anon do Supabase nas configurações primeiro."
+      );
+      return;
+    }
+    setSupabaseSyncing(true);
+    setCustomSupabaseCredentials(
+      settingsForm.supabaseUrl,
+      settingsForm.supabaseAnonKey
+    );
+    toast.info("Iniciando envio dos 175 imóveis para o PostgreSQL na nuvem...");
+    const res = await syncAllPropertiesToSupabase(properties);
+    setSupabaseSyncing(false);
+    if (res.success) {
+      toast.success(res.message);
+      handleTestSupabase();
+    } else {
+      toast.error(res.message);
+    }
   };
 
   // Resetar Configurações
@@ -1795,6 +1878,104 @@ export function AdminDashboardPage() {
                       title={showPin ? "Ocultar PIN" : "Mostrar PIN"}
                     >
                       {showPin ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Seção 5: Backend & Banco de Dados em Nuvem (Supabase) */}
+              <div className="space-y-4 pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                  <h3 className="text-xs font-black uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                    <Database className="w-4 h-4" />
+                    <span>Backend em Nuvem (Banco de Dados PostgreSQL — Supabase)</span>
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    {isSupabaseConfigured() ? (
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-black flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3" />
+                        <span>Nuvem Ativa</span>
+                      </span>
+                    ) : (
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-black flex items-center gap-1">
+                        <AlertCircle className="w-3 h-3" />
+                        <span>Modo Local (Offline)</span>
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Conecte seu banco de dados 100% gratuito no <strong>Supabase</strong> para que todas as informações e fotos fiquem hospedadas em um servidor de nuvem de alta velocidade em São Paulo, sem depender de dados em código.
+                </p>
+
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      URL do Projeto Supabase (Project URL)
+                    </label>
+                    <input
+                      type="url"
+                      value={settingsForm.supabaseUrl || ""}
+                      onChange={(e) =>
+                        setSettingsForm({ ...settingsForm, supabaseUrl: e.target.value })
+                      }
+                      placeholder="https://sua-empresa.supabase.co"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-white font-mono focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      Chave Pública Anon (anon public key)
+                    </label>
+                    <input
+                      type="password"
+                      value={settingsForm.supabaseAnonKey || ""}
+                      onChange={(e) =>
+                        setSettingsForm({ ...settingsForm, supabaseAnonKey: e.target.value })
+                      }
+                      placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-white font-mono focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Ações de Teste e Sincronização */}
+                <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex flex-wrap items-center justify-between gap-3">
+                  <div className="text-xs">
+                    {supabaseStatus.tested ? (
+                      <span className={supabaseStatus.success ? "text-emerald-400 font-bold" : "text-rose-400 font-bold"}>
+                        {supabaseStatus.message}
+                      </span>
+                    ) : (
+                      <span className="text-slate-400">
+                        {isSupabaseConfigured()
+                          ? "Credenciais inseridas. Teste a conexão para verificar."
+                          : "Crie um projeto grátis no supabase.com para conectar."}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handleTestSupabase}
+                      disabled={supabaseTesting}
+                      className="px-3.5 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 ${supabaseTesting ? "animate-spin" : ""}`} />
+                      <span>{supabaseTesting ? "Testando..." : "Testar Conexão"}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleSyncToSupabase}
+                      disabled={supabaseSyncing}
+                      className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-md shadow-emerald-600/20"
+                    >
+                      <Cloud className={`w-3.5 h-3.5 ${supabaseSyncing ? "animate-bounce" : ""}`} />
+                      <span>{supabaseSyncing ? "Enviando Imóveis..." : "Enviar 175 Imóveis para Nuvem"}</span>
                     </button>
                   </div>
                 </div>

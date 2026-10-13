@@ -16,6 +16,8 @@ export interface SiteSettings {
   enableChatAssistant: boolean;
   highlightNotice: string;
   hideSoldProperties?: boolean;
+  supabaseUrl?: string;
+  supabaseAnonKey?: string;
 }
 
 export const DEFAULT_SETTINGS: SiteSettings = {
@@ -31,6 +33,8 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   enableChatAssistant: true,
   highlightNotice: "Condomínios Fechados Angeleti: 15% de entrada e parcelamento direto em até 120x!",
   hideSoldProperties: true,
+  supabaseUrl: "",
+  supabaseAnonKey: "",
 };
 
 const SETTINGS_STORAGE_KEY = "ismael_dias_site_settings_v1";

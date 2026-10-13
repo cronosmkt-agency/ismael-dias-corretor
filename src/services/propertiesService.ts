@@ -5,36 +5,87 @@
 
 import { allImoveisData } from "@/data/imoveisData";
 import type { ProductItem } from "@/components/ProductDetailModal";
+import {
+  isSupabaseConfigured,
+  fetchPropertiesFromSupabase,
+  updatePropertyInSupabase,
+  insertPropertyInSupabase,
+  deletePropertyInSupabase,
+} from "./supabaseClient";
 
 const STORAGE_KEY_OVERRIDES = "ismael_properties_overrides_v1";
 const STORAGE_KEY_ADDED = "ismael_properties_added_v1";
 const STORAGE_KEY_DELETED = "ismael_properties_deleted_v1";
+const STORAGE_KEY_SUPABASE_CACHE = "ismael_supabase_cache_v1";
 
-export interface PaginatedParams {
-  page?: number;
-  pageSize?: number;
-  category?: string;
-  bairro?: string;
-  priceRange?: string;
-  search?: string;
-  sort?: string;
-  statusFilter?: "all" | "disponivel" | "vendida" | "reservado";
+let cachedSupabaseList: ProductItem[] | null = null;
+let isFetchingSupabase = false;
+
+/**
+ * Atualiza o cache local a partir do Supabase e notifica os componentes do site
+ */
+export async function refreshPropertiesFromSupabase(): Promise<ProductItem[]> {
+  if (!isSupabaseConfigured() || isFetchingSupabase) {
+    return getAllProperties();
+  }
+
+  try {
+    isFetchingSupabase = true;
+    const remoteList = await fetchPropertiesFromSupabase();
+    if (remoteList && remoteList.length > 0) {
+      cachedSupabaseList = remoteList;
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.setItem(STORAGE_KEY_SUPABASE_CACHE, JSON.stringify(remoteList));
+        } catch (_) {}
+        window.dispatchEvent(
+          new CustomEvent("properties-data-changed", { detail: { source: "supabase" } })
+        );
+      }
+      return remoteList;
+    }
+  } catch (err) {
+    console.error("Erro ao sincronizar com Supabase:", err);
+  } finally {
+    isFetchingSupabase = false;
+  }
+
+  return getAllProperties();
 }
 
-export interface PaginatedResult {
-  items: ProductItem[];
-  total: number;
-  totalPages: number;
-  page: number;
-  pageSize: number;
+// Inicia sincronização automática em background no cliente quando o Supabase estiver ativo
+if (typeof window !== "undefined") {
+  setTimeout(() => {
+    if (isSupabaseConfigured()) {
+      refreshPropertiesFromSupabase();
+    }
+  }, 100);
 }
 
 /**
- * Carrega a lista completa de imóveis mesclando o catálogo base com alterações do admin
+ * Carrega a lista completa de imóveis (prioriza Supabase se configurado, com fallback instantâneo)
  */
 export function getAllProperties(): ProductItem[] {
   if (typeof window === "undefined") return allImoveisData;
 
+  // 1. Se temos cache em memória do Supabase, retorna direto
+  if (cachedSupabaseList && cachedSupabaseList.length > 0) {
+    return cachedSupabaseList;
+  }
+
+  // 2. Se temos cache persistido do Supabase no LocalStorage, carrega
+  try {
+    const rawSupabaseCache = localStorage.getItem(STORAGE_KEY_SUPABASE_CACHE);
+    if (rawSupabaseCache && isSupabaseConfigured()) {
+      const parsed = JSON.parse(rawSupabaseCache);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        cachedSupabaseList = parsed;
+        return parsed;
+      }
+    }
+  } catch (_) {}
+
+  // 3. Fallback: Base unificada local de 175 imóveis com overrides do admin
   try {
     const rawOverrides = localStorage.getItem(STORAGE_KEY_OVERRIDES);
     const overrides: Record<string, Partial<ProductItem>> = rawOverrides
@@ -75,6 +126,25 @@ export function getAllProperties(): ProductItem[] {
     console.error("Erro ao carregar imóveis mesclados:", err);
     return allImoveisData;
   }
+}
+
+export interface PaginatedParams {
+  page?: number;
+  pageSize?: number;
+  category?: string;
+  bairro?: string;
+  priceRange?: string;
+  search?: string;
+  sort?: string;
+  statusFilter?: "all" | "disponivel" | "vendida" | "reservado";
+}
+
+export interface PaginatedResult {
+  items: ProductItem[];
+  total: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
 }
 
 /**
@@ -187,11 +257,22 @@ export function getPropertiesPaginated(params: PaginatedParams): PaginatedResult
 }
 
 /**
- * Atualiza um imóvel específico pelo SKU
+ * Atualiza um imóvel específico pelo SKU (Salva no Supabase e no cache local)
  */
 export function updateProperty(sku: string, updates: Partial<ProductItem>): void {
   if (typeof window === "undefined" || !sku) return;
   try {
+    // 1. Atualiza cache em memória do Supabase
+    if (cachedSupabaseList) {
+      cachedSupabaseList = cachedSupabaseList.map((p) =>
+        String(p.sku) === String(sku) ? { ...p, ...updates } : p
+      );
+      try {
+        localStorage.setItem(STORAGE_KEY_SUPABASE_CACHE, JSON.stringify(cachedSupabaseList));
+      } catch (_) {}
+    }
+
+    // 2. Persiste no LocalStorage local (fallback)
     const rawOverrides = localStorage.getItem(STORAGE_KEY_OVERRIDES);
     const overrides: Record<string, Partial<ProductItem>> = rawOverrides
       ? JSON.parse(rawOverrides)
@@ -204,6 +285,13 @@ export function updateProperty(sku: string, updates: Partial<ProductItem>): void
 
     localStorage.setItem(STORAGE_KEY_OVERRIDES, JSON.stringify(overrides));
     window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { sku, updates } }));
+
+    // 3. Persiste no Supabase em Nuvem em background
+    if (isSupabaseConfigured()) {
+      updatePropertyInSupabase(sku, updates).catch((err) =>
+        console.error("Erro background Supabase update:", err)
+      );
+    }
   } catch (err) {
     console.error("Erro ao atualizar imóvel:", err);
   }
@@ -213,33 +301,57 @@ export function updateProperty(sku: string, updates: Partial<ProductItem>): void
  * Altera rapidamente o status do imóvel (Disponível / VENDIDA / RESERVADO)
  */
 export function togglePropertyStatus(sku: string, newBadge: string): void {
-  updateProperty(sku, { badge: newBadge });
+  updateProperty(sku, { badge: newBadge, condition: newBadge });
 }
 
 /**
- * Cadastra um novo imóvel no sistema
+ * Cadastra um novo imóvel no sistema (Salva no Supabase e no cache local)
  */
 export function addProperty(newProperty: ProductItem): void {
   if (typeof window === "undefined") return;
   try {
+    // 1. Atualiza cache em memória do Supabase
+    if (cachedSupabaseList) {
+      cachedSupabaseList.unshift(newProperty);
+      try {
+        localStorage.setItem(STORAGE_KEY_SUPABASE_CACHE, JSON.stringify(cachedSupabaseList));
+      } catch (_) {}
+    }
+
+    // 2. Persiste localmente (fallback)
     const rawAdded = localStorage.getItem(STORAGE_KEY_ADDED);
     const added: ProductItem[] = rawAdded ? JSON.parse(rawAdded) : [];
 
-    // Adiciona no início da lista
     added.unshift(newProperty);
     localStorage.setItem(STORAGE_KEY_ADDED, JSON.stringify(added));
     window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { added: newProperty } }));
+
+    // 3. Persiste no Supabase em Nuvem em background
+    if (isSupabaseConfigured()) {
+      insertPropertyInSupabase(newProperty).catch((err) =>
+        console.error("Erro background Supabase insert:", err)
+      );
+    }
   } catch (err) {
     console.error("Erro ao adicionar imóvel:", err);
   }
 }
 
 /**
- * Remove um imóvel (soft delete)
+ * Remove um imóvel (soft delete local e remoção no Supabase)
  */
 export function deleteProperty(sku: string): void {
   if (typeof window === "undefined" || !sku) return;
   try {
+    // 1. Atualiza cache em memória do Supabase
+    if (cachedSupabaseList) {
+      cachedSupabaseList = cachedSupabaseList.filter((p) => String(p.sku) !== String(sku));
+      try {
+        localStorage.setItem(STORAGE_KEY_SUPABASE_CACHE, JSON.stringify(cachedSupabaseList));
+      } catch (_) {}
+    }
+
+    // 2. Persiste localmente (fallback)
     const rawDeleted = localStorage.getItem(STORAGE_KEY_DELETED);
     const deleted: string[] = rawDeleted ? JSON.parse(rawDeleted) : [];
 
@@ -249,6 +361,13 @@ export function deleteProperty(sku: string): void {
 
     localStorage.setItem(STORAGE_KEY_DELETED, JSON.stringify(deleted));
     window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { deletedSku: sku } }));
+
+    // 3. Deleta no Supabase em Nuvem em background
+    if (isSupabaseConfigured()) {
+      deletePropertyInSupabase(sku).catch((err) =>
+        console.error("Erro background Supabase delete:", err)
+      );
+    }
   } catch (err) {
     console.error("Erro ao remover imóvel:", err);
   }
