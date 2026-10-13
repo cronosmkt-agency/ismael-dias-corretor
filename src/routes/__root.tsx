@@ -47,7 +47,7 @@ function ErrorComponent({ error, reset }: { error: any; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          This page didn&apos;t load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
@@ -85,9 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Ismael Dias — Corretor de Imóveis | Habittat House Teresópolis" },
       { property: "og:description", content: "Consultoria imobiliária especializada com Ismael Dias. Condomínios fechados da Angeleti Construtora com lazer completo e segurança 24h na serra." },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:site_name", content: "Ismael Dias Corretor • Habittat House" },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#2563eb" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "canonical", href: "https://ismael-dias-corretor.vercel.app/" },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "icon", href: "/favicon.png", type: "image/png", sizes: "192x192" },
       { rel: "shortcut icon", href: "/favicon.ico" },

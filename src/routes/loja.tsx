@@ -378,8 +378,21 @@ function LojaPage() {
           root.classList.add("theme-white");
         }
       }
+
+      // Detecção de SKU direto via URL query (?sku=123)
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const skuParam = urlParams.get("sku");
+        if (skuParam) {
+          const match = productList.find((p) => String(p.sku) === skuParam);
+          if (match) {
+            setSelectedProduct(match);
+            setModalOpen(true);
+          }
+        }
+      } catch (_) {}
     }
-  }, []);
+  }, [productList]);
 
   const toggleTheme = () => {
     const next: ThemeMode = currentTheme === "black-piano" ? "white" : "black-piano";
@@ -760,13 +773,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 {/* Dados do Imóvel */}
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
-                    <h3
-                      onClick={() => handleOpenDetail(prod)}
-                      className="text-xs sm:text-sm font-black line-clamp-2 min-h-[2.2rem] text-slate-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition"
+                    <Link
+                      to="/imovel/$sku"
+                      params={{ sku: String(prod.sku) }}
+                      className="text-xs sm:text-sm font-black line-clamp-2 min-h-[2.2rem] text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition block"
                       title={prod.name}
                     >
                       {prod.name}
-                    </h3>
+                    </Link>
 
                     <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
@@ -853,13 +867,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                       )}
                     </div>
 
-                    <h3
-                      onClick={() => handleOpenDetail(prod)}
-                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white line-clamp-1 cursor-pointer"
+                    <Link
+                      to="/imovel/$sku"
+                      params={{ sku: String(prod.sku) }}
+                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white line-clamp-1 hover:text-blue-600 dark:hover:text-sky-400 transition block"
                       title={prod.name}
                     >
                       {prod.name}
-                    </h3>
+                    </Link>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5 flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
                       <span>{prod.screen || "Teresópolis/RJ"}</span>

@@ -17,6 +17,7 @@ import {
   AlignLeft,
   Instagram,
   Maximize2,
+  ExternalLink,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
@@ -190,13 +191,26 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               )}
             </div>
 
-            <button
-              onClick={onClose}
-              aria-label="Fechar detalhes"
-              className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-            >
-              <X className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+            <div className="flex items-center gap-1.5 shrink-0">
+              {product.sku && (
+                <a
+                  href={`/imovel/${encodeURIComponent(String(product.sku))}`}
+                  className="px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-sky-400 border border-blue-500/25 flex items-center gap-1 transition"
+                  title="Abrir página exclusiva do imóvel"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  <span className="hidden sm:inline">Página Exclusiva</span>
+                </a>
+              )}
+
+              <button
+                onClick={onClose}
+                aria-label="Fechar detalhes"
+                className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Scrollable Content */}

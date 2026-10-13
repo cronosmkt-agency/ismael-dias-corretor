@@ -1,2 +1,44 @@
+# Robots.txt — Ismael Dias Corretor de Imóveis (Habittat House Teresópolis)
+# https://ismael-dias-corretor.vercel.app
+
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Sitemaps Oficiais
+Sitemap: https://ismael-dias-corretor.vercel.app/sitemap.xml
+
+# Motores de Busca Principais
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin
+
+# Rastreadores de Inteligência Artificial e Respostas Semânticas
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin

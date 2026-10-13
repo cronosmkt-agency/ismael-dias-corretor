@@ -128,6 +128,50 @@ export function getAllProperties(): ProductItem[] {
   }
 }
 
+/**
+ * Busca um imóvel específico pelo SKU (código de identificação único)
+ */
+export function getPropertyBySku(sku?: string): ProductItem | undefined {
+  if (!sku) return undefined;
+  const target = String(sku).trim().toLowerCase();
+  const all = getAllProperties();
+  return all.find((p) => String(p.sku || "").trim().toLowerCase() === target);
+}
+
+/**
+ * Retorna imóveis relacionados (mesmo bairro ou mesma categoria) para links internos de SEO
+ */
+export function getRelatedProperties(currentSku?: string, limit = 4): ProductItem[] {
+  const all = getAllProperties();
+  if (!currentSku) return all.slice(0, limit);
+
+  const cleanSku = String(currentSku).trim().toLowerCase();
+  const current = all.find((p) => String(p.sku || "").trim().toLowerCase() === cleanSku);
+  if (!current) return all.slice(0, limit);
+
+  const candidates = all.filter(
+    (p) =>
+      String(p.sku || "").trim().toLowerCase() !== cleanSku &&
+      p.badge !== "VENDIDA" &&
+      p.condition !== "VENDIDA"
+  );
+
+  const sameBairro = candidates.filter((p) => p.bairro === current.bairro);
+  if (sameBairro.length >= limit) return sameBairro.slice(0, limit);
+
+  const sameCat = candidates.filter((p) => p.cat === current.cat && !sameBairro.includes(p));
+  const other = candidates.filter((p) => !sameBairro.includes(p) && !sameCat.includes(p));
+
+  return [...sameBairro, ...sameCat, ...other].slice(0, limit);
+}
+
+/**
+ * Retorna a URL canônica pública de um imóvel
+ */
+export function getPropertyCanonicalUrl(sku: string): string {
+  return `https://ismael-dias-corretor.vercel.app/imovel/${encodeURIComponent(sku)}`;
+}
+
 export interface PaginatedParams {
   page?: number;
   pageSize?: number;

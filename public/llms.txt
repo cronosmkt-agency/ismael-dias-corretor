@@ -1,0 +1,23 @@
+# Ismael Dias — Corretor de Imóveis • Habittat House Teresópolis/RJ
+
+> Portal oficial de consultoria imobiliária de alto padrão em Teresópolis e região serrana do Estado do Rio de Janeiro. Especialista em condomínios fechados, lançamentos da Angeleti Construtora (+20 anos), casas de alto padrão e terrenos.
+
+## Informações do Corretor
+- **Nome:** Ismael Dias
+- **Imobiliária:** Habittat House Imobiliária
+- **Endereço:** Rodovia Dr. Rogério Moura Estevão, 3835 - Albuquerque, Teresópolis/RJ
+- **Telefone / WhatsApp:** +55 (21) 96463-9999
+- **Website Oficial:** https://ismael-dias-corretor.vercel.app
+
+## Principais Áreas de Atuação
+- **Lançamentos Angeleti:** Condomínio Golden Green e Condomínio Vale dos Pássaros (financiamento direto em até 120 parcelas com 15% de entrada).
+- **Bairros Atendidos em Teresópolis:** Agriões, Albuquerque, Alto, Bom Retiro, Carlos Guinle, Cascata dos Amores, Centro, Golfe, Granja Guarani, Green Valley, Posse, Prata, Quebra Frascos, Quinta da Barra, Vargem Grande, Várzea e arredores.
+- **Tipos de Imóveis:** Casas em Condomínio Fechado, Casas Avulsas, Terrenos/Lotes Residenciais, Coberturas Duplex e Apartamentos.
+
+## Estrutura de Links do Site
+- **Início:** https://ismael-dias-corretor.vercel.app/
+- **Catálogo Completo:** https://ismael-dias-corretor.vercel.app/loja
+- **Lançamentos Angeleti:** https://ismael-dias-corretor.vercel.app/lancamentos
+- **Páginas Exclusivas de Cada Imóvel:** https://ismael-dias-corretor.vercel.app/imovel/{sku}
+  - Onde `{sku}` é o código de identificação do imóvel (ex: 163110, 366687, 272236).
+- **Sitemap XML:** https://ismael-dias-corretor.vercel.app/sitemap.xml

@@ -323,14 +323,14 @@ export function AdminDashboardPage() {
     handleOpenEdit(duplicated);
   };
 
-  // Copiar Link Direto do Imóvel
+  // Copiar Link Direto e Canônico do Imóvel para Clientes / WhatsApp
   const handleCopyPropertyLink = (sku: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     const origin = typeof window !== "undefined" ? window.location.origin : "https://ismael-dias-corretor.vercel.app";
-    const url = `${origin}/loja?sku=${sku}`;
+    const url = `${origin}/imovel/${encodeURIComponent(sku)}`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url);
-      toast.success("Link do imóvel copiado para o WhatsApp!");
+      toast.success(`Link exclusivo do imóvel #${sku} copiado para WhatsApp!`);
     } else {
       toast.info(`Link do imóvel: ${url}`);
     }
@@ -1194,7 +1194,7 @@ export function AdminDashboardPage() {
                           </button>
 
                           <a
-                            href={`/loja?sku=${encodeURIComponent(String(prod.sku))}`}
+                            href={`/imovel/${encodeURIComponent(String(prod.sku))}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
@@ -1362,12 +1362,12 @@ export function AdminDashboardPage() {
                               </button>
 
                               <a
-                                href={`/loja?sku=${encodeURIComponent(String(prod.sku))}`}
+                                href={`/imovel/${encodeURIComponent(String(prod.sku))}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition shrink-0"
-                                title="Ver no site público"
+                                title="Ver página exclusiva do imóvel"
                               >
                                 <ExternalLink className="w-3.5 h-3.5" />
                               </a>
