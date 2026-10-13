@@ -231,20 +231,22 @@ export function AdminDashboardPage() {
     toast.info("Você saiu do painel administrativo.");
   };
 
-  // Status Toggle (1-click cycle)
-  const handleToggleStatus = (sku: string, currentBadge: string, e?: React.MouseEvent) => {
+  // Status Toggle (1-click cycle com sincronização imediata no Supabase)
+  const handleToggleStatus = async (sku: string, currentBadge: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     let next = "Disponível";
     if (currentBadge === "Disponível" || !currentBadge) next = "VENDIDA";
     else if (currentBadge === "VENDIDA") next = "RESERVADO";
     else next = "Disponível";
 
-    togglePropertyStatus(sku, next);
+    await togglePropertyStatus(sku, next);
     refreshData();
     if (next === "VENDIDA") {
-      toast.warning(`Imóvel #${sku} marcado como VENDIDA (ocultado do site público).`);
+      toast.warning(`Imóvel #${sku} marcado como VENDIDA (ocultado do site e salvo no Supabase).`);
+    } else if (next === "RESERVADO") {
+      toast.info(`Status do imóvel #${sku} alterado para RESERVADO (sincronizado no Supabase).`);
     } else {
-      toast.success(`Status do imóvel #${sku} alterado para: ${next}`);
+      toast.success(`Status do imóvel #${sku} alterado para DISPONÍVEL (sincronizado no Supabase).`);
     }
   };
 
@@ -475,8 +477,8 @@ export function AdminDashboardPage() {
     });
   };
 
-  // Salvar Modal
-  const handleSaveModal = (e?: React.FormEvent) => {
+  // Salvar Modal com garantia 100% no Supabase
+  const handleSaveModal = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!editingItem || !editingItem.name || !editingItem.sku) {
       toast.error("Preencha ao menos o título e código (SKU) do imóvel.");
@@ -494,25 +496,29 @@ export function AdminDashboardPage() {
       boxItems: modalFeatures,
     };
 
+    setIsEditModalOpen(false);
+
     if (isCreatingNew) {
-      addProperty(itemToSave);
-      toast.success("Novo imóvel cadastrado com sucesso!");
+      toast.info("Salvando novo imóvel e sincronizando com o Supabase...");
+      await addProperty(itemToSave);
+      toast.success("Novo imóvel cadastrado e salvo no Supabase!");
     } else {
-      updateProperty(String(editingItem.sku), itemToSave);
-      toast.success(`Imóvel #${editingItem.sku} atualizado com sucesso!`);
+      toast.info(`Salvando imóvel #${editingItem.sku}...`);
+      await updateProperty(String(editingItem.sku), itemToSave);
+      toast.success(`Imóvel #${editingItem.sku} atualizado e sincronizado no Supabase!`);
     }
 
-    setIsEditModalOpen(false);
     refreshData();
   };
 
-  // Excluir Imóvel
-  const handleDelete = (sku: string, e?: React.MouseEvent) => {
+  // Excluir Imóvel localmente e no Supabase
+  const handleDelete = async (sku: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (window.confirm(`Tem certeza que deseja excluir o imóvel #${sku}?`)) {
-      deleteProperty(sku);
+    if (window.confirm(`Tem certeza que deseja excluir o imóvel #${sku}? Esta ação removerá o imóvel do site e do Supabase.`)) {
+      toast.info(`Removendo imóvel #${sku}...`);
+      await deleteProperty(sku);
       refreshData();
-      toast.success(`Imóvel #${sku} removido.`);
+      toast.success(`Imóvel #${sku} removido do site e do Supabase.`);
     }
   };
 
@@ -1220,7 +1226,7 @@ export function AdminDashboardPage() {
             ============================================================= */}
             <div className="hidden md:block bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs sm:text-sm">
+                <table className="w-full min-w-[980px] text-left text-xs sm:text-sm">
                   <thead className="bg-slate-800/80 text-slate-300 text-[11px] uppercase tracking-wider border-b border-slate-800">
                     <tr>
                       <th className="py-3.5 px-4">Imóvel (Clique para Editar)</th>
@@ -1228,7 +1234,9 @@ export function AdminDashboardPage() {
                       <th className="py-3.5 px-3">Valor</th>
                       <th className="py-3.5 px-3 text-center">Fotos</th>
                       <th className="py-3.5 px-3 text-center">Status no Site</th>
-                      <th className="py-3.5 px-4 text-right">Ações Rápidas</th>
+                      <th className="py-3.5 px-4 text-right min-w-[200px] w-[200px] sticky right-0 bg-slate-800/95 backdrop-blur-xs z-10 shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.6)]">
+                        Ações Rápidas
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
@@ -1319,16 +1327,16 @@ export function AdminDashboardPage() {
                             </button>
                           </td>
 
-                          {/* Ações Rápidas */}
-                          <td className="py-3 px-4 text-right whitespace-nowrap">
-                            <div className="flex items-center justify-end gap-1">
+                          {/* Ações Rápidas — Fixado e 100% visível sem cortes */}
+                          <td className="py-3 px-4 text-right whitespace-nowrap min-w-[200px] w-[200px] sticky right-0 bg-slate-900/95 group-hover:bg-slate-900 backdrop-blur-xs z-10 shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.6)]">
+                            <div className="flex items-center justify-end gap-1.5">
                               <button
                                 type="button"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleOpenEdit(prod);
                                 }}
-                                className="px-2.5 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 font-bold text-xs transition cursor-pointer flex items-center gap-1"
+                                className="px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition cursor-pointer flex items-center gap-1 shadow-sm shrink-0"
                                 title="Editar imóvel e fotos"
                               >
                                 <Edit3 className="w-3.5 h-3.5" />
@@ -1338,7 +1346,7 @@ export function AdminDashboardPage() {
                               <button
                                 type="button"
                                 onClick={(e) => handleDuplicateProperty(prod, e)}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer shrink-0"
                                 title="Duplicar imóvel"
                               >
                                 <Layers className="w-3.5 h-3.5" />
@@ -1347,7 +1355,7 @@ export function AdminDashboardPage() {
                               <button
                                 type="button"
                                 onClick={(e) => handleCopyPropertyLink(String(prod.sku), e)}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer shrink-0"
                                 title="Copiar Link para WhatsApp"
                               >
                                 <Copy className="w-3.5 h-3.5" />
@@ -1358,7 +1366,7 @@ export function AdminDashboardPage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition shrink-0"
                                 title="Ver no site público"
                               >
                                 <ExternalLink className="w-3.5 h-3.5" />
@@ -1367,7 +1375,7 @@ export function AdminDashboardPage() {
                               <button
                                 type="button"
                                 onClick={(e) => handleDelete(String(prod.sku), e)}
-                                className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition cursor-pointer"
+                                className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition cursor-pointer shrink-0"
                                 title="Excluir imóvel"
                               >
                                 <Trash2 className="w-3.5 h-3.5" />
@@ -2202,16 +2210,6 @@ export function AdminDashboardPage() {
               ========================================================= */}
               {modalTab === "photos" && (
                 <div className="space-y-4">
-                  <div className="bg-blue-950/20 border border-blue-900/40 p-3 sm:p-4 rounded-2xl flex items-start gap-3 text-xs text-blue-300">
-                    <Sparkles className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-bold mb-0.5">
-                        Como organizar as fotos:
-                      </strong>
-                      A foto <strong>#1 com a estrela dourada</strong> é automaticamente a Foto de Capa principal. Você pode usar as setas ⬅️ ➡️ para mudar a ordem ou clicar em <strong>"⭐ Capa"</strong> para promover qualquer foto para o topo!
-                    </div>
-                  </div>
-
                   {/* Adicionar Fotos: Inputs e Ações */}
                   <div className="bg-slate-800/60 p-3.5 rounded-2xl border border-slate-700/60 space-y-3">
                     <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">

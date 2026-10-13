@@ -514,16 +514,11 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
       <main className="pt-20 sm:pt-32 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
         {/* Header da Página de Imóveis */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold glass mb-2 border border-blue-500/20 text-blue-600 dark:text-sky-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Imóveis Selecionados</span>
-          </div>
-
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Casas, Coberturas & <span className="text-gradient-blue">Residências</span>
           </h1>
           <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-            Carteira selecionada de imóveis avulsos prontos para morar em Teresópolis — RJ com o corretor Ismael Dias
+            Carteira selecionada de imóveis avulsos prontos para morar em Teresópolis
           </p>
 
           {/* Banner Chamada para Lançamentos — Garantido em 1 Linha com whitespace-nowrap */}

@@ -177,11 +177,6 @@ Gostaria de agendar uma visita guiada com você no local!`;
       <main className="pt-20 sm:pt-32 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
         {/* Header da Página de Lançamentos */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold glass mb-2 border border-blue-500/20 text-blue-600 dark:text-sky-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Condomínios Fechados Angeleti</span>
-          </div>
-
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Novos <span className="text-gradient-blue">Lançamentos</span> na Serra
           </h1>
@@ -200,9 +195,9 @@ Gostaria de agendar uma visita guiada com você no local!`;
           </div>
         </div>
 
-        {/* Seletor de Categorias — Uma do lado da outra com ícone em cima e texto pequeno */}
-        <div className="mt-5 sm:mt-6 max-w-xl mx-auto">
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5">
+        {/* Seletor de Categorias — Mesmo tamanho compacto e padronizado da aba de imóveis */}
+        <div className="mt-5 sm:mt-6 flex justify-center">
+          <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2">
             {lancamentosFilters.map((fl) => {
               const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
               const Icon = meta.icon;
@@ -215,7 +210,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-full h-[82px] sm:h-[88px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
+                  className={`group relative flex flex-col items-center justify-between w-[95px] sm:w-[105px] h-[80px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
                     isActive
                       ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
                       : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
@@ -223,7 +218,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 >
                   {/* Badge Contador no Canto Superior Direito */}
                   <span
-                    className={`absolute top-1 right-1 sm:top-1.5 sm:right-1.5 text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
+                    className={`absolute top-1 right-1 text-[9px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
                       isActive
                         ? "bg-white/30 text-white"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
@@ -234,26 +229,26 @@ Gostaria de agendar uma visita guiada com você no local!`;
 
                   {/* Ícone em Cima */}
                   <div
-                    className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 ${
+                    className={`p-1.5 rounded-xl transition-all duration-200 ${
                       isActive
                         ? "bg-white/20 text-white"
                         : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-110"
                     }`}
                   >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
                   </div>
 
                   {/* Texto Pequeno Embaixo */}
                   <div className="flex flex-col items-center justify-center leading-tight">
-                    <span className="text-[10px] sm:text-xs font-bold tracking-tight">
+                    <span className="text-[10px] sm:text-[11px] font-bold tracking-tight">
                       {meta.label}
                     </span>
                     {meta.line2 ? (
-                      <span className="text-[10px] sm:text-xs font-bold tracking-tight opacity-90">
+                      <span className="text-[9px] sm:text-[10px] font-bold tracking-tight opacity-90">
                         {meta.line2}
                       </span>
                     ) : (
-                      <span className="invisible text-[10px] sm:text-xs leading-none select-none">&nbsp;</span>
+                      <span className="invisible text-[9px] leading-none select-none">&nbsp;</span>
                     )}
                   </div>
                 </button>

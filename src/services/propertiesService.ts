@@ -257,10 +257,13 @@ export function getPropertiesPaginated(params: PaginatedParams): PaginatedResult
 }
 
 /**
- * Atualiza um imóvel específico pelo SKU (Salva no Supabase e no cache local)
+ * Atualiza um imóvel específico pelo SKU (Salva no Supabase e no cache local com confirmação 100%)
  */
-export function updateProperty(sku: string, updates: Partial<ProductItem>): void {
-  if (typeof window === "undefined" || !sku) return;
+export async function updateProperty(
+  sku: string,
+  updates: Partial<ProductItem>
+): Promise<boolean> {
+  if (typeof window === "undefined" || !sku) return false;
   try {
     // 1. Atualiza cache em memória do Supabase
     if (cachedSupabaseList) {
@@ -272,7 +275,7 @@ export function updateProperty(sku: string, updates: Partial<ProductItem>): void
       } catch (_) {}
     }
 
-    // 2. Persiste no LocalStorage local (fallback)
+    // 2. Persiste no LocalStorage local (fallback e persistência instantânea)
     const rawOverrides = localStorage.getItem(STORAGE_KEY_OVERRIDES);
     const overrides: Record<string, Partial<ProductItem>> = rawOverrides
       ? JSON.parse(rawOverrides)
@@ -286,29 +289,33 @@ export function updateProperty(sku: string, updates: Partial<ProductItem>): void
     localStorage.setItem(STORAGE_KEY_OVERRIDES, JSON.stringify(overrides));
     window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { sku, updates } }));
 
-    // 3. Persiste no Supabase em Nuvem em background
+    // 3. Persiste no Supabase em Nuvem (PostgreSQL) com garantia
     if (isSupabaseConfigured()) {
-      updatePropertyInSupabase(sku, updates).catch((err) =>
-        console.error("Erro background Supabase update:", err)
-      );
+      const ok = await updatePropertyInSupabase(sku, updates);
+      if (!ok) {
+        console.warn(`Supabase: falha ao persistir atualização do imóvel #${sku}`);
+      }
+      return ok;
     }
+    return true;
   } catch (err) {
     console.error("Erro ao atualizar imóvel:", err);
+    return false;
   }
 }
 
 /**
- * Altera rapidamente o status do imóvel (Disponível / VENDIDA / RESERVADO)
+ * Altera rapidamente o status do imóvel (Disponível / VENDIDA / RESERVADO) com sync 100% no Supabase
  */
-export function togglePropertyStatus(sku: string, newBadge: string): void {
-  updateProperty(sku, { badge: newBadge, condition: newBadge });
+export async function togglePropertyStatus(sku: string, newBadge: string): Promise<boolean> {
+  return await updateProperty(sku, { badge: newBadge, condition: newBadge });
 }
 
 /**
  * Cadastra um novo imóvel no sistema (Salva no Supabase e no cache local)
  */
-export function addProperty(newProperty: ProductItem): void {
-  if (typeof window === "undefined") return;
+export async function addProperty(newProperty: ProductItem): Promise<boolean> {
+  if (typeof window === "undefined") return false;
   try {
     // 1. Atualiza cache em memória do Supabase
     if (cachedSupabaseList) {
@@ -326,22 +333,23 @@ export function addProperty(newProperty: ProductItem): void {
     localStorage.setItem(STORAGE_KEY_ADDED, JSON.stringify(added));
     window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { added: newProperty } }));
 
-    // 3. Persiste no Supabase em Nuvem em background
+    // 3. Persiste no Supabase em Nuvem
     if (isSupabaseConfigured()) {
-      insertPropertyInSupabase(newProperty).catch((err) =>
-        console.error("Erro background Supabase insert:", err)
-      );
+      const ok = await insertPropertyInSupabase(newProperty);
+      return ok;
     }
+    return true;
   } catch (err) {
     console.error("Erro ao adicionar imóvel:", err);
+    return false;
   }
 }
 
 /**
- * Remove um imóvel (soft delete local e remoção no Supabase)
+ * Remove um imóvel (soft delete local e remoção física no Supabase)
  */
-export function deleteProperty(sku: string): void {
-  if (typeof window === "undefined" || !sku) return;
+export async function deleteProperty(sku: string): Promise<boolean> {
+  if (typeof window === "undefined" || !sku) return false;
   try {
     // 1. Atualiza cache em memória do Supabase
     if (cachedSupabaseList) {
@@ -362,14 +370,15 @@ export function deleteProperty(sku: string): void {
     localStorage.setItem(STORAGE_KEY_DELETED, JSON.stringify(deleted));
     window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { deletedSku: sku } }));
 
-    // 3. Deleta no Supabase em Nuvem em background
+    // 3. Deleta no Supabase em Nuvem
     if (isSupabaseConfigured()) {
-      deletePropertyInSupabase(sku).catch((err) =>
-        console.error("Erro background Supabase delete:", err)
-      );
+      const ok = await deletePropertyInSupabase(sku);
+      return ok;
     }
+    return true;
   } catch (err) {
     console.error("Erro ao remover imóvel:", err);
+    return false;
   }
 }
 

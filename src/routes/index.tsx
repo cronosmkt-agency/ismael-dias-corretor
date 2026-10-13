@@ -170,8 +170,8 @@ function Hero() {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-20 my-auto">
         {/* Left Column */}
         <div className="lg:col-span-7 text-center lg:text-left flex flex-col justify-center">
-          {/* Eyebrow Pill — Single Line Responsiva */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 mx-auto lg:mx-0 whitespace-nowrap">
+          {/* Eyebrow Pill — Compacto e Auto-Ajustável (w-fit) */}
+          <div className="inline-flex w-fit self-center lg:self-start items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 whitespace-nowrap">
             <Building2 className="w-3.5 h-3.5 shrink-0 text-blue-600 dark:text-sky-400" />
             <span className="hidden sm:inline">Parceria Oficial Angeleti Construtora (+20 anos) • Teresópolis/RJ</span>
             <span className="sm:hidden">Angeleti Construtora (+20 anos) • Teresópolis</span>
