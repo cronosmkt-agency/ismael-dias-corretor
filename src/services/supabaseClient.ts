@@ -22,7 +22,7 @@ export function getSupabaseUrl(): string {
   }
   const settings = getSiteSettings();
   if (settings.supabaseUrl) return settings.supabaseUrl.trim().replace(/\/$/, "");
-  return "";
+  return "https://mzrbinywfezwhdpukdxn.supabase.co";
 }
 
 /**
@@ -38,7 +38,7 @@ export function getSupabaseAnonKey(): string {
   }
   const settings = getSiteSettings();
   if (settings.supabaseAnonKey) return settings.supabaseAnonKey.trim();
-  return "";
+  return "sb_publishable_XcsVYbA0VZ3e4peR8AVSgw_wHog08eP";
 }
 
 /**
