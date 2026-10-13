@@ -19,6 +19,7 @@ import {
   MessageCircle,
   TrendingUp,
   Eye,
+  EyeOff,
   MousePointerClick,
   Download,
   RotateCcw,
@@ -49,6 +50,10 @@ import {
   SlidersHorizontal,
   ChevronUp,
   ChevronDown,
+  Copy,
+  Layers,
+  Phone,
+  ShieldCheck,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -106,11 +111,13 @@ export function AdminDashboardPage() {
   const [properties, setProperties] = useState<ProductItem[]>([]);
   const [settings, setSettings] = useState<SiteSettings>(getSiteSettings());
   const [settingsForm, setSettingsForm] = useState<SiteSettings>(getSiteSettings());
+  const [showPin, setShowPin] = useState(false);
 
   // Filter & Search State
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [priceFilter, setPriceFilter] = useState<string>("all");
 
   // Pagination for Properties in Admin
   const [adminPage, setAdminPage] = useState(1);
@@ -194,7 +201,8 @@ export function AdminDashboardPage() {
   };
 
   // Status Toggle (1-click cycle)
-  const handleToggleStatus = (sku: string, currentBadge: string) => {
+  const handleToggleStatus = (sku: string, currentBadge: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     let next = "Disponível";
     if (currentBadge === "Disponível" || !currentBadge) next = "VENDIDA";
     else if (currentBadge === "VENDIDA") next = "RESERVADO";
@@ -202,12 +210,15 @@ export function AdminDashboardPage() {
 
     togglePropertyStatus(sku, next);
     refreshData();
-    toast.success(`Status do imóvel #${sku} alterado para: ${next}`);
+    if (next === "VENDIDA") {
+      toast.warning(`Imóvel #${sku} marcado como VENDIDA (ocultado do site público).`);
+    } else {
+      toast.success(`Status do imóvel #${sku} alterado para: ${next}`);
+    }
   };
 
   // Open Edit Modal
   const handleOpenEdit = (item: ProductItem) => {
-    // Garantir array de fotos inicializado
     const initialImages = item.images && item.images.length > 0
       ? [...item.images]
       : (item.img ? [item.img] : []);
@@ -263,6 +274,35 @@ export function AdminDashboardPage() {
     setNewFeatureText("");
   };
 
+  // Duplicar Imóvel
+  const handleDuplicateProperty = (prod: ProductItem, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const newSku = String(Math.floor(100000 + Math.random() * 900000));
+    const duplicated: ProductItem = {
+      ...prod,
+      sku: newSku,
+      name: `[Cópia] ${prod.name}`,
+      badge: "Disponível",
+    };
+    addProperty(duplicated);
+    refreshData();
+    toast.success(`Imóvel duplicado! Novo código: #${newSku}`);
+    handleOpenEdit(duplicated);
+  };
+
+  // Copiar Link Direto do Imóvel
+  const handleCopyPropertyLink = (sku: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://ismael-dias-corretor.vercel.app";
+    const url = `${origin}/loja?sku=${sku}`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url);
+      toast.success("Link do imóvel copiado para o WhatsApp!");
+    } else {
+      toast.info(`Link do imóvel: ${url}`);
+    }
+  };
+
   // Modal Image Helpers
   const modalImages: string[] = useMemo(() => {
     if (!editingItem) return [];
@@ -283,7 +323,7 @@ export function AdminDashboardPage() {
     });
   };
 
-  // Definir como Capa (sobe para índice 0)
+  // Definir como Capa (move para índice 0)
   const handleSetCover = (index: number) => {
     if (index <= 0 || index >= modalImages.length) return;
     const list = [...modalImages];
@@ -412,7 +452,6 @@ export function AdminDashboardPage() {
       return;
     }
 
-    // Sincronizar capa e galeria
     const finalImages = modalImages.length > 0 ? modalImages : [editingItem.img || ""];
     const finalCover = finalImages[0] || editingItem.img || "";
 
@@ -437,7 +476,8 @@ export function AdminDashboardPage() {
   };
 
   // Excluir Imóvel
-  const handleDelete = (sku: string) => {
+  const handleDelete = (sku: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (window.confirm(`Tem certeza que deseja excluir o imóvel #${sku}?`)) {
       deleteProperty(sku);
       refreshData();
@@ -489,6 +529,20 @@ export function AdminDashboardPage() {
     }
   };
 
+  // Contagens para os Chips de Status
+  const countDisponiveis = useMemo(
+    () => properties.filter((p) => p.badge !== "VENDIDA" && p.badge !== "RESERVADO").length,
+    [properties]
+  );
+  const countVendidos = useMemo(
+    () => properties.filter((p) => p.badge === "VENDIDA").length,
+    [properties]
+  );
+  const countReservados = useMemo(
+    () => properties.filter((p) => p.badge === "RESERVADO").length,
+    [properties]
+  );
+
   // Filtered Properties
   const filteredProperties = useMemo(() => {
     return properties.filter((p) => {
@@ -508,14 +562,21 @@ export function AdminDashboardPage() {
 
       const matchCat = categoryFilter === "all" || p.cat === categoryFilter;
 
-      return matchSearch && matchStatus && matchCat;
+      let matchPrice = true;
+      if (priceFilter === "under-300") matchPrice = p.price <= 300000;
+      else if (priceFilter === "300-600") matchPrice = p.price > 300000 && p.price <= 600000;
+      else if (priceFilter === "600-1000") matchPrice = p.price > 600000 && p.price <= 1000000;
+      else if (priceFilter === "1000-2000") matchPrice = p.price > 1000000 && p.price <= 2000000;
+      else if (priceFilter === "over-2000") matchPrice = p.price > 2000000;
+
+      return matchSearch && matchStatus && matchCat && matchPrice;
     });
-  }, [properties, searchQuery, statusFilter, categoryFilter]);
+  }, [properties, searchQuery, statusFilter, categoryFilter, priceFilter]);
 
   // Reset pagination when filter changes
   useEffect(() => {
     setAdminPage(1);
-  }, [searchQuery, statusFilter, categoryFilter, adminPageSize]);
+  }, [searchQuery, statusFilter, categoryFilter, priceFilter, adminPageSize]);
 
   // Paginated Slice
   const totalFiltered = filteredProperties.length;
@@ -620,7 +681,7 @@ export function AdminDashboardPage() {
             target="_blank"
             className="px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-700 text-[11px] sm:text-xs font-semibold hover:bg-slate-800 transition flex items-center gap-1 text-slate-300"
           >
-            <span>Ver Site</span>
+            <span>Ver Catálogo</span>
             <ExternalLink className="w-3 h-3" />
           </Link>
 
@@ -751,26 +812,89 @@ export function AdminDashboardPage() {
         ============================================================= */}
         {activeTab === "imoveis" && (
           <div className="space-y-4 sm:space-y-6">
-            {/* Header da Aba com Botão Cadastrar */}
+            {/* Header da Aba com Botão Cadastrar e Status Pills Rápidos */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <h2 className="text-lg sm:text-2xl font-black tracking-tight">
                   Gestão do Catálogo de Imóveis
                 </h2>
                 <p className="text-[11px] sm:text-sm text-slate-400 mt-0.5">
-                  Organize fotos, edite descrições, altere status de venda ou cadastre novos imóveis
+                  Clique em qualquer imóvel para editar. Imóveis marcados como "VENDIDA" são ocultados do site público automaticamente.
                 </p>
               </div>
 
-              <div>
+              <div className="flex items-center gap-2">
                 <button
                   onClick={handleOpenCreate}
                   className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md transition active:scale-95 cursor-pointer text-white"
                 >
                   <Plus className="w-4 h-4" />
-                  <span>Cadastrar Imóvel</span>
+                  <span>Cadastrar Novo Imóvel</span>
                 </button>
               </div>
+            </div>
+
+            {/* Quick Status Chips */}
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <button
+                type="button"
+                onClick={() => setStatusFilter("all")}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  statusFilter === "all"
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                <span>Todos</span>
+                <span className="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">
+                  {properties.length}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setStatusFilter("disponivel")}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  statusFilter === "disponivel"
+                    ? "bg-emerald-600 text-white shadow-xs"
+                    : "bg-slate-900 border border-slate-800 text-emerald-400 hover:text-white"
+                }`}
+              >
+                <span>🟢 Disponíveis no Site</span>
+                <span className="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">
+                  {countDisponiveis}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setStatusFilter("vendida")}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  statusFilter === "vendida"
+                    ? "bg-rose-600 text-white shadow-xs"
+                    : "bg-slate-900 border border-slate-800 text-rose-400 hover:text-white"
+                }`}
+              >
+                <span>🔴 Vendidos (Ocultos)</span>
+                <span className="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">
+                  {countVendidos}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setStatusFilter("reservado")}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  statusFilter === "reservado"
+                    ? "bg-amber-600 text-white shadow-xs"
+                    : "bg-slate-900 border border-slate-800 text-amber-400 hover:text-white"
+                }`}
+              >
+                <span>🟡 Reservados</span>
+                <span className="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">
+                  {countReservados}
+                </span>
+              </button>
             </div>
 
             {/* Filtros e Barra de Busca Compacta */}
@@ -779,10 +903,10 @@ export function AdminDashboardPage() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Buscar por código (#SKU), nome ou bairro..."
+                  placeholder="Buscar por código (#SKU), nome, rua ou bairro..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-9 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-9 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500"
                 />
                 {searchQuery && (
                   <button
@@ -794,20 +918,7 @@ export function AdminDashboardPage() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <select
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                    className="w-full py-2 px-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white cursor-pointer focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="all">Status: Todos ({properties.length})</option>
-                    <option value="disponivel">🟢 Disponíveis</option>
-                    <option value="vendida">🔴 Vendidos</option>
-                    <option value="reservado">🟡 Reservados</option>
-                  </select>
-                </div>
-
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 <div>
                   <select
                     value={categoryFilter}
@@ -822,17 +933,37 @@ export function AdminDashboardPage() {
                     ))}
                   </select>
                 </div>
+
+                <div>
+                  <select
+                    value={priceFilter}
+                    onChange={(e) => setPriceFilter(e.target.value)}
+                    className="w-full py-2 px-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white cursor-pointer focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="all">Preço: Todas as faixas</option>
+                    <option value="under-300">Até R$ 300 mil</option>
+                    <option value="300-600">R$ 300k a R$ 600k</option>
+                    <option value="600-1000">R$ 600k a R$ 1 Milhão</option>
+                    <option value="1000-2000">R$ 1M a R$ 2 Milhões</option>
+                    <option value="over-2000">Acima de R$ 2 Milhões</option>
+                  </select>
+                </div>
+
+                <div className="col-span-2 sm:col-span-1">
+                  <div className="text-right flex items-center justify-end h-full text-xs text-slate-400 pr-1">
+                    <span>
+                      Exibindo <strong className="text-white">{totalFiltered}</strong> imóveis
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Contagem de Resultados e Dica */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 px-1 gap-1">
+            {/* Dica de usabilidade */}
+            <div className="flex items-center gap-1.5 text-xs text-blue-400 bg-blue-950/20 border border-blue-900/30 px-3 py-2 rounded-xl">
+              <Sparkles className="w-3.5 h-3.5 shrink-0" />
               <span>
-                Mostrando <strong className="text-white">{totalFiltered}</strong> de{" "}
-                {properties.length} imóveis cadastrados
-              </span>
-              <span className="text-[11px] text-slate-500">
-                Toque no botão de status para alternar: Disponível / VENDIDA / Reservado
+                <strong>Dica:</strong> Clique em qualquer lugar do imóvel para abrir a edição completa.
               </span>
             </div>
 
@@ -845,115 +976,135 @@ export function AdminDashboardPage() {
                   Nenhum imóvel encontrado com os filtros atuais.
                 </div>
               ) : (
-                paginatedProperties.map((prod) => (
-                  <div
-                    key={String(prod.sku) + prod.name}
-                    className="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-3 shadow-md hover:border-slate-700 transition"
-                  >
-                    {/* Linha 1: Foto + Título + Bairro */}
-                    <div className="flex items-start gap-3">
-                      <div className="relative shrink-0">
-                        <img
-                          src={prod.img}
-                          alt={prod.name}
-                          className="w-16 h-16 rounded-xl object-cover bg-slate-800 border border-slate-700"
-                          loading="lazy"
-                        />
-                        <span className="absolute bottom-1 right-1 px-1 py-0.2 rounded-md bg-black/80 text-[9px] font-bold text-white flex items-center gap-0.5 shadow-xs">
-                          <ImageIcon className="w-2.5 h-2.5" />
-                          <span>{prod.images?.length || 1}</span>
-                        </span>
-                      </div>
+                paginatedProperties.map((prod) => {
+                  const isSold = prod.badge === "VENDIDA";
 
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[10px] font-extrabold text-blue-400">
-                            #{prod.sku || "—"}
-                          </span>
-                          <span className="text-[10px] text-slate-400 font-medium">
-                            • {prod.cat}
+                  return (
+                    <div
+                      key={String(prod.sku) + prod.name}
+                      onClick={() => handleOpenEdit(prod)}
+                      className={`bg-slate-900 border rounded-2xl p-3.5 space-y-3 shadow-md transition cursor-pointer active:scale-99 ${
+                        isSold
+                          ? "border-rose-900/50 bg-rose-950/10 hover:border-rose-700"
+                          : "border-slate-800 hover:border-blue-500/50"
+                      }`}
+                      title="Toque no imóvel para editar detalhes e fotos"
+                    >
+                      {/* Linha 1: Foto + Título + Bairro */}
+                      <div className="flex items-start gap-3">
+                        <div className="relative shrink-0">
+                          <img
+                            src={prod.img}
+                            alt={prod.name}
+                            className="w-16 h-16 rounded-xl object-cover bg-slate-800 border border-slate-700"
+                            loading="lazy"
+                          />
+                          <span className="absolute bottom-1 right-1 px-1 py-0.2 rounded-md bg-black/80 text-[9px] font-bold text-white flex items-center gap-0.5 shadow-xs">
+                            <ImageIcon className="w-2.5 h-2.5" />
+                            <span>{prod.images?.length || 1}</span>
                           </span>
                         </div>
 
-                        <h4 className="font-bold text-xs text-white line-clamp-2 mt-0.5 leading-snug">
-                          {prod.name}
-                        </h4>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-[10px] font-extrabold text-blue-400">
+                              #{prod.sku || "—"}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-medium">
+                              • {prod.cat}
+                            </span>
+                            {isSold && (
+                              <span className="text-[9px] font-black px-1.5 py-0.2 rounded-md bg-rose-500/20 text-rose-400 border border-rose-500/40">
+                                Oculto do site
+                              </span>
+                            )}
+                          </div>
 
-                        <div className="flex items-center gap-2 mt-1 text-[11px] text-slate-400">
-                          <span className="flex items-center gap-0.5 truncate">
-                            <MapPin className="w-3 h-3 text-blue-400 shrink-0" />
-                            <span>{prod.bairro || "Teresópolis"}</span>
-                          </span>
-                          {prod.storage && (
-                            <span className="shrink-0">• {prod.storage}</span>
-                          )}
+                          <h4 className="font-bold text-xs text-white line-clamp-2 mt-0.5 leading-snug">
+                            {prod.name}
+                          </h4>
+
+                          <div className="flex items-center gap-2 mt-1 text-[11px] text-slate-400">
+                            <span className="flex items-center gap-0.5 truncate">
+                              <MapPin className="w-3 h-3 text-blue-400 shrink-0" />
+                              <span>{prod.bairro || "Teresópolis"}</span>
+                            </span>
+                            {prod.storage && (
+                              <span className="shrink-0">• {prod.storage}</span>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Linha 2: Valor & Status Ciclável */}
-                    <div className="flex items-center justify-between pt-2 border-t border-slate-800/80">
-                      <div>
-                        <span className="text-[9px] uppercase font-bold text-slate-400 block leading-tight">
-                          Valor de Venda
-                        </span>
-                        <span className="text-sm font-black text-emerald-400">
-                          {fmt(prod.price)}
-                        </span>
+                      {/* Linha 2: Valor & Status Ciclável */}
+                      <div className="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                        <div>
+                          <span className="text-[9px] uppercase font-bold text-slate-400 block leading-tight">
+                            Valor de Venda
+                          </span>
+                          <span className="text-sm font-black text-emerald-400">
+                            {fmt(prod.price)}
+                          </span>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={(e) => handleToggleStatus(String(prod.sku), prod.badge || "Disponível", e)}
+                          className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-wide border cursor-pointer transition active:scale-95 flex items-center gap-1 ${
+                            isSold
+                              ? "bg-rose-500/20 text-rose-400 border-rose-500/40"
+                              : prod.badge === "RESERVADO"
+                              ? "bg-amber-500/20 text-amber-400 border-amber-500/40"
+                              : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
+                          }`}
+                          title="Toque para alternar o status de venda"
+                        >
+                          <span>
+                            {isSold
+                              ? "🔴 Vendida (Oculto)"
+                              : prod.badge === "RESERVADO"
+                              ? "🟡 Reservado"
+                              : "🟢 Disponível"}
+                          </span>
+                        </button>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => handleToggleStatus(String(prod.sku), prod.badge || "Disponível")}
-                        className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-wide border cursor-pointer transition active:scale-95 flex items-center gap-1 ${
-                          prod.badge === "VENDIDA"
-                            ? "bg-rose-500/20 text-rose-400 border-rose-500/40"
-                            : prod.badge === "RESERVADO"
-                            ? "bg-amber-500/20 text-amber-400 border-amber-500/40"
-                            : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
-                        }`}
-                        title="Toque para alternar o status de venda"
-                      >
-                        <span>
-                          {prod.badge === "VENDIDA"
-                            ? "🔴 Vendida"
-                            : prod.badge === "RESERVADO"
-                            ? "🟡 Reservado"
-                            : "🟢 Disponível"}
-                        </span>
-                      </button>
+                      {/* Linha 3: Ações Rápidas Touch */}
+                      <div className="grid grid-cols-4 gap-2 pt-1">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleOpenEdit(prod);
+                          }}
+                          className="col-span-2 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 cursor-pointer"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                          <span>Editar & Fotos</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={(e) => handleCopyPropertyLink(String(prod.sku), e)}
+                          className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition"
+                          title="Copiar Link para WhatsApp"
+                        >
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Link</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={(e) => handleDelete(String(prod.sku), e)}
+                          className="py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 font-bold text-xs flex items-center justify-center transition active:scale-95 cursor-pointer"
+                          title="Excluir imóvel"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
-
-                    {/* Linha 3: Ações Rápidas Touch */}
-                    <div className="grid grid-cols-4 gap-2 pt-1">
-                      <button
-                        onClick={() => handleOpenEdit(prod)}
-                        className="col-span-2 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 cursor-pointer"
-                      >
-                        <Edit3 className="w-3.5 h-3.5" />
-                        <span>Editar & Fotos</span>
-                      </button>
-
-                      <Link
-                        to="/loja"
-                        search={{ sku: String(prod.sku) }}
-                        target="_blank"
-                        className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition"
-                      >
-                        <Eye className="w-3.5 h-3.5" />
-                        <span>Ver</span>
-                      </Link>
-
-                      <button
-                        onClick={() => handleDelete(String(prod.sku))}
-                        className="py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 font-bold text-xs flex items-center justify-center transition active:scale-95 cursor-pointer"
-                        title="Excluir imóvel"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
 
@@ -965,110 +1116,160 @@ export function AdminDashboardPage() {
                 <table className="w-full text-left text-xs sm:text-sm">
                   <thead className="bg-slate-800/80 text-slate-300 text-[11px] uppercase tracking-wider border-b border-slate-800">
                     <tr>
-                      <th className="py-3 px-4">Imóvel</th>
-                      <th className="py-3 px-3">Bairro</th>
-                      <th className="py-3 px-3">Valor</th>
-                      <th className="py-3 px-3 text-center">Fotos</th>
-                      <th className="py-3 px-3 text-center">Status</th>
-                      <th className="py-3 px-4 text-right">Ações</th>
+                      <th className="py-3.5 px-4">Imóvel (Clique para Editar)</th>
+                      <th className="py-3.5 px-3">Bairro</th>
+                      <th className="py-3.5 px-3">Valor</th>
+                      <th className="py-3.5 px-3 text-center">Fotos</th>
+                      <th className="py-3.5 px-3 text-center">Status no Site</th>
+                      <th className="py-3.5 px-4 text-right">Ações Rápidas</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
-                    {paginatedProperties.map((prod) => (
-                      <tr
-                        key={String(prod.sku) + prod.name}
-                        className="hover:bg-slate-800/40 transition-colors"
-                      >
-                        {/* Imóvel + Foto */}
-                        <td className="py-3 px-4">
-                          <div className="flex items-center gap-3">
-                            <img
-                              src={prod.img}
-                              alt={prod.name}
-                              className="w-12 h-12 rounded-lg object-cover shrink-0 bg-slate-800 border border-slate-700"
-                              loading="lazy"
-                            />
-                            <div className="min-w-0">
-                              <span className="text-[10px] font-bold text-blue-400 block">
-                                #{prod.sku || "—"} • {prod.cat}
-                              </span>
-                              <h4
-                                className="font-bold text-slate-100 truncate max-w-xs xl:max-w-md"
-                                title={prod.name}
-                              >
-                                {prod.name}
-                              </h4>
-                              <span className="text-[10px] text-slate-400">
-                                {prod.storage || "Área construída"}
-                              </span>
+                    {paginatedProperties.map((prod) => {
+                      const isSold = prod.badge === "VENDIDA";
+
+                      return (
+                        <tr
+                          key={String(prod.sku) + prod.name}
+                          onClick={() => handleOpenEdit(prod)}
+                          className={`hover:bg-blue-900/15 transition-colors cursor-pointer group ${
+                            isSold ? "bg-rose-950/5 hover:bg-rose-950/20" : ""
+                          }`}
+                          title="Clique em qualquer lugar da linha para editar o imóvel"
+                        >
+                          {/* Imóvel + Foto */}
+                          <td className="py-3 px-4">
+                            <div className="flex items-center gap-3">
+                              <img
+                                src={prod.img}
+                                alt={prod.name}
+                                className="w-12 h-12 rounded-xl object-cover shrink-0 bg-slate-800 border border-slate-700 group-hover:scale-105 transition-transform"
+                                loading="lazy"
+                              />
+                              <div className="min-w-0">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="text-[10px] font-bold text-blue-400">
+                                    #{prod.sku || "—"} • {prod.cat}
+                                  </span>
+                                  {isSold && (
+                                    <span className="text-[9px] font-bold px-1.5 py-0.2 rounded-md bg-rose-500/20 text-rose-400">
+                                      Oculto do Site
+                                    </span>
+                                  )}
+                                </div>
+                                <h4
+                                  className="font-bold text-slate-100 truncate max-w-xs xl:max-w-md group-hover:text-blue-300 transition-colors"
+                                  title={prod.name}
+                                >
+                                  {prod.name}
+                                </h4>
+                                <span className="text-[10px] text-slate-400">
+                                  {prod.storage || "Área construída"}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        {/* Bairro */}
-                        <td className="py-3 px-3 text-slate-300 whitespace-nowrap">
-                          <div className="flex items-center gap-1 text-xs">
-                            <MapPin className="w-3 h-3 text-blue-400 shrink-0" />
-                            <span>{prod.bairro || "Teresópolis"}</span>
-                          </div>
-                        </td>
+                          {/* Bairro */}
+                          <td className="py-3 px-3 text-slate-300 whitespace-nowrap">
+                            <div className="flex items-center gap-1 text-xs">
+                              <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                              <span>{prod.bairro || "Teresópolis"}</span>
+                            </div>
+                          </td>
 
-                        {/* Valor */}
-                        <td className="py-3 px-3 font-black text-slate-200 whitespace-nowrap">
-                          {fmt(prod.price)}
-                        </td>
+                          {/* Valor */}
+                          <td className="py-3 px-3 font-black text-slate-200 whitespace-nowrap">
+                            {fmt(prod.price)}
+                          </td>
 
-                        {/* Quantidade de Fotos */}
-                        <td className="py-3 px-3 text-center whitespace-nowrap">
-                          <span className="px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[11px] font-bold text-slate-300">
-                            📷 {prod.images?.length || 1}
-                          </span>
-                        </td>
+                          {/* Quantidade de Fotos */}
+                          <td className="py-3 px-3 text-center whitespace-nowrap">
+                            <span className="px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[11px] font-bold text-slate-300">
+                              📷 {prod.images?.length || 1}
+                            </span>
+                          </td>
 
-                        {/* Status Toggle Button */}
-                        <td className="py-3 px-3 text-center">
-                          <button
-                            type="button"
-                            onClick={() => handleToggleStatus(String(prod.sku), prod.badge || "Disponível")}
-                            className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide border cursor-pointer transition active:scale-95 whitespace-nowrap ${
-                              prod.badge === "VENDIDA"
-                                ? "bg-rose-500/20 text-rose-400 border-rose-500/40 hover:bg-rose-500/30"
+                          {/* Status Toggle Button */}
+                          <td className="py-3 px-3 text-center whitespace-nowrap">
+                            <button
+                              type="button"
+                              onClick={(e) => handleToggleStatus(String(prod.sku), prod.badge || "Disponível", e)}
+                              className={`px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide border cursor-pointer transition active:scale-95 whitespace-nowrap ${
+                                isSold
+                                  ? "bg-rose-500/20 text-rose-400 border-rose-500/40 hover:bg-rose-500/30"
+                                  : prod.badge === "RESERVADO"
+                                  ? "bg-amber-500/20 text-amber-400 border-amber-500/40 hover:bg-amber-500/30"
+                                  : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/30"
+                              }`}
+                              title="Clique para alternar o status de venda"
+                            >
+                              {isSold
+                                ? "🔴 Vendida (Oculto)"
                                 : prod.badge === "RESERVADO"
-                                ? "bg-amber-500/20 text-amber-400 border-amber-500/40 hover:bg-amber-500/30"
-                                : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/30"
-                            }`}
-                            title="Clique para alternar o status"
-                          >
-                            {prod.badge === "VENDIDA"
-                              ? "🔴 Vendida"
-                              : prod.badge === "RESERVADO"
-                              ? "🟡 Reservado"
-                              : "🟢 Disponível"}
-                          </button>
-                        </td>
+                                ? "🟡 Reservado"
+                                : "🟢 Disponível"}
+                            </button>
+                          </td>
 
-                        {/* Ações */}
-                        <td className="py-3 px-4 text-right whitespace-nowrap">
-                          <div className="flex items-center justify-end gap-1.5">
-                            <button
-                              onClick={() => handleOpenEdit(prod)}
-                              className="px-2.5 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 font-bold text-xs transition cursor-pointer flex items-center gap-1"
-                              title="Editar imóvel e fotos"
-                            >
-                              <Edit3 className="w-3.5 h-3.5" />
-                              <span>Editar</span>
-                            </button>
-                            <button
-                              onClick={() => handleDelete(String(prod.sku))}
-                              className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition cursor-pointer"
-                              title="Excluir imóvel"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+                          {/* Ações Rápidas */}
+                          <td className="py-3 px-4 text-right whitespace-nowrap">
+                            <div className="flex items-center justify-end gap-1">
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleOpenEdit(prod);
+                                }}
+                                className="px-2.5 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 font-bold text-xs transition cursor-pointer flex items-center gap-1"
+                                title="Editar imóvel e fotos"
+                              >
+                                <Edit3 className="w-3.5 h-3.5" />
+                                <span>Editar</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={(e) => handleDuplicateProperty(prod, e)}
+                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
+                                title="Duplicar imóvel"
+                              >
+                                <Layers className="w-3.5 h-3.5" />
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={(e) => handleCopyPropertyLink(String(prod.sku), e)}
+                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
+                                title="Copiar Link para WhatsApp"
+                              >
+                                <Copy className="w-3.5 h-3.5" />
+                              </button>
+
+                              <Link
+                                to="/loja"
+                                search={{ sku: String(prod.sku) }}
+                                target="_blank"
+                                onClick={(e) => e.stopPropagation()}
+                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                                title="Ver no site público"
+                              >
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </Link>
+
+                              <button
+                                type="button"
+                                onClick={(e) => handleDelete(String(prod.sku), e)}
+                                className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition cursor-pointer"
+                                title="Excluir imóvel"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -1182,10 +1383,10 @@ export function AdminDashboardPage() {
                   <Building2 className="w-4 h-4 text-indigo-400" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-white">
-                  {properties.filter((p) => p.badge !== "VENDIDA").length}
+                  {countDisponiveis}
                 </div>
                 <span className="text-[10px] sm:text-[11px] text-slate-400 mt-1 block font-medium">
-                  {properties.filter((p) => p.badge === "VENDIDA").length} vendidos
+                  {countVendidos} vendidos (ocultos)
                 </span>
               </div>
             </div>
@@ -1358,147 +1559,237 @@ export function AdminDashboardPage() {
         )}
 
         {/* =============================================================
-            ABA 3: CONFIGURAÇÕES DO SITE
+            ABA 3: CONFIGURAÇÕES DO SITE (DESIGN E ESPAÇAMENTOS MELHORADOS)
         ============================================================= */}
         {activeTab === "config" && (
-          <div className="max-w-2xl space-y-6">
+          <div className="max-w-4xl mx-auto space-y-6">
             <div>
               <h2 className="text-xl sm:text-2xl font-black tracking-tight">
                 Configurações Gerais do Site
               </h2>
               <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-                Altere o WhatsApp de atendimento, telefone, CRECI e mensagem padrão em tempo real
+                Altere o WhatsApp de atendimento, telefone, CRECI, visibilidade de imóveis vendidos e PIN de segurança em tempo real
               </p>
             </div>
 
             <form
               onSubmit={handleSaveSettings}
-              className="bg-slate-900 p-5 sm:p-7 rounded-2xl border border-slate-800 space-y-4 shadow-xl"
+              className="bg-slate-900 p-5 sm:p-8 rounded-3xl border border-slate-800 space-y-6 shadow-xl"
             >
-              <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">
-                  Nome do Corretor / Imobiliária
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={settingsForm.realtorName}
-                  onChange={(e) =>
-                    setSettingsForm({ ...settingsForm, realtorName: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
+              {/* Seção 1: Dados do Corretor */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-black uppercase tracking-wider text-blue-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+                  <Building2 className="w-4 h-4" />
+                  <span>Dados do Corretor & Imobiliária</span>
+                </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-bold text-slate-300 block mb-1">
-                    WhatsApp para Receber Mensagens (Somente dígitos com DDD)
+                  <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                    Nome do Corretor / Imobiliária
                   </label>
                   <input
                     type="text"
                     required
-                    value={settingsForm.whatsappNumber}
+                    value={settingsForm.realtorName}
                     onChange={(e) =>
-                      setSettingsForm({ ...settingsForm, whatsappNumber: e.target.value.replace(/\D/g, "") })
+                      setSettingsForm({ ...settingsForm, realtorName: e.target.value })
                     }
-                    placeholder="Ex: 5521964639999"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500 font-mono"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-sm text-white focus:ring-2 focus:ring-blue-500"
                   />
-                  <span className="text-[10px] text-slate-500 mt-1 block">
-                    Atual: {settingsForm.whatsappNumber}
-                  </span>
                 </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                      WhatsApp para Receber Mensagens (Dígitos com DDD)
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        required
+                        value={settingsForm.whatsappNumber}
+                        onChange={(e) =>
+                          setSettingsForm({ ...settingsForm, whatsappNumber: e.target.value.replace(/\D/g, "") })
+                        }
+                        placeholder="Ex: 5521964639999"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-sm text-white focus:ring-2 focus:ring-blue-500 font-mono"
+                      />
+                    </div>
+                    <span className="text-[11px] text-slate-500 mt-1 block">
+                      Número atual: +{settingsForm.whatsappNumber}
+                    </span>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                      Telefone Formatado para Exibição
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={settingsForm.phoneDisplay}
+                      onChange={(e) =>
+                        setSettingsForm({ ...settingsForm, phoneDisplay: e.target.value })
+                      }
+                      placeholder="Ex: (21) 96463-9999"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-sm text-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                      Registro CRECI
+                    </label>
+                    <input
+                      type="text"
+                      value={settingsForm.creci}
+                      onChange={(e) =>
+                        setSettingsForm({ ...settingsForm, creci: e.target.value })
+                      }
+                      placeholder="Ex: CRECI-RJ Ativo"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-sm text-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                      Perfil no Instagram
+                    </label>
+                    <input
+                      type="text"
+                      value={settingsForm.instagramUrl}
+                      onChange={(e) =>
+                        setSettingsForm({ ...settingsForm, instagramUrl: e.target.value })
+                      }
+                      placeholder="https://instagram.com/..."
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-sm text-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Seção 2: Atendimento no WhatsApp */}
+              <div className="space-y-3 pt-2">
+                <h3 className="text-xs font-black uppercase tracking-wider text-emerald-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+                  <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
+                  <span>Mensagem Padrão de Atendimento</span>
+                </h3>
 
                 <div>
-                  <label className="text-xs font-bold text-slate-300 block mb-1">
-                    Telefone Formatado para Exibição
+                  <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                    Texto Inicial ao Clicar no WhatsApp do Site
                   </label>
-                  <input
-                    type="text"
-                    required
-                    value={settingsForm.phoneDisplay}
+                  <textarea
+                    rows={3}
+                    value={settingsForm.defaultWhatsAppMessage}
                     onChange={(e) =>
-                      setSettingsForm({ ...settingsForm, phoneDisplay: e.target.value })
+                      setSettingsForm({ ...settingsForm, defaultWhatsAppMessage: e.target.value })
                     }
-                    placeholder="Ex: (21) 96463-9999"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500 leading-relaxed"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-bold text-slate-300 block mb-1">
-                    Registro CRECI
-                  </label>
-                  <input
-                    type="text"
-                    value={settingsForm.creci}
-                    onChange={(e) =>
-                      setSettingsForm({ ...settingsForm, creci: e.target.value })
+              {/* Seção 3: Regras de Exibição de Imóveis Vendidos (NOVO) */}
+              <div className="space-y-3 pt-2">
+                <h3 className="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+                  <SlidersHorizontal className="w-4 h-4" />
+                  <span>Visibilidade do Catálogo de Imóveis</span>
+                </h3>
+
+                <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-between gap-4">
+                  <div className="min-w-0">
+                    <h4 className="font-bold text-sm text-white flex items-center gap-2">
+                      <span>Ocultar Imóveis Vendidos da Vitrine Pública</span>
+                      {settingsForm.hideSoldProperties !== false && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">
+                          Ativo (Recomendado)
+                        </span>
+                      )}
+                    </h4>
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      Quando ativado, qualquer imóvel marcado com status <strong>"VENDIDA"</strong> não aparecerá para os clientes no catálogo público (/loja). Você continua vendo e gerenciando todos eles aqui no painel administrativo.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSettingsForm({
+                        ...settingsForm,
+                        hideSoldProperties: settingsForm.hideSoldProperties === false ? true : false,
+                      })
                     }
-                    placeholder="Ex: CRECI-RJ 000.000"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-xs font-bold text-slate-300 block mb-1">
-                    Perfil no Instagram
-                  </label>
-                  <input
-                    type="text"
-                    value={settingsForm.instagramUrl}
-                    onChange={(e) =>
-                      setSettingsForm({ ...settingsForm, instagramUrl: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
-                  />
+                    className={`w-14 h-8 rounded-full p-1 transition-colors cursor-pointer shrink-0 ${
+                      settingsForm.hideSoldProperties !== false ? "bg-emerald-600" : "bg-slate-700"
+                    }`}
+                  >
+                    <div
+                      className={`w-6 h-6 rounded-full bg-white transition-transform shadow-md ${
+                        settingsForm.hideSoldProperties !== false ? "translate-x-6" : "translate-x-0"
+                      }`}
+                    />
+                  </button>
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">
-                  Mensagem Padrão de Atendimento no WhatsApp
-                </label>
-                <textarea
-                  rows={3}
-                  value={settingsForm.defaultWhatsAppMessage}
-                  onChange={(e) =>
-                    setSettingsForm({ ...settingsForm, defaultWhatsAppMessage: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
-                />
+              {/* Seção 4: Segurança e PIN */}
+              <div className="space-y-3 pt-2">
+                <h3 className="text-xs font-black uppercase tracking-wider text-indigo-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Segurança do Painel do Corretor</span>
+                </h3>
+
+                <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <label className="text-xs font-bold text-white block mb-0.5">
+                      PIN de Acesso ao Painel Admin
+                    </label>
+                    <span className="text-xs text-slate-400">
+                      Digite de 4 a 10 dígitos numéricos para proteger o acesso administrativo.
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <div className="relative">
+                      <input
+                        type={showPin ? "text" : "password"}
+                        maxLength={10}
+                        value={settingsForm.adminPin}
+                        onChange={(e) =>
+                          setSettingsForm({ ...settingsForm, adminPin: e.target.value })
+                        }
+                        className="w-36 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white font-mono font-bold text-center tracking-widest focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowPin(!showPin)}
+                      className="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 hover:text-white cursor-pointer"
+                      title={showPin ? "Ocultar PIN" : "Mostrar PIN"}
+                    >
+                      {showPin ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">
-                  Alterar PIN de Acesso ao Painel
-                </label>
-                <input
-                  type="text"
-                  maxLength={10}
-                  value={settingsForm.adminPin}
-                  onChange={(e) =>
-                    setSettingsForm({ ...settingsForm, adminPin: e.target.value })
-                  }
-                  className="w-36 px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white font-mono font-bold text-center tracking-widest"
-                />
-              </div>
-
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between gap-3">
+              {/* Barra de Ações do Formulário */}
+              <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={handleResetSettings}
-                  className="px-3.5 py-2 rounded-xl border border-slate-700 text-slate-400 hover:text-white text-xs font-semibold cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl border border-slate-700 text-slate-400 hover:text-white text-xs font-semibold cursor-pointer flex items-center gap-1.5"
                 >
-                  Restaurar Padrões
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Restaurar Padrões</span>
                 </button>
 
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md cursor-pointer transition active:scale-95"
+                  className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-blue-600/30 cursor-pointer transition active:scale-95"
                 >
                   <Save className="w-4 h-4" />
                   <span>Salvar Alterações</span>
@@ -1837,7 +2128,6 @@ export function AdminDashboardPage() {
                                   className="w-full h-full object-cover transition-transform group-hover:scale-102"
                                   loading="lazy"
                                   onError={(e) => {
-                                    // Fallback visual se a imagem quebrar
                                     (e.target as HTMLElement).classList.add("opacity-30");
                                   }}
                                 />
@@ -1976,9 +2266,9 @@ export function AdminDashboardPage() {
                         onChange={(e) => setEditingItem({ ...editingItem, badge: e.target.value })}
                         className="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white cursor-pointer"
                       >
-                        <option value="Disponível">🟢 Disponível</option>
-                        <option value="VENDIDA">🔴 VENDIDA</option>
-                        <option value="RESERVADO">🟡 RESERVADO</option>
+                        <option value="Disponível">🟢 Disponível (Visível no site)</option>
+                        <option value="VENDIDA">🔴 VENDIDA (Oculto do site)</option>
+                        <option value="RESERVADO">🟡 RESERVADO (Em negociação)</option>
                         <option value="NOVO">✨ NOVO</option>
                         <option value="DESTAQUE">⭐ DESTAQUE</option>
                       </select>
@@ -2254,7 +2544,7 @@ export function AdminDashboardPage() {
             {/* Rodapé Fixo do Modal */}
             <div className="p-3 sm:p-4 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-3 shrink-0">
               <span className="text-[11px] text-slate-400">
-                {modalImages.length} fotos selecionadas
+                {modalImages.length} fotos na galeria
               </span>
 
               <div className="flex items-center gap-2">

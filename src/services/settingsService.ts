@@ -15,6 +15,7 @@ export interface SiteSettings {
   adminPin: string;
   enableChatAssistant: boolean;
   highlightNotice: string;
+  hideSoldProperties: boolean;
 }
 
 export const DEFAULT_SETTINGS: SiteSettings = {
@@ -29,6 +30,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   adminPin: "1234",
   enableChatAssistant: true,
   highlightNotice: "Condomínios Fechados Angeleti: 15% de entrada e parcelamento direto em até 120x!",
+  hideSoldProperties: true,
 };
 
 const SETTINGS_STORAGE_KEY = "ismael_dias_site_settings_v1";

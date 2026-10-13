@@ -433,6 +433,15 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
   // Filter & Search
   const filtered = productList
     .filter((item) => {
+      // Ocultar imóveis vendidos do catálogo público quando ativado (padrão)
+      const isSold = item.badge === "VENDIDA" || item.condition === "VENDIDA";
+      if (isSold && siteSettings.hideSoldProperties !== false) {
+        const isDirectSkuSearch = searchQuery.trim() !== "" && item.sku === searchQuery.trim();
+        if (!isDirectSkuSearch) {
+          return false;
+        }
+      }
+
       const matchCat =
         activeFilter === "Todos" || item.cat === activeFilter;
 
