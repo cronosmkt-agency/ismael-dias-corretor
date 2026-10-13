@@ -37,6 +37,7 @@ export const ALL_BAIRROS = [
   "Sebastiana",
   "São Pedro",
   "Taumaturgo",
+  "Teresópolis",
   "Tijuca",
   "Vale do Paraíso",
   "Vargem Grande",
@@ -47,8 +48,44 @@ export const ALL_BAIRROS = [
 
 export const allImoveisData: ProductItem[] = [
   {
+    "sku": "163110",
+    "name": "Lançamento Vale dos Pássaros: Lotes Residenciais em Condomínio Fechado na Prata",
+    "price": 250000,
+    "cat": "Casas",
+    "badge": "Lançamento Clube",
+    "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260224171547/WhatsApp%20Image%202026-02-24%20at%2014.10.06%20(2)-original.webp",
+    "images": [
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260224171547/WhatsApp%20Image%202026-02-24%20at%2014.10.06%20(2)-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260224171546/WhatsApp%20Image%202026-02-24%20at%2014.10.06%20(3)-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132528/IMG-20240831-WA0003-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132534/IMG-20240831-WA0005-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132543/IMG-20240905-WA0064-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132559/IMG-20240905-WA0070-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132630/Imagem%20do%20WhatsApp%20de%202024-09-01%20%C3%A0%28s%29%2017.08.45_2ea2437c-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132613/IMG-20240905-WA0066-original.webp"
+    ],
+    "specs": "Teresópolis - RJ",
+    "storage": "Área Construída",
+    "condition": "Pronto para Morar",
+    "warranty": "Angeleti Construtora",
+    "battery": "Excelente Posição Solar",
+    "screen": "Prata, Teresópolis - RJ",
+    "camera": "Lazer e Sossego",
+    "chip": "15% Entrada + até 120x Direto",
+    "boxItems": [
+      "Localização privilegiada em Teresópolis - RJ",
+      "Documentação e procedência jurídica garantida",
+      "Assessoria completa com o corretor Ismael Dias",
+      "Agendamento de visita VIP no local",
+      "Excelente potencial de valorização na Região Serrana"
+    ],
+    "description": "O Condomínio Residencial Vale dos Pássaros é um empreendimento desenvolvido pela Angeleti Incorporadora e Construtora, projetado para oferecer conforto, tranquilidade e contato direto com a natureza, sem abrir mão de segurança e organização urbana.\n\nImplantado em uma área de topografia favorável e solo firme, o condomínio conta com lotes bem dimensionados, que permitem excelente aproveitamento construtivo, atendendo tanto projetos residenciais quanto oportunidades de investimento. Sua concepção prioriza a harmonia com o entorno natural, proporcionando um ambiente agradável, silencioso e visualmente valorizado.\n\nO Vale dos Pássaros é ideal para quem busca moradia definitiva, casa de veraneio ou valorização patrimonial, contando ainda com fluxo de pagamento facilitado direto com a incorporadora, sem intermediação bancária, reforçando a proposta de simplicidade, transparência e segurança jurídica.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
+    "url": "https://habittathouse.com.br/imovel/163110",
+    "bairro": "Prata"
+  },
+  {
     "sku": "268624",
-    "name": "Terreno na cidade para construção de Prédio residencial Minha Casa Minha Vida",
+    "name": "Grande Terreno Comercial e Residencial de 2.750m² no Vale do Paraíso",
     "price": 3500000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -73,7 +110,7 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Vale do Paraíso. Com 2.750 m² de área, é ideal para construir seu empreendimento minha casa minha vida. Destaques: metragem ampla e privacidade de um endereço valorizado. Localização estratégica no Vale do Paraíso, com atmosfera tranquila e praticidade do dia a dia em Teresópolis. Uma oportunidade para viver com qualidade e ampliar seu patrimônio. Agende sua visita e conheça pessoalmente.\n\n#terreno #teresopolis #valedoparaiso #condominio\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Vale do Paraíso. Com 2.750 m² de área, é ideal para construir seu empreendimento minha casa minha vida. Destaques: metragem ampla e privacidade de um endereço valorizado. Localização estratégica no Vale do Paraíso, com atmosfera tranquila e praticidade do dia a dia em Teresópolis. Uma oportunidade para viver com qualidade e ampliar seu patrimônio. Agende sua visita e conheça pessoalmente.\n\n#terreno #teresopolis #valedoparaiso #condominio\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/268624",
     "bairro": "Vale do Paraíso"
   },
@@ -100,13 +137,13 @@ export const allImoveisData: ProductItem[] = [
     "boxItems": [
       "Aceita financiamento bancário."
     ],
-    "description": "🏙️ Oportunidade Única no Centro de Teresópolis 🏙️\n\n📐 Loja com 400 m² em localização nobre, no coração da cidade.\n💰 Já alugada por R$ 14.000/mês, com contrato vigente até 2026.\n📈 Renda garantida e valorização imobiliária.\n\nLoja já alugada: Contrato até 31/12/2026...valor do aluguel: R$ 13.322,19\n\n💵 Preço: R$ 3.500,000,00\n✔️ Aceita financiamento bancário.\n\n📌 Excelente opção para quem busca segurança, retorno e valorização!",
+    "description": "🏙️ Oportunidade Única no Centro de Teresópolis 🏙️\n\n📐 Loja com 400 m² em localização nobre, no coração da cidade.\n💰 Já alugada por R$ 14.000/mês, com contrato vigente até 2026.\n📈 Renda garantida e valorização imobiliária.\n\nLoja já alugada: Contrato até 31/12/2026...valor do aluguel: R$ 13.322,19\n\n💵 Preço: R$ 3.500,000,00\n✔️ Aceita financiamento bancário.\n\n📌 Excelente opção para quem busca segurança, retorno e valorização!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271638",
     "bairro": "Várzea"
   },
   {
     "sku": "271652",
-    "name": "Casa de Condomínio de 3 quartos, 362m² no bairro Albuquerque, em Teresópolis",
+    "name": "Casa Contemporânea de Alto Padrão com 3 Quartos no Green Valley",
     "price": 1300000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -136,13 +173,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa Contemporânea no Green Valley ✨\n177m² de puro conforto e modernidade!\nProjeto contemporâneo, com ambientes integrados, acabamento sofisticado e todo o charme que você procura em um novo lar.\n\n👉 Venha conhecer de perto essa oportunidade única no Green Valley.",
+    "description": "Casa Contemporânea no Green Valley ✨\n177m² de puro conforto e modernidade!\nProjeto contemporâneo, com ambientes integrados, acabamento sofisticado e todo o charme que você procura em um novo lar.\n\n👉 Venha conhecer de perto essa oportunidade única no Green Valley.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271652",
     "bairro": "Green Valley"
   },
   {
     "sku": "271669",
-    "name": "Lote/Terreno de 15m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Terreno Espetacular de 15.000m² com Vista Panorâmica em Vargem Grande",
     "price": 1000000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -153,8 +190,8 @@ export const allImoveisData: ProductItem[] = [
       "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727135702/43a75dc8-9820-43da-86fd-dae59d5ebdda-watermarked.webp",
       "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727124159/34329a7e-f4cb-452c-949d-76c32363f5f6-watermarked.webp"
     ],
-    "specs": "15000 m²",
-    "storage": "15000 m²",
+    "specs": "15.000 m² • Vista Panorâmica",
+    "storage": "15.000m²",
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
@@ -165,13 +202,13 @@ export const allImoveisData: ProductItem[] = [
       "R$ 1.000.000,00 + 2 lotes, ou",
       "R$ 900.000,00 à vista"
     ],
-    "description": "🌿 Terreno em Vargem Grande – 15.000 m² 🌿\n\n✨ Vista eterna para a Mulher de Pedra\n📍 Localização privilegiada, no coração de Vargem Grande, próximo ao Le Canton e à Vinícola Maturano\n📑 Estudos de viabilidade já realizados – ideal para condomínio de lotes ou mini sítios\n\n💬 Oportunidade única para quem quer morar, investir ou desenvolver um projeto dos sonhos!\n\n💰 Condições especiais:\n🤝 Aceito permuta como parte do pagamento\n🏗️ Aberto a parceria para incorporação – área excelente para condomínio residencial\n\n📈 Se houver interessados em loteamento, aceito:\n\t•\tR$ 1.000.000,00 + 2 lotes, ou\n\t•\tR$ 900.000,00 à vista",
+    "description": "🌿 Terreno em Vargem Grande – 15.000 m² 🌿\n\n✨ Vista eterna para a Mulher de Pedra\n📍 Localização privilegiada, no coração de Vargem Grande, próximo ao Le Canton e à Vinícola Maturano\n📑 Estudos de viabilidade já realizados – ideal para condomínio de lotes ou mini sítios\n\n💬 Oportunidade única para quem quer morar, investir ou desenvolver um projeto dos sonhos!\n\n💰 Condições especiais:\n🤝 Aceito permuta como parte do pagamento\n🏗️ Aberto a parceria para incorporação – área excelente para condomínio residencial\n\n📈 Se houver interessados em loteamento, aceito:\n•\tR$ 1.000.000,00 + 2 lotes, ou\n•\tR$ 900.000,00 à vista\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271669",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "271957",
-    "name": "Lote/Terreno Comercial de 721m² no bairro Bairro da Luz , em Nova Iguaçu",
+    "name": "Excelente Terreno de 721.05m² em Nova Iguaçu",
     "price": 600000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -198,13 +235,13 @@ export const allImoveisData: ProductItem[] = [
       "Responsável Técnico: Candido Santos Oliveira Filho",
       "Regularizado conforme Lei nº 049/2015 (Código de Obras)"
     ],
-    "description": "🏢 VENDA DE PROJETO APROVADO – PRÉDIO COM 9 APARTAMENTOS\n\n📍 Projeto e licença de construção aprovados\n\t•\tUso Residencial – 9 unidades\n\t•\tÁrea total: 721,05 m²\n\t•\tLicença válida: 17/02/2025 a 17/02/2026\n\t•\tResponsável Técnico: Candido Santos Oliveira Filho\n\t•\tRegularizado conforme Lei nº 049/2015 (Código de Obras)\n\n📋 Unidades:\n\t•\tApto. 101\n\t•\tApto. 201\n\t•\tApto. 202\n\t•\tApto. 203\n\t•\tApto. 204\n\t•\tApto. 301\n\t•\tApto. 302\n\t•\tApto. 303\n\t•\tApto. 304\n\n💰 Valor de oportunidade: R$ 600.000,00\n\n🔑 Pronto para iniciar obras – ideal para construtores e investidores!",
+    "description": "🏢 VENDA DE PROJETO APROVADO – PRÉDIO COM 9 APARTAMENTOS\n\n📍 Projeto e licença de construção aprovados\n•\tUso Residencial – 9 unidades\n•\tÁrea total: 721,05 m²\n•\tLicença válida: 17/02/2025 a 17/02/2026\n•\tResponsável Técnico: Candido Santos Oliveira Filho\n•\tRegularizado conforme Lei nº 049/2015 (Código de Obras)\n\n📋 Unidades:\n•\tApto. 101\n•\tApto. 201\n•\tApto. 202\n•\tApto. 203\n•\tApto. 204\n•\tApto. 301\n•\tApto. 302\n•\tApto. 303\n•\tApto. 304\n\n💰 Valor de oportunidade: R$ 600.000,00\n\n🔑 Pronto para iniciar obras – ideal para construtores e investidores!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271957",
     "bairro": "Nova Iguaçu"
   },
   {
     "sku": "271961",
-    "name": "Lote/Terreno Comercial de 24000m² no bairro Chacrinha, em Nova Iguaçu",
+    "name": "Excelente Terreno de 24.000m² em Nova Iguaçu",
     "price": 800000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -230,13 +267,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno 24.000 m² – Projeto para 73 casas – Nova Iguaçu\nÁrea plana, com estudos e projetos para construção de até 73 casas populares (venda estimada até R$ 200 mil cada).\n💰 Valor de oportunidade: R$ 800.000,00\n👉 Ideal para construtoras e investidores.\n\n⸻\n\n📄 Versão formal (proposta comercial)\n\nÁrea de 24.000 m² à venda em Nova Iguaçu – Valor: R$ 800.000,00",
+    "description": "Terreno 24.000 m² – Projeto para 73 casas – Nova Iguaçu\nÁrea plana, com estudos e projetos para construção de até 73 casas populares (venda estimada até R$ 200 mil cada).\n💰 Valor de oportunidade: R$ 800.000,00\n👉 Ideal para construtoras e investidores.\n\n📄 Versão formal (proposta comercial)\n\nÁrea de 24.000 m² à venda em Nova Iguaçu – Valor: R$ 800.000,00\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271961",
     "bairro": "Nova Iguaçu"
   },
   {
     "sku": "271972",
-    "name": "Casa de condominio, Nogueira, Petrópolis",
+    "name": "Magnífica Casa em Condomínio com 2 Quartos (3 Suítes) e Lazer Completo em Nogueira",
     "price": 2700000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -266,13 +303,13 @@ export const allImoveisData: ProductItem[] = [
       "Sala de jantar integrada",
       "Cozinha bem planejada, funcional e espaçosa"
     ],
-    "description": "Lindo imóvel em condomínio fechado com apenas 5 casas, garantindo exclusividade e tranquilidade. Construído em terreno totalmente plano e 100% aproveitável, com aproximadamente 950m², esta residência oferece 340m² de área construída, com excelente distribuição dos ambientes.\n\n🔹 Destaques do imóvel:\n• 3 suítes confortáveis\n• 2 quartos adicionais + banheiro social\n• Sala ampla com lareira, perfeita para o inverno\n• Sala de jantar integrada\n• Cozinha bem planejada, funcional e espaçosa\n• Varanda gourmet com churrasqueira e forno de pizza à lenha\n• Piscina com área de lazer\n• Sala de jogos\n• Sala com banheira de hidromassagem para até 6 pessoas\n\n🌿 Área externa impecável:\n• Terreno gramado e arborizado\n• Lindo jardim com paisagismo\n• Vista panorâmica para cadeias de montanhas\nLocalização privilegiada em ambiente calmo e seguro, ideal para quem busca qualidade de vida, conforto e contato com a natureza.",
+    "description": "Lindo imóvel em condomínio fechado com apenas 5 casas, garantindo exclusividade e tranquilidade. Construído em terreno totalmente plano e 100% aproveitável, com aproximadamente 950m², esta residência oferece 340m² de área construída, com excelente distribuição dos ambientes.\n\n🔹 Destaques do imóvel:\n• 3 suítes confortáveis\n• 2 quartos adicionais + banheiro social\n• Sala ampla com lareira, perfeita para o inverno\n• Sala de jantar integrada\n• Cozinha bem planejada, funcional e espaçosa\n• Varanda gourmet com churrasqueira e forno de pizza à lenha\n• Piscina com área de lazer\n• Sala de jogos\n• Sala com banheira de hidromassagem para até 6 pessoas\n\n🌿 Área externa impecável:\n• Terreno gramado e arborizado\n• Lindo jardim com paisagismo\n• Vista panorâmica para cadeias de montanhas\nLocalização privilegiada em ambiente calmo e seguro, ideal para quem busca qualidade de vida, conforto e contato com a natureza.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271972",
     "bairro": "Nogueira"
   },
   {
     "sku": "272017",
-    "name": "Casa de Condomínio de 6 quartos, 2400m² no bairro Carlos Guinle, em Teresópolis",
+    "name": "Mansão Exclusiva no Condomínio Comary com 6 Suítes e Lazer no Alto",
     "price": 3800000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -302,13 +339,13 @@ export const allImoveisData: ProductItem[] = [
       "Escritório privativo",
       "Sala com lareira aconchegante"
     ],
-    "description": "🏡 Casa Exclusiva no Condomínio Comary – CBF | Alto, Teresópolis – RJ\n\nLocalizada em um dos endereços mais privilegiados de Teresópolis, dentro da CBF, esta residência une sofisticação, conforto e exclusividade em meio à natureza da serra.\n\n✨ Diferenciais do imóvel:\n\t•\tTerreno amplo de 2.400 m²\n\t•\tÁrea construída de 600 m²\n\t•\t6 suítes (todas com closet)\n\t•\tEscritório privativo\n\t•\tSala com lareira aconchegante\n\t•\tCozinha funcional integrada\n\t•\tLavabo e banheiro de apoio\n\t•\tLavanderia espaçosa\n\t•\tAr-condicionado instalado\n\t•\tGaragem para 4 carros\n\t•\tJardim arborizado que proporciona privacidade e bem-estar\n\n💰 Valores:\n\t•\tVenda: R$ 4.500.000,00\n\t•\tIPTU: R$ 17.000,00 (anual)\n\t•\tCondomínio: R$ 800,00\n\n📍 Localização privilegiada:\nNo bairro do Alto, em Teresópolis, referência de segurança, tranquilidade e valorização, oferecendo qualidade de vida em um dos pontos mais nobres da cidade.",
+    "description": "🏡 Casa Exclusiva no Condomínio Comary – CBF | Alto, Teresópolis – RJ\n\nLocalizada em um dos endereços mais privilegiados de Teresópolis, dentro da CBF, esta residência une sofisticação, conforto e exclusividade em meio à natureza da serra.\n\n✨ Diferenciais do imóvel:\n•\tTerreno amplo de 2.400 m²\n•\tÁrea construída de 600 m²\n•\t6 suítes (todas com closet)\n•\tEscritório privativo\n•\tSala com lareira aconchegante\n•\tCozinha funcional integrada\n•\tLavabo e banheiro de apoio\n•\tLavanderia espaçosa\n•\tAr-condicionado instalado\n•\tGaragem para 4 carros\n•\tJardim arborizado que proporciona privacidade e bem-estar\n\n💰 Valores:\n•\tVenda: R$ 4.500.000,00\n•\tIPTU: R$ 17.000,00 (anual)\n•\tCondomínio: R$ 800,00\n\n📍 Localização privilegiada:\nNo bairro do Alto, em Teresópolis, referência de segurança, tranquilidade e valorização, oferecendo qualidade de vida em um dos pontos mais nobres da cidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272017",
     "bairro": "Carlos Guinle"
   },
   {
     "sku": "272024",
-    "name": "Casa de condominio, itaipava, petrópolis",
+    "name": "Magnífica Casa em Condomínio com 3 Quartos e Área Gourmet em Itaipava",
     "price": 3200000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -338,13 +375,13 @@ export const allImoveisData: ProductItem[] = [
       "Banheiro social",
       "Sala de TV"
     ],
-    "description": "**Refúgio de Tranquilidade e Conforto em Condomínio Privilegiado**\n\nLocalizado em um dos condomínios mais exclusivos da região, com segurança 24h e acesso fácil — a apenas 2km da BR-040 — este imóvel é perfeito para quem busca bem-estar, natureza e praticidade.\n\nNa mesma rua, encontra-se o renomado colégio bilíngue e canadense *Maple Bear*, agregando ainda mais valor para famílias com filhos em idade escolar.\n\nCom 2.500m² de terreno e uma casa ampla e muito bem distribuída, o imóvel oferece:\n- 1 suíte espaçosa com closet\n- 3 dormitórios adicionais\n- Banheiro social\n- Sala de TV\n- Sala de estar integrada à sala de jantar, ambas arejadas e iluminadas\n- Escritório com vista para o verde, ideal para home office\n- Varanda com uma vista inspiradora da natureza preservada\n\nNo jardim, um verdadeiro espaço gourmet para receber com estilo:\n- Ambiente moderno com churrasqueira, fogão a lenha e forno de pizza\n- Mais uma sala integrada ao espaço externo\n- Dormitório de hóspedes para acomodar com conforto\n\nEssa é mais que uma casa — é um convite à vida tranquila, cercada pela natureza, com toda a infraestrutura que você merece.",
+    "description": "**Refúgio de Tranquilidade e Conforto em Condomínio Privilegiado**\n\nLocalizado em um dos condomínios mais exclusivos da região, com segurança 24h e acesso fácil — a apenas 2km da BR-040 — este imóvel é perfeito para quem busca bem-estar, natureza e praticidade.\n\nNa mesma rua, encontra-se o renomado colégio bilíngue e canadense *Maple Bear*, agregando ainda mais valor para famílias com filhos em idade escolar.\n\nCom 2.500m² de terreno e uma casa ampla e muito bem distribuída, o imóvel oferece:\n- 1 suíte espaçosa com closet\n- 3 dormitórios adicionais\n- Banheiro social\n- Sala de TV\n- Sala de estar integrada à sala de jantar, ambas arejadas e iluminadas\n- Escritório com vista para o verde, ideal para home office\n- Varanda com uma vista inspiradora da natureza preservada\n\nNo jardim, um verdadeiro espaço gourmet para receber com estilo:\n- Ambiente moderno com churrasqueira, fogão a lenha e forno de pizza\n- Mais uma sala integrada ao espaço externo\n- Dormitório de hóspedes para acomodar com conforto\n\nEssa é mais que uma casa — é um convite à vida tranquila, cercada pela natureza, com toda a infraestrutura que você merece.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272024",
     "bairro": "Itaipava"
   },
   {
     "sku": "272035",
-    "name": "Lote/Terreno de 500m² no bairro Quinta da Barra, em Teresópolis",
+    "name": "Excelente Terreno de 500m² na Quinta da Barra",
     "price": 500000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -372,13 +409,13 @@ export const allImoveisData: ProductItem[] = [
       "Região com infraestrutura completa",
       "Ótima vizinhança"
     ],
-    "description": "Excelente oportunidade!\nVende-se lote de 500 m² localizado na Quinta da Barra, uma das áreas mais valorizadas e bem localizadas no centro da cidade. Ideal para construção residencial ou investimento seguro em uma região em plena expansão.\n\nO terreno possui excelente topografia, fácil acesso e está próximo a comércios, escolas, supermercados, farmácias e demais conveniências essenciais para o dia a dia.\n\n💰 Valor: R$ 500.000,00\n📐 Área: 500 m²\n📍 Localização: Quinta da Barra – Centro da Cidade\n\nDiferenciais:\n\t•\tBairro tranquilo e planejado\n\t•\tAlta valorização imobiliária\n\t•\tRuas pavimentadas\n\t•\tRegião com infraestrutura completa\n\t•\tÓtima vizinhança\n\nIdeal para quem busca conforto, segurança e um ótimo investimento em uma das melhores localizações da cidade.\n\nEntre em contato para mais informações e agendamento de visita!",
+    "description": "Excelente oportunidade!\nVende-se lote de 500 m² localizado na Quinta da Barra, uma das áreas mais valorizadas e bem localizadas no centro da cidade. Ideal para construção residencial ou investimento seguro em uma região em plena expansão.\n\nO terreno possui excelente topografia, fácil acesso e está próximo a comércios, escolas, supermercados, farmácias e demais conveniências essenciais para o dia a dia.\n\n💰 Valor: R$ 500.000,00\n📐 Área: 500 m²\n📍 Localização: Quinta da Barra – Centro da Cidade\n\nDiferenciais:\n•\tBairro tranquilo e planejado\n•\tAlta valorização imobiliária\n•\tRuas pavimentadas\n•\tRegião com infraestrutura completa\n•\tÓtima vizinhança\n\nIdeal para quem busca conforto, segurança e um ótimo investimento em uma das melhores localizações da cidade.\n\nEntre em contato para mais informações e agendamento de visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272035",
     "bairro": "Quinta da Barra"
   },
   {
     "sku": "272236",
-    "name": "Casa de 3 quartos, 169m² no bairro Quinta da Barra, em Teresópolis",
+    "name": "Casa Aconchegante de 3 Quartos com Espaço Gourmet na Quinta da Barra",
     "price": 750000,
     "cat": "Casas",
     "badge": "VENDIDA",
@@ -408,13 +445,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Uma oportunidade única para quem busca tranquilidade e conexão com a natureza.\nEsta encantadora casa de dois pavimentos, com aproximadamente 60 m² de área construída, está inserida em um terreno amplo e exuberante de cerca de 850 m², oferecendo muito espaço, privacidade e um ambiente acolhedor.\nA residência conta com 3 quartos, 3 banheiros, duas salas aconchegantes e duas cozinhas, proporcionando versatilidade para famílias maiores, para quem deseja integrar áreas gourmet ou até mesmo criar um espaço independente dentro da própria casa.\nMuito arejada e iluminada, a casa recebe sol durante boa parte do dia, e suas janelas amplas permitem que a luz natural e a brisa circulem facilmente pelos ambientes. O destaque fica para o quintal espaçoso, envolto por muito verde, ideal para quem ama plantas, animais, atividades ao ar livre ou simplesmente deseja desfrutar de um espaço de paz e serenidade.\nA combinação do silêncio, do contato direto com a natureza e da sensação constante de bem-estar tornam esta casa um verdadeiro refúgio. Um lugar perfeito para quem busca qualidade de vida, tranquilidade e uma experiência de morar diferente.\nUma oportunidade rara e especial para viver com conforto, simplicidade elegante e muita harmonia.",
+    "description": "Uma oportunidade única para quem busca tranquilidade e conexão com a natureza.\nEsta encantadora casa de dois pavimentos, com aproximadamente 60 m² de área construída, está inserida em um terreno amplo e exuberante de cerca de 850 m², oferecendo muito espaço, privacidade e um ambiente acolhedor.\nA residência conta com 3 quartos, 3 banheiros, duas salas aconchegantes e duas cozinhas, proporcionando versatilidade para famílias maiores, para quem deseja integrar áreas gourmet ou até mesmo criar um espaço independente dentro da própria casa.\nMuito arejada e iluminada, a casa recebe sol durante boa parte do dia, e suas janelas amplas permitem que a luz natural e a brisa circulem facilmente pelos ambientes. O destaque fica para o quintal espaçoso, envolto por muito verde, ideal para quem ama plantas, animais, atividades ao ar livre ou simplesmente deseja desfrutar de um espaço de paz e serenidade.\nA combinação do silêncio, do contato direto com a natureza e da sensação constante de bem-estar tornam esta casa um verdadeiro refúgio. Um lugar perfeito para quem busca qualidade de vida, tranquilidade e uma experiência de morar diferente.\nUma oportunidade rara e especial para viver com conforto, simplicidade elegante e muita harmonia.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272236",
     "bairro": "Quinta da Barra"
   },
   {
     "sku": "272371",
-    "name": "Loja / Salão / Ponto Comercial no bairro Copacabana, em Rio de Janeiro",
+    "name": "Ponto Comercial de 432m² em Localização Privilegiada em Copacabana",
     "price": 9500000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -438,13 +475,13 @@ export const allImoveisData: ProductItem[] = [
       "Contrato até novembro de 2026",
       "Rendimento aproximado: 0,69% ao mês (8,3% ao ano)"
     ],
-    "description": "📍 Av. Nossa Senhora de Copacabana, 750 – Loja B\n📐 432 m² de área total\n\nPonto comercial de altíssimo movimento em uma das avenidas mais conhecidas e valorizadas do Rio de Janeiro.\nA loja conta com fachada ampla e moderna, ótima distribuição interna e localização estratégica, próxima a comércios, metrô e pontos de ônibus.\n\n💼 Detalhes do investimento:\n\t•\tValor: R$ 9.500.000,00\n\t•\tAlugada por R$ 66.000,00/mês\n\t•\tContrato até novembro de 2026\n\t•\tRendimento aproximado: 0,69% ao mês (8,3% ao ano)\n\n📈 Ideal para quem busca renda imediata e valorização constante em um dos endereços mais tradicionais do Rio.",
+    "description": "📍 Av. Nossa Senhora de Copacabana, 750 – Loja B\n📐 432 m² de área total\n\nPonto comercial de altíssimo movimento em uma das avenidas mais conhecidas e valorizadas do Rio de Janeiro.\nA loja conta com fachada ampla e moderna, ótima distribuição interna e localização estratégica, próxima a comércios, metrô e pontos de ônibus.\n\n💼 Detalhes do investimento:\n•\tValor: R$ 9.500.000,00\n•\tAlugada por R$ 66.000,00/mês\n•\tContrato até novembro de 2026\n•\tRendimento aproximado: 0,69% ao mês (8,3% ao ano)\n\n📈 Ideal para quem busca renda imediata e valorização constante em um dos endereços mais tradicionais do Rio.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272371",
     "bairro": "Copacabana"
   },
   {
     "sku": "272377",
-    "name": "Prédio Inteiro no bairro Madureira, em Rio de Janeiro",
+    "name": "Prédio Comercial de 37m² em Localização Privilegiada em Madureira",
     "price": 6000000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -466,13 +503,13 @@ export const allImoveisData: ProductItem[] = [
       "9 salas de frente para a rua",
       "5 salas voltadas para os fundos"
     ],
-    "description": "🏢 Prédio Comercial em Madureira – Excelente Investimento!\nEste prédio é uma ótima oportunidade para investidores que buscam renda imediata e valorização garantida.\n\n✨ Detalhes do imóvel:\n\n14 salas comerciais com 37 m² cada, sendo:\n• 9 salas de frente para a rua\n• 5 salas voltadas para os fundos\n\nLoja térrea ampla, com 250 m², atualmente locada para laboratório/clínica.\n\n💰 Renda atual:\n\nSalas comerciais: R$ 12.500,00 de aluguel (com desconto, recebem R$ 10.000,00 líquidos)\n\nLoja térrea: R$ 18.818,00 de aluguel\n➡️ Total mensal de locação: R$ 28.818,00\n\n📈 Excelente retorno para investidores!\nImóvel com contratos ativos, boa localização e ótimo fluxo de pedestres e veículos — ideal para quem busca renda segura e constante.",
+    "description": "🏢 Prédio Comercial em Madureira – Excelente Investimento!\nEste prédio é uma ótima oportunidade para investidores que buscam renda imediata e valorização garantida.\n\n✨ Detalhes do imóvel:\n\n14 salas comerciais com 37 m² cada, sendo:\n• 9 salas de frente para a rua\n• 5 salas voltadas para os fundos\n\nLoja térrea ampla, com 250 m², atualmente locada para laboratório/clínica.\n\n💰 Renda atual:\n\nSalas comerciais: R$ 12.500,00 de aluguel (com desconto, recebem R$ 10.000,00 líquidos)\n\nLoja térrea: R$ 18.818,00 de aluguel\n➡️ Total mensal de locação: R$ 28.818,00\n\n📈 Excelente retorno para investidores!\nImóvel com contratos ativos, boa localização e ótimo fluxo de pedestres e veículos — ideal para quem busca renda segura e constante.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272377",
     "bairro": "Madureira"
   },
   {
     "sku": "272391",
-    "name": "Prédio Inteiro no bairro Centro, em Rio de Janeiro",
+    "name": "Prédio Comercial de 889.53m² em Localização Privilegiada no Centro",
     "price": 7500000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -498,13 +535,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Prédio com 9 pavimentos e 2.889,53 m² de área total, incluindo vagas de garagem, em localização privilegiada.\n\n✨ Detalhes do imóvel:\n\nTérreo: ampla sala com banheiros, ideal para recepção ou espaço comercial;\n\nSobreloja com ótimo potencial de uso;\n\n1º e 2º andares: atualmente transformados em andar corrido, mas com possibilidade de reversão para garagem;\n\n3º ao 5º andares: 3 salas por andar, que também podem ser adaptadas para uso integrado;\n\n6º ao 9º andares: 4 salas por andar, igualmente reversíveis em áreas maiores;\n\nSubsolo: área destinada aos maquinários do prédio;\n\nElevadores instalados e estrutura sólida.\n\n💡 Ideal para investidores ou construtoras!\nPerfeito para reforma e conversão em hotel, clínica, sede corporativa ou empreendimento misto.",
+    "description": "Prédio com 9 pavimentos e 2.889,53 m² de área total, incluindo vagas de garagem, em localização privilegiada.\n\n✨ Detalhes do imóvel:\n\nTérreo: ampla sala com banheiros, ideal para recepção ou espaço comercial;\n\nSobreloja com ótimo potencial de uso;\n\n1º e 2º andares: atualmente transformados em andar corrido, mas com possibilidade de reversão para garagem;\n\n3º ao 5º andares: 3 salas por andar, que também podem ser adaptadas para uso integrado;\n\n6º ao 9º andares: 4 salas por andar, igualmente reversíveis em áreas maiores;\n\nSubsolo: área destinada aos maquinários do prédio;\n\nElevadores instalados e estrutura sólida.\n\n💡 Ideal para investidores ou construtoras!\nPerfeito para reforma e conversão em hotel, clínica, sede corporativa ou empreendimento misto.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272391",
     "bairro": "Centro"
   },
   {
     "sku": "272393",
-    "name": "Hotel / Pousada / Chalé de 11 quartos, no bairro Mury, em Nova Friburgo",
+    "name": "Propriedade Cinematográfica com 11 Quartos e Lazer Completo em Nova Friburgo",
     "price": 3000000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -534,13 +571,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Propriedade Cinematográfica à Venda – Mury, Nova Friburgo (RJ)\n\nEncante-se com esta propriedade exclusiva, perfeita para quem busca luxo, espaço e privacidade em meio à natureza da serra!\n\n📐 Terreno com 2.200 m² totalmente aproveitáveis, abrigando uma estrutura impressionante:\n🎬 Prédio cinematográfico com 970 m², contando com 8 suítes amplas, salões de festas e jogos, além de uma academia completa – ideal para lazer, eventos ou hospedagem.\n\n🚗 Estacionamento para até 20 carros\n🏠 Casa de caseiro independente\n🏡 Casa sede com 235 m², composta por 3 quartos (sendo 1 suíte), sala espaçosa e ambientes acolhedores.\n\n💰 Valor: R$ 3.000.000,00\n❌ Não aceito permuta\n\nUm verdadeiro refúgio de alto padrão em uma das regiões mais charmosas de Nova Friburgo – o bairro Mury, conhecido por seu clima agradável e fácil acesso.\n\n✨ Ideal para uso residencial, pousada, espaço para eventos ou retiro familiar.",
+    "description": "🏡 Propriedade Cinematográfica à Venda – Mury, Nova Friburgo (RJ)\n\nEncante-se com esta propriedade exclusiva, perfeita para quem busca luxo, espaço e privacidade em meio à natureza da serra!\n\n📐 Terreno com 2.200 m² totalmente aproveitáveis, abrigando uma estrutura impressionante:\n🎬 Prédio cinematográfico com 970 m², contando com 8 suítes amplas, salões de festas e jogos, além de uma academia completa – ideal para lazer, eventos ou hospedagem.\n\n🚗 Estacionamento para até 20 carros\n🏠 Casa de caseiro independente\n🏡 Casa sede com 235 m², composta por 3 quartos (sendo 1 suíte), sala espaçosa e ambientes acolhedores.\n\n💰 Valor: R$ 3.000.000,00\n❌ Não aceito permuta\n\nUm verdadeiro refúgio de alto padrão em uma das regiões mais charmosas de Nova Friburgo – o bairro Mury, conhecido por seu clima agradável e fácil acesso.\n\n✨ Ideal para uso residencial, pousada, espaço para eventos ou retiro familiar.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272393",
     "bairro": "Nova Friburgo"
   },
   {
     "sku": "272398",
-    "name": "Lote/Terreno no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Terreno de 4.900m² Pronto para Construir em Vargem Grande",
     "price": 600000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -570,13 +607,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🌿 Terreno dos sonhos à venda em Agrião de Dentro! 🌿\n\nSe você busca espaço, privacidade e estrutura para construir um verdadeiro refúgio, encontrou o lugar certo!\n\n📐 Área total: 4.900m² 100% murados para sua segurança e tranquilidade\n\n✔ Já possui diversas instalações prontas para uso:\n\n🎱 Salão de jogos completo para momentos de lazer com a família e amigos\n\n🏊 Piscina instalada – é só aproveitar!\n\n⚡ Relógio trifásico já funcionando\n\n💧 Cisterna com capacidade para 20 mil litros\n\n🚰 Poço com 145m de profundidade, com bomba nova e toda a encanação recém-feita\n\n✨ Um terreno com estrutura rara de encontrar, ideal para quem quer construir uma casa de campo, pousada, área de lazer ou até investir em eventos e turismo rural.\n\n🌳 Amplo, privativo e pronto para receber o seu projeto!",
+    "description": "🌿 Terreno dos sonhos à venda em Agrião de Dentro! 🌿\n\nSe você busca espaço, privacidade e estrutura para construir um verdadeiro refúgio, encontrou o lugar certo!\n\n📐 Área total: 4.900m² 100% murados para sua segurança e tranquilidade\n\n✔ Já possui diversas instalações prontas para uso:\n\n🎱 Salão de jogos completo para momentos de lazer com a família e amigos\n\n🏊 Piscina instalada – é só aproveitar!\n\n⚡ Relógio trifásico já funcionando\n\n💧 Cisterna com capacidade para 20 mil litros\n\n🚰 Poço com 145m de profundidade, com bomba nova e toda a encanação recém-feita\n\n✨ Um terreno com estrutura rara de encontrar, ideal para quem quer construir uma casa de campo, pousada, área de lazer ou até investir em eventos e turismo rural.\n\n🌳 Amplo, privativo e pronto para receber o seu projeto!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272398",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272412",
-    "name": "Lote/Terreno de no bairro Parque do Imbui, em Teresópolis",
+    "name": "Excelente Terreno de 5.400m² com Nascente e Vista Livre no Parque do Imbuí",
     "price": 350000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -606,13 +643,13 @@ export const allImoveisData: ProductItem[] = [
       "Acesso fácil pela estrada da Serra de Itaipava",
       "Ideal para empreendimentos turísticos, residenciais ou ecológicos"
     ],
-    "description": "Terreno de 5.400 m² em Teresópolis – Início da Serra de Itaipava, com nascente de água mineral e vista deslumbrante!\n\nExcelente oportunidade! Terreno com 5.400 m² localizado no início da Serra de Itaipava, em uma das regiões mais bonitas e valorizadas de Teresópolis.\nA propriedade conta com mais de 100 metros de nascente de água mineral, ideal para quem busca contato direto com a natureza, tranquilidade e qualidade de vida.\n\nO terreno possui topografia favorável para diversos tipos de empreendimentos — perfeito para construção de chalés, pousada, sítio de lazer ou condomínio residencial.\n\nUm dos grandes diferenciais é a vista panorâmica privilegiada para a Mulher de Pedra e para toda a cidade de Teresópolis, proporcionando um cenário único e inspirador.\n\nDestaques do imóvel:\n\t•\tÁrea total: 5.400 m²\n\t•\tNascente de água mineral dentro da propriedade\n\t•\tVista espetacular para a Mulher de Pedra e a cidade\n\t•\tAcesso fácil pela estrada da Serra de Itaipava\n\t•\tIdeal para empreendimentos turísticos, residenciais ou ecológicos\n\nLocalização perfeita para quem quer unir natureza, conforto e investimento com alto potencial de valorização.\nTodo documentado!!",
+    "description": "Terreno de 5.400 m² em Teresópolis – Início da Serra de Itaipava, com nascente de água mineral e vista deslumbrante!\n\nExcelente oportunidade! Terreno com 5.400 m² localizado no início da Serra de Itaipava, em uma das regiões mais bonitas e valorizadas de Teresópolis.\nA propriedade conta com mais de 100 metros de nascente de água mineral, ideal para quem busca contato direto com a natureza, tranquilidade e qualidade de vida.\n\nO terreno possui topografia favorável para diversos tipos de empreendimentos — perfeito para construção de chalés, pousada, sítio de lazer ou condomínio residencial.\n\nUm dos grandes diferenciais é a vista panorâmica privilegiada para a Mulher de Pedra e para toda a cidade de Teresópolis, proporcionando um cenário único e inspirador.\n\nDestaques do imóvel:\n•\tÁrea total: 5.400 m²\n•\tNascente de água mineral dentro da propriedade\n•\tVista espetacular para a Mulher de Pedra e a cidade\n•\tAcesso fácil pela estrada da Serra de Itaipava\n•\tIdeal para empreendimentos turísticos, residenciais ou ecológicos\n\nLocalização perfeita para quem quer unir natureza, conforto e investimento com alto potencial de valorização.\nTodo documentado!!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272412",
     "bairro": "Parque do Imbuí"
   },
   {
     "sku": "272417",
-    "name": "Apartamento de 2 quartos, 69m² no bairro Bom Retiro, em Teresópolis",
+    "name": "Lindo Apartamento de 2 Quartos com Varanda e Vista Livre no Bom Retiro",
     "price": 450000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -642,13 +679,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Este lindo apartamento transborda conforto e praticidade à sua família!\n A sala, ampla e aconchegante, é dividida em dois ambientes e integrada à varanda, com vista livre!\n\nSão dois quartos espaçosos, sendo uma suíte, além de um banheiro social.\n\nCozinha com armários planejados e está conectada à área de serviço. \n\nO imóvel possui ainda uma vaga de garagem coberta.\n\nO condomínio é completo, com infraestrutura de lazer e segurança: piscina, salão de festas, duas churrasqueiras, sauna, academia, campo de futebol e portaria 24 horas.\n\nLocalização estratégica, para a praticidade do seu dia a dia, com padaria, supermercado, farmácia, posto de gasolina, rodoviária, bares e restaurantes.\n\nAgende sua visita e vem conhecer o seu futuro lar!",
+    "description": "Este lindo apartamento transborda conforto e praticidade à sua família!\nA sala, ampla e aconchegante, é dividida em dois ambientes e integrada à varanda, com vista livre!\n\nSão dois quartos espaçosos, sendo uma suíte, além de um banheiro social.\n\nCozinha com armários planejados e está conectada à área de serviço.\n\nO imóvel possui ainda uma vaga de garagem coberta.\n\nO condomínio é completo, com infraestrutura de lazer e segurança: piscina, salão de festas, duas churrasqueiras, sauna, academia, campo de futebol e portaria 24 horas.\n\nLocalização estratégica, para a praticidade do seu dia a dia, com padaria, supermercado, farmácia, posto de gasolina, rodoviária, bares e restaurantes.\n\nAgende sua visita e vem conhecer o seu futuro lar!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272417",
     "bairro": "Bom Retiro"
   },
   {
     "sku": "272421",
-    "name": "Casa de Condomínio de 4 quartos, no bairro Bom Retiro, em Teresópolis",
+    "name": "Casa Nova em Condomínio com 4 Quartos no Bom Retiro",
     "price": 1290000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -678,13 +715,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Casa Nova no Condomínio Alvorada – Bom Retiro, Teresópolis\n\nApresentamos uma charmosa casa nova, perfeita para quem busca conforto, segurança e praticidade em um dos bairros mais queridos da cidade.\n\n✨ Detalhes do imóvel:\n\n4 quartos aconchegantes, ideais para toda a família\n\nSala ampla, perfeita para receber amigos e curtir momentos especiais\n\nCozinha funcional, pronta para inspirar bons sabores\n\nBanheiro bem distribuído\n\nÁrea externa com churrasqueira para celebrar bons encontros\n\nGaragem coberta para 2 carros\n\n📐 153 m² de área construída em um condomínio tranquilo e bem localizado.\n\nViver no Condomínio Alvorada é unir qualidade de vida, praticidade e a proximidade com tudo que o bairro do Bom Retiro oferece.",
+    "description": "🏡 Casa Nova no Condomínio Alvorada – Bom Retiro, Teresópolis\n\nApresentamos uma charmosa casa nova, perfeita para quem busca conforto, segurança e praticidade em um dos bairros mais queridos da cidade.\n\n✨ Detalhes do imóvel:\n\n4 quartos aconchegantes, ideais para toda a família\n\nSala ampla, perfeita para receber amigos e curtir momentos especiais\n\nCozinha funcional, pronta para inspirar bons sabores\n\nBanheiro bem distribuído\n\nÁrea externa com churrasqueira para celebrar bons encontros\n\nGaragem coberta para 2 carros\n\n📐 153 m² de área construída em um condomínio tranquilo e bem localizado.\n\nViver no Condomínio Alvorada é unir qualidade de vida, praticidade e a proximidade com tudo que o bairro do Bom Retiro oferece.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272421",
     "bairro": "Bom Retiro"
   },
   {
     "sku": "272455",
-    "name": "Casa de Condomínio de 4 quartos, 178m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Casa em Condomínio com 4 Quartos e Lazer Completo em Vargem Grande",
     "price": 760000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -714,13 +751,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Localizada em um condomínio privativo no bairro de Vargem Grande em Teresópolis, esta propriedade é cercada pela beleza natural da cidade,  e uma vista de tirar o fôlego!\n\nCom 178,84m² de área construída, o imóvel apresenta espaços cuidadosamente planejados para garantir funcionalidade e conforto.\n\nA casa é um espetáculo, sendo assim configurada: \n\nSala ampla em dois ambientes, com lareira, perfeita para proporcionar momentos aconchegantes em família..\n\nQuatro quartos, banheiro social, lavanderia, cozinha com armários planejados e um belo espaço gourmet, coberto, equipado com churrasqueira, forno e fogão a lenha, com saída para varanda e jardim.\n\nDestaque para a suíte com closet e varanda privativa, ideal para relaxar e contemplar a vista privilegiada para a Mulher de Pedra( uma das mais belas atrações turísticas de Teresópolis)!\n\nDuas vagas de garagem cobertas.\n\nO condomínio oferece uma estrutura completa de lazer com piscina, sauna, campo de futebol, academia, churrasqueira, salão de jogos, salão gourmet,  salão de festas, espaço kids, lago, além da portaria 24 horas para mais comodidade e segurança.\n\nVargem Grande pode ser considerado um, pois há todo tipo de comércio, escolas, shopping, posto de saúde, transporte público, padarias, bares e restaurantes para a praticidade do seu dia a dia.\n\nVem conhecer de perto seu novo lar, pois acordar todos os dias com esse cenário é um privilégio único!\nAgende já uma visita;",
+    "description": "Localizada em um condomínio privativo no bairro de Vargem Grande em Teresópolis, esta propriedade é cercada pela beleza natural da cidade,  e uma vista de tirar o fôlego!\n\nCom 178,84m² de área construída, o imóvel apresenta espaços cuidadosamente planejados para garantir funcionalidade e conforto.\n\nA casa é um espetáculo, sendo assim configurada:\n\nSala ampla em dois ambientes, com lareira, perfeita para proporcionar momentos aconchegantes em família..\n\nQuatro quartos, banheiro social, lavanderia, cozinha com armários planejados e um belo espaço gourmet, coberto, equipado com churrasqueira, forno e fogão a lenha, com saída para varanda e jardim.\n\nDestaque para a suíte com closet e varanda privativa, ideal para relaxar e contemplar a vista privilegiada para a Mulher de Pedra( uma das mais belas atrações turísticas de Teresópolis)!\n\nDuas vagas de garagem cobertas.\n\nO condomínio oferece uma estrutura completa de lazer com piscina, sauna, campo de futebol, academia, churrasqueira, salão de jogos, salão gourmet,  salão de festas, espaço kids, lago, além da portaria 24 horas para mais comodidade e segurança.\n\nVargem Grande pode ser considerado um, pois há todo tipo de comércio, escolas, shopping, posto de saúde, transporte público, padarias, bares e restaurantes para a praticidade do seu dia a dia.\n\nVem conhecer de perto seu novo lar, pois acordar todos os dias com esse cenário é um privilégio único!\nAgende já uma visita;\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272455",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272476",
-    "name": "Casa de Condomínio de 2 quartos, 75m² no bairro Parque São Luiz, em Teresópolis",
+    "name": "Charmosa Casa em Condomínio com 2 Quartos e Lazer Completo no Parque São Luiz",
     "price": 320000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -750,13 +787,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Vem conhecer a combinação perfeita de espaço, conforto e segurança em uma casa geminada, localizada no bairro Parque São Luiz, em Teresópolis/RJ.\n\nSão 75.85 m² distribuídos, no primeiro piso, por sala ampla, banheiro social, cozinha, área de serviço independente e coberta.\n\nNo andar de cima, dois aconchegantes quartos com armários embutidos, sendo um com varanda e linda vista para a Serra dos órgãos, banheiro social.\n\nHá possibilidade de construção de um terceiro quarto, no andar superior.\n\nUma vaga de garagem coberta, e ainda vaga para visitantes para sua comodidade.\n\nCondomínio oferece duas áreas de lazer para curtir com a família e amigos, com piscinas adulto e infantil, três churrasqueiras, forno à lenha e de pizza, salão de festas, salão de jogos com TV, sauna e easy market.\nPortaria eletrônica 24h.\n\nNão perca essa oportunidade. Entre em contato e agende sua visita!",
+    "description": "Vem conhecer a combinação perfeita de espaço, conforto e segurança em uma casa geminada, localizada no bairro Parque São Luiz, em Teresópolis/RJ.\n\nSão 75.85 m² distribuídos, no primeiro piso, por sala ampla, banheiro social, cozinha, área de serviço independente e coberta.\n\nNo andar de cima, dois aconchegantes quartos com armários embutidos, sendo um com varanda e linda vista para a Serra dos órgãos, banheiro social.\n\nHá possibilidade de construção de um terceiro quarto, no andar superior.\n\nUma vaga de garagem coberta, e ainda vaga para visitantes para sua comodidade.\n\nCondomínio oferece duas áreas de lazer para curtir com a família e amigos, com piscinas adulto e infantil, três churrasqueiras, forno à lenha e de pizza, salão de festas, salão de jogos com TV, sauna e easy market.\nPortaria eletrônica 24h.\n\nNão perca essa oportunidade. Entre em contato e agende sua visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272476",
     "bairro": "Parque São Luiz"
   },
   {
     "sku": "272520",
-    "name": "Apartamento de 2 quartos, 50m² no bairro Quebra Frascos, em Teresópolis",
+    "name": "Lindo Apartamento de 2 Quartos no Quebra Frascos",
     "price": 240000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -786,13 +823,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento aconchegante e bem distribuído!\n\nSala em dois ambientes, proporcionando praticidade e conforto para o dia a dia. \nPossui dois quartos arejados, cozinha planejada com cooktop, perfeita para quem gosta de praticidade e organização, além de banheiro com blindex, que garante modernidade e funcionalidade. A área de serviço conta com bancada em mármore e cuba de alumínio, trazendo elegância e durabilidade ao espaço.\n\nO condomínio oferece excelente infraestrutura de lazer e conveniência, com quadra de futebol, quatro churrasqueiras com banheiros privativos, parque infantil para as crianças se divertirem com segurança, além do easy market, garantindo praticidade para suas compras sem precisar sair de casa",
+    "description": "Apartamento aconchegante e bem distribuído!\n\nSala em dois ambientes, proporcionando praticidade e conforto para o dia a dia.\nPossui dois quartos arejados, cozinha planejada com cooktop, perfeita para quem gosta de praticidade e organização, além de banheiro com blindex, que garante modernidade e funcionalidade. A área de serviço conta com bancada em mármore e cuba de alumínio, trazendo elegância e durabilidade ao espaço.\n\nO condomínio oferece excelente infraestrutura de lazer e conveniência, com quadra de futebol, quatro churrasqueiras com banheiros privativos, parque infantil para as crianças se divertirem com segurança, além do easy market, garantindo praticidade para suas compras sem precisar sair de casa\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272520",
     "bairro": "Quebra Frascos"
   },
   {
     "sku": "272541",
-    "name": "Apartamento de 3 quartos, no bairro Várzea, em Teresópolis",
+    "name": "Excelente Apartamento de 3 Quartos (1 Suíte) na Várzea",
     "price": 640000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -822,13 +859,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Oportunidade em Teresópolis!\n\nApartamento de 3 quartos, sendo 1 suíte, no coração de um dos bairros mais requisitados da cidade.\n\nImagine morar com tudo ao seu alcance: mercados, padarias, restaurantes e comércios variados, a poucos passos da sua porta, em uma região que une praticidade, valorização e qualidade de vida.\n\nO imóvel conta com ambientes bem distribuídos, sala ampla e iluminada, cozinha funcional e área de serviço. Ideal para quem deseja conforto e comodidade em uma localização simplesmente imbatível.",
+    "description": "Oportunidade em Teresópolis!\n\nApartamento de 3 quartos, sendo 1 suíte, no coração de um dos bairros mais requisitados da cidade.\n\nImagine morar com tudo ao seu alcance: mercados, padarias, restaurantes e comércios variados, a poucos passos da sua porta, em uma região que une praticidade, valorização e qualidade de vida.\n\nO imóvel conta com ambientes bem distribuídos, sala ampla e iluminada, cozinha funcional e área de serviço. Ideal para quem deseja conforto e comodidade em uma localização simplesmente imbatível.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272541",
     "bairro": "Várzea"
   },
   {
     "sku": "272590",
-    "name": "Lote/Terreno no bairro Albuquerque, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio com Linda Vista para a Natureza em Albuquerque",
     "price": 360000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -858,13 +895,13 @@ export const allImoveisData: ProductItem[] = [
       "Infraestrutura moderna e completa",
       "Histórico de excelência da Construtora Angeleti"
     ],
-    "description": "🏡 Condomínio Golden Green – Exclusividade e Natureza ao seu redor\n\nDescubra o equilíbrio perfeito entre sofisticação e qualidade de vida no Golden Green, um empreendimento planejado para quem busca tranquilidade, segurança e valorização.\n\n✨ Diferenciais que encantam:\n• Lotes amplos com solo firme e topografia privilegiada\n• Localização estratégica, próxima a áreas nobres de Teresópolis\n• Vista deslumbrante para as montanhas\n• Infraestrutura moderna e completa\n• Histórico de excelência da Construtora Angeleti\n• Opções de pagamento facilitado direto com a incorporadora\n\n💡 Ideal para construir a casa dos seus sonhos, investir com alta valorização ou desfrutar de um refúgio exclusivo em meio à natureza.\n\n📲 Entre em contato e saiba mais sobre as condições especiais de lançamento.",
+    "description": "🏡 Condomínio Golden Green – Exclusividade e Natureza ao seu redor\n\nDescubra o equilíbrio perfeito entre sofisticação e qualidade de vida no Golden Green, um empreendimento planejado para quem busca tranquilidade, segurança e valorização.\n\n✨ Diferenciais que encantam:\n• Lotes amplos com solo firme e topografia privilegiada\n• Localização estratégica, próxima a áreas nobres de Teresópolis\n• Vista deslumbrante para as montanhas\n• Infraestrutura moderna e completa\n• Histórico de excelência da Construtora Angeleti\n• Opções de pagamento facilitado direto com a incorporadora\n\n💡 Ideal para construir a casa dos seus sonhos, investir com alta valorização ou desfrutar de um refúgio exclusivo em meio à natureza.\n\n📲 Entre em contato e saiba mais sobre as condições especiais de lançamento.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272590",
     "bairro": "Albuquerque"
   },
   {
     "sku": "272598",
-    "name": "Lote/Terreno de 380m² no bairro Prata, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 380m² com Linda Vista para a Natureza no Centro",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -893,13 +930,13 @@ export const allImoveisData: ProductItem[] = [
       "Localização estratégica, com fácil acesso a serviços e ao centro da cidade",
       "Infraestrutura completa, ideal para quem busca bem-estar e qualidade de vida"
     ],
-    "description": "🏡 Residencial Vale dos Pássaros – Exclusividade, natureza e valorização em Teresópolis\n\nO Residencial Vale dos Pássaros é um empreendimento planejado para oferecer qualidade de vida, segurança e valorização em uma das regiões mais privilegiadas de Teresópolis. Cercado por belas paisagens e ar puro, o condomínio reúne infraestrutura moderna e condições de pagamento facilitadas, sendo a escolha ideal para quem deseja investir ou morar com conforto e tranquilidade.\n\n✨ Diferenciais do Vale dos Pássaros:\n• Lotes amplos, com solo firme e topografia favorável à construção\n• Condomínio fechado com portaria e segurança\n• Vista deslumbrante para as montanhas da Serra\n• Localização estratégica, com fácil acesso a serviços e ao centro da cidade\n• Infraestrutura completa, ideal para quem busca bem-estar e qualidade de vida\n• Histórico de confiança da Construtora Angeleti, referência em excelência e solidez\n\n💰 Facilidades de pagamento exclusivas:\n• Entrada a partir de 10% do valor do lote\n• Saldo restante em até 120 parcelas direto com a incorporadora\n• Sem burocracia, não é necessário comprovar renda e sem envolvimento bancário\n\n🌿 Seja para morar, investir ou ter um refúgio exclusivo em meio à natureza, o Vale dos Pássaros é a oportunidade perfeita para realizar seu projeto de vida em um condomínio seguro, valorizado e com alto potencial de crescimento.\n\n📲 Entre em contato agora e descubra como garantir o seu lote no Vale dos Pássaros.",
+    "description": "🏡 Residencial Vale dos Pássaros – Exclusividade, natureza e valorização em Teresópolis\n\nO Residencial Vale dos Pássaros é um empreendimento planejado para oferecer qualidade de vida, segurança e valorização em uma das regiões mais privilegiadas de Teresópolis. Cercado por belas paisagens e ar puro, o condomínio reúne infraestrutura moderna e condições de pagamento facilitadas, sendo a escolha ideal para quem deseja investir ou morar com conforto e tranquilidade.\n\n✨ Diferenciais do Vale dos Pássaros:\n• Lotes amplos, com solo firme e topografia favorável à construção\n• Condomínio fechado com portaria e segurança\n• Vista deslumbrante para as montanhas da Serra\n• Localização estratégica, com fácil acesso a serviços e ao centro da cidade\n• Infraestrutura completa, ideal para quem busca bem-estar e qualidade de vida\n• Histórico de confiança da Construtora Angeleti, referência em excelência e solidez\n\n💰 Facilidades de pagamento exclusivas:\n• Entrada a partir de 10% do valor do lote\n• Saldo restante em até 120 parcelas direto com a incorporadora\n• Sem burocracia, não é necessário comprovar renda e sem envolvimento bancário\n\n🌿 Seja para morar, investir ou ter um refúgio exclusivo em meio à natureza, o Vale dos Pássaros é a oportunidade perfeita para realizar seu projeto de vida em um condomínio seguro, valorizado e com alto potencial de crescimento.\n\n📲 Entre em contato agora e descubra como garantir o seu lote no Vale dos Pássaros.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272598",
     "bairro": "Centro"
   },
   {
     "sku": "272660",
-    "name": "Lote/Terreno de 7720m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Terreno de 7.720m² em Vargem Grande",
     "price": 380000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -929,13 +966,13 @@ export const allImoveisData: ProductItem[] = [
       "Potencial para lazer, moradia ou investimento;",
       "Região cercada por verde e ar puro;"
     ],
-    "description": "✨ Terreno à venda em Boa Fé – AmaVale ✨\n\nApresentamos um excelente lote com 7.720 m², perfeito para quem deseja investir em um espaço amplo, bem localizado e com grande potencial de valorização.\n\n📍 Localizado no bairro de Boa Fé, região da AmaVale, o terreno oferece a combinação ideal entre tranquilidade, contato com a natureza e fácil acesso à cidade.\n\n🌿 Com metragem generosa, é uma ótima opção para a construção de uma chácara, casa de campo, sítio de lazer ou mesmo para quem busca investir em projetos diferenciados.\n\n✅ Destaques do terreno:\n\t•\tÁrea total de 7.720 m²;\n\t•\tLocalização privilegiada em bairro tranquilo e valorizado;\n\t•\tPotencial para lazer, moradia ou investimento;\n\t•\tRegião cercada por verde e ar puro;\n\t•\tFacilidade de acesso à infraestrutura urbana.\n\n💰 Uma oportunidade única de adquirir um terreno amplo e versátil em uma das áreas mais promissoras da AmaVale!",
+    "description": "✨ Terreno à venda em Boa Fé – AmaVale ✨\n\nApresentamos um excelente lote com 7.720 m², perfeito para quem deseja investir em um espaço amplo, bem localizado e com grande potencial de valorização.\n\n📍 Localizado no bairro de Boa Fé, região da AmaVale, o terreno oferece a combinação ideal entre tranquilidade, contato com a natureza e fácil acesso à cidade.\n\n🌿 Com metragem generosa, é uma ótima opção para a construção de uma chácara, casa de campo, sítio de lazer ou mesmo para quem busca investir em projetos diferenciados.\n\n✅ Destaques do terreno:\n•\tÁrea total de 7.720 m²;\n•\tLocalização privilegiada em bairro tranquilo e valorizado;\n•\tPotencial para lazer, moradia ou investimento;\n•\tRegião cercada por verde e ar puro;\n•\tFacilidade de acesso à infraestrutura urbana.\n\n💰 Uma oportunidade única de adquirir um terreno amplo e versátil em uma das áreas mais promissoras da AmaVale!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272660",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272662",
-    "name": "Lote/Terreno de 17000m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Terreno de 17.000m² Pronto para Construir em Vargem Grande",
     "price": 447000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -965,13 +1002,13 @@ export const allImoveisData: ProductItem[] = [
       "Região em constante valorização;",
       "Privacidade, segurança e qualidade de vida;"
     ],
-    "description": "✨ Terreno à venda em Boa Fé – AmaVale ✨\n\nSe você busca espaço, privacidade e contato direto com a natureza, este terreno é a oportunidade ideal!\n\n📍 Localizado no bairro de Boa Fé, dentro da região valorizada da AmaVale, este lote conta com 17.000 m² (1,7 hectare) de área total, perfeito para quem deseja construir uma chácara, um sítio de lazer ou até mesmo investir em um projeto diferenciado.\n\n🌳 Rodeado por muito verde, o terreno oferece tranquilidade, ar puro e a liberdade de criar o espaço dos seus sonhos. Ao mesmo tempo, mantém fácil acesso à cidade e a todos os serviços essenciais.\n\n✅ Destaques do terreno:\n\t•\tAmpla metragem: 17 mil m² de área total;\n\t•\tTopografia favorável para construção e aproveitamento da área;\n\t•\tRegião em constante valorização;\n\t•\tPrivacidade, segurança e qualidade de vida;\n\t•\tIdeal para moradia, lazer ou investimento.\n\n💰 Excelente oportunidade para quem quer investir em um terreno amplo e versátil em uma das regiões mais procuradas!",
+    "description": "✨ Terreno à venda em Boa Fé – AmaVale ✨\n\nSe você busca espaço, privacidade e contato direto com a natureza, este terreno é a oportunidade ideal!\n\n📍 Localizado no bairro de Boa Fé, dentro da região valorizada da AmaVale, este lote conta com 17.000 m² (1,7 hectare) de área total, perfeito para quem deseja construir uma chácara, um sítio de lazer ou até mesmo investir em um projeto diferenciado.\n\n🌳 Rodeado por muito verde, o terreno oferece tranquilidade, ar puro e a liberdade de criar o espaço dos seus sonhos. Ao mesmo tempo, mantém fácil acesso à cidade e a todos os serviços essenciais.\n\n✅ Destaques do terreno:\n•\tAmpla metragem: 17 mil m² de área total;\n•\tTopografia favorável para construção e aproveitamento da área;\n•\tRegião em constante valorização;\n•\tPrivacidade, segurança e qualidade de vida;\n•\tIdeal para moradia, lazer ou investimento.\n\n💰 Excelente oportunidade para quem quer investir em um terreno amplo e versátil em uma das regiões mais procuradas!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272662",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272665",
-    "name": "Lote/Terreno Comercial de 7800m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Terreno Totalmente Plano de 7.800m² em Vargem Grande",
     "price": 2100000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1000,13 +1037,13 @@ export const allImoveisData: ProductItem[] = [
       "Ideal para construção residencial, comercial ou para investimento",
       "Documentação em dia"
     ],
-    "description": "Vende-se lote de 7.800 m² no coração de Vargem Grande, Planos – R$ 2.700\n\nExcelente oportunidade! Terreno amplo, com 7.800 m², localizado em área central de Vargem Grande, região dos Planos, com fácil acesso e ótima valorização.\n\n✅ Localização privilegiada – no centro do bairro\n✅ Terreno plano e aproveitável\n✅ Ideal para construção residencial, comercial ou para investimento\n✅ Documentação em dia\n\nValor de venda: R$ 2.700,000,00",
+    "description": "Vende-se lote de 7.800 m² no coração de Vargem Grande, Planos – R$ 2.700\n\nExcelente oportunidade! Terreno amplo, com 7.800 m², localizado em área central de Vargem Grande, região dos Planos, com fácil acesso e ótima valorização.\n\n✅ Localização privilegiada – no centro do bairro\n✅ Terreno plano e aproveitável\n✅ Ideal para construção residencial, comercial ou para investimento\n✅ Documentação em dia\n\nValor de venda: R$ 2.700,000,00\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272665",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272682",
-    "name": "Casa de Condomínio de 4 quartos, 9000m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Magnífica Casa em Condomínio com 4 Quartos (4 Suítes) e Espaço Gourmet em Vargem Grande",
     "price": 2500000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -1033,13 +1070,13 @@ export const allImoveisData: ProductItem[] = [
       "Área total: 9.000 m²",
       "Casa de caseiro para maior comodidade."
     ],
-    "description": "🏡 Excelente propriedade à venda – 9.000 m² com infraestrutura completa!\n\nUma oportunidade única para quem busca conforto, lazer e segurança em um só lugar:\n\t•\tÁrea total: 9.000 m²\n\t•\tCasa principal: 4 suítes, salão amplo, lavabo, cozinha completa, área de serviço, escritório, varanda espaçosa e churrasqueira.\n\t•\tLazer: sauna, quadra de vôlei, mini quadra de basquete, campo de futebol e espaço tipo society.\n\t•\tCasa de caseiro para maior comodidade.\n\t•\tSustentabilidade: cisterna de 40.000 litros, mais 3 caixas de 1.000 litros que abastecem a casa, além de sistema de energia solar.\n\n💰 Valor: R$ 2.500.000,00\n\nUma propriedade completa, pronta para receber você e sua família com todo conforto e privacidade.",
+    "description": "🏡 Excelente propriedade à venda – 9.000 m² com infraestrutura completa!\n\nUma oportunidade única para quem busca conforto, lazer e segurança em um só lugar:\n•\tÁrea total: 9.000 m²\n•\tCasa principal: 4 suítes, salão amplo, lavabo, cozinha completa, área de serviço, escritório, varanda espaçosa e churrasqueira.\n•\tLazer: sauna, quadra de vôlei, mini quadra de basquete, campo de futebol e espaço tipo society.\n•\tCasa de caseiro para maior comodidade.\n•\tSustentabilidade: cisterna de 40.000 litros, mais 3 caixas de 1.000 litros que abastecem a casa, além de sistema de energia solar.\n\n💰 Valor: R$ 2.500.000,00\n\nUma propriedade completa, pronta para receber você e sua família com todo conforto e privacidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272682",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272690",
-    "name": "Casa de 6 quartos, 3526m² no bairro Parque São Luiz, em Teresópolis",
+    "name": "Belíssima Residência com 6 Quartos (4 Suítes) no Parque São Luiz",
     "price": 3500000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -1069,13 +1106,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Casa de Alto Padrão com Estrutura Completa\n\n📍 Localização Privilegiada – ideal para moradia ou lazer, com amplo espaço e diversas comodidades.\n\nCaracterísticas do Imóvel:\n4 suítes espaçosas\n2 lavabos\nQuarto de empregada\nQuarto de apoio na área da piscina\n5 garagens cobertas\nChurrasqueira\nSauna\nCasa de caseiro independente\nCampo de futebol\n\n💰 IPTU: R$ 7.300\n\nPerfeita para quem busca conforto, privacidade e infraestrutura completa em um único lugar.\n\n📞 Entre em contato e agende uma visita!",
+    "description": "🏡 Casa de Alto Padrão com Estrutura Completa\n\n📍 Localização Privilegiada – ideal para moradia ou lazer, com amplo espaço e diversas comodidades.\n\nCaracterísticas do Imóvel:\n4 suítes espaçosas\n2 lavabos\nQuarto de empregada\nQuarto de apoio na área da piscina\n5 garagens cobertas\nChurrasqueira\nSauna\nCasa de caseiro independente\nCampo de futebol\n\n💰 IPTU: R$ 7.300\n\nPerfeita para quem busca conforto, privacidade e infraestrutura completa em um único lugar.\n\n📞 Entre em contato e agende uma visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272690",
     "bairro": "Parque São Luiz"
   },
   {
     "sku": "272705",
-    "name": "Lote/Terreno de 2 quartos, 444m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 444.8m² Pronto para Construir em Vargem Grande",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1105,13 +1142,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Terreno em Condomínio Fechado – Vista Privilegiada!\n💰 Apenas R$ 250.000,00\n📐 444,80 m² de área privativa\n\n📍 Localização estratégica em condomínio seguro, bem estruturado e com paisagem de tirar o fôlego.\nIdeal para construir a casa dos seus sonhos ou investir com grande potencial de valorização.\n\n🌟 Diferenciais Exclusivos:\nVista permanente para a Mulher de Pedra\nSem vizinhos atrás e sem vizinhos na lateral esquerda – mais privacidade\nLocalizado na parte alta do condomínio, garantindo uma vista incrível\nSegurança e tranquilidade 24h\nInfraestrutura completa e vizinhança selecionada\nExcelente custo-benefício e alta valorização\n\n🔑 Preço muito abaixo do mercado, oportunidade única!\n📞 Entre em contato e agende sua visita hoje mesmo!",
+    "description": "🏡 Terreno em Condomínio Fechado – Vista Privilegiada!\n💰 Apenas R$ 250.000,00\n📐 444,80 m² de área privativa\n\n📍 Localização estratégica em condomínio seguro, bem estruturado e com paisagem de tirar o fôlego.\nIdeal para construir a casa dos seus sonhos ou investir com grande potencial de valorização.\n\n🌟 Diferenciais Exclusivos:\nVista permanente para a Mulher de Pedra\nSem vizinhos atrás e sem vizinhos na lateral esquerda – mais privacidade\nLocalizado na parte alta do condomínio, garantindo uma vista incrível\nSegurança e tranquilidade 24h\nInfraestrutura completa e vizinhança selecionada\nExcelente custo-benefício e alta valorização\n\n🔑 Preço muito abaixo do mercado, oportunidade única!\n📞 Entre em contato e agende sua visita hoje mesmo!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272705",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272707",
-    "name": "Lote/Terreno de no bairro Venda Nova, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 442m² Pronto para Construir em Venda Nova",
     "price": 100000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1139,13 +1176,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Terreno em Condomínio Fechado – Super Oportunidade!\n💰 Apenas R$ 100.000,00\n📐 442 m² de área privativa\n\n📍 Localização privilegiada, em condomínio seguro e bem estruturado.\nPerfeito para construir sua casa dos sonhos ou investir com alta valorização!\n\nBenefícios:\nSegurança e tranquilidade\nVizinhança selecionada\nExcelente custo-benefício\nPotencial de valorização\n\n🔑 Preço muito abaixo do mercado! Não perca essa chance única.\n📞 Entre em contato agora e agende uma visita!",
+    "description": "🏡 Terreno em Condomínio Fechado – Super Oportunidade!\n💰 Apenas R$ 100.000,00\n📐 442 m² de área privativa\n\n📍 Localização privilegiada, em condomínio seguro e bem estruturado.\nPerfeito para construir sua casa dos sonhos ou investir com alta valorização!\n\nBenefícios:\nSegurança e tranquilidade\nVizinhança selecionada\nExcelente custo-benefício\nPotencial de valorização\n\n🔑 Preço muito abaixo do mercado! Não perca essa chance única.\n📞 Entre em contato agora e agende uma visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272707",
     "bairro": "Venda Nova"
   },
   {
     "sku": "272728",
-    "name": "Fazenda/Sítios/Chácaras de 3 quartos, 48m² no bairro Andradas, em Teresópolis",
+    "name": "Propriedade Rural Exclusiva de 6.000m² com Nascente e Muito Verde em Andradas",
     "price": 2500000,
     "cat": "Sítios & Rurais",
     "badge": "Alto Padrão",
@@ -1175,13 +1212,13 @@ export const allImoveisData: ProductItem[] = [
       "Capineira de capiaçu com 6.000 m²",
       "6 módulos com piquetes rotacionados"
     ],
-    "description": "🏡 Propriedade Rural à Venda - 23 Hectares | Estrada de Andradas - Km 7\n\n📍 Localização privilegiada, com fácil acesso — ônibus na porta!\n\n🌱 Estrutura agrícola completa:\n\t•\t✅ 36 piquetes com pasto\n\t•\t✅ Tifton 85 plantado\n\t•\t✅ Morro com grama Braquiária\n\t•\t✅ Capineira de capiaçu com 6.000 m²\n\t•\t✅ 6 módulos com piquetes rotacionados\n\t•\t✅ Propriedade totalmente cercada\n\n🚰 Recursos naturais:\n\t•\t💧 4 nascentes e um córrego cortando a propriedade\n\n🏠 Casa Sede:\n\t•\t3 quartos (sendo 1 suíte)\n\t•\t1 banheiro social\n\t•\tSala integrada com cozinha\n\t•\tFogão a lenha rústico\n\t•\tÁrea ampla e arejada\n\n👷‍♂️ Infraestrutura Adicional:\n\t•\t2 casas de caseiro\n\t•\tGalpão\n\t•\tQueijaria equipada com todos os utensílios + frigorífico\n\t•\tOrdenha mecânica para até 3 conjuntos\n\t•\t3 relógios de energia (ideal para múltiplos usos ou arrendamentos)\n\n🍊 Plantação:\n\t•\t75 pés de tangerina em produção\n\n🔐 Documentação em dia e propriedade pronta para uso imediato — seja para produção leiteira, pecuária intensiva ou turismo rural.\n\n📞 Entre em contato para agendar uma visita!",
+    "description": "🏡 Propriedade Rural à Venda - 23 Hectares | Estrada de Andradas - Km 7\n\n📍 Localização privilegiada, com fácil acesso — ônibus na porta!\n\n🌱 Estrutura agrícola completa:\n•\t✅ 36 piquetes com pasto\n•\t✅ Tifton 85 plantado\n•\t✅ Morro com grama Braquiária\n•\t✅ Capineira de capiaçu com 6.000 m²\n•\t✅ 6 módulos com piquetes rotacionados\n•\t✅ Propriedade totalmente cercada\n\n🚰 Recursos naturais:\n•\t💧 4 nascentes e um córrego cortando a propriedade\n\n🏠 Casa Sede:\n•\t3 quartos (sendo 1 suíte)\n•\t1 banheiro social\n•\tSala integrada com cozinha\n•\tFogão a lenha rústico\n•\tÁrea ampla e arejada\n\n👷‍♂️ Infraestrutura Adicional:\n•\t2 casas de caseiro\n•\tGalpão\n•\tQueijaria equipada com todos os utensílios + frigorífico\n•\tOrdenha mecânica para até 3 conjuntos\n•\t3 relógios de energia (ideal para múltiplos usos ou arrendamentos)\n\n🍊 Plantação:\n•\t75 pés de tangerina em produção\n\n🔐 Documentação em dia e propriedade pronta para uso imediato — seja para produção leiteira, pecuária intensiva ou turismo rural.\n\n📞 Entre em contato para agendar uma visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272728",
     "bairro": "Andradas"
   },
   {
     "sku": "272733",
-    "name": "Lote/Terreno de no bairro Albuquerque, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio com Linda Vista para a Natureza em Albuquerque",
     "price": 185000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1207,13 +1244,13 @@ export const allImoveisData: ProductItem[] = [
     "boxItems": [
       "Ideal para moradia ou investimento."
     ],
-    "description": "🌄 Lote à venda no Condomínio Vale do Sol – Teresópolis/RJ\n\nDescubra o lugar ideal para construir o seu sonho! Este excelente terreno no Condomínio Vale do Sol oferece o equilíbrio perfeito entre tranquilidade, segurança e contato com a natureza.\n\n📐 Detalhes do Terreno:\nTopografia favorável para construção;\nÓtima localização dentro do condomínio;\nVista livre para as montanhas;\nTerreno ensolarado e bem ventilado;\nDocumentação regularizada.\n\n🏡 Sobre o Condomínio:\nPortaria 24h com segurança total;\nRuas pavimentadas e bem iluminadas;\nÁreas verdes preservadas;\nAmbiente familiar e extremamente tranquilo;\nBaixo custo de condomínio.\n\n📍 Localização privilegiada:\nA poucos minutos do centro de Teresópolis e com fácil acesso a comércios, escolas e serviços essenciais. Uma região com crescimento constante e alta valorização imobiliária.\n\n✅ Ideal para moradia ou investimento.\n💬 Entre em contato e agende sua visita!\n\nValores e disponibilidade sujeitos a alteração sem aviso prévio.",
+    "description": "🌄 Lote à venda no Condomínio Vale do Sol – Teresópolis/RJ\n\nDescubra o lugar ideal para construir o seu sonho! Este excelente terreno no Condomínio Vale do Sol oferece o equilíbrio perfeito entre tranquilidade, segurança e contato com a natureza.\n\n📐 Detalhes do Terreno:\nTopografia favorável para construção;\nÓtima localização dentro do condomínio;\nVista livre para as montanhas;\nTerreno ensolarado e bem ventilado;\nDocumentação regularizada.\n\n🏡 Sobre o Condomínio:\nPortaria 24h com segurança total;\nRuas pavimentadas e bem iluminadas;\nÁreas verdes preservadas;\nAmbiente familiar e extremamente tranquilo;\nBaixo custo de condomínio.\n\n📍 Localização privilegiada:\nA poucos minutos do centro de Teresópolis e com fácil acesso a comércios, escolas e serviços essenciais. Uma região com crescimento constante e alta valorização imobiliária.\n\n✅ Ideal para moradia ou investimento.\n💬 Entre em contato e agende sua visita!\n\nValores e disponibilidade sujeitos a alteração sem aviso prévio.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272733",
     "bairro": "Albuquerque"
   },
   {
     "sku": "272740",
-    "name": "Lote/Terreno de no bairro Fazenda Alpina, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio com Linda Vista para a Natureza em Fazenda Alpina",
     "price": 200000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1243,13 +1280,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🌳 Seu refúgio em meio à natureza está aqui!\n\nApresentamos este excelente lote à venda no Condomínio Green Land, em Teresópolis, um dos condomínios mais desejados da região, que une natureza, segurança e tranquilidade.\n\n📐 Detalhes do Terreno:\nTerreno amplo e com ótima topografia;\nPronto para construir;\nLocalizado em rua pavimentada;\nVista privilegiada para as montanhas;\nDocumentação 100% regular.\n\n🏡 Infraestrutura do Condomínio:\nPortaria 24h com controle de acesso;\nÁrea de lazer com salão de festas e churrasqueira;\nLago, trilhas ecológicas e muita área verde;\nTotalmente integrado à natureza com segurança e conforto.\n\n📍 Localização:\nSituado a poucos minutos do centro de Teresópolis, com acesso fácil a comércios, escolas e serviços essenciais.\n\nInvista na sua qualidade de vida ou no seu projeto de moradia em um dos locais mais encantadores da serra!\n📞 Agende uma visita e aproveite essa oportunidade exclusiva!\nValores sujeitos a alteração sem aviso prévio.",
+    "description": "🌳 Seu refúgio em meio à natureza está aqui!\n\nApresentamos este excelente lote à venda no Condomínio Green Land, em Teresópolis, um dos condomínios mais desejados da região, que une natureza, segurança e tranquilidade.\n\n📐 Detalhes do Terreno:\nTerreno amplo e com ótima topografia;\nPronto para construir;\nLocalizado em rua pavimentada;\nVista privilegiada para as montanhas;\nDocumentação 100% regular.\n\n🏡 Infraestrutura do Condomínio:\nPortaria 24h com controle de acesso;\nÁrea de lazer com salão de festas e churrasqueira;\nLago, trilhas ecológicas e muita área verde;\nTotalmente integrado à natureza com segurança e conforto.\n\n📍 Localização:\nSituado a poucos minutos do centro de Teresópolis, com acesso fácil a comércios, escolas e serviços essenciais.\n\nInvista na sua qualidade de vida ou no seu projeto de moradia em um dos locais mais encantadores da serra!\n📞 Agende uma visita e aproveite essa oportunidade exclusiva!\nValores sujeitos a alteração sem aviso prévio.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272740",
     "bairro": "Fazenda Alpina"
   },
   {
     "sku": "272743",
-    "name": "Casa de Condomínio de 4 quartos, 600m² no bairro Carlos Guinle, em Teresópolis",
+    "name": "Magnífica Casa em Condomínio com 4 Quartos (4 Suítes) e Lazer Completo no Carlos Guinle",
     "price": 3000000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -1279,13 +1316,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Casa de Alto Padrão com 4 Suítes, Piscina e Lazer Completo – Carlos Guinle, Teresópolis/RJ\nLocalizada em um dos bairros mais exclusivos de Teresópolis, esta residência combina conforto, sofisticação e contato direto com a natureza, cercada por muito verde e total privacidade.\n\n📐 Detalhes Gerais:\nÁrea do terreno: 1.580m²\nÁrea construída: 400m²\nIPTU mensal: R$ 960,00 (2024)\nCondomínio: Aproximadamente R$ 760,00/mês\nAno da construção: 2011\nValor de investimento: R$ 3.000.000,00\n\n🏠 Composição do Imóvel:\nCasa em alvenaria com 3 pavimentos\n4 suítes, sendo 1 máster com closet\nApartamento independente para hóspedes com quarto, cozinha e banheiro\nCozinha americana com ilha integrada à sala de estar\nEspaço gourmet com churrasqueira e forno a lenha\nSala de jantar e sala de TV com varanda frontal\nLavanderia com vista panorâmica\nBanheiro de serviço e despensa\n\n🌿 Área Externa e Lazer:\nPiscina com hidromassagem, iluminação, deck em pedra São Tomé e ducha\nPomar com cerca de 25 árvores frutíferas\nAmplo jardim com irrigação automatizada\nMini floresta privativa\nCanil, depósito para materiais e área técnica\nGaragem coberta e portão eletrônico\n\n⚙️ Diferenciais Técnicos:\nSistema de aquecimento solar\nPoço artesiano + cisterna para água da chuva\nVidros duplos em algumas janelas\nGerador de energia (6 KVA)\nTerreno totalmente murado\nExcelente padrão de acabamentos\n\n💡 Ideal para quem busca tranquilidade, conforto e uma estrutura completa para viver bem com qualidade de vida em Teresópolis.\n\n📞 Agende sua visita e conheça todos os detalhes!",
+    "description": "🏡 Casa de Alto Padrão com 4 Suítes, Piscina e Lazer Completo – Carlos Guinle, Teresópolis/RJ\nLocalizada em um dos bairros mais exclusivos de Teresópolis, esta residência combina conforto, sofisticação e contato direto com a natureza, cercada por muito verde e total privacidade.\n\n📐 Detalhes Gerais:\nÁrea do terreno: 1.580m²\nÁrea construída: 400m²\nIPTU mensal: R$ 960,00 (2024)\nCondomínio: Aproximadamente R$ 760,00/mês\nAno da construção: 2011\nValor de investimento: R$ 3.000.000,00\n\n🏠 Composição do Imóvel:\nCasa em alvenaria com 3 pavimentos\n4 suítes, sendo 1 máster com closet\nApartamento independente para hóspedes com quarto, cozinha e banheiro\nCozinha americana com ilha integrada à sala de estar\nEspaço gourmet com churrasqueira e forno a lenha\nSala de jantar e sala de TV com varanda frontal\nLavanderia com vista panorâmica\nBanheiro de serviço e despensa\n\n🌿 Área Externa e Lazer:\nPiscina com hidromassagem, iluminação, deck em pedra São Tomé e ducha\nPomar com cerca de 25 árvores frutíferas\nAmplo jardim com irrigação automatizada\nMini floresta privativa\nCanil, depósito para materiais e área técnica\nGaragem coberta e portão eletrônico\n\n⚙️ Diferenciais Técnicos:\nSistema de aquecimento solar\nPoço artesiano + cisterna para água da chuva\nVidros duplos em algumas janelas\nGerador de energia (6 KVA)\nTerreno totalmente murado\nExcelente padrão de acabamentos\n\n💡 Ideal para quem busca tranquilidade, conforto e uma estrutura completa para viver bem com qualidade de vida em Teresópolis.\n\n📞 Agende sua visita e conheça todos os detalhes!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272743",
     "bairro": "Carlos Guinle"
   },
   {
     "sku": "272827",
-    "name": "Casa de Condomínio de 3 quartos, 2940m² no bairro Vargem Grande, em Teresópolis",
+    "name": "Linda Casa em Condomínio com 3 Quartos (3 Suítes) e Lazer Completo em Vargem Grande",
     "price": 1800000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1315,13 +1352,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Seu Refúgio Perfeito – Conforto, Espaço e Lazer em Harmonia!\nDescubra a combinação ideal de qualidade de vida, segurança e natureza nesta linda casa à venda em Teresópolis/RJ.\n\n📐 Detalhes do Imóvel:\nTerreno amplo e privativo com 2.940m²\nÁrea construída de 331m², bem distribuída\n3 suítes confortáveis, com excelente iluminação natural\n1 banheiro social\nSala espaçosa com ambientes integrados\nCozinha funcional e prática\nPiscina privativa para momentos de lazer com total privacidade\nAmplo quintal com muito verde, ideal para pets, espaço gourmet, horta ou playground\nGaragem coberta e amplo espaço para estacionamento\n\n🌳 Diferenciais:\n✔ Segurança e tranquilidade em região cercada pela natureza\n✔ Fácil acesso ao centro da cidade\n✔ Ambiente perfeito para quem valoriza conforto, lazer e contato com o verde\n\n💰 Valor de venda: R$ 1.800.000,00\n📆 IPTU anual: R$ 4.741,67\n🏘️ Taxa de condomínio: R$ 1.200,00/mês\n\n✨ A oportunidade ideal para viver bem com espaço e privacidade!\n\n📞 Agende sua visita e venha conhecer o seu novo lar!",
+    "description": "🏡 Seu Refúgio Perfeito – Conforto, Espaço e Lazer em Harmonia!\nDescubra a combinação ideal de qualidade de vida, segurança e natureza nesta linda casa à venda em Teresópolis/RJ.\n\n📐 Detalhes do Imóvel:\nTerreno amplo e privativo com 2.940m²\nÁrea construída de 331m², bem distribuída\n3 suítes confortáveis, com excelente iluminação natural\n1 banheiro social\nSala espaçosa com ambientes integrados\nCozinha funcional e prática\nPiscina privativa para momentos de lazer com total privacidade\nAmplo quintal com muito verde, ideal para pets, espaço gourmet, horta ou playground\nGaragem coberta e amplo espaço para estacionamento\n\n🌳 Diferenciais:\n✔ Segurança e tranquilidade em região cercada pela natureza\n✔ Fácil acesso ao centro da cidade\n✔ Ambiente perfeito para quem valoriza conforto, lazer e contato com o verde\n\n💰 Valor de venda: R$ 1.800.000,00\n📆 IPTU anual: R$ 4.741,67\n🏘️ Taxa de condomínio: R$ 1.200,00/mês\n\n✨ A oportunidade ideal para viver bem com espaço e privacidade!\n\n📞 Agende sua visita e venha conhecer o seu novo lar!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272827",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272851",
-    "name": "Casa de Condomínio de 3 quartos, no bairro Green Valley, em Teresópolis",
+    "name": "Linda Casa em Condomínio com 3 Quartos (3 Suítes) no Green Valley",
     "price": 1600000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1350,13 +1387,13 @@ export const allImoveisData: ProductItem[] = [
       "Ruas pavimentadas e excelente estrutura",
       "Localização privilegiada, a poucos minutos do centro de Teresópolis"
     ],
-    "description": "🏡 Casa Exclusiva com 3 Suítes e Banheira Solar no Condomínio Green Valley – Teresópolis/RJ\n\nDescubra o equilíbrio perfeito entre conforto, modernidade e natureza nesta belíssima casa localizada em um dos condomínios de luxo mais desejados de Teresópolis: o Green Valley.\n\nCom 228m² de área construída, esta residência oferece espaços amplos, bem distribuídos e um acabamento impecável, ideal para quem busca qualidade de vida, segurança e sofisticação.\n\n📐 Características do Imóvel:\n3 quartos, todos suítes – conforto e privacidade garantidos\n1 banheiro social\n1 lavabo elegante\nCozinha integrada com ótimo aproveitamento de espaço\nSala de estar ampla e iluminada\nBanheira com sistema solar – relaxe com conforto e economia\nGaragem para até 6 carros – comodidade para toda a família e convidados\n\n🌳 Condomínio Green Valley:\n✔️ Segurança 24h e portaria controlada\n✔️ Ambiente arborizado, silencioso e cercado pela natureza\n✔️ Ruas pavimentadas e excelente estrutura\n✔️ Localização privilegiada, a poucos minutos do centro de Teresópolis\n\n💡 Ideal para quem busca viver com tranquilidade, em um ambiente moderno e sofisticado, com todo o conforto que um condomínio de alto padrão pode oferecer.\n\n📞 Agende uma visita e venha conhecer seu novo lar!",
+    "description": "🏡 Casa Exclusiva com 3 Suítes e Banheira Solar no Condomínio Green Valley – Teresópolis/RJ\n\nDescubra o equilíbrio perfeito entre conforto, modernidade e natureza nesta belíssima casa localizada em um dos condomínios de luxo mais desejados de Teresópolis: o Green Valley.\n\nCom 228m² de área construída, esta residência oferece espaços amplos, bem distribuídos e um acabamento impecável, ideal para quem busca qualidade de vida, segurança e sofisticação.\n\n📐 Características do Imóvel:\n3 quartos, todos suítes – conforto e privacidade garantidos\n1 banheiro social\n1 lavabo elegante\nCozinha integrada com ótimo aproveitamento de espaço\nSala de estar ampla e iluminada\nBanheira com sistema solar – relaxe com conforto e economia\nGaragem para até 6 carros – comodidade para toda a família e convidados\n\n🌳 Condomínio Green Valley:\n✔️ Segurança 24h e portaria controlada\n✔️ Ambiente arborizado, silencioso e cercado pela natureza\n✔️ Ruas pavimentadas e excelente estrutura\n✔️ Localização privilegiada, a poucos minutos do centro de Teresópolis\n\n💡 Ideal para quem busca viver com tranquilidade, em um ambiente moderno e sofisticado, com todo o conforto que um condomínio de alto padrão pode oferecer.\n\n📞 Agende uma visita e venha conhecer seu novo lar!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272851",
     "bairro": "Green Valley"
   },
   {
     "sku": "272861",
-    "name": "Casa de Condomínio de 3 quartos, no bairro Green Valley, em Teresópolis",
+    "name": "Excelente Casa em Condomínio com 3 Quartos (3 Suítes) e Lazer Completo no Green Valley",
     "price": 890000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -1386,13 +1423,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🏡 Casa Rústica com Piscina, Espaço Gourmet e Vista Privilegiada – Albuquerque, Teresópolis/RJ\n\nDescubra o charme da serra em uma casa com estilo, conforto e natureza ao redor! Localizada no bairro Albuquerque, em Teresópolis, esta residência oferece o equilíbrio perfeito entre rusticidade e funcionalidade, ideal para moradia ou lazer.\n\n🌿 Área Externa de Lazer:\nPiscina ampla cercada por vegetação natural;\n\nEspaço gourmet completo, com:\nChurrasqueira\nForno de pizza\nFogão a lenha\nEspaço para lareira interna – charme garantido para noites aconchegantes;\nVaranda com vista deslumbrante para as montanhas, perfeita para relaxar;\nJardim com paisagismo natural e bem cuidado.\n\n🏠 Ambientes Internos:\nSala ampla com bar integrado, ideal para momentos sociais e descontração;\n3 suítes aconchegantes, bem distribuídas;\n1 lavabo social;\nCozinha funcional e prática;\nDespensa com ótimo espaço;\nAcabamento rústico, com detalhes em madeira e alvenaria que valorizam o estilo da serra.\n\n📍 Localização estratégica: Bairro tranquilo, cercado por natureza, mas próximo de comércios, restaurantes e acesso rápido ao centro de Teresópolis.\n\n💡 Um refúgio com personalidade, pronto para receber quem valoriza qualidade de vida, privacidade e autenticidade.\n\n📞 Agende sua visita e venha se encantar com cada detalhe!",
+    "description": "🏡 Casa Rústica com Piscina, Espaço Gourmet e Vista Privilegiada – Albuquerque, Teresópolis/RJ\n\nDescubra o charme da serra em uma casa com estilo, conforto e natureza ao redor! Localizada no bairro Albuquerque, em Teresópolis, esta residência oferece o equilíbrio perfeito entre rusticidade e funcionalidade, ideal para moradia ou lazer.\n\n🌿 Área Externa de Lazer:\nPiscina ampla cercada por vegetação natural;\n\nEspaço gourmet completo, com:\nChurrasqueira\nForno de pizza\nFogão a lenha\nEspaço para lareira interna – charme garantido para noites aconchegantes;\nVaranda com vista deslumbrante para as montanhas, perfeita para relaxar;\nJardim com paisagismo natural e bem cuidado.\n\n🏠 Ambientes Internos:\nSala ampla com bar integrado, ideal para momentos sociais e descontração;\n3 suítes aconchegantes, bem distribuídas;\n1 lavabo social;\nCozinha funcional e prática;\nDespensa com ótimo espaço;\nAcabamento rústico, com detalhes em madeira e alvenaria que valorizam o estilo da serra.\n\n📍 Localização estratégica: Bairro tranquilo, cercado por natureza, mas próximo de comércios, restaurantes e acesso rápido ao centro de Teresópolis.\n\n💡 Um refúgio com personalidade, pronto para receber quem valoriza qualidade de vida, privacidade e autenticidade.\n\n📞 Agende sua visita e venha se encantar com cada detalhe!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272861",
     "bairro": "Green Valley"
   },
   {
     "sku": "272865",
-    "name": "Casa de Condomínio de 6 quartos, no bairro Green Valley, em Teresópolis",
+    "name": "Linda Casa Duplex em Condomínio com 6 Quartos (1 Suíte) e Lazer Completo no Green Valley",
     "price": 1480000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1419,13 +1456,13 @@ export const allImoveisData: ProductItem[] = [
       "Primeiro Pavimento:",
       "Segundo Pavimento:"
     ],
-    "description": "🏡 Casa Duplex com Lazer Completo – 800m² de Terreno | Albuquerque – Teresópolis/RJ\n\nApresentamos esta excelente residência duplex com 380m² de área construída, ideal para famílias grandes ou quem busca espaço, conforto e lazer em meio à natureza!\n\n📐 Informações Gerais:\nTerreno: 800m²\nÁrea construída: 380m²\nGaragem coberta para até 6 carros\n\n🌿 Área Externa com Estrutura de Lazer:\nAmplo quintal ajardinado\n\nPiscina perfeita para os dias de verão\n\nSalão gourmet completo, equipado com:\nChurrasqueira\nFogão a lenha\nForno de pizza\nBanheiro de apoio\n\n🏠 Ambientes Internos:\n\n✅ Primeiro Pavimento:\nVaranda frontal charmosa\n3 quartos, sendo 1 suíte\nBanheiro social\nCozinha espaçosa\nDespensa\nÁrea de serviço\nGaragem coberta para até 6 veículos\n\n✅ Segundo Pavimento:\nMais 3 quartos, sendo 1 suíte\nSala ampla com varanda e ótima iluminação natural\nEscritório ideal para home office\nCozinha adicional\nBanheiro social\n\n🔑 Diferenciais:\n✔ Espaço ideal para famílias grandes\n✔ Perfeita para moradia fixa ou casa de veraneio\n✔ Estrutura pronta para receber com estilo e conforto\n✔ Região tranquila, cercada por verde, com fácil acesso ao centro da cidade\n\n📞 Agende sua visita sem compromisso e venha conhecer essa excelente oportunidade em Teresópolis!",
+    "description": "🏡 Casa Duplex com Lazer Completo – 800m² de Terreno | Albuquerque – Teresópolis/RJ\n\nApresentamos esta excelente residência duplex com 380m² de área construída, ideal para famílias grandes ou quem busca espaço, conforto e lazer em meio à natureza!\n\n📐 Informações Gerais:\nTerreno: 800m²\nÁrea construída: 380m²\nGaragem coberta para até 6 carros\n\n🌿 Área Externa com Estrutura de Lazer:\nAmplo quintal ajardinado\n\nPiscina perfeita para os dias de verão\n\nSalão gourmet completo, equipado com:\nChurrasqueira\nFogão a lenha\nForno de pizza\nBanheiro de apoio\n\n🏠 Ambientes Internos:\n\n✅ Primeiro Pavimento:\nVaranda frontal charmosa\n3 quartos, sendo 1 suíte\nBanheiro social\nCozinha espaçosa\nDespensa\nÁrea de serviço\nGaragem coberta para até 6 veículos\n\n✅ Segundo Pavimento:\nMais 3 quartos, sendo 1 suíte\nSala ampla com varanda e ótima iluminação natural\nEscritório ideal para home office\nCozinha adicional\nBanheiro social\n\n🔑 Diferenciais:\n✔ Espaço ideal para famílias grandes\n✔ Perfeita para moradia fixa ou casa de veraneio\n✔ Estrutura pronta para receber com estilo e conforto\n✔ Região tranquila, cercada por verde, com fácil acesso ao centro da cidade\n\n📞 Agende sua visita sem compromisso e venha conhecer essa excelente oportunidade em Teresópolis!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272865",
     "bairro": "Green Valley"
   },
   {
     "sku": "272886",
-    "name": "Lote/Terreno de no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Terreno de 500m² Pronto para Construir em Vargem Grande",
     "price": 132000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1446,13 +1483,13 @@ export const allImoveisData: ProductItem[] = [
     "boxItems": [
       "Lotes de 500m² a 2138m² em aclive e declive, prontos para construir!"
     ],
-    "description": "Realize o sonho da casa própria no Vale dos Ipês! 🏡\n\n✅ Lotes de 500m² a 2138m² em aclive e declive, prontos para construir!\n\n🏞️ Infraestrutura completa: Ruas pavimentadas, luz, água e esgoto.\n\n💦 Lazer completo: 3 piscinas, salão social, churrasqueira, sauna e diversas quadras esportivas!\n\n🏸 Segurança 24 horas para sua tranquilidade.\n\n📍 Localização privilegiada em Vargem Grande, Teresópolis: Próximo a restaurantes, comércio, e rodeado pela beleza do turismo ecológico, rural e gastronômico.\n\nVenha viver momentos inesquecíveis no Vale dos Ipês! Entre em contato e saiba mais! ✨",
+    "description": "Realize o sonho da casa própria no Vale dos Ipês! 🏡\n\n✅ Lotes de 500m² a 2138m² em aclive e declive, prontos para construir!\n\n🏞️ Infraestrutura completa: Ruas pavimentadas, luz, água e esgoto.\n\n💦 Lazer completo: 3 piscinas, salão social, churrasqueira, sauna e diversas quadras esportivas!\n\n🏸 Segurança 24 horas para sua tranquilidade.\n\n📍 Localização privilegiada em Vargem Grande, Teresópolis: Próximo a restaurantes, comércio, e rodeado pela beleza do turismo ecológico, rural e gastronômico.\n\nVenha viver momentos inesquecíveis no Vale dos Ipês! Entre em contato e saiba mais! ✨\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272886",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "272920",
-    "name": "Casa de Condomínio de 3 quartos, 147m² no bairro Sebastiana, em Teresópolis",
+    "name": "Charmosa Casa em Condomínio com 3 Quartos e Lazer Completo em Sebastiana",
     "price": 680000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1482,13 +1519,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Venha viver rodeado pela natureza, o Condomínio Del Paraíso está próximo a Estrada Teresópolis - Friburgo, proporcionando acesso as duas cidades, trilhas, cartões postais, haras, vinícolas, plantações,restaurantes e muito mais... \n \nO terreno possui 566m², sendo 147,56m² de área construída em porcelanato e piso cerâmico, na composição de três quartos, dois banheiros, sala em dois ambientes, duas cozinhas, lavanderia, garagem para quatro carros, pomar, horta.\nPor ser próxima a área de lazer e portaria, traz o conforto e praticidade ao receber visitas e até mesmo aquele pedido feito pelo delivery.\n\nO condomínio conta com duas piscinas, campo de futebol, quadra de areia, quadra poliesportiva, área kids e duas churrasqueiras e portaria 24 horas.",
+    "description": "Venha viver rodeado pela natureza, o Condomínio Del Paraíso está próximo a Estrada Teresópolis - Friburgo, proporcionando acesso as duas cidades, trilhas, cartões postais, haras, vinícolas, plantações,restaurantes e muito mais...\n\nO terreno possui 566m², sendo 147,56m² de área construída em porcelanato e piso cerâmico, na composição de três quartos, dois banheiros, sala em dois ambientes, duas cozinhas, lavanderia, garagem para quatro carros, pomar, horta.\nPor ser próxima a área de lazer e portaria, traz o conforto e praticidade ao receber visitas e até mesmo aquele pedido feito pelo delivery.\n\nO condomínio conta com duas piscinas, campo de futebol, quadra de areia, quadra poliesportiva, área kids e duas churrasqueiras e portaria 24 horas.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272920",
     "bairro": "Sebastiana"
   },
   {
     "sku": "272929",
-    "name": "Casa de 2 quartos, no bairro Quebra Frascos, em Teresópolis",
+    "name": "Belíssima Residência Linear com 2 Quartos (2 Suítes) no Quebra Frascos",
     "price": 2600000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -1518,15 +1555,15 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🌿 Exclusividade na Serra – Refúgio Único em Quebra-Frascos, Teresópolis\n\nDescubra um verdadeiro paraíso natural com 14.000m², em localização privilegiada no bairro nobre de Quebra-Frascos, fazendo divisa direta com o Parque Nacional da Serra dos Órgãos (PARNASO).\n\n🏡 A propriedade conta com uma casa linear de 220m², construída com visão estratégica e integrada à paisagem. São 2 suítes com acabamento de alto padrão — metais e louças pretas, detalhes em pedra ferro — e uma área social que impressiona:\n\nSala ampla com parede de vidro e vista indevassável para a floresta;\n\nÁrea gourmet completa com churrasqueira, forno de pizza e lareira;\n\nPiscina rodeada pela mata nativa.\n\n💧 Destaques incomparáveis:\n\nTerreno construtivo e legalizado com RGI;\n\nÁgua potável direto da nascente;\n\nCórrego cortando o terreno;\n\nSem vizinhos frontais ou laterais;\n\nInternet fibra ótica disponível.\n\n🛣️ A apenas 10 minutos do asfalto, por estrada de terra acessível, você encontra um lugar que une isolamento, segurança, natureza e conforto.\n\n✨ Perfeito para moradia, lazer ou investimento em hospedagem.\n\n📞 Agende sua visita e viva o que poucos têm acesso: natureza, privacidade e sofisticação em harmonia total.",
+    "description": "🌿 Exclusividade na Serra – Refúgio Único em Quebra-Frascos, Teresópolis\n\nDescubra um verdadeiro paraíso natural com 14.000m², em localização privilegiada no bairro nobre de Quebra-Frascos, fazendo divisa direta com o Parque Nacional da Serra dos Órgãos (PARNASO).\n\n🏡 A propriedade conta com uma casa linear de 220m², construída com visão estratégica e integrada à paisagem. São 2 suítes com acabamento de alto padrão — metais e louças pretas, detalhes em pedra ferro — e uma área social que impressiona:\n\nSala ampla com parede de vidro e vista indevassável para a floresta;\n\nÁrea gourmet completa com churrasqueira, forno de pizza e lareira;\n\nPiscina rodeada pela mata nativa.\n\n💧 Destaques incomparáveis:\n\nTerreno construtivo e legalizado com RGI;\n\nÁgua potável direto da nascente;\n\nCórrego cortando o terreno;\n\nSem vizinhos frontais ou laterais;\n\nInternet fibra ótica disponível.\n\n🛣️ A apenas 10 minutos do asfalto, por estrada de terra acessível, você encontra um lugar que une isolamento, segurança, natureza e conforto.\n\n✨ Perfeito para moradia, lazer ou investimento em hospedagem.\n\n📞 Agende sua visita e viva o que poucos têm acesso: natureza, privacidade e sofisticação em harmonia total.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272929",
     "bairro": "Quebra Frascos"
   },
   {
     "sku": "272985",
-    "name": "Cobertura de 4 quartos, 226m² no bairro Várzea, em Teresópolis",
+    "name": "Cobertura de Alto Padrão com 4 Quartos (3 Suítes) e Terraço Panorâmico na Várzea",
     "price": 1700000,
-    "cat": "Coberturas",
+    "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727132403/PHOTO-2025-07-01-11-53-25%202-watermarked.webp",
     "images": [
@@ -1550,13 +1587,13 @@ export const allImoveisData: ProductItem[] = [
     "boxItems": [
       "Aceita financiamento"
     ],
-    "description": "🏙️ Cobertura Exclusiva no Coração de Teresópolis – 226m² de Puro Conforto e Sofisticação!\n\nApresentamos esta incrível cobertura à venda no centro de Teresópolis, perfeita para quem busca conforto, localização privilegiada e um imóvel diferenciado. Com 226m² de área total, essa unidade une amplitude, funcionalidade e alto padrão de acabamento.\n\n✨ Destaques do Imóvel:\n\n4 quartos espaçosos, sendo 3 suítes;\n\n4 banheiros + 1 lavabo;\n\n2 vagas de garagem cobertas;\n\nSala ampla e bem iluminada;\n\nCozinha planejada e copa;\n\nDespensa funcional;\n\n2 varandas privativas com vista livre e muita luz natural;\n\nCobertura com excelente ventilação e privacidade;\n\nIdeal para receber amigos e relaxar com a família.\n\n🏢 Condomínio com infraestrutura completa, próximo a tudo que você precisa: farmácias, mercados, academias, bancos, universidades, escolas, hospitais, shoppings, transporte público, restaurantes e muito mais!\n\n💰 Valor de venda: R$ 1.700.000,00\n📍 Localização: Centro – Teresópolis/RJ\n✅ Aceita financiamento\n\nEssa é a oportunidade que você esperava para viver com elegância e praticidade em uma das melhores regiões da cidade. Agende sua visita agora mesmo!\n\n📲 Entre em contato para mais informações.",
+    "description": "🏙️ Cobertura Exclusiva no Coração de Teresópolis – 226m² de Puro Conforto e Sofisticação!\n\nApresentamos esta incrível cobertura à venda no centro de Teresópolis, perfeita para quem busca conforto, localização privilegiada e um imóvel diferenciado. Com 226m² de área total, essa unidade une amplitude, funcionalidade e alto padrão de acabamento.\n\n✨ Destaques do Imóvel:\n\n4 quartos espaçosos, sendo 3 suítes;\n\n4 banheiros + 1 lavabo;\n\n2 vagas de garagem cobertas;\n\nSala ampla e bem iluminada;\n\nCozinha planejada e copa;\n\nDespensa funcional;\n\n2 varandas privativas com vista livre e muita luz natural;\n\nCobertura com excelente ventilação e privacidade;\n\nIdeal para receber amigos e relaxar com a família.\n\n🏢 Condomínio com infraestrutura completa, próximo a tudo que você precisa: farmácias, mercados, academias, bancos, universidades, escolas, hospitais, shoppings, transporte público, restaurantes e muito mais!\n\n💰 Valor de venda: R$ 1.700.000,00\n📍 Localização: Centro – Teresópolis/RJ\n✅ Aceita financiamento\n\nEssa é a oportunidade que você esperava para viver com elegância e praticidade em uma das melhores regiões da cidade. Agende sua visita agora mesmo!\n\n📲 Entre em contato para mais informações.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272985",
     "bairro": "Várzea"
   },
   {
     "sku": "272992",
-    "name": "Lote/Terreno de no bairro Alto, em Teresópolis",
+    "name": "Terreno Totalmente Plano de 8.000m² Pronto para Construir no Alto",
     "price": 10000000,
     "cat": "Terrenos",
     "badge": "Alto Padrão",
@@ -1582,13 +1619,13 @@ export const allImoveisData: ProductItem[] = [
     "boxItems": [
       "Área cercada e parcialmente plana"
     ],
-    "description": "🌳 Terreno Exclusivo à Venda no Bairro do Alto – Teresópolis\n💰 R$ 12.000.000,00\n📍 Área Total: 8.000 m²\n\nSe você está buscando um espaço amplo, plano e com localização estratégica para um empreendimento de alto padrão ou para a construção de um residencial com infraestrutura completa, essa é a sua oportunidade!\n\nLocalizado no tradicional e valorizado Bairro do Alto, este terreno possui mais de 5.800 m² de área, próximo a colégios, hospitais, mercados e a todo o comércio da região. O espaço é ideal tanto para investidores quanto para quem deseja construir uma casa de luxo com muita área verde e privacidade.\n\nDestaques:\n\n📐 Terreno amplo e bem localizado\n\n✅ Área cercada e parcialmente plana\n\n🛣️ Acesso asfaltado e infraestrutura urbana\n\n🌳 Vegetação preservada e áreas livres\n\n📍 Região nobre com alto potencial de valorização\n\n🏢 Ideal para incorporação imobiliária ou empreendimento comercial\n\nOportunidades assim são raras em Teresópolis, principalmente em uma região tão procurada como o Alto. Agende sua visita e conheça de perto esse terreno extraordinário!\n\n📞 Entre em contato agora mesmo e aproveite!",
+    "description": "🌳 Terreno Exclusivo à Venda no Bairro do Alto – Teresópolis\n💰 R$ 12.000.000,00\n📍 Área Total: 8.000 m²\n\nSe você está buscando um espaço amplo, plano e com localização estratégica para um empreendimento de alto padrão ou para a construção de um residencial com infraestrutura completa, essa é a sua oportunidade!\n\nLocalizado no tradicional e valorizado Bairro do Alto, este terreno possui mais de 5.800 m² de área, próximo a colégios, hospitais, mercados e a todo o comércio da região. O espaço é ideal tanto para investidores quanto para quem deseja construir uma casa de luxo com muita área verde e privacidade.\n\nDestaques:\n\n📐 Terreno amplo e bem localizado\n\n✅ Área cercada e parcialmente plana\n\n🛣️ Acesso asfaltado e infraestrutura urbana\n\n🌳 Vegetação preservada e áreas livres\n\n📍 Região nobre com alto potencial de valorização\n\n🏢 Ideal para incorporação imobiliária ou empreendimento comercial\n\nOportunidades assim são raras em Teresópolis, principalmente em uma região tão procurada como o Alto. Agende sua visita e conheça de perto esse terreno extraordinário!\n\n📞 Entre em contato agora mesmo e aproveite!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272992",
     "bairro": "Alto"
   },
   {
     "sku": "272996",
-    "name": "Lote/Terreno de no bairro Carlos Guinle, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 4.200m² Pronto para Construir no Carlos Guinle",
     "price": 600000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1618,13 +1655,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🌳 Terreno à Venda no Condomínio Gleba XI A – Carlos Guinle, Teresópolis/RJ\nUma oportunidade única para construir o lar dos seus sonhos!\n\nApresentamos este amplo terreno com 4.200m², localizado em um dos endereços mais cobiçados de Teresópolis: o exclusivo Condomínio Gleba XI A, no elegante bairro Carlos Guinle.\n\n✨ Destaques:\nÁrea total: 4.200m²\n\nLocalizado em condomínio fechado de alto padrão\n\nTopografia ideal para projetos residenciais de luxo\n\nCercado por natureza exuberante e total privacidade\n\nInfraestrutura completa, com ruas pavimentadas, segurança e portaria\n\nPróximo ao centro da cidade, escolas, hospitais, restaurantes e comércio local\n\n🏞 Qualidade de vida com sofisticação:\nImagine viver com segurança, tranquilidade e muito verde ao seu redor, sem abrir mão da praticidade urbana. O Condomínio Gleba XI A oferece exatamente isso — um cenário perfeito para sua família prosperar com bem-estar e conforto.\n\nNão perca esta oportunidade de investimento seguro em uma das regiões mais valorizadas da serra!\nEntre em contato agora mesmo e agende uma visita para conhecer esse espaço extraordinário!",
+    "description": "🌳 Terreno à Venda no Condomínio Gleba XI A – Carlos Guinle, Teresópolis/RJ\nUma oportunidade única para construir o lar dos seus sonhos!\n\nApresentamos este amplo terreno com 4.200m², localizado em um dos endereços mais cobiçados de Teresópolis: o exclusivo Condomínio Gleba XI A, no elegante bairro Carlos Guinle.\n\n✨ Destaques:\nÁrea total: 4.200m²\n\nLocalizado em condomínio fechado de alto padrão\n\nTopografia ideal para projetos residenciais de luxo\n\nCercado por natureza exuberante e total privacidade\n\nInfraestrutura completa, com ruas pavimentadas, segurança e portaria\n\nPróximo ao centro da cidade, escolas, hospitais, restaurantes e comércio local\n\n🏞 Qualidade de vida com sofisticação:\nImagine viver com segurança, tranquilidade e muito verde ao seu redor, sem abrir mão da praticidade urbana. O Condomínio Gleba XI A oferece exatamente isso — um cenário perfeito para sua família prosperar com bem-estar e conforto.\n\nNão perca esta oportunidade de investimento seguro em uma das regiões mais valorizadas da serra!\nEntre em contato agora mesmo e agende uma visita para conhecer esse espaço extraordinário!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272996",
     "bairro": "Carlos Guinle"
   },
   {
     "sku": "273112",
-    "name": "Lote/Terreno de no bairro Albuquerque, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 247m² com Linda Vista para a Natureza em Albuquerque",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1654,13 +1691,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno para Venda no bairro Albuquerque, localizado na cidade de Teresópolis / RJ.\n\nTerreno aclive com 247,00m2 de área total sendo 12,00mt de frente e 20,00mt nas laterais, condomínio com área de lazer completa e com valor muito atrativo, composta de sauna, churrasqueira, piscina, salão de festas, playground, e quadra.\n\nVista incomparável e privilegiada das montanhas incluindo dedo de deus e mulher de pedra. Localizado em um bairro de alto crescimento e muito bem valorizado a 12 minutos do centro da cidade.\n\nAproveite esta oportunidade imóvel a baixo do preço do mercado na região.\n\nValor do Imóvel R$ 150.000,00, IPTU R$ 68,00, Valor do Condomínio R$ 299,00, Valor Iptu Mensal.\n\nCaracterísticas: Portão Eletrônico.\n\nLazer: Churrasqueira Condomínio, Piscina Condomínio, Playground, Salão de Festa, Sauna Condomínio.\n\nProximidades: Bares e Restaurantes.\n\nSegurança: Segurança 24h.",
+    "description": "Terreno para Venda no bairro Albuquerque, localizado na cidade de Teresópolis / RJ.\n\nTerreno aclive com 247,00m2 de área total sendo 12,00mt de frente e 20,00mt nas laterais, condomínio com área de lazer completa e com valor muito atrativo, composta de sauna, churrasqueira, piscina, salão de festas, playground, e quadra.\n\nVista incomparável e privilegiada das montanhas incluindo dedo de deus e mulher de pedra. Localizado em um bairro de alto crescimento e muito bem valorizado a 12 minutos do centro da cidade.\n\nAproveite esta oportunidade imóvel a baixo do preço do mercado na região.\n\nValor do Imóvel R$ 150.000,00, IPTU R$ 68,00, Valor do Condomínio R$ 299,00, Valor Iptu Mensal.\n\nCaracterísticas: Portão Eletrônico.\n\nLazer: Churrasqueira Condomínio, Piscina Condomínio, Playground, Salão de Festa, Sauna Condomínio.\n\nProximidades: Bares e Restaurantes.\n\nSegurança: Segurança 24h.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273112",
     "bairro": "Albuquerque"
   },
   {
     "sku": "273114",
-    "name": "Lote/Terreno de no bairro Albuquerque, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 453m² com Linda Vista para a Natureza em Albuquerque",
     "price": 140000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1686,13 +1723,13 @@ export const allImoveisData: ProductItem[] = [
     "boxItems": [
       "Ambiente seguro, sem riscos de enchentes ou deslizamentos."
     ],
-    "description": "🌟 Oportunidade Exclusiva no Vale das Estrelas – Teresópolis/RJ 🌟\n\nApresentamos um excelente terreno à venda em condomínio fechado de alto padrão, com localização privilegiada na Estrada Terê-Fri, a poucos minutos do centro da cidade!\n\n📐 Área total: 453m²\n📏 Dimensões: 14,2m de frente x 32,85m de profundidade\n📍 Topografia: Aclive suave\n🏞️ Vista deslumbrante e eterna para as montanhas, incluindo o icônico cartão-postal Mulher de Pedra.\n\n🏡 Infraestrutura completa do condomínio:\n\nPiscina aquecida\n\nSauna à vapor\n\nEspaço gourmet\n\nAcademia equipada\n\nCampo de futebol\n\nPlayground\n\nSalão de festas\n\nPortaria 24h com câmeras (CFTV)\n\nVestiários e muito mais!\n\n✅ Ambiente seguro, sem riscos de enchentes ou deslizamentos.\n📄 IPTU: R$ 1.814,00/ano\n💰 Condomínio: R$ 549,71/mês\n\nIdeal para quem busca qualidade de vida, segurança e contato com a natureza, sem abrir mão da comodidade urbana.\n\nEntre em contato para mais informações e agende sua visita!",
+    "description": "🌟 Oportunidade Exclusiva no Vale das Estrelas – Teresópolis/RJ 🌟\n\nApresentamos um excelente terreno à venda em condomínio fechado de alto padrão, com localização privilegiada na Estrada Terê-Fri, a poucos minutos do centro da cidade!\n\n📐 Área total: 453m²\n📏 Dimensões: 14,2m de frente x 32,85m de profundidade\n📍 Topografia: Aclive suave\n🏞️ Vista deslumbrante e eterna para as montanhas, incluindo o icônico cartão-postal Mulher de Pedra.\n\n🏡 Infraestrutura completa do condomínio:\n\nPiscina aquecida\n\nSauna à vapor\n\nEspaço gourmet\n\nAcademia equipada\n\nCampo de futebol\n\nPlayground\n\nSalão de festas\n\nPortaria 24h com câmeras (CFTV)\n\nVestiários e muito mais!\n\n✅ Ambiente seguro, sem riscos de enchentes ou deslizamentos.\n📄 IPTU: R$ 1.814,00/ano\n💰 Condomínio: R$ 549,71/mês\n\nIdeal para quem busca qualidade de vida, segurança e contato com a natureza, sem abrir mão da comodidade urbana.\n\nEntre em contato para mais informações e agende sua visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273114",
     "bairro": "Albuquerque"
   },
   {
     "sku": "273116",
-    "name": "Lote/Terreno de no bairro Vargem Grande, em Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 15.000m² com Linda Vista para a Natureza em Vargem Grande",
     "price": 900000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1718,13 +1755,13 @@ export const allImoveisData: ProductItem[] = [
       "Região em expansão, com projetos e condomínios ao redor",
       "Imóvel cercado por muito verde, ar puro e tranquilidade"
     ],
-    "description": "🌄 Terreno Único com 15.000m² em Vargem Grande – Vista Deslumbrante para o Dedo de Deus\nSe você busca um terreno exclusivo para investir, construir ou desenvolver um projeto diferenciado, esta é a sua oportunidade! Localizado no bairro Vargem Grande, em Teresópolis, este terreno de 15.000m², com matrícula individualizada (Lote 14), oferece uma vista espetacular para o Dedo de Deus e é cercado por natureza preservada, com acesso asfaltado e excelente localização.\n\n📍 Localização privilegiada:\n✔ Bairro Vargem Grande – Teresópolis/RJ\n✔ Região com infraestrutura urbana e grande potencial de valorização\n✔ Fácil acesso ao centro da cidade\n✔ Próximo a supermercados, farmácias, escolas, academias e muito mais\n\n📐 Características do Imóvel:\nÁrea total: 15.000m²\n\nÁrea do terreno regularizada e delimitada\n\nTopografia com boas possibilidades de aproveitamento\n\nAceita financiamento e permuta\n\n🏞️ Destaques:\n✅ Vista cinematográfica para o Parque Nacional da Serra dos Órgãos\n✅ Ideal para construção de residência de alto padrão, pousada, spa ou empreendimento ecológico\n✅ Região em expansão, com projetos e condomínios ao redor\n✅ Imóvel cercado por muito verde, ar puro e tranquilidade\n\n💰 Investimento:\nValor: R$ 3.500.000,00\n\nImóveis com esse perfil são raros no mercado.\nEntre em contato agora mesmo para mais informações e agende sua visita!\nValores e disponibilidade sujeitos a alteração sem aviso prévio.",
+    "description": "🌄 Terreno Único com 15.000m² em Vargem Grande – Vista Deslumbrante para o Dedo de Deus\nSe você busca um terreno exclusivo para investir, construir ou desenvolver um projeto diferenciado, esta é a sua oportunidade! Localizado no bairro Vargem Grande, em Teresópolis, este terreno de 15.000m², com matrícula individualizada (Lote 14), oferece uma vista espetacular para o Dedo de Deus e é cercado por natureza preservada, com acesso asfaltado e excelente localização.\n\n📍 Localização privilegiada:\n✔ Bairro Vargem Grande – Teresópolis/RJ\n✔ Região com infraestrutura urbana e grande potencial de valorização\n✔ Fácil acesso ao centro da cidade\n✔ Próximo a supermercados, farmácias, escolas, academias e muito mais\n\n📐 Características do Imóvel:\nÁrea total: 15.000m²\n\nÁrea do terreno regularizada e delimitada\n\nTopografia com boas possibilidades de aproveitamento\n\nAceita financiamento e permuta\n\n🏞️ Destaques:\n✅ Vista cinematográfica para o Parque Nacional da Serra dos Órgãos\n✅ Ideal para construção de residência de alto padrão, pousada, spa ou empreendimento ecológico\n✅ Região em expansão, com projetos e condomínios ao redor\n✅ Imóvel cercado por muito verde, ar puro e tranquilidade\n\n💰 Investimento:\nValor: R$ 3.500.000,00\n\nImóveis com esse perfil são raros no mercado.\nEntre em contato agora mesmo para mais informações e agende sua visita!\nValores e disponibilidade sujeitos a alteração sem aviso prévio.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273116",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "273118",
-    "name": "Casa de 3 quartos, no bairro Quinta da Barra, em Teresópolis",
+    "name": "Bela Casa com 3 Quartos (2 Suítes) e Garagem na Quinta da Barra",
     "price": 790000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -1754,13 +1791,13 @@ export const allImoveisData: ProductItem[] = [
       "Sala de TV aconchegante – Perfeita para momentos de descanso",
       "Escritório privativo – Ambiente dedicado ao home office"
     ],
-    "description": "Conforto, lazer e espaço em um só lugar! 🏡✨\nCasa ampla com piscina e 1.000m² de terreno privativo\n\nSe você procura um imóvel completo, com excelente padrão construtivo, ambientes generosos e lazer integrado à natureza, esta é a casa ideal. Com 180m² de área construída, essa residência oferece o equilíbrio perfeito entre funcionalidade, elegância e bem-estar para toda a família.\n\nDestaques do imóvel:\n✅ 3 quartos, sendo 2 suítes – Espaço e privacidade para todos\n✅ Sala social ampla com lareira (30m²) – Ideal para reunir a família com conforto\n✅ Cozinha americana integrada à sala de jantar – Conectividade e praticidade no dia a dia\n✅ Sala de TV aconchegante – Perfeita para momentos de descanso\n✅ Escritório privativo – Ambiente dedicado ao home office\n✅ Lavabo elegante e lavanderia independente – Funcionalidade em todos os detalhes\n✅ Varanda com churrasqueira + piscina com bomba – Lazer garantido para toda a família\n✅ Dependência completa de empregada – Mais comodidade para a rotina\n✅ Garagem coberta para até 3 veículos\n✅ Canil e portão eletrônico – Estrutura completa para quem tem pets e valoriza segurança\n\n📐 Área construída: 180m²\n🌳 Terreno: 1.000m² – Muito espaço para viver com liberdade\n\nIdeal para famílias que buscam um lar acolhedor, espaçoso e pronto para receber com qualidade de vida.\nAgende sua visita e conheça seu novo endereço!\n\nValores e disponibilidade sujeitos a alteração sem aviso prévio.",
+    "description": "Conforto, lazer e espaço em um só lugar! 🏡✨\nCasa ampla com piscina e 1.000m² de terreno privativo\n\nSe você procura um imóvel completo, com excelente padrão construtivo, ambientes generosos e lazer integrado à natureza, esta é a casa ideal. Com 180m² de área construída, essa residência oferece o equilíbrio perfeito entre funcionalidade, elegância e bem-estar para toda a família.\n\nDestaques do imóvel:\n✅ 3 quartos, sendo 2 suítes – Espaço e privacidade para todos\n✅ Sala social ampla com lareira (30m²) – Ideal para reunir a família com conforto\n✅ Cozinha americana integrada à sala de jantar – Conectividade e praticidade no dia a dia\n✅ Sala de TV aconchegante – Perfeita para momentos de descanso\n✅ Escritório privativo – Ambiente dedicado ao home office\n✅ Lavabo elegante e lavanderia independente – Funcionalidade em todos os detalhes\n✅ Varanda com churrasqueira + piscina com bomba – Lazer garantido para toda a família\n✅ Dependência completa de empregada – Mais comodidade para a rotina\n✅ Garagem coberta para até 3 veículos\n✅ Canil e portão eletrônico – Estrutura completa para quem tem pets e valoriza segurança\n\n📐 Área construída: 180m²\n🌳 Terreno: 1.000m² – Muito espaço para viver com liberdade\n\nIdeal para famílias que buscam um lar acolhedor, espaçoso e pronto para receber com qualidade de vida.\nAgende sua visita e conheça seu novo endereço!\n\nValores e disponibilidade sujeitos a alteração sem aviso prévio.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273118",
     "bairro": "Quinta da Barra"
   },
   {
     "sku": "273121",
-    "name": "Casa de Condomínio de 3 quartos, no bairro Posse, em Teresópolis",
+    "name": "Linda Casa em Condomínio com 3 Quartos (2 Suítes) na Posse",
     "price": 1350000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1790,13 +1827,13 @@ export const allImoveisData: ProductItem[] = [
       "2 banheiros sociais bem distribuídos – Praticidade no dia a dia",
       "Área privativa de 120 m² – Espaço ideal para viver com liberdade"
     ],
-    "description": "Modernidade, sofisticação e localização privilegiada no Residencial Tangarás! 🏡✨\n\nEssa residência de alto padrão no bairro Posse, em Teresópolis, reúne design contemporâneo, ambientes bem distribuídos e uma estrutura que une conforto e elegância. Ideal para quem busca morar bem ou investir com segurança em uma das regiões mais valorizadas da cidade.\n\nEssa casa é um verdadeiro convite ao bom gosto e à qualidade de vida.\n\nDestaques do imóvel:\n✅ 3 quartos, sendo 2 suítes – Privacidade e conforto para toda a família\n✅ Sala ampla com pé-direito alto e lareira moderna – Estilo e sofisticação em cada detalhe\n✅ Cozinha integrada – Funcionalidade com conceito aberto\n✅ 2 banheiros sociais bem distribuídos – Praticidade no dia a dia\n✅ Área privativa de 120 m² – Espaço ideal para viver com liberdade\n✅ 1 vaga de garagem – Segurança e comodidade\n\nDiferenciais do imóvel:\n✔ Acabamentos de alto padrão\n✔ Fachada imponente com iluminação arquitetônica\n✔ Grandes janelas com excelente iluminação natural\n✔ Localização privilegiada, em condomínio tranquilo e valorizado\n✔ Ideal tanto para moradia quanto para investimento seguro\n\nAgende sua visita e descubra o verdadeiro significado de morar bem em Teresópolis!\nSeu novo lar espera por você!",
+    "description": "Modernidade, sofisticação e localização privilegiada no Residencial Tangarás! 🏡✨\n\nEssa residência de alto padrão no bairro Posse, em Teresópolis, reúne design contemporâneo, ambientes bem distribuídos e uma estrutura que une conforto e elegância. Ideal para quem busca morar bem ou investir com segurança em uma das regiões mais valorizadas da cidade.\n\nEssa casa é um verdadeiro convite ao bom gosto e à qualidade de vida.\n\nDestaques do imóvel:\n✅ 3 quartos, sendo 2 suítes – Privacidade e conforto para toda a família\n✅ Sala ampla com pé-direito alto e lareira moderna – Estilo e sofisticação em cada detalhe\n✅ Cozinha integrada – Funcionalidade com conceito aberto\n✅ 2 banheiros sociais bem distribuídos – Praticidade no dia a dia\n✅ Área privativa de 120 m² – Espaço ideal para viver com liberdade\n✅ 1 vaga de garagem – Segurança e comodidade\n\nDiferenciais do imóvel:\n✔ Acabamentos de alto padrão\n✔ Fachada imponente com iluminação arquitetônica\n✔ Grandes janelas com excelente iluminação natural\n✔ Localização privilegiada, em condomínio tranquilo e valorizado\n✔ Ideal tanto para moradia quanto para investimento seguro\n\nAgende sua visita e descubra o verdadeiro significado de morar bem em Teresópolis!\nSeu novo lar espera por você!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273121",
     "bairro": "Posse"
   },
   {
     "sku": "273122",
-    "name": "Casa de 4 quartos, 1730m² no bairro Carlos Guinle, em Teresópolis",
+    "name": "Belíssima Residência com 4 Quartos (3 Suítes) e Quintal Amplo no Carlos Guinle",
     "price": 3800000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -1826,13 +1863,13 @@ export const allImoveisData: ProductItem[] = [
       "Quarto duplo com sacada – Versatilidade ideal para hóspedes ou home office",
       "Cozinha funcional e prática – Pensada para facilitar sua rotina"
     ],
-    "description": "Exclusividade, vista privilegiada e sofisticação em frente à CBF! 🌿✨\n\nViva o privilégio de morar em um imóvel único, com uma vista espetacular para os campos da CBF, o lago e toda a Granja Comary — com o Dedo de Deus compondo o cenário como uma verdadeira obra de arte da natureza.\n\nEsta residência é a definição de conforto, elegância e localização estratégica em Teresópolis.\n\nDestaques do imóvel:\n✅ Suíte master + 3 suítes – Mais conforto e privacidade para toda a família\n✅ Sala espaçosa com lavabo – Perfeita para receber com charme e sofisticação\n✅ Sacada com vista panorâmica – Uma paisagem de tirar o fôlego todos os dias\n✅ Quarto duplo com sacada – Versatilidade ideal para hóspedes ou home office\n✅ Cozinha funcional e prática – Pensada para facilitar sua rotina\n✅ Lavanderia integrada – Organização e praticidade no seu dia a dia\n✅ Salão de festas com churrasqueira – Celebre a vida com estilo\n✅ Amplo quintal – Um verdadeiro refúgio para lazer, crianças e pets\n\nUma oportunidade rara de viver com qualidade, exclusividade e uma das vistas mais desejadas de Teresópolis.\n\nAgende agora sua visita e encante-se com o seu novo lar! 🏡💫",
+    "description": "Exclusividade, vista privilegiada e sofisticação em frente à CBF! 🌿✨\n\nViva o privilégio de morar em um imóvel único, com uma vista espetacular para os campos da CBF, o lago e toda a Granja Comary — com o Dedo de Deus compondo o cenário como uma verdadeira obra de arte da natureza.\n\nEsta residência é a definição de conforto, elegância e localização estratégica em Teresópolis.\n\nDestaques do imóvel:\n✅ Suíte master + 3 suítes – Mais conforto e privacidade para toda a família\n✅ Sala espaçosa com lavabo – Perfeita para receber com charme e sofisticação\n✅ Sacada com vista panorâmica – Uma paisagem de tirar o fôlego todos os dias\n✅ Quarto duplo com sacada – Versatilidade ideal para hóspedes ou home office\n✅ Cozinha funcional e prática – Pensada para facilitar sua rotina\n✅ Lavanderia integrada – Organização e praticidade no seu dia a dia\n✅ Salão de festas com churrasqueira – Celebre a vida com estilo\n✅ Amplo quintal – Um verdadeiro refúgio para lazer, crianças e pets\n\nUma oportunidade rara de viver com qualidade, exclusividade e uma das vistas mais desejadas de Teresópolis.\n\nAgende agora sua visita e encante-se com o seu novo lar! 🏡💫\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273122",
     "bairro": "Carlos Guinle"
   },
   {
     "sku": "273124",
-    "name": "Oportunidade, apartamento mobiliado no bairro de Araras, em Teresópolis",
+    "name": "Lindo Apartamento de 2 Quartos com Garagem no Centro",
     "price": 295000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -1862,13 +1899,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Seu novo lar em Araras, Teresópolis! Apartamento de 55 m², bem distribuído, mobiliado com 2 quartos, sala acolhedora, cozinha funcional e 1 vaga coberta. No Condomínio Residencial Serra das Araras, você vive cercado pela natureza, em um ambiente tranquilo, organizado e familiar, com clima serrano e comodidades do bairro por perto, além de fácil acesso ao centro. Perfeito para quem busca qualidade de vida e praticidade. Gostou? Entre em contato e agende sua visita!\n#Teresópolis #Araras #SerraDasAraras #Condomínio #Apartamento #2Quartos #VagaCoberta #Venda #Imóveis #QualidadeDeVida #Natureza",
+    "description": "Seu novo lar em Araras, Teresópolis! Apartamento de 55 m², bem distribuído, mobiliado com 2 quartos, sala acolhedora, cozinha funcional e 1 vaga coberta. No Condomínio Residencial Serra das Araras, você vive cercado pela natureza, em um ambiente tranquilo, organizado e familiar, com clima serrano e comodidades do bairro por perto, além de fácil acesso ao centro. Perfeito para quem busca qualidade de vida e praticidade. Gostou? Entre em contato e agende sua visita!\n#Teresópolis #Araras #SerraDasAraras #Condomínio #Apartamento #2Quartos #VagaCoberta #Venda #Imóveis #QualidadeDeVida #Natureza\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/273124",
     "bairro": "Centro"
   },
   {
     "sku": "276177",
-    "name": "Linda Casa Fora de Condomínio em Oportunidade!",
+    "name": "Linda Casa em Condomínio com 5 Quartos e Espaço Gourmet na Tijuca",
     "price": 1250000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -1898,13 +1935,13 @@ export const allImoveisData: ProductItem[] = [
       "armários",
       "sala de jantar"
     ],
-    "description": "Casa de 200 m² na Tijuca, Teresópolis, em condomínio com segurança 24h e lazer completo. São 5 quartos e 4 vagas cobertas. Viver aqui é ter tranquilidade, convívio, ruas arborizadas e proximidade a comércio, escolas e vias de acesso.\n\nBenfeitorias:\n- quintal\n- escritório\n- churrasqueira\n- armários\n- sala de jantar\n- armário coz.\n\nAgende sua visita e surpreenda-se. Fale agora e garanta seu novo lar!\n\n#Teresópolis #Tijuca #CasaÀVenda #Condomínio #Imóvel #Oportunidade #Segurança #Lazer #Família #RJ\n          Agende visita sem compromisso.\n          Valores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa de 200 m² na Tijuca, Teresópolis, em condomínio com segurança 24h e lazer completo. São 5 quartos e 4 vagas cobertas. Viver aqui é ter tranquilidade, convívio, ruas arborizadas e proximidade a comércio, escolas e vias de acesso.\n\nBenfeitorias:\n- quintal\n- escritório\n- churrasqueira\n- armários\n- sala de jantar\n- armário coz.\n\nAgende sua visita e surpreenda-se. Fale agora e garanta seu novo lar!\n\n#Teresópolis #Tijuca #CasaÀVenda #Condomínio #Imóvel #Oportunidade #Segurança #Lazer #Família #RJ\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/276177",
     "bairro": "Tijuca"
   },
   {
     "sku": "276201",
-    "name": "lotes em condomínio em Albuquerque.",
+    "name": "Terreno Plano em Condomínio de 425m² Pronto para Construir em Albuquerque",
     "price": 330000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1931,13 +1968,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Lote com 425m² no  condomínio Golden Green lbuquerque, com uma vista espetacular para a Mulher de Pedra.\n\nTerreno plano, pronto para construir, em ótima localização dentro do condomínio, com posição de sol intermediário, proporcionando conforto térmico e luminosidade ideal ao longo do dia. Perfeito para construir sua casa de alto padrão, casa de veraneio ou investimento seguro em uma das regiões que mais crescem de Teresópolis.\n\nO condomínio portaria 24h , segurança e tranquilidade, com taxa mensal de apenas R$165. Além disso, está a apenas 10 minutos do centro da cidade, garantindo fácil acesso a comércio, serviços e lazer.\n\nUma oportunidade única para quem busca qualidade de vida, contato com a natureza e valorização imobiliária.",
+    "description": "Lote com 425m² no  condomínio Golden Green lbuquerque, com uma vista espetacular para a Mulher de Pedra.\n\nTerreno plano, pronto para construir, em ótima localização dentro do condomínio, com posição de sol intermediário, proporcionando conforto térmico e luminosidade ideal ao longo do dia. Perfeito para construir sua casa de alto padrão, casa de veraneio ou investimento seguro em uma das regiões que mais crescem de Teresópolis.\n\nO condomínio portaria 24h , segurança e tranquilidade, com taxa mensal de apenas R$165. Além disso, está a apenas 10 minutos do centro da cidade, garantindo fácil acesso a comércio, serviços e lazer.\n\nUma oportunidade única para quem busca qualidade de vida, contato com a natureza e valorização imobiliária.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/276201",
     "bairro": "Albuquerque"
   },
   {
     "sku": "278467",
-    "name": "lote em condomínio Vale das nasçoes, oportunidade.",
+    "name": "Excelente Terreno em Condomínio de 467m² em Vargem Grande",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1964,13 +2001,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Construa seu lar dos sonhos em um terreno de 467 m² no Condomínio Vale das Nações, em Vargem Grande, Teresópolis. Condomínio fechado com segurança, contato com a natureza e infraestrutura de lazer. Tranquilidade, valorização e qualidade de vida, perto do comércio e com fácil acesso ao centro. Entre em contato e agende sua visita!\n\npiscina\nquintal\nrede de esgoto\nvia pavimentada\nsalão de festas\nsala ginastica\nchurrasqueira\nportão eletrônico\n\n#Teresopolis #VargemGrande #ValeDasNacoes #Terreno #Lote #CondominioFechado #QualidadeDeVida #ConstruaSeuSonho\n          Agende visita sem compromisso.\n          Valores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Construa seu lar dos sonhos em um terreno de 467 m² no Condomínio Vale das Nações, em Vargem Grande, Teresópolis. Condomínio fechado com segurança, contato com a natureza e infraestrutura de lazer. Tranquilidade, valorização e qualidade de vida, perto do comércio e com fácil acesso ao centro. Entre em contato e agende sua visita!\n\npiscina\nquintal\nrede de esgoto\nvia pavimentada\nsalão de festas\nsala ginastica\nchurrasqueira\nportão eletrônico\n\n#Teresopolis #VargemGrande #ValeDasNacoes #Terreno #Lote #CondominioFechado #QualidadeDeVida #ConstruaSeuSonho\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/278467",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "284441",
-    "name": "Terreno 1.376m² Condomínio The Garden – Frente 40m | Platô Pronto | Prata – Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 1.376m² Pronto para Construir no Centro",
     "price": 450000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1999,13 +2036,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "📍 TERRENO EXCLUSIVO 1.376m² – CONDOMÍNIO THE GARDEN | BAIRRO PRATA – TERESÓPOLIS\n\n🏡 Excelente oportunidade para construir sua casa em um dos condomínios mais valorizados da região da Prata.\n\nTerreno amplo, com topografia privilegiada e platô pronto, permitindo início imediato da obra e reduzindo significativamente custos de terraplanagem.\n\nLocalizado no Condomínio The Garden, um ambiente tranquilo, arborizado e ideal para quem busca qualidade de vida, segurança e contato com a natureza, com fácil acesso ao centro de Teresópolis e às principais vias da região.\n\n📐 Características do Terreno\n\nÁrea total: 1.376 m²\n\nFrente (testada): 40 metros – medida rara dentro do condomínio\n\nTerreno com excelente aproveitamento para projeto residencial\n\nPlatô já pronto para construção\n\nTopografia favorável\n\n📄 Documentação\n\n✔ Escritura\n✔ Registro\n✔ Pronto para transferência imediata\n\n🌿 Diferenciais\n\n✔ Condomínio de alto padrão\n✔ Ambiente arborizado e tranquilo\n✔ Segurança e privacidade\n✔ Fácil acesso ao bairro Prata\n✔ Ideal para casa de alto padrão ou projeto arquitetônico diferenciado\n\n💰 Valor: R$ 450.000\n\n🚗 Aceita veículo como parte de pagamento (a avaliar)\n\n📲 Mais informações ou agendamento de visita:\nEntre em contato pelo chat ou WhatsApp.",
+    "description": "📍 TERRENO EXCLUSIVO 1.376m² – CONDOMÍNIO THE GARDEN | BAIRRO PRATA – TERESÓPOLIS\n\n🏡 Excelente oportunidade para construir sua casa em um dos condomínios mais valorizados da região da Prata.\n\nTerreno amplo, com topografia privilegiada e platô pronto, permitindo início imediato da obra e reduzindo significativamente custos de terraplanagem.\n\nLocalizado no Condomínio The Garden, um ambiente tranquilo, arborizado e ideal para quem busca qualidade de vida, segurança e contato com a natureza, com fácil acesso ao centro de Teresópolis e às principais vias da região.\n\n📐 Características do Terreno\n\nÁrea total: 1.376 m²\n\nFrente (testada): 40 metros – medida rara dentro do condomínio\n\nTerreno com excelente aproveitamento para projeto residencial\n\nPlatô já pronto para construção\n\nTopografia favorável\n\n📄 Documentação\n\n✔ Escritura\n✔ Registro\n✔ Pronto para transferência imediata\n\n🌿 Diferenciais\n\n✔ Condomínio de alto padrão\n✔ Ambiente arborizado e tranquilo\n✔ Segurança e privacidade\n✔ Fácil acesso ao bairro Prata\n✔ Ideal para casa de alto padrão ou projeto arquitetônico diferenciado\n\n💰 Valor: R$ 450.000\n\n🚗 Aceita veículo como parte de pagamento (a avaliar)\n\n📲 Mais informações ou agendamento de visita:\nEntre em contato pelo chat ou WhatsApp.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/284441",
     "bairro": "Centro"
   },
   {
     "sku": "285135",
-    "name": "Apartamento com 1 quartos, 21,90m² à venda por R$ 250.000, Agriões - Teresópolis/RJ",
+    "name": "Lindo Apartamento de 1 Quartos em Agriões",
     "price": 250000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -2034,13 +2071,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Agriões. Com 21,9 m² e 1 quarto, é a escolha certa para quem busca praticidade, baixo custo de manutenção e ótima localização. Espaço bem aproveitado, ideal para morar sozinho, investir ou ter um ponto de apoio na cidade Próximo a comércio, serviços e fácil acesso ao centro. Agende sua visita e veja como este compacto pode ser perfeito para o seu dia a dia.\n\nAgende uma visita",
+    "description": "Apartamento à venda em Teresópolis, no bairro Agriões. Com 21,9 m² e 1 quarto, é a escolha certa para quem busca praticidade, baixo custo de manutenção e ótima localização. Espaço bem aproveitado, ideal para morar sozinho, investir ou ter um ponto de apoio na cidade Próximo a comércio, serviços e fácil acesso ao centro. Agende sua visita e veja como este compacto pode ser perfeito para o seu dia a dia.\n\nAgende uma visita\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/285135",
     "bairro": "Agriões"
   },
   {
     "sku": "285146",
-    "name": "Apartamento com 2 quartos, 89,35 m² à venda por R$ 500.000, Alto - Teresópolis/RJ",
+    "name": "Lindo Apartamento de 2 Quartos com Garagem no Alto",
     "price": 450000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -2070,13 +2107,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Morar no Alto em Teresópolis, é sinônimo de conforto e tranquilidade. Apresentamos um apartamento de 89.35 m2 com 2 quartos, ambos com varanda sendo uma suíte, sala com varanda integrada e fechada com cortina de vidro, dependência completa e duas vagas de garagem cobertas.\n\nO edifício possui um ambiente seguro e familiar, oferecendo a você e à sua família a tranquilidade que merecem. Situado em um bairro de fácil acesso e com diversas opções de lazer e serviços nas proximidades, é perfeito para quem busca qualidade de vida.  \n\nVenha conhecer seu novo lar! Entre em contato conosco e agende sua visita.  \nEstamos aqui para ajudar você a realizar seu sonho de morar bem!\n\nAgende sua visita!",
+    "description": "Morar no Alto em Teresópolis, é sinônimo de conforto e tranquilidade. Apresentamos um apartamento de 89.35 m2 com 2 quartos, ambos com varanda sendo uma suíte, sala com varanda integrada e fechada com cortina de vidro, dependência completa e duas vagas de garagem cobertas.\n\nO edifício possui um ambiente seguro e familiar, oferecendo a você e à sua família a tranquilidade que merecem. Situado em um bairro de fácil acesso e com diversas opções de lazer e serviços nas proximidades, é perfeito para quem busca qualidade de vida.\n\nVenha conhecer seu novo lar! Entre em contato conosco e agende sua visita.\nEstamos aqui para ajudar você a realizar seu sonho de morar bem!\n\nAgende sua visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/285146",
     "bairro": "Alto"
   },
   {
     "sku": "285224",
-    "name": "lote de oportunidade no melhor condomínio de Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 417m² em Vargem Grande",
     "price": 180000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2103,13 +2140,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno de 417 m² no Condomínio Vale das Nações, em Vargem Grande, Teresópolis. Viva com tranquilidade, ar puro e contato com a natureza em um condomínio organizado, seguro e com excelente padrão de vizinhança. Localização prática, perto das comodidades da cidade e com fácil acesso. Liberdade para projetar sua casa do jeito que sempre quis, com potencial de valorização. Não perca: fale agora e agende uma visita!\n\n#Teresópolis #VargemGrande #ValeDasNações #Terreno #TerrenoEmCondomínio #Lote #ConstruaSeuSonho #QualidadeDeVida #Natureza #Oportunidade #Investimento\n          Agende visita sem compromisso.\n          Valores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno de 417 m² no Condomínio Vale das Nações, em Vargem Grande, Teresópolis. Viva com tranquilidade, ar puro e contato com a natureza em um condomínio organizado, seguro e com excelente padrão de vizinhança. Localização prática, perto das comodidades da cidade e com fácil acesso. Liberdade para projetar sua casa do jeito que sempre quis, com potencial de valorização. Não perca: fale agora e agende uma visita!\n\n#Teresópolis #VargemGrande #ValeDasNações #Terreno #TerrenoEmCondomínio #Lote #ConstruaSeuSonho #QualidadeDeVida #Natureza #Oportunidade #Investimento\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/285224",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "289112",
-    "name": "casa com 8 quartos fora de Condomino!!!",
+    "name": "Belíssima Residência com 8 Quartos e Quintal Amplo no Centro",
     "price": 1490000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2136,13 +2173,13 @@ export const allImoveisData: ProductItem[] = [
       "rede de esgoto",
       "lavabo"
     ],
-    "description": "Na Tijuca, Teresópolis, casa ampla com 407 m², 7 quartos e 4 garagens cobertas. Conforto, luz natural e privacidade em localização privilegiada, perto de escolas, comércio e do Centro. Viva o clima serrano com segurança e praticidade. Fale conosco e agende sua visita!\n\n- via pavimentada\n- varanda\n- escritório\n- rede de esgoto\n- lavabo\n- quintal\n- banheiro serv.\n- closet\n- copa\n- armários\n- sala de jantar\n- mobiliado\n- armário coz.\n- portão eletrônico\n\n#Teresopolis #Tijuca #CasaAVenda #Imoveis #Oportunidade #CasaAmpla #407m2 #7Quartos #4Garagens\n          Agende visita sem compromisso.\n          Valores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Na Tijuca, Teresópolis, casa ampla com 407 m², 7 quartos e 4 garagens cobertas. Conforto, luz natural e privacidade em localização privilegiada, perto de escolas, comércio e do Centro. Viva o clima serrano com segurança e praticidade. Fale conosco e agende sua visita!\n\n- via pavimentada\n- varanda\n- escritório\n- rede de esgoto\n- lavabo\n- quintal\n- banheiro serv.\n- closet\n- copa\n- armários\n- sala de jantar\n- mobiliado\n- armário coz.\n- portão eletrônico\n\n#Teresopolis #Tijuca #CasaAVenda #Imoveis #Oportunidade #CasaAmpla #407m2 #7Quartos #4Garagens\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/289112",
     "bairro": "Centro"
   },
   {
     "sku": "289578",
-    "name": "casa fora de Condomino com 4 quartos!!!",
+    "name": "Casa Aconchegante com 4 Quartos e Quintal Amplo em Albuquerque",
     "price": 490000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2172,13 +2209,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Albuquerque: terreno de 900 m², 4 quartos e 2 vagas cobertas. Viver aqui é ter tranquilidade, clima de montanha, ótima infraestrutura e rápido acesso ao Centro e ao Alto, com comércio, escolas e lazer por perto. Agende sua visita e fale com a gente agora mesmo!\nvia pavimentada\nvaranda\nescritório\nrede de esgoto\nlavabo\nquintal\nbanheiro serv.\ncloset\ncopa\narmários\nsala de jantar\narmário coz.\nchurrasqueira\nminha casa minha vida\nportão eletrônico\n#Teresopolis #Albuquerque #CasaAVenda #Imovel #Oportunidade #MinhaCasaMinhaVida #RJ #TeresopolisImoveis #Varanda #Churrasqueira\n          Agende visita sem compromisso.\n          Valores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Albuquerque: terreno de 900 m², 4 quartos e 2 vagas cobertas. Viver aqui é ter tranquilidade, clima de montanha, ótima infraestrutura e rápido acesso ao Centro e ao Alto, com comércio, escolas e lazer por perto. Agende sua visita e fale com a gente agora mesmo!\nvia pavimentada\nvaranda\nescritório\nrede de esgoto\nlavabo\nquintal\nbanheiro serv.\ncloset\ncopa\narmários\nsala de jantar\narmário coz.\nchurrasqueira\nminha casa minha vida\nportão eletrônico\n#Teresopolis #Albuquerque #CasaAVenda #Imovel #Oportunidade #MinhaCasaMinhaVida #RJ #TeresopolisImoveis #Varanda #Churrasqueira\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/289578",
     "bairro": "Albuquerque"
   },
   {
     "sku": "289635",
-    "name": "Lote de oportunidade fora de condominio",
+    "name": "Excelente Terreno em Condomínio de 360m² Pronto para Construir em Pimenteiras",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2205,13 +2242,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Pimenteiras. Com 360 m², oferece excelente oportunidade para construir com segurança e praticidade. Localização privilegiada, perto de escolas, hospitais, shopping e transporte público, com fácil acesso às principais vias. Em rua asfaltada e cercado por muro e grade, conta ainda com cabeamento estruturado. Ideal para quem busca investir com qualidade de vida e conveniência. Agende sua visita.\n\n#terreno #teresopolis #pimenteiras #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Pimenteiras. Com 360 m², oferece excelente oportunidade para construir com segurança e praticidade. Localização privilegiada, perto de escolas, hospitais, shopping e transporte público, com fácil acesso às principais vias. Em rua asfaltada e cercado por muro e grade, conta ainda com cabeamento estruturado. Ideal para quem busca investir com qualidade de vida e conveniência. Agende sua visita.\n\n#terreno #teresopolis #pimenteiras #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/289635",
     "bairro": "Pimenteiras"
   },
   {
     "sku": "293346",
-    "name": "Otima opotunidade, tando para moradia ou Investimento e aluguel por temporada",
+    "name": "Excelente Apartamento de 2 Quartos (2 Suítes) com Varanda e Vista Livre em Itaipava",
     "price": 850000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -2241,13 +2278,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Petrópolis, no bairro Itaipava, no condomínio Granja Brasil. Com 68 m², 2 quartos (2 suítes) e 2 vagas, combina conforto e praticidade. Ambientes integrados, sala com lareira, varanda envidraçada com vista para a montanha, ar-condicionado e cozinha gourmet com móveis planejados. Condomínio clube com piscinas (inclusive aquecida), churrasqueira, coworking, elevador e acessibilidade, além de segurança completa. Localização estratégica, perto de vias de acesso, escolas e serviços. Agende sua visita.\n\n#apartamento #petropolis #itaipava #granjabrasil #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Petrópolis, no bairro Itaipava, no condomínio Granja Brasil. Com 68 m², 2 quartos (2 suítes) e 2 vagas, combina conforto e praticidade. Ambientes integrados, sala com lareira, varanda envidraçada com vista para a montanha, ar-condicionado e cozinha gourmet com móveis planejados. Condomínio clube com piscinas (inclusive aquecida), churrasqueira, coworking, elevador e acessibilidade, além de segurança completa. Localização estratégica, perto de vias de acesso, escolas e serviços. Agende sua visita.\n\n#apartamento #petropolis #itaipava #granjabrasil #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/293346",
     "bairro": "Itaipava"
   },
   {
     "sku": "293659",
-    "name": "APARTAMENTO 02 QUARTOS COM 01 SUITE",
+    "name": "Excelente Apartamento de 2 Quartos (1 Suíte) com Varanda e Vista Livre no Centro",
     "price": 550000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -2277,13 +2314,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "APARTAMENTO NOVO \nA CINCO MINUTOS DO CENTRO DA CIDADE\nTUDO PERTO, MERCADO ,FARMACIA ,ESCOLA \nVISTA LIVRE , BEM AREJADO , E CLARO \n\nAPARTAMENTO 02 QUARTOS SENDO UMA SUITE COM VARANDA  68,77m²\nOTIMA SALA RETANGULAR,\nBANHEIRO SOCIAL ,VARANDA GORMET ,\nCOZINHA COM AREA DE SERVIÇOS , banheiros com box em Blindex, cozinha azulejada\nVAGA DE GARAGEM \nPISCINA ,SALAO DE FESTAS PARQUINHO PARA AS CRIANÇAS",
+    "description": "APARTAMENTO NOVO\nA CINCO MINUTOS DO CENTRO DA CIDADE\nTUDO PERTO, MERCADO ,FARMACIA ,ESCOLA\nVISTA LIVRE , BEM AREJADO , E CLARO\n\nAPARTAMENTO 02 QUARTOS SENDO UMA SUITE COM VARANDA  68,77m²\nOTIMA SALA RETANGULAR,\nBANHEIRO SOCIAL ,VARANDA GORMET ,\nCOZINHA COM AREA DE SERVIÇOS , banheiros com box em Blindex, cozinha azulejada\nVAGA DE GARAGEM\nPISCINA ,SALAO DE FESTAS PARQUINHO PARA AS CRIANÇAS\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/293659",
     "bairro": "Centro"
   },
   {
     "sku": "307035",
-    "name": "terreno em teresopolis bairro de fatima alto",
+    "name": "Terreno Totalmente Plano de 520m² no Alto",
     "price": 550000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2313,13 +2350,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "OTIMO TERRENO EM TERESOPOLIS NO BAIRRO DO ALTO  ATENÇÃO INVESTIDORES \nCOM 520 M² TOTALMENTE PLANO , EXCELENTE PARA FAZER ,QUARTO E SALA , LOFTS , TRANSFORMAR EM REPUBLICA , , AREA PERTO DA FACULDADE DE MEDICINA  OU FAZER  AIRBNB\nDOCUMENTEÇÃO TODA CORRETA E A CONSTRUÇÃO ESTA TODA   AVERBADA ,",
+    "description": "OTIMO TERRENO EM TERESOPOLIS NO BAIRRO DO ALTO  ATENÇÃO INVESTIDORES\nCOM 520 M² TOTALMENTE PLANO , EXCELENTE PARA FAZER ,QUARTO E SALA , LOFTS , TRANSFORMAR EM REPUBLICA , , AREA PERTO DA FACULDADE DE MEDICINA  OU FAZER  AIRBNB\nDOCUMENTEÇÃO TODA CORRETA E A CONSTRUÇÃO ESTA TODA   AVERBADA ,\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307035",
     "bairro": "Alto"
   },
   {
     "sku": "307046",
-    "name": "Terreno 1835m² à venda no bairro Vila Muqui - Teresópolis-RJ",
+    "name": "Excelente Terreno de 1.835m² Pronto para Construir na Vila Muqui",
     "price": 100000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2348,13 +2385,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "📍 Terreno à venda na Vila Muqui – Teresópolis\n\nExcelente oportunidade para construir em uma das regiões com fácil acesso ao centro. Terreno em declive, ideal para projetos modernos que valorizam vista e melhor aproveitamento do espaço.\n\nLocalização tranquila, com praticidade no dia a dia e grande potencial de valorização. Seja para construir sua casa ou investir, é uma opção que vale a pena conhecer. 🌿\n\n✔ Próximo ao centro\n✔ Região residencial\n✔ Ótimo potencial construtivo\n✔ Boa oportunidade de investimento\n\nEntre em contato e saiba mais detalhes! 📲",
+    "description": "📍 Terreno à venda na Vila Muqui – Teresópolis\n\nExcelente oportunidade para construir em uma das regiões com fácil acesso ao centro. Terreno em declive, ideal para projetos modernos que valorizam vista e melhor aproveitamento do espaço.\n\nLocalização tranquila, com praticidade no dia a dia e grande potencial de valorização. Seja para construir sua casa ou investir, é uma opção que vale a pena conhecer. 🌿\n\n✔ Próximo ao centro\n✔ Região residencial\n✔ Ótimo potencial construtivo\n✔ Boa oportunidade de investimento\n\nEntre em contato e saiba mais detalhes! 📲\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307046",
     "bairro": "Vila Muqui"
   },
   {
     "sku": "307458",
-    "name": "Terreno 1269,80 m² à venda no bairro Bonsucesso - Teresópolis-RJ",
+    "name": "Excelente Terreno em Condomínio de 1.269m² em Bonsucesso",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2384,13 +2421,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Bonsucesso. O condomínio oferece tranquilidade, privacidade e contato com a natureza para você projetar sua casa do seu jeito. O residencial tem perfil familiar e acesso prático aos serviços da região, com clima serrano e paisagens que valorizam o investimento. Excelente escolha para quem busca qualidade de vida em Teresópolis, unindo conveniência e sossego. Agende sua visita.\n\n#terrenocondominio #teresopolis #bonsucesso #moradasdebomsucesso\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Bonsucesso. O condomínio oferece tranquilidade, privacidade e contato com a natureza para você projetar sua casa do seu jeito. O residencial tem perfil familiar e acesso prático aos serviços da região, com clima serrano e paisagens que valorizam o investimento. Excelente escolha para quem busca qualidade de vida em Teresópolis, unindo conveniência e sossego. Agende sua visita.\n\n#terrenocondominio #teresopolis #bonsucesso #moradasdebomsucesso\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307458",
     "bairro": "Bonsucesso"
   },
   {
     "sku": "307677",
-    "name": "Lote a venda 360m² - Teresópolis-RJ",
+    "name": "Excelente Terreno em Condomínio de 360m² Pronto para Construir em Teresópolis",
     "price": 300000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2413,13 +2450,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis. Em um endereço tranquilo e cercado por verde, é a oportunidade perfeita para construir a casa dos seus sonhos, com segurança e praticidade. O condomínio oferece lazer completo, portaria 24h. Localização estratégica e clima agradável completam o cenário. Agende sua visita e conheça de perto.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis. Em um endereço tranquilo e cercado por verde, é a oportunidade perfeita para construir a casa dos seus sonhos, com segurança e praticidade. O condomínio oferece lazer completo, portaria 24h. Localização estratégica e clima agradável completam o cenário. Agende sua visita e conheça de perto.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307677",
     "bairro": "Teresópolis"
   },
   {
     "sku": "307702",
-    "name": "Apartamento com 2 quartos à venda com 54,53m² por R$ 290.000 - Parque Imbui - Teresópolis/RJ",
+    "name": "Lindo Apartamento de 2 Quartos (1 Suíte) com Garagem na Posse",
     "price": 290000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -2449,13 +2486,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Posse, no Condomínio Solar Imbuí. Com 54,93 m², 2 quartos (1 suíte) 1  vaga, é uma ótima opção para quem busca praticidade e conforto. Destaques: varanda acolhedora, elevador, ótima ventilação natural, conexão à internet próximo a ao comercio.\n\n#apartamento #teresopolis #posse #condominiosolarimbui #elevador\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Teresópolis, no bairro Posse, no Condomínio Solar Imbuí. Com 54,93 m², 2 quartos (1 suíte) 1  vaga, é uma ótima opção para quem busca praticidade e conforto. Destaques: varanda acolhedora, elevador, ótima ventilação natural, conexão à internet próximo a ao comercio.\n\n#apartamento #teresopolis #posse #condominiosolarimbui #elevador\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307702",
     "bairro": "Posse"
   },
   {
     "sku": "307744",
-    "name": "Otima oportunidade de terreno em condominio",
+    "name": "Excelente Terreno em Condomínio de 700m² com Linda Vista para a Natureza em Teresópolis",
     "price": 189000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2485,13 +2522,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Pessegueiros, no Condomínio Fazenda Inglesa. São 700 m² para construir seu projeto com vista para as montanhas e muito verde. Localização estratégica, perto de escolas, vias de acesso, hospitais, shopping e transporte público, em rua asfaltada. Condomínio com infraestrutura de lazer e segurança: piscina, churrasqueira, horta, pomar, portão eletrônico, interfone, sistema de alarme, câmeras e circuito de monitoramento. Qualidade de vida com praticidade e tranquilidade. Agende sua visita.\n\n#terrenocondominio #teresopolis #pessegueiros #condominiofazendainglesa #pertodeescolas\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Pessegueiros, no Condomínio Fazenda Inglesa. São 700 m² para construir seu projeto com vista para as montanhas e muito verde. Localização estratégica, perto de escolas, vias de acesso, hospitais, shopping e transporte público, em rua asfaltada. Condomínio com infraestrutura de lazer e segurança: piscina, churrasqueira, horta, pomar, portão eletrônico, interfone, sistema de alarme, câmeras e circuito de monitoramento. Qualidade de vida com praticidade e tranquilidade. Agende sua visita.\n\n#terrenocondominio #teresopolis #pessegueiros #condominiofazendainglesa #pertodeescolas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307744",
     "bairro": "Teresópolis"
   },
   {
     "sku": "307749",
-    "name": "Exelente lote em Alburquerque",
+    "name": "Excelente Terreno em Condomínio de 640m² em Albuquerque",
     "price": 249000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2521,13 +2558,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Albuquerque, no Condomínio Vale das Estrelas. São 640 m² para você projetar a casa dos sonhos, em rua asfaltada e com fácil acesso a escolas, hospitais, shopping e transporte público. O condomínio oferece lazer com piscina, churrasqueira, horta e pomar, além de segurança com câmeras, interfone, portão eletrônico, alarmes e cercamento. Um endereço tranquilo e bem localizado para viver com praticidade. Agende sua visita.\n\n#terrenocondominio #teresopolis #albuquerque #condominiovaledasestrelas #pertodeescolas\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Albuquerque, no Condomínio Vale das Estrelas. São 640 m² para você projetar a casa dos sonhos, em rua asfaltada e com fácil acesso a escolas, hospitais, shopping e transporte público. O condomínio oferece lazer com piscina, churrasqueira, horta e pomar, além de segurança com câmeras, interfone, portão eletrônico, alarmes e cercamento. Um endereço tranquilo e bem localizado para viver com praticidade. Agende sua visita.\n\n#terrenocondominio #teresopolis #albuquerque #condominiovaledasestrelas #pertodeescolas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307749",
     "bairro": "Albuquerque"
   },
   {
     "sku": "307759",
-    "name": "Lote com projeto aprovada oportunidade",
+    "name": "Excelente Terreno em Condomínio de 256m² Pronto para Construir em Teresópolis",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2555,13 +2592,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Ermitage. São 256 m² no condomínio Jardins da Serra, perfeito para quem deseja construir com segurança e qualidade de vida. O residencial oferece acesso para deficientes, monitoramento por câmeras, interfone, portão eletrônico e alarme. Lazer com piscina e churrasqueira, além de horta, pomar e jardins. Localização estratégica, perto de escolas, hospitais, shopping, transporte e vias de acesso. Venha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #ermitage #condominiojardinsdaserra #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Ermitage. São 256 m² no condomínio Jardins da Serra, perfeito para quem deseja construir com segurança e qualidade de vida. O residencial oferece acesso para deficientes, monitoramento por câmeras, interfone, portão eletrônico e alarme. Lazer com piscina e churrasqueira, além de horta, pomar e jardins. Localização estratégica, perto de escolas, hospitais, shopping, transporte e vias de acesso. Venha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #ermitage #condominiojardinsdaserra #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307759",
     "bairro": "Teresópolis"
   },
   {
     "sku": "307768",
-    "name": "Casa á venda em excelente localização.",
+    "name": "Excelente Casa em Condomínio com 4 Quartos (2 Suítes) no Alto",
     "price": 1050000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -2591,13 +2628,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Alto, no Condomínio Parque Residencial. Com 190 m², 4 quartos (2 suítes) e 4 vagas, oferece conforto e praticidade em dois pavimentos. Ambientes iluminados por janelas amplas, sala com piso de madeira e lavabo. Cozinha com armários e despensa, área de serviço e lavanderia. Banheiros com box blindex e armários. Possui dependência de empregados, quarto e banheiro de serviço. Permite animais e conta com conexão à internet. Agende sua visita.\n\n#casacondominio #teresopolis #alto #condominioparqueresidencial #areadeservico\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Alto, no Condomínio Parque Residencial. Com 190 m², 4 quartos (2 suítes) e 4 vagas, oferece conforto e praticidade em dois pavimentos. Ambientes iluminados por janelas amplas, sala com piso de madeira e lavabo. Cozinha com armários e despensa, área de serviço e lavanderia. Banheiros com box blindex e armários. Possui dependência de empregados, quarto e banheiro de serviço. Permite animais e conta com conexão à internet. Agende sua visita.\n\n#casacondominio #teresopolis #alto #condominioparqueresidencial #areadeservico\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307768",
     "bairro": "Alto"
   },
   {
     "sku": "307897",
-    "name": "Terreno à venda no Residencial Tangarás.",
+    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir no Centro",
     "price": 210000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2627,13 +2664,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Posse, no condomínio Residencial Tangaras.\n Com 200 m², oferece a oportunidade ideal para construir um lar do seu jeito, em ambiente tranquilo e cercado pelo verde da serra. Localização prática, com acesso aos serviços da região e fácil deslocamento para o centro.\n Lote com potencial para um projeto funcional e valorização consistente na área. Se você busca qualidade de vida e sossego, este terreno é para você. Agende sua visita.\n\n#terrenocondominio #teresopolis #posse #condominioresidencialtangaras #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Posse, no condomínio Residencial Tangaras.\nCom 200 m², oferece a oportunidade ideal para construir um lar do seu jeito, em ambiente tranquilo e cercado pelo verde da serra. Localização prática, com acesso aos serviços da região e fácil deslocamento para o centro.\nLote com potencial para um projeto funcional e valorização consistente na área. Se você busca qualidade de vida e sossego, este terreno é para você. Agende sua visita.\n\n#terrenocondominio #teresopolis #posse #condominioresidencialtangaras #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307897",
     "bairro": "Centro"
   },
   {
     "sku": "307902",
-    "name": "Terreno á venda condomínio Vale das Nações",
+    "name": "Excelente Terreno em Condomínio de 415m² em Vargem Grande",
     "price": 120000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2663,13 +2700,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Vargem Grande. Com 415 m² no Condomínio Vale das Nações, oferece espaço ideal para projetar sua casa com tranquilidade e contato com a natureza, em uma região valorizada e com boa conexão aos serviços da cidade.\n Lote com ótimo potencial de implantação e vizinhança agradável, perfeito para quem busca qualidade de vida em Teresópolis. \nVenha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #vargemgrande #condominiovaledasnacoes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Vargem Grande. Com 415 m² no Condomínio Vale das Nações, oferece espaço ideal para projetar sua casa com tranquilidade e contato com a natureza, em uma região valorizada e com boa conexão aos serviços da cidade.\nLote com ótimo potencial de implantação e vizinhança agradável, perfeito para quem busca qualidade de vida em Teresópolis.\nVenha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #vargemgrande #condominiovaledasnacoes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307902",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "307905",
-    "name": "Terreno á venda condomínio Vale das Nações",
+    "name": "Excelente Terreno em Condomínio de 435m² em Vargem Grande",
     "price": 210000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2699,13 +2736,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Vargem Grande. Com 435 m² no Condomínio Vale das Nações, é o cenário ideal para tirar do papel o projeto da sua casa, unindo privacidade, segurança e contato com a natureza.\n Localização tranquila, boa vizinhança e fácil acesso ao centro garantem conforto no dia a dia e excelente potencial de valorização.\n Agende sua visita e conheça este terreno de perto.\n\n#terrenocondominio #teresopolis #vargemgrande #condominiovaledasnacoes #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Vargem Grande. Com 435 m² no Condomínio Vale das Nações, é o cenário ideal para tirar do papel o projeto da sua casa, unindo privacidade, segurança e contato com a natureza.\nLocalização tranquila, boa vizinhança e fácil acesso ao centro garantem conforto no dia a dia e excelente potencial de valorização.\nAgende sua visita e conheça este terreno de perto.\n\n#terrenocondominio #teresopolis #vargemgrande #condominiovaledasnacoes #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307905",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "307909",
-    "name": "Propriedade Alto Padrão, à venda em teresópolis",
+    "name": "Belíssima Residência com 8 Quartos (4 Suítes) e Garagem no Parque do Imbuí",
     "price": 2000000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2735,13 +2772,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Parque do Imbui. Construída em um terreno de 4.165,4 m², a casa dispõe de ambientes amplos, bem iluminados e arejados. São 8 quartos, sendo 4 suítes, além de salas espaçosas com lareira, perfeitas para reunir a família em momentos de aconchego. A copa e a cozinha generosa completam o ambiente, oferecendo funcionalidade para o dia a dia e para receber convidados.\n\nNa área externa, o jardim cuidadosamente integrado à piscina e à churrasqueira cria o cenário perfeito para confraternizações, descanso e contato com a natureza.\n\nA propriedade também conta com energia solar, poço artesiano, amplo reservatório de água e excelente ventilação natural, proporcionando mais sustentabilidade, economia e conforto em todas as estações do ano.\n\nPensando na praticidade, o imóvel oferece escritório, dependência completa para empregados, casa de caseiro, canil e 8 vagas de garagem, atendendo perfeitamente famílias grandes ou quem deseja um espaço versátil para diferentes necessidades.\n\n#casa #teresopolis #parquedoimbui #energiasolar\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Parque do Imbui. Construída em um terreno de 4.165,4 m², a casa dispõe de ambientes amplos, bem iluminados e arejados. São 8 quartos, sendo 4 suítes, além de salas espaçosas com lareira, perfeitas para reunir a família em momentos de aconchego. A copa e a cozinha generosa completam o ambiente, oferecendo funcionalidade para o dia a dia e para receber convidados.\n\nNa área externa, o jardim cuidadosamente integrado à piscina e à churrasqueira cria o cenário perfeito para confraternizações, descanso e contato com a natureza.\n\nA propriedade também conta com energia solar, poço artesiano, amplo reservatório de água e excelente ventilação natural, proporcionando mais sustentabilidade, economia e conforto em todas as estações do ano.\n\nPensando na praticidade, o imóvel oferece escritório, dependência completa para empregados, casa de caseiro, canil e 8 vagas de garagem, atendendo perfeitamente famílias grandes ou quem deseja um espaço versátil para diferentes necessidades.\n\n#casa #teresopolis #parquedoimbui #energiasolar\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307909",
     "bairro": "Parque do Imbuí"
   },
   {
     "sku": "307914",
-    "name": "Apartamento á venda em excelente localização.",
+    "name": "Lindo Apartamento de 2 Quartos com Garagem na Várzea",
     "price": 460000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -2771,13 +2808,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Várzea. Com 49,11 m², 2 quartos e 1 vaga de garagem, este lar oferece praticidade e conforto no Condomínio do Edifício Planalto.\n Destaques: prédio com elevador e localização estratégica, perto de comércios e serviços.\n Ambientes bem aproveitados e circulação funcional valorizam o dia a dia. Ideal para quem busca qualidade de vida com mobilidade. Agende sua visita e conheça seu novo lar em Teresópolis.\n\n#apartamento #teresopolis #varzea #condominiodoedificioplanalto #elevador\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Teresópolis, no bairro Várzea. Com 49,11 m², 2 quartos e 1 vaga de garagem, este lar oferece praticidade e conforto no Condomínio do Edifício Planalto.\nDestaques: prédio com elevador e localização estratégica, perto de comércios e serviços.\nAmbientes bem aproveitados e circulação funcional valorizam o dia a dia. Ideal para quem busca qualidade de vida com mobilidade. Agende sua visita e conheça seu novo lar em Teresópolis.\n\n#apartamento #teresopolis #varzea #condominiodoedificioplanalto #elevador\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307914",
     "bairro": "Várzea"
   },
   {
     "sku": "308108",
-    "name": "Casa á venda no interior de Teresópolis",
+    "name": "Casa Aconchegante com 4 Quartos (1 Suíte) e Garagem em Teresópolis",
     "price": 550000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2807,13 +2844,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Providência. Com 240 m², 4 quartos (1 suíte) e 7 vagas, oferece espaço, praticidade e ótima localização. Ambientes bem distribuídos e iluminados, perfeitos para quem valoriza conforto e funcionalidade no dia a dia. O entorno conta com serviços e vias de fácil acesso, garantindo uma rotina mais simples e agradável. Ideal para famílias que buscam qualidade de vida. Agende sua visita e conheça seu novo lar em Teresópolis.\n\n#casa #teresopolis #providencia #venda\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Providência. Com 240 m², 4 quartos (1 suíte) e 7 vagas, oferece espaço, praticidade e ótima localização. Ambientes bem distribuídos e iluminados, perfeitos para quem valoriza conforto e funcionalidade no dia a dia. O entorno conta com serviços e vias de fácil acesso, garantindo uma rotina mais simples e agradável. Ideal para famílias que buscam qualidade de vida. Agende sua visita e conheça seu novo lar em Teresópolis.\n\n#casa #teresopolis #providencia #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308108",
     "bairro": "Teresópolis"
   },
   {
     "sku": "308261",
-    "name": "Terreno à venda residencial Tangaràs",
+    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir na Posse",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2843,13 +2880,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Posse.\n Com 200 m², localizado no Residencial Tangarás, oferece o cenário ideal para construir do seu jeito, com a tranquilidade e a segurança de um condomínio.\nLocalização estratégica, fácil acesso aos serviços da região e o clima acolhedor da serra. Uma ótima oportunidade para investir e morar bem. Agende sua visita e veja de perto o potencial deste lote.\n\n#terrenocondominio #teresopolis #posse #residencialtangaras #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Posse.\nCom 200 m², localizado no Residencial Tangarás, oferece o cenário ideal para construir do seu jeito, com a tranquilidade e a segurança de um condomínio.\nLocalização estratégica, fácil acesso aos serviços da região e o clima acolhedor da serra. Uma ótima oportunidade para investir e morar bem. Agende sua visita e veja de perto o potencial deste lote.\n\n#terrenocondominio #teresopolis #posse #residencialtangaras #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308261",
     "bairro": "Posse"
   },
   {
     "sku": "308281",
-    "name": "Terreno à venda no Residencial Tangarás.",
+    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir no Parque do Imbuí",
     "price": 200000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2879,13 +2916,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Excelente oportunidade para construir sua casa em um dos condomínios mais agradáveis da região da Cascata do Imbuí, em Teresópolis. Lote com 200m² localizados no Condomínio Residencial Tangarás, um espaço planejado para quem busca qualidade de vida, segurança e contato com a natureza sem abrir mão da praticidade do dia a dia.\n\nO condomínio oferece uma infraestrutura completa de lazer e convivência, com piscina, espaço gourmet com churrasqueira e forno a lenha, salão de convivência, academia, quadra poliesportiva e área infantil, proporcionando conforto e entretenimento para toda a família.\n\nInserido em uma região tranquila e cercada pela natureza, o Parque do Imbuí vem se consolidando como uma área de grande valorização imobiliária em Teresópolis, ideal tanto para moradia quanto para investimento.\n\nA localização também agrada quem busca qualidade de vida, com paisagens naturais, clima agradável e o estilo de vida típico da serra, cada vez mais procurado por quem deseja sair do ritmo acelerado das grandes cidades.",
+    "description": "Excelente oportunidade para construir sua casa em um dos condomínios mais agradáveis da região da Cascata do Imbuí, em Teresópolis. Lote com 200m² localizados no Condomínio Residencial Tangarás, um espaço planejado para quem busca qualidade de vida, segurança e contato com a natureza sem abrir mão da praticidade do dia a dia.\n\nO condomínio oferece uma infraestrutura completa de lazer e convivência, com piscina, espaço gourmet com churrasqueira e forno a lenha, salão de convivência, academia, quadra poliesportiva e área infantil, proporcionando conforto e entretenimento para toda a família.\n\nInserido em uma região tranquila e cercada pela natureza, o Parque do Imbuí vem se consolidando como uma área de grande valorização imobiliária em Teresópolis, ideal tanto para moradia quanto para investimento.\n\nA localização também agrada quem busca qualidade de vida, com paisagens naturais, clima agradável e o estilo de vida típico da serra, cada vez mais procurado por quem deseja sair do ritmo acelerado das grandes cidades.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308281",
     "bairro": "Parque do Imbuí"
   },
   {
     "sku": "308286",
-    "name": "Terreno à venda no Residencial Tangarás.",
+    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir no Parque do Imbuí",
     "price": 200000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2915,13 +2952,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Excelente oportunidade para construir sua casa em um dos condomínios mais agradáveis da região da Cascata do Imbuí, em Teresópolis. Lote com 200m² localizados no Condomínio Residencial Tangarás, um espaço planejado para quem busca qualidade de vida, segurança e contato com a natureza sem abrir mão da praticidade do dia a dia.\n\nO condomínio oferece uma infraestrutura completa de lazer e convivência, com piscina, espaço gourmet com churrasqueira e forno a lenha, salão de convivência, academia, quadra poliesportiva e área infantil, proporcionando conforto e entretenimento para toda a família.\n\nInserido em uma região tranquila e cercada pela natureza, o Parque do Imbuí vem se consolidando como uma área de grande valorização imobiliária em Teresópolis, ideal tanto para moradia quanto para investimento.\n\nA localização também agrada quem busca qualidade de vida, com paisagens naturais, clima agradável e o estilo de vida típico da serra, cada vez mais procurado por quem deseja sair do ritmo acelerado das grandes cidades.",
+    "description": "Excelente oportunidade para construir sua casa em um dos condomínios mais agradáveis da região da Cascata do Imbuí, em Teresópolis. Lote com 200m² localizados no Condomínio Residencial Tangarás, um espaço planejado para quem busca qualidade de vida, segurança e contato com a natureza sem abrir mão da praticidade do dia a dia.\n\nO condomínio oferece uma infraestrutura completa de lazer e convivência, com piscina, espaço gourmet com churrasqueira e forno a lenha, salão de convivência, academia, quadra poliesportiva e área infantil, proporcionando conforto e entretenimento para toda a família.\n\nInserido em uma região tranquila e cercada pela natureza, o Parque do Imbuí vem se consolidando como uma área de grande valorização imobiliária em Teresópolis, ideal tanto para moradia quanto para investimento.\n\nA localização também agrada quem busca qualidade de vida, com paisagens naturais, clima agradável e o estilo de vida típico da serra, cada vez mais procurado por quem deseja sair do ritmo acelerado das grandes cidades.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308286",
     "bairro": "Parque do Imbuí"
   },
   {
     "sku": "308380",
-    "name": "casa na várzea com três quartos",
+    "name": "Belíssima Residência com 4 Quartos e Garagem na Várzea",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2951,13 +2988,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda na Várzea, coração de Teresópolis! São 145 m² bem distribuídos, com 4 quartos, sala ampla, cozinha funcional, área de serviço e 2 vagas de garagem cobertas. More perto de tudo: comércio, escolas, bancos e gastronomia a poucos passos, clima serrano, tranquilidade e fácil acesso às principais vias. Próxima à natureza e ao Parque Nacional da Serra dos Órgãos. Agende sua visita e surpreenda-se. Fale agora pelo direct/WhatsApp!\n\n#Teresopolis #Varzea #CasaAVenda #Imoveis #4Quartos #2Vagas #GaragemCoberta #Centro #QualidadeDeVida #Serra #Oportunidade #TeresopolisRJ #ParqueNacional #Investimento\n          Agende visita sem compromisso.\n          Valores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda na Várzea, coração de Teresópolis! São 145 m² bem distribuídos, com 4 quartos, sala ampla, cozinha funcional, área de serviço e 2 vagas de garagem cobertas. More perto de tudo: comércio, escolas, bancos e gastronomia a poucos passos, clima serrano, tranquilidade e fácil acesso às principais vias. Próxima à natureza e ao Parque Nacional da Serra dos Órgãos. Agende sua visita e surpreenda-se. Fale agora pelo direct/WhatsApp!\n\n#Teresopolis #Varzea #CasaAVenda #Imoveis #4Quartos #2Vagas #GaragemCoberta #Centro #QualidadeDeVida #Serra #Oportunidade #TeresopolisRJ #ParqueNacional #Investimento\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308380",
     "bairro": "Várzea"
   },
   {
     "sku": "308573",
-    "name": "Apartamento quarto e sala com dependencia a venda. R$ 280.000,00",
+    "name": "Lindo Apartamento de 2 Quartos na Várzea",
     "price": 280000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -2987,13 +3024,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Várzea, no Edifício Galeria São Pedro. Com 45,32 m² e 2 quartos, oferece ambientes integrados e excelente ventilação. Possui banheiro com e lavabo, área de serviço, armários na cozinha e no banheiro e piso de madeira. Condomínio com elevador e interfone. Aceita pets. Localização estratégica, perto de escolas, hospitais, vias de acesso, shopping e transporte público. Agende sua visita.\n\n#apartamento #teresopolis #varzea #edificiogaleriasaopedro #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Teresópolis, no bairro Várzea, no Edifício Galeria São Pedro. Com 45,32 m² e 2 quartos, oferece ambientes integrados e excelente ventilação. Possui banheiro com e lavabo, área de serviço, armários na cozinha e no banheiro e piso de madeira. Condomínio com elevador e interfone. Aceita pets. Localização estratégica, perto de escolas, hospitais, vias de acesso, shopping e transporte público. Agende sua visita.\n\n#apartamento #teresopolis #varzea #edificiogaleriasaopedro #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308573",
     "bairro": "Várzea"
   },
   {
     "sku": "308827",
-    "name": "Casa à venda no Comary em Teresópolis em condomínio da Gleba V",
+    "name": "Magnífica Casa em Condomínio e Lazer Completo em Teresópolis",
     "price": 2900000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3023,13 +3060,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Imagine acordar em uma casa que parece ter sido desenhada para você. No coração do Comary, em Teresópolis, esta residência no formato porteira fechada é mais do que um imóvel, é um convite para viver com privacidade, conforto e total conexão com a natureza. Localizada na Gleba 5, uma das áreas mais cobiçadas do condomínio, esta casa oferece algo raro: uma topografia privilegiada, com ampla área plana, exposição solar perfeita e, claro, aquele sossego que só a serra pode proporcionar. E o melhor? Sem vizinhos ao redor, apenas você e a paisagem exuberante.\n\nO estilo neorústico da casa, com traços de madeira, vidro e porcelanato, foi cuidadosamente pensado por uma das arquitetas mais renomadas de Teresópolis, Angelita Portela. A sala espaçosa, com lareira e pé direito duplo, é iluminada por grandes janelas que trazem a natureza para dentro. A cozinha aberta integra-se harmoniosamente ao ambiente, criando um espaço perfeito para receber amigos ou simplesmente desfrutar de um café da manhã tranquilo.\n\nNo piso superior, dois quartos com varandas convidam ao descanso, enquanto no piso inferior, a suíte master com hidromassagem e closet amplo é um verdadeiro refúgio de luxo. A área de lazer é um espetáculo à parte: piscina aquecida com raia, sauna a vapor, espaço gourmet completo e até uma sala fitness. Tudo isso cercado por um quintal que parece não ter fim, onde você pode criar memórias inesquecíveis com sua família.\n\nE não para por aí: a casa conta com poço artesiano, 28 placas solares e câmeras de segurança, garantindo sustentabilidade e tranquilidade. Pronta para morar, ela está esperando por você.\n\nEsta não é apenas uma casa. É um estilo de vida. Agende uma visita e venha sentir o que é viver em um dos endereços mais desejados de Teresópolis.",
+    "description": "Imagine acordar em uma casa que parece ter sido desenhada para você. No coração do Comary, em Teresópolis, esta residência no formato porteira fechada é mais do que um imóvel, é um convite para viver com privacidade, conforto e total conexão com a natureza. Localizada na Gleba 5, uma das áreas mais cobiçadas do condomínio, esta casa oferece algo raro: uma topografia privilegiada, com ampla área plana, exposição solar perfeita e, claro, aquele sossego que só a serra pode proporcionar. E o melhor? Sem vizinhos ao redor, apenas você e a paisagem exuberante.\n\nO estilo neorústico da casa, com traços de madeira, vidro e porcelanato, foi cuidadosamente pensado por uma das arquitetas mais renomadas de Teresópolis, Angelita Portela. A sala espaçosa, com lareira e pé direito duplo, é iluminada por grandes janelas que trazem a natureza para dentro. A cozinha aberta integra-se harmoniosamente ao ambiente, criando um espaço perfeito para receber amigos ou simplesmente desfrutar de um café da manhã tranquilo.\n\nNo piso superior, dois quartos com varandas convidam ao descanso, enquanto no piso inferior, a suíte master com hidromassagem e closet amplo é um verdadeiro refúgio de luxo. A área de lazer é um espetáculo à parte: piscina aquecida com raia, sauna a vapor, espaço gourmet completo e até uma sala fitness. Tudo isso cercado por um quintal que parece não ter fim, onde você pode criar memórias inesquecíveis com sua família.\n\nE não para por aí: a casa conta com poço artesiano, 28 placas solares e câmeras de segurança, garantindo sustentabilidade e tranquilidade. Pronta para morar, ela está esperando por você.\n\nEsta não é apenas uma casa. É um estilo de vida. Agende uma visita e venha sentir o que é viver em um dos endereços mais desejados de Teresópolis.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308827",
     "bairro": "Teresópolis"
   },
   {
     "sku": "309204",
-    "name": "Oportunidade, apartamento com 5 quartos",
+    "name": "Excelente Apartamento de 5 Quartos (3 Suítes) com Varanda e Vista Livre na Várzea",
     "price": 835000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -3059,13 +3096,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Várzea, no condomínio Ed Jardim Europa. Com 156 m², 5 quartos (3 suítes) e 2 vagas, oferece conforto e praticidade. Ambientes integrados, sala ampla, cozinha generosa e varanda fechada com vidro com vista panorâmica. Edifício com elevador e acessibilidade, isolamento acústico e térmico, energia solar e cabeamento estruturado para internet. Segurança com fechadura digital, câmeras e portão eletrônico. Localização estratégica, perto de escolas, hospitais, shopping e transporte. Agende sua visita.\n\n#apartamento #teresopolis #varzea #edjardimeuropa #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Teresópolis, no bairro Várzea, no condomínio Ed Jardim Europa. Com 156 m², 5 quartos (3 suítes) e 2 vagas, oferece conforto e praticidade. Ambientes integrados, sala ampla, cozinha generosa e varanda fechada com vidro com vista panorâmica. Edifício com elevador e acessibilidade, isolamento acústico e térmico, energia solar e cabeamento estruturado para internet. Segurança com fechadura digital, câmeras e portão eletrônico. Localização estratégica, perto de escolas, hospitais, shopping e transporte. Agende sua visita.\n\n#apartamento #teresopolis #varzea #edjardimeuropa #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/309204",
     "bairro": "Várzea"
   },
   {
     "sku": "309209",
-    "name": "Otima oportunidade de investimento,em Itaipava",
+    "name": "Excelente Apartamento de 1 Quartos (1 Suíte) com Garagem em Itaipava",
     "price": 680000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3095,13 +3132,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Petrópolis, no bairro Itaipava, no condomínio Granja Brasil. Com 62 m², 1 quarto (1 suíte) e 1 vaga, une praticidade, conforto e excelente localização. Ambientes integrados, ar-condicionado e isolamento acústico garantem bem-estar. O condomínio oferece elevador, piscina aquecida, coworking, deck, churrasqueira e segurança completa, além de acesso para deficientes. Ideal para viver perto de hospitais, escolas, transporte e vias de acesso. Agende sua visita.\n\n#apartamento #petropolis #itaipava #granjabrasil #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Petrópolis, no bairro Itaipava, no condomínio Granja Brasil. Com 62 m², 1 quarto (1 suíte) e 1 vaga, une praticidade, conforto e excelente localização. Ambientes integrados, ar-condicionado e isolamento acústico garantem bem-estar. O condomínio oferece elevador, piscina aquecida, coworking, deck, churrasqueira e segurança completa, além de acesso para deficientes. Ideal para viver perto de hospitais, escolas, transporte e vias de acesso. Agende sua visita.\n\n#apartamento #petropolis #itaipava #granjabrasil #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/309209",
     "bairro": "Itaipava"
   },
   {
     "sku": "309813",
-    "name": "Otima oportunitade de investimento ou moradia no bairro do Alto teresopolis",
+    "name": "Terreno Totalmente Plano de 3.462m² Pronto para Construir na Cascata dos Amores",
     "price": 320000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -3131,13 +3168,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Cascata dos Amores. São 3.462 m² para construir com tranquilidade, em rua asfaltada e com ótimo acesso. Localização estratégica, perto de escolas, hospitais, shopping, transporte público e das principais vias, favorecendo mobilidade e conveniência. Metragem ampla, ideal para projetos residenciais ou de lazer, em região valorizada e cercada de natureza. Oportunidade para investir ou realizar seu plano de moradia. Agende sua visita.\n\n#terreno #teresopolis #cascatadosamores #pertodeescolas\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Cascata dos Amores. São 3.462 m² para construir com tranquilidade, em rua asfaltada e com ótimo acesso. Localização estratégica, perto de escolas, hospitais, shopping, transporte público e das principais vias, favorecendo mobilidade e conveniência. Metragem ampla, ideal para projetos residenciais ou de lazer, em região valorizada e cercada de natureza. Oportunidade para investir ou realizar seu plano de moradia. Agende sua visita.\n\n#terreno #teresopolis #cascatadosamores #pertodeescolas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/309813",
     "bairro": "Cascata dos Amores"
   },
   {
     "sku": "320848",
-    "name": "Casa ampla e confortável, em uma das regiões mais tranquilas e valorizadas de Teresópolis.",
+    "name": "Linda Casa em Condomínio e Espaço Gourmet no Taumaturgo",
     "price": 1700000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3167,13 +3204,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa ampla e confortável à venda no bairro Taumaturgo, uma das regiões mais tranquilas e valorizadas de Teresópolis.\n\nLocalizada em área residencial e fora de condomínio, a propriedade está a apenas 5 minutos da Feirinha do Alto, próxima ao comércio local e a cerca de 7 minutos do centro da cidade, oferecendo praticidade sem abrir mão da tranquilidade.\n\nCom mais de 340 m² de área construída, o imóvel apresenta excelente padrão construtivo, acabamento de qualidade e uma planta funcional, ideal para quem busca espaço, conforto e privacidade.\n\nDistribuição dos ambientes:\n\nPrimeiro pavimento\nSala ampla e bem iluminada\nDuas suítes confortáveis, sendo uma com hidromassagem\nCozinha espaçosa com armários planejados\n\nSegundo pavimento\nSala íntima em formato de amplo salão, com múltiplas possibilidades de uso\nSuíte master com varanda ampla\n\nÁrea externa\nJardim frontal\nLavanderia\nEspaço preparado para futura área gourmet\nBanheiro de apoio\nGaragem para 1 carro\n\nA propriedade ainda conta com uma suíte independente com varanda, ideal para hóspedes.\n\nTrata-se de uma excelente oportunidade para quem busca uma casa espaçosa, bem localizada e com grande potencial para lazer e convivência.\n\nAgende uma visita e conheça todos os detalhes deste imóvel.\n\nPedro Dias – Consultor Imobiliário\nCRECI-RJ 107570\nInstagram: @\nYouTube: @",
+    "description": "Casa ampla e confortável à venda no bairro Taumaturgo, uma das regiões mais tranquilas e valorizadas de Teresópolis.\n\nLocalizada em área residencial e fora de condomínio, a propriedade está a apenas 5 minutos da Feirinha do Alto, próxima ao comércio local e a cerca de 7 minutos do centro da cidade, oferecendo praticidade sem abrir mão da tranquilidade.\n\nCom mais de 340 m² de área construída, o imóvel apresenta excelente padrão construtivo, acabamento de qualidade e uma planta funcional, ideal para quem busca espaço, conforto e privacidade.\n\nDistribuição dos ambientes:\n\nPrimeiro pavimento\nSala ampla e bem iluminada\nDuas suítes confortáveis, sendo uma com hidromassagem\nCozinha espaçosa com armários planejados\n\nSegundo pavimento\nSala íntima em formato de amplo salão, com múltiplas possibilidades de uso\nSuíte master com varanda ampla\n\nÁrea externa\nJardim frontal\nLavanderia\nEspaço preparado para futura área gourmet\nBanheiro de apoio\nGaragem para 1 carro\n\nA propriedade ainda conta com uma suíte independente com varanda, ideal para hóspedes.\n\nTrata-se de uma excelente oportunidade para quem busca uma casa espaçosa, bem localizada e com grande potencial para lazer e convivência.\n\nAgende uma visita e conheça todos os detalhes deste imóvel.\n\nPedro Dias – Consultor Imobiliário\nCRECI-RJ 107570\nInstagram: @\nYouTube: @\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/320848",
     "bairro": "Taumaturgo"
   },
   {
     "sku": "323205",
-    "name": "Casa Moderna em Condomínio Fechado",
+    "name": "Linda Casa em Condomínio (3 Suítes) na Tijuca",
     "price": 1500000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -3203,13 +3240,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, na Tijuca, no Sol da Tijuca. Com 3 suítes e 4 vagas, oferece conforto, privacidade e excelente localização. Ambientes com ventilação natural, sala com teto rebaixado em gesso, lavabo e cozinha com armários. Condomínio com interfone, câmeras e portão eletrônico. Rua asfaltada, internet disponível e fácil acesso a transporte público, escolas, hospitais e shopping. Ideal para quem busca praticidade e bem-estar em um endereço valorizado. Agende sua visita e venha conhecer pessoalmente.\n\n#casacondominio #teresopolis #tijuca #soldatijuca #ventilacaonatural",
+    "description": "Casa em condomínio à venda em Teresópolis, na Tijuca, no Sol da Tijuca. Com 3 suítes e 4 vagas, oferece conforto, privacidade e excelente localização. Ambientes com ventilação natural, sala com teto rebaixado em gesso, lavabo e cozinha com armários. Condomínio com interfone, câmeras e portão eletrônico. Rua asfaltada, internet disponível e fácil acesso a transporte público, escolas, hospitais e shopping. Ideal para quem busca praticidade e bem-estar em um endereço valorizado. Agende sua visita e venha conhecer pessoalmente.\n\n#casacondominio #teresopolis #tijuca #soldatijuca #ventilacaonatural\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/323205",
     "bairro": "Tijuca"
   },
   {
     "sku": "323586",
-    "name": "GOLDEN GREEN",
+    "name": "Golden Green Residence: Lotes Exclusivos em Condomínio Fechado em Albuquerque",
     "price": 400000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3232,13 +3269,49 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento em Albuquerque, Teresópolis – RJ. Habittat House Imobiliária.",
+    "description": "Apartamento em Albuquerque, Teresópolis – RJ. Habittat House Imobiliária.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/323586",
     "bairro": "Albuquerque"
   },
   {
+    "sku": "324009",
+    "name": "Golden Green Residence: Lotes Exclusivos em Condomínio Fechado em Albuquerque",
+    "price": 250000,
+    "cat": "Casas",
+    "badge": "Vista Panorâmica",
+    "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135444/ARTE%20TERRENO%2003-original.webp",
+    "images": [
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135444/ARTE%20TERRENO%2003-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135444/ARTE%20TERRENO%2002-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135445/ARTE%20TERRENO%2001-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135437/INSTITUCIONAL%20GOLDEN%20GREEN%2001-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135442/ARTE%20TERRENO%2005-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135434/INSTITUCIONAL%20GOLDEN%20GREEN%2004-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135436/INSTITUCIONAL%20GOLDEN%20GREEN%2008-original.webp",
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423135440/CARROSSEL%20INSTITUCIONAL%20GOLDEN%20GREEN%2003-original.webp"
+    ],
+    "specs": "Teresópolis - RJ",
+    "storage": "Área Construída",
+    "condition": "Pronto para Morar",
+    "warranty": "Habittat House Imobiliária",
+    "battery": "Excelente Posição Solar",
+    "screen": "Teresópolis - RJ",
+    "camera": "Vista Panorâmica da Serra",
+    "chip": "Aceita Financiamento Bancário",
+    "boxItems": [
+      "Localização privilegiada em Teresópolis - RJ",
+      "Documentação e procedência jurídica garantida",
+      "Assessoria completa com o corretor Ismael Dias",
+      "Agendamento de visita VIP no local",
+      "Excelente potencial de valorização na Região Serrana"
+    ],
+    "description": "Empreendimento localizado no KM 4,5 da estrada Teresópolis x Friburgo com vista 360º para as montanhas e belezas naturais.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
+    "url": "https://habittathouse.com.br/imovel/324009",
+    "bairro": "Teresópolis"
+  },
+  {
     "sku": "324430",
-    "name": "Casa encantadora com lazer e natureza",
+    "name": "Belíssima Residência com 4 Quartos (1 Suíte) e Quintal Amplo na Granja Guarani",
     "price": 1042560,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3268,13 +3341,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Granja Guarani. Com área total de 1.800 m², 4 quartos (1 suíte) e 2 vagas, oferece conforto, privacidade e contato com a natureza. Destaques: varanda com churrasqueira, sala ampla com lareira, cozinha grande com armários, aquecimento a gás nos chuveiros, lavanderia e casa de caseiro. Lazer com piscina, jardim, gramado e quintal. Rua asfaltada, portão eletrônico e fácil acesso a transporte e shopping. Ideal para viver bem na serra. Agende sua visita.\n\n#casa #teresopolis #granjaguarani #chuveiroagas",
+    "description": "Casa à venda em Teresópolis, no bairro Granja Guarani. Com área total de 1.800 m², 4 quartos (1 suíte) e 2 vagas, oferece conforto, privacidade e contato com a natureza. Destaques: varanda com churrasqueira, sala ampla com lareira, cozinha grande com armários, aquecimento a gás nos chuveiros, lavanderia e casa de caseiro. Lazer com piscina, jardim, gramado e quintal. Rua asfaltada, portão eletrônico e fácil acesso a transporte e shopping. Ideal para viver bem na serra. Agende sua visita.\n\n#casa #teresopolis #granjaguarani #chuveiroagas\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324430",
     "bairro": "Granja Guarani"
   },
   {
     "sku": "324456",
-    "name": "Casa charmosa na Quinta da Barra com excelente localização",
+    "name": "Bela Casa com 3 Quartos (1 Suíte) e Garagem na Quinta da Barra",
     "price": 750000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3304,13 +3377,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Quinta da Barra, em localização privilegiada em bairro nobre e residencial, próximo ao centro, com fácil acesso a comércio, transporte público e vias principais. Um imóvel que une conforto, praticidade e qualidade de vida.\n\nCom ambientes amplos, bem iluminados e ótima ventilação natural, a casa possui sala aconchegante ideal para receber família e amigos, cozinha americana integrada, acabamento em porcelanato, armários na cozinha e banheiro, lavanderia e excelente distribuição dos espaços em mais de um andar. \n\nSão 3 quartos, sendo 1 suíte, além de 1 vaga de garagem. Na área externa, muito verde, jardim, gramado, privacidade e um espaço perfeito para lazer e momentos especiais, com churrasqueira para aproveitar bons encontros. O imóvel ainda conta com câmeras de segurança, internet e toda a comodidade para quem busca morar bem em uma das regiões mais desejadas de Teresópolis.\n\nVenha conhecer pessoalmente e se encantar.\n\n#casa #teresopolis #quintadabarra #conexaointernet",
+    "description": "Casa à venda em Teresópolis, no bairro Quinta da Barra, em localização privilegiada em bairro nobre e residencial, próximo ao centro, com fácil acesso a comércio, transporte público e vias principais. Um imóvel que une conforto, praticidade e qualidade de vida.\n\nCom ambientes amplos, bem iluminados e ótima ventilação natural, a casa possui sala aconchegante ideal para receber família e amigos, cozinha americana integrada, acabamento em porcelanato, armários na cozinha e banheiro, lavanderia e excelente distribuição dos espaços em mais de um andar.\n\nSão 3 quartos, sendo 1 suíte, além de 1 vaga de garagem. Na área externa, muito verde, jardim, gramado, privacidade e um espaço perfeito para lazer e momentos especiais, com churrasqueira para aproveitar bons encontros. O imóvel ainda conta com câmeras de segurança, internet e toda a comodidade para quem busca morar bem em uma das regiões mais desejadas de Teresópolis.\n\nVenha conhecer pessoalmente e se encantar.\n\n#casa #teresopolis #quintadabarra #conexaointernet\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324456",
     "bairro": "Quinta da Barra"
   },
   {
     "sku": "324474",
-    "name": "Casa em Condomínio com conforto e natureza",
+    "name": "Excelente Casa em Condomínio com 4 Quartos (2 Suítes) na Cascata do Imbuí",
     "price": 850000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -3340,15 +3413,15 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Cascata do Imbuí, ideal para quem busca conforto, segurança e qualidade de vida em meio ao verde.\n\nCom 4 quartos, sendo 2 suítes, e 1 vaga de garagem, o imóvel une charme, praticidade e excelente distribuição dos ambientes. Conta com três salas, incluindo sala com lareira, sala de jantar e ambientes amplos e acolhedores para receber família e amigos, além de varanda que valoriza ainda mais o contato com a natureza.\n\nA cozinha americana com planejados traz funcionalidade ao dia a dia, complementada por área de serviço e lavanderia.\n\nOs ambientes são bem iluminados, com ótima ventilação natural, e a casa ainda dispõe de closet, banheiros com box blindex e acabamentos que privilegiam conforto e praticidade.\n\nNa área externa, quintal e jardim proporcionam privacidade e espaço ideal para lazer e convivência em meio ao verde. É uma excelente opção para quem deseja viver com tranquilidade sem abrir mão da conveniência.\n\nAgende sua visita e venha conhecer pessoalmente.\n\n#casacondominio #teresopolis #cascatadoimbui #ladeiradosol #ventilacaonatural",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Cascata do Imbuí, ideal para quem busca conforto, segurança e qualidade de vida em meio ao verde.\n\nCom 4 quartos, sendo 2 suítes, e 1 vaga de garagem, o imóvel une charme, praticidade e excelente distribuição dos ambientes. Conta com três salas, incluindo sala com lareira, sala de jantar e ambientes amplos e acolhedores para receber família e amigos, além de varanda que valoriza ainda mais o contato com a natureza.\n\nA cozinha americana com planejados traz funcionalidade ao dia a dia, complementada por área de serviço e lavanderia.\n\nOs ambientes são bem iluminados, com ótima ventilação natural, e a casa ainda dispõe de closet, banheiros com box blindex e acabamentos que privilegiam conforto e praticidade.\n\nNa área externa, quintal e jardim proporcionam privacidade e espaço ideal para lazer e convivência em meio ao verde. É uma excelente opção para quem deseja viver com tranquilidade sem abrir mão da conveniência.\n\nAgende sua visita e venha conhecer pessoalmente.\n\n#casacondominio #teresopolis #cascatadoimbui #ladeiradosol #ventilacaonatural\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324474",
     "bairro": "Cascata do Imbuí"
   },
   {
     "sku": "324516",
-    "name": "Cobertura Duplex Moderna com Lazer Completo",
+    "name": "Espetacular Cobertura Duplex (3 Suítes) e Espaço Gourmet na Tijuca",
     "price": 1490000,
-    "cat": "Coberturas",
+    "cat": "Apartamentos",
     "badge": "Destaque",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727142456/aa-watermarked.webp",
     "images": [
@@ -3376,7 +3449,7 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Cobertura duplex à venda em Teresópolis, ideal para quem busca sofisticação, conforto e privacidade em uma localização privilegiada.\n\nCom 3 suítes e 2 vagas de garagem, o imóvel reúne design e excelente distribuição dos ambientes em dois níveis. As suítes oferecem conforto e privacidade, com espaços pensados para bem-estar e praticidade. Conta com salão amplo em ambientes integrados, cozinha espaçosa, closet e acabamentos que valorizam funcionalidade, além de ar-condicionado para ainda mais conforto. \n\nA área de lazer privativa é um dos grandes destaques, com varanda gourmet com churrasqueira, piscina privativa e hidromassagem, criando o cenário perfeito para receber amigos e viver momentos especiais. \n\nO condomínio conta com elevador, segurança com câmeras e interfone, além de infraestrutura que proporciona ainda mais comodidade e exclusividade.\n\nEm localização estratégica, próximo a escolas, shoppings, hospitais e vias de acesso, esta cobertura reúne modernidade, lazer e qualidade de vida em um dos endereços mais desejados da cidade.\n\nVenha conhecer pessoalmente. Agende sua visita.\n\n#coberturaduplex #teresopolis #tijuca #matisseresidencias #arcondicionado",
+    "description": "Cobertura duplex à venda em Teresópolis, ideal para quem busca sofisticação, conforto e privacidade em uma localização privilegiada.\n\nCom 3 suítes e 2 vagas de garagem, o imóvel reúne design e excelente distribuição dos ambientes em dois níveis. As suítes oferecem conforto e privacidade, com espaços pensados para bem-estar e praticidade. Conta com salão amplo em ambientes integrados, cozinha espaçosa, closet e acabamentos que valorizam funcionalidade, além de ar-condicionado para ainda mais conforto.\n\nA área de lazer privativa é um dos grandes destaques, com varanda gourmet com churrasqueira, piscina privativa e hidromassagem, criando o cenário perfeito para receber amigos e viver momentos especiais.\n\nO condomínio conta com elevador, segurança com câmeras e interfone, além de infraestrutura que proporciona ainda mais comodidade e exclusividade.\n\nEm localização estratégica, próximo a escolas, shoppings, hospitais e vias de acesso, esta cobertura reúne modernidade, lazer e qualidade de vida em um dos endereços mais desejados da cidade.\n\nVenha conhecer pessoalmente. Agende sua visita.\n\n#coberturaduplex #teresopolis #tijuca #matisseresidencias #arcondicionado\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324516",
     "bairro": "Tijuca"
   },
@@ -3412,13 +3485,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Sala comercial à venda em Teresópolis, no bairro Várzea, ideal para quem busca praticidade, visibilidade e um espaço moderno pronto para uso. Totalmente reformada, com móveis planejados e excelente iluminação natural, é perfeita para começar a operar imediatamente.\n\nO imóvel conta com recepção, duas salas, copa, banheiro otimizado e excelente distribuição dos ambientes, oferecendo funcionalidade e conforto para o dia a dia profissional.\n\nPossui ainda 1 vaga de garagem no prédio e está em edifício com recepção e câmeras de segurança, trazendo mais comodidade e segurança.\n\nEm localização estratégica no centro da cidade, próximo a escolas, hospitais, shopping, transporte público e principais vias de acesso, reúne tudo o que um espaço comercial bem posicionado precisa. Ideal para quem busca praticidade, credibilidade e excelente ponto comercial.\n\nAgende sua visita.",
+    "description": "Sala comercial à venda em Teresópolis, no bairro Várzea, ideal para quem busca praticidade, visibilidade e um espaço moderno pronto para uso. Totalmente reformada, com móveis planejados e excelente iluminação natural, é perfeita para começar a operar imediatamente.\n\nO imóvel conta com recepção, duas salas, copa, banheiro otimizado e excelente distribuição dos ambientes, oferecendo funcionalidade e conforto para o dia a dia profissional.\n\nPossui ainda 1 vaga de garagem no prédio e está em edifício com recepção e câmeras de segurança, trazendo mais comodidade e segurança.\n\nEm localização estratégica no centro da cidade, próximo a escolas, hospitais, shopping, transporte público e principais vias de acesso, reúne tudo o que um espaço comercial bem posicionado precisa. Ideal para quem busca praticidade, credibilidade e excelente ponto comercial.\n\nAgende sua visita.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324535",
     "bairro": "Várzea"
   },
   {
     "sku": "324583",
-    "name": "Casa com vista panorâmica próxima ao centro",
+    "name": "Casa Aconchegante com 3 Quartos e Quintal Amplo na Fazendinha",
     "price": 550000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -3448,13 +3521,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Fazendinha, ideal para quem busca amplitude, privacidade e qualidade de vida.\n\nCom 3 quartos e ambientes amplos e bem iluminados, o imóvel oferece excelente distribuição dos espaços, grandes janelas e uma belíssima vista panorâmica, trazendo conforto e integração com o verde ao redor. Conta com varanda, lavabo, cozinha espaçosa com armários, lavanderia e área de serviço, unindo praticidade e funcionalidade no dia a dia.\n\nNa área externa, jardim, quintal gramado e pomar criam um cenário especial para quem valoriza tranquilidade, contato com a natureza e momentos ao ar livre.\n\nLocalizada em rua asfaltada, com muro, próxima a escolas, hospitais, shopping, transporte público e com fácil acesso às principais vias, a casa reúne o equilíbrio perfeito entre sossego e conveniência.\n\nAgende sua visita.\n\n#CasaEmTeresopolis #VistaPanoramica #ViverNaSerra #ImoveisTeresopolis",
+    "description": "Casa à venda em Teresópolis, no bairro Fazendinha, ideal para quem busca amplitude, privacidade e qualidade de vida.\n\nCom 3 quartos e ambientes amplos e bem iluminados, o imóvel oferece excelente distribuição dos espaços, grandes janelas e uma belíssima vista panorâmica, trazendo conforto e integração com o verde ao redor. Conta com varanda, lavabo, cozinha espaçosa com armários, lavanderia e área de serviço, unindo praticidade e funcionalidade no dia a dia.\n\nNa área externa, jardim, quintal gramado e pomar criam um cenário especial para quem valoriza tranquilidade, contato com a natureza e momentos ao ar livre.\n\nLocalizada em rua asfaltada, com muro, próxima a escolas, hospitais, shopping, transporte público e com fácil acesso às principais vias, a casa reúne o equilíbrio perfeito entre sossego e conveniência.\n\nAgende sua visita.\n\n#CasaEmTeresopolis #VistaPanoramica #ViverNaSerra #ImoveisTeresopolis\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324583",
     "bairro": "Fazendinha"
   },
   {
     "sku": "327545",
-    "name": "Casa à venda em Teresópolis em condomínio de alto padrão a 2 minutos do centro da cidade",
+    "name": "Linda Casa em Condomínio com 3 Quartos e Espaço Gourmet no Centro",
     "price": 1790000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -3484,13 +3557,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Tijuca, no Condomínio Residencial Sol da Tijuca. Com 449 m², 3 quartos (todos suítes) e 3 vagas, oferece conforto e privacidade. Ambientes integrados com cozinha americana planejada, casa mobiliada, living com lareira e ar-condicionado, varanda gourmet com churrasqueira e forno de pizza, além de vista para a montanha. Conta ainda com aquecimento, câmeras e fechadura digital. Localização prática, perto de escolas, hospitais, shoppings e transporte. Agende sua visita e venha conhecer pessoalmente.\n\n#casacondominio #teresopolis #tijuca #condominioresidencialsoldatijuca #aquecimento\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Tijuca, no Condomínio Residencial Sol da Tijuca. Com 449 m², 3 quartos (todos suítes) e 3 vagas, oferece conforto e privacidade. Ambientes integrados com cozinha americana planejada, casa mobiliada, living com lareira e ar-condicionado, varanda gourmet com churrasqueira e forno de pizza, além de vista para a montanha. Conta ainda com aquecimento, câmeras e fechadura digital. Localização prática, perto de escolas, hospitais, shoppings e transporte. Agende sua visita e venha conhecer pessoalmente.\n\n#casacondominio #teresopolis #tijuca #condominioresidencialsoldatijuca #aquecimento\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/327545",
     "bairro": "Centro"
   },
   {
     "sku": "328343",
-    "name": "Casa em condomínio de alto padrão no bairro Quebra Frascos - Teresópolis /RJ.",
+    "name": "Magnífica Casa em Condomínio com 7 Quartos (3 Suítes) e Lazer Completo no Quebra Frascos",
     "price": 4500000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3520,13 +3593,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Fantástica propriedade (tipo chácara) em meio a natureza, dentro de condomínio com sistema de segurança completo e portaria 24hs.\nImóvel com acabamento impecável, tudo com muito bom gosto e conforto!\nLazer privativo completo da propriedade.\nCASA\n▪️Varanda na entrada\n▪️Ampla de estar ampla, c/ pé direito duplo e lareira em pedras\n▪️Sala de jantar c/ pé direito duplo\n▪️Sala de Tv planejada c/ pé direito alto\n▪️02 lavabos\n▪️Cozinha c/ armários, cooktop, coifa e forno embutido\n▪️Copa\n▪️Despensa\n▪️Lavanderia c/ armários (entrada de pet)\n▪️Hall\n▪️03 suítes, sendo 02 canadenses c/ ventiladores, armários embutidos e aquecedor e 01 suíte master c/ lareira, amplo closet planejado, aquecedor e banheira de hidromassagem\nMEZANINO\n▪️Amplo espaço\n▪️Adega\nÁREA EXTERNA\n▪️Varandão\n▪️Amplo quintal\n▪️Jardim c/ paisagismo\n▪️Fogão a lenha e forno de pizza (atendendo a cozinha)\n▪️02 vagas de garagem\n▪️Piscina adulto e infantil c/ borda infinita\n▪️Deck c/ espaço gourmet\n▪️Sauna seca c/ ducha e lavabo\n▪️Playground\n▪️Horta\n▪️Pomar\n▪️Quarto para guardados\n▪️Anexo c/ 07 quartos e 01 banheiro\n▪️Casa de hóspedes c/ sala, cozinha, área, 02 quartos e banheiro social\n▪️Chalé c/ quarto, banheiro, cozinha e varanda\n▪️Ampla oficina\nCONDOMÍNIO\n▪️Interfone\n▪️Portaria 24 horas\n▪️Portão automático",
+    "description": "Fantástica propriedade (tipo chácara) em meio a natureza, dentro de condomínio com sistema de segurança completo e portaria 24hs.\nImóvel com acabamento impecável, tudo com muito bom gosto e conforto!\nLazer privativo completo da propriedade.\nCASA\n▪️Varanda na entrada\n▪️Ampla de estar ampla, c/ pé direito duplo e lareira em pedras\n▪️Sala de jantar c/ pé direito duplo\n▪️Sala de Tv planejada c/ pé direito alto\n▪️02 lavabos\n▪️Cozinha c/ armários, cooktop, coifa e forno embutido\n▪️Copa\n▪️Despensa\n▪️Lavanderia c/ armários (entrada de pet)\n▪️Hall\n▪️03 suítes, sendo 02 canadenses c/ ventiladores, armários embutidos e aquecedor e 01 suíte master c/ lareira, amplo closet planejado, aquecedor e banheira de hidromassagem\nMEZANINO\n▪️Amplo espaço\n▪️Adega\nÁREA EXTERNA\n▪️Varandão\n▪️Amplo quintal\n▪️Jardim c/ paisagismo\n▪️Fogão a lenha e forno de pizza (atendendo a cozinha)\n▪️02 vagas de garagem\n▪️Piscina adulto e infantil c/ borda infinita\n▪️Deck c/ espaço gourmet\n▪️Sauna seca c/ ducha e lavabo\n▪️Playground\n▪️Horta\n▪️Pomar\n▪️Quarto para guardados\n▪️Anexo c/ 07 quartos e 01 banheiro\n▪️Casa de hóspedes c/ sala, cozinha, área, 02 quartos e banheiro social\n▪️Chalé c/ quarto, banheiro, cozinha e varanda\n▪️Ampla oficina\nCONDOMÍNIO\n▪️Interfone\n▪️Portaria 24 horas\n▪️Portão automático\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/328343",
     "bairro": "Quebra Frascos"
   },
   {
     "sku": "331549",
-    "name": "Casa de Alto Padrão no Granja Comary com Piscina, Lago e Vista para as Montanhas",
+    "name": "Linda Casa em Condomínio com 5 Quartos (1 Suíte) e Lazer Completo no Alto",
     "price": 2370000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -3556,13 +3629,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Descubra o privilégio de viver em uma das regiões mais exclusivas de Teresópolis, na Granja Comary.\n\nEsta magnífica casa em condomínio combina elegância, conforto e total integração com a natureza. Com 835 m² de área total, área construída 322 m2, o imóvel oferece espaços amplos e bem distribuídos, com 5 quartos, sendo 1 suíte, além de 6 vagas de garagem descobertas, 1 vaga coberta.\n\nA área social encanta com uma espaçosa sala de estar com lareira, piso de madeira e ambientes integrados que proporcionam aconchego e sofisticação. A cozinha gourmet e a varanda gourmet são perfeitas para receber amigos e familiares em momentos especiais.\n\nNa área externa, um verdadeiro refúgio particular: piscina privativa, jardim exuberante, gramado, churrasqueira e um charmoso lago, tudo isso com uma vista deslumbrante para as montanhas da Serra.\n\nO imóvel ainda conta com armários planejados, acessibilidade para pessoas com deficiência e toda a segurança de um condomínio fechado com monitoramento por câmeras.\n\nUma propriedade única para quem busca exclusividade, tranquilidade e qualidade de vida em um dos endereços mais desejados da serra fluminense.\n\nAgende sua visita e encante-se com cada detalhe desta residência extraordinária.\n#casacondominio #teresopolis #carlosguinle #comary",
+    "description": "Descubra o privilégio de viver em uma das regiões mais exclusivas de Teresópolis, na Granja Comary.\n\nEsta magnífica casa em condomínio combina elegância, conforto e total integração com a natureza. Com 835 m² de área total, área construída 322 m2, o imóvel oferece espaços amplos e bem distribuídos, com 5 quartos, sendo 1 suíte, além de 6 vagas de garagem descobertas, 1 vaga coberta.\n\nA área social encanta com uma espaçosa sala de estar com lareira, piso de madeira e ambientes integrados que proporcionam aconchego e sofisticação. A cozinha gourmet e a varanda gourmet são perfeitas para receber amigos e familiares em momentos especiais.\n\nNa área externa, um verdadeiro refúgio particular: piscina privativa, jardim exuberante, gramado, churrasqueira e um charmoso lago, tudo isso com uma vista deslumbrante para as montanhas da Serra.\n\nO imóvel ainda conta com armários planejados, acessibilidade para pessoas com deficiência e toda a segurança de um condomínio fechado com monitoramento por câmeras.\n\nUma propriedade única para quem busca exclusividade, tranquilidade e qualidade de vida em um dos endereços mais desejados da serra fluminense.\n\nAgende sua visita e encante-se com cada detalhe desta residência extraordinária.\n#casacondominio #teresopolis #carlosguinle #comary\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/331549",
     "bairro": "Alto"
   },
   {
     "sku": "333353",
-    "name": "Casa de Alto Padrão com Vista Panorâmica em Teresópolis",
+    "name": "Linda Casa em Condomínio com 3 Quartos (2 Suítes) em Albuquerque",
     "price": 1430000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -3592,13 +3665,13 @@ export const allImoveisData: ProductItem[] = [
       "Pé-direito alto",
       "Lareira"
     ],
-    "description": "Uma verdadeira casa de serra em Albuquerque, Teresópolis/RJ.\n\n🌿 Privacidade, silêncio e natureza\n📍 Apenas 12 minutos do centro da cidade\n\n• 151m² de construção\n• Terreno com 510m²\n• 3 quartos, sendo 2 suítes\n• Pé-direito alto\n• Lareira\n• Madeira Maçaranduba\n• Vista privilegiada para a Mulher de Pedra\n\nUm refúgio pensado para viver a serra com conforto, paz e sofisticação, cercado por natureza e com uma arquitetura que impressiona em cada detalhe.\n\n📲 Me chame para conhecer\n\nHabittat House",
+    "description": "Uma verdadeira casa de serra em Albuquerque, Teresópolis/RJ.\n\n🌿 Privacidade, silêncio e natureza\n📍 Apenas 12 minutos do centro da cidade\n\n• 151m² de construção\n• Terreno com 510m²\n• 3 quartos, sendo 2 suítes\n• Pé-direito alto\n• Lareira\n• Madeira Maçaranduba\n• Vista privilegiada para a Mulher de Pedra\n\nUm refúgio pensado para viver a serra com conforto, paz e sofisticação, cercado por natureza e com uma arquitetura que impressiona em cada detalhe.\n\n📲 Me chame para conhecer\n\nHabittat House\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/333353",
     "bairro": "Albuquerque"
   },
   {
     "sku": "334009",
-    "name": "Casa com Conforto e Exclusividade no Golf Club",
+    "name": "Belíssima Residência com 4 Quartos (1 Suíte) e Garagem em Teresópolis",
     "price": 1250000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3628,13 +3701,13 @@ export const allImoveisData: ProductItem[] = [
       "Cozinha ampla",
       "1 escritório grande reversível para quarto"
     ],
-    "description": "Imóvel composto por 2 andares, com excelente estrutura e conforto:\n\n• Sala ampla em 2 ambientes\n• 4 quartos no total, sendo 1 suíte master com closet\n• 2 quartos na parte térrea\n• Cozinha ampla\n• 1 escritório grande reversível para quarto\n• Sala de TV\n• Varanda grande no piso superior\n• Ar-condicionado em toda a casa\n• Piscina\n• Casa de caseiro\n• Portão eletrônico\n• Energia solar e aquecimento solar\n• Circuito interno de câmeras\n• Cisterna com capacidade para 15 mil litros\n• 4 vagas de garagem cobertas\n• Espaço para mais 4 veículos sem cobertura\n• Terreno plano e ótima localização no Golf\n\nImóvel ideal para quem busca espaço, conforto, segurança e excelente localização.",
+    "description": "Imóvel composto por 2 andares, com excelente estrutura e conforto:\n\n• Sala ampla em 2 ambientes\n• 4 quartos no total, sendo 1 suíte master com closet\n• 2 quartos na parte térrea\n• Cozinha ampla\n• 1 escritório grande reversível para quarto\n• Sala de TV\n• Varanda grande no piso superior\n• Ar-condicionado em toda a casa\n• Piscina\n• Casa de caseiro\n• Portão eletrônico\n• Energia solar e aquecimento solar\n• Circuito interno de câmeras\n• Cisterna com capacidade para 15 mil litros\n• 4 vagas de garagem cobertas\n• Espaço para mais 4 veículos sem cobertura\n• Terreno plano e ótima localização no Golf\n\nImóvel ideal para quem busca espaço, conforto, segurança e excelente localização.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/334009",
     "bairro": "Teresópolis"
   },
   {
     "sku": "335207",
-    "name": "LINDO SÍTIO DENTRO DE CONDOMINIO EM QUEBRA FRASCOS | 12.000 m² de Natureza e Conforto em Teresópolis - RJ",
+    "name": "Magnífica Casa Linear em Condomínio com 5 Quartos (4 Suítes) e Lazer Completo no Quebra Frascos",
     "price": 6950000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3664,13 +3737,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "LINDO SÍTIO DENTRO DE CONDOMINIO EM QUEBRA FRASCOS  | 12.000 m² de Natureza e Conforto em Teresópolis - RJ\n\nSe procura a combinação perfeita entre o charme serrano, privacidade e uma conexão profunda com a natureza, apresentamos a Mansão Quebra Frascos. Localizada no prestigiado condomínio Passos de São Luiz, em Teresópolis, esta propriedade oferece um refúgio único com muito verde e menos caos.\n\nCom uma área total de 12.000 m² de terreno e 530 m² de área construída, a casa destaca-se pelo seu estilo arquitetónico linear, madeiramento todo em ipê e uma atmosfera incrivelmente acolhedora. E o melhor: será vendida no formato porteira fechada!\n\n✨ Detalhes da Propriedade:\nSalas: 3 ambientes amplos e bem iluminados, incluindo uma sala acolhedora com lareira para os dias mais frios.\n\nQuartos: 5 dormitórios, sendo 4 suítes (incluindo uma suíte exclusiva para hóspedes).\n\nLazer e Convivência: Um salão de jogos e 2 varandas com vistas deslumbrantes para a serra.\n\nÁrea Exterior Premium:\n\nPiscina com pedra natural.\n\nÁrea gourmet completa com forno de pizza e churrasqueira  o cenário ideal para criar memórias em família.\n\nTrilhas privativas dentro da propriedade com acesso a uma cachoeira também privativa.\n\nOrquidário próprio.\n\nInfraestrutura: Poço artesiano, cisterna com capacidade para mais de 10.000 litros e um gerador para garantir o funcionamento de toda a operação da casa.\n\n💰 Investimento:\nValor: R$ 6.950.000\n\n📞 Entre em Contacto:\nGostou desta propriedade e quer conquistar o seu refúgio na serra? Entre em contacto com a Habittat House através dos links e contactos abaixo:\n\n🌐 habittathouse.com.br\n📱 (21) 97354-6445\n📧 habittathouse@gmail.com",
+    "description": "LINDO SÍTIO DENTRO DE CONDOMINIO EM QUEBRA FRASCOS  | 12.000 m² de Natureza e Conforto em Teresópolis - RJ\n\nSe procura a combinação perfeita entre o charme serrano, privacidade e uma conexão profunda com a natureza, apresentamos a Mansão Quebra Frascos. Localizada no prestigiado condomínio Passos de São Luiz, em Teresópolis, esta propriedade oferece um refúgio único com muito verde e menos caos.\n\nCom uma área total de 12.000 m² de terreno e 530 m² de área construída, a casa destaca-se pelo seu estilo arquitetónico linear, madeiramento todo em ipê e uma atmosfera incrivelmente acolhedora. E o melhor: será vendida no formato porteira fechada!\n\n✨ Detalhes da Propriedade:\nSalas: 3 ambientes amplos e bem iluminados, incluindo uma sala acolhedora com lareira para os dias mais frios.\n\nQuartos: 5 dormitórios, sendo 4 suítes (incluindo uma suíte exclusiva para hóspedes).\n\nLazer e Convivência: Um salão de jogos e 2 varandas com vistas deslumbrantes para a serra.\n\nÁrea Exterior Premium:\n\nPiscina com pedra natural.\n\nÁrea gourmet completa com forno de pizza e churrasqueira  o cenário ideal para criar memórias em família.\n\nTrilhas privativas dentro da propriedade com acesso a uma cachoeira também privativa.\n\nOrquidário próprio.\n\nInfraestrutura: Poço artesiano, cisterna com capacidade para mais de 10.000 litros e um gerador para garantir o funcionamento de toda a operação da casa.\n\n💰 Investimento:\nValor: R$ 6.950.000\n\n📞 Entre em Contacto:\nGostou desta propriedade e quer conquistar o seu refúgio na serra? Entre em contacto com a Habittat House através dos links e contactos abaixo:\n\n🌐 habittathouse.com.br\n📧 habittathouse@gmail.com\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/335207",
     "bairro": "Quebra Frascos"
   },
   {
     "sku": "340889",
-    "name": "Parque das Flores",
+    "name": "Parque das Flores: Linda Residência com Amplo Quintal e Vista no Alto",
     "price": 330000,
     "cat": "Casas",
     "badge": "Oportunidade",
@@ -3700,13 +3773,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Condomínio recém entregue no coração de Albuquerque, pronto pra morar.\n\nApartamentos com 52m², bem distribuídos, com sala, cozinha, banheiro, 2 quartos e varanda, o básico bem feito, do jeito que precisa.\n\nSão só 24 unidades no total… e hoje restam apenas 10 disponíveis.\n\nA partir de R$ 330 mil.\n\nÉ aquele tipo de oportunidade pra quem quer sair do aluguel ou dar o próximo passo com algo novo, organizado e bem localizado.",
+    "description": "Condomínio recém entregue no coração de Albuquerque, pronto pra morar.\n\nApartamentos com 52m², bem distribuídos, com sala, cozinha, banheiro, 2 quartos e varanda, o básico bem feito, do jeito que precisa.\n\nSão só 24 unidades no total… e hoje restam apenas 10 disponíveis.\n\nA partir de R$ 330 mil.\n\nÉ aquele tipo de oportunidade pra quem quer sair do aluguel ou dar o próximo passo com algo novo, organizado e bem localizado.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/340889",
     "bairro": "Albuquerque"
   },
   {
     "sku": "344048",
-    "name": "Terreno com 360m² à venda por R$ 300.000, Cond. Vale dos Pássaros Prata - Teresópolis/RJ",
+    "name": "Terreno Plano em Condomínio de 360m² Pronto para Construir na Prata",
     "price": 300000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -3736,13 +3809,13 @@ export const allImoveisData: ProductItem[] = [
       "Segurança, tranquilidade e contato com a natureza",
       "Ideal para construção de residência ou casa de fim de semana"
     ],
-    "description": "🌿 Oportunidade no Condomínio Vale dos Pássaros! 🌿\n\nExcelente terreno com 360m², pronto para construir, localizado em um dos condomínios mais desejados da região.\n\n✅ Terreno plano e bem localizado\n✅ Já possui poço artesanal instalado\n✅ Infraestrutura completa de condomínio fechado\n✅ Segurança, tranquilidade e contato com a natureza\n✅ Ideal para construção de residência ou casa de fim de semana\n\nAproveite a oportunidade de investir em qualidade de vida e valorização patrimonial.\n\n📞 Entre em contato para mais informações e agende uma visita!",
+    "description": "🌿 Oportunidade no Condomínio Vale dos Pássaros! 🌿\n\nExcelente terreno com 360m², pronto para construir, localizado em um dos condomínios mais desejados da região.\n\n✅ Terreno plano e bem localizado\n✅ Já possui poço artesanal instalado\n✅ Infraestrutura completa de condomínio fechado\n✅ Segurança, tranquilidade e contato com a natureza\n✅ Ideal para construção de residência ou casa de fim de semana\n\nAproveite a oportunidade de investir em qualidade de vida e valorização patrimonial.\n\n📞 Entre em contato para mais informações e agende uma visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/344048",
     "bairro": "Prata"
   },
   {
     "sku": "344628",
-    "name": "Lote à venda em Bonsucesso, em condomínio de alto padrão na região de Teresópolis",
+    "name": "Excelente Terreno em Condomínio de 1.200m² com Linda Vista para a Natureza em Bonsucesso",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -3772,13 +3845,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Lote à venda em Bonsucesso, em condomínio de alto padrão na região de Teresópolis, ideal para quem busca qualidade de vida, segurança e valorização imobiliária.\n\nO terreno possui 1.200 m², oferecendo excelente espaço para construção de residência com conforto, privacidade e integração com a natureza.\n\nLocalizado em condomínio com ótima infraestrutura e vista privilegiada para as montanhas, o imóvel representa uma excelente oportunidade tanto para moradia quanto para investimento.\n\nCaracterísticas do terreno:\n\nÁrea total de 1.200 m²\nTerreno com ótima dimensão para projetos residenciais\nVista panorâmica para as montanhas\nLocalização tranquila e valorizada\n\nInfraestrutura do condomínio:\n\nPiscina\nSalão de festas\nQuadra esportiva\nÁreas verdes\nAmbiente seguro e bem estruturado\n\nUma excelente oportunidade para quem deseja construir em um dos condomínios mais valorizados da região de Bonsucesso.\n\nValor: R$ 280.000,00\nCondições de pagamento facilitadas.\n\nPedro Dias – Consultor Imobiliário\nCRECI-RJ 107570\nInstagram: @\nYouTube: @",
+    "description": "Lote à venda em Bonsucesso, em condomínio de alto padrão na região de Teresópolis, ideal para quem busca qualidade de vida, segurança e valorização imobiliária.\n\nO terreno possui 1.200 m², oferecendo excelente espaço para construção de residência com conforto, privacidade e integração com a natureza.\n\nLocalizado em condomínio com ótima infraestrutura e vista privilegiada para as montanhas, o imóvel representa uma excelente oportunidade tanto para moradia quanto para investimento.\n\nCaracterísticas do terreno:\n\nÁrea total de 1.200 m²\nTerreno com ótima dimensão para projetos residenciais\nVista panorâmica para as montanhas\nLocalização tranquila e valorizada\n\nInfraestrutura do condomínio:\n\nPiscina\nSalão de festas\nQuadra esportiva\nÁreas verdes\nAmbiente seguro e bem estruturado\n\nUma excelente oportunidade para quem deseja construir em um dos condomínios mais valorizados da região de Bonsucesso.\n\nValor: R$ 280.000,00\nCondições de pagamento facilitadas.\n\nPedro Dias – Consultor Imobiliário\nCRECI-RJ 107570\nInstagram: @\nYouTube: @\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/344628",
     "bairro": "Bonsucesso"
   },
   {
     "sku": "349640",
-    "name": "Apartamento com 1 quartos, 71m² à venda por R$ 480.000, Alto - Teresópolis/RJ",
+    "name": "Lindo Apartamento de 1 Quartos no Alto",
     "price": 480000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3808,13 +3881,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Seu novo lar no Bairro do Alto espera por você!\n\nApresentamos este excelente apartamento no Bairro do Alto, uma das regiões mais valorizadas e desejadas de Teresópolis!\n\nDestaques do imóvel:\n71 m² de área privativa\n1 quarto amplo e confortável\nSala espaçosa, perfeita para receber amigos e familiares\nCozinha funcional\nBanheiro bem distribuído\nAmbientes amplos, iluminados e muito bem ventilados\n\nLocalizado em uma região com fácil acesso a comércio, restaurantes, supermercados, escolas, universidades e tudo o que você precisa para viver com praticidade e qualidade de vida.\n\nIdeal para quem busca conforto, excelente localização ou até mesmo uma ótima oportunidade de investimento.\n\nEntre em contato e agende sua visita. Venha conhecer de perto este excelente apartamento!",
+    "description": "Seu novo lar no Bairro do Alto espera por você!\n\nApresentamos este excelente apartamento no Bairro do Alto, uma das regiões mais valorizadas e desejadas de Teresópolis!\n\nDestaques do imóvel:\n71 m² de área privativa\n1 quarto amplo e confortável\nSala espaçosa, perfeita para receber amigos e familiares\nCozinha funcional\nBanheiro bem distribuído\nAmbientes amplos, iluminados e muito bem ventilados\n\nLocalizado em uma região com fácil acesso a comércio, restaurantes, supermercados, escolas, universidades e tudo o que você precisa para viver com praticidade e qualidade de vida.\n\nIdeal para quem busca conforto, excelente localização ou até mesmo uma ótima oportunidade de investimento.\n\nEntre em contato e agende sua visita. Venha conhecer de perto este excelente apartamento!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/349640",
     "bairro": "Alto"
   },
   {
     "sku": "350028",
-    "name": "Apartamento de 105m² com 2 Suítes próximo a Olegário Maciel",
+    "name": "Apartamento de Alto Padrão de 3 Quartos (2 Suítes) com Garagem na Tijuca",
     "price": 1400000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3844,7 +3917,7 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda na Barra da Tijuca, entre Olegário Maciel e Av. Ivan Lins. Com 3 quartos (2 suítes) e 1 vaga, oferece sala ampla integrada à varanda, ar-condicionado, armários embutidos e cozinha planejada. Banheiros com box blindex, área de serviço e ótima ventilação. Prédio com elevador, interfone, portão eletrônico e circuito de segurança. Localização prática, em rua asfaltada e arborizada, perto de vias de acesso e do transporte público. Qualidade de vida e conveniência para sua rotina. Agende sua visita.\n\n#apartamento #riodejaneiro #barradatijuca #edificiomarcopolov #elevador\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda na Barra da Tijuca, entre Olegário Maciel e Av. Ivan Lins. Com 3 quartos (2 suítes) e 1 vaga, oferece sala ampla integrada à varanda, ar-condicionado, armários embutidos e cozinha planejada. Banheiros com box blindex, área de serviço e ótima ventilação. Prédio com elevador, interfone, portão eletrônico e circuito de segurança. Localização prática, em rua asfaltada e arborizada, perto de vias de acesso e do transporte público. Qualidade de vida e conveniência para sua rotina. Agende sua visita.\n\n#apartamento #riodejaneiro #barradatijuca #edificiomarcopolov #elevador\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/350028",
     "bairro": "Tijuca"
   },
@@ -3880,15 +3953,15 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Invista no endereço ideal para o crescimento do seu negócio! Esta sala comercial de **29 m²** oferece um ambiente moderno, funcional e pronto para receber profissionais de diversas áreas, como consultórios, escritórios, empresas de prestação de serviços e muito mais.\n\nLocalizada em um edifício corporativo de alto padrão, a sala proporciona praticidade, conforto e uma excelente estrutura para proprietários, clientes e colaboradores.\n\nDiferenciais do empreendimento:\n\nEstacionamento no edifício;\nAcabamento de alto padrão;\nAuditório para até 100 pessoas no sistema *pay-per-use*;\nTotal acessibilidade;\nLocalização privilegiada, com fácil acesso e excelente visibilidade.\n\nUma excelente oportunidade para quem deseja investir em um imóvel comercial valorizado ou estabelecer seu negócio em um endereço estratégico.\n\nEntre em contato para mais informações e agende sua visita!",
+    "description": "Invista no endereço ideal para o crescimento do seu negócio! Esta sala comercial de **29 m²** oferece um ambiente moderno, funcional e pronto para receber profissionais de diversas áreas, como consultórios, escritórios, empresas de prestação de serviços e muito mais.\n\nLocalizada em um edifício corporativo de alto padrão, a sala proporciona praticidade, conforto e uma excelente estrutura para proprietários, clientes e colaboradores.\n\nDiferenciais do empreendimento:\n\nEstacionamento no edifício;\nAcabamento de alto padrão;\nAuditório para até 100 pessoas no sistema *pay-per-use*;\nTotal acessibilidade;\nLocalização privilegiada, com fácil acesso e excelente visibilidade.\n\nUma excelente oportunidade para quem deseja investir em um imóvel comercial valorizado ou estabelecer seu negócio em um endereço estratégico.\n\nEntre em contato para mais informações e agende sua visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351133",
     "bairro": "Várzea"
   },
   {
     "sku": "351142",
-    "name": "Cobertura frente ao mar 3 quartos com suite, 225m² à venda por R$ 3.900.000 - Barra da Tijuca/RJ",
+    "name": "Cobertura de Alto Padrão com 3 Quartos e Terraço Panorâmico na Tijuca",
     "price": 3900000,
-    "cat": "Coberturas",
+    "cat": "Apartamentos",
     "badge": "Alto Padrão",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727132820/WhatsApp%20Image%202026-07-01%20at%2015.02.41%20%281%29-watermarked.webp",
     "images": [
@@ -3916,13 +3989,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Viva o privilégio de morar em uma cobertura única, com 225 m² de área privativa e uma vista panorâmica permanente para o mar da Barra da Tijuca.\n\nLocalizada no renomado Condomínio Ocean Drive, esta cobertura reúne amplitude, conforto e exclusividade em um dos endereços mais valorizados do Rio de Janeiro. Os ambientes são amplos, bem distribuídos e recebem excelente iluminação natural, proporcionando uma experiência de moradia sofisticada e acolhedora.\n\nO grande destaque fica por conta da área externa, perfeita para criar um espaço gourmet, receber amigos e familiares ou simplesmente relaxar apreciando o nascer do sol de frente para o oceano.\n\nDestaques do imóvel:\n\n225 m² de área privativa;\nCobertura com vista frontal e definitiva para o mar;\nAmbientes amplos e muito bem iluminados;\nExcelente distribuição dos espaços;\nAlto padrão de construção;\nLocalização privilegiada na Barra da Tijuca.\n\nInfraestrutura do Condomínio Ocean Drive:\n\nSegurança e portaria 24 horas;\nInfraestrutura completa de lazer;\nPiscinas;\nAcademia;\nSauna;\nQuadras esportivas;\nSalão de festas;\nEspaços de convivência;\nAcesso exclusivo à praia e serviços que proporcionam conforto e praticidade aos moradores.\n\nAlém de toda a infraestrutura, o condomínio está próximo aos melhores shoppings, restaurantes, escolas, supermercados e aos principais acessos da Barra da Tijuca.\n\nSe você busca exclusividade, conforto e uma vista espetacular para o mar, esta é a oportunidade ideal para viver ou investir em um dos empreendimentos mais desejados da região.\n\nAgende sua visita e descubra o privilégio de morar de frente para o mar.",
+    "description": "Viva o privilégio de morar em uma cobertura única, com 225 m² de área privativa e uma vista panorâmica permanente para o mar da Barra da Tijuca.\n\nLocalizada no renomado Condomínio Ocean Drive, esta cobertura reúne amplitude, conforto e exclusividade em um dos endereços mais valorizados do Rio de Janeiro. Os ambientes são amplos, bem distribuídos e recebem excelente iluminação natural, proporcionando uma experiência de moradia sofisticada e acolhedora.\n\nO grande destaque fica por conta da área externa, perfeita para criar um espaço gourmet, receber amigos e familiares ou simplesmente relaxar apreciando o nascer do sol de frente para o oceano.\n\nDestaques do imóvel:\n\n225 m² de área privativa;\nCobertura com vista frontal e definitiva para o mar;\nAmbientes amplos e muito bem iluminados;\nExcelente distribuição dos espaços;\nAlto padrão de construção;\nLocalização privilegiada na Barra da Tijuca.\n\nInfraestrutura do Condomínio Ocean Drive:\n\nSegurança e portaria 24 horas;\nInfraestrutura completa de lazer;\nPiscinas;\nAcademia;\nSauna;\nQuadras esportivas;\nSalão de festas;\nEspaços de convivência;\nAcesso exclusivo à praia e serviços que proporcionam conforto e praticidade aos moradores.\n\nAlém de toda a infraestrutura, o condomínio está próximo aos melhores shoppings, restaurantes, escolas, supermercados e aos principais acessos da Barra da Tijuca.\n\nSe você busca exclusividade, conforto e uma vista espetacular para o mar, esta é a oportunidade ideal para viver ou investir em um dos empreendimentos mais desejados da região.\n\nAgende sua visita e descubra o privilégio de morar de frente para o mar.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351142",
     "bairro": "Tijuca"
   },
   {
     "sku": "351544",
-    "name": "Casa no Comary com Piscina, Jardim e Vista para a Natureza",
+    "name": "Magnífica Casa em Condomínio com 3 Quartos e Piscina no Carlos Guinle",
     "price": 2890000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3952,13 +4025,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Carlos Guinle, na Granja Comary. Com Construída em um amplo terreno de aproximadamente 1.300 m², a residência conta com ambientes amplos e acolhedores. São 3 quartos, incluindo uma confortável suíte, além de salas de estar e jantar integradas, destacadas por uma charmosa lareira que proporciona ainda mais aconchego nos dias mais frios.\n\nA cozinha planejada, despensa, lavabo, dependência completa, suíte para hóspedes e varanda voltada para o jardim garantem praticidade e conforto para toda a família.\n\nO condomínio dispõe de portaria 24 horas e monitoramento por câmeras, proporcionando tranquilidade e segurança. Além disso, a localização permite fácil acesso ao comércio, restaurantes, escolas e à tradicional Feirinha do Alto, reunindo o melhor de Teresópolis em um só lugar.\n\nSe você procura uma casa que combine conforto, lazer e qualidade de vida em um dos endereços mais valorizados da cidade, esta é a oportunidade ideal.\n\nAgende sua visita e descubra tudo o que este refúgio na serra tem a oferecer.\n\n#casacondominio #teresopolis #carlosguinle #granjacomary #armarionacozinha",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Carlos Guinle, na Granja Comary. Com Construída em um amplo terreno de aproximadamente 1.300 m², a residência conta com ambientes amplos e acolhedores. São 3 quartos, incluindo uma confortável suíte, além de salas de estar e jantar integradas, destacadas por uma charmosa lareira que proporciona ainda mais aconchego nos dias mais frios.\n\nA cozinha planejada, despensa, lavabo, dependência completa, suíte para hóspedes e varanda voltada para o jardim garantem praticidade e conforto para toda a família.\n\nO condomínio dispõe de portaria 24 horas e monitoramento por câmeras, proporcionando tranquilidade e segurança. Além disso, a localização permite fácil acesso ao comércio, restaurantes, escolas e à tradicional Feirinha do Alto, reunindo o melhor de Teresópolis em um só lugar.\n\nSe você procura uma casa que combine conforto, lazer e qualidade de vida em um dos endereços mais valorizados da cidade, esta é a oportunidade ideal.\n\nAgende sua visita e descubra tudo o que este refúgio na serra tem a oferecer.\n\n#casacondominio #teresopolis #carlosguinle #granjacomary #armarionacozinha\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351544",
     "bairro": "Carlos Guinle"
   },
   {
     "sku": "351605",
-    "name": "Casa Espaçosa no Alto com Vista para as Montanhas",
+    "name": "Belíssima Residência com 5 Quartos (3 Suítes) e Quintal Amplo no Alto",
     "price": 1490000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -3988,13 +4061,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Alto. Com 860,3 m² de área, o imóvel conta com 5 quartos, sendo 3 suítes, além de ambientes amplos e bem distribuídos. A sala de estar integrada proporciona um espaço aconchegante para reunir a família, enquanto a cozinha com armários planejados, o escritório, a varanda e a lavanderia garantem funcionalidade e conforto.\n\nA área externa é um dos grandes destaques da propriedade. O amplo quintal oferece gramado, horta, árvores frutíferas e uma bela vista para as montanhas, criando um ambiente perfeito para momentos de lazer e contato com a natureza. O imóvel ainda dispõe de casa de caseiro, portão eletrônico, chuveiro a gás, excelente ventilação natural, internet e 6 vagas de garagem.\n\nOutro diferencial é sua localização estratégica, próxima a escolas, hospitais, shopping, supermercados, restaurantes e às principais vias de acesso da cidade. A rua asfaltada e a disponibilidade de transporte público tornam a rotina ainda mais prática, sem abrir mão da tranquilidade.\n\n#casa #teresopolis #alto #salagrande\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Alto. Com 860,3 m² de área, o imóvel conta com 5 quartos, sendo 3 suítes, além de ambientes amplos e bem distribuídos. A sala de estar integrada proporciona um espaço aconchegante para reunir a família, enquanto a cozinha com armários planejados, o escritório, a varanda e a lavanderia garantem funcionalidade e conforto.\n\nA área externa é um dos grandes destaques da propriedade. O amplo quintal oferece gramado, horta, árvores frutíferas e uma bela vista para as montanhas, criando um ambiente perfeito para momentos de lazer e contato com a natureza. O imóvel ainda dispõe de casa de caseiro, portão eletrônico, chuveiro a gás, excelente ventilação natural, internet e 6 vagas de garagem.\n\nOutro diferencial é sua localização estratégica, próxima a escolas, hospitais, shopping, supermercados, restaurantes e às principais vias de acesso da cidade. A rua asfaltada e a disponibilidade de transporte público tornam a rotina ainda mais prática, sem abrir mão da tranquilidade.\n\n#casa #teresopolis #alto #salagrande\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351605",
     "bairro": "Alto"
   },
   {
     "sku": "351613",
-    "name": "Casa em Condomínio Cercada pela Natureza",
+    "name": "Linda Casa em Condomínio e Lazer Completo em Albuquerque",
     "price": 1490000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -4024,13 +4097,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Albuquerque, em um amplo terreno de 886,4 m², a residência foi projetada para proporcionar praticidade e integração entre os ambientes. A sala de jantar integrada, o piso de madeira, as amplas janelas e a excelente ventilação natural tornam os espaços ainda mais agradáveis e iluminados. A cozinha planejada, a lavanderia e a varanda gourmet completam a funcionalidade da casa, enquanto a suíte garante conforto e privacidade.\n\nA área externa é um verdadeiro convite para aproveitar os melhores momentos em família. A piscina privativa, cercada por um belo jardim e gramado, cria um cenário perfeito para os dias ensolarados. O espaço gourmet com churrasqueira é ideal para confraternizações, um toque especial para quem aprecia viver em meio à natureza.\n\nCom fácil acesso a escolas, comércio, transporte e aos principais pontos da cidade, esta é uma excelente oportunidade para quem deseja morar em um condomínio completo, cercado pelo verde e com toda a comodidade que Teresópolis oferece.\n\n#casacondominio #teresopolis #albuquerque #greenhouse #garagem\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Albuquerque, em um amplo terreno de 886,4 m², a residência foi projetada para proporcionar praticidade e integração entre os ambientes. A sala de jantar integrada, o piso de madeira, as amplas janelas e a excelente ventilação natural tornam os espaços ainda mais agradáveis e iluminados. A cozinha planejada, a lavanderia e a varanda gourmet completam a funcionalidade da casa, enquanto a suíte garante conforto e privacidade.\n\nA área externa é um verdadeiro convite para aproveitar os melhores momentos em família. A piscina privativa, cercada por um belo jardim e gramado, cria um cenário perfeito para os dias ensolarados. O espaço gourmet com churrasqueira é ideal para confraternizações, um toque especial para quem aprecia viver em meio à natureza.\n\nCom fácil acesso a escolas, comércio, transporte e aos principais pontos da cidade, esta é uma excelente oportunidade para quem deseja morar em um condomínio completo, cercado pelo verde e com toda a comodidade que Teresópolis oferece.\n\n#casacondominio #teresopolis #albuquerque #greenhouse #garagem\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351613",
     "bairro": "Albuquerque"
   },
   {
     "sku": "351650",
-    "name": "Terreno a Venda em Condomínio Fechado Cercado pela Natureza",
+    "name": "Excelente Terreno em Condomínio em Albuquerque",
     "price": 160000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4053,13 +4126,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Construa a casa dos seus sonhos em um dos cenários mais tranquilos e valorizados de Teresópolis. Localizado no Condomínio Inghay, no bairro Albuquerque, este excelente terreno oferece a combinação perfeita entre segurança, contato com a natureza e qualidade de vida.\n\nInserido em um condomínio planejado, o lote é ideal para quem deseja desenvolver um projeto personalizado, aproveitando o clima agradável da serra e a tranquilidade de uma região cercada pelo verde. Com ótima topografia e amplo potencial construtivo, é uma excelente oportunidade para criar um verdadeiro refúgio para a família.\n\nO Condomínio Inghay oferece infraestrutura completa, com portaria, ruas internas bem planejadas e uma belíssima reserva florestal, proporcionando um ambiente seguro, organizado e em total harmonia com a natureza.\n\n#terrenocondominio #teresopolis #albuquerque #inghay #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Construa a casa dos seus sonhos em um dos cenários mais tranquilos e valorizados de Teresópolis. Localizado no Condomínio Inghay, no bairro Albuquerque, este excelente terreno oferece a combinação perfeita entre segurança, contato com a natureza e qualidade de vida.\n\nInserido em um condomínio planejado, o lote é ideal para quem deseja desenvolver um projeto personalizado, aproveitando o clima agradável da serra e a tranquilidade de uma região cercada pelo verde. Com ótima topografia e amplo potencial construtivo, é uma excelente oportunidade para criar um verdadeiro refúgio para a família.\n\nO Condomínio Inghay oferece infraestrutura completa, com portaria, ruas internas bem planejadas e uma belíssima reserva florestal, proporcionando um ambiente seguro, organizado e em total harmonia com a natureza.\n\n#terrenocondominio #teresopolis #albuquerque #inghay #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351650",
     "bairro": "Albuquerque"
   },
   {
     "sku": "351652",
-    "name": "Terreno a Venda em Condomínio Fechado Cercado pela Natureza",
+    "name": "Excelente Terreno em Condomínio em Albuquerque",
     "price": 125000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4082,15 +4155,15 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Construa a casa dos seus sonhos em um dos cenários mais tranquilos e valorizados de Teresópolis. Localizado no Condomínio Inghay, no bairro Albuquerque, este excelente terreno oferece a combinação perfeita entre segurança, contato com a natureza e qualidade de vida.\n\nInserido em um condomínio planejado, o lote é ideal para quem deseja desenvolver um projeto personalizado, aproveitando o clima agradável da serra e a tranquilidade de uma região cercada pelo verde. Com ótima topografia e amplo potencial construtivo, é uma excelente oportunidade para criar um verdadeiro refúgio para a família.\n\nO Condomínio Inghay oferece infraestrutura completa, com portaria, ruas internas bem planejadas e uma belíssima reserva florestal, proporcionando um ambiente seguro, organizado e em total harmonia com a natureza.\n\n#terrenocondominio #teresopolis #albuquerque #inghay #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Construa a casa dos seus sonhos em um dos cenários mais tranquilos e valorizados de Teresópolis. Localizado no Condomínio Inghay, no bairro Albuquerque, este excelente terreno oferece a combinação perfeita entre segurança, contato com a natureza e qualidade de vida.\n\nInserido em um condomínio planejado, o lote é ideal para quem deseja desenvolver um projeto personalizado, aproveitando o clima agradável da serra e a tranquilidade de uma região cercada pelo verde. Com ótima topografia e amplo potencial construtivo, é uma excelente oportunidade para criar um verdadeiro refúgio para a família.\n\nO Condomínio Inghay oferece infraestrutura completa, com portaria, ruas internas bem planejadas e uma belíssima reserva florestal, proporcionando um ambiente seguro, organizado e em total harmonia com a natureza.\n\n#terrenocondominio #teresopolis #albuquerque #inghay #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351652",
     "bairro": "Albuquerque"
   },
   {
     "sku": "351660",
-    "name": "Cobertura Duplex no Alto com Vista para o Dedo de Deus",
+    "name": "Espetacular Cobertura Duplex e Terraço Panorâmico no Alto",
     "price": 980000,
-    "cat": "Coberturas",
+    "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727140234/cobertura-4-quartos-alto-teresopolis-rj--13114783-watermarked.webp",
     "images": [
@@ -4118,13 +4191,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Cobertura duplex à venda no Alto, em Teresópolis, no primeiro pavimento, os ambientes foram planejados para proporcionar integração e bem-estar. A ampla sala de estar e jantar se conecta a uma varanda ensolarada, com vista livre para as montanhas. A área íntima conta com três quartos, sendo duas suítes, além de banheiro social e cozinha com armários planejados.\n\nO segundo pavimento oferece ainda mais versatilidade, com uma sala aconchegante, uma suíte privativa, cozinha de apoio, banheiro social e sauna a vapor, criando um espaço perfeito para receber amigos ou proporcionar mais privacidade à família.\n\nNa área externa, o destaque fica por conta da churrasqueira e do terraço com excelente incidência de sol durante todo o dia, ideal para momentos de lazer enquanto aprecia uma das paisagens mais icônicas de Teresópolis.\n\nO condomínio oferece uma infraestrutura completa, com portaria 24 horas, academia, sauna, salão de festas e duas vagas de garagem, garantindo segurança, conforto e praticidade para toda a família.\n\nAlém de toda a estrutura, a localização é um grande diferencial. Você estará próximo a restaurantes, supermercados, escolas, comércio variado e aos principais pontos do bairro Alto, unindo a tranquilidade da Serra dos Órgãos à conveniência de ter tudo por perto.\n\n#coberturaduplex #teresopolis #alto #condominiolejardin #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Cobertura duplex à venda no Alto, em Teresópolis, no primeiro pavimento, os ambientes foram planejados para proporcionar integração e bem-estar. A ampla sala de estar e jantar se conecta a uma varanda ensolarada, com vista livre para as montanhas. A área íntima conta com três quartos, sendo duas suítes, além de banheiro social e cozinha com armários planejados.\n\nO segundo pavimento oferece ainda mais versatilidade, com uma sala aconchegante, uma suíte privativa, cozinha de apoio, banheiro social e sauna a vapor, criando um espaço perfeito para receber amigos ou proporcionar mais privacidade à família.\n\nNa área externa, o destaque fica por conta da churrasqueira e do terraço com excelente incidência de sol durante todo o dia, ideal para momentos de lazer enquanto aprecia uma das paisagens mais icônicas de Teresópolis.\n\nO condomínio oferece uma infraestrutura completa, com portaria 24 horas, academia, sauna, salão de festas e duas vagas de garagem, garantindo segurança, conforto e praticidade para toda a família.\n\nAlém de toda a estrutura, a localização é um grande diferencial. Você estará próximo a restaurantes, supermercados, escolas, comércio variado e aos principais pontos do bairro Alto, unindo a tranquilidade da Serra dos Órgãos à conveniência de ter tudo por perto.\n\n#coberturaduplex #teresopolis #alto #condominiolejardin #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351660",
     "bairro": "Alto"
   },
   {
     "sku": "351691",
-    "name": "Casa à Venda com 2 suítes em Teresópolis",
+    "name": "Bela Casa com 3 Quartos (2 Suítes) e Garagem no Caxangá",
     "price": 870000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4154,13 +4227,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Caxangá. Distribuída em dois pavimentos, a residência conta com 3 quartos, sendo 2 suítes, além de uma ampla sala integrada à cozinha americana, criando um espaço perfeito para o convívio e para receber amigos e familiares. O acabamento em porcelanato, as amplas janelas em alumínio e a excelente ventilação natural proporcionam ainda mais conforto e sofisticação aos ambientes.\n\nA casa também dispõe de lavanderia, chuveiro a gás, conexão à internet e 1 vaga de garagem, reunindo praticidade para o dia a dia.\n\nPensando na segurança e tranquilidade dos moradores, o imóvel conta com câmeras de monitoramento, interfone e portão eletrônico.\n\nSua localização é outro grande diferencial. Situada em rua asfaltada, está próxima a escolas, hospitais, supermercados, shopping, transporte público e às principais vias de acesso da cidade, oferecendo toda a conveniência que sua rotina precisa.\n\n#kitnetconjugado #teresopolis #barroso #chuveiroagas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Caxangá. Distribuída em dois pavimentos, a residência conta com 3 quartos, sendo 2 suítes, além de uma ampla sala integrada à cozinha americana, criando um espaço perfeito para o convívio e para receber amigos e familiares. O acabamento em porcelanato, as amplas janelas em alumínio e a excelente ventilação natural proporcionam ainda mais conforto e sofisticação aos ambientes.\n\nA casa também dispõe de lavanderia, chuveiro a gás, conexão à internet e 1 vaga de garagem, reunindo praticidade para o dia a dia.\n\nPensando na segurança e tranquilidade dos moradores, o imóvel conta com câmeras de monitoramento, interfone e portão eletrônico.\n\nSua localização é outro grande diferencial. Situada em rua asfaltada, está próxima a escolas, hospitais, supermercados, shopping, transporte público e às principais vias de acesso da cidade, oferecendo toda a conveniência que sua rotina precisa.\n\n#kitnetconjugado #teresopolis #barroso #chuveiroagas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351691",
     "bairro": "Caxangá"
   },
   {
     "sku": "351804",
-    "name": "[OPORTUNIDADE] Terreno em condomínio com 1.070m² e vista para o Dedo de Deus",
+    "name": "Excelente Terreno em Condomínio de 1.070m² no Centro",
     "price": 220000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4188,13 +4261,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno de 1.070m² com Vista Direta do Dedo de Deus, no bairro Prata. Localizado em condomínio, oferece um espaço versátil para projetar sua casa ou chalé com tranquilidade e ótima localização na região serrana. Próximo a comércio e com fácil acesso ao centro (2 Km), alia praticidade e qualidade de vida em endereço valorizado. Ideal para quem busca praticidade, natureza e privacidade. Agende sua visita e venha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #prata #condominioquintadesantoantonio #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno de 1.070m² com Vista Direta do Dedo de Deus, no bairro Prata. Localizado em condomínio, oferece um espaço versátil para projetar sua casa ou chalé com tranquilidade e ótima localização na região serrana. Próximo a comércio e com fácil acesso ao centro (2 Km), alia praticidade e qualidade de vida em endereço valorizado. Ideal para quem busca praticidade, natureza e privacidade. Agende sua visita e venha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #prata #condominioquintadesantoantonio #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351804",
     "bairro": "Centro"
   },
   {
     "sku": "351892",
-    "name": "Mansão na Granja Comary com Piscina de Borda Infinita e Vista Panorâmica",
+    "name": "Magnífica Casa em Condomínio e Lazer Completo no Alto",
     "price": 3200000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -4224,13 +4297,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Localizada em um dos condomínios mais valorizados da Granja Comary, esta casa de alto padrão oferece conforto, privacidade e uma excelente integração com a natureza. Implantada em um terreno de 4.870 m², a propriedade reúne amplos espaços internos e uma área externa planejada para proporcionar qualidade de vida.\n\nCom aproximadamente 700 m² de área construída, a residência possui ambientes bem distribuídos e iluminados. No primeiro pavimento, a sala de estar, a sala de jantar e a sala de TV envidraçada criam espaços agradáveis para o convívio da família. A cozinha, equipada com cooktop e duas despensas, oferece praticidade para o dia a dia, enquanto uma suíte com banheira completa este pavimento.\n\nNo segundo andar, encontram-se o escritório e três suítes. Duas delas contam com closet e varanda, enquanto a suíte master dispõe de amplo closet, hidromassagem, sauna a vapor e uma varanda com vista para a natureza.\n\nA área externa foi planejada para momentos de lazer e convivência. A piscina de borda infinita com hidromassagem se integra ao jardim e ao amplo gramado, criando um ambiente agradável para aproveitar o clima da serra. O espaço gourmet é equipado com churrasqueira, ilha, cooktop, copa e lavabo, oferecendo toda a estrutura para receber familiares e amigos.\n\nO imóvel também conta com lavanderia, suíte de serviço, quatro vagas de garagem cobertas, amplo espaço para estacionamento e paisagismo cuidadosamente distribuído por toda a propriedade.\n\nLocalizada na Granja Comary, a residência oferece fácil acesso aos principais serviços da cidade e a tranquilidade de um dos bairros mais desejados de Teresópolis. Agende sua visita e conheça todos os detalhes desta propriedade.\n\n#casacondominio #teresopolis #carlosguinle #granjacomary #garagem\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Localizada em um dos condomínios mais valorizados da Granja Comary, esta casa de alto padrão oferece conforto, privacidade e uma excelente integração com a natureza. Implantada em um terreno de 4.870 m², a propriedade reúne amplos espaços internos e uma área externa planejada para proporcionar qualidade de vida.\n\nCom aproximadamente 700 m² de área construída, a residência possui ambientes bem distribuídos e iluminados. No primeiro pavimento, a sala de estar, a sala de jantar e a sala de TV envidraçada criam espaços agradáveis para o convívio da família. A cozinha, equipada com cooktop e duas despensas, oferece praticidade para o dia a dia, enquanto uma suíte com banheira completa este pavimento.\n\nNo segundo andar, encontram-se o escritório e três suítes. Duas delas contam com closet e varanda, enquanto a suíte master dispõe de amplo closet, hidromassagem, sauna a vapor e uma varanda com vista para a natureza.\n\nA área externa foi planejada para momentos de lazer e convivência. A piscina de borda infinita com hidromassagem se integra ao jardim e ao amplo gramado, criando um ambiente agradável para aproveitar o clima da serra. O espaço gourmet é equipado com churrasqueira, ilha, cooktop, copa e lavabo, oferecendo toda a estrutura para receber familiares e amigos.\n\nO imóvel também conta com lavanderia, suíte de serviço, quatro vagas de garagem cobertas, amplo espaço para estacionamento e paisagismo cuidadosamente distribuído por toda a propriedade.\n\nLocalizada na Granja Comary, a residência oferece fácil acesso aos principais serviços da cidade e a tranquilidade de um dos bairros mais desejados de Teresópolis. Agende sua visita e conheça todos os detalhes desta propriedade.\n\n#casacondominio #teresopolis #carlosguinle #granjacomary #garagem\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351892",
     "bairro": "Alto"
   },
   {
     "sku": "351900",
-    "name": "Chácara com 55.000 m², Lago, Pomar e Muita Natureza",
+    "name": "Lindo Sítio de 55.000m² com Área Verde Preservada em Boa União",
     "price": 550000,
     "cat": "Sítios & Rurais",
     "badge": "Destaque",
@@ -4260,13 +4333,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Chácara à venda em Teresópolis, no bairro Boa União. Com 55.000 m² de terreno, oferece privacidade, ar puro e muito espaço para lazer e cultivo. Destaques: poço artesiano, pomar com árvores frutíferas, gramado, lago e horta, garantindo água, sombra e colheitas o ano todo. Um refúgio para quem busca contato direto com a natureza, sem abrir mão do acesso à cidade. Ideal para moradia, fins de semana ou projetos rurais. Agende sua visita e conheça pessoalmente.\n\n#chacara #teresopolis #boauniao #pocoartesiano\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Chácara à venda em Teresópolis, no bairro Boa União. Com 55.000 m² de terreno, oferece privacidade, ar puro e muito espaço para lazer e cultivo. Destaques: poço artesiano, pomar com árvores frutíferas, gramado, lago e horta, garantindo água, sombra e colheitas o ano todo. Um refúgio para quem busca contato direto com a natureza, sem abrir mão do acesso à cidade. Ideal para moradia, fins de semana ou projetos rurais. Agende sua visita e conheça pessoalmente.\n\n#chacara #teresopolis #boauniao #pocoartesiano\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351900",
     "bairro": "Boa União"
   },
   {
     "sku": "351956",
-    "name": "Casa Duplex em Condomínio com 3 Suítes e Lazer Completo",
+    "name": "Linda Casa Duplex em Condomínio (3 Suítes) e Lazer Completo em Pimenteiras",
     "price": 1730000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -4296,13 +4369,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Localizada em condomínio de alto padrão em Teresópolis, esta casa duplex oferece conforto, praticidade e fácil acesso ao centro da cidade, a poucos minutos de toda a infraestrutura de comércio e serviços.\n\nNo primeiro pavimento, os ambientes sociais são amplos e bem integrados. A sala em dois ambientes conta com pé-direito duplo e lareira, criando um espaço agradável para receber familiares e amigos. A cozinha possui armários planejados, cooktop, coifa, forno embutido e bancada funcional. Neste pavimento também há um quarto com móveis planejados e ar-condicionado, banheiro social e área de serviço com banheiro e acesso externo.\n\nNo segundo pavimento, a área íntima oferece três suítes com armários planejados e ar-condicionado. A suíte master dispõe de varanda privativa, closet, hidromassagem e chuveiro duplo, proporcionando mais conforto no dia a dia. Uma ampla varanda complementa o andar superior.\n\nA área externa foi planejada para momentos de lazer e convivência, com jardim paisagístico, varandão com teto de vidro e vista livre, churrasqueira, duas vagas de garagem e quarto para guardados.\n\nO condomínio conta com portaria 24 horas, portão automático, interfone, piscina, playground, sauna a vapor e salão de festas, oferecendo segurança e infraestrutura completa para toda a família.\n\nUma excelente opção para quem busca morar em um condomínio com lazer, segurança e localização estratégica em Teresópolis.\n\nAgende sua visita e conheça todos os detalhes deste imóvel.\n\n#casacondominio #teresopolis #pimenteiras #goldenplace #chuveiroagas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Localizada em condomínio de alto padrão em Teresópolis, esta casa duplex oferece conforto, praticidade e fácil acesso ao centro da cidade, a poucos minutos de toda a infraestrutura de comércio e serviços.\n\nNo primeiro pavimento, os ambientes sociais são amplos e bem integrados. A sala em dois ambientes conta com pé-direito duplo e lareira, criando um espaço agradável para receber familiares e amigos. A cozinha possui armários planejados, cooktop, coifa, forno embutido e bancada funcional. Neste pavimento também há um quarto com móveis planejados e ar-condicionado, banheiro social e área de serviço com banheiro e acesso externo.\n\nNo segundo pavimento, a área íntima oferece três suítes com armários planejados e ar-condicionado. A suíte master dispõe de varanda privativa, closet, hidromassagem e chuveiro duplo, proporcionando mais conforto no dia a dia. Uma ampla varanda complementa o andar superior.\n\nA área externa foi planejada para momentos de lazer e convivência, com jardim paisagístico, varandão com teto de vidro e vista livre, churrasqueira, duas vagas de garagem e quarto para guardados.\n\nO condomínio conta com portaria 24 horas, portão automático, interfone, piscina, playground, sauna a vapor e salão de festas, oferecendo segurança e infraestrutura completa para toda a família.\n\nUma excelente opção para quem busca morar em um condomínio com lazer, segurança e localização estratégica em Teresópolis.\n\nAgende sua visita e conheça todos os detalhes deste imóvel.\n\n#casacondominio #teresopolis #pimenteiras #goldenplace #chuveiroagas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/351956",
     "bairro": "Pimenteiras"
   },
   {
     "sku": "352510",
-    "name": "Excelente oportunidade em Albuquerque – Teresópolis! Casa ampla e muito bem localizada, ideal para quem busca conforto, espaço e qualidade de vida.",
+    "name": "Belíssima Residência com 5 Quartos (3 Suítes) e Garagem em Albuquerque",
     "price": 1200000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4332,13 +4405,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Albuquerque. Em terreno de 232.000 m², conta com 5 quartos (3 suítes) e 7 vagas, ambientes integrados e ótima infraestrutura. Destaques: varanda gourmet, piscina privativa, lareira, hidromassagem, escritório, casa de caseiro, canil e pomar, além de vista para a montanha e amplo jardim. Conforto e segurança com internet, cabeamento estruturado, aquecimento e sistema de câmeras. Localização tranquila, rua asfaltada, perto de escolas, hospitais e vias de acesso. Agende sua visita.\n\n#casa #teresopolis #albuquerque #cabeamentoestruturado\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Albuquerque. Em terreno de 232.000 m², conta com 5 quartos (3 suítes) e 7 vagas, ambientes integrados e ótima infraestrutura. Destaques: varanda gourmet, piscina privativa, lareira, hidromassagem, escritório, casa de caseiro, canil e pomar, além de vista para a montanha e amplo jardim. Conforto e segurança com internet, cabeamento estruturado, aquecimento e sistema de câmeras. Localização tranquila, rua asfaltada, perto de escolas, hospitais e vias de acesso. Agende sua visita.\n\n#casa #teresopolis #albuquerque #cabeamentoestruturado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/352510",
     "bairro": "Albuquerque"
   },
   {
     "sku": "352582",
-    "name": "Linda casa com 5 quartos, 300m² por R$1.200.000 - Tijuca/Teresópolis",
+    "name": "Belíssima Residência com 5 Quartos (2 Suítes) e Garagem no Centro",
     "price": 1200000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4368,15 +4441,15 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Se você busca o equilíbrio perfeito entre a tranquilidade da Região Serrana e a praticidade urbana, esta é a oportunidade ideal. Localizada no tradicional bairro da Tijuca, em Teresópolis, esta casa destaca-se pelo excelente espaço interno e por sua localização privilegiada em uma rua sem saída, garantindo máxima privacidade, segurança e ausência de barulho de tráfego.\n\nA apenas 3 minutos do Centro da cidade, o imóvel oferece acesso rápido a todo o comércio local, escolas, bancos e restaurantes, sem abrir mão do clima residencial de montanha.\n\nCaracterísticas Principais:\nÁrea Privativa: Espaçosa e com ótima distribuição de ambientes.\n\nDormitórios: 5 quartos bem arejados, sendo 2 suítes (perfeito para famílias grandes ou para quem precisa de espaço para home office).\n\nVagas de Garagem: Garagem coberta para 2 carros.\n\nÁrea de Lazer: Espaço com churrasqueira, ideal para momentos de confraternização com amigos e familiares.\n\nDiferenciais:\nLocalização estratégica em rua residencial sem saída (tráfego apenas de moradores).\n\nProximidade imediata do Centro de Teresópolis.\n\nExcelente iluminação natural.\n\nGostou? Não perca essa oportunidade de morar bem na Serra!\nEntre em contato agora mesmo para receber mais informações.",
+    "description": "Se você busca o equilíbrio perfeito entre a tranquilidade da Região Serrana e a praticidade urbana, esta é a oportunidade ideal. Localizada no tradicional bairro da Tijuca, em Teresópolis, esta casa destaca-se pelo excelente espaço interno e por sua localização privilegiada em uma rua sem saída, garantindo máxima privacidade, segurança e ausência de barulho de tráfego.\n\nA apenas 3 minutos do Centro da cidade, o imóvel oferece acesso rápido a todo o comércio local, escolas, bancos e restaurantes, sem abrir mão do clima residencial de montanha.\n\nCaracterísticas Principais:\nÁrea Privativa: Espaçosa e com ótima distribuição de ambientes.\n\nDormitórios: 5 quartos bem arejados, sendo 2 suítes (perfeito para famílias grandes ou para quem precisa de espaço para home office).\n\nVagas de Garagem: Garagem coberta para 2 carros.\n\nÁrea de Lazer: Espaço com churrasqueira, ideal para momentos de confraternização com amigos e familiares.\n\nDiferenciais:\nLocalização estratégica em rua residencial sem saída (tráfego apenas de moradores).\n\nProximidade imediata do Centro de Teresópolis.\n\nExcelente iluminação natural.\n\nGostou? Não perca essa oportunidade de morar bem na Serra!\nEntre em contato agora mesmo para receber mais informações.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/352582",
     "bairro": "Centro"
   },
   {
     "sku": "352715",
-    "name": "Cobertura exclusiva no coração de Agriões – Teresópolis",
+    "name": "Cobertura de Alto Padrão com 3 Quartos (2 Suítes) e Espaço Gourmet em Agriões",
     "price": 1590000,
-    "cat": "Coberturas",
+    "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727143025/WhatsApp%20Image%202026-07-10%20at%2018.08.11%20%285%29-watermarked.webp",
     "images": [
@@ -4404,13 +4477,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Cobertura exclusiva no coração de Agriões – Teresópolis\n\nCom 233 m² de área privativa, esta cobertura reúne espaço, conforto e uma vista privilegiada em um dos bairros mais valorizados de Teresópolis.\n\nSão 3 quartos, sendo 2 suítes. A suíte master conta com móveis planejados e varanda privativa, integrada à varanda principal. A segunda suíte também possui acesso à varanda, proporcionando excelente ventilação e iluminação natural. O terceiro quarto é versátil e pode ser utilizado como dormitório, home office ou até mesmo uma confortável sala de cinema.\n\nA área social oferece uma ampla sala de estar com lareira, perfeita para aproveitar o clima de serra, além de uma cozinha espaçosa e lavanderia privativa, trazendo mais praticidade para o dia a dia.\n\nO grande destaque fica por conta da área de lazer privativa: um espaço gourmet com churrasqueira, jacuzzi e uma vista incrível para o Dedo de Deus, um dos cartões-postais mais famosos da cidade. O ambiente ainda conta com banheiro de apoio, garantindo mais conforto para receber amigos e familiares sem a necessidade de circulação pela área íntima do imóvel.\n\nO condomínio oferece estrutura de lazer com piscina e sauna, além de estar localizado no coração de Agriões, próximo aos principais comércios, serviços, restaurantes e escolas da cidade.\n\nInformações do imóvel:\n\n233 m² de área privativa\n3 quartos, sendo 2 suítes\nSuíte master com móveis planejados e varanda privativa\nCozinha ampla\nLavanderia privativa\nSala espaçosa com lareira\nEspaço gourmet com churrasqueira\nJacuzzi\nBanheiro de apoio na área gourmet\nVista para o Dedo de Deus\nCondomínio com piscina e sauna\n\nCondomínio: R$ 1.730/mês\nIPTU: R$ 4.500/ano\n\nUma cobertura para quem busca espaço, exclusividade e qualidade de vida em uma das melhores localizações de Teresópolis.",
+    "description": "Cobertura exclusiva no coração de Agriões – Teresópolis\n\nCom 233 m² de área privativa, esta cobertura reúne espaço, conforto e uma vista privilegiada em um dos bairros mais valorizados de Teresópolis.\n\nSão 3 quartos, sendo 2 suítes. A suíte master conta com móveis planejados e varanda privativa, integrada à varanda principal. A segunda suíte também possui acesso à varanda, proporcionando excelente ventilação e iluminação natural. O terceiro quarto é versátil e pode ser utilizado como dormitório, home office ou até mesmo uma confortável sala de cinema.\n\nA área social oferece uma ampla sala de estar com lareira, perfeita para aproveitar o clima de serra, além de uma cozinha espaçosa e lavanderia privativa, trazendo mais praticidade para o dia a dia.\n\nO grande destaque fica por conta da área de lazer privativa: um espaço gourmet com churrasqueira, jacuzzi e uma vista incrível para o Dedo de Deus, um dos cartões-postais mais famosos da cidade. O ambiente ainda conta com banheiro de apoio, garantindo mais conforto para receber amigos e familiares sem a necessidade de circulação pela área íntima do imóvel.\n\nO condomínio oferece estrutura de lazer com piscina e sauna, além de estar localizado no coração de Agriões, próximo aos principais comércios, serviços, restaurantes e escolas da cidade.\n\nInformações do imóvel:\n\n233 m² de área privativa\n3 quartos, sendo 2 suítes\nSuíte master com móveis planejados e varanda privativa\nCozinha ampla\nLavanderia privativa\nSala espaçosa com lareira\nEspaço gourmet com churrasqueira\nJacuzzi\nBanheiro de apoio na área gourmet\nVista para o Dedo de Deus\nCondomínio com piscina e sauna\n\nCondomínio: R$ 1.730/mês\nIPTU: R$ 4.500/ano\n\nUma cobertura para quem busca espaço, exclusividade e qualidade de vida em uma das melhores localizações de Teresópolis.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/352715",
     "bairro": "Agriões"
   },
   {
     "sku": "354057",
-    "name": "Terreno com 304m² dentro de condomínio à venda por R$ 300.000, Prata - Teresópolis/RJ",
+    "name": "Excelente Terreno em Condomínio de 304m² Pronto para Construir no Centro",
     "price": 300000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4440,13 +4513,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Se você está procurando o lugar perfeito para construir a casa dos seus sonhos, com total praticidade de construção e em harmonia com a natureza, sua busca acabou!  \n\nApresentamos este excelente lote com 304m², com topografia totalmente plana, o que reduz drasticamente os custos de fundação, movimentação de terra e agiliza o início da sua obra.\n\nLocalizado no prestigiado Condomínio Vale dos Pássaros, no bairro Prata, o lote une o privilégio de morar cercado por mais de 340.000m² de mata nativa preservada à conveniência de estar a apenas 5 minutos do Centro de Teresópolis. \n\nÉ a combinação perfeita entre o clima de montanha e a facilidade do dia a dia.\n\nVenha viver onde as pessoas escolhem passar as férias! Não perca a oportunidade de investir na qualidade de vida da sua família.\n\nAgende agora mesmo uma visita com um de nossos",
+    "description": "Se você está procurando o lugar perfeito para construir a casa dos seus sonhos, com total praticidade de construção e em harmonia com a natureza, sua busca acabou!\n\nApresentamos este excelente lote com 304m², com topografia totalmente plana, o que reduz drasticamente os custos de fundação, movimentação de terra e agiliza o início da sua obra.\n\nLocalizado no prestigiado Condomínio Vale dos Pássaros, no bairro Prata, o lote une o privilégio de morar cercado por mais de 340.000m² de mata nativa preservada à conveniência de estar a apenas 5 minutos do Centro de Teresópolis.\n\nÉ a combinação perfeita entre o clima de montanha e a facilidade do dia a dia.\n\nVenha viver onde as pessoas escolhem passar as férias! Não perca a oportunidade de investir na qualidade de vida da sua família.\n\nAgende agora mesmo uma visita com um de nossos\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/354057",
     "bairro": "Centro"
   },
   {
     "sku": "358413",
-    "name": "Apartamento 1 quarto, 36m², Centro — Av. Feliciano Sodré, com elevador",
+    "name": "Lindo Apartamento de 1 Quartos com Garagem no Centro",
     "price": 220000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -4476,13 +4549,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Sala e quarto de 36m² no Centro de Teresópolis — posição de fundos, silencioso, com elevador\n\nImóvel ideal para quem quer morar no ponto mais central da cidade com custo de manutenção baixo e zero necessidade de obra. Localizado na Av. Feliciano Sodré, no Edifício Club Turismo, o apartamento é voltado para os fundos do prédio, com vista para o jardim interno do condomínio — silêncio real, sem o ruído da avenida, e ótima ventilação natural o dia inteiro.\n\nO imóvel:\nSala ampla e clara, com recuo adicional junto à janela que acomoda perfeitamente mesa de jantar ou home office. Cozinha integrada à sala por bancada em granito, com armários aéreos e inferiores e área de serviço. Quarto com boa metragem, janela ampla com tela de proteção e espaço confortável para cama de casal e guarda-roupa. Banheiro social completo, com box blindex, gabinete, espelheira e revestimento do piso ao teto. Piso laminado na sala e no quarto, porcelanato na cozinha e no banheiro, forro em PVC. Tudo em excelente estado de conservação — pronto para morar.\n\nO prédio:\nCondomínio tradicional e bem cuidado, com elevador, portaria e amplo jardim interno. Não possui vaga de garagem — algo amplamente compensado pela localização, onde tudo se resolve a pé. Condomínio de apenas R$ 370/mês e IPTU de R$ 537 ao ano: custo de manutenção enxuto.\n\nA localização:\nAv. Feliciano Sodré, a via mais central de Teresópolis. A poucos passos de bancos, supermercados, farmácias, padarias, restaurantes, comércio em geral, órgãos públicos e pontos de ônibus para todos os bairros e para o Rio de Janeiro.\n\nIdeal para: primeiro imóvel, morador solo ou casal, uso como pied-à-terre na serra, aluguel por temporada ou investimento — imóveis compactos no Centro têm demanda constante de locação e alta liquidez de revenda.\n\nValores:\nCondomínio: R$ 370,00/mês\nIPTU: R$ 537,00/ano (2026 já pago)\n\nAceita financiamento bancário.",
+    "description": "Sala e quarto de 36m² no Centro de Teresópolis — posição de fundos, silencioso, com elevador\n\nImóvel ideal para quem quer morar no ponto mais central da cidade com custo de manutenção baixo e zero necessidade de obra. Localizado na Av. Feliciano Sodré, no Edifício Club Turismo, o apartamento é voltado para os fundos do prédio, com vista para o jardim interno do condomínio — silêncio real, sem o ruído da avenida, e ótima ventilação natural o dia inteiro.\n\nO imóvel:\nSala ampla e clara, com recuo adicional junto à janela que acomoda perfeitamente mesa de jantar ou home office. Cozinha integrada à sala por bancada em granito, com armários aéreos e inferiores e área de serviço. Quarto com boa metragem, janela ampla com tela de proteção e espaço confortável para cama de casal e guarda-roupa. Banheiro social completo, com box blindex, gabinete, espelheira e revestimento do piso ao teto. Piso laminado na sala e no quarto, porcelanato na cozinha e no banheiro, forro em PVC. Tudo em excelente estado de conservação — pronto para morar.\n\nO prédio:\nCondomínio tradicional e bem cuidado, com elevador, portaria e amplo jardim interno. Não possui vaga de garagem — algo amplamente compensado pela localização, onde tudo se resolve a pé. Condomínio de apenas R$ 370/mês e IPTU de R$ 537 ao ano: custo de manutenção enxuto.\n\nA localização:\nAv. Feliciano Sodré, a via mais central de Teresópolis. A poucos passos de bancos, supermercados, farmácias, padarias, restaurantes, comércio em geral, órgãos públicos e pontos de ônibus para todos os bairros e para o Rio de Janeiro.\n\nIdeal para: primeiro imóvel, morador solo ou casal, uso como pied-à-terre na serra, aluguel por temporada ou investimento — imóveis compactos no Centro têm demanda constante de locação e alta liquidez de revenda.\n\nValores:\nCondomínio: R$ 370,00/mês\nIPTU: R$ 537,00/ano (2026 já pago)\n\nAceita financiamento bancário.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/358413",
     "bairro": "Centro"
   },
   {
     "sku": "358578",
-    "name": "Apartamento à venda na Várzea – Teresópolis/RJ",
+    "name": "Excelente Apartamento de 3 Quartos com Garagem na Várzea",
     "price": 500000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -4512,13 +4585,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda na Várzea – Teresópolis/RJ\n\nMore em um dos bairros mais valorizados e desejados de Teresópolis. Localizado na Várzea, este apartamento oferece praticidade para o dia a dia, com fácil acesso ao comércio, supermercados, farmácias, escolas, bancos, restaurantes e diversos serviços, permitindo fazer grande parte das atividades sem precisar tirar o carro da garagem.\n\nO imóvel possui uma excelente planta, com ambientes amplos, bem iluminados e arejados. A varanda proporciona um espaço agradável para momentos de descanso. A sala é dividida em dois ambientes, ideal para receber amigos e familiares com conforto.\n\nNa área íntima, são 3 quartos com armários embutidos, oferecendo praticidade e ótimo aproveitamento dos espaços. O apartamento conta ainda com 2 banheiros sociais, cozinha espaçosa e funcional, além de uma área de serviço independente.\n\nO condomínio dispõe de elevador, vaga de garagem, portão eletrônico e sistema de monitoramento por câmeras, proporcionando mais comodidade e segurança aos moradores.\n\nUma excelente oportunidade para quem busca morar em uma localização privilegiada ou investir em um imóvel com grande potencial de valorização.\n\nCaracterísticas do imóvel:\n\nVaranda;\nSala em 2 ambientes;\n3 quartos com armários embutidos;\n2 banheiros sociais;\nCozinha;\nÁrea de serviço;\nElevador;\nVaga de garagem;\nPortão eletrônico;\nSistema de câmeras.\n\nValor de venda: R$ 500.000,00.",
+    "description": "Apartamento à venda na Várzea – Teresópolis/RJ\n\nMore em um dos bairros mais valorizados e desejados de Teresópolis. Localizado na Várzea, este apartamento oferece praticidade para o dia a dia, com fácil acesso ao comércio, supermercados, farmácias, escolas, bancos, restaurantes e diversos serviços, permitindo fazer grande parte das atividades sem precisar tirar o carro da garagem.\n\nO imóvel possui uma excelente planta, com ambientes amplos, bem iluminados e arejados. A varanda proporciona um espaço agradável para momentos de descanso. A sala é dividida em dois ambientes, ideal para receber amigos e familiares com conforto.\n\nNa área íntima, são 3 quartos com armários embutidos, oferecendo praticidade e ótimo aproveitamento dos espaços. O apartamento conta ainda com 2 banheiros sociais, cozinha espaçosa e funcional, além de uma área de serviço independente.\n\nO condomínio dispõe de elevador, vaga de garagem, portão eletrônico e sistema de monitoramento por câmeras, proporcionando mais comodidade e segurança aos moradores.\n\nUma excelente oportunidade para quem busca morar em uma localização privilegiada ou investir em um imóvel com grande potencial de valorização.\n\nCaracterísticas do imóvel:\n\nVaranda;\nSala em 2 ambientes;\n3 quartos com armários embutidos;\n2 banheiros sociais;\nCozinha;\nÁrea de serviço;\nElevador;\nVaga de garagem;\nPortão eletrônico;\nSistema de câmeras.\n\nValor de venda: R$ 500.000,00.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/358578",
     "bairro": "Várzea"
   },
   {
     "sku": "359706",
-    "name": "Casa à venda em Três Córregos – Teresópolis",
+    "name": "Belíssima Residência com 5 Quartos (2 Suítes) e Quintal Amplo em Teresópolis",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4548,13 +4621,13 @@ export const allImoveisData: ProductItem[] = [
       "Varanda com vista panorâmica",
       "Amplo jardim e quintal"
     ],
-    "description": "Casa à venda em Três Córregos – Teresópolis\n\nUma propriedade ampla, confortável e cercada pelo verde, perfeita para quem busca qualidade de vida, espaço e lazer em meio à natureza.\n\nSão 5 quartos, sendo 2 suítes, e 6 vagas, além de uma estrutura completa para aproveitar cada momento:\n\n• Piscina\n• Churrasqueira com forno de pizza\n• Lareira\n• Varanda com vista panorâmica\n• Amplo jardim e quintal\n• Pomar e horta\n• Cozinha espaçosa com armários\n• Lavanderia e despensa\n• Dependência de empregados\n• Casa de caseiro\n• Canil\n• Acesso para pessoas com deficiência\n\nUma casa completa, com ambientes generosos e muito verde, ideal tanto para moradia quanto para quem deseja ter um refúgio em Teresópolis.\n\n📍 Três Córregos – Teresópolis/RJ\n🏡 5 quartos | 2 suítes | 6 vagas\n\nAgende sua visita e venha conhecer pessoalmente.\n\nValores sujeitos a alteração sem aviso prévio. Consulte disponibilidade.",
+    "description": "Casa à venda em Três Córregos – Teresópolis\n\nUma propriedade ampla, confortável e cercada pelo verde, perfeita para quem busca qualidade de vida, espaço e lazer em meio à natureza.\n\nSão 5 quartos, sendo 2 suítes, e 6 vagas, além de uma estrutura completa para aproveitar cada momento:\n\n• Piscina\n• Churrasqueira com forno de pizza\n• Lareira\n• Varanda com vista panorâmica\n• Amplo jardim e quintal\n• Pomar e horta\n• Cozinha espaçosa com armários\n• Lavanderia e despensa\n• Dependência de empregados\n• Casa de caseiro\n• Canil\n• Acesso para pessoas com deficiência\n\nUma casa completa, com ambientes generosos e muito verde, ideal tanto para moradia quanto para quem deseja ter um refúgio em Teresópolis.\n\n📍 Três Córregos – Teresópolis/RJ\n🏡 5 quartos | 2 suítes | 6 vagas\n\nAgende sua visita e venha conhecer pessoalmente.\n\nValores sujeitos a alteração sem aviso prévio. Consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/359706",
     "bairro": "Teresópolis"
   },
   {
     "sku": "360152",
-    "name": "Casa Moderna",
+    "name": "Linda Casa em Condomínio com 3 Quartos (1 Suíte) e Piscina no Alto",
     "price": 1800000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -4583,13 +4656,13 @@ export const allImoveisData: ProductItem[] = [
       "O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada !",
       "Terreno amplo e bem dividido."
     ],
-    "description": "🔐 VENDA - Casa Green Valey , imóvel de alto padrão dentro de condomínio fechado\n\n📍Green Valey - Teresópolis/RJ \n\n💰 Valor do investimento R$ 1.800.000,00\n\n💲 Valor do IPTU - R$ 200,00 mensal\n\n📐 161,56m2 - Área construída \n📏 660,00m2 - Área total \n\n✍🏻 DESCRIÇÃO DO IMÓVEL \n\nSala com lareira dividida em dois ambientes / varanda toda em madeira  / 03 quartos sendo  02 quarto e 01 suíte, com banheira  em alvenaria / banheiro social  e Blindex / cozinha  ampla no conceito aberto integrando , área de estar e jantar / Vista Livre para o vale \n\n🍃 PARTE EXTERNA \n\nJardim  / piscina / Estacionamento para 2 carros\n\n⚜️ DIFERENCIAL \n\n• Imóvel amplo, ensolarado e com muita área verde; \n• Bairro tranquilo, com alta valorização imobiliária;\n• O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada ! \n• Terreno amplo e bem dividido.",
+    "description": "🔐 VENDA - Casa Green Valey , imóvel de alto padrão dentro de condomínio fechado\n\n📍Green Valey - Teresópolis/RJ\n\n💰 Valor do investimento R$ 1.800.000,00\n\n💲 Valor do IPTU - R$ 200,00 mensal\n\n📐 161,56m2 - Área construída\n📏 660,00m2 - Área total\n\n✍🏻 DESCRIÇÃO DO IMÓVEL\n\nSala com lareira dividida em dois ambientes / varanda toda em madeira  / 03 quartos sendo  02 quarto e 01 suíte, com banheira  em alvenaria / banheiro social  e Blindex / cozinha  ampla no conceito aberto integrando , área de estar e jantar / Vista Livre para o vale\n\n🍃 PARTE EXTERNA\n\nJardim  / piscina / Estacionamento para 2 carros\n\n⚜️ DIFERENCIAL\n\n• Imóvel amplo, ensolarado e com muita área verde;\n• Bairro tranquilo, com alta valorização imobiliária;\n• O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada !\n• Terreno amplo e bem dividido.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/360152",
     "bairro": "Alto"
   },
   {
     "sku": "360168",
-    "name": "Casa Comary",
+    "name": "Belíssima Residência com 4 Quartos (3 Suítes) e Garagem no Alto",
     "price": 3290000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -4619,13 +4692,13 @@ export const allImoveisData: ProductItem[] = [
       "O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada !",
       "Terreno amplo e bem dividido."
     ],
-    "description": "🔐 VENDA - Casa Comary , imóvel de alto padrão. \n\n📍Comary - Teresópolis/RJ \n\n💰 Valor do investimento R$ 3.290.000,00\n\n💲 Valor do IPTU - R$ 5000,00/ano \n\n📐 400,00m2 - Área construída \n📏 547,00m2 - Área total \n\n✍🏻 DESCRIÇÃO DO IMÓVEL \n\nSala com lareira dividida em dois ambientes / varanda para os dois lados da casa  / 04 quartos sendo  01 quarto e 03 suítes, uma delas master com closet / banheiro social  e Blindex / cozinha  ampla  / Área de serviço ampla com acesso direto para garagem  / banheiro de serviço / quarto de guardados / 2 salões na parte inferior totalmente fechadas com portas e janelas de vidro\n\n🍃 PARTE EXTERNA \n\nJardim  / piscina / ducha  / área gourmet com churrasqueira e ilha central / banheiro /  Garagem para 4 carros \n\n⚜️ DIFERENCIAL \n\n• Imóvel amplo, ensolarado e com muita área verde; \n• Próximo a comércios, polos gastronômico, ponto de ônibus \n• Bairro tranquilo, com alta valorização imobiliária;\n• O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada ! \n• Terreno amplo e bem dividido.",
+    "description": "🔐 VENDA - Casa Comary , imóvel de alto padrão.\n\n📍Comary - Teresópolis/RJ\n\n💰 Valor do investimento R$ 3.290.000,00\n\n💲 Valor do IPTU - R$ 5000,00/ano\n\n📐 400,00m2 - Área construída\n📏 547,00m2 - Área total\n\n✍🏻 DESCRIÇÃO DO IMÓVEL\n\nSala com lareira dividida em dois ambientes / varanda para os dois lados da casa  / 04 quartos sendo  01 quarto e 03 suítes, uma delas master com closet / banheiro social  e Blindex / cozinha  ampla  / Área de serviço ampla com acesso direto para garagem  / banheiro de serviço / quarto de guardados / 2 salões na parte inferior totalmente fechadas com portas e janelas de vidro\n\n🍃 PARTE EXTERNA\n\nJardim  / piscina / ducha  / área gourmet com churrasqueira e ilha central / banheiro /  Garagem para 4 carros\n\n⚜️ DIFERENCIAL\n\n• Imóvel amplo, ensolarado e com muita área verde;\n• Próximo a comércios, polos gastronômico, ponto de ônibus\n• Bairro tranquilo, com alta valorização imobiliária;\n• O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada !\n• Terreno amplo e bem dividido.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/360168",
     "bairro": "Alto"
   },
   {
     "sku": "360627",
-    "name": "Casa Próxima ao centro",
+    "name": "Bela Casa com 3 Quartos e Quintal Amplo em Pimenteiras",
     "price": 750000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4655,13 +4728,13 @@ export const allImoveisData: ProductItem[] = [
       "Cozinha;",
       "Garagem."
     ],
-    "description": "🏡 Casa  Próximo ao Centro 3 Quartos com Amplo Terreno de 450m² na Pimenteiras – Teresópolis/RJ\n\nA Casa que você estava procurando está aqui !\n\nRecém-reformada, casa com uma boa disposição dos cômodos , com várias possibilidades de expansão, esse é aquele imóvel de construção sólida para viver com sua família !\n\nO imóvel é composto por:\n\n✔ Primeiro pavimento:\n\n- Sala ampla com varanda;\n- 1 quarto;\n- Banheiro social;\n- Cozinha;\n- Garagem.\n\n✔ Pavimento inferior:\n\n- Sala  com lareira;\n- 2 quartos;\n- Banheiro social.\n\n✔ Área externa:\n\n- Área de serviço coberta;\n- Banheiro de apoio;\n- Amplo quintal;\n- Excelente terreno com espaço para lazer, jardim, piscina ou futuras ampliações.\n\n📐 Área do terreno: 450m²\n📐 Área construída: 118,65m²\n\n💰 Valor: R$ 750.000,00",
+    "description": "🏡 Casa  Próximo ao Centro 3 Quartos com Amplo Terreno de 450m² na Pimenteiras – Teresópolis/RJ\n\nA Casa que você estava procurando está aqui !\n\nRecém-reformada, casa com uma boa disposição dos cômodos , com várias possibilidades de expansão, esse é aquele imóvel de construção sólida para viver com sua família !\n\nO imóvel é composto por:\n\n✔ Primeiro pavimento:\n\n- Sala ampla com varanda;\n- 1 quarto;\n- Banheiro social;\n- Cozinha;\n- Garagem.\n\n✔ Pavimento inferior:\n\n- Sala  com lareira;\n- 2 quartos;\n- Banheiro social.\n\n✔ Área externa:\n\n- Área de serviço coberta;\n- Banheiro de apoio;\n- Amplo quintal;\n- Excelente terreno com espaço para lazer, jardim, piscina ou futuras ampliações.\n\n📐 Área do terreno: 450m²\n📐 Área construída: 118,65m²\n\n💰 Valor: R$ 750.000,00\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/360627",
     "bairro": "Pimenteiras"
   },
   {
     "sku": "360982",
-    "name": "Terreno em Teresópolis",
+    "name": "Excelente Terreno de 170m² no Centro",
     "price": 90000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4691,13 +4764,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Viva o melhor de Teresópolis neste bairro tranquilo Poço dos Peixes.  Terreno de 170 m²  . Clima de montanha e muito verde para relaxar e receber amigos. Morar aqui é ter segurança e tranquilidade, fácil acesso ao Centro, comércio e serviços. Um refúgio com qualidade de vida e ótimo potencial de valorização. Gostou? Entre em contato e agende sua visita hoje mesmo.\n\n#Teresópolis #Natureza #Segurança #QualidadeDeVida #Imóveis #Oportunidade #RJ",
+    "description": "Viva o melhor de Teresópolis neste bairro tranquilo Poço dos Peixes.  Terreno de 170 m²  . Clima de montanha e muito verde para relaxar e receber amigos. Morar aqui é ter segurança e tranquilidade, fácil acesso ao Centro, comércio e serviços. Um refúgio com qualidade de vida e ótimo potencial de valorização. Gostou? Entre em contato e agende sua visita hoje mesmo.\n\n#Teresópolis #Natureza #Segurança #QualidadeDeVida #Imóveis #Oportunidade #RJ\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/360982",
     "bairro": "Centro"
   },
   {
     "sku": "361253",
-    "name": "Terreno Teresópolis com vista, tranquilidade e alto potencial de valorização",
+    "name": "Excelente Terreno em Condomínio Pronto para Construir no Alto",
     "price": 110000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4727,13 +4800,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis RJ, em condomínio com vista, tranquilidade e excelente potencial de valorização. Localizado em bairro em crescimento, com acesso pela TereFri e próximo a pesque e pague, polo gastronômico e vinícolas. Uma oportunidade para construir chalé, casa.  Seu refúgio na serra ou investir em uma região urbana, turística e cheia de experiências. Entre em contato e agende uma visita.",
+    "description": "Terreno à venda em Teresópolis RJ, em condomínio com vista, tranquilidade e excelente potencial de valorização. Localizado em bairro em crescimento, com acesso pela TereFri e próximo a pesque e pague, polo gastronômico e vinícolas. Uma oportunidade para construir chalé, casa.  Seu refúgio na serra ou investir em uma região urbana, turística e cheia de experiências. Entre em contato e agende uma visita.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/361253",
     "bairro": "Alto"
   },
   {
     "sku": "361892",
-    "name": "Village dos Alpes: viva a serra, gere renda e transforme seu sonho em um negócio pronto para crescer",
+    "name": "Bela Casa em Teresópolis",
     "price": 780000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4763,13 +4836,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Imagine acordar cercado pela natureza, respirar ar puro, ouvir o silêncio da serra e, ao mesmo tempo, estar à frente de um empreendimento com potencial para gerar renda e crescer. Esse é o Village dos Alpes, uma propriedade especial para quem deseja unir qualidade de vida, hospitalidade e investimento em um só lugar.Com 4.000 m² de terreno, distribuídos em platôs que valorizam o aproveitamento da área, o imóvel oferece um cenário ideal para viver momentos de tranquilidade e desenvolver um projeto de hospedagem cada vez mais completo. A propriedade já conta com um chalé de 55 m² pronto e em pleno funcionamento, criando a possibilidade de começar — ou dar continuidade — a uma operação de hospedagem com charme, privacidade e conexão com a natureza.   Força da oportunidade O que ela representa\nRenda em andamento Um chalé de 55 m² já está pronto e em pleno funcionamento, com potencial de continuidade na hospedagem.\nExpansão encaminhada O segundo chalé possui aproximadamente 60% da obra concluída, reduzindo a distância até a ampliação do projeto.\nLiberdade para crescer Cerca de 2.000 m² no 3º platô permitem estudar novas construções e experiências para os hóspedes.",
+    "description": "Imagine acordar cercado pela natureza, respirar ar puro, ouvir o silêncio da serra e, ao mesmo tempo, estar à frente de um empreendimento com potencial para gerar renda e crescer. Esse é o Village dos Alpes, uma propriedade especial para quem deseja unir qualidade de vida, hospitalidade e investimento em um só lugar.Com 4.000 m² de terreno, distribuídos em platôs que valorizam o aproveitamento da área, o imóvel oferece um cenário ideal para viver momentos de tranquilidade e desenvolver um projeto de hospedagem cada vez mais completo. A propriedade já conta com um chalé de 55 m² pronto e em pleno funcionamento, criando a possibilidade de começar — ou dar continuidade — a uma operação de hospedagem com charme, privacidade e conexão com a natureza.   Força da oportunidade O que ela representa\nRenda em andamento Um chalé de 55 m² já está pronto e em pleno funcionamento, com potencial de continuidade na hospedagem.\nExpansão encaminhada O segundo chalé possui aproximadamente 60% da obra concluída, reduzindo a distância até a ampliação do projeto.\nLiberdade para crescer Cerca de 2.000 m² no 3º platô permitem estudar novas construções e experiências para os hóspedes.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/361892",
     "bairro": "Teresópolis"
   },
   {
     "sku": "362585",
-    "name": "Mini Sitio Urbano",
+    "name": "Belíssima Residência com 4 Quartos (1 Suíte) e Garagem no Golfe",
     "price": 1800000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4799,13 +4872,13 @@ export const allImoveisData: ProductItem[] = [
       "O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada !",
       "Terreno amplo e bem dividido."
     ],
-    "description": "🔐 VENDA - Mini Sitio Urbano  \n\n📍Golfe - Teresópolis/RJ \n\n💰 Valor do investimento R$ 1.800.000,00\n\n💲 Valor do IPTU - R$ 8041,00/ano \n\n📐 400,00m2 - Área construída \n📏 4400,00m2 - Área total \n\n✍🏻 DESCRIÇÃO DO IMÓVEL \n\nSala com lareira dividida em dois ambientes/ Sala de Jantar /Sala com varanda para os dois lados da casa  / 04 quartos sendo  01 Suite e 03 Quartos ,  / banheiro social   / cozinha  ampla  / Área de serviço ampla com acesso direto para garagem  / banheiro de serviço / quarto de guardados / Churrasqueira Coberta / \n\n🍃 PARTE EXTERNA \n\nJardim  /   ducha  / área com churrasqueira / banheiro /  Garagem para 2 carros \n\n⚜️ DIFERENCIAL \n\n• Imóvel amplo, ensolarado e com muita área verde; \n• Próximo a comércios, polos gastronômico, ponto de ônibus \n• Bairro tranquilo, com alta valorização imobiliária;\n• O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada ! \n• Terreno amplo e bem dividido. \n* Casa de Hospede totalmente independente com 2 quartos / Sala/ Banheiro / Cozinha/ Área de Serviço / Espaço Gourmet com churrasqueira , forno e fogão a Lenha",
+    "description": "🔐 VENDA - Mini Sitio Urbano\n\n📍Golfe - Teresópolis/RJ\n\n💰 Valor do investimento R$ 1.800.000,00\n\n💲 Valor do IPTU - R$ 8041,00/ano\n\n📐 400,00m2 - Área construída\n📏 4400,00m2 - Área total\n\n✍🏻 DESCRIÇÃO DO IMÓVEL\n\nSala com lareira dividida em dois ambientes/ Sala de Jantar /Sala com varanda para os dois lados da casa  / 04 quartos sendo  01 Suite e 03 Quartos ,  / banheiro social   / cozinha  ampla  / Área de serviço ampla com acesso direto para garagem  / banheiro de serviço / quarto de guardados / Churrasqueira Coberta /\n\n🍃 PARTE EXTERNA\n\nJardim  /   ducha  / área com churrasqueira / banheiro /  Garagem para 2 carros\n\n⚜️ DIFERENCIAL\n\n• Imóvel amplo, ensolarado e com muita área verde;\n• Próximo a comércios, polos gastronômico, ponto de ônibus\n• Bairro tranquilo, com alta valorização imobiliária;\n• O imóvel é muito convidativo , para os amantes de uma construção sólida e bem planejada !\n• Terreno amplo e bem dividido.\n* Casa de Hospede totalmente independente com 2 quartos / Sala/ Banheiro / Cozinha/ Área de Serviço / Espaço Gourmet com churrasqueira , forno e fogão a Lenha\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/362585",
     "bairro": "Golfe"
   },
   {
     "sku": "362708",
-    "name": "Apartamento 3 quartos à venda em Agriões, Teresópolis — 122 m² com lazer completo",
+    "name": "Apartamento de Alto Padrão de 3 Quartos com Garagem em Agriões",
     "price": 1050000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -4835,13 +4908,13 @@ export const allImoveisData: ProductItem[] = [
       "Cozinha com armários sob medida e bancada em granito",
       "Área de serviço independente"
     ],
-    "description": "Apartamento à venda no Agriões, o bairro mais valorizado de Teresópolis/RJ, no tradicional Edifício Serra Verde (Rua Wancler Fonseca). São aproximadamente 122 m² de área construída, com planta ampla e muita luz natural.\n\nO IMÓVEL:\n• Sala ampla em dois ambientes com varanda\n• 3 quartos com boa iluminação, parte com armários planejados\n• Banheiro social com box e bancada\n• Cozinha com armários sob medida e bancada em granito\n• Área de serviço independente\n• Piso em madeira nos ambientes principais\n• Esquadrias de madeira com venezianas\n• Vaga de garagem e elevador\n\nO CONDOMÍNIO:\n• Piscina externa com deck de madeira\n• Piscina térmica coberta\n• Sauna Seca\n• Sauna Vapor\n• Salão de festas\n• Churrasqueira e Área Gourmet\n• Playground e pátio de convivência\n• Salão de jogos\n• Jardins amplos\n• Portaria\n\nLOCALIZAÇÃO:\nO Agriões é bairro nobre e central de Teresópolis: ruas tranquilas e arborizadas, a poucos minutos do centro, de supermercados, restaurantes, escolas e serviços. Teresópolis fica na Região Serrana do Rio de Janeiro, a cerca de 90 km da capital, com clima ameno de montanha e a natureza do Parque Nacional da Serra dos Órgãos — perfeito para morar com qualidade de vida ou como refúgio de fim de semana.\n\nApartamento pronto para morar. Agende sua visita!",
+    "description": "Apartamento à venda no Agriões, o bairro mais valorizado de Teresópolis/RJ, no tradicional Edifício Serra Verde (Rua Wancler Fonseca). São aproximadamente 122 m² de área construída, com planta ampla e muita luz natural.\n\nO IMÓVEL:\n• Sala ampla em dois ambientes com varanda\n• 3 quartos com boa iluminação, parte com armários planejados\n• Banheiro social com box e bancada\n• Cozinha com armários sob medida e bancada em granito\n• Área de serviço independente\n• Piso em madeira nos ambientes principais\n• Esquadrias de madeira com venezianas\n• Vaga de garagem e elevador\n\nO CONDOMÍNIO:\n• Piscina externa com deck de madeira\n• Piscina térmica coberta\n• Sauna Seca\n• Sauna Vapor\n• Salão de festas\n• Churrasqueira e Área Gourmet\n• Playground e pátio de convivência\n• Salão de jogos\n• Jardins amplos\n• Portaria\n\nLOCALIZAÇÃO:\nO Agriões é bairro nobre e central de Teresópolis: ruas tranquilas e arborizadas, a poucos minutos do centro, de supermercados, restaurantes, escolas e serviços. Teresópolis fica na Região Serrana do Rio de Janeiro, a cerca de 90 km da capital, com clima ameno de montanha e a natureza do Parque Nacional da Serra dos Órgãos — perfeito para morar com qualidade de vida ou como refúgio de fim de semana.\n\nApartamento pronto para morar. Agende sua visita!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/362708",
     "bairro": "Agriões"
   },
   {
     "sku": "362859",
-    "name": "Vallee Verte Residencial",
+    "name": "Vallee Verte Residencial: Terreno Exclusivo em Condomínio de Alto Padrão",
     "price": 460000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4866,13 +4939,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "🌿 Lotes residenciais de alto padrão\n🏞️ Natureza, privacidade e lazer completo\n📍 Green Valley – Teresópolis/RJ",
+    "description": "🌿 Lotes residenciais de alto padrão\n🏞️ Natureza, privacidade e lazer completo\n📍 Green Valley – Teresópolis/RJ\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/362859",
     "bairro": "Green Valley"
   },
   {
     "sku": "363002",
-    "name": "Casa em Teresópolis com piscina, vista para montanhas e potencial para construção de chalés",
+    "name": "Casa Aconchegante com 2 Quartos em Teresópolis",
     "price": 480000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4902,13 +4975,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa com piscina, vista para as montanhas e potencial para chalés.\nCasa acolhedora com 2 quartos e varanda ,  2 banheiros, salas de estar e jantar, cozinha, área de serviço e varanda ampla. Possui churrasqueira, piscina, contato com a natureza e uma linda vista para as montanhas. O terreno oferece excelente potencial para construção de chalés, sendo ideal para morar, descansar ou investir.\nContato: Kelly Estrela         Habittat House (21) 97890-6226",
+    "description": "Casa com piscina, vista para as montanhas e potencial para chalés.\nCasa acolhedora com 2 quartos e varanda ,  2 banheiros, salas de estar e jantar, cozinha, área de serviço e varanda ampla. Possui churrasqueira, piscina, contato com a natureza e uma linda vista para as montanhas. O terreno oferece excelente potencial para construção de chalés, sendo ideal para morar, descansar ou investir.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/363002",
     "bairro": "Teresópolis"
   },
   {
     "sku": "364646",
-    "name": "Terreno 'Residencial 550m² no bairro de Alburquerque",
+    "name": "Terreno Totalmente Plano de 500m² Pronto para Construir em Albuquerque",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4938,13 +5011,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Albuquerque. São 500 m² planos, gramado, com muro e grade, em rua asfaltada. Conta com poço artesiano e entorno com escolas, hospitais, shopping, transporte público e fácil acesso às principais vias. Ótimo para construir com tranquilidade em região valorizada e cercada pela natureza. Excelente opção para investir ou erguer a casa dos sonhos. Agende sua visita.\n\n#terreno #teresopolis #albuquerque #gramado\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Albuquerque. São 500 m² planos, gramado, com muro e grade, em rua asfaltada. Conta com poço artesiano e entorno com escolas, hospitais, shopping, transporte público e fácil acesso às principais vias. Ótimo para construir com tranquilidade em região valorizada e cercada pela natureza. Excelente opção para investir ou erguer a casa dos sonhos. Agende sua visita.\n\n#terreno #teresopolis #albuquerque #gramado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/364646",
     "bairro": "Albuquerque"
   },
   {
     "sku": "365568",
-    "name": "Qualidade de Vida em Teresópolis: 2 Quartos em Condomínio Privativo",
+    "name": "Charmosa Casa Linear em Condomínio com 2 Quartos e Espaço Gourmet em Teresópolis",
     "price": 580000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -4974,13 +5047,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Encantadora casa linear, ideal para quem busca conforto e praticidade com 2 quartos, sendo uma suíte, este imóvel oferece espaços amplos e bem iluminados. A sala integrada à cozinha americana proporciona um ambiente perfeito para momentos em família e com amigos.\n\nO destaque da casa fica por conta da área externa, onde você encontrará uma deliciosa churrasqueira, um fogão a lenha e um forno a lenha, perfeito para reunir a família em incríveis almoços e jantares, com aquele toque especial das refeições caseiras.\n\nO terreno conta com um lindo jardim, criando um espaço relaxante e harmonioso. Além disso, o condomínio oferece uma infraestrutura completa, incluindo uma horta compartilhada, onde você pode cultivar seus próprios temperos e verduras.\n\nEsta é a oportunidade perfeita para viver com qualidade, cercado pela natureza e em um ambiente familiar. Venha conhecer e se encantar por cada detalhe deste imóvel que pode ser o seu próxima lar.",
+    "description": "Encantadora casa linear, ideal para quem busca conforto e praticidade com 2 quartos, sendo uma suíte, este imóvel oferece espaços amplos e bem iluminados. A sala integrada à cozinha americana proporciona um ambiente perfeito para momentos em família e com amigos.\n\nO destaque da casa fica por conta da área externa, onde você encontrará uma deliciosa churrasqueira, um fogão a lenha e um forno a lenha, perfeito para reunir a família em incríveis almoços e jantares, com aquele toque especial das refeições caseiras.\n\nO terreno conta com um lindo jardim, criando um espaço relaxante e harmonioso. Além disso, o condomínio oferece uma infraestrutura completa, incluindo uma horta compartilhada, onde você pode cultivar seus próprios temperos e verduras.\n\nEsta é a oportunidade perfeita para viver com qualidade, cercado pela natureza e em um ambiente familiar. Venha conhecer e se encantar por cada detalhe deste imóvel que pode ser o seu próxima lar.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/365568",
     "bairro": "Teresópolis"
   },
   {
     "sku": "365690",
-    "name": "Lote Alto Padrão",
+    "name": "Excelente Terreno de 1.500m² Pronto para Construir no Parque do Imbuí",
     "price": 650000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5010,13 +5083,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno à venda em Teresópolis, no bairro Parque do Imbui. Com 1.500 m², é ideal para tirar do papel seu projeto de casa ou refúgio, em região tranquila e valorizada. Vizinhança arborizada, boa insolação e fácil acesso a comércios, escolas e ao centro garantem praticidade no dia a dia. Uma oportunidade para construir com qualidade de vida na serra e proximidade da natureza. Agende sua visita e venha conhecer pessoalmente.\n\n#terreno #teresopolis #parquedoimbui #venda\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno à venda em Teresópolis, no bairro Parque do Imbui. Com 1.500 m², é ideal para tirar do papel seu projeto de casa ou refúgio, em região tranquila e valorizada. Vizinhança arborizada, boa insolação e fácil acesso a comércios, escolas e ao centro garantem praticidade no dia a dia. Uma oportunidade para construir com qualidade de vida na serra e proximidade da natureza. Agende sua visita e venha conhecer pessoalmente.\n\n#terreno #teresopolis #parquedoimbui #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/365690",
     "bairro": "Parque do Imbuí"
   },
   {
     "sku": "365785",
-    "name": "Lote Alto Padrão",
+    "name": "Excelente Terreno em Condomínio de 1.500m² no Parque do Imbuí",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5045,13 +5118,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Parque do Imbui, no Condomínio Roseiral. Com 1.500 m², é ideal para projetar sua casa com privacidade e contato com a natureza. O condomínio oferece infraestrutura com cabeamento estruturado e internet, segurança com câmeras e controle de acesso, além de piscina, churrasqueira e áreas verdes. Rua asfaltada e perto de escolas, transporte público, hospitais e principais vias. Agende sua visita e conheça pessoalmente no Condomínio Roseiral.\n\n#terrenocondominio #teresopolis #parquedoimbui #condominioroseiral #cabeamentoestruturado\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Parque do Imbui, no Condomínio Roseiral. Com 1.500 m², é ideal para projetar sua casa com privacidade e contato com a natureza. O condomínio oferece infraestrutura com cabeamento estruturado e internet, segurança com câmeras e controle de acesso, além de piscina, churrasqueira e áreas verdes. Rua asfaltada e perto de escolas, transporte público, hospitais e principais vias. Agende sua visita e conheça pessoalmente no Condomínio Roseiral.\n\n#terrenocondominio #teresopolis #parquedoimbui #condominioroseiral #cabeamentoestruturado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/365785",
     "bairro": "Parque do Imbuí"
   },
   {
     "sku": "366063",
-    "name": "Invista no Futuro: Terreno de 378m² em Condomínio Completo",
+    "name": "Excelente Terreno em Condomínio de 378m² Pronto para Construir no Centro",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5081,13 +5154,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Descubra este incrível terreno de 378m² localizado em um condomínio completo, a apenas 20 minutos do centro de Teresópolis.                           Com facilidades como duas piscinas, área gourmet, quadras de esportes, sauna e restaurante, você encontrará o equilíbrio perfeito entre lazer e conforto.\nAlém disso, você estará perto de encantadores chalés, restaurantes, um resort e comércio local, garantindo tudo o que você precisa a poucos passos de casa. Não perca esta oportunidade de construir o lar dos seus sonhos em um local que oferece tranquilidade e acessibilidade! Agende sua visita",
+    "description": "Descubra este incrível terreno de 378m² localizado em um condomínio completo, a apenas 20 minutos do centro de Teresópolis.                           Com facilidades como duas piscinas, área gourmet, quadras de esportes, sauna e restaurante, você encontrará o equilíbrio perfeito entre lazer e conforto.\nAlém disso, você estará perto de encantadores chalés, restaurantes, um resort e comércio local, garantindo tudo o que você precisa a poucos passos de casa. Não perca esta oportunidade de construir o lar dos seus sonhos em um local que oferece tranquilidade e acessibilidade! Agende sua visita\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/366063",
     "bairro": "Centro"
   },
   {
     "sku": "366486",
-    "name": "Casa no Taumaturgo",
+    "name": "Belíssima Residência com 2 Quartos (1 Suíte) e Quintal Amplo no Taumaturgo",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5117,13 +5190,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Taumaturgo. Em terreno de 2.240 m², conta com 2 quartos (1 suíte) e 2 vagas, ideal para quem busca espaço e tranquilidade. Salas de estar com lareira e de jantar integradas, varanda, pisos em madeira e frio, armários embutidos na cozinha e banheiros, área de serviço. Quintal generoso com jardim, árvores frutíferas, horta e churrasqueira. Água por poço e reservatório, internet e tv a cabo. Rua asfaltada, perto de escolas, hospitais, transporte e vias de acesso. Agende sua visita.\n\n#casa #teresopolis #taumaturgo #conexaoainternet\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Taumaturgo. Em terreno de 2.240 m², conta com 2 quartos (1 suíte) e 2 vagas, ideal para quem busca espaço e tranquilidade. Salas de estar com lareira e de jantar integradas, varanda, pisos em madeira e frio, armários embutidos na cozinha e banheiros, área de serviço. Quintal generoso com jardim, árvores frutíferas, horta e churrasqueira. Água por poço e reservatório, internet e tv a cabo. Rua asfaltada, perto de escolas, hospitais, transporte e vias de acesso. Agende sua visita.\n\n#casa #teresopolis #taumaturgo #conexaoainternet\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/366486",
     "bairro": "Taumaturgo"
   },
   {
     "sku": "366538",
-    "name": "Apartamento na Prata",
+    "name": "Lindo Apartamento de 1 Quartos com Garagem em Albuquerque",
     "price": 280000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -5153,13 +5226,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Albuquerque, no Condomínio Prata. Com 58,34 m², 1 quarto (suíte) e 1 vaga, une praticidade e conforto. Destaques: cozinha com armários, box blindex no banheiro, área de serviço, piso laminado e frio, ótima ventilação natural, conexão à internet e tv a cabo. Condomínio com elevador, piscina, churrasqueira e segurança com câmeras, interfone e portão eletrônico. Ideal para quem busca qualidade de vida em região tranquila. Agende sua visita.\n\n#apartamento #teresopolis #albuquerque #condominioprata #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Teresópolis, no bairro Albuquerque, no Condomínio Prata. Com 58,34 m², 1 quarto (suíte) e 1 vaga, une praticidade e conforto. Destaques: cozinha com armários, box blindex no banheiro, área de serviço, piso laminado e frio, ótima ventilação natural, conexão à internet e tv a cabo. Condomínio com elevador, piscina, churrasqueira e segurança com câmeras, interfone e portão eletrônico. Ideal para quem busca qualidade de vida em região tranquila. Agende sua visita.\n\n#apartamento #teresopolis #albuquerque #condominioprata #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/366538",
     "bairro": "Albuquerque"
   },
   {
     "sku": "366546",
-    "name": "Galpão Próximo ao Centro",
+    "name": "Galpão Estruturado de 846m² em Localização Privilegiada em São Pedro",
     "price": 1400000,
     "cat": "Comerciais",
     "badge": "Destaque",
@@ -5189,13 +5262,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Galpão à venda em Teresópolis, no bairro São Pedro. Com 846 m² de área e 146 m2  de construída, oferece estrutura versátil para armazenagem, produção ou centro de distribuição. Imóvel murado e gradeado, com portão eletrônico, rua asfaltada e fácil acesso às principais vias. Próximo a escolas, shopping e transporte público, garantindo praticidade para equipe e clientes. Conta ainda com cozinha de apoio. Excelente opção para quem busca localização estratégica e segurança. Agende sua visita.\n\n#galpao #teresopolis #bairrodasaopedro #muroegrade\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Galpão à venda em Teresópolis, no bairro São Pedro. Com 846 m² de área e 146 m2  de construída, oferece estrutura versátil para armazenagem, produção ou centro de distribuição. Imóvel murado e gradeado, com portão eletrônico, rua asfaltada e fácil acesso às principais vias. Próximo a escolas, shopping e transporte público, garantindo praticidade para equipe e clientes. Conta ainda com cozinha de apoio. Excelente opção para quem busca localização estratégica e segurança. Agende sua visita.\n\n#galpao #teresopolis #bairrodasaopedro #muroegrade\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/366546",
     "bairro": "São Pedro"
   },
   {
     "sku": "366563",
-    "name": "Casa Duplex",
+    "name": "Belíssima Residência Duplex com 4 Quartos (2 Suítes) e Quintal Amplo na Cascata do Imbuí",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5225,13 +5298,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Cascata do Imbuí. Com 500 m², 4 quartos (2 suítes) e 2 vagas, oferece espaço, conforto e ótima localização. Ambientes integrados, sala de jantar e sala ampla se conectam à varanda. Cozinha grande com armários, área de serviço e depósito facilitam o dia a dia. Banheiros com box blindex e chuveiro a gás. Quintal com jardim e gramado para momentos ao ar livre. Conta ainda com escritório, entrada lateral e conexão à internet/TV a cabo. Imóvel conta ainda com uma segunda casa no segundo andar para hóspedes . Venha conhecer pessoalmente.\n\n#casa #teresopolis #cascatadoimbui #chuveiroagas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Cascata do Imbuí. Com 500 m², 4 quartos (2 suítes) e 2 vagas, oferece espaço, conforto e ótima localização. Ambientes integrados, sala de jantar e sala ampla se conectam à varanda. Cozinha grande com armários, área de serviço e depósito facilitam o dia a dia. Banheiros com box blindex e chuveiro a gás. Quintal com jardim e gramado para momentos ao ar livre. Conta ainda com escritório, entrada lateral e conexão à internet/TV a cabo. Imóvel conta ainda com uma segunda casa no segundo andar para hóspedes . Venha conhecer pessoalmente.\n\n#casa #teresopolis #cascatadoimbui #chuveiroagas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/366563",
     "bairro": "Cascata do Imbuí"
   },
   {
     "sku": "366687",
-    "name": "OPORTUNIDADE DE LOTE EM ALBURQUERQUE",
+    "name": "Excelente Terreno em Condomínio de 300m² Pronto para Construir em Albuquerque",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5260,13 +5333,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Albuquerque. Com 300 m², é a chance de construir do seu jeito no Condomínio Vale das Estrelas, com ruas asfaltadas, acesso fácil e entorno verde com rio. O residencial conta com lazer completo: piscinas (inclusive aquecida), churrasqueira, jardim, pomar, horta e orquidário. Segurança reforçada com portão eletrônico, câmeras, alarme e interfone. Próximo a escolas, hospitais, shopping e transporte. Agende sua visita.\n\n#terrenocondominio #teresopolis #albuquerque #condominiovaledasestrelas #arvorefrutifera\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Terreno em condomínio à venda em Teresópolis, no bairro Albuquerque. Com 300 m², é a chance de construir do seu jeito no Condomínio Vale das Estrelas, com ruas asfaltadas, acesso fácil e entorno verde com rio. O residencial conta com lazer completo: piscinas (inclusive aquecida), churrasqueira, jardim, pomar, horta e orquidário. Segurança reforçada com portão eletrônico, câmeras, alarme e interfone. Próximo a escolas, hospitais, shopping e transporte. Agende sua visita.\n\n#terrenocondominio #teresopolis #albuquerque #condominiovaledasestrelas #arvorefrutifera\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/366687",
     "bairro": "Albuquerque"
   },
   {
     "sku": "367872",
-    "name": "Casa 5 quartos em condomínio",
+    "name": "Linda Casa em Condomínio com 5 Quartos (4 Suítes) em Vargem Grande",
     "price": 1565000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5296,13 +5369,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio de Vargem Grande, Teresópolis: 270 m²,     5 quartos sendo 4 suítes,  e espaços que acolhem sua família. Morar aqui é desfrutar de segurança, tranquilidade serrana, muito verde, ar puro e clima ameno, com convívio em áreas comuns, ruas silenciosas e fácil acesso ao comércio local e ao centro. Um refúgio de qualidade de vida sem abrir mão da praticidade. Gostou? Fale agora e agende sua visita!\n\n#Teresopolis #VargemGrande #CasaEmCondominio #QualidadeDeVida #Natureza #Montanha #Oportunidade #Imoveis #Familia #Seguranca #ArPuro #Serra #RJ",
+    "description": "Casa em condomínio de Vargem Grande, Teresópolis: 270 m²,     5 quartos sendo 4 suítes,  e espaços que acolhem sua família. Morar aqui é desfrutar de segurança, tranquilidade serrana, muito verde, ar puro e clima ameno, com convívio em áreas comuns, ruas silenciosas e fácil acesso ao comércio local e ao centro. Um refúgio de qualidade de vida sem abrir mão da praticidade. Gostou? Fale agora e agende sua visita!\n\n#Teresopolis #VargemGrande #CasaEmCondominio #QualidadeDeVida #Natureza #Montanha #Oportunidade #Imoveis #Familia #Seguranca #ArPuro #Serra #RJ\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/367872",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "368087",
-    "name": "Casa de Alto Padrão com 247m² - Ermitagem / Teresópolis - R$ 1.650.000",
+    "name": "Linda Casa em Condomínio e Espaço Gourmet no Alto",
     "price": 1650000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5332,13 +5405,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Uma casa pensada para quem valoriza conforto, elegância, espaço e qualidade de vida.\n\nCom excelente iluminação natural e uma vista incrível para as montanhas, esta residência encanta pela sensação de amplitude, tranquilidade e conexão com a natureza. Distribuída em três pavimentos, oferece ambientes amplos, bem planejados e uma excelente integração entre os espaços sociais, íntimos e de lazer.\n\nNo primeiro pavimento, logo ao entrar pela garagem, a casa conta com uma suíte independente, ideal para hóspedes, familiares ou para quem busca mais privacidade. O pavimento dispõe ainda de garagem para aproximadamente quatro carros, além de um quarto de ferramentas e apoio e um quartinho exclusivo para o gás.\n\nNo segundo pavimento, encontra-se a área social da residência, com uma sala ampla e elegante, lavabo, uma cozinha espaçosa e um excelente espaço gourmet, perfeito para receber amigos e familiares.\n\nNo terceiro pavimento, está a área íntima da casa. A suíte master é um dos grandes destaques, com sacada privativa, espaço para closet e banheiro, além da agradável iluminação natural. O andar conta ainda com mais dois quartos e um banheiro social.\n\nNa parte posterior da residência, um charme à parte: um pequeno jardim gramado com fireplace, criando um ambiente acolhedor e reservado para momentos de descanso, confraternização e contato com a natureza.\n\nUma residência completa, sofisticada e funcional, que une espaços generosos, muita luz natural, vista privilegiada para as montanhas, área gourmet, ambientes externos e uma distribuição inteligente em três pavimentos. Um imóvel para quem busca não apenas uma casa, mas uma experiência diferenciada de morar bem.",
+    "description": "Uma casa pensada para quem valoriza conforto, elegância, espaço e qualidade de vida.\n\nCom excelente iluminação natural e uma vista incrível para as montanhas, esta residência encanta pela sensação de amplitude, tranquilidade e conexão com a natureza. Distribuída em três pavimentos, oferece ambientes amplos, bem planejados e uma excelente integração entre os espaços sociais, íntimos e de lazer.\n\nNo primeiro pavimento, logo ao entrar pela garagem, a casa conta com uma suíte independente, ideal para hóspedes, familiares ou para quem busca mais privacidade. O pavimento dispõe ainda de garagem para aproximadamente quatro carros, além de um quarto de ferramentas e apoio e um quartinho exclusivo para o gás.\n\nNo segundo pavimento, encontra-se a área social da residência, com uma sala ampla e elegante, lavabo, uma cozinha espaçosa e um excelente espaço gourmet, perfeito para receber amigos e familiares.\n\nNo terceiro pavimento, está a área íntima da casa. A suíte master é um dos grandes destaques, com sacada privativa, espaço para closet e banheiro, além da agradável iluminação natural. O andar conta ainda com mais dois quartos e um banheiro social.\n\nNa parte posterior da residência, um charme à parte: um pequeno jardim gramado com fireplace, criando um ambiente acolhedor e reservado para momentos de descanso, confraternização e contato com a natureza.\n\nUma residência completa, sofisticada e funcional, que une espaços generosos, muita luz natural, vista privilegiada para as montanhas, área gourmet, ambientes externos e uma distribuição inteligente em três pavimentos. Um imóvel para quem busca não apenas uma casa, mas uma experiência diferenciada de morar bem.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/368087",
     "bairro": "Alto"
   },
   {
     "sku": "368193",
-    "name": "Casa Linear em Guapi",
+    "name": "Charmosa Casa Linear em Condomínio em Teresópolis",
     "price": 447000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5368,13 +5441,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": ",,,",
+    "description": ",,,\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/368193",
     "bairro": "Teresópolis"
   },
   {
     "sku": "368216",
-    "name": "Casa Linear em Guapi",
+    "name": "Charmosa Casa Linear em Condomínio com 1 Quartos (1 Suíte) em Teresópolis",
     "price": 367000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5404,13 +5477,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Guapimirim, no bairro Cotia, no Condiminio Ipe. Com 142,8 m², 1 quarto (1 suíte) e 1 vaga, oferece conforto, praticidade e excelente localização. Destaques: acesso para deficientes, ventilação natural, piso frio, área de serviço e quintal, além de vista panorâmica. Condomínio com interfone, muros e ruas asfaltadas, perto de escolas, hospitais, shopping e transporte público, com fácil acesso às vias principais. Ideal para quem busca tranquilidade sem abrir mão da conveniência. Agende sua visita.\n\n#casacondominio #guapimirim #cotia #condiminioipe #acessoparadeficientes\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Guapimirim, no bairro Cotia, no Condiminio Ipe. Com 142,8 m², 1 quarto (1 suíte) e 1 vaga, oferece conforto, praticidade e excelente localização. Destaques: acesso para deficientes, ventilação natural, piso frio, área de serviço e quintal, além de vista panorâmica. Condomínio com interfone, muros e ruas asfaltadas, perto de escolas, hospitais, shopping e transporte público, com fácil acesso às vias principais. Ideal para quem busca tranquilidade sem abrir mão da conveniência. Agende sua visita.\n\n#casacondominio #guapimirim #cotia #condiminioipe #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/368216",
     "bairro": "Teresópolis"
   },
   {
     "sku": "368359",
-    "name": "Casa Quebra Frasco",
+    "name": "Linda Casa em Condomínio com 1 Quartos (2 Suítes) e Espaço Gourmet no Quebra Frascos",
     "price": 1500000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5440,13 +5513,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Quebra Frascos,  com 676 m², 1 quarto, 2 suítes e 6 vagas, oferece conforto e praticidade. Ambientes integrados, cozinha americana com armários, closet, despensa e lavanderia. Salas de estar e jantar com janelas grandes, lavabo e ventilação natural. Quintal com churrasqueira. Conexão à internet, TV a cabo, fechadura digital e portão eletrônico. Rua asfaltada, perto de escolas, vias de acesso e transporte público. Venha conhecer pessoalmente.\n\n#casa #teresopolis #quebrafrascos #condominioencontrodasaguas #conexaoainternet\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Quebra Frascos,  com 676 m², 1 quarto, 2 suítes e 6 vagas, oferece conforto e praticidade. Ambientes integrados, cozinha americana com armários, closet, despensa e lavanderia. Salas de estar e jantar com janelas grandes, lavabo e ventilação natural. Quintal com churrasqueira. Conexão à internet, TV a cabo, fechadura digital e portão eletrônico. Rua asfaltada, perto de escolas, vias de acesso e transporte público. Venha conhecer pessoalmente.\n\n#casa #teresopolis #quebrafrascos #condominioencontrodasaguas #conexaoainternet\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/368359",
     "bairro": "Quebra Frascos"
   },
   {
     "sku": "369325",
-    "name": "Linda Pousada para Grandes Grupos",
+    "name": "Magnífica Casa em Condomínio com 10 Quartos (9 Suítes) e Lazer Completo em Teresópolis",
     "price": 4990000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -5476,13 +5549,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Guapimirim, ideal para grandes grupos, toda infaestrutura para alugar, no bairro Cotia, dentro do Condomínio Encontro das Aguas. Com 2.190 m², 10 quartos (9 suítes) e 20 vagas, une espaço e conforto em ambientes integrados. Destaques: piscina, churrasqueira, amplo jardim, quintal gramado, cozinha grande com despensa e armários, escritório, área de serviço, dependência e casas de apoio (caseiro e fundo), além de acesso para deficientes. Próxima a escolas, hospitais, shopping, vias e transporte. Agende sua visita e venha conhecer pessoalmente.\n\n#casa #guapimirim #cotia #condominioencontrodasaguas #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Guapimirim, ideal para grandes grupos, toda infaestrutura para alugar, no bairro Cotia, dentro do Condomínio Encontro das Aguas. Com 2.190 m², 10 quartos (9 suítes) e 20 vagas, une espaço e conforto em ambientes integrados. Destaques: piscina, churrasqueira, amplo jardim, quintal gramado, cozinha grande com despensa e armários, escritório, área de serviço, dependência e casas de apoio (caseiro e fundo), além de acesso para deficientes. Próxima a escolas, hospitais, shopping, vias e transporte. Agende sua visita e venha conhecer pessoalmente.\n\n#casa #guapimirim #cotia #condominioencontrodasaguas #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/369325",
     "bairro": "Teresópolis"
   },
   {
     "sku": "369342",
-    "name": "Casa no Alto",
+    "name": "Charmosa Casa em Condomínio com 2 Quartos (1 Suíte) e Lazer Completo na Granja Guarani",
     "price": 550000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5512,13 +5585,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, na Granja Guarani . Com 97,88 m², 2 quartos (1 suíte) e 1 vaga, reúne conforto, lazer e segurança. Ambientes integrados, sala ampla com lareira e pé-direito alto, sala de jantar, cozinha americana com armários, lavabo e lavanderia. Acabamentos em piso laminado e frio. Vista para a montanha. Área externa com piscina e churrasqueira. Conectividade com internet, TV a cabo e cabeamento. Condomínio com portão eletrônico, alarme e câmeras, em rua asfaltada, perto de vias de acesso. Agende sua visita.\n\n#casacondominio #teresopolis #granjaguarani #bekaapremiumresidence #conexaoainternet\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Teresópolis, na Granja Guarani . Com 97,88 m², 2 quartos (1 suíte) e 1 vaga, reúne conforto, lazer e segurança. Ambientes integrados, sala ampla com lareira e pé-direito alto, sala de jantar, cozinha americana com armários, lavabo e lavanderia. Acabamentos em piso laminado e frio. Vista para a montanha. Área externa com piscina e churrasqueira. Conectividade com internet, TV a cabo e cabeamento. Condomínio com portão eletrônico, alarme e câmeras, em rua asfaltada, perto de vias de acesso. Agende sua visita.\n\n#casacondominio #teresopolis #granjaguarani #bekaapremiumresidence #conexaoainternet\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/369342",
     "bairro": "Granja Guarani"
   },
   {
     "sku": "369741",
-    "name": "Casa em Condomínio Albuquerque",
+    "name": "Excelente Casa em Condomínio com 1 Quartos (2 Suítes) e Lazer Completo em Albuquerque",
     "price": 850000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5548,13 +5621,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Albuquerque, em Condomínio. Com 176,51 m², 1 quarto, 2 suítes e 2 vagas, oferece conforto e lazer em meio à natureza. Destaques: sala ampla integrada à varanda gourmet, quintal com jardim, gramado, árvores frutíferas, piscina e churrasqueira. Conta ainda com ar condicionado, hidromassagem, closet, cozinha, internet e segurança com câmeras e interfone. Próxima a escolas, transporte público e principais vias. Agende sua visita.\n\n#casa #teresopolis #albuquerque #condominioencontrodasaguas #arcondicionado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Albuquerque, em Condomínio. Com 176,51 m², 1 quarto, 2 suítes e 2 vagas, oferece conforto e lazer em meio à natureza. Destaques: sala ampla integrada à varanda gourmet, quintal com jardim, gramado, árvores frutíferas, piscina e churrasqueira. Conta ainda com ar condicionado, hidromassagem, closet, cozinha, internet e segurança com câmeras e interfone. Próxima a escolas, transporte público e principais vias. Agende sua visita.\n\n#casa #teresopolis #albuquerque #condominioencontrodasaguas #arcondicionado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/369741",
     "bairro": "Albuquerque"
   },
   {
     "sku": "369760",
-    "name": "Casa de Alto Padrão Quebra Frasco",
+    "name": "Linda Casa em Condomínio com 3 Quartos (1 Suíte) no Quebra Frascos",
     "price": 2150000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -5584,13 +5657,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Quebra Frascos . Com 225 m², 3 quartos (1 suíte) e 2 vagas, oferece conforto, privacidade e contato com a natureza. Ambientes integrados, sala ampla e sala de jantar, cozinha americana com armários e móveis planejados, porcelanato e box blindex. Quintal com jardim e gramado, ótima ventilação natural e vista externa. Infra pronta para internet e TV (cabeamento estruturado) e chuveiro a gás. Próxima a vias de acesso, transporte e serviços essenciais. Agende sua visita.\n\n#casa #teresopolis #quebrafrascos #condominioencontrodasaguas #cabeamentoestruturado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Quebra Frascos . Com 225 m², 3 quartos (1 suíte) e 2 vagas, oferece conforto, privacidade e contato com a natureza. Ambientes integrados, sala ampla e sala de jantar, cozinha americana com armários e móveis planejados, porcelanato e box blindex. Quintal com jardim e gramado, ótima ventilação natural e vista externa. Infra pronta para internet e TV (cabeamento estruturado) e chuveiro a gás. Próxima a vias de acesso, transporte e serviços essenciais. Agende sua visita.\n\n#casa #teresopolis #quebrafrascos #condominioencontrodasaguas #cabeamentoestruturado\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/369760",
     "bairro": "Quebra Frascos"
   },
   {
     "sku": "370022",
-    "name": "Casa em condomínio",
+    "name": "Excelente Casa em Condomínio com 3 Quartos em Vargem Grande",
     "price": 1100000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5620,13 +5693,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Seu novo lar em Vargem Grande, Teresópolis! Casa de 161 m² com 3 quartos, living integrado, quintal ensolarado e 3 vagas cobertas. Em condomínio fechado do bairro com área de lazer completa, perfeito para quem busca tranquilidade, contato com a natureza e praticidade: clima serrano, vizinhança familiar, ruas tranquilas e fácil acesso a comércio, escolas e serviços. Agende sua visita e descubra como é viver melhor. Fale agora e garanta esta oportunidade!\n\n#Teresópolis #VargemGrande #CasaÀVenda #CondomínioFechado #Oportunidade #Imóvel #Casa #Montanha #QualidadeDeVida",
+    "description": "Seu novo lar em Vargem Grande, Teresópolis! Casa de 161 m² com 3 quartos, living integrado, quintal ensolarado e 3 vagas cobertas. Em condomínio fechado do bairro com área de lazer completa, perfeito para quem busca tranquilidade, contato com a natureza e praticidade: clima serrano, vizinhança familiar, ruas tranquilas e fácil acesso a comércio, escolas e serviços. Agende sua visita e descubra como é viver melhor. Fale agora e garanta esta oportunidade!\n\n#Teresópolis #VargemGrande #CasaÀVenda #CondomínioFechado #Oportunidade #Imóvel #Casa #Montanha #QualidadeDeVida\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/370022",
     "bairro": "Vargem Grande"
   },
   {
     "sku": "371659",
-    "name": "Casa triplex com total infra estrutura",
+    "name": "Linda Casa em Condomínio com 4 Quartos (4 Suítes) e Lazer Completo na Várzea",
     "price": 1500000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5656,13 +5729,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Várzea, no Vivendas Mitre. Com 4 quartos (4 suítes) e 1 vaga, reúne conforto, lazer e excelente localização. Destaques: piscina, varanda, lareira, cozinha gourmet integrada, mezanino, hidromassagem, quintal e vista para a montanha. Condomínio com segurança, câmeras e portão eletrônico. Próxima a escolas, vias de acesso, hospitais, shopping e transporte. Ideal para quem busca qualidade de vida na Várzea. Agende sua visita.\n\n#casacondominio #teresopolis #varzea #vivendasmitre #garagem\r\nAgende visita sem compromisso.\r\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Várzea, no Vivendas Mitre. Com 4 quartos (4 suítes) e 1 vaga, reúne conforto, lazer e excelente localização. Destaques: piscina, varanda, lareira, cozinha gourmet integrada, mezanino, hidromassagem, quintal e vista para a montanha. Condomínio com segurança, câmeras e portão eletrônico. Próxima a escolas, vias de acesso, hospitais, shopping e transporte. Ideal para quem busca qualidade de vida na Várzea. Agende sua visita.\n\n#casacondominio #teresopolis #varzea #vivendasmitre #garagem\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/371659",
     "bairro": "Várzea"
   },
   {
     "sku": "374306",
-    "name": "casa em bairro nobre de Teresópolis",
+    "name": "Bela Casa com 5 Quartos e Garagem no Centro",
     "price": 980000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5692,13 +5765,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa ampla de 280 m² bairro Iucas, em Teresópolis. São 5 quartos, sala integrada à varanda, cozinha funcional e 1 vaga coberta. Morar no Iucas é ter segurança, áreas verdes, tranquilidade e lazer, com fácil acesso ao Centro, escolas e comércio. Endereço valorizado e qualidade de vida na serra. Quer conhecer? Agende sua visita e fale agora com a gente!\n\n#Teresópolis #Iucas #CasaÀVenda #Imóveis #RJ #SerraCarioca #Oportunidade #QualidadeDeVida #MorarBem",
+    "description": "Casa ampla de 280 m² bairro Iucas, em Teresópolis. São 5 quartos, sala integrada à varanda, cozinha funcional e 1 vaga coberta. Morar no Iucas é ter segurança, áreas verdes, tranquilidade e lazer, com fácil acesso ao Centro, escolas e comércio. Endereço valorizado e qualidade de vida na serra. Quer conhecer? Agende sua visita e fale agora com a gente!\n\n#Teresópolis #Iucas #CasaÀVenda #Imóveis #RJ #SerraCarioca #Oportunidade #QualidadeDeVida #MorarBem\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/374306",
     "bairro": "Centro"
   },
   {
     "sku": "377228",
-    "name": "Casa em Condomínio com Piscina e Amplo Terreno em Teresópolis",
+    "name": "Linda Casa Linear em Condomínio com 3 Quartos (2 Suítes) e Lazer Completo em Albuquerque",
     "price": 1300000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5728,13 +5801,13 @@ export const allImoveisData: ProductItem[] = [
       "Localização em condomínio, a aproximadamente 15 minutos do centro de Teresópolis;",
       "Excelente opção para quem busca tranquilidade, conforto, privacidade e qualidade de vida."
     ],
-    "description": "🔐 V E N D A - Casa em Condomínio com Piscina e Quadra Privativa\n\n📍 Albuquerque - Teresópolis/RJ\n\n💰 Valor do investimento R$ 1.300.000,00\n\n📐 2.000,00m² - Área Total\n\n📐 155,00m² - Área construída\n\n✍🏻 DESCRIÇÃO DO IMÓVEL:\n\n1º : Ampla sala em dois ambientes / cozinha / 3 quartos, sendo 2 suítes / suíte externa independente com cozinha de apoio, ideal para receber hóspedes ou utilizar como home office / banheiro social.\n\n🍃 PARTE EXTERNA\n\nAmplo terreno totalmente linear com mais de 2.000m² / piscina / área gourmet equipada / quadra de futebol privativa / amplo jardim / espaço para estacionamento / imóvel cercado por muito verde.\n\n⚜️ DIFERENCIAL\n\n• Terreno totalmente linear com mais de 2.000m², proporcionando amplo espaço e privacidade;\n\n• Casa construída em madeira Garapa, com aproximadamente 155m²;\n\n• Suíte externa independente com cozinha de apoio, oferecendo versatilidade para hóspedes, familiares ou home office;\n\n• Área de lazer completa com piscina, espaço gourmet e quadra de futebol privativa;\n\n• Localização em condomínio, a aproximadamente 15 minutos do centro de Teresópolis;\n\n• Imóvel cercado por muito verde, proporcionando contato com a natureza e clima agradável de serra;\n\n• Excelente opção para quem busca tranquilidade, conforto, privacidade e qualidade de vida.\n\n📞 INFORMAÇÕES:\n\n🌐 habittathouse.com.br\n📧 [contatopedrodias.\n☎️ (21) 96514-9054",
+    "description": "🔐 V E N D A - Casa em Condomínio com Piscina e Quadra Privativa\n\n📍 Albuquerque - Teresópolis/RJ\n\n💰 Valor do investimento R$ 1.300.000,00\n\n📐 2.000,00m² - Área Total\n\n📐 155,00m² - Área construída\n\n✍🏻 DESCRIÇÃO DO IMÓVEL:\n\n1º : Ampla sala em dois ambientes / cozinha / 3 quartos, sendo 2 suítes / suíte externa independente com cozinha de apoio, ideal para receber hóspedes ou utilizar como home office / banheiro social.\n\n🍃 PARTE EXTERNA\n\nAmplo terreno totalmente linear com mais de 2.000m² / piscina / área gourmet equipada / quadra de futebol privativa / amplo jardim / espaço para estacionamento / imóvel cercado por muito verde.\n\n⚜️ DIFERENCIAL\n\n• Terreno totalmente linear com mais de 2.000m², proporcionando amplo espaço e privacidade;\n\n• Casa construída em madeira Garapa, com aproximadamente 155m²;\n\n• Suíte externa independente com cozinha de apoio, oferecendo versatilidade para hóspedes, familiares ou home office;\n\n• Área de lazer completa com piscina, espaço gourmet e quadra de futebol privativa;\n\n• Localização em condomínio, a aproximadamente 15 minutos do centro de Teresópolis;\n\n• Imóvel cercado por muito verde, proporcionando contato com a natureza e clima agradável de serra;\n\n• Excelente opção para quem busca tranquilidade, conforto, privacidade e qualidade de vida.\n\n📞 INFORMAÇÕES:\n\n🌐 habittathouse.com.br\n📧 [contatopedrodias.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/377228",
     "bairro": "Albuquerque"
   },
   {
     "sku": "377514",
-    "name": "Terreno área rural",
+    "name": "Excelente Terreno em Teresópolis",
     "price": 130000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5764,13 +5837,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "terreno área rural paz e tranquilidade do interior. Aceita carro como parte do pagamento",
+    "description": "terreno área rural paz e tranquilidade do interior. Aceita carro como parte do pagamento\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/377514",
     "bairro": "Teresópolis"
   },
   {
     "sku": "377937",
-    "name": "Casa no Comary",
+    "name": "Belíssima Residência com 1 Quartos (3 Suítes) e Garagem em Teresópolis",
     "price": 1950000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -5800,13 +5873,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no Comary,  Com 233 m², 1 quarto e 3 suítes, 4 vagas, oferece conforto e privacidade em uma Área cercada por verde. Destaques: churrasqueira, jardim e gramado, cozinha americana planejada, salas amplas e arejadas, porcelanato e piso laminado, box blindex, lavanderia e fechadura digital. Vista para a montanha e fácil acesso a shopping, transporte e vias principais. Rua asfaltada e clima serrano completam o cenário. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no Comary,  Com 233 m², 1 quarto e 3 suítes, 4 vagas, oferece conforto e privacidade em uma Área cercada por verde. Destaques: churrasqueira, jardim e gramado, cozinha americana planejada, salas amplas e arejadas, porcelanato e piso laminado, box blindex, lavanderia e fechadura digital. Vista para a montanha e fácil acesso a shopping, transporte e vias principais. Rua asfaltada e clima serrano completam o cenário. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/377937",
     "bairro": "Teresópolis"
   },
   {
     "sku": "378068",
-    "name": "Apartamento próximo ao centro",
+    "name": "Excelente Apartamento de 1 Quartos (1 Suíte) com Varanda e Vista Livre na Cascata Guarani",
     "price": 530000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -5836,13 +5909,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Apartamento à venda em Teresópolis, no bairro Cascata Guarani. Com 1 quarto, 1 suíte  e 1 vaga, reúne conforto e praticidade. O condomínio, em terreno de 3000 m², oferece piscina, churrasqueira, elevador e acesso para pessoas com mobilidade reduzida. Unidade com varanda, cozinha integrada, box blindex, piso frio e ótima ventilação, além de vista para a montanha. Localização tranquila, perto de escolas, hospitais e transporte, com vias de acesso e rua asfaltada. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Apartamento à venda em Teresópolis, no bairro Cascata Guarani. Com 1 quarto, 1 suíte  e 1 vaga, reúne conforto e praticidade. O condomínio, em terreno de 3000 m², oferece piscina, churrasqueira, elevador e acesso para pessoas com mobilidade reduzida. Unidade com varanda, cozinha integrada, box blindex, piso frio e ótima ventilação, além de vista para a montanha. Localização tranquila, perto de escolas, hospitais e transporte, com vias de acesso e rua asfaltada. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/378068",
     "bairro": "Cascata Guarani"
   },
   {
     "sku": "380172",
-    "name": "Duas casas em uma",
+    "name": "Bela Casa com 2 Quartos e Quintal Amplo em Albuquerque",
     "price": 860000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5872,13 +5945,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Albuquerque. Em amplo terreno de 1.331 m², conta com 2 quartos em cada casa  quartos e ambientes iluminados, ventilação natural e janelas amplas. Lazer garantido com piscina, varanda, quintal gramado e churrasqueira, além de jardim. Praticidades: cozinha funcional, lavanderia, piso frio e cabeamento para internet e TV.  Ruas  de fácil acesso ao transporte e vias principais. Um refúgio para quem busca tranquilidade e conveniência. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Albuquerque. Em amplo terreno de 1.331 m², conta com 2 quartos em cada casa  quartos e ambientes iluminados, ventilação natural e janelas amplas. Lazer garantido com piscina, varanda, quintal gramado e churrasqueira, além de jardim. Praticidades: cozinha funcional, lavanderia, piso frio e cabeamento para internet e TV.  Ruas  de fácil acesso ao transporte e vias principais. Um refúgio para quem busca tranquilidade e conveniência. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/380172",
     "bairro": "Albuquerque"
   },
   {
     "sku": "380800",
-    "name": "Sítio em Teresópolis",
+    "name": "Lindo Sítio de 250m² com Área Verde Preservada em Teresópolis",
     "price": 1350000,
     "cat": "Sítios & Rurais",
     "badge": "Destaque",
@@ -5908,13 +5981,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Sítio em condomínio no bairro Pessegueiros, Teresópolis: 250 m², 4 quartos, ampla sala, cozinha funcional e 1 vaga coberta. More com segurança, tranquilidade e contato com a natureza, em ambiente organizado, com manutenção compartilhada e vizinhança acolhedora. Bairro valorizado, com fácil acesso a serviços, escolas e lazer. Qualidade de vida e praticidade em um só lugar. Agende sua visita e fale agora para conhecer todos os detalhes! \n#Chácara #Teresópolis #Pessegueiros #Condomínio #Oportunidade #Natureza #Segurança #4Quartos #Imóveis #RJ #Venda",
+    "description": "Sítio em condomínio no bairro Pessegueiros, Teresópolis: 250 m², 4 quartos, ampla sala, cozinha funcional e 1 vaga coberta. More com segurança, tranquilidade e contato com a natureza, em ambiente organizado, com manutenção compartilhada e vizinhança acolhedora. Bairro valorizado, com fácil acesso a serviços, escolas e lazer. Qualidade de vida e praticidade em um só lugar. Agende sua visita e fale agora para conhecer todos os detalhes!\n#Chácara #Teresópolis #Pessegueiros #Condomínio #Oportunidade #Natureza #Segurança #4Quartos #Imóveis #RJ #Venda\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/380800",
     "bairro": "Teresópolis"
   },
   {
     "sku": "381734",
-    "name": "Casa em Condomínio de 5 Casas",
+    "name": "Charmosa Casa em Condomínio com 2 Quartos (1 Suíte) em Albuquerque",
     "price": 360000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5944,13 +6017,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa em condomínio à venda em Teresópolis, no bairro Albuquerque. Com 76,43 m², 2 quartos (1 suíte) e 1 vaga de garagem, oferece conforto e praticidade em planta de andar único. Destaques: ambientes integrados, cozinha americana ampla, ótima ventilação natural, área de serviço e infraestrutura para internet e TV a cabo. Condomínio com muros e cercas, perto de escolas, transporte público e vias de acesso, em região com rio e muito verde. Ideal para viver com tranquilidade e conveniência. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa em condomínio à venda em Teresópolis, no bairro Albuquerque. Com 76,43 m², 2 quartos (1 suíte) e 1 vaga de garagem, oferece conforto e praticidade em planta de andar único. Destaques: ambientes integrados, cozinha americana ampla, ótima ventilação natural, área de serviço e infraestrutura para internet e TV a cabo. Condomínio com muros e cercas, perto de escolas, transporte público e vias de acesso, em região com rio e muito verde. Ideal para viver com tranquilidade e conveniência. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/381734",
     "bairro": "Albuquerque"
   },
   {
     "sku": "381807",
-    "name": "casa em condomínio.",
+    "name": "Excelente Casa em Condomínio com 5 Quartos (4 Suítes) no Centro",
     "price": 950000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5980,13 +6053,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "No Condomínio Alto, no bairro Alto em Teresópolis, esta casa em condomínio oferece 155 m² bem distribuídos, 5 quartos sendo 4 suites, sala ampla, cozinha com ilha moderna, casa impecável com moveis planejados e todo o conforto e requinte que o bairro mas valoizado da cidade oferece!!! O condomínio e estilo suíço e possui area de lazer completa !!1 vaga coberta. Viva com segurança, tranquilidade e excelente infraestrutura, perto da Feirinha do Alto, comércio, escolas e natureza. Qualidade de vida de montanha com fácil acesso ao centro. Ideal para famílias que buscam espaço e valorização. Agende uma visita e surpreenda-se — fale agora e garanta seu novo lar! #Teresópolis #BairroAlto #CondomínioAlto #CasaEmCondomínio #CasaAVenda #ImóveisRJ #QualidadeDeVida #Família #FeirinhaDoAlto #SerraDosÓrgãos #Oportunidade #VemMorarBem",
+    "description": "No Condomínio Alto, no bairro Alto em Teresópolis, esta casa em condomínio oferece 155 m² bem distribuídos, 5 quartos sendo 4 suites, sala ampla, cozinha com ilha moderna, casa impecável com moveis planejados e todo o conforto e requinte que o bairro mas valoizado da cidade oferece!!! O condomínio e estilo suíço e possui area de lazer completa !!1 vaga coberta. Viva com segurança, tranquilidade e excelente infraestrutura, perto da Feirinha do Alto, comércio, escolas e natureza. Qualidade de vida de montanha com fácil acesso ao centro. Ideal para famílias que buscam espaço e valorização. Agende uma visita e surpreenda-se — fale agora e garanta seu novo lar! #Teresópolis #BairroAlto #CondomínioAlto #CasaEmCondomínio #CasaAVenda #ImóveisRJ #QualidadeDeVida #Família #FeirinhaDoAlto #SerraDosÓrgãos #Oportunidade #VemMorarBem\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/381807",
     "bairro": "Centro"
   },
   {
     "sku": "381827",
-    "name": "casa fora de condomínio.",
+    "name": "Excelente Casa em Condomínio com 3 Quartos e Espaço Gourmet na Cascata dos Amores",
     "price": 799000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -6016,13 +6089,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Cascata dos Amores, Teresópolis: 166 m², mais de mil metros de terreno,3 quartos. Espaço ideal para viver com conforto, com fácil acesso ao centro e à natureza.\nBenfeitorias:\nvia pavimentada\nvaranda\nescritório\nrede de esgoto\nquintal\nbanheiro serv.\ncopa\narmários\nsala de jantar\narmário coz.\nchurrasqueira\ndespensa\nportão eletrônico!!\n\nViver aqui é ter tranquilidade, clima ameno, ruas arborizadas e conveniência: perto de serviços, lazer e trilhas da região. Entre em contato e agende sua visita!\n#CascatadosAmores #Teresópolis #CasaÀVenda #ImóveisRJ #SerraCarioca #QualidadedeVida #Oportunidade #VemMorarAqui",
+    "description": "Casa à venda em Cascata dos Amores, Teresópolis: 166 m², mais de mil metros de terreno,3 quartos. Espaço ideal para viver com conforto, com fácil acesso ao centro e à natureza.\nBenfeitorias:\nvia pavimentada\nvaranda\nescritório\nrede de esgoto\nquintal\nbanheiro serv.\ncopa\narmários\nsala de jantar\narmário coz.\nchurrasqueira\ndespensa\nportão eletrônico!!\n\nViver aqui é ter tranquilidade, clima ameno, ruas arborizadas e conveniência: perto de serviços, lazer e trilhas da região. Entre em contato e agende sua visita!\n#CascatadosAmores #Teresópolis #CasaÀVenda #ImóveisRJ #SerraCarioca #QualidadedeVida #Oportunidade #VemMorarAqui\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/381827",
     "bairro": "Cascata dos Amores"
   },
   {
     "sku": "381829",
-    "name": "casa fora de condomínio.",
+    "name": "Linda Casa em Condomínio e Lazer Completo em Teresópolis",
     "price": 1700000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -6052,13 +6125,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Um refúgio encantador em meio à natureza de Teresópolis\nImagine viver ou investir em um verdadeiro refúgio cercado pelo verde, onde a tranquilidade, a natureza e o charme da serra se encontram em perfeita harmonia.\nLocalizada em uma região bucólica de Teresópolis, esta linda propriedade proporciona uma experiência única de contato com a natureza, cercada por uma exuberante flora, fauna e árvores frutíferas que tornam cada momento ainda mais especial.\n\nA casa possui um encantador quintal, cuidadosamente integrado ao ambiente natural, criando o cenário perfeito para momentos de descanso, confraternização e lazer. Entre os destaques estão a piscina, sauna, ofurô, churrasqueira e um agradável jardim, espaços que convidam a aproveitar a propriedade em todas as estações do ano.\n\nMais do que uma residência, o imóvel apresenta excelente potencial para exploração comercial e geração de renda, podendo ser destinado a diferentes modalidades de locação e experiências:\n\n🏡 Aluguel de temporada e hospedagem por plataformas como Airbnb;\n💍 Locação para casamentos e celebrações intimistas;\n🎉 Festas, aniversários e eventos particulares;\n🌿 Retiros, encontros e experiências em meio à natureza;\n📸 Produções fotográficas e eventos especiais.\nO amplo espaço externo, a beleza natural e a estrutura de lazer formam um conjunto especialmente atrativo para quem busca um imóvel que alie qualidade de vida, exclusividade e possibilidades de investimento.\nUm lugar para desacelerar, respirar ar puro, ouvir os sons da natureza e criar memórias inesquecíveis — seja para morar, desfrutar com a família ou transformar em uma fonte de renda através da locação por temporada e realização de eventos.\n\nUma propriedade especial em Teresópolis, onde a natureza é protagonista e cada detalhe convida a viver momentos extraordinários.",
+    "description": "Um refúgio encantador em meio à natureza de Teresópolis\nImagine viver ou investir em um verdadeiro refúgio cercado pelo verde, onde a tranquilidade, a natureza e o charme da serra se encontram em perfeita harmonia.\nLocalizada em uma região bucólica de Teresópolis, esta linda propriedade proporciona uma experiência única de contato com a natureza, cercada por uma exuberante flora, fauna e árvores frutíferas que tornam cada momento ainda mais especial.\n\nA casa possui um encantador quintal, cuidadosamente integrado ao ambiente natural, criando o cenário perfeito para momentos de descanso, confraternização e lazer. Entre os destaques estão a piscina, sauna, ofurô, churrasqueira e um agradável jardim, espaços que convidam a aproveitar a propriedade em todas as estações do ano.\n\nMais do que uma residência, o imóvel apresenta excelente potencial para exploração comercial e geração de renda, podendo ser destinado a diferentes modalidades de locação e experiências:\n\n🏡 Aluguel de temporada e hospedagem por plataformas como Airbnb;\n💍 Locação para casamentos e celebrações intimistas;\n🎉 Festas, aniversários e eventos particulares;\n🌿 Retiros, encontros e experiências em meio à natureza;\n📸 Produções fotográficas e eventos especiais.\nO amplo espaço externo, a beleza natural e a estrutura de lazer formam um conjunto especialmente atrativo para quem busca um imóvel que alie qualidade de vida, exclusividade e possibilidades de investimento.\nUm lugar para desacelerar, respirar ar puro, ouvir os sons da natureza e criar memórias inesquecíveis — seja para morar, desfrutar com a família ou transformar em uma fonte de renda através da locação por temporada e realização de eventos.\n\nUma propriedade especial em Teresópolis, onde a natureza é protagonista e cada detalhe convida a viver momentos extraordinários.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/381829",
     "bairro": "Teresópolis"
   },
   {
     "sku": "381834",
-    "name": "casa em condomínio.",
+    "name": "Linda Casa em Condomínio com 3 Quartos (3 Suítes) e Lazer Completo no Alto",
     "price": 1500000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -6088,13 +6161,13 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa espetacular em bairro nobre de Teresópolis\nUm verdadeiro refúgio de alto padrão na Serra! Esta casa moderna e sofisticada foi projetada para oferecer conforto, exclusividade e momentos inesquecíveis em família.\nCom acabamentos de altíssimo nível, arquitetura contemporânea e pé-direito alto, o imóvel apresenta ambientes amplos, elegantes e muito bem integrados.\n\nA área social conta com uma sala ampla e imponente, além de uma incrível sala de cinema, perfeita para momentos de entretenimento e lazer. Os ambientes são valorizados por teto rebaixado em gesso, porcelanato, mármore e detalhes cuidadosamente planejados.\n\nNa área externa, o destaque fica por conta da área de lazer privativa, com piscina, decks e um belíssimo jardim florido, criando um ambiente acolhedor e exclusivo para aproveitar os dias de sol e o clima agradável da Serra.\n\nA casa também dispõe de uma espaçosa área gourmet, ideal para receber familiares e amigos e celebrar momentos especiais.\n\nNa parte íntima, são 3 quartos, sendo 3 suítes, além de 2 banheiros, proporcionando conforto e privacidade para toda a família.\n\nUma residência espetacular, moderna e diferenciada, perfeita para quem busca qualidade de vida, sofisticação e o melhor que Teresópolis tem a oferecer.\n\nSeu novo lar na Serra pode ser exatamente aqui.",
+    "description": "Casa espetacular em bairro nobre de Teresópolis\nUm verdadeiro refúgio de alto padrão na Serra! Esta casa moderna e sofisticada foi projetada para oferecer conforto, exclusividade e momentos inesquecíveis em família.\nCom acabamentos de altíssimo nível, arquitetura contemporânea e pé-direito alto, o imóvel apresenta ambientes amplos, elegantes e muito bem integrados.\n\nA área social conta com uma sala ampla e imponente, além de uma incrível sala de cinema, perfeita para momentos de entretenimento e lazer. Os ambientes são valorizados por teto rebaixado em gesso, porcelanato, mármore e detalhes cuidadosamente planejados.\n\nNa área externa, o destaque fica por conta da área de lazer privativa, com piscina, decks e um belíssimo jardim florido, criando um ambiente acolhedor e exclusivo para aproveitar os dias de sol e o clima agradável da Serra.\n\nA casa também dispõe de uma espaçosa área gourmet, ideal para receber familiares e amigos e celebrar momentos especiais.\n\nNa parte íntima, são 3 quartos, sendo 3 suítes, além de 2 banheiros, proporcionando conforto e privacidade para toda a família.\n\nUma residência espetacular, moderna e diferenciada, perfeita para quem busca qualidade de vida, sofisticação e o melhor que Teresópolis tem a oferecer.\n\nSeu novo lar na Serra pode ser exatamente aqui.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/381834",
     "bairro": "Alto"
   },
   {
     "sku": "382383",
-    "name": "Mansão em Albuquerque",
+    "name": "Mansão Espetacular de Alto Padrão com Suítes e Lazer Completo em Albuquerque",
     "price": 2200000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -6124,10 +6197,8 @@ export const allImoveisData: ProductItem[] = [
       "Agendamento de visita VIP no local",
       "Excelente potencial de valorização na Região Serrana"
     ],
-    "description": "Casa à venda em Teresópolis, no bairro Albuquerque. Em terreno de 2.400 m², com 3 quartos (3 suítes) e 2 vagas, oferece conforto, iluminação natural e integração com a natureza, com sala ampla e varanda, cozinha planejada,  com churrasqueira, piscina, jardim gramado e área de serviço. A Casa  conta com sistema de segurança e acesso fácil a escolas e vias principais. Ideal para viver com tranquilidade nas montanhas. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.",
+    "description": "Casa à venda em Teresópolis, no bairro Albuquerque. Em terreno de 2.400 m², com 3 quartos (3 suítes) e 2 vagas, oferece conforto, iluminação natural e integração com a natureza, com sala ampla e varanda, cozinha planejada,  com churrasqueira, piscina, jardim gramado e área de serviço. A Casa  conta com sistema de segurança e acesso fácil a escolas e vias principais. Ideal para viver com tranquilidade nas montanhas. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/382383",
     "bairro": "Albuquerque"
   }
 ];
-
-export default allImoveisData;
