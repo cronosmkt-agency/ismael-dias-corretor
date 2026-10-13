@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Home,
   LayoutGrid,
@@ -38,7 +38,7 @@ import {
 import { ALL_BAIRROS } from "@/data/imoveisData";
 import { getAllProperties } from "@/services/propertiesService";
 import { trackPageView, trackWhatsAppClick } from "@/services/analyticsService";
-import { getSiteSettings } from "@/services/settingsService";
+import { getSiteSettings, type SiteSettings } from "@/services/settingsService";
 
 const imoveisCategoryMeta: Record<
   string,

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import {
   Shield,
   Key,
@@ -1070,37 +1070,61 @@ export function AdminDashboardPage() {
                       </div>
 
                       {/* Linha 3: Ações Rápidas Touch */}
-                      <div className="grid grid-cols-4 gap-2 pt-1">
+                      <div className="space-y-1.5 pt-1">
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleOpenEdit(prod);
                           }}
-                          className="col-span-2 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 cursor-pointer"
+                          className="w-full py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 cursor-pointer shadow-xs"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
-                          <span>Editar & Fotos</span>
+                          <span>Editar Informações & Galeria de Fotos</span>
                         </button>
 
-                        <button
-                          type="button"
-                          onClick={(e) => handleCopyPropertyLink(String(prod.sku), e)}
-                          className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition"
-                          title="Copiar Link para WhatsApp"
-                        >
-                          <Copy className="w-3.5 h-3.5" />
-                          <span>Link</span>
-                        </button>
+                        <div className="grid grid-cols-4 gap-1.5">
+                          <button
+                            type="button"
+                            onClick={(e) => handleDuplicateProperty(prod, e)}
+                            className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition cursor-pointer"
+                            title="Duplicar imóvel"
+                          >
+                            <Layers className="w-3.5 h-3.5" />
+                            <span className="hidden xs:inline">Copiar</span>
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={(e) => handleDelete(String(prod.sku), e)}
-                          className="py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 font-bold text-xs flex items-center justify-center transition active:scale-95 cursor-pointer"
-                          title="Excluir imóvel"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                          <button
+                            type="button"
+                            onClick={(e) => handleCopyPropertyLink(String(prod.sku), e)}
+                            className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition cursor-pointer"
+                            title="Copiar Link para WhatsApp"
+                          >
+                            <Copy className="w-3.5 h-3.5" />
+                            <span>Link</span>
+                          </button>
+
+                          <a
+                            href={`/loja?sku=${encodeURIComponent(String(prod.sku))}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition"
+                            title="Ver no site público"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>Ver</span>
+                          </a>
+
+                          <button
+                            type="button"
+                            onClick={(e) => handleDelete(String(prod.sku), e)}
+                            className="py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 font-bold text-xs flex items-center justify-center transition active:scale-95 cursor-pointer"
+                            title="Excluir imóvel"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );
@@ -1246,16 +1270,16 @@ export function AdminDashboardPage() {
                                 <Copy className="w-3.5 h-3.5" />
                               </button>
 
-                              <Link
-                                to="/loja"
-                                search={{ sku: String(prod.sku) }}
+                              <a
+                                href={`/loja?sku=${encodeURIComponent(String(prod.sku))}`}
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
                                 title="Ver no site público"
                               >
                                 <ExternalLink className="w-3.5 h-3.5" />
-                              </Link>
+                              </a>
 
                               <button
                                 type="button"

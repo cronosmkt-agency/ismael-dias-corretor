@@ -15,7 +15,7 @@ export interface SiteSettings {
   adminPin: string;
   enableChatAssistant: boolean;
   highlightNotice: string;
-  hideSoldProperties: boolean;
+  hideSoldProperties?: boolean;
 }
 
 export const DEFAULT_SETTINGS: SiteSettings = {
