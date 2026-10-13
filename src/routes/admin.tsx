@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import {
   Shield,
   Key,
@@ -32,7 +32,23 @@ import {
   Building2,
   DollarSign,
   ChevronRight,
+  ChevronLeft,
   Filter,
+  Star,
+  ArrowLeft,
+  ArrowRight,
+  Upload,
+  Image as ImageIcon,
+  Tag,
+  AlignLeft,
+  Compass,
+  FileCheck2,
+  X,
+  CreditCard,
+  Instagram,
+  SlidersHorizontal,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -75,36 +91,45 @@ import {
 import { fmt } from "@/data/storeData";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({
-    meta: [
-      { title: "Painel do Corretor — Ismael Dias | Habittat House" },
-      { name: "robots", content: "noindex, nofollow" },
-    ],
-  }),
   component: AdminDashboardPage,
 });
 
-type AdminTab = "imoveis" | "analytics" | "config" | "backup";
-
 export function AdminDashboardPage() {
+  // Auth PIN
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [enteredPin, setEnteredPin] = useState("");
-  const [activeTab, setActiveTab] = useState<AdminTab>("imoveis");
 
-  // Settings
-  const [settings, setSettings] = useState<SiteSettings>(getSiteSettings());
-  const [settingsForm, setSettingsForm] = useState<SiteSettings>(settings);
+  // Navigation Tabs: "imoveis" | "analytics" | "config" | "backup"
+  const [activeTab, setActiveTab] = useState<"imoveis" | "analytics" | "config" | "backup">("imoveis");
 
   // Properties State
   const [properties, setProperties] = useState<ProductItem[]>([]);
+  const [settings, setSettings] = useState<SiteSettings>(getSiteSettings());
+  const [settingsForm, setSettingsForm] = useState<SiteSettings>(getSiteSettings());
+
+  // Filter & Search State
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
+
+  // Pagination for Properties in Admin
+  const [adminPage, setAdminPage] = useState(1);
+  const [adminPageSize, setAdminPageSize] = useState(25);
 
   // Editing / Creation Modal
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<Partial<ProductItem> | null>(null);
   const [isCreatingNew, setIsCreatingNew] = useState(false);
+  const [modalTab, setModalTab] = useState<"photos" | "basics" | "location" | "specs" | "description">("photos");
+
+  // Image Management States inside Modal
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [bulkUrls, setBulkUrls] = useState("");
+  const [showBulkAdd, setShowBulkAdd] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Quick Feature Tag Input inside Modal
+  const [newFeatureText, setNewFeatureText] = useState("");
 
   // Analytics State
   const [summary, setSummary] = useState<AnalyticsSummary>({
@@ -117,7 +142,7 @@ export function AdminDashboardPage() {
   const [pageViewsList, setPageViewsList] = useState<{ path: string; label: string; count: number }[]>([]);
   const [dailyChart, setDailyChart] = useState<DailyMetric[]>([]);
 
-  // Check auth session
+  // Check auth session on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isAuth = sessionStorage.getItem("ismael_admin_auth") === "true";
@@ -168,7 +193,7 @@ export function AdminDashboardPage() {
     toast.info("Você saiu do painel administrativo.");
   };
 
-  // Status Toggle
+  // Status Toggle (1-click cycle)
   const handleToggleStatus = (sku: string, currentBadge: string) => {
     let next = "Disponível";
     if (currentBadge === "Disponível" || !currentBadge) next = "VENDIDA";
@@ -182,48 +207,228 @@ export function AdminDashboardPage() {
 
   // Open Edit Modal
   const handleOpenEdit = (item: ProductItem) => {
-    setEditingItem({ ...item });
+    // Garantir array de fotos inicializado
+    const initialImages = item.images && item.images.length > 0
+      ? [...item.images]
+      : (item.img ? [item.img] : []);
+
+    setEditingItem({
+      ...item,
+      images: initialImages,
+      img: initialImages[0] || item.img || "",
+      features: item.features || item.boxItems || [],
+      boxItems: item.boxItems || item.features || [],
+    });
+    setModalTab("photos");
     setIsCreatingNew(false);
     setIsEditModalOpen(true);
+    setNewImageUrl("");
+    setBulkUrls("");
+    setShowBulkAdd(false);
+    setNewFeatureText("");
   };
 
   // Open Create Modal
   const handleOpenCreate = () => {
     const newSku = String(Math.floor(100000 + Math.random() * 900000));
+    const defaultImg =
+      "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132613/IMG-20240905-WA0066-original.webp";
+
     setEditingItem({
       sku: newSku,
       name: "",
-      cat: "Casas em Condomínio",
+      cat: "Apartamentos",
       bairro: "Albuquerque",
       screen: "Albuquerque, Teresópolis - RJ",
-      price: 500000,
-      storage: "150m²",
-      specs: "3 Quartos (1 Suíte), 2 Vagas",
+      price: 450000,
+      storage: "95m²",
+      specs: "2 Quartos (1 Suíte), 1 Vaga",
       badge: "Disponível",
-      chip: "Financiamento Facilitado",
-      description: "Excelente oportunidade em Teresópolis com vista panorâmica e fácil acesso.",
-      img: "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132613/IMG-20240905-WA0066-original.webp",
-      images: [
-        "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260423132613/IMG-20240905-WA0066-original.webp",
-      ],
+      chip: "Excelente Oportunidade",
+      description: "Excelente apartamento em Teresópolis, ensolarado, arejado e com fino acabamento.",
+      img: defaultImg,
+      images: [defaultImg],
+      condition: "R$ 450/mês",
+      warranty: "R$ 800/ano",
+      battery: "Plano e pronto para morar",
+      features: ["Elevador", "Portaria", "Varanda"],
+      boxItems: ["Elevador", "Portaria", "Varanda"],
     });
+    setModalTab("basics");
     setIsCreatingNew(true);
     setIsEditModalOpen(true);
+    setNewImageUrl("");
+    setBulkUrls("");
+    setShowBulkAdd(false);
+    setNewFeatureText("");
   };
 
-  // Save Edit / Create
-  const handleSaveModal = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!editingItem || !editingItem.name || !editingItem.sku) {
-      toast.error("Preencha ao menos o nome e código do imóvel.");
+  // Modal Image Helpers
+  const modalImages: string[] = useMemo(() => {
+    if (!editingItem) return [];
+    if (editingItem.images && editingItem.images.length > 0) {
+      return editingItem.images;
+    }
+    return editingItem.img ? [editingItem.img] : [];
+  }, [editingItem]);
+
+  const updateModalImages = (newImgs: string[]) => {
+    if (!editingItem) return;
+    const valid = newImgs.filter((u) => Boolean(u && u.trim()));
+    const cover = valid.length > 0 ? valid[0] : "";
+    setEditingItem({
+      ...editingItem,
+      images: valid,
+      img: cover,
+    });
+  };
+
+  // Definir como Capa (sobe para índice 0)
+  const handleSetCover = (index: number) => {
+    if (index <= 0 || index >= modalImages.length) return;
+    const list = [...modalImages];
+    const item = list.splice(index, 1)[0];
+    list.unshift(item);
+    updateModalImages(list);
+    toast.success("Foto definida como Capa Principal!");
+  };
+
+  // Mover foto na ordem (esquerda/direita)
+  const handleMoveImage = (index: number, direction: "prev" | "next") => {
+    const targetIndex = direction === "prev" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= modalImages.length) return;
+    const list = [...modalImages];
+    const item = list.splice(index, 1)[0];
+    list.splice(targetIndex, 0, item);
+    updateModalImages(list);
+    toast.success("Ordem da foto atualizada!");
+  };
+
+  // Excluir foto
+  const handleRemoveImage = (index: number) => {
+    if (modalImages.length <= 1) {
+      toast.error("O imóvel precisa ter pelo menos 1 foto na galeria.");
+      return;
+    }
+    const list = modalImages.filter((_, i) => i !== index);
+    updateModalImages(list);
+    toast.info("Foto removida da galeria.");
+  };
+
+  // Adicionar URL de imagem única
+  const handleAddSingleImageUrl = () => {
+    const url = newImageUrl.trim();
+    if (!url) {
+      toast.error("Digite ou cole uma URL válida de imagem.");
+      return;
+    }
+    const list = [...modalImages, url];
+    updateModalImages(list);
+    setNewImageUrl("");
+    toast.success("Nova foto adicionada à galeria!");
+  };
+
+  // Adicionar várias URLs em lote
+  const handleAddBulkUrls = () => {
+    if (!bulkUrls.trim()) return;
+    const urls = bulkUrls
+      .split(/[\n,]/)
+      .map((u) => u.trim())
+      .filter((u) => u.length > 5);
+
+    if (urls.length === 0) {
+      toast.error("Nenhuma URL identificada no texto colado.");
       return;
     }
 
+    const list = [...modalImages, ...urls];
+    updateModalImages(list);
+    setBulkUrls("");
+    setShowBulkAdd(false);
+    toast.success(`${urls.length} novas fotos adicionadas!`);
+  };
+
+  // Carregar fotos direto do celular ou computador (FileReader DataURL)
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    const newLoadedUrls: string[] = [];
+    let completed = 0;
+
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = (loadEv) => {
+        const dataUrl = loadEv.target?.result as string;
+        if (dataUrl) {
+          newLoadedUrls.push(dataUrl);
+        }
+        completed++;
+        if (completed === files.length) {
+          updateModalImages([...modalImages, ...newLoadedUrls]);
+          toast.success(`${newLoadedUrls.length} foto(s) carregada(s) do dispositivo!`);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Diferenciais / Comodidades Tag Helpers
+  const modalFeatures: string[] = useMemo(() => {
+    if (!editingItem) return [];
+    if (editingItem.features && editingItem.features.length > 0) return editingItem.features;
+    if (editingItem.boxItems && editingItem.boxItems.length > 0) return editingItem.boxItems;
+    return [];
+  }, [editingItem]);
+
+  const handleAddFeature = (feat: string) => {
+    const trimmed = feat.trim();
+    if (!trimmed || !editingItem) return;
+    if (modalFeatures.includes(trimmed)) return;
+    const updated = [...modalFeatures, trimmed];
+    setEditingItem({
+      ...editingItem,
+      features: updated,
+      boxItems: updated,
+    });
+    setNewFeatureText("");
+  };
+
+  const handleRemoveFeature = (feat: string) => {
+    if (!editingItem) return;
+    const updated = modalFeatures.filter((f) => f !== feat);
+    setEditingItem({
+      ...editingItem,
+      features: updated,
+      boxItems: updated,
+    });
+  };
+
+  // Salvar Modal
+  const handleSaveModal = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!editingItem || !editingItem.name || !editingItem.sku) {
+      toast.error("Preencha ao menos o título e código (SKU) do imóvel.");
+      return;
+    }
+
+    // Sincronizar capa e galeria
+    const finalImages = modalImages.length > 0 ? modalImages : [editingItem.img || ""];
+    const finalCover = finalImages[0] || editingItem.img || "";
+
+    const itemToSave: ProductItem = {
+      ...(editingItem as ProductItem),
+      img: finalCover,
+      images: finalImages,
+      features: modalFeatures,
+      boxItems: modalFeatures,
+    };
+
     if (isCreatingNew) {
-      addProperty(editingItem as ProductItem);
+      addProperty(itemToSave);
       toast.success("Novo imóvel cadastrado com sucesso!");
     } else {
-      updateProperty(String(editingItem.sku), editingItem);
+      updateProperty(String(editingItem.sku), itemToSave);
       toast.success(`Imóvel #${editingItem.sku} atualizado com sucesso!`);
     }
 
@@ -231,7 +436,7 @@ export function AdminDashboardPage() {
     refreshData();
   };
 
-  // Delete Property
+  // Excluir Imóvel
   const handleDelete = (sku: string) => {
     if (window.confirm(`Tem certeza que deseja excluir o imóvel #${sku}?`)) {
       deleteProperty(sku);
@@ -240,7 +445,7 @@ export function AdminDashboardPage() {
     }
   };
 
-  // Save Settings
+  // Salvar Configurações
   const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
     const updated = saveSiteSettings(settingsForm);
@@ -248,7 +453,7 @@ export function AdminDashboardPage() {
     toast.success("Configurações do site salvas com sucesso!");
   };
 
-  // Reset Settings
+  // Resetar Configurações
   const handleResetSettings = () => {
     if (window.confirm("Deseja restaurar as configurações padrão do site?")) {
       const def = resetSiteSettings();
@@ -271,7 +476,7 @@ export function AdminDashboardPage() {
     toast.success("Backup do catálogo exportado com sucesso!");
   };
 
-  // Reset Catalog
+  // Resetar Catálogo Original
   const handleResetCatalog = () => {
     if (
       window.confirm(
@@ -284,7 +489,7 @@ export function AdminDashboardPage() {
     }
   };
 
-  // Filtered Properties in Admin Table
+  // Filtered Properties
   const filteredProperties = useMemo(() => {
     return properties.filter((p) => {
       const q = searchQuery.toLowerCase().trim();
@@ -306,6 +511,20 @@ export function AdminDashboardPage() {
       return matchSearch && matchStatus && matchCat;
     });
   }, [properties, searchQuery, statusFilter, categoryFilter]);
+
+  // Reset pagination when filter changes
+  useEffect(() => {
+    setAdminPage(1);
+  }, [searchQuery, statusFilter, categoryFilter, adminPageSize]);
+
+  // Paginated Slice
+  const totalFiltered = filteredProperties.length;
+  const totalPages = adminPageSize > 0 ? Math.max(1, Math.ceil(totalFiltered / adminPageSize)) : 1;
+  const paginatedProperties = useMemo(() => {
+    if (adminPageSize <= 0) return filteredProperties;
+    const start = (adminPage - 1) * adminPageSize;
+    return filteredProperties.slice(start, start + adminPageSize);
+  }, [filteredProperties, adminPage, adminPageSize]);
 
   // Categories list for filter
   const categoriesList = useMemo(() => {
@@ -376,32 +595,32 @@ export function AdminDashboardPage() {
   ------------------------------------------------------------- */
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      {/* Top Bar */}
-      <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-4 sm:px-8 py-3.5 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white text-base shadow-sm">
+      {/* Top Bar Mobile & Desktop */}
+      <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-3.5 sm:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white text-sm sm:text-base shadow-sm shrink-0">
             ID
           </div>
-          <div>
-            <h1 className="text-sm sm:text-base font-black tracking-tight leading-tight flex items-center gap-1.5">
+          <div className="min-w-0">
+            <h1 className="text-xs sm:text-base font-black tracking-tight leading-tight flex items-center gap-1.5 truncate">
               <span>Painel do Corretor</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                 Online
               </span>
             </h1>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[10px] sm:text-[11px] text-slate-400 truncate">
               Ismael Dias • Habittat House
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <Link
             to="/loja"
             target="_blank"
-            className="px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-semibold hover:bg-slate-800 transition flex items-center gap-1 text-slate-300"
+            className="px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-700 text-[11px] sm:text-xs font-semibold hover:bg-slate-800 transition flex items-center gap-1 text-slate-300"
           >
-            <span>Ver Catálogo</span>
+            <span>Ver Site</span>
             <ExternalLink className="w-3 h-3" />
           </Link>
 
@@ -416,9 +635,65 @@ export function AdminDashboardPage() {
         </div>
       </header>
 
-      {/* Navigation Tabs */}
-      <div className="bg-slate-900/50 border-b border-slate-800/80 px-4 sm:px-8">
-        <div className="flex items-center gap-2 overflow-x-auto py-2">
+      {/* Navigation Tabs — Responsivo para Mobile (Grid 4x1) e Desktop (Flex) */}
+      <div className="bg-slate-900/60 border-b border-slate-800/80 px-2 sm:px-8 py-2">
+        {/* Mobile View (Grid 4 colunas compacto) */}
+        <div className="grid grid-cols-4 gap-1.5 sm:hidden">
+          <button
+            onClick={() => setActiveTab("imoveis")}
+            className={`py-2 px-1 rounded-xl text-center flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
+              activeTab === "imoveis"
+                ? "bg-blue-600 text-white font-black shadow-sm"
+                : "text-slate-400 hover:text-white bg-slate-800/40"
+            }`}
+          >
+            <Home className="w-4 h-4" />
+            <span className="text-[10px] font-bold leading-tight">Imóveis</span>
+            <span className="text-[9px] opacity-75">({properties.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("analytics")}
+            className={`py-2 px-1 rounded-xl text-center flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
+              activeTab === "analytics"
+                ? "bg-blue-600 text-white font-black shadow-sm"
+                : "text-slate-400 hover:text-white bg-slate-800/40"
+            }`}
+          >
+            <BarChart3 className="w-4 h-4" />
+            <span className="text-[10px] font-bold leading-tight">Métricas</span>
+            <span className="text-[9px] opacity-75">({summary.totalWhatsAppClicks})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("config")}
+            className={`py-2 px-1 rounded-xl text-center flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
+              activeTab === "config"
+                ? "bg-blue-600 text-white font-black shadow-sm"
+                : "text-slate-400 hover:text-white bg-slate-800/40"
+            }`}
+          >
+            <Settings className="w-4 h-4" />
+            <span className="text-[10px] font-bold leading-tight">Ajustes</span>
+            <span className="text-[9px] opacity-75">Site</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("backup")}
+            className={`py-2 px-1 rounded-xl text-center flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
+              activeTab === "backup"
+                ? "bg-blue-600 text-white font-black shadow-sm"
+                : "text-slate-400 hover:text-white bg-slate-800/40"
+            }`}
+          >
+            <Database className="w-4 h-4" />
+            <span className="text-[10px] font-bold leading-tight">Backup</span>
+            <span className="text-[9px] opacity-75">Dados</span>
+          </button>
+        </div>
+
+        {/* Desktop View (Flex horizontal espaçoso) */}
+        <div className="hidden sm:flex items-center gap-2">
           <button
             onClick={() => setActiveTab("imoveis")}
             className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
@@ -470,27 +745,27 @@ export function AdminDashboardPage() {
       </div>
 
       {/* Main Content Body */}
-      <main className="flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto">
+      <main className="flex-1 p-3 sm:p-8 max-w-7xl w-full mx-auto">
         {/* =============================================================
             ABA 1: GESTÃO DE IMÓVEIS
         ============================================================= */}
         {activeTab === "imoveis" && (
-          <div className="space-y-6">
-            {/* Header com Ações Rápidas */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-4 sm:space-y-6">
+            {/* Header da Aba com Botão Cadastrar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h2 className="text-xl sm:text-2xl font-black tracking-tight">
+                <h2 className="text-lg sm:text-2xl font-black tracking-tight">
                   Gestão do Catálogo de Imóveis
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-                  Visualize, altere status de venda, edite preços ou cadastre novos imóveis
+                <p className="text-[11px] sm:text-sm text-slate-400 mt-0.5">
+                  Organize fotos, edite descrições, altere status de venda ou cadastre novos imóveis
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div>
                 <button
                   onClick={handleOpenCreate}
-                  className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md transition active:scale-95 cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md transition active:scale-95 cursor-pointer text-white"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Cadastrar Imóvel</span>
@@ -498,61 +773,194 @@ export function AdminDashboardPage() {
               </div>
             </div>
 
-            {/* Filtros e Barra de Busca */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-slate-900/80 p-3 sm:p-4 rounded-2xl border border-slate-800">
-              <div className="relative sm:col-span-2">
+            {/* Filtros e Barra de Busca Compacta */}
+            <div className="space-y-2.5 bg-slate-900/90 p-3 sm:p-4 rounded-2xl border border-slate-800 shadow-md">
+              <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Buscar por código (#SKU), nome ou bairro..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-9 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500"
                 />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5 cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
               </div>
 
-              <div>
-                <select
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white cursor-pointer focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="all">Status: Todos ({properties.length})</option>
-                  <option value="disponivel">🟢 Disponíveis</option>
-                  <option value="vendida">🔴 Vendidos</option>
-                  <option value="reservado">🟡 Reservados</option>
-                </select>
-              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <select
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                    className="w-full py-2 px-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white cursor-pointer focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="all">Status: Todos ({properties.length})</option>
+                    <option value="disponivel">🟢 Disponíveis</option>
+                    <option value="vendida">🔴 Vendidos</option>
+                    <option value="reservado">🟡 Reservados</option>
+                  </select>
+                </div>
 
-              <div>
-                <select
-                  value={categoryFilter}
-                  onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="w-full py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white cursor-pointer focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="all">Categoria: Todas</option>
-                  {categoriesList.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </select>
+                <div>
+                  <select
+                    value={categoryFilter}
+                    onChange={(e) => setCategoryFilter(e.target.value)}
+                    className="w-full py-2 px-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white cursor-pointer focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="all">Categoria: Todas</option>
+                    {categoriesList.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
-            {/* Contagem de Resultados */}
-            <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+            {/* Contagem de Resultados e Dica */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 px-1 gap-1">
               <span>
-                Mostrando <strong className="text-white">{filteredProperties.length}</strong> de{" "}
+                Mostrando <strong className="text-white">{totalFiltered}</strong> de{" "}
                 {properties.length} imóveis cadastrados
               </span>
               <span className="text-[11px] text-slate-500">
-                Dica: Clique no botão de status para alternar entre Disponível / VENDIDA / Reservado
+                Toque no botão de status para alternar: Disponível / VENDIDA / Reservado
               </span>
             </div>
 
-            {/* Lista / Tabela de Imóveis */}
-            <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
+            {/* =============================================================
+                1. MODO MOBILE: CARDS MODERNOS TOUCH-FRIENDLY (md:hidden)
+            ============================================================= */}
+            <div className="block md:hidden space-y-3">
+              {paginatedProperties.length === 0 ? (
+                <div className="p-8 text-center bg-slate-900 rounded-2xl border border-slate-800 text-slate-400 text-xs">
+                  Nenhum imóvel encontrado com os filtros atuais.
+                </div>
+              ) : (
+                paginatedProperties.map((prod) => (
+                  <div
+                    key={String(prod.sku) + prod.name}
+                    className="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 space-y-3 shadow-md hover:border-slate-700 transition"
+                  >
+                    {/* Linha 1: Foto + Título + Bairro */}
+                    <div className="flex items-start gap-3">
+                      <div className="relative shrink-0">
+                        <img
+                          src={prod.img}
+                          alt={prod.name}
+                          className="w-16 h-16 rounded-xl object-cover bg-slate-800 border border-slate-700"
+                          loading="lazy"
+                        />
+                        <span className="absolute bottom-1 right-1 px-1 py-0.2 rounded-md bg-black/80 text-[9px] font-bold text-white flex items-center gap-0.5 shadow-xs">
+                          <ImageIcon className="w-2.5 h-2.5" />
+                          <span>{prod.images?.length || 1}</span>
+                        </span>
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-extrabold text-blue-400">
+                            #{prod.sku || "—"}
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-medium">
+                            • {prod.cat}
+                          </span>
+                        </div>
+
+                        <h4 className="font-bold text-xs text-white line-clamp-2 mt-0.5 leading-snug">
+                          {prod.name}
+                        </h4>
+
+                        <div className="flex items-center gap-2 mt-1 text-[11px] text-slate-400">
+                          <span className="flex items-center gap-0.5 truncate">
+                            <MapPin className="w-3 h-3 text-blue-400 shrink-0" />
+                            <span>{prod.bairro || "Teresópolis"}</span>
+                          </span>
+                          {prod.storage && (
+                            <span className="shrink-0">• {prod.storage}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Linha 2: Valor & Status Ciclável */}
+                    <div className="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                      <div>
+                        <span className="text-[9px] uppercase font-bold text-slate-400 block leading-tight">
+                          Valor de Venda
+                        </span>
+                        <span className="text-sm font-black text-emerald-400">
+                          {fmt(prod.price)}
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => handleToggleStatus(String(prod.sku), prod.badge || "Disponível")}
+                        className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-wide border cursor-pointer transition active:scale-95 flex items-center gap-1 ${
+                          prod.badge === "VENDIDA"
+                            ? "bg-rose-500/20 text-rose-400 border-rose-500/40"
+                            : prod.badge === "RESERVADO"
+                            ? "bg-amber-500/20 text-amber-400 border-amber-500/40"
+                            : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
+                        }`}
+                        title="Toque para alternar o status de venda"
+                      >
+                        <span>
+                          {prod.badge === "VENDIDA"
+                            ? "🔴 Vendida"
+                            : prod.badge === "RESERVADO"
+                            ? "🟡 Reservado"
+                            : "🟢 Disponível"}
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* Linha 3: Ações Rápidas Touch */}
+                    <div className="grid grid-cols-4 gap-2 pt-1">
+                      <button
+                        onClick={() => handleOpenEdit(prod)}
+                        className="col-span-2 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95 cursor-pointer"
+                      >
+                        <Edit3 className="w-3.5 h-3.5" />
+                        <span>Editar & Fotos</span>
+                      </button>
+
+                      <Link
+                        to="/loja"
+                        search={{ sku: String(prod.sku) }}
+                        target="_blank"
+                        className="py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1 transition"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>Ver</span>
+                      </Link>
+
+                      <button
+                        onClick={() => handleDelete(String(prod.sku))}
+                        className="py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 font-bold text-xs flex items-center justify-center transition active:scale-95 cursor-pointer"
+                        title="Excluir imóvel"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {/* =============================================================
+                2. MODO DESKTOP: TABELA COMPLETA (hidden md:block)
+            ============================================================= */}
+            <div className="hidden md:block bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs sm:text-sm">
                   <thead className="bg-slate-800/80 text-slate-300 text-[11px] uppercase tracking-wider border-b border-slate-800">
@@ -560,12 +968,13 @@ export function AdminDashboardPage() {
                       <th className="py-3 px-4">Imóvel</th>
                       <th className="py-3 px-3">Bairro</th>
                       <th className="py-3 px-3">Valor</th>
+                      <th className="py-3 px-3 text-center">Fotos</th>
                       <th className="py-3 px-3 text-center">Status</th>
                       <th className="py-3 px-4 text-right">Ações</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
-                    {filteredProperties.slice(0, 50).map((prod) => (
+                    {paginatedProperties.map((prod) => (
                       <tr
                         key={String(prod.sku) + prod.name}
                         className="hover:bg-slate-800/40 transition-colors"
@@ -584,7 +993,7 @@ export function AdminDashboardPage() {
                                 #{prod.sku || "—"} • {prod.cat}
                               </span>
                               <h4
-                                className="font-bold text-slate-100 truncate max-w-[240px] sm:max-w-md"
+                                className="font-bold text-slate-100 truncate max-w-xs xl:max-w-md"
                                 title={prod.name}
                               >
                                 {prod.name}
@@ -607,6 +1016,13 @@ export function AdminDashboardPage() {
                         {/* Valor */}
                         <td className="py-3 px-3 font-black text-slate-200 whitespace-nowrap">
                           {fmt(prod.price)}
+                        </td>
+
+                        {/* Quantidade de Fotos */}
+                        <td className="py-3 px-3 text-center whitespace-nowrap">
+                          <span className="px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[11px] font-bold text-slate-300">
+                            📷 {prod.images?.length || 1}
+                          </span>
                         </td>
 
                         {/* Status Toggle Button */}
@@ -636,10 +1052,11 @@ export function AdminDashboardPage() {
                           <div className="flex items-center justify-end gap-1.5">
                             <button
                               onClick={() => handleOpenEdit(prod)}
-                              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
-                              title="Editar imóvel"
+                              className="px-2.5 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 font-bold text-xs transition cursor-pointer flex items-center gap-1"
+                              title="Editar imóvel e fotos"
                             >
                               <Edit3 className="w-3.5 h-3.5" />
+                              <span>Editar</span>
                             </button>
                             <button
                               onClick={() => handleDelete(String(prod.sku))}
@@ -655,10 +1072,48 @@ export function AdminDashboardPage() {
                   </tbody>
                 </table>
               </div>
+            </div>
 
-              {filteredProperties.length > 50 && (
-                <div className="p-3 bg-slate-800/40 text-center text-xs text-slate-400 border-t border-slate-800">
-                  Mostrando os primeiros 50 resultados. Use a busca acima para refinar.
+            {/* Paginação do Admin (Mobile & Desktop) */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 bg-slate-900 rounded-2xl border border-slate-800 text-xs">
+              <div className="flex items-center gap-2 text-slate-400">
+                <span>Exibir por página:</span>
+                <select
+                  value={adminPageSize}
+                  onChange={(e) => setAdminPageSize(Number(e.target.value))}
+                  className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-1 text-white text-xs cursor-pointer"
+                >
+                  <option value={20}>20 imóveis</option>
+                  <option value={25}>25 imóveis</option>
+                  <option value={50}>50 imóveis</option>
+                  <option value={100}>100 imóveis</option>
+                  <option value={0}>Todos ({totalFiltered})</option>
+                </select>
+              </div>
+
+              {adminPageSize > 0 && totalPages > 1 && (
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-400">
+                    Página <strong className="text-white">{adminPage}</strong> de {totalPages}
+                  </span>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => setAdminPage((prev) => Math.max(1, prev - 1))}
+                      disabled={adminPage <= 1}
+                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed text-white cursor-pointer"
+                      title="Página Anterior"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => setAdminPage((prev) => Math.min(totalPages, prev + 1))}
+                      disabled={adminPage >= totalPages}
+                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed text-white cursor-pointer"
+                      title="Próxima Página"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -683,13 +1138,13 @@ export function AdminDashboardPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md">
                 <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-bold uppercase">Visualizações</span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase">Visualizações</span>
                   <Eye className="w-4 h-4 text-blue-400" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-white">
                   {summary.totalPageViews}
                 </div>
-                <span className="text-[11px] text-emerald-400 flex items-center gap-1 mt-1 font-semibold">
+                <span className="text-[10px] sm:text-[11px] text-emerald-400 flex items-center gap-1 mt-1 font-semibold">
                   <TrendingUp className="w-3 h-3" />
                   <span>Acessos registrados</span>
                 </span>
@@ -697,39 +1152,39 @@ export function AdminDashboardPage() {
 
               <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md">
                 <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-bold uppercase">Leads no WhatsApp</span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase">Leads no WhatsApp</span>
                   <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-emerald-400">
                   {summary.totalWhatsAppClicks}
                 </div>
-                <span className="text-[11px] text-slate-400 mt-1 block font-medium">
+                <span className="text-[10px] sm:text-[11px] text-slate-400 mt-1 block font-medium">
                   Cliques para conversar
                 </span>
               </div>
 
               <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md">
                 <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-bold uppercase">Taxa de Conversão</span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase">Taxa Conversão</span>
                   <MousePointerClick className="w-4 h-4 text-sky-400" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-sky-400">
                   {summary.conversionRate}
                 </div>
-                <span className="text-[11px] text-slate-400 mt-1 block font-medium">
+                <span className="text-[10px] sm:text-[11px] text-slate-400 mt-1 block font-medium">
                   Visitantes que clicaram
                 </span>
               </div>
 
               <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md">
                 <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-bold uppercase">Imóveis Ativos</span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase">Imóveis Ativos</span>
                   <Building2 className="w-4 h-4 text-indigo-400" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-white">
                   {properties.filter((p) => p.badge !== "VENDIDA").length}
                 </div>
-                <span className="text-[11px] text-slate-400 mt-1 block font-medium">
+                <span className="text-[10px] sm:text-[11px] text-slate-400 mt-1 block font-medium">
                   {properties.filter((p) => p.badge === "VENDIDA").length} vendidos
                 </span>
               </div>
@@ -737,7 +1192,7 @@ export function AdminDashboardPage() {
 
             {/* Gráfico Diário de Visualizações e Cliques */}
             <div className="p-4 sm:p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                 <div>
                   <h3 className="font-black text-sm sm:text-base text-white">
                     Evolução dos Últimos 7 Dias
@@ -758,7 +1213,7 @@ export function AdminDashboardPage() {
                 </div>
               </div>
 
-              <div className="h-64 w-full">
+              <div className="h-60 sm:h-72 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={dailyChart}>
                     <defs>
@@ -851,9 +1306,11 @@ export function AdminDashboardPage() {
                           </div>
                         </div>
 
-                        <div className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 text-xs font-black shrink-0 border border-emerald-500/30 flex items-center gap-1">
-                          <WhatsAppIcon className="w-3 h-3" />
-                          <span>{p.clicks} cliques</span>
+                        <div className="text-right shrink-0">
+                          <span className="px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold text-xs flex items-center gap-1">
+                            <WhatsAppIcon className="w-3.5 h-3.5" />
+                            <span>{p.clicks} {p.clicks === 1 ? "lead" : "leads"}</span>
+                          </span>
                         </div>
                       </div>
                     ))}
@@ -861,32 +1318,34 @@ export function AdminDashboardPage() {
                 )}
               </div>
 
-              {/* Visualizações por Página */}
+              {/* Páginas Mais Acessadas */}
               <div className="p-4 sm:p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
-                <h3 className="font-black text-sm sm:text-base text-white mb-1">
-                  Acessos por Página
+                <h3 className="font-black text-sm sm:text-base text-white mb-1 flex items-center gap-1.5">
+                  <LayoutDashboard className="w-4 h-4 text-blue-400" />
+                  <span>Acessos por Página do Site</span>
                 </h3>
                 <p className="text-xs text-slate-400 mb-4">
-                  Distribuição de visitas entre as principais seções do site
+                  Distribuição de visitas entre Home, Loja e Lançamentos
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {pageViewsList.map((pv) => {
-                    const total = summary.totalPageViews || 1;
-                    const percent = Math.min(100, Math.round((pv.count / total) * 100));
+                    const pct = summary.totalPageViews > 0
+                      ? Math.round((pv.count / summary.totalPageViews) * 100)
+                      : 0;
 
                     return (
-                      <div key={pv.path} className="space-y-1">
-                        <div className="flex justify-between text-xs font-semibold">
+                      <div key={pv.path} className="space-y-1.5">
+                        <div className="flex items-center justify-between text-xs font-semibold">
                           <span className="text-slate-300">{pv.label}</span>
                           <span className="text-slate-400">
-                            {pv.count} visitas ({percent}%)
+                            {pv.count} visitas ({pct}%)
                           </span>
                         </div>
                         <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
                           <div
                             className="h-full bg-blue-500 rounded-full transition-all duration-500"
-                            style={{ width: `${percent}%` }}
+                            style={{ width: `${pct}%` }}
                           />
                         </div>
                       </div>
@@ -905,10 +1364,10 @@ export function AdminDashboardPage() {
           <div className="max-w-2xl space-y-6">
             <div>
               <h2 className="text-xl sm:text-2xl font-black tracking-tight">
-                Configurações do Site
+                Configurações Gerais do Site
               </h2>
               <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-                Altere seus telefones, WhatsApp, mensagem de atendimento e dados profissionais
+                Altere o WhatsApp de atendimento, telefone, CRECI e mensagem padrão em tempo real
               </p>
             </div>
 
@@ -918,10 +1377,11 @@ export function AdminDashboardPage() {
             >
               <div>
                 <label className="text-xs font-bold text-slate-300 block mb-1">
-                  Nome do Corretor
+                  Nome do Corretor / Imobiliária
                 </label>
                 <input
                   type="text"
+                  required
                   value={settingsForm.realtorName}
                   onChange={(e) =>
                     setSettingsForm({ ...settingsForm, realtorName: e.target.value })
@@ -930,31 +1390,33 @@ export function AdminDashboardPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-slate-300 block mb-1">
-                    Número WhatsApp (apenas dígitos com DDI)
+                    WhatsApp para Receber Mensagens (Somente dígitos com DDD)
                   </label>
                   <input
                     type="text"
+                    required
                     value={settingsForm.whatsappNumber}
                     onChange={(e) =>
-                      setSettingsForm({ ...settingsForm, whatsappNumber: e.target.value })
+                      setSettingsForm({ ...settingsForm, whatsappNumber: e.target.value.replace(/\D/g, "") })
                     }
                     placeholder="Ex: 5521964639999"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500 font-mono"
                   />
-                  <span className="text-[10px] text-slate-500 mt-0.5 block">
-                    Atualiza todos os botões de WhatsApp do site
+                  <span className="text-[10px] text-slate-500 mt-1 block">
+                    Atual: {settingsForm.whatsappNumber}
                   </span>
                 </div>
 
                 <div>
                   <label className="text-xs font-bold text-slate-300 block mb-1">
-                    Telefone de Exibição
+                    Telefone Formatado para Exibição
                   </label>
                   <input
                     type="text"
+                    required
                     value={settingsForm.phoneDisplay}
                     onChange={(e) =>
                       setSettingsForm({ ...settingsForm, phoneDisplay: e.target.value })
@@ -965,10 +1427,10 @@ export function AdminDashboardPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-slate-300 block mb-1">
-                    Registro Profissional / CRECI
+                    Registro CRECI
                   </label>
                   <input
                     type="text"
@@ -976,6 +1438,7 @@ export function AdminDashboardPage() {
                     onChange={(e) =>
                       setSettingsForm({ ...settingsForm, creci: e.target.value })
                     }
+                    placeholder="Ex: CRECI-RJ 000.000"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -1059,7 +1522,7 @@ export function AdminDashboardPage() {
               </p>
             </div>
 
-            <div className="bg-slate-900 p-5 sm:p-7 rounded-2xl border border-slate-800 space-y-6 shadow-xl">
+            <div className="bg-slate-900 p-5 sm:p-7 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-slate-800/60 border border-slate-700/60">
                 <div>
                   <h4 className="font-bold text-sm text-white flex items-center gap-2">
@@ -1125,154 +1588,676 @@ export function AdminDashboardPage() {
       </main>
 
       {/* =============================================================
-          MODAL DE EDIÇÃO / CADASTRO DE IMÓVEL
+          MODAL DE EDIÇÃO COMPLETA DE IMÓVEL & FOTOS
       ============================================================= */}
       {isEditModalOpen && editingItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-2xl my-auto space-y-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-base sm:text-lg font-black text-white">
-                {isCreatingNew ? "Cadastrar Novo Imóvel" : `Editar Imóvel #${editingItem.sku}`}
-              </h3>
-              <button
-                type="button"
-                onClick={() => setIsEditModalOpen(false)}
-                className="text-slate-400 hover:text-white cursor-pointer"
-              >
-                ✕
-              </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md overflow-hidden">
+          <div className="relative w-full h-[100dvh] sm:h-auto sm:max-h-[92vh] sm:max-w-3xl bg-slate-900 border-0 sm:border border-slate-800 rounded-none sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+            
+            {/* Top Bar Fixa do Modal (Sempre visível no mobile) */}
+            <div className="sticky top-0 z-20 bg-slate-900/95 backdrop-blur-md px-4 sm:px-6 py-3 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
+              <div className="min-w-0">
+                <h3 className="text-sm sm:text-base font-black text-white truncate flex items-center gap-2">
+                  <span>{isCreatingNew ? "Novo Imóvel" : `Editar Imóvel #${editingItem.sku}`}</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30">
+                    {editingItem.cat || "Imóvel"}
+                  </span>
+                </h3>
+                <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                  {editingItem.name || "Preencha as informações do anúncio"}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsEditModalOpen(false)}
+                  className="px-3 py-1.5 rounded-xl border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold cursor-pointer transition"
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSaveModal()}
+                  className="px-4 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md transition active:scale-95 cursor-pointer"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  <span>Salvar</span>
+                </button>
+              </div>
             </div>
 
-            <form onSubmit={handleSaveModal} className="space-y-4 text-xs sm:text-sm">
-              <div>
-                <label className="font-bold text-slate-300 block mb-1">
-                  Título do Imóvel *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={editingItem.name || ""}
-                  onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
-                  placeholder="Ex: Linda Casa de 4 Quartos com Piscina em Albuquerque"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:ring-2 focus:ring-blue-500"
-                />
+            {/* Abas Internas de Navegação do Modal (Organização limpa) */}
+            <div className="bg-slate-900 border-b border-slate-800 px-3 sm:px-6 py-2 overflow-x-auto shrink-0">
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setModalTab("photos")}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                    modalTab === "photos"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  }`}
+                >
+                  <ImageIcon className="w-3.5 h-3.5" />
+                  <span>Galeria de Fotos ({modalImages.length})</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setModalTab("basics")}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                    modalTab === "basics"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  }`}
+                >
+                  <Tag className="w-3.5 h-3.5" />
+                  <span>Dados Básicos</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setModalTab("location")}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                    modalTab === "location"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  }`}
+                >
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Local & Metragem</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setModalTab("specs")}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                    modalTab === "specs"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  }`}
+                >
+                  <Building2 className="w-3.5 h-3.5" />
+                  <span>Taxas & Vantagens</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setModalTab("description")}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                    modalTab === "description"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  }`}
+                >
+                  <AlignLeft className="w-3.5 h-3.5" />
+                  <span>Descrição</span>
+                </button>
               </div>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div>
-                  <label className="font-bold text-slate-300 block mb-1">Código (SKU) *</label>
-                  <input
-                    type="text"
-                    required
-                    value={editingItem.sku || ""}
-                    onChange={(e) => setEditingItem({ ...editingItem, sku: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono"
-                  />
+            {/* Conteúdo Rolável do Modal */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
+              
+              {/* =========================================================
+                  SUB-ABA 1: GALERIA DE FOTOS (EDIÇÃO, ORDEM E UPLOAD)
+              ========================================================= */}
+              {modalTab === "photos" && (
+                <div className="space-y-4">
+                  <div className="bg-blue-950/20 border border-blue-900/40 p-3 sm:p-4 rounded-2xl flex items-start gap-3 text-xs text-blue-300">
+                    <Sparkles className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block font-bold mb-0.5">
+                        Como organizar as fotos:
+                      </strong>
+                      A foto <strong>#1 com a estrela dourada</strong> é automaticamente a Foto de Capa principal. Você pode usar as setas ⬅️ ➡️ para mudar a ordem ou clicar em <strong>"⭐ Capa"</strong> para promover qualquer foto para o topo!
+                    </div>
+                  </div>
+
+                  {/* Adicionar Fotos: Inputs e Ações */}
+                  <div className="bg-slate-800/60 p-3.5 rounded-2xl border border-slate-700/60 space-y-3">
+                    <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                      <Plus className="w-3.5 h-3.5 text-blue-400" />
+                      <span>Adicionar Novas Fotos</span>
+                    </h4>
+
+                    {/* Linha 1: Input de URL direta */}
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <input
+                        type="url"
+                        placeholder="Cole a URL da foto (WebP, JPG, PNG)..."
+                        value={newImageUrl}
+                        onChange={(e) => setNewImageUrl(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            handleAddSingleImageUrl();
+                          }
+                        }}
+                        className="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleAddSingleImageUrl}
+                        className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white shrink-0 cursor-pointer flex items-center justify-center gap-1"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Adicionar Foto</span>
+                      </button>
+                    </div>
+
+                    {/* Linha 2: Botões de Carregar do Celular e Lote */}
+                    <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-700/50">
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        accept="image/*"
+                        multiple
+                        onChange={handleFileUpload}
+                        className="hidden"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="px-3 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-xs font-semibold text-slate-200 cursor-pointer flex items-center gap-1.5 transition"
+                      >
+                        <Upload className="w-3.5 h-3.5 text-blue-400" />
+                        <span>Escolher do Celular / Computador</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowBulkAdd(!showBulkAdd)}
+                        className="px-3 py-1.5 rounded-xl border border-slate-600 hover:bg-slate-700/50 text-xs font-semibold text-slate-300 cursor-pointer flex items-center gap-1.5 transition"
+                      >
+                        <span>Colar Múltiplas URLs</span>
+                        {showBulkAdd ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+
+                    {/* Caixa expansível para Lote de URLs */}
+                    {showBulkAdd && (
+                      <div className="pt-2 space-y-2">
+                        <textarea
+                          rows={3}
+                          placeholder="Cole várias URLs de imagens aqui, uma por linha ou separadas por vírgula..."
+                          value={bulkUrls}
+                          onChange={(e) => setBulkUrls(e.target.value)}
+                          className="w-full p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 font-mono"
+                        />
+                        <div className="flex justify-end">
+                          <button
+                            type="button"
+                            onClick={handleAddBulkUrls}
+                            className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs text-white cursor-pointer shadow-sm"
+                          >
+                            Adicionar URLs em Lote
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Grade Visual de Fotos com Ações de Reordenação */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+                      <span>
+                        Galeria Atual: <strong className="text-white">{modalImages.length} fotos</strong>
+                      </span>
+                      <span className="text-[11px] text-slate-500">
+                        Use as setas para trocar posições
+                      </span>
+                    </div>
+
+                    {modalImages.length === 0 ? (
+                      <div className="p-8 text-center bg-slate-800/40 rounded-2xl border border-slate-700 text-slate-400 text-xs">
+                        Nenhuma foto adicionada. Cole uma URL acima ou envie uma foto do dispositivo.
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3">
+                        {modalImages.map((imgUrl, idx) => {
+                          const isCover = idx === 0;
+
+                          return (
+                            <div
+                              key={imgUrl + idx}
+                              className={`relative rounded-2xl overflow-hidden border bg-slate-800 flex flex-col group transition-all ${
+                                isCover
+                                  ? "border-amber-400 ring-2 ring-amber-400/30"
+                                  : "border-slate-700/80 hover:border-slate-600"
+                              }`}
+                            >
+                              {/* Thumbnail da Imagem */}
+                              <div className="relative aspect-4/3 w-full bg-slate-950 overflow-hidden">
+                                <img
+                                  src={imgUrl}
+                                  alt={`Foto ${idx + 1}`}
+                                  className="w-full h-full object-cover transition-transform group-hover:scale-102"
+                                  loading="lazy"
+                                  onError={(e) => {
+                                    // Fallback visual se a imagem quebrar
+                                    (e.target as HTMLElement).classList.add("opacity-30");
+                                  }}
+                                />
+
+                                {/* Badge de Posição / Capa */}
+                                <div className="absolute top-1.5 left-1.5 z-10">
+                                  {isCover ? (
+                                    <span className="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] flex items-center gap-1 shadow-md">
+                                      <Star className="w-3 h-3 fill-slate-950" />
+                                      <span>Capa</span>
+                                    </span>
+                                  ) : (
+                                    <span className="px-1.5 py-0.2 rounded-md bg-black/75 text-white font-bold text-[10px]">
+                                      #{idx + 1}
+                                    </span>
+                                  )}
+                                </div>
+
+                                {/* Botão Rápido de Excluir */}
+                                <button
+                                  type="button"
+                                  onClick={() => handleRemoveImage(idx)}
+                                  className="absolute top-1.5 right-1.5 p-1 rounded-lg bg-black/70 hover:bg-rose-600 text-white transition cursor-pointer z-10"
+                                  title="Remover foto"
+                                >
+                                  <Trash2 className="w-3 h-3" />
+                                </button>
+                              </div>
+
+                              {/* Barra Inferior de Controles / Reordenação */}
+                              <div className="p-1.5 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-1">
+                                {!isCover ? (
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSetCover(idx)}
+                                    className="px-2 py-1 rounded-md bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[10px] font-bold flex items-center gap-0.5 cursor-pointer transition shrink-0"
+                                    title="Tornar Foto de Capa"
+                                  >
+                                    <Star className="w-2.5 h-2.5" />
+                                    <span>Capa</span>
+                                  </button>
+                                ) : (
+                                  <span className="text-[10px] text-amber-400 font-extrabold px-1">
+                                    Principal
+                                  </span>
+                                )}
+
+                                <div className="flex items-center gap-0.5 ml-auto">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleMoveImage(idx, "prev")}
+                                    disabled={idx === 0}
+                                    className="p-1 rounded-md bg-slate-800 hover:bg-slate-700 disabled:opacity-20 disabled:cursor-not-allowed text-white cursor-pointer transition"
+                                    title="Mover para esquerda"
+                                  >
+                                    <ArrowLeft className="w-3 h-3" />
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => handleMoveImage(idx, "next")}
+                                    disabled={idx === modalImages.length - 1}
+                                    className="p-1 rounded-md bg-slate-800 hover:bg-slate-700 disabled:opacity-20 disabled:cursor-not-allowed text-white cursor-pointer transition"
+                                    title="Mover para direita"
+                                  >
+                                    <ArrowRight className="w-3 h-3" />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 </div>
+              )}
 
-                <div>
-                  <label className="font-bold text-slate-300 block mb-1">Valor (R$) *</label>
-                  <input
-                    type="number"
-                    required
-                    value={editingItem.price || 0}
-                    onChange={(e) =>
-                      setEditingItem({ ...editingItem, price: Number(e.target.value) })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white"
-                  />
+              {/* =========================================================
+                  SUB-ABA 2: DADOS BÁSICOS (TÍTULO, SKU, PREÇO, STATUS)
+              ========================================================= */}
+              {modalTab === "basics" && (
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      Título do Anúncio *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem.name || ""}
+                      onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
+                      placeholder="Ex: Apartamento de 3 Quartos com Vista Panorâmica na Várzea"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Código (SKU / Referência) *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={editingItem.sku || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, sku: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white font-mono"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Valor de Venda (R$) *
+                      </label>
+                      <input
+                        type="number"
+                        required
+                        value={editingItem.price || 0}
+                        onChange={(e) =>
+                          setEditingItem({ ...editingItem, price: Number(e.target.value) })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white font-bold"
+                      />
+                      <span className="text-[10px] text-emerald-400 mt-1 block">
+                        Formatado: {fmt(editingItem.price || 0)}
+                      </span>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Status de Venda
+                      </label>
+                      <select
+                        value={editingItem.badge || "Disponível"}
+                        onChange={(e) => setEditingItem({ ...editingItem, badge: e.target.value })}
+                        className="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white cursor-pointer"
+                      >
+                        <option value="Disponível">🟢 Disponível</option>
+                        <option value="VENDIDA">🔴 VENDIDA</option>
+                        <option value="RESERVADO">🟡 RESERVADO</option>
+                        <option value="NOVO">✨ NOVO</option>
+                        <option value="DESTAQUE">⭐ DESTAQUE</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Categoria
+                      </label>
+                      <select
+                        value={editingItem.cat || "Apartamentos"}
+                        onChange={(e) => setEditingItem({ ...editingItem, cat: e.target.value })}
+                        className="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white cursor-pointer"
+                      >
+                        <option value="Apartamentos">Apartamentos</option>
+                        <option value="Casas">Casas</option>
+                        <option value="Casas em Condomínio">Casas em Condomínio</option>
+                        <option value="Coberturas">Coberturas</option>
+                        <option value="Terrenos">Terrenos</option>
+                        <option value="Sítios & Rurais">Sítios & Rurais</option>
+                        <option value="Comerciais">Comerciais</option>
+                        <option value="Lançamento">Lançamento</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Selo / Destaque Comercial
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.chip || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, chip: e.target.value })}
+                        placeholder="Ex: Financiamento Facilitado, Vista Indevassável..."
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+                  </div>
                 </div>
+              )}
 
-                <div>
-                  <label className="font-bold text-slate-300 block mb-1">Status</label>
-                  <select
-                    value={editingItem.badge || "Disponível"}
-                    onChange={(e) => setEditingItem({ ...editingItem, badge: e.target.value })}
-                    className="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white cursor-pointer"
-                  >
-                    <option value="Disponível">🟢 Disponível</option>
-                    <option value="VENDIDA">🔴 VENDIDA</option>
-                    <option value="RESERVADO">🟡 RESERVADO</option>
-                    <option value="NOVO">✨ NOVO</option>
-                    <option value="DESTAQUE">⭐ DESTAQUE</option>
-                  </select>
+              {/* =========================================================
+                  SUB-ABA 3: LOCALIZAÇÃO E METRAGEM
+              ========================================================= */}
+              {modalTab === "location" && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Bairro
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.bairro || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, bairro: e.target.value })}
+                        placeholder="Ex: Várzea, Agriões, Alto..."
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Endereço / Referência Completa
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.screen || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, screen: e.target.value })}
+                        placeholder="Ex: Várzea, Teresópolis - RJ"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Área Construída / Terreno (Metragem)
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.storage || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, storage: e.target.value })}
+                        placeholder="Ex: 120m²"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Resumo de Cômodos e Vagas
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.specs || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, specs: e.target.value })}
+                        placeholder="Ex: 3 Quartos (1 Suíte), 2 Banheiros, 2 Vagas"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div>
-                  <label className="font-bold text-slate-300 block mb-1">Categoria</label>
-                  <select
-                    value={editingItem.cat || "Casas em Condomínio"}
-                    onChange={(e) => setEditingItem({ ...editingItem, cat: e.target.value })}
-                    className="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white cursor-pointer"
-                  >
-                    <option value="Casas em Condomínio">Casas em Condomínio</option>
-                    <option value="Casas">Casas</option>
-                    <option value="Apartamentos">Apartamentos</option>
-                    <option value="Coberturas">Coberturas</option>
-                    <option value="Terrenos">Terrenos</option>
-                    <option value="Sítios & Rurais">Sítios & Rurais</option>
-                    <option value="Comerciais">Comerciais</option>
-                    <option value="Lançamento">Lançamento</option>
-                  </select>
+              {/* =========================================================
+                  SUB-ABA 4: TAXAS & DIFERENCIAIS
+              ========================================================= */}
+              {modalTab === "specs" && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Valor do Condomínio
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.condition || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, condition: e.target.value })}
+                        placeholder="Ex: R$ 450/mês"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Valor do IPTU
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.warranty || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, warranty: e.target.value })}
+                        placeholder="Ex: R$ 1.200/ano"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">
+                        Topografia / Acabamento
+                      </label>
+                      <input
+                        type="text"
+                        value={editingItem.battery || ""}
+                        onChange={(e) => setEditingItem({ ...editingItem, battery: e.target.value })}
+                        placeholder="Ex: Plano e pronto para morar"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Gerenciamento de Comodidades e Diferenciais */}
+                  <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700 space-y-3">
+                    <label className="text-xs font-bold text-white uppercase tracking-wider block">
+                      Diferenciais & Comodidades do Imóvel
+                    </label>
+
+                    {/* Adicionar nova tag */}
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="Ex: Piscina, Churrasqueira, Portaria 24h, Sauna..."
+                        value={newFeatureText}
+                        onChange={(e) => setNewFeatureText(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            handleAddFeature(newFeatureText);
+                          }
+                        }}
+                        className="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleAddFeature(newFeatureText)}
+                        className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white cursor-pointer"
+                      >
+                        + Adicionar
+                      </button>
+                    </div>
+
+                    {/* Tags ativas */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {modalFeatures.map((feat) => (
+                        <span
+                          key={feat}
+                          className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-200 flex items-center gap-1.5"
+                        >
+                          <span>{feat}</span>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveFeature(feat)}
+                            className="text-slate-400 hover:text-rose-400 cursor-pointer"
+                          >
+                            ✕
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Sugestões de 1 clique */}
+                    <div className="pt-2 border-t border-slate-700/50">
+                      <span className="text-[10px] text-slate-400 block mb-1.5">
+                        Sugestões Rápidas:
+                      </span>
+                      <div className="flex flex-wrap gap-1">
+                        {[
+                          "Piscina",
+                          "Churrasqueira",
+                          "Varanda Gourmet",
+                          "Elevador",
+                          "Portaria 24h",
+                          "Sauna",
+                          "Academia",
+                          "Vista Panorâmica",
+                          "Aceita Permuta",
+                          "RGI Individual",
+                        ].map((sug) => (
+                          <button
+                            key={sug}
+                            type="button"
+                            onClick={() => handleAddFeature(sug)}
+                            className="px-2 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-[10px] text-slate-300 border border-slate-700 cursor-pointer"
+                          >
+                            + {sug}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              )}
 
-                <div>
-                  <label className="font-bold text-slate-300 block mb-1">Bairro</label>
-                  <input
-                    type="text"
-                    value={editingItem.bairro || ""}
-                    onChange={(e) => setEditingItem({ ...editingItem, bairro: e.target.value })}
-                    placeholder="Ex: Albuquerque"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white"
-                  />
+              {/* =========================================================
+                  SUB-ABA 5: DESCRIÇÃO COMPLETA & REDES
+              ========================================================= */}
+              {modalTab === "description" && (
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      Descrição Completa do Imóvel
+                    </label>
+                    <textarea
+                      rows={8}
+                      value={editingItem.description || ""}
+                      onChange={(e) =>
+                        setEditingItem({ ...editingItem, description: e.target.value })
+                      }
+                      placeholder="Descreva todos os detalhes, pontos fortes, incidência de sol, acabamentos e condições..."
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white leading-relaxed"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      Link do Instagram do Empreendimento (Opcional)
+                    </label>
+                    <input
+                      type="url"
+                      value={editingItem.instagramUrl || ""}
+                      onChange={(e) =>
+                        setEditingItem({ ...editingItem, instagramUrl: e.target.value })
+                      }
+                      placeholder="https://www.instagram.com/..."
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs sm:text-sm text-white"
+                    />
+                  </div>
                 </div>
+              )}
+            </div>
 
-                <div>
-                  <label className="font-bold text-slate-300 block mb-1">Área / Metragem</label>
-                  <input
-                    type="text"
-                    value={editingItem.storage || ""}
-                    onChange={(e) => setEditingItem({ ...editingItem, storage: e.target.value })}
-                    placeholder="Ex: 240m²"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white"
-                  />
-                </div>
-              </div>
+            {/* Rodapé Fixo do Modal */}
+            <div className="p-3 sm:p-4 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-3 shrink-0">
+              <span className="text-[11px] text-slate-400">
+                {modalImages.length} fotos selecionadas
+              </span>
 
-              <div>
-                <label className="font-bold text-slate-300 block mb-1">
-                  URL da Foto de Capa
-                </label>
-                <input
-                  type="url"
-                  value={editingItem.img || ""}
-                  onChange={(e) => {
-                    const url = e.target.value;
-                    setEditingItem({
-                      ...editingItem,
-                      img: url,
-                      images: [url, ...(editingItem.images?.slice(1) || [])],
-                    });
-                  }}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-xs"
-                />
-              </div>
-
-              <div>
-                <label className="font-bold text-slate-300 block mb-1">Descrição do Imóvel</label>
-                <textarea
-                  rows={4}
-                  value={editingItem.description || ""}
-                  onChange={(e) =>
-                    setEditingItem({ ...editingItem, description: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white"
-                />
-              </div>
-
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setIsEditModalOpen(false)}
@@ -1281,18 +2266,20 @@ export function AdminDashboardPage() {
                   Cancelar
                 </button>
                 <button
-                  type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md cursor-pointer"
+                  type="button"
+                  onClick={() => handleSaveModal()}
+                  className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md transition active:scale-95 cursor-pointer"
                 >
                   <Save className="w-4 h-4" />
                   <span>Salvar Imóvel</span>
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       )}
     </div>
   );
 }
+
 export default AdminDashboardPage;
