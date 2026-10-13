@@ -8,7 +8,7 @@ import {
   INSTAGRAM_HANDLE,
   ADDRESS_DISPLAY,
 } from "@/data/storeData";
-import { Phone, Instagram, Clock, MapPin, Building2, ShieldCheck } from "lucide-react";
+import { Phone, Instagram, Clock, MapPin, Building2, ShieldCheck, Lock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
@@ -199,8 +199,17 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
           <div>
             © {new Date().getFullYear()} Ismael Dias — Corretor de Imóveis | Habittat House Imobiliária (Teresópolis, RJ). Todos os direitos reservados.
           </div>
-          <div>
-            Parceria Oficial Angeleti Construtora • Terrenos e Imóveis de Alto Padrão
+          <div className="flex items-center gap-3">
+            <span>Parceria Oficial Angeleti Construtora</span>
+            <span>•</span>
+            <Link
+              to="/admin"
+              className="hover:text-blue-500 transition flex items-center gap-1 font-semibold text-slate-400 dark:text-slate-500 hover:underline cursor-pointer"
+              title="Acesso exclusivo do corretor"
+            >
+              <Lock className="w-3 h-3 text-slate-400" />
+              <span>Painel do Corretor</span>
+            </Link>
           </div>
         </div>
       </div>

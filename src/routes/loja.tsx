@@ -36,6 +36,9 @@ import {
   PHONE_DISPLAY,
 } from "@/data/storeData";
 import { ALL_BAIRROS } from "@/data/imoveisData";
+import { getAllProperties } from "@/services/propertiesService";
+import { trackPageView, trackWhatsAppClick } from "@/services/analyticsService";
+import { getSiteSettings } from "@/services/settingsService";
 
 const imoveisCategoryMeta: Record<
   string,
@@ -326,7 +329,9 @@ export const Route = createFileRoute("/loja")({
 
 function LojaPage() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
-  const [productList, setProductList] = useState<ProductItem[]>(imoveisAvulsosProducts);
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
+  const [productList, setProductList] = useState<ProductItem[]>(getAllProperties());
+  const [visibleCount, setVisibleCount] = useState<number>(16);
   const [activeFilter, setActiveFilter] = useState<string>("Todos");
   const [selectedBairro, setSelectedBairro] = useState<string>("Todos");
   const [selectedPriceRange, setSelectedPriceRange] = useState<string>("all");
@@ -335,6 +340,30 @@ function LojaPage() {
   const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    trackPageView("/loja");
+
+    const handlePropsChanged = () => {
+      setProductList(getAllProperties());
+    };
+    const handleSettingsChanged = (e: any) => {
+      setSiteSettings(e.detail || getSiteSettings());
+    };
+
+    window.addEventListener("properties-data-changed", handlePropsChanged);
+    window.addEventListener("site-settings-changed", handleSettingsChanged);
+
+    return () => {
+      window.removeEventListener("properties-data-changed", handlePropsChanged);
+      window.removeEventListener("site-settings-changed", handleSettingsChanged);
+    };
+  }, []);
+
+  // Reset pagination when any filter changes
+  useEffect(() => {
+    setVisibleCount(16);
+  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -372,6 +401,13 @@ function LojaPage() {
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
+    trackWhatsAppClick(
+      prod.sku || "",
+      prod.name,
+      prod.bairro || "Teresópolis",
+      prod.price
+    );
+
     let text = "";
     if (prod.badge === "VENDIDA" || prod.condition?.includes("VENDIDA")) {
       text = `Olá, Ismael Dias! Vi no seu catálogo que o imóvel *${prod.name}* (Cód. #${prod.sku || ""}) foi vendido.
@@ -390,7 +426,8 @@ Gostaria de saber se você tem outras opções semelhantes disponíveis na mesma
 Gostaria de agendar uma visita com você para conhecer o imóvel!`;
     }
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    const targetNumber = siteSettings.whatsappNumber || WHATSAPP_NUMBER;
+    window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   // Filter & Search
@@ -442,6 +479,8 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
       }
       return 0;
     });
+
+  const displayed = filtered.slice(0, visibleCount);
 
   const hasActiveFilters =
     activeFilter !== "Todos" ||
@@ -673,7 +712,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               viewMode === "showcase" ? "hidden sm:grid" : "grid"
             } grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6`}
           >
-            {filtered.map((prod, idx) => (
+            {displayed.map((prod, idx) => (
               <div
                 key={prod.name + idx}
                 className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1 overflow-hidden min-w-0"
@@ -769,7 +808,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
         {/* Modo Vitrine Mobile (1 por linha) — Sem sobreposicao de botoes e precos */}
         {viewMode === "showcase" && (
           <div className="sm:hidden mt-4 space-y-3 w-full min-w-0">
-            {filtered.map((prod, idx) => (
+            {displayed.map((prod, idx) => (
               <div
                 key={prod.name + idx + "-showcase"}
                 className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md w-full min-w-0 overflow-hidden"
@@ -854,6 +893,25 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Paginação Inteligente: Carregar Mais Imóveis */}
+        {filtered.length > visibleCount && (
+          <div className="mt-8 text-center flex flex-col items-center justify-center gap-2">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+              Exibindo <span className="font-bold text-slate-800 dark:text-white">{displayed.length}</span> de{" "}
+              <span className="font-bold text-slate-800 dark:text-white">{filtered.length}</span> imóveis
+            </p>
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 16)}
+              className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+            >
+              <span>Carregar Mais Imóveis</span>
+              <span className="px-2 py-0.5 rounded-full bg-white/20 text-[11px] font-black">
+                +{Math.min(16, filtered.length - displayed.length)}
+              </span>
+            </button>
           </div>
         )}
 

@@ -29,6 +29,8 @@ import {
   WHATSAPP_NUMBER,
   PHONE_DISPLAY,
 } from "@/data/storeData";
+import { trackPageView, trackWhatsAppClick } from "@/services/analyticsService";
+import { getSiteSettings } from "@/services/settingsService";
 
 const lancamentosCategoryMeta: Record<
   string,
@@ -83,7 +85,16 @@ function LancamentosPage() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
+
   useEffect(() => {
+    trackPageView("/lancamentos");
+
+    const handleSettingsChanged = (e: any) => {
+      setSiteSettings(e.detail || getSiteSettings());
+    };
+    window.addEventListener("site-settings-changed", handleSettingsChanged);
+
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("habittat_theme") as ThemeMode | null;
       if (saved === "black-piano" || saved === "white") {
@@ -97,6 +108,10 @@ function LancamentosPage() {
         }
       }
     }
+
+    return () => {
+      window.removeEventListener("site-settings-changed", handleSettingsChanged);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -119,6 +134,13 @@ function LancamentosPage() {
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
+    trackWhatsAppClick(
+      prod.sku || "",
+      prod.name,
+      prod.bairro || "Teresópolis",
+      prod.price
+    );
+
     const text = `Olá, Ismael Dias! Vi este lançamento no seu site e gostaria de informações sobre lotes disponíveis:
 
 🏔️ *Empreendimento:* ${prod.name}
@@ -129,7 +151,8 @@ function LancamentosPage() {
 
 Gostaria de agendar uma visita guiada com você no local!`;
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    const targetNumber = siteSettings.whatsappNumber || WHATSAPP_NUMBER;
+    window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   // Filter & Search

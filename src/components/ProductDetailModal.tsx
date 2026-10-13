@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
+import { trackWhatsAppClick } from "@/services/analyticsService";
 
 export interface ProductItem {
   name: string;
@@ -127,6 +128,12 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
     }
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    trackWhatsAppClick(
+      product.sku || "",
+      product.name,
+      product.bairro || "Teresópolis",
+      product.price
+    );
     window.open(url, "_blank");
   };
 

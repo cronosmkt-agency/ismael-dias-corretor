@@ -37,6 +37,8 @@ import { WhatsFloat } from "@/components/WhatsFloat";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { toast } from "sonner";
+import { trackPageView, seedInitialAnalyticsIfEmpty } from "@/services/analyticsService";
+import { getAllProperties } from "@/services/propertiesService";
 
 const heroHouse = "/imoveis/mansao-neoclassica.png";
 
@@ -806,6 +808,9 @@ function BrandStore() {
           root.classList.add("theme-white");
         }
       }
+      trackPageView("/");
+      seedInitialAnalyticsIfEmpty(getAllProperties());
+
       const onThemeChanged = (e: any) => {
         if (e.detail?.theme) {
           setCurrentTheme(e.detail.theme);
