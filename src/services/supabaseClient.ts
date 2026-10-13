@@ -255,7 +255,7 @@ export async function insertPropertyInSupabase(prod: ProductItem): Promise<boole
     const url = getSupabaseUrl();
     const row = mapProductToRow(prod);
 
-    const res = await fetch(`${url}/rest/v1/properties`, {
+    const res = await fetch(`${url}/rest/v1/properties?on_conflict=sku`, {
       method: "POST",
       headers: {
         ...getHeaders(),
@@ -315,7 +315,7 @@ export async function syncAllPropertiesToSupabase(
 
     for (let i = 0; i < rows.length; i += batchSize) {
       const batch = rows.slice(i, i + batchSize);
-      const res = await fetch(`${url}/rest/v1/properties`, {
+      const res = await fetch(`${url}/rest/v1/properties?on_conflict=sku`, {
         method: "POST",
         headers: {
           ...getHeaders(),
