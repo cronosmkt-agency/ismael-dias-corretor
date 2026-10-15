@@ -20,6 +20,8 @@ import {
   Copy,
   Building2,
   Check,
+  Sun,
+  MoonStar,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -301,13 +303,60 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground flex flex-col justify-between">
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
-      <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <main className="pt-20 sm:pt-28 pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0">
-        {/* Breadcrumb Navigation */}
+      {/* Top Header Mobile: Compacto, limpo e profissional */}
+      <header className="sm:hidden fixed top-0 left-0 right-0 z-40 h-14 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-3 flex items-center justify-between shadow-xs">
+        <Link
+          to="/loja"
+          className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-bold text-xs py-1.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition"
+        >
+          <ArrowLeft className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+          <span>Voltar</span>
+        </Link>
+
+        <div className="flex flex-col items-center min-w-0 px-2 text-center">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-sky-400">
+            #{property.sku || sku}
+          </span>
+          <span className="text-xs font-black text-slate-900 dark:text-white truncate max-w-[170px]">
+            {property.bairro || "Teresópolis"}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={handleShare}
+            aria-label="Compartilhar imóvel"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 active:scale-95 transition cursor-pointer"
+          >
+            <Share2 className="w-4 h-4 text-blue-500" />
+          </button>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Alternar tema"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 active:scale-95 transition cursor-pointer"
+          >
+            {currentTheme === "dark" ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <MoonStar className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+            )}
+          </button>
+        </div>
+      </header>
+
+      {/* Navbar Desktop */}
+      <div className="hidden sm:block">
+        <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
+      </div>
+
+      <main className="pt-16 sm:pt-28 pb-28 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0">
+        {/* Breadcrumb Navigation (Apenas Desktop) */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 overflow-x-auto whitespace-nowrap py-1"
+          className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 overflow-x-auto whitespace-nowrap py-1"
         >
           <Link to="/" className="hover:text-blue-600 dark:hover:text-sky-400 transition">
             Início
@@ -326,8 +375,8 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
           </span>
         </nav>
 
-        {/* Header do Imóvel: Badges + Título */}
-        <div className="mb-6 space-y-2">
+        {/* Header Desktop do Imóvel: Badges + Título Grande */}
+        <div className="hidden sm:block mb-6 space-y-2">
           <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             {(isSold || isReserved) && (
               <span
@@ -362,20 +411,39 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         </div>
 
         {/* Grid Principal: Galeria & Detalhes (2 colunas no desktop) */}
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-start">
           {/* Coluna Esquerda: Galeria de Fotos + Especificações + Descrição (8 colunas) */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-4 sm:space-y-6">
             {/* Foto Principal com Ações de Zoom e Navegação */}
-            <div className="relative rounded-3xl overflow-hidden glass border border-slate-200/70 dark:border-slate-800 shadow-xl bg-slate-900/40">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass border border-slate-200/70 dark:border-slate-800 shadow-xl bg-slate-900/40">
               <div
                 onClick={() => setIsLightboxOpen(true)}
-                className="relative aspect-16/10 sm:aspect-16/9 w-full overflow-hidden cursor-zoom-in group"
+                className="relative aspect-4/3 sm:aspect-16/9 w-full overflow-hidden cursor-zoom-in group"
               >
                 <img
                   src={currentImg}
                   alt={property.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
                 />
+
+                {/* Badges Flutuantes sobre a Foto Principal */}
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 flex-wrap">
+                  {(isSold || isReserved) && (
+                    <span
+                      className={`text-[10px] sm:text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wider backdrop-blur-md shadow-md ${
+                        isSold
+                          ? "bg-rose-600/90 text-white"
+                          : "bg-amber-500/90 text-white"
+                      }`}
+                    >
+                      {isSold ? "🔴 Vendida" : "🟡 Reservado"}
+                    </span>
+                  )}
+                  <span className="text-[10px] sm:text-xs font-extrabold px-2.5 py-1 rounded-lg bg-black/60 text-white backdrop-blur-md shadow-md flex items-center gap-1">
+                    <Trees className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <span>{property.cat}</span>
+                  </span>
+                </div>
 
                 {/* Botão Ver em Tela Cheia */}
                 <button
@@ -384,15 +452,15 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                     e.stopPropagation();
                     setIsLightboxOpen(true);
                   }}
-                  className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/70 hover:bg-black/90 text-white text-xs font-bold backdrop-blur-md transition shadow-md cursor-pointer"
+                  className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-black/70 hover:bg-black/90 text-white text-[11px] sm:text-xs font-bold backdrop-blur-md transition shadow-md cursor-pointer"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Expandir ({images.length} fotos)</span>
+                  <span>Expandir ({images.length})</span>
                 </button>
 
                 {/* Contador de Fotos */}
-                <div className="absolute bottom-4 left-4 z-10 px-3 py-1 rounded-xl bg-black/70 text-white text-xs font-bold backdrop-blur-md">
-                  Foto {activeImgIndex + 1} de {images.length}
+                <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-lg bg-black/70 text-white text-[11px] sm:text-xs font-bold backdrop-blur-md">
+                  📷 {activeImgIndex + 1} de {images.length}
                 </div>
 
                 {/* Setas de navegação direta */}
@@ -404,10 +472,10 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         e.stopPropagation();
                         setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
                       }}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition cursor-pointer"
+                      className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition cursor-pointer shadow-md"
                       aria-label="Foto anterior"
                     >
-                      <ChevronLeft className="w-5 h-5" />
+                      <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                     <button
                       type="button"
@@ -415,10 +483,10 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         e.stopPropagation();
                         setActiveImgIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
                       }}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition cursor-pointer"
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition cursor-pointer shadow-md"
                       aria-label="Próxima foto"
                     >
-                      <ChevronRight className="w-5 h-5" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                   </>
                 )}
@@ -426,12 +494,12 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
 
               {/* Tira de Miniaturas (Thumbnails) */}
               {images.length > 1 && (
-                <div className="p-3 bg-slate-900/80 border-t border-slate-800 overflow-x-auto flex items-center gap-2 scrollbar-none">
+                <div className="p-2 sm:p-3 bg-slate-900/80 border-t border-slate-800 overflow-x-auto flex items-center gap-2 scrollbar-none">
                   {images.map((imgUrl, idx) => (
                     <button
                       key={imgUrl + idx}
                       onClick={() => setActiveImgIndex(idx)}
-                      className={`relative w-16 h-12 sm:w-20 sm:h-14 rounded-xl overflow-hidden shrink-0 border-2 transition cursor-pointer ${
+                      className={`relative w-14 h-10 sm:w-20 sm:h-14 rounded-lg sm:rounded-xl overflow-hidden shrink-0 border-2 transition cursor-pointer ${
                         activeImgIndex === idx
                           ? "border-blue-500 scale-105 shadow-md"
                           : "border-transparent opacity-60 hover:opacity-100"
@@ -449,82 +517,100 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               )}
             </div>
 
-            {/* Mobile Quick Action Banner (Visível apenas no mobile: lg:hidden) */}
-            <div className="lg:hidden p-4 rounded-3xl glass border border-blue-500/25 dark:border-sky-500/25 shadow-md bg-white/95 dark:bg-slate-900/95 space-y-3">
-              <div className="flex items-baseline justify-between gap-2">
+            {/* Card Mobile de Título & Preço & Ações Rápidas (Logo abaixo da foto no celular) */}
+            <div className="sm:hidden p-4 rounded-2xl glass border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-md space-y-3">
+              {/* Badges de Localização e Código */}
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                  <span>{property.bairro || "Teresópolis/RJ"}</span>
+                </span>
+                <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                  Cód. #{property.sku || sku}
+                </span>
+              </div>
+
+              {/* Título Principal */}
+              <h1 className="text-base font-black text-slate-900 dark:text-white leading-snug">
+                {property.name}
+              </h1>
+
+              {/* Valor de Venda */}
+              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-baseline justify-between gap-2">
                 <div>
                   <span className="text-[10px] uppercase font-extrabold text-slate-400 tracking-wider block">
                     Valor de Venda
                   </span>
-                  <div className="text-2xl font-black text-slate-900 dark:text-white">
+                  <div className="text-2xl font-black text-blue-600 dark:text-sky-400">
                     {fmt(property.price)}
                   </div>
                 </div>
-                <span className="text-[10px] sm:text-[11px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 whitespace-nowrap">
+                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
                   ✓ Entrada facilitada
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              {/* Botões de Ação Imediata */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
                 <button
                   type="button"
                   onClick={handleWhatsApp}
-                  className="py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
+                  className="py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
-                  <span className="truncate">Falar no WhatsApp</span>
+                  <span>WhatsApp</span>
                 </button>
                 <button
                   type="button"
                   onClick={handleWhatsApp}
-                  className="py-2.5 px-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
+                  className="py-2.5 px-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition cursor-pointer"
                 >
                   <CalendarCheck className="w-4 h-4 shrink-0" />
-                  <span className="truncate">Agendar Visita</span>
+                  <span>Agendar Visita</span>
                 </button>
               </div>
             </div>
 
             {/* Destaques / Especificações Principais */}
-            <div className="p-5 sm:p-6 rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-4">
-              <h2 className="text-sm font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-4">
+              <h2 className="text-xs sm:text-sm font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-blue-500" />
                 <span>Características Principais</span>
               </h2>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+                <div className="p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">
                     Área / Metragem
                   </span>
-                  <span className="text-sm font-black text-slate-900 dark:text-white">
+                  <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
                     {property.storage || "Sob consulta"}
                   </span>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
+                <div className="p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">
                     Bairro Oficial
                   </span>
-                  <span className="text-sm font-black text-slate-900 dark:text-white truncate block">
+                  <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white truncate block">
                     {property.bairro || "Teresópolis"}
                   </span>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
+                <div className="p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">
                     Categoria
                   </span>
-                  <span className="text-sm font-black text-slate-900 dark:text-white truncate block">
+                  <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white truncate block">
                     {property.cat || "Residencial"}
                   </span>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
+                <div className="p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">
                     Código do Imóvel
                   </span>
-                  <span className="text-sm font-black text-blue-600 dark:text-sky-400">
+                  <span className="text-xs sm:text-sm font-black text-blue-600 dark:text-sky-400">
                     #{property.sku || sku}
                   </span>
                 </div>
@@ -539,7 +625,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   {featuresList.map((f, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-xl text-xs font-semibold bg-blue-50/80 dark:bg-blue-950/40 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-blue-900/50 flex items-center gap-1.5"
+                      className="px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-semibold bg-blue-50/80 dark:bg-blue-950/40 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-blue-900/50 flex items-center gap-1.5"
                     >
                       <Check className="w-3.5 h-3.5 text-blue-500 shrink-0" />
                       <span>{f}</span>
@@ -550,13 +636,13 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             </div>
 
             {/* Descrição Completa do Imóvel */}
-            <div className="p-5 sm:p-6 rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-4">
-              <h2 className="text-base sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-blue-500" />
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3 sm:space-y-4">
+              <h2 className="text-sm sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
                 <span>Sobre este Imóvel</span>
               </h2>
 
-              <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3 whitespace-pre-line">
+              <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3 whitespace-pre-line">
                 {property.description ? (
                   property.description
                 ) : (
@@ -566,10 +652,39 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 )}
               </div>
             </div>
+
+            {/* Card do Corretor Ismael Dias para Mobile */}
+            <div className="lg:hidden p-4 rounded-2xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white text-sm shadow-md">
+                  ID
+                </div>
+                <div>
+                  <h3 className="font-extrabold text-xs text-slate-900 dark:text-white">
+                    {siteSettings.realtorName || "Ismael Dias"}
+                  </h3>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400 block">
+                    {siteSettings.agencyName || "Habittat House Imobiliária"}
+                  </span>
+                  <span className="text-[10px] font-bold text-blue-600 dark:text-sky-400 block">
+                    {siteSettings.creci || "CRECI-RJ Ativo"}
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                Corretor especialista na região serrana de Teresópolis. Atendimento consultivo e assessoria jurídica completa.
+              </p>
+
+              <div className="pt-2 flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
+                <Phone className="w-3.5 h-3.5 text-blue-500" />
+                <span>{siteSettings.phoneDisplay || PHONE_DISPLAY}</span>
+              </div>
+            </div>
           </div>
 
-          {/* Coluna Direita: Box de Preço + Botões de Ação + Card do Corretor (4 colunas sticky) */}
-          <div className="lg:col-span-4 space-y-5 lg:sticky lg:top-28">
+          {/* Coluna Direita: Box de Preço + Botões de Ação + Card do Corretor (Desktop: 4 colunas sticky) */}
+          <div className="hidden lg:block lg:col-span-4 space-y-5 lg:sticky lg:top-28">
             {/* Card de Valor & Condições */}
             <div className="p-6 rounded-3xl glass border-2 border-blue-500/30 dark:border-sky-500/30 shadow-xl space-y-4 bg-white/95 dark:bg-slate-900/90">
               <div>
@@ -630,7 +745,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               </div>
             </div>
 
-            {/* Card do Corretor Ismael Dias */}
+            {/* Card do Corretor Ismael Dias Desktop */}
             <div className="p-5 rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center font-black text-white text-base shadow-md">
@@ -661,12 +776,12 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
           </div>
         </div>
 
-        {/* Seção de Imóveis Relacionados (Links Internos para SEO) */}
+        {/* Seção de Imóveis Relacionados */}
         {relatedProperties.length > 0 && (
-          <section className="mt-16 pt-12 border-t border-slate-200/70 dark:border-slate-800 space-y-6">
+          <section className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-slate-200/70 dark:border-slate-800 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                <h2 className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                   Outros Imóveis em {property.bairro || "Teresópolis"}
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
@@ -683,7 +798,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {relatedProperties.map((rel) => (
                 <Link
                   key={String(rel.sku)}
@@ -787,9 +902,44 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         </div>
       )}
 
+      {/* Footer */}
       <SiteFooter currentTheme={currentTheme} />
-      <WhatsFloat />
-      <MobileBottomNav />
+
+      {/* WhatsFloat apenas para Desktop (no mobile a barra fixa de conversão substitui com perfeição sem cobrir fotos) */}
+      <div className="hidden sm:block">
+        <WhatsFloat />
+      </div>
+
+      {/* Barra Fixa de Conversão Mobile */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200/90 dark:border-slate-800 p-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
+            Valor do Imóvel
+          </span>
+          <span className="text-base font-black text-slate-900 dark:text-white truncate block">
+            {fmt(property.price)}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={handleShare}
+            aria-label="Compartilhar"
+            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 active:scale-95 transition cursor-pointer"
+          >
+            <Share2 className="w-4 h-4 text-blue-500" />
+          </button>
+          <button
+            type="button"
+            onClick={handleWhatsApp}
+            className="py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/30 active:scale-95 transition cursor-pointer"
+          >
+            <WhatsAppIcon className="w-4 h-4 text-white" />
+            <span>Falar com Ismael</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

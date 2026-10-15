@@ -2042,7 +2042,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "285135",
-    "name": "Lindo Apartamento de 1 Quartos em Agriões",
+    "name": "Lindo Apartamento de 1 Quarto em Agriões",
     "price": 250000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -3102,7 +3102,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "309209",
-    "name": "Excelente Apartamento de 1 Quartos (1 Suíte) com Garagem em Itaipava",
+    "name": "Excelente Apartamento de 1 Quarto (1 Suíte) com Garagem em Itaipava",
     "price": 680000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3851,7 +3851,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "349640",
-    "name": "Lindo Apartamento de 1 Quartos no Alto",
+    "name": "Lindo Apartamento de 1 Quarto no Alto",
     "price": 480000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -4519,7 +4519,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "358413",
-    "name": "Lindo Apartamento de 1 Quartos com Garagem no Centro",
+    "name": "Lindo Apartamento de 1 Quarto com Garagem no Centro",
     "price": 220000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -5196,7 +5196,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366538",
-    "name": "Lindo Apartamento de 1 Quartos com Garagem em Albuquerque",
+    "name": "Lindo Apartamento de 1 Quarto com Garagem em Albuquerque",
     "price": 280000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -5447,7 +5447,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "368216",
-    "name": "Charmosa Casa Linear em Condomínio com 1 Quartos (1 Suíte) em Teresópolis",
+    "name": "Charmosa Casa Linear em Condomínio com 1 Quarto (1 Suíte) em Teresópolis",
     "price": 367000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5483,7 +5483,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "368359",
-    "name": "Linda Casa em Condomínio com 1 Quartos (2 Suítes) e Espaço Gourmet no Quebra Frascos",
+    "name": "Linda Casa em Condomínio com 1 Quarto (2 Suítes) e Espaço Gourmet no Quebra Frascos",
     "price": 1500000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5591,7 +5591,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "369741",
-    "name": "Excelente Casa em Condomínio com 1 Quartos (2 Suítes) e Lazer Completo em Albuquerque",
+    "name": "Excelente Casa em Condomínio com 1 Quarto (2 Suítes) e Lazer Completo em Albuquerque",
     "price": 850000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5843,7 +5843,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "377937",
-    "name": "Belíssima Residência com 1 Quartos (3 Suítes) e Garagem em Teresópolis",
+    "name": "Belíssima Residência com 1 Quarto (3 Suítes) e Garagem em Teresópolis",
     "price": 1950000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -5879,7 +5879,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "378068",
-    "name": "Excelente Apartamento de 1 Quartos (1 Suíte) com Varanda e Vista Livre na Cascata Guarani",
+    "name": "Excelente Apartamento de 1 Quarto (1 Suíte) com Varanda e Vista Livre na Cascata Guarani",
     "price": 530000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
