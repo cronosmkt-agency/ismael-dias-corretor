@@ -291,6 +291,14 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
     }
   };
 
+  const handleBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = "/loja";
+    }
+  };
+
   const featuresList = property.features && property.features.length > 0
     ? property.features
     : [
@@ -301,18 +309,20 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
       ];
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground flex flex-col justify-between">
+    <div className="relative min-h-screen overflow-x-hidden lg:overflow-x-visible bg-background text-foreground flex flex-col justify-between">
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
 
       {/* Top Header Mobile: Compacto, limpo e profissional */}
       <header className="sm:hidden fixed top-0 left-0 right-0 z-40 h-14 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-3 flex items-center justify-between shadow-xs">
-        <Link
-          to="/loja"
-          className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-bold text-xs py-1.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition"
+        <button
+          type="button"
+          onClick={handleBack}
+          aria-label="Voltar para a listagem anterior"
+          className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-bold text-xs py-1.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 text-slate-600 dark:text-slate-300" />
           <span>Voltar</span>
-        </Link>
+        </button>
 
         <div className="flex flex-col items-center min-w-0 px-2 text-center">
           <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-sky-400">
@@ -352,28 +362,44 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       </div>
 
-      <main className="pt-15 sm:pt-28 pb-32 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0 max-w-full overflow-x-hidden">
-        {/* Breadcrumb Navigation (Apenas Desktop) */}
-        <nav
-          aria-label="Breadcrumb"
-          className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4 overflow-x-auto whitespace-nowrap py-1"
-        >
-          <Link to="/" className="hover:text-blue-600 dark:hover:text-sky-400 transition">
-            Início
-          </Link>
-          <span>/</span>
-          <Link to="/loja" className="hover:text-blue-600 dark:hover:text-sky-400 transition">
-            Imóveis
-          </Link>
-          <span>/</span>
-          <span className="text-slate-700 dark:text-slate-200 font-semibold truncate max-w-[200px] sm:max-w-none">
-            {property.bairro || "Teresópolis"}
-          </span>
-          <span>/</span>
-          <span className="text-blue-600 dark:text-sky-400 font-bold">
-            #{property.sku || sku}
-          </span>
-        </nav>
+      <main className="pt-15 sm:pt-28 pb-32 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0 max-w-full overflow-x-hidden lg:overflow-x-visible">
+        {/* Barra Superior Desktop: Botão Voltar + Breadcrumb */}
+        <div className="hidden sm:flex items-center justify-between gap-4 mb-5">
+          <button
+            type="button"
+            onClick={handleBack}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 text-xs font-bold transition shadow-xs cursor-pointer active:scale-95 border border-slate-200/80 dark:border-slate-700/80 group"
+            title="Voltar para a listagem mantendo seus filtros e posição"
+          >
+            <ArrowLeft className="w-4 h-4 text-blue-600 dark:text-sky-400 group-hover:-translate-x-0.5 transition-transform" />
+            <span>Voltar</span>
+          </button>
+
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 overflow-x-auto whitespace-nowrap py-1"
+          >
+            <Link to="/" className="hover:text-blue-600 dark:hover:text-sky-400 transition">
+              Início
+            </Link>
+            <span>/</span>
+            <button
+              type="button"
+              onClick={handleBack}
+              className="hover:text-blue-600 dark:hover:text-sky-400 transition cursor-pointer"
+            >
+              Imóveis
+            </button>
+            <span>/</span>
+            <span className="text-slate-700 dark:text-slate-200 font-semibold truncate max-w-[200px] sm:max-w-none">
+              {property.bairro || "Teresópolis"}
+            </span>
+            <span>/</span>
+            <span className="text-blue-600 dark:text-sky-400 font-bold">
+              #{property.sku || sku}
+            </span>
+          </nav>
+        </div>
 
         {/* Header Desktop do Imóvel: Badges + Título Grande */}
         <div className="hidden sm:block mb-6 space-y-2">
@@ -694,7 +720,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
           </div>
 
           {/* Coluna Direita: Box de Preço + Botões de Ação + Card do Corretor (Desktop: 4 colunas sticky) */}
-          <div className="hidden lg:block lg:col-span-4 space-y-5 lg:sticky lg:top-28">
+          <div className="hidden lg:block lg:col-span-4 space-y-5 lg:sticky lg:top-28 self-start">
             {/* Card de Valor & Condições */}
             <div className="p-6 rounded-3xl glass border-2 border-blue-500/30 dark:border-sky-500/30 shadow-xl space-y-4 bg-white/95 dark:bg-slate-900/90">
               <div>

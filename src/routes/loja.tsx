@@ -328,15 +328,106 @@ function LojaPage() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
   const [productList, setProductList] = useState<ProductItem[]>(getAllProperties());
-  const [visibleCount, setVisibleCount] = useState<number>(16);
-  const [activeFilter, setActiveFilter] = useState<string>("Todos");
-  const [selectedBairro, setSelectedBairro] = useState<string>("Todos");
-  const [selectedPriceRange, setSelectedPriceRange] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<string>("default");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
+  const [visibleCount, setVisibleCount] = useState<number>(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("loja_visible_count");
+      if (saved) {
+        const count = Number(saved);
+        if (!isNaN(count) && count > 0) return count;
+      }
+    }
+    return 16;
+  });
+  const [activeFilter, setActiveFilter] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get("cat");
+      if (catParam) return catParam;
+      const saved = sessionStorage.getItem("loja_active_filter");
+      if (saved) return saved;
+    }
+    return "Todos";
+  });
+  const [selectedBairro, setSelectedBairro] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const bParam = urlParams.get("bairro");
+      if (bParam) return bParam;
+      const saved = sessionStorage.getItem("loja_selected_bairro");
+      if (saved) return saved;
+    }
+    return "Todos";
+  });
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("loja_price_range");
+      if (saved) return saved;
+    }
+    return "all";
+  });
+  const [sortBy, setSortBy] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("loja_sort_by");
+      if (saved) return saved;
+    }
+    return "default";
+  });
+  const [searchQuery, setSearchQuery] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("loja_search_query");
+      if (saved) return saved;
+    }
+    return "";
+  });
+  const [viewMode, setViewMode] = useState<"compact" | "showcase">(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("loja_view_mode") as "compact" | "showcase" | null;
+      if (saved === "compact" || saved === "showcase") return saved;
+    }
+    return "compact";
+  });
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const isInitialMount = useRef(true);
+
+  // Sincroniza filtros com sessionStorage para restaurar ao voltar
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("loja_active_filter", activeFilter);
+      sessionStorage.setItem("loja_selected_bairro", selectedBairro);
+      sessionStorage.setItem("loja_price_range", selectedPriceRange);
+      sessionStorage.setItem("loja_sort_by", sortBy);
+      sessionStorage.setItem("loja_search_query", searchQuery);
+      sessionStorage.setItem("loja_view_mode", viewMode);
+      sessionStorage.setItem("loja_visible_count", String(visibleCount));
+    }
+  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery, viewMode, visibleCount]);
+
+  // Monitora scroll para salvar a posição exata da tela ao navegar para um imóvel
+  useEffect(() => {
+    const handleScroll = () => {
+      sessionStorage.setItem("loja_scroll_y", String(window.scrollY));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Restaura posição de scroll ao voltar para a página
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedScroll = sessionStorage.getItem("loja_scroll_y");
+      if (savedScroll) {
+        const y = Number(savedScroll);
+        if (!isNaN(y) && y > 0) {
+          const timer = setTimeout(() => {
+            window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
+          }, 80);
+          return () => clearTimeout(timer);
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     trackPageView("/loja");
@@ -357,8 +448,12 @@ function LojaPage() {
     };
   }, []);
 
-  // Reset pagination when any filter changes
+  // Reset pagination when any filter changes (exceto na montagem inicial)
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     setVisibleCount(16);
   }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery]);
 
@@ -523,6 +618,15 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
     setSelectedPriceRange("all");
     setSortBy("default");
     setSearchQuery("");
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("loja_active_filter");
+      sessionStorage.removeItem("loja_selected_bairro");
+      sessionStorage.removeItem("loja_price_range");
+      sessionStorage.removeItem("loja_sort_by");
+      sessionStorage.removeItem("loja_search_query");
+      sessionStorage.removeItem("loja_visible_count");
+      sessionStorage.removeItem("loja_scroll_y");
+    }
   };
 
   return (
@@ -530,39 +634,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <main className="pt-20 sm:pt-32 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
-        {/* Header da Página de Imóveis */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-            Casas, Coberturas & <span className="text-gradient-blue">Residências</span>
-          </h1>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-            Carteira selecionada de imóveis avulsos prontos para morar em Teresópolis
-          </p>
-
-          {/* Banner Chamada para Lançamentos — Garantido em 1 Linha com whitespace-nowrap */}
-          <div className="mt-4 flex justify-center">
-            <Link
-              to="/lancamentos"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 dark:bg-sky-950/60 border border-blue-200/80 dark:border-sky-800/80 text-xs shadow-2xs hover:border-blue-400 transition-all active:scale-98 whitespace-nowrap"
-            >
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500 text-white font-black text-[9px] sm:text-[10px] shrink-0">
-                NOVO
-              </span>
-              <span className="text-slate-700 dark:text-slate-200 text-[11px] sm:text-xs font-medium">
-                <span className="hidden sm:inline">Procurando lotes em condomínio fechado?</span>
-                <span className="sm:hidden">Lotes em condomínio fechado?</span>
-              </span>
-              <span className="font-bold text-blue-600 dark:text-sky-400 flex items-center gap-0.5 text-[11px] sm:text-xs shrink-0">
-                <span>Ver Lançamentos</span>
-                <ArrowRight className="w-3 h-3" />
-              </span>
-            </Link>
-          </div>
-        </div>
+      <main className="pt-16 sm:pt-24 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
+        {/* H1 Semântico Oculto para SEO e Acessibilidade */}
+        <h1 className="sr-only">
+          Casas, Coberturas e Residências à Venda em Teresópolis - Ismael Dias Corretor
+        </h1>
 
         {/* Seletor de Categorias — 8 categorias completas no mobile (4x2) e desktop (8x1) */}
-        <div className="mt-5 sm:mt-6 max-w-5xl mx-auto">
+        <div className="mt-2 sm:mt-4 max-w-5xl mx-auto">
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-1.5 sm:gap-2">
             {imoveisFilters.map((fl) => {
               const meta = imoveisCategoryMeta[fl] || { icon: LayoutGrid, label: fl };

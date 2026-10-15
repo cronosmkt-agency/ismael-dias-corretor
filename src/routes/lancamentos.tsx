@@ -79,13 +79,54 @@ export const Route = createFileRoute("/lancamentos")({
 function LancamentosPage() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
   const [productList, setProductList] = useState<ProductItem[]>(lancamentosProducts);
-  const [activeFilter, setActiveFilter] = useState<string>("Todos");
+  const [activeFilter, setActiveFilter] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get("cat");
+      if (catParam) return catParam;
+      const saved = sessionStorage.getItem("lancamentos_active_filter");
+      if (saved) return saved;
+    }
+    return "Todos";
+  });
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
+
+  // Salva filtros de lançamentos no sessionStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("lancamentos_active_filter", activeFilter);
+    }
+  }, [activeFilter]);
+
+  // Monitora e salva scroll de lançamentos
+  useEffect(() => {
+    const handleScroll = () => {
+      sessionStorage.setItem("lancamentos_scroll_y", String(window.scrollY));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Restaura posição de scroll ao voltar
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedScroll = sessionStorage.getItem("lancamentos_scroll_y");
+      if (savedScroll) {
+        const y = Number(savedScroll);
+        if (!isNaN(y) && y > 0) {
+          const timer = setTimeout(() => {
+            window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
+          }, 80);
+          return () => clearTimeout(timer);
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     trackPageView("/lancamentos");
@@ -174,29 +215,14 @@ Gostaria de agendar uma visita guiada com você no local!`;
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <main className="pt-20 sm:pt-32 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
-        {/* Header da Página de Lançamentos */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-            Novos <span className="text-gradient-blue">Lançamentos</span> na Serra
-          </h1>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-            Terrenos em condomínio fechado com infraestrutura de alto padrão e financiamento direto em até 120 parcelas
-          </p>
-
-          {/* Destaque Condições — 1 Linha Garantida no Mobile com whitespace-nowrap */}
-          <div className="mt-3.5 flex justify-center px-1">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50/90 dark:bg-sky-950/60 border border-blue-200/80 dark:border-sky-800/80 text-[11px] sm:text-xs shadow-2xs text-blue-800 dark:text-sky-300 font-bold whitespace-nowrap">
-              <DollarSign className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400 shrink-0" />
-              <span className="hidden sm:inline">15% Entrada + 120x Direto com a Incorporadora Angeleti</span>
-              <span className="sm:hidden">15% Entrada + 120x Direto • Angeleti</span>
-              <span className="hidden sm:inline text-slate-400">• Lazer & Segurança 24h</span>
-            </div>
-          </div>
-        </div>
+      <main className="pt-16 sm:pt-24 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
+        {/* H1 Semântico Oculto para SEO e Acessibilidade */}
+        <h1 className="sr-only">
+          Novos Lançamentos de Terrenos e Lotes na Serra - Ismael Dias Corretor
+        </h1>
 
         {/* Seletor de Categorias — Mesmo tamanho compacto e padronizado da aba de imóveis */}
-        <div className="mt-5 sm:mt-6 flex justify-center">
+        <div className="mt-2 sm:mt-4 flex justify-center">
           <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2">
             {lancamentosFilters.map((fl) => {
               const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
