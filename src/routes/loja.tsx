@@ -25,6 +25,7 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
 import type { ProductItem } from "@/components/ProductDetailModal";
+import { FilterDropdown, type FilterOption } from "@/components/FilterDropdown";
 import {
   imoveisFilters,
   fmt,
@@ -158,148 +159,6 @@ const SORT_OPTIONS: FilterOption[] = [
   { value: "name-asc", label: "Nome (A - Z)", shortLabel: "Nome A-Z" },
 ];
 
-interface FilterDropdownProps {
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  value: string;
-  options: FilterOption[];
-  onChange: (val: string) => void;
-  searchable?: boolean;
-  className?: string;
-  align?: "left" | "center" | "right";
-}
-
-function FilterDropdown({
-  icon: Icon,
-  label,
-  value,
-  options,
-  onChange,
-  searchable = false,
-  className = "",
-  align = "left",
-}: FilterDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent | TouchEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-        setSearchTerm("");
-      }
-    }
-    if (isOpen) {
-      const timer = setTimeout(() => {
-        document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("touchstart", handleClickOutside);
-      }, 50);
-      return () => {
-        clearTimeout(timer);
-        document.removeEventListener("mousedown", handleClickOutside);
-        document.removeEventListener("touchstart", handleClickOutside);
-      };
-    }
-  }, [isOpen]);
-
-  const selectedOpt = options.find((o) => o.value === value);
-  const isDefault = !selectedOpt || selectedOpt.value === options[0]?.value;
-  const displayText = isDefault ? label : selectedOpt.shortLabel || selectedOpt.label;
-
-  const filteredOptions =
-    searchable && searchTerm.trim()
-      ? options.filter((o) => o.label.toLowerCase().includes(searchTerm.toLowerCase()))
-      : options;
-
-  const alignmentClass =
-    align === "center"
-      ? "left-1/2 -translate-x-1/2"
-      : align === "right"
-      ? "right-0 left-auto"
-      : "left-0 right-auto";
-
-  return (
-    <div ref={dropdownRef} className={`relative w-full min-w-0 ${className}`}>
-      <button
-        type="button"
-        title={isDefault ? label : selectedOpt?.label}
-        onClick={() => {
-          setIsOpen((prev) => !prev);
-          setSearchTerm("");
-        }}
-        className={`w-full flex items-center justify-between gap-1 px-1.5 sm:px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none min-w-0 focus:outline-hidden outline-none ${
-          !isDefault
-            ? "bg-blue-50/90 dark:bg-sky-950/70 border-blue-400 dark:border-sky-600 text-blue-700 dark:text-sky-300 ring-2 ring-blue-500/20"
-            : "glass border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 bg-white/90 dark:bg-slate-900/90"
-        }`}
-      >
-        <div className="flex items-center gap-1 min-w-0 flex-1 justify-center sm:justify-start">
-          <Icon className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-          <span className="truncate text-center sm:text-left">
-            {displayText}
-          </span>
-        </div>
-        <ChevronDown
-          className={`w-3 h-3 text-slate-400 transition-transform duration-200 shrink-0 ${
-            isOpen ? "rotate-180 text-blue-500" : ""
-          }`}
-        />
-      </button>
-
-      {isOpen && (
-        <div
-          className={`absolute ${alignmentClass} top-full mt-1.5 z-[100] min-w-[210px] sm:min-w-[230px] max-w-[calc(100vw-28px)] rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 max-h-72 flex flex-col`}
-        >
-          {searchable && (
-            <div className="p-1 mb-1 border-b border-slate-100 dark:border-slate-800">
-              <input
-                type="text"
-                autoFocus
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Buscar bairro..."
-                className="w-full px-2.5 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-none focus:outline-hidden focus:ring-1 focus:ring-blue-500"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </div>
-          )}
-          <div className="overflow-y-auto overscroll-contain flex-1 divide-y divide-slate-100/40 dark:divide-slate-800/40">
-            {filteredOptions.length === 0 ? (
-              <div className="px-3 py-2 text-xs text-slate-400 text-center">
-                Nenhuma opção encontrada
-              </div>
-            ) : (
-              filteredOptions.map((opt) => {
-                const isSelected = opt.value === value;
-                return (
-                  <button
-                    key={opt.value}
-                    type="button"
-                    onClick={() => {
-                      onChange(opt.value);
-                      setIsOpen(false);
-                      setSearchTerm("");
-                    }}
-                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer text-left ${
-                      isSelected
-                        ? "bg-blue-600 text-white font-bold"
-                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                    }`}
-                  >
-                    <span className="truncate">{opt.label}</span>
-                    {isSelected && <Check className="w-3.5 h-3.5 shrink-0 ml-1.5" />}
-                  </button>
-                );
-              })
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export const Route = createFileRoute("/loja")({
   head: () => ({
     meta: [
@@ -375,13 +234,7 @@ function LojaPage() {
     }
     return "";
   });
-  const [viewMode, setViewMode] = useState<"compact" | "showcase">(() => {
-    if (typeof window !== "undefined") {
-      const saved = sessionStorage.getItem("loja_view_mode") as "compact" | "showcase" | null;
-      if (saved === "compact" || saved === "showcase") return saved;
-    }
-    return "compact";
-  });
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   const isInitialMount = useRef(true);
 
@@ -393,10 +246,9 @@ function LojaPage() {
       sessionStorage.setItem("loja_price_range", selectedPriceRange);
       sessionStorage.setItem("loja_sort_by", sortBy);
       sessionStorage.setItem("loja_search_query", searchQuery);
-      sessionStorage.setItem("loja_view_mode", viewMode);
       sessionStorage.setItem("loja_visible_count", String(visibleCount));
     }
-  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery, viewMode, visibleCount]);
+  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery, visibleCount]);
 
   // Monitora scroll para salvar a posição exata da tela ao navegar para um imóvel
   useEffect(() => {
@@ -625,76 +477,9 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           Casas, Coberturas e Residências à Venda em Teresópolis - Ismael Dias Corretor
         </h1>
 
-        {/* Container Mestre Unificado: Categorias Compactas Quadradas + Busca + Filtros (Economia Máxima de Espaço de Tela) */}
+        {/* Container Mestre Unificado: Busca + Botão Seleção de Categorias + Filtros */}
         <div className="mt-2 sm:mt-4 max-w-xl sm:max-w-2xl lg:max-w-4xl mx-auto glass rounded-2xl sm:rounded-3xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
-          {/* 1. Seletor de Categorias Compactas Quadradas (Icon + Nome + Contador) */}
-          <div className="grid grid-cols-4 sm:grid-cols-8 gap-1 sm:gap-1.5">
-            {imoveisFilters.map((fl) => {
-              const meta = imoveisCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
-              const Icon = meta.icon;
-              const count =
-                fl === "Todos"
-                  ? productList.length
-                  : fl === "Coberturas"
-                  ? productList.filter((p) => p.cat === "Coberturas" || p.name.toLowerCase().includes("cobertura")).length
-                  : fl === "Apartamentos"
-                  ? productList.filter((p) => p.cat === "Apartamentos" && !p.name.toLowerCase().includes("cobertura")).length
-                  : productList.filter((p) => p.cat === fl).length;
-              const isActive = activeFilter === fl;
-              return (
-                <button
-                  key={fl}
-                  onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-full h-[52px] sm:h-[62px] p-1 sm:p-1.5 rounded-xl border transition-colors duration-150 cursor-pointer text-center select-none shadow-2xs ${
-                    isActive
-                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-xs"
-                      : "bg-white/95 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
-                  }`}
-                >
-                  {/* Badge Contador no Canto Superior Direito */}
-                  <span
-                    className={`absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0 rounded-full font-black leading-none transition-colors ${
-                      isActive
-                        ? "bg-white/30 text-white"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
-                    }`}
-                  >
-                    {count}
-                  </span>
-
-                  {/* Ícone em Cima */}
-                  <div
-                    className={`p-1 rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? "bg-white/20 text-white"
-                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-105"
-                    }`}
-                  >
-                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                  </div>
-
-                  {/* Texto Pequeno Embaixo — Icon + Nome em cada categoria */}
-                  <div className="flex flex-col items-center justify-center leading-none w-full px-0.5">
-                    <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight truncate max-w-full">
-                      {meta.label}
-                    </span>
-                    {meta.line2 ? (
-                      <span className="text-[7.5px] sm:text-[9px] font-bold tracking-tight opacity-90 truncate max-w-full mt-0.5">
-                        {meta.line2}
-                      </span>
-                    ) : (
-                      <span className="invisible text-[7.5px] sm:text-[9px] leading-none select-none mt-0.5">&nbsp;</span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Separador fino */}
-          <div className="h-px bg-slate-200/60 dark:bg-slate-800/60 w-full" />
-
-          {/* 2. Barra de Busca + Alternador Grade/Vitrine no mobile (oculto no web) */}
+          {/* Linha 1: Barra de Busca + Botão de Seleção de Categorias */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <div className="relative flex-1 min-w-0">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />
@@ -716,39 +501,134 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               )}
             </div>
 
-            {/* Alternador Grade / Vitrine: VISÍVEL SOMENTE NO MOBILE (sm:hidden), JUNTO DA BARRA DE PESQUISA */}
-            <div className="flex sm:hidden items-center p-0.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shrink-0">
-              <button
-                type="button"
-                onClick={() => setViewMode("compact")}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                  viewMode === "compact"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+            {/* Botão de Seleção de Categorias (substitui o antigo Grade/Vitrine) */}
+            <button
+              type="button"
+              onClick={() => setIsCategoryOpen((prev) => !prev)}
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 border select-none ${
+                activeFilter !== "Todos"
+                  ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white border-blue-500 shadow-sm"
+                  : isCategoryOpen
+                  ? "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-sky-400 border-blue-300 dark:border-sky-700 shadow-2xs"
+                  : "bg-slate-100/90 dark:bg-slate-800/90 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border-slate-200/80 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 shadow-2xs"
+              }`}
+              title="Filtrar por Categoria"
+            >
+              {(() => {
+                const meta = imoveisCategoryMeta[activeFilter] || { icon: LayoutGrid, label: activeFilter };
+                const Icon = meta.icon;
+                return <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />;
+              })()}
+              <span className="truncate max-w-[85px] sm:max-w-[130px]">
+                {activeFilter === "Todos" ? "Categorias" : activeFilter}
+              </span>
+              {activeFilter !== "Todos" && (
+                <span className="text-[9px] px-1.5 py-0.2 rounded-full font-black bg-white/25 text-white leading-none">
+                  {activeFilter === "Coberturas"
+                    ? productList.filter((p) => p.cat === "Coberturas" || p.name.toLowerCase().includes("cobertura")).length
+                    : activeFilter === "Apartamentos"
+                    ? productList.filter((p) => p.cat === "Apartamentos" && !p.name.toLowerCase().includes("cobertura")).length
+                    : productList.filter((p) => p.cat === activeFilter).length}
+                </span>
+              )}
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                  isCategoryOpen ? "rotate-180" : ""
                 }`}
-                title="Grade (2 por linha)"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span>Grade</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setViewMode("showcase")}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                  viewMode === "showcase"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Vitrine (1 por linha)"
-              >
-                <Home className="w-3.5 h-3.5" />
-                <span>Vitrine</span>
-              </button>
-            </div>
+              />
+            </button>
           </div>
 
-          {/* 3. Filtros Dropdown (Bairro, Preço, Ordenar) — Grid 3 colunas para manter proporção perfeita e nunca estourar */}
+          {/* Painel Expansível de Categorias (Abre ao clicar no botão de categorias) */}
+          {isCategoryOpen && (
+            <div className="pt-2 pb-1 border-t border-slate-200/70 dark:border-slate-800/70 animate-in fade-in duration-200">
+              <div className="flex items-center justify-between pb-1.5 px-0.5">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400">
+                  Selecione uma categoria:
+                </span>
+                {activeFilter !== "Todos" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveFilter("Todos");
+                      setIsCategoryOpen(false);
+                    }}
+                    className="text-[10px] sm:text-xs font-bold text-blue-600 dark:text-sky-400 hover:underline cursor-pointer"
+                  >
+                    Ver Todos ({productList.length})
+                  </button>
+                )}
+              </div>
+
+              <div className="grid grid-cols-4 sm:grid-cols-8 gap-1 sm:gap-1.5">
+                {imoveisFilters.map((fl) => {
+                  const meta = imoveisCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
+                  const Icon = meta.icon;
+                  const count =
+                    fl === "Todos"
+                      ? productList.length
+                      : fl === "Coberturas"
+                      ? productList.filter((p) => p.cat === "Coberturas" || p.name.toLowerCase().includes("cobertura")).length
+                      : fl === "Apartamentos"
+                      ? productList.filter((p) => p.cat === "Apartamentos" && !p.name.toLowerCase().includes("cobertura")).length
+                      : productList.filter((p) => p.cat === fl).length;
+                  const isActive = activeFilter === fl;
+                  return (
+                    <button
+                      key={fl}
+                      onClick={() => {
+                        setActiveFilter(fl);
+                        setIsCategoryOpen(false);
+                      }}
+                      className={`group relative flex flex-col items-center justify-between w-full h-[54px] sm:h-[64px] p-1 sm:p-1.5 rounded-xl border transition-all duration-150 cursor-pointer text-center select-none shadow-2xs ${
+                        isActive
+                          ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-xs scale-102"
+                          : "bg-white/95 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
+                      }`}
+                    >
+                      {/* Badge Contador no Canto Superior Direito */}
+                      <span
+                        className={`absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0 rounded-full font-black leading-none transition-colors ${
+                          isActive
+                            ? "bg-white/30 text-white"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
+                        }`}
+                      >
+                        {count}
+                      </span>
+
+                      {/* Ícone em Cima */}
+                      <div
+                        className={`p-1 rounded-lg transition-all duration-200 ${
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-105"
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                      </div>
+
+                      {/* Texto Pequeno Embaixo — Icon + Nome */}
+                      <div className="flex flex-col items-center justify-center leading-none w-full px-0.5">
+                        <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight truncate max-w-full">
+                          {meta.label}
+                        </span>
+                        {meta.line2 ? (
+                          <span className="text-[7.5px] sm:text-[9px] font-bold tracking-tight opacity-90 truncate max-w-full mt-0.5">
+                            {meta.line2}
+                          </span>
+                        ) : (
+                          <span className="invisible text-[7.5px] sm:text-[9px] leading-none select-none mt-0.5">&nbsp;</span>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Linha 2: Filtros Dropdown (Bairro, Preço, Ordenar) — Grid 3 colunas para manter proporção perfeita e nunca estourar */}
           <div className="grid grid-cols-3 gap-1.5 sm:gap-2 w-full py-0.5 relative z-20">
             {/* Dropdown Bairro */}
             <FilterDropdown
@@ -799,11 +679,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
             </button>
           </div>
         ) : (
-          <div
-            className={`mt-6 sm:mt-8 ${
-              viewMode === "showcase" ? "hidden sm:grid" : "grid"
-            } grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6`}
-          >
+          <div className="mt-4 sm:mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {displayed.map((prod, idx) => (
               <div
                 key={prod.name + idx}
@@ -894,100 +770,6 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                     <Info className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <span>Ficha</span>
                   </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Modo Vitrine Mobile (1 por linha) — Sem sobreposicao de botoes e precos */}
-        {viewMode === "showcase" && (
-          <div className="sm:hidden mt-4 space-y-3 w-full min-w-0">
-            {displayed.map((prod, idx) => (
-              <div
-                key={prod.name + idx + "-showcase"}
-                className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md w-full min-w-0 overflow-hidden"
-              >
-                {/* Imagem do Imóvel à esquerda */}
-                <Link
-                  to="/imovel/$sku"
-                  params={{ sku: String(prod.sku) }}
-                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden block"
-                >
-                  <img
-                    src={prod.img}
-                    alt={prod.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                  {prod.storage ? (
-                    <span className="absolute bottom-1 left-1 px-1.5 py-0.2 rounded text-[8px] font-black bg-slate-900/85 text-white backdrop-blur-xs">
-                      {prod.storage}
-                    </span>
-                  ) : null}
-                </Link>
-
-                {/* Informações e Botões à direita */}
-                <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
-                  <div>
-                    <div className="flex items-center gap-1.5 mb-1 min-w-0">
-                      <span
-                        className={`text-[9.5px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full border whitespace-nowrap shrink-0 ${
-                          prod.badge === "VENDIDA"
-                            ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
-                            : "bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40"
-                        }`}
-                      >
-                        {prod.badge}
-                      </span>
-                      {prod.sku && (
-                        <span className="text-[10px] font-bold text-slate-400 whitespace-nowrap shrink-0">#{prod.sku}</span>
-                      )}
-                    </div>
-
-                    <Link
-                      to="/imovel/$sku"
-                      params={{ sku: String(prod.sku) }}
-                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white line-clamp-1 hover:text-blue-600 dark:hover:text-sky-400 transition block"
-                      title={prod.name}
-                    >
-                      {prod.name}
-                    </Link>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
-                      <span>{prod.screen || "Teresópolis/RJ"}</span>
-                    </p>
-                  </div>
-
-                  {/* Linha Inferior: Preço + Condições e Botões Abaixo (Sem Sobreposição) */}
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
-                    <div className="flex items-baseline justify-between gap-1 min-w-0">
-                      <span className="text-[13px] font-black text-blue-600 dark:text-sky-400 truncate">
-                        {fmt(prod.price)}
-                      </span>
-                      <span className="text-[9px] text-slate-500 dark:text-slate-400 truncate text-right">
-                        {prod.chip || "Facilitado"}
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-1.5">
-                      <button
-                        onClick={() => handleOrderWhatsApp(prod)}
-                        className="py-1 px-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center justify-center gap-1 shadow-xs transition active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
-                      >
-                        <WhatsAppIcon className="w-3 h-3 text-white shrink-0" />
-                        <span className="truncate">WhatsApp</span>
-                      </button>
-                      <Link
-                        to="/imovel/$sku"
-                        params={{ sku: String(prod.sku) }}
-                        className="py-1 px-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-[10px] font-bold flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
-                      >
-                        <Info className="w-3 h-3 shrink-0" />
-                        <span>Ficha</span>
-                      </Link>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}

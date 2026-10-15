@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
-  Home,
   LayoutGrid,
   Search,
   Info,
@@ -9,6 +8,9 @@ import {
   MapPin,
   Sparkles,
   Mountain,
+  ChevronDown,
+  DollarSign,
+  ArrowUpDown,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -17,6 +19,7 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
 import type { ProductItem } from "@/components/ProductDetailModal";
+import { FilterDropdown, type FilterOption } from "@/components/FilterDropdown";
 import {
   lancamentosProducts,
   lancamentosFilters,
@@ -25,7 +28,26 @@ import {
   WHATSAPP_NUMBER,
 } from "@/data/storeData";
 import { trackPageView, trackWhatsAppClick } from "@/services/analyticsService";
-import { getSiteSettings } from "@/services/settingsService";
+import { getSiteSettings, type SiteSettings } from "@/services/settingsService";
+
+const LANCAMENTOS_BAIRRO_OPTIONS: FilterOption[] = [
+  { value: "Todos", label: "Todas as Regiões", shortLabel: "Região" },
+  { value: "Albuquerque", label: "Albuquerque (Golden Green)", shortLabel: "Albuquerque" },
+  { value: "Prata", label: "Prata (Vale dos Pássaros)", shortLabel: "Prata" },
+];
+
+const LANCAMENTOS_PRICE_OPTIONS: FilterOption[] = [
+  { value: "all", label: "Todas as faixas de valor", shortLabel: "Preço" },
+  { value: "under-260", label: "Até R$ 260 mil", shortLabel: "Até 260k" },
+  { value: "over-260", label: "A partir de R$ 260 mil", shortLabel: "+ 260k" },
+];
+
+const SORT_OPTIONS: FilterOption[] = [
+  { value: "default", label: "Destaques (Padrão)", shortLabel: "Ordenar" },
+  { value: "price-asc", label: "Menor Valor", shortLabel: "Menor $" },
+  { value: "price-desc", label: "Maior Valor", shortLabel: "Maior $" },
+  { value: "name-asc", label: "Nome (A - Z)", shortLabel: "Nome A-Z" },
+];
 
 const lancamentosCategoryMeta: Record<
   string,
@@ -84,8 +106,38 @@ function LancamentosPage() {
     }
     return "Todos";
   });
-  const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
+  const [selectedBairro, setSelectedBairro] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const bParam = urlParams.get("bairro");
+      if (bParam) return bParam;
+      const saved = sessionStorage.getItem("lancamentos_selected_bairro");
+      if (saved) return saved;
+    }
+    return "Todos";
+  });
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("lancamentos_price_range");
+      if (saved) return saved;
+    }
+    return "all";
+  });
+  const [sortBy, setSortBy] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("lancamentos_sort_by");
+      if (saved) return saved;
+    }
+    return "default";
+  });
+  const [searchQuery, setSearchQuery] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("lancamentos_search_query");
+      if (saved) return saved;
+    }
+    return "";
+  });
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
 
@@ -93,8 +145,12 @@ function LancamentosPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       sessionStorage.setItem("lancamentos_active_filter", activeFilter);
+      sessionStorage.setItem("lancamentos_selected_bairro", selectedBairro);
+      sessionStorage.setItem("lancamentos_price_range", selectedPriceRange);
+      sessionStorage.setItem("lancamentos_sort_by", sortBy);
+      sessionStorage.setItem("lancamentos_search_query", searchQuery);
     }
-  }, [activeFilter]);
+  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery]);
 
   // Monitora e salva scroll de lançamentos
   useEffect(() => {
@@ -185,18 +241,69 @@ Gostaria de agendar uma visita guiada com você no local!`;
   };
 
   // Filter & Search
-  const filtered = productList.filter((item) => {
-    const matchCat =
-      activeFilter === "Todos" ||
-      item.cat === activeFilter;
-    const matchSearch =
-      searchQuery.trim() === "" ||
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchCat && matchSearch;
-  });
+  const filtered = productList
+    .filter((item) => {
+      const matchCat =
+        activeFilter === "Todos" ||
+        item.cat === activeFilter;
+
+      const matchBairro =
+        selectedBairro === "Todos" ||
+        (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase()) ||
+        (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase()));
+
+      let matchPrice = true;
+      if (selectedPriceRange === "under-260") {
+        matchPrice = item.price <= 260000;
+      } else if (selectedPriceRange === "over-260") {
+        matchPrice = item.price > 260000;
+      }
+
+      const matchSearch =
+        searchQuery.trim() === "" ||
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.sku && item.sku.includes(searchQuery.trim()));
+
+      return matchCat && matchBairro && matchPrice && matchSearch;
+    })
+    .sort((a, b) => {
+      if (sortBy === "price-asc") {
+        return a.price - b.price;
+      }
+      if (sortBy === "price-desc") {
+        return b.price - a.price;
+      }
+      if (sortBy === "name-asc") {
+        return a.name.localeCompare(b.name, "pt-BR");
+      }
+      return 0;
+    });
+
+  const hasActiveFilters =
+    activeFilter !== "Todos" ||
+    selectedBairro !== "Todos" ||
+    selectedPriceRange !== "all" ||
+    sortBy !== "default" ||
+    searchQuery.trim() !== "";
+
+  const handleClearAllFilters = () => {
+    setActiveFilter("Todos");
+    setSelectedBairro("Todos");
+    setSelectedPriceRange("all");
+    setSortBy("default");
+    setSearchQuery("");
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("lancamentos_active_filter");
+      sessionStorage.removeItem("lancamentos_selected_bairro");
+      sessionStorage.removeItem("lancamentos_price_range");
+      sessionStorage.removeItem("lancamentos_sort_by");
+      sessionStorage.removeItem("lancamentos_search_query");
+      sessionStorage.removeItem("lancamentos_scroll_y");
+    }
+  };
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -209,72 +316,9 @@ Gostaria de agendar uma visita guiada com você no local!`;
           Novos Lançamentos de Terrenos e Lotes na Serra - Ismael Dias Corretor
         </h1>
 
-        {/* Container Mestre Unificado: Categorias Compactas Quadradas + Busca (Economia Máxima de Espaço de Tela) */}
-        <div className="mt-2 sm:mt-4 max-w-xl sm:max-w-2xl mx-auto glass rounded-2xl sm:rounded-3xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
-          {/* 1. Seletor de Categorias Compactas Quadradas (Icon + Nome + Contador) */}
-          <div className="grid grid-cols-3 gap-1 sm:gap-1.5 max-w-[280px] sm:max-w-[340px] mx-auto w-full">
-            {lancamentosFilters.map((fl) => {
-              const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
-              const Icon = meta.icon;
-              const count =
-                fl === "Todos"
-                  ? productList.length
-                  : productList.filter((p) => p.cat === fl).length;
-              const isActive = activeFilter === fl;
-              return (
-                <button
-                  key={fl}
-                  onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-full h-[52px] sm:h-[62px] p-1 sm:p-1.5 rounded-xl border transition-colors duration-150 cursor-pointer text-center select-none shadow-2xs ${
-                    isActive
-                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-xs"
-                      : "bg-white/95 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
-                  }`}
-                >
-                  {/* Badge Contador no Canto Superior Direito */}
-                  <span
-                    className={`absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0 rounded-full font-black leading-none transition-colors ${
-                      isActive
-                        ? "bg-white/30 text-white"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
-                    }`}
-                  >
-                    {count}
-                  </span>
-
-                  {/* Ícone em Cima */}
-                  <div
-                    className={`p-1 rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? "bg-white/20 text-white"
-                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-105"
-                    }`}
-                  >
-                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                  </div>
-
-                  {/* Texto Pequeno Embaixo — Icon + Nome */}
-                  <div className="flex flex-col items-center justify-center leading-none w-full px-0.5">
-                    <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight truncate max-w-full">
-                      {meta.label}
-                    </span>
-                    {meta.line2 ? (
-                      <span className="text-[7.5px] sm:text-[9px] font-bold tracking-tight opacity-90 truncate max-w-full mt-0.5">
-                        {meta.line2}
-                      </span>
-                    ) : (
-                      <span className="invisible text-[7.5px] sm:text-[9px] leading-none select-none mt-0.5">&nbsp;</span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Separador fino */}
-          <div className="h-px bg-slate-200/60 dark:bg-slate-800/60 w-full" />
-
-          {/* 2. Barra de Busca + Alternador Grade/Vitrine no mobile */}
+        {/* Container Mestre Unificado: Busca + Botão Seleção de Categorias + Filtros */}
+        <div className="mt-2 sm:mt-4 max-w-xl sm:max-w-2xl lg:max-w-4xl mx-auto glass rounded-2xl sm:rounded-3xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
+          {/* Linha 1: Barra de Busca + Botão de Seleção de Categorias */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <div className="relative flex-1 min-w-0">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />
@@ -296,63 +340,195 @@ Gostaria de agendar uma visita guiada com você no local!`;
               )}
             </div>
 
-            {/* Alternador Grade / Vitrine: VISÍVEL SOMENTE NO MOBILE (sm:hidden), JUNTO DA BARRA DE PESQUISA */}
-            <div className="flex sm:hidden items-center p-0.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shrink-0">
-              <button
-                type="button"
-                onClick={() => setViewMode("compact")}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                  viewMode === "compact"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+            {/* Botão de Seleção de Categorias (substitui o antigo Grade/Vitrine) */}
+            <button
+              type="button"
+              onClick={() => setIsCategoryOpen((prev) => !prev)}
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 border select-none ${
+                activeFilter !== "Todos"
+                  ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white border-blue-500 shadow-sm"
+                  : isCategoryOpen
+                  ? "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-sky-400 border-blue-300 dark:border-sky-700 shadow-2xs"
+                  : "bg-slate-100/90 dark:bg-slate-800/90 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border-slate-200/80 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 shadow-2xs"
+              }`}
+              title="Filtrar por Categoria"
+            >
+              {(() => {
+                const meta = lancamentosCategoryMeta[activeFilter] || { icon: LayoutGrid, label: activeFilter };
+                const Icon = meta.icon;
+                return <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />;
+              })()}
+              <span className="truncate max-w-[85px] sm:max-w-[130px]">
+                {activeFilter === "Todos" ? "Categorias" : activeFilter}
+              </span>
+              {activeFilter !== "Todos" && (
+                <span className="text-[9px] px-1.5 py-0.2 rounded-full font-black bg-white/25 text-white leading-none">
+                  {productList.filter((p) => p.cat === activeFilter).length}
+                </span>
+              )}
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                  isCategoryOpen ? "rotate-180" : ""
                 }`}
-                title="Grade (2 por linha)"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span>Grade</span>
-              </button>
+              />
+            </button>
+          </div>
 
+          {/* Painel Expansível de Categorias (Abre ao clicar no botão de categorias) */}
+          {isCategoryOpen && (
+            <div className="pt-2 pb-1 border-t border-slate-200/70 dark:border-slate-800/70 animate-in fade-in duration-200">
+              <div className="flex items-center justify-between pb-1.5 px-0.5">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400">
+                  Selecione uma categoria:
+                </span>
+                {activeFilter !== "Todos" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveFilter("Todos");
+                      setIsCategoryOpen(false);
+                    }}
+                    className="text-[10px] sm:text-xs font-bold text-blue-600 dark:text-sky-400 hover:underline cursor-pointer"
+                  >
+                    Ver Todos ({productList.length})
+                  </button>
+                )}
+              </div>
+
+              <div className="grid grid-cols-3 gap-1 sm:gap-1.5 max-w-[360px] sm:max-w-[420px] mx-auto w-full">
+                {lancamentosFilters.map((fl) => {
+                  const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
+                  const Icon = meta.icon;
+                  const count =
+                    fl === "Todos"
+                      ? productList.length
+                      : productList.filter((p) => p.cat === fl).length;
+                  const isActive = activeFilter === fl;
+                  return (
+                    <button
+                      key={fl}
+                      onClick={() => {
+                        setActiveFilter(fl);
+                        setIsCategoryOpen(false);
+                      }}
+                      className={`group relative flex flex-col items-center justify-between w-full h-[54px] sm:h-[64px] p-1 sm:p-1.5 rounded-xl border transition-all duration-150 cursor-pointer text-center select-none shadow-2xs ${
+                        isActive
+                          ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-xs scale-102"
+                          : "bg-white/95 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
+                      }`}
+                    >
+                      {/* Badge Contador no Canto Superior Direito */}
+                      <span
+                        className={`absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0 rounded-full font-black leading-none transition-colors ${
+                          isActive
+                            ? "bg-white/30 text-white"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
+                        }`}
+                      >
+                        {count}
+                      </span>
+
+                      {/* Ícone em Cima */}
+                      <div
+                        className={`p-1 rounded-lg transition-all duration-200 ${
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-105"
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                      </div>
+
+                      {/* Texto Pequeno Embaixo — Icon + Nome */}
+                      <div className="flex flex-col items-center justify-center leading-none w-full px-0.5">
+                        <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight truncate max-w-full">
+                          {meta.label}
+                        </span>
+                        {meta.line2 ? (
+                          <span className="text-[7.5px] sm:text-[9px] font-bold tracking-tight opacity-90 truncate max-w-full mt-0.5">
+                            {meta.line2}
+                          </span>
+                        ) : (
+                          <span className="invisible text-[7.5px] sm:text-[9px] leading-none select-none mt-0.5">&nbsp;</span>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Linha 2: Filtros Dropdown (Bairro/Região, Preço, Ordenar) — Grid 3 colunas */}
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 w-full py-0.5 relative z-20">
+            {/* Dropdown Região */}
+            <FilterDropdown
+              icon={MapPin}
+              label="Região"
+              value={selectedBairro}
+              options={LANCAMENTOS_BAIRRO_OPTIONS}
+              onChange={setSelectedBairro}
+              searchable={false}
+              align="left"
+            />
+
+            {/* Dropdown Faixa de Preço */}
+            <FilterDropdown
+              icon={DollarSign}
+              label="Preço"
+              value={selectedPriceRange}
+              options={LANCAMENTOS_PRICE_OPTIONS}
+              onChange={setSelectedPriceRange}
+              searchable={false}
+              align="center"
+            />
+
+            {/* Dropdown Ordenação */}
+            <FilterDropdown
+              icon={ArrowUpDown}
+              label="Ordenar"
+              value={sortBy}
+              options={SORT_OPTIONS}
+              onChange={setSortBy}
+              searchable={false}
+              align="right"
+            />
+          </div>
+
+          {/* Feedback de Filtros Ativos e Botão de Limpar */}
+          {hasActiveFilters && (
+            <div className="flex items-center justify-between pt-1 px-1 text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-200/50 dark:border-slate-800/50">
+              <span className="truncate">
+                Filtrando: <strong className="text-slate-800 dark:text-slate-200">{filtered.length}</strong> encontrados
+              </span>
               <button
                 type="button"
-                onClick={() => setViewMode("showcase")}
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                  viewMode === "showcase"
-                    ? "btn-primary-glow text-white shadow-xs"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                }`}
-                title="Vitrine (1 por linha)"
+                onClick={handleClearAllFilters}
+                className="text-blue-600 dark:text-sky-400 hover:underline font-bold shrink-0 ml-2 cursor-pointer"
               >
-                <Home className="w-3.5 h-3.5" />
-                <span>Vitrine</span>
+                Limpar filtros
               </button>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Grade de Lançamentos */}
+        {/* Grade de Lançamentos — Exclusivo modo Grade */}
         {filtered.length === 0 ? (
           <div className="mt-16 text-center py-16 glass rounded-3xl border border-slate-200 dark:border-slate-800">
             <Building2 className="w-12 h-12 mx-auto text-slate-400 mb-3" />
             <h3 className="text-lg font-bold">Nenhum lançamento encontrado para essa busca</h3>
             <p className="text-sm text-slate-500 mt-1">
-              Tente buscar por outro termo ou limpe o filtro de busca.
+              Tente buscar por outro termo ou limpe os filtros.
             </p>
             <button
-              onClick={() => {
-                setSearchQuery("");
-                setActiveFilter("Todos");
-              }}
+              onClick={handleClearAllFilters}
               className="mt-4 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer hover:bg-blue-700"
             >
               Ver todos os lançamentos
             </button>
           </div>
         ) : (
-          <div
-            className={`mt-6 sm:mt-8 ${
-              viewMode === "showcase" ? "hidden sm:grid" : "grid"
-            } grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6`}
-          >
+          <div className="mt-6 sm:mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {filtered.map((prod, idx) => (
               <div
                 key={prod.name + idx}
@@ -437,94 +613,6 @@ Gostaria de agendar uma visita guiada com você no local!`;
                     <Info className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <span>Ficha</span>
                   </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Modo Vitrine Mobile (1 por linha) — Sem sobreposicao de botoes e precos */}
-        {viewMode === "showcase" && (
-          <div className="sm:hidden mt-4 space-y-3">
-            {filtered.map((prod, idx) => (
-              <div
-                key={prod.name + idx + "-showcase"}
-                className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md"
-              >
-                {/* Imagem do Terreno à esquerda */}
-                <Link
-                  to="/imovel/$sku"
-                  params={{ sku: String(prod.sku) }}
-                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden block"
-                >
-                  <img
-                    src={prod.img}
-                    alt={prod.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                  {prod.storage ? (
-                    <span className="absolute bottom-1 left-1 px-1.5 py-0.2 rounded text-[8px] font-black bg-slate-900/85 text-white backdrop-blur-xs">
-                      {prod.storage}
-                    </span>
-                  ) : null}
-                </Link>
-
-                {/* Informações e Botões à direita */}
-                <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
-                  <div>
-                    <div className="flex items-center justify-between gap-1 mb-1">
-                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40">
-                        {prod.badge}
-                      </span>
-                      {prod.sku && (
-                        <span className="text-[10px] font-bold text-slate-400 whitespace-nowrap shrink-0">#{prod.sku}</span>
-                      )}
-                    </div>
-
-                    <Link
-                      to="/imovel/$sku"
-                      params={{ sku: String(prod.sku) }}
-                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white line-clamp-1 hover:text-blue-600 dark:hover:text-sky-400 transition block"
-                      title={prod.name}
-                    >
-                      {prod.name}
-                    </Link>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
-                      <span>{prod.screen || "Teresópolis/RJ"}</span>
-                    </p>
-                  </div>
-
-                  {/* Linha Inferior: Preço e Ações Sem Sobreposição */}
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
-                    <div className="flex items-baseline justify-between gap-1 min-w-0">
-                      <span className="text-[13px] font-black text-blue-600 dark:text-sky-400 truncate">
-                        {fmt(prod.price)}
-                      </span>
-                      <span className="text-[9px] text-slate-500 dark:text-slate-400 truncate text-right">
-                        {prod.chip || "15% + 120x com a Angeleti"}
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-1.5">
-                      <button
-                        onClick={() => handleOrderWhatsApp(prod)}
-                        className="py-1 px-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center justify-center gap-1 shadow-xs transition active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
-                      >
-                        <WhatsAppIcon className="w-3 h-3 text-white shrink-0" />
-                        <span className="truncate">WhatsApp</span>
-                      </button>
-                      <Link
-                        to="/imovel/$sku"
-                        params={{ sku: String(prod.sku) }}
-                        className="py-1 px-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-[10px] font-bold flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
-                      >
-                        <Info className="w-3 h-3 shrink-0" />
-                        <span>Ficha</span>
-                      </Link>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
