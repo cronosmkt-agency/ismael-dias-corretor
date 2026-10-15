@@ -209,9 +209,9 @@ Gostaria de agendar uma visita guiada com você no local!`;
           Novos Lançamentos de Terrenos e Lotes na Serra - Ismael Dias Corretor
         </h1>
 
-        {/* Seletor de Categorias — Mesmo tamanho compacto e padronizado da aba de imóveis */}
+        {/* Seletor de Categorias — Mesmo design exato da aba de imóveis */}
         <div className="mt-3 sm:mt-5 flex justify-center">
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 max-w-xs sm:max-w-sm w-full">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 max-w-[280px] sm:max-w-[340px] w-full">
             {lancamentosFilters.map((fl) => {
               const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
               const Icon = meta.icon;
@@ -224,117 +224,106 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between p-1.5 sm:p-2 rounded-2xl border-2 transition-all duration-150 cursor-pointer text-center select-none shadow-xs aspect-square sm:aspect-auto sm:h-20 ${
+                  className={`group relative flex flex-col items-center justify-between w-full h-[76px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
                     isActive
-                      ? "btn-primary-glow border-blue-500 dark:border-sky-400 text-white shadow-md scale-102"
+                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
                       : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
                   }`}
                 >
                   {/* Badge Contador no Canto Superior Direito */}
                   <span
-                    className={`absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-black flex items-center justify-center border shadow-xs ${
+                    className={`absolute top-1 right-1 sm:top-1 sm:right-1 text-[9px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
                       isActive
-                        ? "bg-white text-blue-600 border-blue-200"
-                        : "bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-sky-300 border-blue-200 dark:border-slate-700"
+                        ? "bg-white/30 text-white"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
                     }`}
                   >
                     {count}
                   </span>
 
-                  {/* Ícone da Categoria */}
+                  {/* Ícone em Cima */}
                   <div
-                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
+                    className={`p-1.5 rounded-xl transition-all duration-200 ${
                       isActive
                         ? "bg-white/20 text-white"
-                        : "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-sky-400"
+                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-110"
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
                   </div>
 
-                  {/* Label da Categoria */}
-                  <span
-                    className={`text-[10px] sm:text-xs font-black truncate max-w-full leading-tight ${
-                      isActive ? "text-white" : "text-slate-800 dark:text-slate-200"
-                    }`}
-                  >
-                    {meta.label}
-                  </span>
+                  {/* Texto Pequeno Embaixo — Sem hifens e com ajuste seguro de largura */}
+                  <div className="flex flex-col items-center justify-center leading-tight w-full px-0.5">
+                    <span className="text-[9.5px] sm:text-[11px] font-bold tracking-tight truncate max-w-full">
+                      {meta.label}
+                    </span>
+                    {meta.line2 ? (
+                      <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight opacity-90 truncate max-w-full">
+                        {meta.line2}
+                      </span>
+                    ) : (
+                      <span className="invisible text-[8.5px] sm:text-[10px] leading-none select-none">&nbsp;</span>
+                    )}
+                  </div>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Linha Combinada Mobile: Barra de busca + Modo Grade/Vitrine */}
-        <div className="sm:hidden mt-3 flex items-center gap-2">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Buscar lançamento..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 pr-7 py-2 rounded-xl glass border border-slate-200 dark:border-slate-800 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
-            />
-            {searchQuery && (
+        {/* Container Unificado de Busca & Filtros (Compacto e Integrado) */}
+        <div className="mt-4 sm:mt-5 max-w-xl mx-auto glass rounded-2xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="relative flex-1 min-w-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Buscar por condomínio ou localização..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-8.5 sm:pl-9 pr-14 py-1.5 sm:py-2 rounded-xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] sm:text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer font-bold"
+                >
+                  Limpar
+                </button>
+              )}
+            </div>
+
+            {/* Alternador Grade / Vitrine: VISÍVEL SOMENTE NO MOBILE (sm:hidden), JUNTO DA BARRA DE PESQUISA */}
+            <div className="flex sm:hidden items-center p-0.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shrink-0">
               <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                type="button"
+                onClick={() => setViewMode("compact")}
+                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                  viewMode === "compact"
+                    ? "btn-primary-glow text-white shadow-xs"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                }`}
+                title="Grade (2 por linha)"
               >
-                ✕
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Grade</span>
               </button>
-            )}
-          </div>
 
-          <div className="flex items-center p-0.5 bg-slate-100/90 dark:bg-slate-900/90 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs shrink-0">
-            <button
-              onClick={() => setViewMode("compact")}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                viewMode === "compact"
-                  ? "btn-primary-glow text-white shadow-xs"
-                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-              }`}
-              title="Grade 2 por linha"
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span className="text-[10px]">Grade</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode("showcase")}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                viewMode === "showcase"
-                  ? "btn-primary-glow text-white shadow-xs"
-                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-              }`}
-              title="Vitrine 1 por linha"
-            >
-              <Home className="w-3.5 h-3.5" />
-              <span className="text-[10px]">Vitrine</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Controles Desktop: Barra de Busca Centralizada */}
-        <div className="hidden sm:flex mt-5 max-w-md mx-auto items-center justify-center">
-          <div className="relative w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Buscar por condomínio ou localização..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-16 py-2.5 rounded-2xl glass border border-slate-200 dark:border-slate-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white shadow-xs"
-            />
-            {searchQuery && (
               <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                type="button"
+                onClick={() => setViewMode("showcase")}
+                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                  viewMode === "showcase"
+                    ? "btn-primary-glow text-white shadow-xs"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                }`}
+                title="Vitrine (1 por linha)"
               >
-                Limpar
+                <Home className="w-3.5 h-3.5" />
+                <span>Vitrine</span>
               </button>
-            )}
+            </div>
           </div>
         </div>
 
