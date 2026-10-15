@@ -209,9 +209,10 @@ Gostaria de agendar uma visita guiada com você no local!`;
           Novos Lançamentos de Terrenos e Lotes na Serra - Ismael Dias Corretor
         </h1>
 
-        {/* Seletor de Categorias — Mesmo design exato da aba de imóveis */}
-        <div className="mt-3 sm:mt-5 flex justify-center">
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 max-w-[280px] sm:max-w-[340px] w-full">
+        {/* Container Mestre Unificado: Categorias Compactas Quadradas + Busca (Economia Máxima de Espaço de Tela) */}
+        <div className="mt-2 sm:mt-4 max-w-xl sm:max-w-2xl mx-auto glass rounded-2xl sm:rounded-3xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
+          {/* 1. Seletor de Categorias Compactas Quadradas (Icon + Nome + Contador) */}
+          <div className="grid grid-cols-3 gap-1 sm:gap-1.5 max-w-[280px] sm:max-w-[340px] mx-auto w-full">
             {lancamentosFilters.map((fl) => {
               const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
               const Icon = meta.icon;
@@ -224,15 +225,15 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-full h-[76px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
+                  className={`group relative flex flex-col items-center justify-between w-full h-[52px] sm:h-[62px] p-1 sm:p-1.5 rounded-xl border transition-colors duration-150 cursor-pointer text-center select-none shadow-2xs ${
                     isActive
-                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
-                      : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
+                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-xs"
+                      : "bg-white/95 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
                   }`}
                 >
                   {/* Badge Contador no Canto Superior Direito */}
                   <span
-                    className={`absolute top-1 right-1 sm:top-1 sm:right-1 text-[9px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
+                    className={`absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0 rounded-full font-black leading-none transition-colors ${
                       isActive
                         ? "bg-white/30 text-white"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
@@ -243,36 +244,37 @@ Gostaria de agendar uma visita guiada com você no local!`;
 
                   {/* Ícone em Cima */}
                   <div
-                    className={`p-1.5 rounded-xl transition-all duration-200 ${
+                    className={`p-1 rounded-lg transition-all duration-200 ${
                       isActive
                         ? "bg-white/20 text-white"
-                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-110"
+                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-105"
                     }`}
                   >
-                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
                   </div>
 
-                  {/* Texto Pequeno Embaixo — Sem hifens e com ajuste seguro de largura */}
-                  <div className="flex flex-col items-center justify-center leading-tight w-full px-0.5">
-                    <span className="text-[9.5px] sm:text-[11px] font-bold tracking-tight truncate max-w-full">
+                  {/* Texto Pequeno Embaixo — Icon + Nome */}
+                  <div className="flex flex-col items-center justify-center leading-none w-full px-0.5">
+                    <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight truncate max-w-full">
                       {meta.label}
                     </span>
                     {meta.line2 ? (
-                      <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight opacity-90 truncate max-w-full">
+                      <span className="text-[7.5px] sm:text-[9px] font-bold tracking-tight opacity-90 truncate max-w-full mt-0.5">
                         {meta.line2}
                       </span>
                     ) : (
-                      <span className="invisible text-[8.5px] sm:text-[10px] leading-none select-none">&nbsp;</span>
+                      <span className="invisible text-[7.5px] sm:text-[9px] leading-none select-none mt-0.5">&nbsp;</span>
                     )}
                   </div>
                 </button>
               );
             })}
           </div>
-        </div>
 
-        {/* Container Unificado de Busca & Filtros (Compacto e Integrado) */}
-        <div className="mt-4 sm:mt-5 max-w-xl mx-auto glass rounded-2xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
+          {/* Separador fino */}
+          <div className="h-px bg-slate-200/60 dark:bg-slate-800/60 w-full" />
+
+          {/* 2. Barra de Busca + Alternador Grade/Vitrine no mobile */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <div className="relative flex-1 min-w-0">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400" />
