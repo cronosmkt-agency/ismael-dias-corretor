@@ -1563,7 +1563,7 @@ export const allImoveisData: ProductItem[] = [
     "sku": "272985",
     "name": "Cobertura de Alto Padrão com 4 Quartos (3 Suítes) e Terraço Panorâmico na Várzea",
     "price": 1700000,
-    "cat": "Apartamentos",
+    "cat": "Coberturas",
     "badge": "Vista Panorâmica",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727132403/PHOTO-2025-07-01-11-53-25%202-watermarked.webp",
     "images": [
@@ -3421,7 +3421,7 @@ export const allImoveisData: ProductItem[] = [
     "sku": "324516",
     "name": "Espetacular Cobertura Duplex (3 Suítes) e Espaço Gourmet na Tijuca",
     "price": 1490000,
-    "cat": "Apartamentos",
+    "cat": "Coberturas",
     "badge": "Destaque",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727142456/aa-watermarked.webp",
     "images": [
@@ -3961,7 +3961,7 @@ export const allImoveisData: ProductItem[] = [
     "sku": "351142",
     "name": "Cobertura de Alto Padrão com 3 Quartos e Terraço Panorâmico na Tijuca",
     "price": 3900000,
-    "cat": "Apartamentos",
+    "cat": "Coberturas",
     "badge": "Alto Padrão",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727132820/WhatsApp%20Image%202026-07-01%20at%2015.02.41%20%281%29-watermarked.webp",
     "images": [
@@ -4163,7 +4163,7 @@ export const allImoveisData: ProductItem[] = [
     "sku": "351660",
     "name": "Espetacular Cobertura Duplex e Terraço Panorâmico no Alto",
     "price": 980000,
-    "cat": "Apartamentos",
+    "cat": "Coberturas",
     "badge": "Vista Panorâmica",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727140234/cobertura-4-quartos-alto-teresopolis-rj--13114783-watermarked.webp",
     "images": [
@@ -4449,7 +4449,7 @@ export const allImoveisData: ProductItem[] = [
     "sku": "352715",
     "name": "Cobertura de Alto Padrão com 3 Quartos (2 Suítes) e Espaço Gourmet em Agriões",
     "price": 1590000,
-    "cat": "Apartamentos",
+    "cat": "Coberturas",
     "badge": "Vista Panorâmica",
     "img": "https://d3873uwf1n1xlo.cloudfront.net/CRM_WebP/HABITTAT%20HOUSE%20/uploads/20260727143025/WhatsApp%20Image%202026-07-10%20at%2018.08.11%20%285%29-watermarked.webp",
     "images": [

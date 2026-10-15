@@ -7,7 +7,7 @@ export function MobileBottomNav() {
 
   const isInicio = currentPath === "/";
   const isLancamentos = currentPath === "/lancamentos";
-  const isLoja = currentPath === "/loja";
+  const isLoja = currentPath === "/loja" || currentPath.startsWith("/imovel");
 
   return (
     <nav

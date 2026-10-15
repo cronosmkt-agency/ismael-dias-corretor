@@ -292,12 +292,12 @@ Gostaria de agendar uma visita guiada com você para conhecer o local!`;
               className="glass-card flex flex-col justify-between p-4 sm:p-5 rounded-2xl group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative border border-slate-200/70 dark:border-slate-800/70"
             >
               {/* Top Tags */}
-              <div className="flex items-center justify-between gap-1 mb-2">
-                <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/80 text-blue-600 dark:text-sky-400 border border-blue-200/60 dark:border-sky-800/60 shrink-0">
+              <div className="flex items-center justify-between gap-1 mb-2 min-w-0">
+                <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/80 text-blue-600 dark:text-sky-400 border border-blue-200/60 dark:border-sky-800/60 shrink-0 whitespace-nowrap">
                   {item.cat}
                 </span>
                 <span
-                  className={`text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md border shrink-0 ${
+                  className={`text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md border shrink-0 whitespace-nowrap ${
                     item.badge === "VENDIDA"
                       ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30 font-black"
                       : "bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-800/60"

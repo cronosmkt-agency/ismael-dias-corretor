@@ -328,30 +328,30 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
 
         {/* Header do Imóvel: Badges + Título */}
         <div className="mb-6 space-y-2">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span
-              className={`text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider border shadow-2xs ${
-                isSold
-                  ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
-                  : isReserved
-                  ? "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30"
-                  : "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
-              }`}
-            >
-              {isSold ? "🔴 Vendida" : isReserved ? "🟡 Reservado" : "🟢 Disponível"}
-            </span>
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            {(isSold || isReserved) && (
+              <span
+                className={`text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider border shadow-2xs whitespace-nowrap shrink-0 ${
+                  isSold
+                    ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
+                    : "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30"
+                }`}
+              >
+                {isSold ? "🔴 Vendida" : "🟡 Reservado"}
+              </span>
+            )}
 
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1">
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1 whitespace-nowrap shrink-0">
               <Trees className="w-3.5 h-3.5 shrink-0" />
               <span>{property.cat}</span>
             </span>
 
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1">
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 whitespace-nowrap shrink-0">
               <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
               <span>{property.bairro || "Teresópolis/RJ"}</span>
             </span>
 
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 whitespace-nowrap shrink-0">
               Cód. #{property.sku || sku}
             </span>
           </div>
@@ -447,6 +447,42 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   ))}
                 </div>
               )}
+            </div>
+
+            {/* Mobile Quick Action Banner (Visível apenas no mobile: lg:hidden) */}
+            <div className="lg:hidden p-4 rounded-3xl glass border border-blue-500/25 dark:border-sky-500/25 shadow-md bg-white/95 dark:bg-slate-900/95 space-y-3">
+              <div className="flex items-baseline justify-between gap-2">
+                <div>
+                  <span className="text-[10px] uppercase font-extrabold text-slate-400 tracking-wider block">
+                    Valor de Venda
+                  </span>
+                  <div className="text-2xl font-black text-slate-900 dark:text-white">
+                    {fmt(property.price)}
+                  </div>
+                </div>
+                <span className="text-[10px] sm:text-[11px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 whitespace-nowrap">
+                  ✓ Entrada facilitada
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={handleWhatsApp}
+                  className="py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
+                >
+                  <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
+                  <span className="truncate">Falar no WhatsApp</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleWhatsApp}
+                  className="py-2.5 px-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
+                >
+                  <CalendarCheck className="w-4 h-4 shrink-0" />
+                  <span className="truncate">Agendar Visita</span>
+                </button>
+              </div>
             </div>
 
             {/* Destaques / Especificações Principais */}

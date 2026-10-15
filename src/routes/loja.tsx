@@ -63,13 +63,11 @@ const imoveisCategoryMeta: Record<
   },
   "Apartamentos": {
     icon: Building2,
-    label: "Aparta-",
-    line2: "mentos",
+    label: "Apartamentos",
   },
   "Coberturas": {
     icon: Crown,
-    label: "Cober-",
-    line2: "turas",
+    label: "Coberturas",
   },
   "Terrenos": {
     icon: Mountain,
@@ -83,8 +81,7 @@ const imoveisCategoryMeta: Record<
   },
   "Comerciais": {
     icon: Sparkles,
-    label: "Comer-",
-    line2: "ciais",
+    label: "Comerciais",
   },
 };
 
@@ -455,8 +452,17 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
         }
       }
 
+      const isCobertura = (p: ProductItem) =>
+        p.cat === "Coberturas" || p.name.toLowerCase().includes("cobertura");
+
       const matchCat =
-        activeFilter === "Todos" || item.cat === activeFilter;
+        activeFilter === "Todos"
+          ? true
+          : activeFilter === "Coberturas"
+          ? isCobertura(item)
+          : activeFilter === "Apartamentos"
+          ? item.cat === "Apartamentos" && !isCobertura(item)
+          : item.cat === activeFilter;
 
       const matchBairro =
         selectedBairro === "Todos" ||
@@ -564,13 +570,17 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
               const count =
                 fl === "Todos"
                   ? productList.length
+                  : fl === "Coberturas"
+                  ? productList.filter((p) => p.cat === "Coberturas" || p.name.toLowerCase().includes("cobertura")).length
+                  : fl === "Apartamentos"
+                  ? productList.filter((p) => p.cat === "Apartamentos" && !p.name.toLowerCase().includes("cobertura")).length
                   : productList.filter((p) => p.cat === fl).length;
               const isActive = activeFilter === fl;
               return (
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-full h-[80px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
+                  className={`group relative flex flex-col items-center justify-between w-full h-[76px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
                     isActive
                       ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
                       : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
@@ -598,17 +608,17 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                     <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
                   </div>
 
-                  {/* Texto Pequeno Embaixo */}
-                  <div className="flex flex-col items-center justify-center leading-tight">
-                    <span className="text-[10px] sm:text-[11px] font-bold tracking-tight">
+                  {/* Texto Pequeno Embaixo — Sem hifens e com ajuste seguro de largura */}
+                  <div className="flex flex-col items-center justify-center leading-tight w-full px-0.5">
+                    <span className="text-[9.5px] sm:text-[11px] font-bold tracking-tight truncate max-w-full">
                       {meta.label}
                     </span>
                     {meta.line2 ? (
-                      <span className="text-[9px] sm:text-[10px] font-bold tracking-tight opacity-90">
+                      <span className="text-[8.5px] sm:text-[10px] font-bold tracking-tight opacity-90 truncate max-w-full">
                         {meta.line2}
                       </span>
                     ) : (
-                      <span className="invisible text-[9px] leading-none select-none">&nbsp;</span>
+                      <span className="invisible text-[8.5px] sm:text-[10px] leading-none select-none">&nbsp;</span>
                     )}
                   </div>
                 </button>
@@ -735,9 +745,9 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1 overflow-hidden min-w-0"
               >
                 {/* Badge Superior com SKU */}
-                <div className="flex items-center justify-between gap-1 mb-1.5">
+                <div className="flex items-center justify-between gap-1 mb-1.5 min-w-0">
                   <span
-                    className={`text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-md border ${
+                    className={`text-[9px] sm:text-xs font-extrabold px-1.5 sm:px-2 py-0.5 rounded-md border whitespace-nowrap shrink-0 truncate max-w-[125px] sm:max-w-none ${
                       prod.badge === "VENDIDA"
                         ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
                         : "bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60"
@@ -746,7 +756,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                     {prod.badge}
                   </span>
                   {prod.sku && (
-                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 whitespace-nowrap shrink-0">
                       #{prod.sku}
                     </span>
                   )}
@@ -852,9 +862,9 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 {/* Informações e Botões à direita */}
                 <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
                   <div>
-                    <div className="flex items-center gap-1 mb-1">
+                    <div className="flex items-center gap-1.5 mb-1 min-w-0">
                       <span
-                        className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full border ${
+                        className={`text-[9.5px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full border whitespace-nowrap shrink-0 ${
                           prod.badge === "VENDIDA"
                             ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
                             : "bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40"
@@ -863,7 +873,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                         {prod.badge}
                       </span>
                       {prod.sku && (
-                        <span className="text-[10px] font-bold text-slate-400">#{prod.sku}</span>
+                        <span className="text-[10px] font-bold text-slate-400 whitespace-nowrap shrink-0">#{prod.sku}</span>
                       )}
                     </div>
 
