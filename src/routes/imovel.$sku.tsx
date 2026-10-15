@@ -352,7 +352,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       </div>
 
-      <main className="pt-16 sm:pt-28 pb-28 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0">
+      <main className="pt-15 sm:pt-28 pb-32 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0">
         {/* Breadcrumb Navigation (Apenas Desktop) */}
         <nav
           aria-label="Breadcrumb"
@@ -414,23 +414,23 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-start">
           {/* Coluna Esquerda: Galeria de Fotos + Especificações + Descrição (8 colunas) */}
           <div className="lg:col-span-8 space-y-4 sm:space-y-6">
-            {/* Foto Principal com Ações de Zoom e Navegação */}
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass border border-slate-200/70 dark:border-slate-800 shadow-xl bg-slate-900/40">
+            {/* Foto Principal com Galeria e Miniaturas — Padrão Card de Imóvel */}
+            <div className="relative rounded-2xl sm:rounded-3xl p-2 sm:p-4 glass border border-slate-200/70 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 shadow-sm flex flex-col gap-2 sm:gap-3">
               <div
                 onClick={() => setIsLightboxOpen(true)}
-                className="relative aspect-4/3 sm:aspect-16/9 w-full overflow-hidden cursor-zoom-in group"
+                className="relative w-full h-48 sm:h-72 lg:h-[450px] rounded-xl sm:rounded-2xl overflow-hidden cursor-zoom-in group bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60"
               >
                 <img
                   src={currentImg}
                   alt={property.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                  className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-102"
                 />
 
                 {/* Badges Flutuantes sobre a Foto Principal */}
-                <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 flex-wrap">
+                <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 flex-wrap">
                   {(isSold || isReserved) && (
                     <span
-                      className={`text-[10px] sm:text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wider backdrop-blur-md shadow-md ${
+                      className={`text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-md uppercase tracking-wider backdrop-blur-md shadow-md ${
                         isSold
                           ? "bg-rose-600/90 text-white"
                           : "bg-amber-500/90 text-white"
@@ -439,7 +439,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                       {isSold ? "🔴 Vendida" : "🟡 Reservado"}
                     </span>
                   )}
-                  <span className="text-[10px] sm:text-xs font-extrabold px-2.5 py-1 rounded-lg bg-black/60 text-white backdrop-blur-md shadow-md flex items-center gap-1">
+                  <span className="text-[10px] sm:text-xs font-extrabold px-2 py-0.5 rounded-md bg-black/65 text-white backdrop-blur-md shadow-md flex items-center gap-1">
                     <Trees className="w-3 h-3 text-emerald-400 shrink-0" />
                     <span>{property.cat}</span>
                   </span>
@@ -452,15 +452,22 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                     e.stopPropagation();
                     setIsLightboxOpen(true);
                   }}
-                  className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-black/70 hover:bg-black/90 text-white text-[11px] sm:text-xs font-bold backdrop-blur-md transition shadow-md cursor-pointer"
+                  className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1 px-2 py-1 rounded-lg bg-black/70 hover:bg-black/90 text-white text-[10px] sm:text-xs font-bold backdrop-blur-xs transition shadow-md cursor-pointer"
                 >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Expandir ({images.length})</span>
+                  <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <span>Tela cheia</span>
                 </button>
 
+                {/* Metragem Sobreposta (Padrão Card de Imóvel) */}
+                {property.storage && (
+                  <span className="absolute bottom-2.5 left-2.5 z-10 px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
+                    {property.storage}
+                  </span>
+                )}
+
                 {/* Contador de Fotos */}
-                <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-lg bg-black/70 text-white text-[11px] sm:text-xs font-bold backdrop-blur-md">
-                  📷 {activeImgIndex + 1} de {images.length}
+                <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold backdrop-blur-xs">
+                  {activeImgIndex + 1} / {images.length}
                 </div>
 
                 {/* Setas de navegação direta */}
@@ -472,7 +479,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         e.stopPropagation();
                         setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
                       }}
-                      className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition cursor-pointer shadow-md"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-xs transition cursor-pointer shadow-md"
                       aria-label="Foto anterior"
                     >
                       <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -483,7 +490,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         e.stopPropagation();
                         setActiveImgIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
                       }}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition cursor-pointer shadow-md"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-xs transition cursor-pointer shadow-md"
                       aria-label="Próxima foto"
                     >
                       <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -492,17 +499,18 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 )}
               </div>
 
-              {/* Tira de Miniaturas (Thumbnails) */}
+              {/* Tira de Miniaturas (Thumbnails) no mesmo padrão do Modal de Detalhes */}
               {images.length > 1 && (
-                <div className="p-2 sm:p-3 bg-slate-900/80 border-t border-slate-800 overflow-x-auto flex items-center gap-2 scrollbar-none">
+                <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1 px-0.5 scrollbar-none w-full min-w-0">
                   {images.map((imgUrl, idx) => (
                     <button
                       key={imgUrl + idx}
+                      type="button"
                       onClick={() => setActiveImgIndex(idx)}
-                      className={`relative w-14 h-10 sm:w-20 sm:h-14 rounded-lg sm:rounded-xl overflow-hidden shrink-0 border-2 transition cursor-pointer ${
+                      className={`relative w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-lg sm:rounded-xl overflow-hidden border-2 transition cursor-pointer ${
                         activeImgIndex === idx
-                          ? "border-blue-500 scale-105 shadow-md"
-                          : "border-transparent opacity-60 hover:opacity-100"
+                          ? "border-blue-600 dark:border-sky-400 scale-105 shadow-sm"
+                          : "border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100"
                       }`}
                     >
                       <img
@@ -518,40 +526,40 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             </div>
 
             {/* Card Mobile de Título & Preço & Ações Rápidas (Logo abaixo da foto no celular) */}
-            <div className="sm:hidden p-4 rounded-2xl glass border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-md space-y-3">
+            <div className="sm:hidden p-3.5 rounded-2xl glass border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-sm space-y-2.5">
               {/* Badges de Localização e Código */}
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1">
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1">
                   <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
                   <span>{property.bairro || "Teresópolis/RJ"}</span>
                 </span>
-                <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
                   Cód. #{property.sku || sku}
                 </span>
               </div>
 
               {/* Título Principal */}
-              <h1 className="text-base font-black text-slate-900 dark:text-white leading-snug">
+              <h1 className="text-sm font-black text-slate-900 dark:text-white leading-snug">
                 {property.name}
               </h1>
 
               {/* Valor de Venda */}
               <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-baseline justify-between gap-2">
                 <div>
-                  <span className="text-[10px] uppercase font-extrabold text-slate-400 tracking-wider block">
+                  <span className="text-[9px] uppercase font-extrabold text-slate-400 tracking-wider block">
                     Valor de Venda
                   </span>
-                  <div className="text-2xl font-black text-blue-600 dark:text-sky-400">
+                  <div className="text-xl font-black text-blue-600 dark:text-sky-400">
                     {fmt(property.price)}
                   </div>
                 </div>
-                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
                   ✓ Entrada facilitada
                 </span>
               </div>
 
               {/* Botões de Ação Imediata */}
-              <div className="grid grid-cols-2 gap-2 pt-1">
+              <div className="grid grid-cols-2 gap-2 pt-0.5">
                 <button
                   type="button"
                   onClick={handleWhatsApp}
