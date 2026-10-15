@@ -25,7 +25,6 @@ import {
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
-import { WhatsFloat } from "@/components/WhatsFloat";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
@@ -362,7 +361,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       </div>
 
-      <main className="pt-15 sm:pt-28 pb-32 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0 max-w-full overflow-x-hidden lg:overflow-x-visible">
+      <main className="pt-20 sm:pt-28 lg:pt-32 pb-32 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full min-w-0 max-w-full overflow-x-hidden lg:overflow-x-visible">
         {/* Barra Superior Desktop: Botão Voltar + Breadcrumb */}
         <div className="hidden sm:flex items-center justify-between gap-4 mb-5">
           <button
@@ -444,13 +443,18 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             <div className="relative rounded-2xl sm:rounded-3xl p-2 sm:p-4 glass border border-slate-200/70 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 shadow-sm flex flex-col gap-2 sm:gap-3 w-full min-w-0 max-w-full overflow-hidden">
               <div
                 onClick={() => setIsLightboxOpen(true)}
-                className="relative w-full h-48 sm:h-72 lg:h-[450px] rounded-xl sm:rounded-2xl overflow-hidden cursor-zoom-in group bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 min-w-0"
+                className="relative w-full h-52 sm:h-80 lg:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden cursor-zoom-in group bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 min-w-0 shadow-inner"
               >
                 <img
                   src={currentImg}
                   alt={property.name}
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-102"
                 />
+
+                {/* Gradiente sutil inferior para legibilidade perfeita dos selos */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
 
                 {/* Badges Flutuantes sobre a Foto Principal */}
                 <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 flex-wrap">
@@ -722,17 +726,20 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
           {/* Coluna Direita: Box de Preço + Botões de Ação + Card do Corretor (Desktop: 4 colunas sticky) */}
           <div className="hidden lg:block lg:col-span-4 space-y-5 lg:sticky lg:top-28 self-start">
             {/* Card de Valor & Condições */}
-            <div className="p-6 rounded-3xl glass border-2 border-blue-500/30 dark:border-sky-500/30 shadow-xl space-y-4 bg-white/95 dark:bg-slate-900/90">
+            <div className="p-6 rounded-3xl glass border border-blue-500/25 dark:border-sky-500/30 shadow-xl space-y-4 bg-white/95 dark:bg-slate-900/90 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
+
               <div>
-                <span className="text-xs uppercase font-extrabold text-slate-400 tracking-wider block">
+                <span className="text-[11px] uppercase font-black text-slate-400 tracking-wider block">
                   Valor de Venda
                 </span>
-                <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">
+                <div className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mt-1 tracking-tight">
                   {fmt(property.price)}
                 </div>
-                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold block mt-1">
-                  ✓ Entrada facilitada e condições sob medida
-                </span>
+                <div className="flex items-center gap-1.5 mt-2 text-xs text-emerald-600 dark:text-emerald-400 font-bold">
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <span>Condições facilitadas de negociação</span>
+                </div>
               </div>
 
               {/* Botão de Contato Principal no WhatsApp */}
@@ -741,7 +748,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 onClick={handleWhatsApp}
                 className="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-600/30 transition-all hover:scale-102 active:scale-98 cursor-pointer"
               >
-                <WhatsAppIcon className="w-5 h-5 text-white" />
+                <WhatsAppIcon className="w-5 h-5 text-white shrink-0" />
                 <span>Falar no WhatsApp com Ismael</span>
               </button>
 
@@ -751,7 +758,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 onClick={handleWhatsApp}
                 className="w-full py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all active:scale-98 cursor-pointer"
               >
-                <CalendarCheck className="w-4 h-4" />
+                <CalendarCheck className="w-4 h-4 shrink-0" />
                 <span>Agendar Visita no Imóvel</span>
               </button>
 
@@ -782,19 +789,25 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             </div>
 
             {/* Card do Corretor Ismael Dias Desktop */}
-            <div className="p-5 rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3">
+            <div className="p-5 rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3 bg-white/95 dark:bg-slate-900/90">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center font-black text-white text-base shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center font-black text-white text-base shadow-md shrink-0">
                   ID
                 </div>
-                <div>
-                  <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">
-                    {siteSettings.realtorName || "Ismael Dias"}
-                  </h3>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 block">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-extrabold text-sm text-slate-900 dark:text-white truncate">
+                      {siteSettings.realtorName || "Ismael Dias"}
+                    </h3>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Online
+                    </span>
+                  </div>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 block truncate">
                     {siteSettings.agencyName || "Habittat House Imobiliária"}
                   </span>
-                  <span className="text-[11px] font-bold text-blue-600 dark:text-sky-400 block">
+                  <span className="text-[11px] font-bold text-blue-600 dark:text-sky-400 block truncate">
                     {siteSettings.creci || "CRECI-RJ Ativo"}
                   </span>
                 </div>
@@ -805,7 +818,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               </p>
 
               <div className="pt-2 flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
-                <Phone className="w-3.5 h-3.5 text-blue-500" />
+                <Phone className="w-3.5 h-3.5 text-blue-500 shrink-0" />
                 <span>{siteSettings.phoneDisplay || PHONE_DISPLAY}</span>
               </div>
             </div>
@@ -940,11 +953,6 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
 
       {/* Footer */}
       <SiteFooter currentTheme={currentTheme} />
-
-      {/* WhatsFloat apenas para Desktop (no mobile a barra fixa de conversão substitui com perfeição sem cobrir fotos) */}
-      <div className="hidden sm:block">
-        <WhatsFloat />
-      </div>
 
       {/* Barra Fixa de Conversão Mobile */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200/90 dark:border-slate-800 p-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] flex items-center justify-between gap-3">

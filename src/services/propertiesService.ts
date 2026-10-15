@@ -4,6 +4,7 @@
  */
 
 import { allImoveisData } from "@/data/imoveisData";
+import { lancamentosProducts } from "@/data/storeData";
 import type { ProductItem } from "@/components/ProductDetailModal";
 import {
   isSupabaseConfigured,
@@ -135,7 +136,9 @@ export function getPropertyBySku(sku?: string): ProductItem | undefined {
   if (!sku) return undefined;
   const target = String(sku).trim().toLowerCase();
   const all = getAllProperties();
-  return all.find((p) => String(p.sku || "").trim().toLowerCase() === target);
+  const found = all.find((p) => String(p.sku || "").trim().toLowerCase() === target);
+  if (found) return found;
+  return lancamentosProducts.find((p) => String(p.sku || "").trim().toLowerCase() === target);
 }
 
 /**

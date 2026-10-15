@@ -26,7 +26,7 @@ import { WhatsFloat } from "@/components/WhatsFloat";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
-import { ProductDetailModal, type ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/components/ProductDetailModal";
 import {
   imoveisAvulsosProducts,
   imoveisFilters,
@@ -386,8 +386,6 @@ function LojaPage() {
     }
     return "compact";
   });
-  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const isInitialMount = useRef(true);
 
@@ -471,16 +469,12 @@ function LojaPage() {
         }
       }
 
-      // Detecção de SKU direto via URL query (?sku=123)
+      // Detecção de SKU direto via URL query (?sku=123) -> redireciona para a página própria do imóvel
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const skuParam = urlParams.get("sku");
         if (skuParam) {
-          const match = productList.find((p) => String(p.sku) === skuParam);
-          if (match) {
-            setSelectedProduct(match);
-            setModalOpen(true);
-          }
+          window.location.href = `/imovel/${skuParam}`;
         }
       } catch (_) {}
     }
@@ -498,11 +492,6 @@ function LojaPage() {
     }
     localStorage.setItem("habittat_theme", next);
     window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
-  };
-
-  const handleOpenDetail = (prod: ProductItem) => {
-    setSelectedProduct(prod);
-    setModalOpen(true);
   };
 
   const handleOrderWhatsApp = (prod: ProductItem) => {
@@ -634,14 +623,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <main className="pt-16 sm:pt-24 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
+      <main className="pt-24 sm:pt-28 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
         {/* H1 Semântico Oculto para SEO e Acessibilidade */}
         <h1 className="sr-only">
           Casas, Coberturas e Residências à Venda em Teresópolis - Ismael Dias Corretor
         </h1>
 
         {/* Seletor de Categorias — 8 categorias completas no mobile (4x2) e desktop (8x1) */}
-        <div className="mt-2 sm:mt-4 max-w-5xl mx-auto">
+        <div className="mt-3 sm:mt-5 max-w-5xl mx-auto">
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-1.5 sm:gap-2">
             {imoveisFilters.map((fl) => {
               const meta = imoveisCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
@@ -842,22 +831,23 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 </div>
 
                 {/* Imagem do Imóvel com Metragem Sobreposta */}
-                <div
-                  onClick={() => handleOpenDetail(prod)}
-                  className="relative aspect-4/3 w-full flex items-center justify-center mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50"
+                <Link
+                  to="/imovel/$sku"
+                  params={{ sku: String(prod.sku) }}
+                  className="relative aspect-4/3 w-full flex items-center justify-center mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50 block group/img"
                 >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
                   />
                   {prod.storage ? (
                     <span className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
                       {prod.storage}
                     </span>
                   ) : null}
-                </div>
+                </Link>
 
                 {/* Dados do Imóvel */}
                 <div className="flex-1 flex flex-col justify-between">
@@ -899,13 +889,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                     <span className="truncate">WhatsApp</span>
                   </button>
 
-                  <button
-                    onClick={() => handleOpenDetail(prod)}
+                  <Link
+                    to="/imovel/$sku"
+                    params={{ sku: String(prod.sku) }}
                     className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
                   >
                     <Info className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <span>Ficha</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -921,9 +912,10 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md w-full min-w-0 overflow-hidden"
               >
                 {/* Imagem do Imóvel à esquerda */}
-                <div
-                  onClick={() => handleOpenDetail(prod)}
-                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden"
+                <Link
+                  to="/imovel/$sku"
+                  params={{ sku: String(prod.sku) }}
+                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden block"
                 >
                   <img
                     src={prod.img}
@@ -936,7 +928,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                       {prod.storage}
                     </span>
                   ) : null}
-                </div>
+                </Link>
 
                 {/* Informações e Botões à direita */}
                 <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
@@ -989,13 +981,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                         <WhatsAppIcon className="w-3 h-3 text-white shrink-0" />
                         <span className="truncate">WhatsApp</span>
                       </button>
-                      <button
-                        onClick={() => handleOpenDetail(prod)}
+                      <Link
+                        to="/imovel/$sku"
+                        params={{ sku: String(prod.sku) }}
                         className="py-1 px-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-[10px] font-bold flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
                       >
                         <Info className="w-3 h-3 shrink-0" />
                         <span>Ficha</span>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -1049,14 +1042,6 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           </a>
         </div>
       </main>
-
-      {/* Modal de Especificações */}
-      <ProductDetailModal
-        product={selectedProduct}
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        whatsappNumber={WHATSAPP_NUMBER}
-      />
 
       <SiteFooter currentTheme={currentTheme} />
       <WhatsFloat />

@@ -20,7 +20,7 @@ import { WhatsFloat } from "@/components/WhatsFloat";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
-import { ProductDetailModal, type ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/components/ProductDetailModal";
 import {
   lancamentosProducts,
   lancamentosFilters,
@@ -91,8 +91,6 @@ function LancamentosPage() {
   });
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"compact" | "showcase">("compact");
-  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
 
@@ -169,11 +167,6 @@ function LancamentosPage() {
     window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
   };
 
-  const handleOpenDetail = (prod: ProductItem) => {
-    setSelectedProduct(prod);
-    setModalOpen(true);
-  };
-
   const handleOrderWhatsApp = (prod: ProductItem) => {
     trackWhatsAppClick(
       prod.sku || "",
@@ -215,15 +208,15 @@ Gostaria de agendar uma visita guiada com você no local!`;
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <main className="pt-16 sm:pt-24 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
+      <main className="pt-24 sm:pt-28 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
         {/* H1 Semântico Oculto para SEO e Acessibilidade */}
         <h1 className="sr-only">
           Novos Lançamentos de Terrenos e Lotes na Serra - Ismael Dias Corretor
         </h1>
 
         {/* Seletor de Categorias — Mesmo tamanho compacto e padronizado da aba de imóveis */}
-        <div className="mt-2 sm:mt-4 flex justify-center">
-          <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2">
+        <div className="mt-3 sm:mt-5 flex justify-center">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 max-w-xs sm:max-w-sm w-full">
             {lancamentosFilters.map((fl) => {
               const meta = lancamentosCategoryMeta[fl] || { icon: LayoutGrid, label: fl };
               const Icon = meta.icon;
@@ -236,47 +229,42 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 <button
                   key={fl}
                   onClick={() => setActiveFilter(fl)}
-                  className={`group relative flex flex-col items-center justify-between w-[95px] sm:w-[105px] h-[80px] sm:h-[86px] p-1.5 sm:p-2 rounded-2xl border-2 transition-colors duration-150 cursor-pointer text-center select-none shadow-xs ${
+                  className={`group relative flex flex-col items-center justify-between p-1.5 sm:p-2 rounded-2xl border-2 transition-all duration-150 cursor-pointer text-center select-none shadow-xs aspect-square sm:aspect-auto sm:h-20 ${
                     isActive
-                      ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-md"
+                      ? "btn-primary-glow border-blue-500 dark:border-sky-400 text-white shadow-md scale-102"
                       : "bg-white/90 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
                   }`}
                 >
                   {/* Badge Contador no Canto Superior Direito */}
                   <span
-                    className={`absolute top-1 right-1 text-[9px] px-1.5 py-0.2 rounded-full font-black leading-none transition-colors ${
+                    className={`absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-black flex items-center justify-center border shadow-xs ${
                       isActive
-                        ? "bg-white/30 text-white"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
+                        ? "bg-white text-blue-600 border-blue-200"
+                        : "bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-sky-300 border-blue-200 dark:border-slate-700"
                     }`}
                   >
                     {count}
                   </span>
 
-                  {/* Ícone em Cima */}
+                  {/* Ícone da Categoria */}
                   <div
-                    className={`p-1.5 rounded-xl transition-all duration-200 ${
+                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
                       isActive
                         ? "bg-white/20 text-white"
-                        : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-110"
+                        : "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-sky-400"
                     }`}
                   >
-                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
 
-                  {/* Texto Pequeno Embaixo */}
-                  <div className="flex flex-col items-center justify-center leading-tight">
-                    <span className="text-[10px] sm:text-[11px] font-bold tracking-tight">
-                      {meta.label}
-                    </span>
-                    {meta.line2 ? (
-                      <span className="text-[9px] sm:text-[10px] font-bold tracking-tight opacity-90">
-                        {meta.line2}
-                      </span>
-                    ) : (
-                      <span className="invisible text-[9px] leading-none select-none">&nbsp;</span>
-                    )}
-                  </div>
+                  {/* Label da Categoria */}
+                  <span
+                    className={`text-[10px] sm:text-xs font-black truncate max-w-full leading-tight ${
+                      isActive ? "text-white" : "text-slate-800 dark:text-slate-200"
+                    }`}
+                  >
+                    {meta.label}
+                  </span>
                 </button>
               );
             })}
@@ -382,43 +370,50 @@ Gostaria de agendar uma visita guiada com você no local!`;
             {filtered.map((prod, idx) => (
               <div
                 key={prod.name + idx}
-                className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1"
+                className="group relative rounded-2xl sm:rounded-3xl glass p-2.5 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl border border-slate-200/60 dark:border-slate-800/80 hover:-translate-y-1 overflow-hidden min-w-0"
               >
-                {/* Badge Superior */}
-                <div className="flex items-center justify-between gap-1 mb-1.5">
-                  <span className="text-[10px] sm:text-xs font-extrabold px-2 sm:px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60">
+                {/* Badge Superior com SKU */}
+                <div className="flex items-center justify-between gap-1 mb-1.5 min-w-0">
+                  <span className="text-[9px] sm:text-xs font-extrabold px-1.5 sm:px-2 py-0.5 rounded-md border whitespace-nowrap shrink-0 truncate max-w-[125px] sm:max-w-none bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60">
                     {prod.badge}
                   </span>
+                  {prod.sku && (
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 whitespace-nowrap shrink-0">
+                      #{prod.sku}
+                    </span>
+                  )}
                 </div>
 
                 {/* Imagem do Terreno com Metragem Sobreposta */}
-                <div
-                  onClick={() => handleOpenDetail(prod)}
-                  className="relative aspect-4/3 w-full flex items-center justify-center mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50"
+                <Link
+                  to="/imovel/$sku"
+                  params={{ sku: String(prod.sku) }}
+                  className="relative aspect-4/3 w-full flex items-center justify-center mb-2 cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50 block group/img"
                 >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
                   />
                   {prod.storage ? (
                     <span className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
                       {prod.storage}
                     </span>
                   ) : null}
-                </div>
+                </Link>
 
                 {/* Dados do Empreendimento */}
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
-                    <h3
-                      onClick={() => handleOpenDetail(prod)}
-                      className="text-xs sm:text-sm font-black line-clamp-2 min-h-[2.2rem] text-slate-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition"
+                    <Link
+                      to="/imovel/$sku"
+                      params={{ sku: String(prod.sku) }}
+                      className="text-xs sm:text-sm font-black line-clamp-2 min-h-[2.2rem] text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition block"
                       title={prod.name}
                     >
                       {prod.name}
-                    </h3>
+                    </Link>
 
                     <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
@@ -427,8 +422,8 @@ Gostaria de agendar uma visita guiada com você no local!`;
                   </div>
 
                   <div className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800/60">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-sm sm:text-lg font-black text-blue-600 dark:text-sky-400">
+                    <div className="flex items-baseline gap-1 min-w-0">
+                      <span className="text-[13px] sm:text-lg font-black text-blue-600 dark:text-sky-400 truncate">
                         {fmt(prod.price)}
                       </span>
                     </div>
@@ -442,19 +437,20 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 <div className="mt-2.5 sm:mt-3 grid grid-cols-2 gap-1.5 pt-1.5 sm:pt-2">
                   <button
                     onClick={() => handleOrderWhatsApp(prod)}
-                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1 shadow-sm transition active:scale-95 cursor-pointer whitespace-nowrap"
+                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1 shadow-sm transition active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
                   >
-                    <WhatsAppIcon className="w-3.5 h-3.5 text-white shrink-0" />
-                    <span>WhatsApp</span>
+                    <WhatsAppIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white shrink-0" />
+                    <span className="truncate">WhatsApp</span>
                   </button>
 
-                  <button
-                    onClick={() => handleOpenDetail(prod)}
-                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[11px] sm:text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap"
+                  <Link
+                    to="/imovel/$sku"
+                    params={{ sku: String(prod.sku) }}
+                    className="w-full py-1.5 sm:py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
                   >
-                    <Info className="w-3.5 h-3.5 shrink-0" />
+                    <Info className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <span>Ficha</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -470,22 +466,23 @@ Gostaria de agendar uma visita guiada com você no local!`;
                 className="rounded-2xl glass p-3 border border-slate-200/80 dark:border-slate-800/80 shadow-xs flex items-center gap-3 transition-all hover:shadow-md"
               >
                 {/* Imagem do Terreno à esquerda */}
-                <div
-                  onClick={() => handleOpenDetail(prod)}
-                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100/60 dark:bg-slate-900/60 p-1 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden"
+                <Link
+                  to="/imovel/$sku"
+                  params={{ sku: String(prod.sku) }}
+                  className="relative w-24 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 cursor-pointer overflow-hidden block"
                 >
                   <img
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
-                    className="max-h-full max-w-full object-contain drop-shadow-md"
+                    className="w-full h-full object-cover"
                   />
                   {prod.storage ? (
                     <span className="absolute bottom-1 left-1 px-1.5 py-0.2 rounded text-[8px] font-black bg-slate-900/85 text-white backdrop-blur-xs">
                       {prod.storage}
                     </span>
                   ) : null}
-                </div>
+                </Link>
 
                 {/* Informações e Botões à direita */}
                 <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
@@ -494,15 +491,19 @@ Gostaria de agendar uma visita guiada com você no local!`;
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-sky-950/60 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/40">
                         {prod.badge}
                       </span>
+                      {prod.sku && (
+                        <span className="text-[10px] font-bold text-slate-400 whitespace-nowrap shrink-0">#{prod.sku}</span>
+                      )}
                     </div>
 
-                    <h3
-                      onClick={() => handleOpenDetail(prod)}
-                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white line-clamp-1 cursor-pointer"
+                    <Link
+                      to="/imovel/$sku"
+                      params={{ sku: String(prod.sku) }}
+                      className="text-xs sm:text-sm font-black text-slate-900 dark:text-white line-clamp-1 hover:text-blue-600 dark:hover:text-sky-400 transition block"
                       title={prod.name}
                     >
                       {prod.name}
-                    </h3>
+                    </Link>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5 flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
                       <span>{prod.screen || "Teresópolis/RJ"}</span>
@@ -510,31 +511,32 @@ Gostaria de agendar uma visita guiada com você no local!`;
                   </div>
 
                   {/* Linha Inferior: Preço e Ações Sem Sobreposição */}
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
-                    <div className="min-w-0">
-                      <span className="text-sm font-black text-blue-600 dark:text-sky-400 block whitespace-nowrap">
+                  <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-1.5">
+                    <div className="flex items-baseline justify-between gap-1 min-w-0">
+                      <span className="text-[13px] font-black text-blue-600 dark:text-sky-400 truncate">
                         {fmt(prod.price)}
                       </span>
-                      <p className="text-[9px] text-slate-500 dark:text-slate-400 truncate">
+                      <span className="text-[9px] text-slate-500 dark:text-slate-400 truncate text-right">
                         {prod.chip || "15% + 120x com a Angeleti"}
-                      </p>
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-1 shrink-0">
-                      <button
-                        onClick={() => handleOpenDetail(prod)}
-                        className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-                        title="Ver especificações"
-                      >
-                        <Info className="w-3.5 h-3.5" />
-                      </button>
+                    <div className="grid grid-cols-2 gap-1.5">
                       <button
                         onClick={() => handleOrderWhatsApp(prod)}
-                        className="px-2 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center gap-1 shadow-xs transition active:scale-95 cursor-pointer whitespace-nowrap"
+                        className="py-1 px-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center justify-center gap-1 shadow-xs transition active:scale-95 cursor-pointer whitespace-nowrap min-w-0"
                       >
-                        <WhatsAppIcon className="w-3.5 h-3.5 text-white shrink-0" />
-                        <span>WhatsApp</span>
+                        <WhatsAppIcon className="w-3 h-3 text-white shrink-0" />
+                        <span className="truncate">WhatsApp</span>
                       </button>
+                      <Link
+                        to="/imovel/$sku"
+                        params={{ sku: String(prod.sku) }}
+                        className="py-1 px-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-[10px] font-bold flex items-center justify-center gap-1 transition cursor-pointer whitespace-nowrap min-w-0"
+                      >
+                        <Info className="w-3 h-3 shrink-0" />
+                        <span>Ficha</span>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -569,14 +571,6 @@ Gostaria de agendar uma visita guiada com você no local!`;
           </a>
         </div>
       </main>
-
-      {/* Modal de Especificações */}
-      <ProductDetailModal
-        product={selectedProduct}
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        whatsappNumber={WHATSAPP_NUMBER}
-      />
 
       <SiteFooter currentTheme={currentTheme} />
       <WhatsFloat />
