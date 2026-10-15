@@ -6,12 +6,8 @@ import {
   Search,
   Info,
   Building2,
-  Trees,
   MapPin,
   Sparkles,
-  DollarSign,
-  ShieldCheck,
-  ArrowRight,
   Mountain,
 } from "lucide-react";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -27,7 +23,6 @@ import {
   fmt,
   WHATSAPP,
   WHATSAPP_NUMBER,
-  PHONE_DISPLAY,
 } from "@/data/storeData";
 import { trackPageView, trackWhatsAppClick } from "@/services/analyticsService";
 import { getSiteSettings } from "@/services/settingsService";

@@ -4,7 +4,6 @@ import {
   Home,
   MapPin,
   Trees,
-  Hash,
   ChevronLeft,
   ChevronRight,
   Maximize2,
@@ -15,9 +14,7 @@ import {
   Phone,
   ArrowLeft,
   Sparkles,
-  ExternalLink,
   X,
-  Copy,
   Building2,
   Check,
   Sun,
@@ -26,7 +23,6 @@ import {
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
 import type { ProductItem } from "@/components/ProductDetailModal";
 import {
@@ -36,7 +32,7 @@ import {
 } from "@/services/propertiesService";
 import { trackPageView, trackWhatsAppClick } from "@/services/analyticsService";
 import { getSiteSettings, type SiteSettings } from "@/services/settingsService";
-import { WHATSAPP, WHATSAPP_NUMBER, PHONE_DISPLAY, fmt } from "@/data/storeData";
+import { WHATSAPP_NUMBER, PHONE_DISPLAY, fmt } from "@/data/storeData";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/imovel/$sku")({

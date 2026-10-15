@@ -8,7 +8,7 @@ import {
   INSTAGRAM_HANDLE,
   ADDRESS_DISPLAY,
 } from "@/data/storeData";
-import { Phone, Instagram, Clock, MapPin, Building2, ShieldCheck, Lock } from "lucide-react";
+import { Phone, Instagram, Clock, MapPin, ShieldCheck, Lock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {

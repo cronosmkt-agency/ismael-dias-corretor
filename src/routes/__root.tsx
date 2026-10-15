@@ -17,18 +17,28 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+      <div className="max-w-md text-center p-6 sm:p-8 rounded-3xl glass border border-slate-200 dark:border-slate-800 shadow-2xl">
+        <div className="w-16 h-16 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-sky-400 mx-auto flex items-center justify-center font-black text-2xl mb-4">
+          404
+        </div>
+        <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+          Página ou Imóvel Não Encontrado
+        </h1>
+        <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+          O imóvel ou endereço que você procura pode ter sido vendido ou o link está incorreto.
         </p>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col sm:flex-row gap-2.5 justify-center">
+          <Link
+            to="/loja"
+            className="inline-flex items-center justify-center rounded-xl btn-primary-glow px-5 py-2.5 text-xs font-bold text-white shadow-md transition active:scale-95"
+          >
+            Ver Imóveis Disponíveis
+          </Link>
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 px-5 py-2.5 text-xs font-bold text-slate-800 dark:text-slate-200 transition active:scale-95"
           >
-            Go home
+            Ir para o Início
           </Link>
         </div>
       </div>
@@ -45,29 +55,30 @@ function ErrorComponent({ error, reset }: { error: any; reset: () => void }) {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn&apos;t load
+      <div className="max-w-md text-center p-6 sm:p-8 rounded-3xl glass border border-slate-200 dark:border-slate-800 shadow-2xl">
+        <h1 className="text-xl font-black text-slate-900 dark:text-white">
+          Ops, ocorreu uma instabilidade
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+          Não foi possível carregar as informações no momento. Tente atualizar ou volte para a página inicial.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-2.5">
           <button
+            type="button"
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-xl btn-primary-glow px-5 py-2.5 text-xs font-bold text-white shadow-md transition active:scale-95 cursor-pointer"
           >
-            Try again
+            Tentar Novamente
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 px-5 py-2.5 text-xs font-bold text-slate-800 dark:text-slate-200 transition active:scale-95"
           >
-            Go home
-          </a>
+            Ir para o Início
+          </Link>
         </div>
       </div>
     </div>

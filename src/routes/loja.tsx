@@ -4,7 +4,6 @@ import {
   Home,
   LayoutGrid,
   Search,
-  MessageCircle,
   Info,
   Check,
   ShieldCheck,
@@ -12,7 +11,6 @@ import {
   Filter,
   Trees,
   MapPin,
-  ArrowRight,
   Sparkles,
   Mountain,
   ChevronDown,
@@ -28,12 +26,10 @@ import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
 import type { ProductItem } from "@/components/ProductDetailModal";
 import {
-  imoveisAvulsosProducts,
   imoveisFilters,
   fmt,
   WHATSAPP,
   WHATSAPP_NUMBER,
-  PHONE_DISPLAY,
 } from "@/data/storeData";
 import { ALL_BAIRROS } from "@/data/imoveisData";
 import { getAllProperties } from "@/services/propertiesService";

@@ -3,25 +3,19 @@ import { useState, useEffect, useRef } from "react";
 import {
   Building2,
   ShieldCheck,
-  Star,
   MapPin,
   Clock,
   Phone,
   ArrowRight,
   Sparkles,
   Info,
-  ChevronDown,
   Trees,
   Compass,
   Home,
-  CheckCircle2,
   DollarSign,
-  CalendarCheck,
-  KeyRound,
 } from "lucide-react";
-import { BrandLogo } from "@/components/BrandLogo";
 import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
-import { ProductDetailModal, type ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/components/ProductDetailModal";
 import {
   defaultProducts,
   fmt,
@@ -36,7 +30,6 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsFloat } from "@/components/WhatsFloat";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
-import { toast } from "sonner";
 import { trackPageView, seedInitialAnalyticsIfEmpty } from "@/services/analyticsService";
 import { getAllProperties } from "@/services/propertiesService";
 
@@ -110,7 +103,7 @@ function TiltHouse() {
         decoding="async"
         width={540}
         height={400}
-        className="relative z-10 w-[320px] lg:w-[500px] h-auto rounded-3xl object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
+        className="relative z-10 w-full max-w-[320px] lg:max-w-[500px] h-auto rounded-3xl object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
         style={{
           filter: "drop-shadow(0 25px 40px rgba(15,23,42,0.35))",
           userSelect: "none",
@@ -253,10 +246,8 @@ function Hero() {
    ========================================================================= */
 function FeaturedProducts({
   products,
-  onSelectProduct,
 }: {
   products: ProductItem[];
-  onSelectProduct: (p: ProductItem) => void;
 }) {
   const featured = products && products.length > 0 ? products : defaultProducts;
 
@@ -286,98 +277,103 @@ Gostaria de agendar uma visita guiada com você para conhecer o local!`;
 
         {/* Property Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-5">
-          {featured.map((item) => (
-            <div
-              key={item.name}
-              className="glass-card flex flex-col justify-between p-4 sm:p-5 rounded-2xl group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative border border-slate-200/70 dark:border-slate-800/70"
-            >
-              {/* Top Tags */}
-              <div className="flex items-center justify-between gap-1 mb-2 min-w-0">
-                <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/80 text-blue-600 dark:text-sky-400 border border-blue-200/60 dark:border-sky-800/60 shrink-0 whitespace-nowrap">
-                  {item.cat}
-                </span>
-                <span
-                  className={`text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md border shrink-0 whitespace-nowrap ${
-                    item.badge === "VENDIDA"
-                      ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30 font-black"
-                      : "bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-800/60"
-                  }`}
-                >
-                  {item.badge}
-                </span>
-              </div>
-
-              {/* Photo */}
+          {featured.map((item) => {
+            const targetSku = String(item.sku || "324009");
+            return (
               <div
-                className="relative py-3 sm:py-4 flex items-center justify-center cursor-pointer overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-900/50"
-                onClick={() => onSelectProduct(item)}
+                key={item.name}
+                className="glass-card flex flex-col justify-between p-4 sm:p-5 rounded-2xl group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative border border-slate-200/70 dark:border-slate-800/70"
               >
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  loading="lazy"
-                  className="w-full h-44 sm:h-48 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105 select-none"
-                />
-                {item.storage ? (
-                  <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
-                    {item.storage}
+                {/* Top Tags */}
+                <div className="flex items-center justify-between gap-1 mb-2 min-w-0">
+                  <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-sky-950/80 text-blue-600 dark:text-sky-400 border border-blue-200/60 dark:border-sky-800/60 shrink-0 whitespace-nowrap">
+                    {item.cat}
                   </span>
-                ) : null}
-              </div>
+                  <span
+                    className={`text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-md border shrink-0 whitespace-nowrap ${
+                      item.badge === "VENDIDA"
+                        ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30 font-black"
+                        : "bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-800/60"
+                    }`}
+                  >
+                    {item.badge}
+                  </span>
+                </div>
 
-              {/* Info */}
-              <div className="mt-3 text-left">
-                <h3
-                  onClick={() => onSelectProduct(item)}
-                  className="font-black text-sm sm:text-base text-slate-900 dark:text-white line-clamp-2 leading-snug cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition"
-                  title={item.name}
+                {/* Photo */}
+                <Link
+                  to="/imovel/$sku"
+                  params={{ sku: targetSku }}
+                  className="relative py-3 sm:py-4 flex items-center justify-center cursor-pointer overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-900/50 block group/img"
                 >
-                  {item.name}
-                </h3>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5 truncate">
-                  <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                  <span>{item.screen || "Teresópolis/RJ"}</span>
-                </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-medium line-clamp-1">
-                  {item.specs}
-                </div>
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    loading="lazy"
+                    className="w-full h-44 sm:h-48 object-cover rounded-xl transition-transform duration-300 group-hover/img:scale-105 select-none"
+                  />
+                  {item.storage ? (
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
+                      {item.storage}
+                    </span>
+                  ) : null}
+                </Link>
 
-                {/* Price */}
-                <div className="mt-3 pt-2.5 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between">
-                  <div>
-                    <div className="text-xs text-slate-400">A partir de</div>
-                    <div className="text-base sm:text-xl font-black text-blue-600 dark:text-sky-400 leading-tight">
-                      {fmt(item.price)}
-                    </div>
+                {/* Info */}
+                <div className="mt-3 text-left">
+                  <Link
+                    to="/imovel/$sku"
+                    params={{ sku: targetSku }}
+                    className="font-black text-sm sm:text-base text-slate-900 dark:text-white line-clamp-2 leading-snug cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition block"
+                    title={item.name}
+                  >
+                    {item.name}
+                  </Link>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5 truncate">
+                    <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                    <span>{item.screen || "Teresópolis/RJ"}</span>
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                    {item.chip ? "15% + 120x" : "Facilitado"}
-                  </span>
+                  <div className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-medium line-clamp-1">
+                    {item.specs}
+                  </div>
+
+                  {/* Price */}
+                  <div className="mt-3 pt-2.5 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate-400">A partir de</div>
+                      <div className="text-base sm:text-xl font-black text-blue-600 dark:text-sky-400 leading-tight">
+                        {fmt(item.price)}
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                      {item.chip ? "15% + 120x" : "Facilitado"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="mt-4 flex flex-col gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleBuyWhatsApp(item)}
+                    className="w-full py-2 px-3 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
+                    <span>Consultar no WhatsApp</span>
+                  </button>
+
+                  <Link
+                    to="/imovel/$sku"
+                    params={{ sku: targetSku }}
+                    className="w-full py-1.5 px-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition cursor-pointer flex items-center justify-center gap-1"
+                  >
+                    <Info className="w-3.5 h-3.5" />
+                    <span>Ver Ficha & Diferenciais</span>
+                  </Link>
                 </div>
               </div>
-
-              {/* Actions */}
-              <div className="mt-4 flex flex-col gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleBuyWhatsApp(item)}
-                  className="w-full py-2 px-3 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition cursor-pointer"
-                >
-                  <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
-                  <span>Consultar no WhatsApp</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onSelectProduct(item)}
-                  className="w-full py-1.5 px-3 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition cursor-pointer flex items-center justify-center gap-1"
-                >
-                  <Info className="w-3.5 h-3.5" />
-                  <span>Ver Ficha & Diferenciais</span>
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Transition Banner */}
@@ -791,8 +787,6 @@ function ReviewsAndLocation() {
 function BrandStore() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
   const [productList, setProductList] = useState<ProductItem[]>(defaultProducts);
-  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   // Sync theme
   useEffect(() => {
@@ -835,11 +829,6 @@ function BrandStore() {
     window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
   };
 
-  const handleOpenDetail = (product: ProductItem) => {
-    setSelectedProduct(product);
-    setModalOpen(true);
-  };
-
   return (
     <div className="relative min-h-screen overflow-x-hidden text-slate-900 dark:text-white transition-colors duration-300">
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
@@ -851,10 +840,7 @@ function BrandStore() {
         <Hero />
 
         {/* 2. Destaques: Lotes Golden Green e Vale dos Pássaros */}
-        <FeaturedProducts
-          products={productList}
-          onSelectProduct={handleOpenDetail}
-        />
+        <FeaturedProducts products={productList} />
 
         {/* 3. Apresentação do Corretor Ismael Dias (Habittat House) */}
         <BrokerProfileSection />
@@ -868,16 +854,6 @@ function BrandStore() {
         {/* 6. Depoimentos e Localização */}
         <ReviewsAndLocation />
       </main>
-
-      {/* Modal de Detalhes do Imóvel */}
-      <ProductDetailModal
-        product={selectedProduct}
-        isOpen={modalOpen}
-        onClose={() => {
-          setModalOpen(false);
-          setSelectedProduct(null);
-        }}
-      />
 
       <SiteFooter currentTheme={currentTheme} />
       <WhatsFloat />

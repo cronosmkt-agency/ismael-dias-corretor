@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import {
-  Shield,
   Key,
   LayoutDashboard,
   Home,
@@ -13,10 +12,7 @@ import {
   Edit3,
   Trash2,
   CheckCircle2,
-  XCircle,
-  Clock,
   ExternalLink,
-  MessageCircle,
   TrendingUp,
   Eye,
   EyeOff,
@@ -31,7 +27,6 @@ import {
   AlertCircle,
   MapPin,
   Building2,
-  DollarSign,
   ChevronRight,
   ChevronLeft,
   Filter,
@@ -42,17 +37,13 @@ import {
   Image as ImageIcon,
   Tag,
   AlignLeft,
-  Compass,
-  FileCheck2,
   X,
-  CreditCard,
   Instagram,
   SlidersHorizontal,
   ChevronUp,
   ChevronDown,
   Copy,
   Layers,
-  Phone,
   ShieldCheck,
   Cloud,
   RefreshCw,
@@ -106,6 +97,12 @@ import {
 import { fmt } from "@/data/storeData";
 
 export const Route = createFileRoute("/admin")({
+  head: () => ({
+    meta: [
+      { title: "Painel do Corretor | Ismael Dias Corretor" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: AdminDashboardPage,
 });
 

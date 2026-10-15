@@ -20,8 +20,8 @@ export function ThemeSelectorModal({
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const saved = localStorage.getItem("terephones_theme") as ThemeMode | null;
-    const seenModal = localStorage.getItem("terephones_theme_modal_seen");
+    const saved = (localStorage.getItem("habittat_theme") || localStorage.getItem("terephones_theme")) as ThemeMode | null;
+    const seenModal = localStorage.getItem("habittat_theme_modal_seen") || localStorage.getItem("terephones_theme_modal_seen");
 
     if (saved === "black-piano" || saved === "white") {
       setSelectedTheme(saved);
@@ -58,7 +58,7 @@ export function ThemeSelectorModal({
     } else {
       root.classList.add("theme-white");
     }
-    localStorage.setItem("terephones_theme", theme);
+    localStorage.setItem("habittat_theme", theme);
     if (onThemeChange) {
       onThemeChange(theme);
     }
@@ -71,7 +71,7 @@ export function ThemeSelectorModal({
   };
 
   const handleClose = () => {
-    localStorage.setItem("terephones_theme_modal_seen", "true");
+    localStorage.setItem("habittat_theme_modal_seen", "true");
     setIsOpen(false);
   };
 

@@ -297,12 +297,6 @@ html.theme-black-piano, html.theme-black-piano body {
   color: #15803d;
 }
 
-.product-badge-seminovo {
-  background: rgba(26, 111, 232, 0.12);
-  border: 1px solid rgba(26, 111, 232, 0.35);
-  color: #1a6fe8;
-}
-
 /* ============ Product Modal Components ============ */
 .product-modal-container {
   border-radius: 24px;
@@ -721,11 +715,11 @@ div[style*="Edit with Lovable"],
 }
 
 /* ============ Offscreen Performance: content-visibility ============ */
-#sejadelta,
-#entrega,
-#troca,
-#depoimentos,
-#faq,
+#destaques,
+#sobre-corretor,
+#diferenciais,
+#financiamento,
+#sobre,
 footer {
   content-visibility: auto;
   contain-intrinsic-size: 1px 700px;
@@ -959,14 +953,6 @@ html.theme-black-piano body {
   color: #4ade80 !important;
   box-shadow: 0 0 14px rgba(34, 197, 94, 0.3) !important;
   text-shadow: 0 0 8px rgba(34, 197, 94, 0.6) !important;
-}
-
-.theme-black-piano .product-badge-seminovo {
-  background: rgba(56, 189, 248, 0.2) !important;
-  border: 1px solid rgba(56, 189, 248, 0.6) !important;
-  color: #38bdf8 !important;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3) !important;
-  text-shadow: 0 0 8px rgba(56, 189, 248, 0.6) !important;
 }
 
 .theme-black-piano .product-modal-container {
