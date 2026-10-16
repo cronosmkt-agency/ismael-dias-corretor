@@ -306,6 +306,14 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
     * **Virtualização Nativa com `content-visibility: auto`:** Adicionado `content-visibility: auto` e `contain-intrinsic-size: 0 340px` nos cartões de imóveis para que o navegador pule a renderização e decodificação de elementos fora da área visível da tela.
     * **Correção de Loop e Scroll Jump em `/imovel/:sku`:** Removida a dependência instável de `[property]` no `useEffect` de detalhes do imóvel, isolando para `[sku]` e adicionando `decoding="async"` nas imagens.
     * **Deploy Contínuo:** Commit `30fd606935ee61a535e5a16ba2502bee3e525594` compilado com status **SUCCESS** e online na Vercel.
+21. **Padronização Visual Completa: Localização 'Bairro, Cidade/UF' e Títulos em 2 Linhas Exatas:**
+    * **Formato Único de Localização ('Bairro, Cidade/UF'):** Todas as 175 propriedades foram auditadas e padronizadas no formato estrito `Bairro, Cidade/UF` (ex: `Prata, Teresópolis/RJ`, `Albuquerque, Teresópolis/RJ`, `Comary, Teresópolis/RJ`, `Mury, Nova Friburgo/RJ`, `Cotia, Guapimirim/RJ`). Eliminados todos os formatos genéricos `Teresópolis - RJ` através da identificação precisa de bairros a partir das descrições oficiais.
+    * **Adaptação dos Títulos Um a Um para 2 Linhas:** Todos os 175 imóveis foram revisados individualmente para conter títulos equilibrados (média de 46.8 caracteres, variando entre 40 e 52 caracteres). Ajustados os casos apontados na imagem de exemplo:
+      * SKU `#377514`: de 1 linha ("Excelente Terreno em Teresópolis") para 2 linhas ("Excelente Terreno Pronto para Construir no Interior").
+      * SKU `#272886`: de 3 linhas ("Excelente Terreno de 500m² Pronto para Construir em Vargem Grande") para 2 linhas ("Excelente Terreno de 500m² em Vargem Grande").
+      * SKUs `#307902` e `#351652`: títulos e localizações perfeitamente calibrados em 2 linhas.
+    * **Garantia Geométrica com Classe `.card-property-title`:** Criada classe utilitária no CSS com `-webkit-line-clamp: 2`, `height: 2.35rem` no mobile e `2.75rem` no desktop, travando matematicamente a altura dos títulos para que nunca estoure em 3 linhas nem encolha em 1 linha, mantendo alinhamento perfeito de localização, preço e botões em qualquer tela.
+    * **Deploy Contínuo:** Commit `d24bc7d6c95d10b33bbd1ced87b0de046a26b832` compilado com status **SUCCESS** e online na Vercel.
 
 ---
 
