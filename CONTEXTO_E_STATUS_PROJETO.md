@@ -297,6 +297,15 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
     * **Filtros Unificados em Lançamentos (`/lancamentos`):** A aba de lançamentos recebeu o mesmo console de 3 dropdowns (`Região`, `Preço`, `Ordenar`) que já existia na aba de imóveis, criando paridade visual e funcional absoluta entre ambas as páginas.
     * **Componente Compartilhado Reutilizável (`FilterDropdown.tsx`):** Criado o componente standalone `src/components/FilterDropdown.tsx` para eliminar duplicidade de código entre as páginas e centralizar comportamentos (fechamento automático ao clicar fora, busca interna e badges de contagem).
     * **Deploy Contínuo:** Commit `263e6317123e57031ac210f27a785b99693c4363` compilado com status **SUCCESS** e online na Vercel.
+20. **Auditoria Geral de Performance e Eliminação Definitiva de Travamentos:**
+    * **Eliminação do Gargalo de Scroll (Debounce em `sessionStorage`):** Identificado que a cada pixel de rolagem em `/loja` e `/lancamentos`, a função `sessionStorage.setItem` estava sendo executada de forma síncrona a 60-120fps, bloqueando a thread principal do navegador. Adicionado debounce de 150ms no monitor de scroll e 200ms na persistência de filtros, liberando a CPU e eliminando o travamento ao rolar a página.
+    * **Cache em Memória Local e Indexação O(1) (`propertiesService.ts`):** Criado cache em memória (`cachedMergedList`) e mapa indexado (`cachedPropertiesMap`) para buscas por SKU em tempo constante $O(1)$. Eliminada a leitura repetida de 3 chaves do `localStorage` e a desserialização de JSON a cada renderização da página.
+    * **Memoização de Listas e Busca com `useDeferredValue`:** Implementado `useDeferredValue` para a busca de texto em `/loja` e `/lancamentos`, permitindo que o cursor de digitação responda instantaneamente a 120fps enquanto a filtragem ocorre de forma não-bloqueante via `useMemo`.
+    * **Remoção de `background-attachment: fixed`:** Removida a propriedade que desativava a aceleração assíncrona por GPU nos navegadores mobile (Safari iOS e Chrome Android), permitindo rolagem nativa ultra-fluida.
+    * **Otimização de GPU para Efeito Glass no Mobile:** Reduzido o raio de `backdrop-filter` para `blur(8px)` em dispositivos móveis (`@media (max-width: 768px)`), aliviando os shaders gráficos da GPU.
+    * **Virtualização Nativa com `content-visibility: auto`:** Adicionado `content-visibility: auto` e `contain-intrinsic-size: 0 340px` nos cartões de imóveis para que o navegador pule a renderização e decodificação de elementos fora da área visível da tela.
+    * **Correção de Loop e Scroll Jump em `/imovel/:sku`:** Removida a dependência instável de `[property]` no `useEffect` de detalhes do imóvel, isolando para `[sku]` e adicionando `decoding="async"` nas imagens.
+    * **Deploy Contínuo:** Commit `30fd606935ee61a535e5a16ba2502bee3e525594` compilado com status **SUCCESS** e online na Vercel.
 
 ---
 
