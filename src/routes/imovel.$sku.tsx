@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Home,
   MapPin,
@@ -124,9 +124,9 @@ function PropertyDetailPage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  const siteSettings: SiteSettings = getSiteSettings();
-  const property = getPropertyBySku(sku);
-  const relatedProperties = getRelatedProperties(sku, 4);
+  const siteSettings: SiteSettings = useMemo(() => getSiteSettings(), []);
+  const property = useMemo(() => getPropertyBySku(sku), [sku]);
+  const relatedProperties = useMemo(() => getRelatedProperties(sku, 4), [sku]);
 
   // Tema inicial do usuário
   useEffect(() => {
@@ -173,7 +173,7 @@ function PropertyDetailPage() {
     setActiveImgIndex(0);
     setIsLightboxOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [sku, property]);
+  }, [sku]);
 
   // Teclado para a galeria e lightbox
   useEffect(() => {
@@ -189,7 +189,7 @@ function PropertyDetailPage() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [property]);
+  }, [property?.images?.length]);
 
   // Se o imóvel não existir
   if (!property) {
@@ -545,6 +545,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                           alt={`Miniatura ${idx + 1}`}
                           className="w-full h-full object-cover"
                           loading="lazy"
+                          decoding="async"
                         />
                       </button>
                     ))}
@@ -857,6 +858,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                       alt={rel.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-black/60 text-white backdrop-blur-xs">
                       #{rel.sku}

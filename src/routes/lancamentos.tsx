@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useDeferredValue } from "react";
 import {
   LayoutGrid,
   Search,
@@ -141,24 +141,38 @@ function LancamentosPage() {
 
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
 
-  // Salva filtros de lançamentos no sessionStorage
+  // Salva filtros de lançamentos no sessionStorage com debounce para digitação fluida
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("lancamentos_active_filter", activeFilter);
-      sessionStorage.setItem("lancamentos_selected_bairro", selectedBairro);
-      sessionStorage.setItem("lancamentos_price_range", selectedPriceRange);
-      sessionStorage.setItem("lancamentos_sort_by", sortBy);
-      sessionStorage.setItem("lancamentos_search_query", searchQuery);
-    }
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        try {
+          sessionStorage.setItem("lancamentos_active_filter", activeFilter);
+          sessionStorage.setItem("lancamentos_selected_bairro", selectedBairro);
+          sessionStorage.setItem("lancamentos_price_range", selectedPriceRange);
+          sessionStorage.setItem("lancamentos_sort_by", sortBy);
+          sessionStorage.setItem("lancamentos_search_query", searchQuery);
+        } catch (_) {}
+      }
+    }, 200);
+    return () => clearTimeout(timer);
   }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery]);
 
-  // Monitora e salva scroll de lançamentos
+  // Monitora e salva scroll com debounce de 150ms sem travar a renderização
   useEffect(() => {
+    let scrollTimer: any;
     const handleScroll = () => {
-      sessionStorage.setItem("lancamentos_scroll_y", String(window.scrollY));
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        try {
+          sessionStorage.setItem("lancamentos_scroll_y", String(window.scrollY));
+        } catch (_) {}
+      }, 150);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimer);
+    };
   }, []);
 
   // Restaura posição de scroll ao voltar
@@ -240,47 +254,60 @@ Gostaria de agendar uma visita guiada com você no local!`;
     window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
-  // Filter & Search
-  const filtered = productList
-    .filter((item) => {
-      const matchCat =
-        activeFilter === "Todos" ||
-        item.cat === activeFilter;
+  const deferredSearch = useDeferredValue(searchQuery);
 
-      const matchBairro =
-        selectedBairro === "Todos" ||
-        (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase()) ||
-        (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase()));
+  // Filter & Search otimizado com useMemo
+  const filtered = useMemo(() => {
+    const q = deferredSearch.trim().toLowerCase();
+    const bLower = selectedBairro.toLowerCase();
 
-      let matchPrice = true;
-      if (selectedPriceRange === "under-260") {
-        matchPrice = item.price <= 260000;
-      } else if (selectedPriceRange === "over-260") {
-        matchPrice = item.price > 260000;
-      }
+    return productList
+      .filter((item) => {
+        const matchCat =
+          activeFilter === "Todos" ||
+          item.cat === activeFilter;
 
-      const matchSearch =
-        searchQuery.trim() === "" ||
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.sku && item.sku.includes(searchQuery.trim()));
+        if (!matchCat) return false;
 
-      return matchCat && matchBairro && matchPrice && matchSearch;
-    })
-    .sort((a, b) => {
-      if (sortBy === "price-asc") {
-        return a.price - b.price;
-      }
-      if (sortBy === "price-desc") {
-        return b.price - a.price;
-      }
-      if (sortBy === "name-asc") {
-        return a.name.localeCompare(b.name, "pt-BR");
-      }
-      return 0;
-    });
+        const matchBairro =
+          selectedBairro === "Todos" ||
+          (item.bairro && item.bairro.toLowerCase() === bLower) ||
+          (item.screen && item.screen.toLowerCase().includes(bLower));
+
+        if (!matchBairro) return false;
+
+        let matchPrice = true;
+        if (selectedPriceRange === "under-260") {
+          matchPrice = item.price <= 260000;
+        } else if (selectedPriceRange === "over-260") {
+          matchPrice = item.price > 260000;
+        }
+
+        if (!matchPrice) return false;
+
+        if (!q) return true;
+
+        return (
+          item.name.toLowerCase().includes(q) ||
+          (item.specs && item.specs.toLowerCase().includes(q)) ||
+          (item.storage && item.storage.toLowerCase().includes(q)) ||
+          (item.screen && item.screen.toLowerCase().includes(q)) ||
+          (item.sku && item.sku.includes(q))
+        );
+      })
+      .sort((a, b) => {
+        if (sortBy === "price-asc") {
+          return a.price - b.price;
+        }
+        if (sortBy === "price-desc") {
+          return b.price - a.price;
+        }
+        if (sortBy === "name-asc") {
+          return a.name.localeCompare(b.name, "pt-BR");
+        }
+        return 0;
+      });
+  }, [productList, activeFilter, selectedBairro, selectedPriceRange, sortBy, deferredSearch]);
 
   const hasActiveFilters =
     activeFilter !== "Todos" ||
@@ -556,6 +583,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
                   />
                   {prod.storage ? (

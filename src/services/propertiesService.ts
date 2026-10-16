@@ -20,7 +20,23 @@ const STORAGE_KEY_DELETED = "ismael_properties_deleted_v1";
 const STORAGE_KEY_SUPABASE_CACHE = "ismael_supabase_cache_v1";
 
 let cachedSupabaseList: ProductItem[] | null = null;
+let cachedMergedList: ProductItem[] | null = null;
+let cachedPropertiesMap: Map<string, ProductItem> | null = null;
 let isFetchingSupabase = false;
+
+/**
+ * Invalida o cache em memória quando houver alteração nos imóveis
+ */
+export function invalidatePropertiesCache(): void {
+  cachedMergedList = null;
+  cachedPropertiesMap = null;
+}
+
+if (typeof window !== "undefined") {
+  window.addEventListener("properties-data-changed", () => {
+    invalidatePropertiesCache();
+  });
+}
 
 /**
  * Atualiza o cache local a partir do Supabase e notifica os componentes do site
@@ -35,6 +51,7 @@ export async function refreshPropertiesFromSupabase(): Promise<ProductItem[]> {
     const remoteList = await fetchPropertiesFromSupabase();
     if (remoteList && remoteList.length > 0) {
       cachedSupabaseList = remoteList;
+      invalidatePropertiesCache();
       if (typeof window !== "undefined") {
         try {
           localStorage.setItem(STORAGE_KEY_SUPABASE_CACHE, JSON.stringify(remoteList));
@@ -74,7 +91,12 @@ export function getAllProperties(): ProductItem[] {
     return cachedSupabaseList;
   }
 
-  // 2. Se temos cache persistido do Supabase no LocalStorage, carrega
+  // 2. Se temos cache mesclado em memória local, retorna instantaneamente sem reler o disco
+  if (cachedMergedList && cachedMergedList.length > 0) {
+    return cachedMergedList;
+  }
+
+  // 3. Se temos cache persistido do Supabase no LocalStorage, carrega
   try {
     const rawSupabaseCache = localStorage.getItem(STORAGE_KEY_SUPABASE_CACHE);
     if (rawSupabaseCache && isSupabaseConfigured()) {
@@ -86,7 +108,7 @@ export function getAllProperties(): ProductItem[] {
     }
   } catch (_) {}
 
-  // 3. Fallback: Base unificada local de 175 imóveis com overrides do admin
+  // 4. Fallback: Base unificada local de 175 imóveis com overrides do admin
   try {
     const rawOverrides = localStorage.getItem(STORAGE_KEY_OVERRIDES);
     const overrides: Record<string, Partial<ProductItem>> = rawOverrides
@@ -122,7 +144,8 @@ export function getAllProperties(): ProductItem[] {
         return p;
       });
 
-    return [...addedMerged, ...baseMerged];
+    cachedMergedList = [...addedMerged, ...baseMerged];
+    return cachedMergedList;
   } catch (err) {
     console.error("Erro ao carregar imóveis mesclados:", err);
     return allImoveisData;
@@ -130,15 +153,27 @@ export function getAllProperties(): ProductItem[] {
 }
 
 /**
- * Busca um imóvel específico pelo SKU (código de identificação único)
+ * Busca um imóvel específico pelo SKU em O(1) tempo constante via mapa indexado em memória
  */
 export function getPropertyBySku(sku?: string): ProductItem | undefined {
   if (!sku) return undefined;
   const target = String(sku).trim().toLowerCase();
-  const all = getAllProperties();
-  const found = all.find((p) => String(p.sku || "").trim().toLowerCase() === target);
-  if (found) return found;
-  return lancamentosProducts.find((p) => String(p.sku || "").trim().toLowerCase() === target);
+
+  if (!cachedPropertiesMap) {
+    const map = new Map<string, ProductItem>();
+    const all = getAllProperties();
+    for (const p of all) {
+      if (p.sku) map.set(String(p.sku).trim().toLowerCase(), p);
+    }
+    for (const p of lancamentosProducts) {
+      if (p.sku && !map.has(String(p.sku).trim().toLowerCase())) {
+        map.set(String(p.sku).trim().toLowerCase(), p);
+      }
+    }
+    cachedPropertiesMap = map;
+  }
+
+  return cachedPropertiesMap.get(target);
 }
 
 /**

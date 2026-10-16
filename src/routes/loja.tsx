@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useDeferredValue } from "react";
 import {
   Home,
   LayoutGrid,
@@ -238,25 +238,39 @@ function LojaPage() {
 
   const isInitialMount = useRef(true);
 
-  // Sincroniza filtros com sessionStorage para restaurar ao voltar
+  // Sincroniza filtros com sessionStorage com debounce para digitação instantânea
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("loja_active_filter", activeFilter);
-      sessionStorage.setItem("loja_selected_bairro", selectedBairro);
-      sessionStorage.setItem("loja_price_range", selectedPriceRange);
-      sessionStorage.setItem("loja_sort_by", sortBy);
-      sessionStorage.setItem("loja_search_query", searchQuery);
-      sessionStorage.setItem("loja_visible_count", String(visibleCount));
-    }
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        try {
+          sessionStorage.setItem("loja_active_filter", activeFilter);
+          sessionStorage.setItem("loja_selected_bairro", selectedBairro);
+          sessionStorage.setItem("loja_price_range", selectedPriceRange);
+          sessionStorage.setItem("loja_sort_by", sortBy);
+          sessionStorage.setItem("loja_search_query", searchQuery);
+          sessionStorage.setItem("loja_visible_count", String(visibleCount));
+        } catch (_) {}
+      }
+    }, 200);
+    return () => clearTimeout(timer);
   }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery, visibleCount]);
 
-  // Monitora scroll para salvar a posição exata da tela ao navegar para um imóvel
+  // Monitora scroll com debounce de 150ms para manter 120fps fluidos sem bloquear a thread principal
   useEffect(() => {
+    let scrollTimer: any;
     const handleScroll = () => {
-      sessionStorage.setItem("loja_scroll_y", String(window.scrollY));
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        try {
+          sessionStorage.setItem("loja_scroll_y", String(window.scrollY));
+        } catch (_) {}
+      }, 150);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimer);
+    };
   }, []);
 
   // Restaura posição de scroll ao voltar para a página
@@ -288,22 +302,6 @@ function LojaPage() {
     window.addEventListener("properties-data-changed", handlePropsChanged);
     window.addEventListener("site-settings-changed", handleSettingsChanged);
 
-    return () => {
-      window.removeEventListener("properties-data-changed", handlePropsChanged);
-      window.removeEventListener("site-settings-changed", handleSettingsChanged);
-    };
-  }, []);
-
-  // Reset pagination when any filter changes (exceto na montagem inicial)
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
-    setVisibleCount(16);
-  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery]);
-
-  useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("habittat_theme") as ThemeMode | null;
       if (saved === "black-piano" || saved === "white") {
@@ -326,7 +324,21 @@ function LojaPage() {
         }
       } catch (_) {}
     }
-  }, [productList]);
+
+    return () => {
+      window.removeEventListener("properties-data-changed", handlePropsChanged);
+      window.removeEventListener("site-settings-changed", handleSettingsChanged);
+    };
+  }, []);
+
+  // Reset pagination when any filter changes (exceto na montagem inicial)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    setVisibleCount(16);
+  }, [activeFilter, selectedBairro, selectedPriceRange, sortBy, searchQuery]);
 
   const toggleTheme = () => {
     const next: ThemeMode = currentTheme === "black-piano" ? "white" : "black-piano";
@@ -372,75 +384,90 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
     window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
-  // Filter & Search
-  const filtered = productList
-    .filter((item) => {
-      // Ocultar imóveis vendidos do catálogo público quando ativado (padrão)
-      const isSold = item.badge === "VENDIDA" || item.condition === "VENDIDA";
-      if (isSold && siteSettings.hideSoldProperties !== false) {
-        const isDirectSkuSearch = searchQuery.trim() !== "" && item.sku === searchQuery.trim();
-        if (!isDirectSkuSearch) {
-          return false;
+  const deferredSearch = useDeferredValue(searchQuery);
+
+  // Filter & Search otimizado com useMemo e normalização prévia de strings
+  const filtered = useMemo(() => {
+    const q = deferredSearch.trim().toLowerCase();
+    const isDirectSkuSearch = q !== "";
+    const bLower = selectedBairro.toLowerCase();
+    const hideSold = siteSettings.hideSoldProperties !== false;
+
+    return productList
+      .filter((item) => {
+        // Ocultar imóveis vendidos do catálogo público quando ativado (padrão)
+        const isSold = item.badge === "VENDIDA" || item.condition === "VENDIDA";
+        if (isSold && hideSold) {
+          if (!isDirectSkuSearch || (item.sku && !item.sku.includes(q))) {
+            return false;
+          }
         }
-      }
 
-      const isCobertura = (p: ProductItem) =>
-        p.cat === "Coberturas" || p.name.toLowerCase().includes("cobertura");
+        const isCob =
+          item.cat === "Coberturas" ||
+          (item.name && item.name.toLowerCase().includes("cobertura"));
 
-      const matchCat =
-        activeFilter === "Todos"
-          ? true
-          : activeFilter === "Coberturas"
-          ? isCobertura(item)
-          : activeFilter === "Apartamentos"
-          ? item.cat === "Apartamentos" && !isCobertura(item)
-          : item.cat === activeFilter;
+        const matchCat =
+          activeFilter === "Todos"
+            ? true
+            : activeFilter === "Coberturas"
+            ? isCob
+            : activeFilter === "Apartamentos"
+            ? item.cat === "Apartamentos" && !isCob
+            : item.cat === activeFilter;
 
-      const matchBairro =
-        selectedBairro === "Todos" ||
-        (selectedBairro === "Teresópolis (Todos)" &&
-          ((item.screen && item.screen.toLowerCase().includes("teresópolis")) ||
-            item.bairro === "Teresópolis")) ||
-        (item.bairro && item.bairro.toLowerCase() === selectedBairro.toLowerCase()) ||
-        (item.screen && item.screen.toLowerCase().includes(selectedBairro.toLowerCase()));
+        if (!matchCat) return false;
 
-      let matchPrice = true;
-      if (selectedPriceRange === "under-300") {
-        matchPrice = item.price <= 300000;
-      } else if (selectedPriceRange === "300-600") {
-        matchPrice = item.price > 300000 && item.price <= 600000;
-      } else if (selectedPriceRange === "600-1000") {
-        matchPrice = item.price > 600000 && item.price <= 1000000;
-      } else if (selectedPriceRange === "1000-2000") {
-        matchPrice = item.price > 1000000 && item.price <= 2000000;
-      } else if (selectedPriceRange === "over-2000") {
-        matchPrice = item.price > 2000000;
-      }
+        const matchBairro =
+          selectedBairro === "Todos" ||
+          (selectedBairro === "Teresópolis (Todos)" &&
+            ((item.screen && item.screen.toLowerCase().includes("teresópolis")) ||
+              item.bairro === "Teresópolis")) ||
+          (item.bairro && item.bairro.toLowerCase() === bLower) ||
+          (item.screen && item.screen.toLowerCase().includes(bLower));
 
-      const matchSearch =
-        searchQuery.trim() === "" ||
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (item.specs && item.specs.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.storage && item.storage.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.screen && item.screen.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.sku && item.sku.includes(searchQuery.trim()));
+        if (!matchBairro) return false;
 
-      return matchCat && matchBairro && matchPrice && matchSearch;
-    })
-    .sort((a, b) => {
-      if (sortBy === "price-asc") {
-        return a.price - b.price;
-      }
-      if (sortBy === "price-desc") {
-        return b.price - a.price;
-      }
-      if (sortBy === "name-asc") {
-        return a.name.localeCompare(b.name, "pt-BR");
-      }
-      return 0;
-    });
+        let matchPrice = true;
+        if (selectedPriceRange === "under-300") {
+          matchPrice = item.price <= 300000;
+        } else if (selectedPriceRange === "300-600") {
+          matchPrice = item.price > 300000 && item.price <= 600000;
+        } else if (selectedPriceRange === "600-1000") {
+          matchPrice = item.price > 600000 && item.price <= 1000000;
+        } else if (selectedPriceRange === "1000-2000") {
+          matchPrice = item.price > 1000000 && item.price <= 2000000;
+        } else if (selectedPriceRange === "over-2000") {
+          matchPrice = item.price > 2000000;
+        }
 
-  const displayed = filtered.slice(0, visibleCount);
+        if (!matchPrice) return false;
+
+        if (!q) return true;
+
+        return (
+          item.name.toLowerCase().includes(q) ||
+          (item.specs && item.specs.toLowerCase().includes(q)) ||
+          (item.storage && item.storage.toLowerCase().includes(q)) ||
+          (item.screen && item.screen.toLowerCase().includes(q)) ||
+          (item.sku && item.sku.includes(q))
+        );
+      })
+      .sort((a, b) => {
+        if (sortBy === "price-asc") {
+          return a.price - b.price;
+        }
+        if (sortBy === "price-desc") {
+          return b.price - a.price;
+        }
+        if (sortBy === "name-asc") {
+          return a.name.localeCompare(b.name, "pt-BR");
+        }
+        return 0;
+      });
+  }, [productList, activeFilter, selectedBairro, selectedPriceRange, sortBy, deferredSearch, siteSettings.hideSoldProperties]);
+
+  const displayed = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount]);
 
   const hasActiveFilters =
     activeFilter !== "Todos" ||
@@ -713,6 +740,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                     src={prod.img}
                     alt={prod.name}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
                   />
                   {prod.storage ? (
