@@ -121,7 +121,7 @@ export const reviews = [
 export const lancamentosProducts: ProductItem[] = [
   {
     sku: "324009",
-    name: "Golden Green",
+    name: "Golden Green: Lotes Exclusivos em Albuquerque",
     price: 267000,
     cat: "Lotes Panorâmicos",
     badge: "Vista Dedo de Deus",
@@ -142,7 +142,7 @@ export const lancamentosProducts: ProductItem[] = [
     condition: "Condomínio Fechado de Alto Padrão em Albuquerque",
     warranty: "Angeleti Construtora (+20 anos)",
     battery: "Topografia Plana e Suave Aclive",
-    screen: "Albuquerque — Teresópolis/RJ",
+    screen: "Albuquerque, Teresópolis/RJ",
     camera: "Vista Dedo de Deus e Mulher de Pedra",
     chip: "15% Entrada + até 120x (IPCA + 1% a.m.)",
     instagram: "@goldengreenresidencial",
@@ -161,7 +161,7 @@ export const lancamentosProducts: ProductItem[] = [
   },
   {
     sku: "163110",
-    name: "Vale dos Pássaros",
+    name: "Vale dos Pássaros: Lotes em Condomínio Fechado",
     price: 250000,
     cat: "Condomínio Clube",
     badge: "Lançamento Clube",
@@ -182,7 +182,7 @@ export const lancamentosProducts: ProductItem[] = [
     condition: "Pronto para Morar",
     warranty: "Angeleti Construtora",
     battery: "Excelente Posição Solar",
-    screen: "Prata, Teresópolis - RJ",
+    screen: "Prata, Teresópolis/RJ",
     camera: "Lazer e Sossego • Piscina Semiolímpica",
     chip: "15% Entrada + até 120x Direto",
     instagram: "@valedospassarosresidencial",

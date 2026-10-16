@@ -10,35 +10,41 @@ export const ALL_BAIRROS = [
   "Boa União",
   "Bom Retiro",
   "Bonsucesso",
+  "Cabuçu",
   "Carlos Guinle",
   "Cascata Guarani",
   "Cascata do Imbuí",
   "Cascata dos Amores",
   "Caxangá",
   "Centro",
+  "Comary",
   "Copacabana",
+  "Cotia",
+  "Ermitage",
   "Fazenda Alpina",
   "Fazendinha",
   "Golfe",
   "Granja Guarani",
   "Green Valley",
+  "Interior",
   "Itaipava",
   "Madureira",
+  "Mury",
   "Nogueira",
-  "Nova Friburgo",
-  "Nova Iguaçu",
   "Parque São Luiz",
   "Parque do Imbuí",
+  "Pessegueiros",
   "Pimenteiras",
   "Posse",
   "Prata",
+  "Providência",
   "Quebra Frascos",
   "Quinta da Barra",
   "Sebastiana",
   "São Pedro",
   "Taumaturgo",
-  "Teresópolis",
   "Tijuca",
+  "Três Córregos",
   "Vale do Paraíso",
   "Vargem Grande",
   "Venda Nova",
@@ -49,7 +55,7 @@ export const ALL_BAIRROS = [
 export const allImoveisData: ProductItem[] = [
   {
     "sku": "163110",
-    "name": "Lançamento Vale dos Pássaros: Lotes Residenciais em Condomínio Fechado na Prata",
+    "name": "Vale dos Pássaros: Lotes em Condomínio Fechado",
     "price": 250000,
     "cat": "Casas",
     "badge": "Lançamento Clube",
@@ -69,7 +75,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Angeleti Construtora",
     "battery": "Excelente Posição Solar",
-    "screen": "Prata, Teresópolis - RJ",
+    "screen": "Prata, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "15% Entrada + até 120x Direto",
     "boxItems": [
@@ -85,7 +91,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "268624",
-    "name": "Grande Terreno Comercial e Residencial de 2.750m² no Vale do Paraíso",
+    "name": "Terreno Comercial e Residencial de 2.750m²",
     "price": 3500000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -100,7 +106,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Vale do Paraíso, Teresópolis - RJ",
+    "screen": "Vale do Paraíso, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -116,7 +122,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "271638",
-    "name": "Imóvel Comercial de 400m² no bairro Várzea, em Teresópolis",
+    "name": "Imóvel Comercial de 400m² no Centro da Várzea",
     "price": 3500000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -131,7 +137,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -143,7 +149,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "271652",
-    "name": "Casa Contemporânea de Alto Padrão com 3 Quartos no Green Valley",
+    "name": "Casa Contemporânea de Alto Padrão no Green Valley",
     "price": 1300000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -163,7 +169,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Green Valley, Teresópolis - RJ",
+    "screen": "Green Valley, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -179,7 +185,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "271669",
-    "name": "Terreno Espetacular de 15.000m² com Vista Panorâmica em Vargem Grande",
+    "name": "Terreno Espetacular de 15.000m² em Vargem Grande",
     "price": 1000000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -195,7 +201,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -225,7 +231,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Nova Iguaçu - RJ",
+    "screen": "Centro, Nova Iguaçu/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -237,7 +243,7 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "🏢 VENDA DE PROJETO APROVADO – PRÉDIO COM 9 APARTAMENTOS\n\n📍 Projeto e licença de construção aprovados\n•\tUso Residencial – 9 unidades\n•\tÁrea total: 721,05 m²\n•\tLicença válida: 17/02/2025 a 17/02/2026\n•\tResponsável Técnico: Candido Santos Oliveira Filho\n•\tRegularizado conforme Lei nº 049/2015 (Código de Obras)\n\n📋 Unidades:\n•\tApto. 101\n•\tApto. 201\n•\tApto. 202\n•\tApto. 203\n•\tApto. 204\n•\tApto. 301\n•\tApto. 302\n•\tApto. 303\n•\tApto. 304\n\n💰 Valor de oportunidade: R$ 600.000,00\n\n🔑 Pronto para iniciar obras – ideal para construtores e investidores!\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271957",
-    "bairro": "Nova Iguaçu"
+    "bairro": "Centro"
   },
   {
     "sku": "271961",
@@ -257,7 +263,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Nova Iguaçu - RJ",
+    "screen": "Cabuçu, Nova Iguaçu/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -269,11 +275,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Terreno 24.000 m² – Projeto para 73 casas – Nova Iguaçu\nÁrea plana, com estudos e projetos para construção de até 73 casas populares (venda estimada até R$ 200 mil cada).\n💰 Valor de oportunidade: R$ 800.000,00\n👉 Ideal para construtoras e investidores.\n\n📄 Versão formal (proposta comercial)\n\nÁrea de 24.000 m² à venda em Nova Iguaçu – Valor: R$ 800.000,00\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/271961",
-    "bairro": "Nova Iguaçu"
+    "bairro": "Cabuçu"
   },
   {
     "sku": "271972",
-    "name": "Magnífica Casa em Condomínio com 2 Quartos (3 Suítes) e Lazer Completo em Nogueira",
+    "name": "Casa em Condomínio com Lazer Completo em Nogueira",
     "price": 2700000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -293,7 +299,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Nogueira, Petrópolis - RJ",
+    "screen": "Nogueira, Petrópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -309,7 +315,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272017",
-    "name": "Mansão Exclusiva no Condomínio Comary com 6 Suítes e Lazer no Alto",
+    "name": "Mansão no Condomínio Comary com 6 Suítes no Alto",
     "price": 3800000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -329,7 +335,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "6 Quartos",
-    "screen": "Carlos Guinle, Teresópolis - RJ",
+    "screen": "Carlos Guinle, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -345,7 +351,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272024",
-    "name": "Magnífica Casa em Condomínio com 3 Quartos e Área Gourmet em Itaipava",
+    "name": "Casa em Condomínio com Área Gourmet em Itaipava",
     "price": 3200000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -365,7 +371,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Itaipava, Petrópolis - RJ",
+    "screen": "Itaipava, Petrópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -399,7 +405,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Quinta da Barra, Teresópolis - RJ",
+    "screen": "Quinta da Barra, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -415,7 +421,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272236",
-    "name": "Casa Aconchegante de 3 Quartos com Espaço Gourmet na Quinta da Barra",
+    "name": "Casa com Espaço Gourmet na Quinta da Barra",
     "price": 750000,
     "cat": "Casas",
     "badge": "VENDIDA",
@@ -435,7 +441,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "VENDIDA (Indisponível)",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Quinta da Barra, Teresópolis - RJ",
+    "screen": "Quinta da Barra, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -451,7 +457,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272371",
-    "name": "Ponto Comercial de 432m² em Localização Privilegiada em Copacabana",
+    "name": "Excelente Ponto Comercial de 432m² em Copacabana",
     "price": 9500000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -466,7 +472,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Copacabana, Rio de Janeiro - RJ",
+    "screen": "Copacabana, Rio de Janeiro/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -481,7 +487,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272377",
-    "name": "Prédio Comercial de 37m² em Localização Privilegiada em Madureira",
+    "name": "Prédio Comercial de 37m² em Excelente Ponto",
     "price": 6000000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -496,7 +502,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Madureira, Rio de Janeiro - RJ",
+    "screen": "Madureira, Rio de Janeiro/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -509,7 +515,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272391",
-    "name": "Prédio Comercial de 889.53m² em Localização Privilegiada no Centro",
+    "name": "Excelente Prédio Comercial de 889m² no Centro",
     "price": 7500000,
     "cat": "Comerciais",
     "badge": "Alto Padrão",
@@ -525,7 +531,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -541,7 +547,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272393",
-    "name": "Propriedade Cinematográfica com 11 Quartos e Lazer Completo em Nova Friburgo",
+    "name": "Propriedade Cinematográfica com 11 Quartos",
     "price": 3000000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -561,7 +567,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Nova Friburgo - RJ",
+    "screen": "Mury, Nova Friburgo/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -573,11 +579,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "🏡 Propriedade Cinematográfica à Venda – Mury, Nova Friburgo (RJ)\n\nEncante-se com esta propriedade exclusiva, perfeita para quem busca luxo, espaço e privacidade em meio à natureza da serra!\n\n📐 Terreno com 2.200 m² totalmente aproveitáveis, abrigando uma estrutura impressionante:\n🎬 Prédio cinematográfico com 970 m², contando com 8 suítes amplas, salões de festas e jogos, além de uma academia completa – ideal para lazer, eventos ou hospedagem.\n\n🚗 Estacionamento para até 20 carros\n🏠 Casa de caseiro independente\n🏡 Casa sede com 235 m², composta por 3 quartos (sendo 1 suíte), sala espaçosa e ambientes acolhedores.\n\n💰 Valor: R$ 3.000.000,00\n❌ Não aceito permuta\n\nUm verdadeiro refúgio de alto padrão em uma das regiões mais charmosas de Nova Friburgo – o bairro Mury, conhecido por seu clima agradável e fácil acesso.\n\n✨ Ideal para uso residencial, pousada, espaço para eventos ou retiro familiar.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/272393",
-    "bairro": "Nova Friburgo"
+    "bairro": "Mury"
   },
   {
     "sku": "272398",
-    "name": "Excelente Terreno de 4.900m² Pronto para Construir em Vargem Grande",
+    "name": "Excelente Terreno de 4.900m² em Vargem Grande",
     "price": 600000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -597,7 +603,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -613,7 +619,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272412",
-    "name": "Excelente Terreno de 5.400m² com Nascente e Vista Livre no Parque do Imbuí",
+    "name": "Terreno de 5.400m² com Nascente no Parque do Imbuí",
     "price": 350000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -633,7 +639,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Parque do Imbuí, Teresópolis - RJ",
+    "screen": "Parque do Imbuí, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -649,7 +655,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272417",
-    "name": "Lindo Apartamento de 2 Quartos com Varanda e Vista Livre no Bom Retiro",
+    "name": "Apartamento com Varanda e Vista no Bom Retiro",
     "price": 450000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -669,7 +675,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Bom Retiro, Teresópolis - RJ",
+    "screen": "Bom Retiro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -705,7 +711,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Bom Retiro, Teresópolis - RJ",
+    "screen": "Bom Retiro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -721,7 +727,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272455",
-    "name": "Excelente Casa em Condomínio com 4 Quartos e Lazer Completo em Vargem Grande",
+    "name": "Casa em Condomínio com Lazer em Vargem Grande",
     "price": 760000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -741,7 +747,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -757,7 +763,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272476",
-    "name": "Charmosa Casa em Condomínio com 2 Quartos e Lazer Completo no Parque São Luiz",
+    "name": "Casa em Condomínio com Lazer no Parque São Luiz",
     "price": 320000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -777,7 +783,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Parque São Luiz, Teresópolis - RJ",
+    "screen": "Parque São Luiz, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -813,7 +819,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Quebra Frascos, Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -849,7 +855,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -865,7 +871,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272590",
-    "name": "Excelente Terreno em Condomínio com Linda Vista para a Natureza em Albuquerque",
+    "name": "Terreno em Condomínio com Linda Vista em Albuquerque",
     "price": 360000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -885,7 +891,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Angeleti Construtora",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "15% Entrada + até 120x Direto",
     "boxItems": [
@@ -901,7 +907,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272598",
-    "name": "Excelente Terreno em Condomínio de 380m² com Linda Vista para a Natureza no Centro",
+    "name": "Terreno em Condomínio de 380m² com Vista no Centro",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -920,7 +926,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Angeleti Construtora",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "15% Entrada + até 120x Direto",
     "boxItems": [
@@ -956,7 +962,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "15% Entrada + até 120x Direto",
     "boxItems": [
@@ -972,7 +978,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272662",
-    "name": "Excelente Terreno de 17.000m² Pronto para Construir em Vargem Grande",
+    "name": "Excelente Terreno de 17.000m² em Vargem Grande",
     "price": 447000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -992,7 +998,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1028,7 +1034,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1043,7 +1049,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272682",
-    "name": "Magnífica Casa em Condomínio com 4 Quartos (4 Suítes) e Espaço Gourmet em Vargem Grande",
+    "name": "Casa em Condomínio com Espaço Gourmet em Vargem Grande",
     "price": 2500000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -1063,7 +1069,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -1076,7 +1082,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272690",
-    "name": "Belíssima Residência com 6 Quartos (4 Suítes) no Parque São Luiz",
+    "name": "Belíssima Residência com 6 Quartos no Parque São Luiz",
     "price": 3500000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -1096,7 +1102,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "6 Quartos",
-    "screen": "Parque São Luiz, Teresópolis - RJ",
+    "screen": "Parque São Luiz, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -1112,7 +1118,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272705",
-    "name": "Excelente Terreno em Condomínio de 444.8m² Pronto para Construir em Vargem Grande",
+    "name": "Terreno em Condomínio de 445m² em Vargem Grande",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1132,7 +1138,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1148,7 +1154,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272707",
-    "name": "Excelente Terreno em Condomínio de 442m² Pronto para Construir em Venda Nova",
+    "name": "Terreno em Condomínio de 442m² em Venda Nova",
     "price": 100000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1166,7 +1172,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Venda Nova, Teresópolis - RJ",
+    "screen": "Venda Nova, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1182,7 +1188,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272728",
-    "name": "Propriedade Rural Exclusiva de 6.000m² com Nascente e Muito Verde em Andradas",
+    "name": "Propriedade Rural de 6.000m² com Nascente e Verde",
     "price": 2500000,
     "cat": "Sítios & Rurais",
     "badge": "Alto Padrão",
@@ -1202,7 +1208,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Andradas, Teresópolis - RJ",
+    "screen": "Andradas, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -1218,7 +1224,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272733",
-    "name": "Excelente Terreno em Condomínio com Linda Vista para a Natureza em Albuquerque",
+    "name": "Terreno em Condomínio com Vista em Albuquerque",
     "price": 185000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1238,7 +1244,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "15% Entrada + até 120x Direto",
     "boxItems": [
@@ -1250,7 +1256,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272740",
-    "name": "Excelente Terreno em Condomínio com Linda Vista para a Natureza em Fazenda Alpina",
+    "name": "Terreno em Condomínio com Vista na Fazenda Alpina",
     "price": 200000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1270,7 +1276,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Fazenda Alpina, Teresópolis - RJ",
+    "screen": "Fazenda Alpina, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1286,7 +1292,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272743",
-    "name": "Magnífica Casa em Condomínio com 4 Quartos (4 Suítes) e Lazer Completo no Carlos Guinle",
+    "name": "Casa em Condomínio com Lazer no Carlos Guinle",
     "price": 3000000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -1306,7 +1312,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Carlos Guinle, Teresópolis - RJ",
+    "screen": "Carlos Guinle, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -1322,7 +1328,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272827",
-    "name": "Linda Casa em Condomínio com 3 Quartos (3 Suítes) e Lazer Completo em Vargem Grande",
+    "name": "Casa em Condomínio com Lazer em Vargem Grande",
     "price": 1800000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1342,7 +1348,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1358,7 +1364,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272851",
-    "name": "Linda Casa em Condomínio com 3 Quartos (3 Suítes) no Green Valley",
+    "name": "Linda Casa em Condomínio com 3 Quartos no Green Valley",
     "price": 1600000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1378,7 +1384,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Green Valley, Teresópolis - RJ",
+    "screen": "Green Valley, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1393,7 +1399,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272861",
-    "name": "Excelente Casa em Condomínio com 3 Quartos (3 Suítes) e Lazer Completo no Green Valley",
+    "name": "Casa em Condomínio com Lazer no Green Valley",
     "price": 890000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -1413,7 +1419,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Green Valley, Teresópolis - RJ",
+    "screen": "Green Valley, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1429,7 +1435,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272865",
-    "name": "Linda Casa Duplex em Condomínio com 6 Quartos (1 Suíte) e Lazer Completo no Green Valley",
+    "name": "Casa Duplex em Condomínio com Lazer no Green Valley",
     "price": 1480000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1449,7 +1455,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Green Valley, Teresópolis - RJ",
+    "screen": "Green Valley, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1462,7 +1468,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272886",
-    "name": "Excelente Terreno de 500m² Pronto para Construir em Vargem Grande",
+    "name": "Excelente Terreno de 500m² em Vargem Grande",
     "price": 132000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1477,7 +1483,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1489,7 +1495,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272920",
-    "name": "Charmosa Casa em Condomínio com 3 Quartos e Lazer Completo em Sebastiana",
+    "name": "Casa em Condomínio com Lazer em Sebastiana",
     "price": 680000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1509,7 +1515,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Sebastiana, Teresópolis - RJ",
+    "screen": "Sebastiana, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1525,7 +1531,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272929",
-    "name": "Belíssima Residência Linear com 2 Quartos (2 Suítes) no Quebra Frascos",
+    "name": "Residência Linear com 2 Suítes no Quebra Frascos",
     "price": 2600000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -1545,7 +1551,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Quebra Frascos, Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -1561,7 +1567,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272985",
-    "name": "Cobertura de Alto Padrão com 4 Quartos (3 Suítes) e Terraço Panorâmico na Várzea",
+    "name": "Cobertura Alto Padrão com Terraço na Várzea",
     "price": 1700000,
     "cat": "Coberturas",
     "badge": "Vista Panorâmica",
@@ -1581,7 +1587,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1593,7 +1599,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272992",
-    "name": "Terreno Totalmente Plano de 8.000m² Pronto para Construir no Alto",
+    "name": "Terreno Totalmente Plano de 8.000m² no Alto",
     "price": 10000000,
     "cat": "Terrenos",
     "badge": "Alto Padrão",
@@ -1613,7 +1619,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1625,7 +1631,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "272996",
-    "name": "Excelente Terreno em Condomínio de 4.200m² Pronto para Construir no Carlos Guinle",
+    "name": "Terreno em Condomínio de 4.200m² no Carlos Guinle",
     "price": 600000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1645,7 +1651,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Carlos Guinle, Teresópolis - RJ",
+    "screen": "Carlos Guinle, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1661,7 +1667,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "273112",
-    "name": "Excelente Terreno em Condomínio de 247m² com Linda Vista para a Natureza em Albuquerque",
+    "name": "Terreno em Condomínio de 247m² em Albuquerque",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1681,7 +1687,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1697,7 +1703,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "273114",
-    "name": "Excelente Terreno em Condomínio de 453m² com Linda Vista para a Natureza em Albuquerque",
+    "name": "Terreno em Condomínio de 453m² em Albuquerque",
     "price": 140000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1717,7 +1723,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1729,7 +1735,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "273116",
-    "name": "Excelente Terreno em Condomínio de 15.000m² com Linda Vista para a Natureza em Vargem Grande",
+    "name": "Terreno em Condomínio de 15.000m² com Linda Vista",
     "price": 900000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1747,7 +1753,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1761,7 +1767,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "273118",
-    "name": "Bela Casa com 3 Quartos (2 Suítes) e Garagem na Quinta da Barra",
+    "name": "Bela Casa com 3 Quartos na Quinta da Barra",
     "price": 790000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -1781,7 +1787,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Quinta da Barra, Teresópolis - RJ",
+    "screen": "Quinta da Barra, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1797,7 +1803,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "273121",
-    "name": "Linda Casa em Condomínio com 3 Quartos (2 Suítes) na Posse",
+    "name": "Linda Casa em Condomínio com 3 Quartos na Posse",
     "price": 1350000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -1817,7 +1823,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Posse, Teresópolis - RJ",
+    "screen": "Posse, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "15% Entrada + até 120x Direto",
     "boxItems": [
@@ -1833,7 +1839,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "273122",
-    "name": "Belíssima Residência com 4 Quartos (3 Suítes) e Quintal Amplo no Carlos Guinle",
+    "name": "Belíssima Residência com 4 Quartos no Carlos Guinle",
     "price": 3800000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -1853,7 +1859,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Carlos Guinle, Teresópolis - RJ",
+    "screen": "Carlos Guinle, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -1889,7 +1895,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1905,7 +1911,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "276177",
-    "name": "Linda Casa em Condomínio com 5 Quartos e Espaço Gourmet na Tijuca",
+    "name": "Casa em Condomínio com Espaço Gourmet na Tijuca",
     "price": 1250000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -1925,7 +1931,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Tijuca, Teresópolis - RJ",
+    "screen": "Tijuca, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -1941,7 +1947,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "276201",
-    "name": "Terreno Plano em Condomínio de 425m² Pronto para Construir em Albuquerque",
+    "name": "Terreno Plano em Condomínio de 425m² em Albuquerque",
     "price": 330000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1958,7 +1964,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -1974,7 +1980,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "278467",
-    "name": "Excelente Terreno em Condomínio de 467m² em Vargem Grande",
+    "name": "Terreno em Condomínio de 467m² em Vargem Grande",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -1991,7 +1997,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2007,7 +2013,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "284441",
-    "name": "Excelente Terreno em Condomínio de 1.376m² Pronto para Construir no Centro",
+    "name": "Terreno em Condomínio de 1.376m² no Centro",
     "price": 450000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2026,7 +2032,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2061,7 +2067,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Agriões, Teresópolis - RJ",
+    "screen": "Agriões, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2097,7 +2103,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2113,7 +2119,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "285224",
-    "name": "Excelente Terreno em Condomínio de 417m² em Vargem Grande",
+    "name": "Terreno em Condomínio de 417m² em Vargem Grande",
     "price": 180000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2130,7 +2136,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2146,7 +2152,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "289112",
-    "name": "Belíssima Residência com 8 Quartos e Quintal Amplo no Centro",
+    "name": "Belíssima Residência com 8 Quartos no Centro",
     "price": 1490000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2163,7 +2169,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "7 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2179,7 +2185,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "289578",
-    "name": "Casa Aconchegante com 4 Quartos e Quintal Amplo em Albuquerque",
+    "name": "Casa com 4 Quartos e Amplo Quintal em Albuquerque",
     "price": 490000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2199,7 +2205,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2215,7 +2221,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "289635",
-    "name": "Excelente Terreno em Condomínio de 360m² Pronto para Construir em Pimenteiras",
+    "name": "Terreno em Condomínio de 360m² em Pimenteiras",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2232,7 +2238,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Pimenteiras, Teresópolis - RJ",
+    "screen": "Pimenteiras, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2248,7 +2254,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "293346",
-    "name": "Excelente Apartamento de 2 Quartos (2 Suítes) com Varanda e Vista Livre em Itaipava",
+    "name": "Apartamento com Varanda e Vista em Itaipava",
     "price": 850000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -2268,7 +2274,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Itaipava, Petrópolis - RJ",
+    "screen": "Itaipava, Petrópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2284,7 +2290,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "293659",
-    "name": "Excelente Apartamento de 2 Quartos (1 Suíte) com Varanda e Vista Livre no Centro",
+    "name": "Apartamento com Varanda e Vista no Centro",
     "price": 550000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -2304,7 +2310,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "02 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2340,7 +2346,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2356,7 +2362,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307046",
-    "name": "Excelente Terreno de 1.835m² Pronto para Construir na Vila Muqui",
+    "name": "Excelente Terreno de 1.835m² na Vila Muqui",
     "price": 100000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2375,7 +2381,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vila Muqui, Teresópolis - RJ",
+    "screen": "Vila Muqui, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2391,7 +2397,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307458",
-    "name": "Excelente Terreno em Condomínio de 1.269m² em Bonsucesso",
+    "name": "Terreno em Condomínio de 1.269m² em Bonsucesso",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2411,7 +2417,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Bonsucesso, Teresópolis - RJ",
+    "screen": "Bonsucesso, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2427,7 +2433,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307677",
-    "name": "Excelente Terreno em Condomínio de 360m² Pronto para Construir em Teresópolis",
+    "name": "Terreno em Condomínio de 360m² em Vargem Grande",
     "price": 300000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2440,7 +2446,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2452,11 +2458,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Terreno à venda em Teresópolis. Em um endereço tranquilo e cercado por verde, é a oportunidade perfeita para construir a casa dos seus sonhos, com segurança e praticidade. O condomínio oferece lazer completo, portaria 24h. Localização estratégica e clima agradável completam o cenário. Agende sua visita e conheça de perto.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307677",
-    "bairro": "Teresópolis"
+    "bairro": "Vargem Grande"
   },
   {
     "sku": "307702",
-    "name": "Lindo Apartamento de 2 Quartos (1 Suíte) com Garagem na Posse",
+    "name": "Lindo Apartamento de 2 Quartos com Garagem na Posse",
     "price": 290000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -2476,7 +2482,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Posse, Teresópolis - RJ",
+    "screen": "Posse, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2492,7 +2498,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307744",
-    "name": "Excelente Terreno em Condomínio de 700m² com Linda Vista para a Natureza em Teresópolis",
+    "name": "Terreno em Condomínio de 700m² com Linda Vista",
     "price": 189000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2512,7 +2518,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Teresópolis - RJ",
+    "screen": "Pessegueiros, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2524,11 +2530,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Terreno à venda em Teresópolis, no bairro Pessegueiros, no Condomínio Fazenda Inglesa. São 700 m² para construir seu projeto com vista para as montanhas e muito verde. Localização estratégica, perto de escolas, vias de acesso, hospitais, shopping e transporte público, em rua asfaltada. Condomínio com infraestrutura de lazer e segurança: piscina, churrasqueira, horta, pomar, portão eletrônico, interfone, sistema de alarme, câmeras e circuito de monitoramento. Qualidade de vida com praticidade e tranquilidade. Agende sua visita.\n\n#terrenocondominio #teresopolis #pessegueiros #condominiofazendainglesa #pertodeescolas\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307744",
-    "bairro": "Teresópolis"
+    "bairro": "Pessegueiros"
   },
   {
     "sku": "307749",
-    "name": "Excelente Terreno em Condomínio de 640m² em Albuquerque",
+    "name": "Terreno em Condomínio de 640m² em Albuquerque",
     "price": 249000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2548,7 +2554,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2564,7 +2570,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307759",
-    "name": "Excelente Terreno em Condomínio de 256m² Pronto para Construir em Teresópolis",
+    "name": "Terreno em Condomínio de 256m² no Jardins da Serra",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2582,7 +2588,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Teresópolis - RJ",
+    "screen": "Ermitage, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2594,11 +2600,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Terreno em condomínio à venda em Teresópolis, no bairro Ermitage. São 256 m² no condomínio Jardins da Serra, perfeito para quem deseja construir com segurança e qualidade de vida. O residencial oferece acesso para deficientes, monitoramento por câmeras, interfone, portão eletrônico e alarme. Lazer com piscina e churrasqueira, além de horta, pomar e jardins. Localização estratégica, perto de escolas, hospitais, shopping, transporte e vias de acesso. Venha conhecer pessoalmente.\n\n#terrenocondominio #teresopolis #ermitage #condominiojardinsdaserra #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/307759",
-    "bairro": "Teresópolis"
+    "bairro": "Ermitage"
   },
   {
     "sku": "307768",
-    "name": "Excelente Casa em Condomínio com 4 Quartos (2 Suítes) no Alto",
+    "name": "Casa em Condomínio com 4 Quartos no Alto",
     "price": 1050000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -2618,7 +2624,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2634,7 +2640,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307897",
-    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir no Centro",
+    "name": "Excelente Terreno em Condomínio de 200m² no Centro",
     "price": 210000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2654,7 +2660,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2670,7 +2676,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307902",
-    "name": "Excelente Terreno em Condomínio de 415m² em Vargem Grande",
+    "name": "Excelente Terreno em Condomínio em Vargem Grande",
     "price": 120000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2690,7 +2696,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2706,7 +2712,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307905",
-    "name": "Excelente Terreno em Condomínio de 435m² em Vargem Grande",
+    "name": "Excelente Terreno em Condomínio de 435m² no Verde",
     "price": 210000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2726,7 +2732,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2742,7 +2748,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "307909",
-    "name": "Belíssima Residência com 8 Quartos (4 Suítes) e Garagem no Parque do Imbuí",
+    "name": "Belíssima Residência com 8 Quartos no Parque do Imbuí",
     "price": 2000000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2762,7 +2768,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "8 Quartos",
-    "screen": "Parque do Imbuí, Teresópolis - RJ",
+    "screen": "Parque do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2798,7 +2804,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2814,7 +2820,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "308108",
-    "name": "Casa Aconchegante com 4 Quartos (1 Suíte) e Garagem em Teresópolis",
+    "name": "Casa Aconchegante com 4 Quartos na Providência",
     "price": 550000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -2834,7 +2840,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Providência, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -2846,11 +2852,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Casa à venda em Teresópolis, no bairro Providência. Com 240 m², 4 quartos (1 suíte) e 7 vagas, oferece espaço, praticidade e ótima localização. Ambientes bem distribuídos e iluminados, perfeitos para quem valoriza conforto e funcionalidade no dia a dia. O entorno conta com serviços e vias de fácil acesso, garantindo uma rotina mais simples e agradável. Ideal para famílias que buscam qualidade de vida. Agende sua visita e conheça seu novo lar em Teresópolis.\n\n#casa #teresopolis #providencia #venda\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308108",
-    "bairro": "Teresópolis"
+    "bairro": "Providência"
   },
   {
     "sku": "308261",
-    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir na Posse",
+    "name": "Excelente Terreno em Condomínio de 200m² na Posse",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2870,7 +2876,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Posse, Teresópolis - RJ",
+    "screen": "Posse, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2886,7 +2892,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "308281",
-    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir no Parque do Imbuí",
+    "name": "Excelente Terreno em Condomínio no Parque do Imbuí",
     "price": 200000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2906,7 +2912,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Parque do Imbuí, Teresópolis - RJ",
+    "screen": "Parque do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2922,7 +2928,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "308286",
-    "name": "Excelente Terreno em Condomínio de 200m² Pronto para Construir no Parque do Imbuí",
+    "name": "Excelente Terreno de 200m² no Parque do Imbuí",
     "price": 200000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -2942,7 +2948,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Parque do Imbuí, Teresópolis - RJ",
+    "screen": "Parque do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -2978,7 +2984,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3014,7 +3020,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3030,7 +3036,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "308827",
-    "name": "Magnífica Casa em Condomínio e Lazer Completo em Teresópolis",
+    "name": "Magnífica Casa em Condomínio Fechado no Comary",
     "price": 2900000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3050,7 +3056,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Teresópolis - RJ",
+    "screen": "Comary, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -3062,11 +3068,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Imagine acordar em uma casa que parece ter sido desenhada para você. No coração do Comary, em Teresópolis, esta residência no formato porteira fechada é mais do que um imóvel, é um convite para viver com privacidade, conforto e total conexão com a natureza. Localizada na Gleba 5, uma das áreas mais cobiçadas do condomínio, esta casa oferece algo raro: uma topografia privilegiada, com ampla área plana, exposição solar perfeita e, claro, aquele sossego que só a serra pode proporcionar. E o melhor? Sem vizinhos ao redor, apenas você e a paisagem exuberante.\n\nO estilo neorústico da casa, com traços de madeira, vidro e porcelanato, foi cuidadosamente pensado por uma das arquitetas mais renomadas de Teresópolis, Angelita Portela. A sala espaçosa, com lareira e pé direito duplo, é iluminada por grandes janelas que trazem a natureza para dentro. A cozinha aberta integra-se harmoniosamente ao ambiente, criando um espaço perfeito para receber amigos ou simplesmente desfrutar de um café da manhã tranquilo.\n\nNo piso superior, dois quartos com varandas convidam ao descanso, enquanto no piso inferior, a suíte master com hidromassagem e closet amplo é um verdadeiro refúgio de luxo. A área de lazer é um espetáculo à parte: piscina aquecida com raia, sauna a vapor, espaço gourmet completo e até uma sala fitness. Tudo isso cercado por um quintal que parece não ter fim, onde você pode criar memórias inesquecíveis com sua família.\n\nE não para por aí: a casa conta com poço artesiano, 28 placas solares e câmeras de segurança, garantindo sustentabilidade e tranquilidade. Pronta para morar, ela está esperando por você.\n\nEsta não é apenas uma casa. É um estilo de vida. Agende uma visita e venha sentir o que é viver em um dos endereços mais desejados de Teresópolis.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/308827",
-    "bairro": "Teresópolis"
+    "bairro": "Comary"
   },
   {
     "sku": "309204",
-    "name": "Excelente Apartamento de 5 Quartos (3 Suítes) com Varanda e Vista Livre na Várzea",
+    "name": "Apartamento de 5 Quartos com Vista Panorâmica",
     "price": 835000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -3086,7 +3092,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3102,7 +3108,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "309209",
-    "name": "Excelente Apartamento de 1 Quarto (1 Suíte) com Garagem em Itaipava",
+    "name": "Apartamento de 1 Quarto com Garagem em Itaipava",
     "price": 680000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3122,7 +3128,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Itaipava, Petrópolis - RJ",
+    "screen": "Itaipava, Petrópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3138,7 +3144,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "309813",
-    "name": "Terreno Totalmente Plano de 3.462m² Pronto para Construir na Cascata dos Amores",
+    "name": "Terreno Plano de 3.462m² na Cascata dos Amores",
     "price": 320000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -3158,7 +3164,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Cascata dos Amores, Teresópolis - RJ",
+    "screen": "Cascata dos Amores, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -3174,7 +3180,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "320848",
-    "name": "Linda Casa em Condomínio e Espaço Gourmet no Taumaturgo",
+    "name": "Casa em Condomínio com Espaço Gourmet no Taumaturgo",
     "price": 1700000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3194,7 +3200,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Taumaturgo, Teresópolis - RJ",
+    "screen": "Taumaturgo, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3230,7 +3236,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Tijuca, Teresópolis - RJ",
+    "screen": "Tijuca, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3246,7 +3252,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "323586",
-    "name": "Golden Green Residence: Lotes Exclusivos em Condomínio Fechado em Albuquerque",
+    "name": "Golden Green: Lotes Exclusivos em Albuquerque",
     "price": 400000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3259,7 +3265,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3275,7 +3281,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "324009",
-    "name": "Golden Green Residence: Lotes Exclusivos em Condomínio Fechado em Albuquerque",
+    "name": "Golden Green: Lotes Exclusivos em Albuquerque",
     "price": 250000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -3295,7 +3301,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3307,11 +3313,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Empreendimento localizado no KM 4,5 da estrada Teresópolis x Friburgo com vista 360º para as montanhas e belezas naturais.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/324009",
-    "bairro": "Teresópolis"
+    "bairro": "Albuquerque"
   },
   {
     "sku": "324430",
-    "name": "Belíssima Residência com 4 Quartos (1 Suíte) e Quintal Amplo na Granja Guarani",
+    "name": "Bela Residência com 4 Quartos na Granja Guarani",
     "price": 1042560,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3331,7 +3337,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Granja Guarani, Teresópolis - RJ",
+    "screen": "Granja Guarani, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3347,7 +3353,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "324456",
-    "name": "Bela Casa com 3 Quartos (1 Suíte) e Garagem na Quinta da Barra",
+    "name": "Bela Casa com 3 Quartos na Quinta da Barra",
     "price": 750000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3367,7 +3373,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Quinta da Barra, Teresópolis - RJ",
+    "screen": "Quinta da Barra, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3383,7 +3389,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "324474",
-    "name": "Excelente Casa em Condomínio com 4 Quartos (2 Suítes) na Cascata do Imbuí",
+    "name": "Casa em Condomínio com 4 Quartos na Cascata do Imbuí",
     "price": 850000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -3403,7 +3409,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Cascata do Imbuí, Teresópolis - RJ",
+    "screen": "Cascata do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3419,7 +3425,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "324516",
-    "name": "Espetacular Cobertura Duplex (3 Suítes) e Espaço Gourmet na Tijuca",
+    "name": "Cobertura Duplex com Espaço Gourmet na Tijuca",
     "price": 1490000,
     "cat": "Coberturas",
     "badge": "Destaque",
@@ -3439,7 +3445,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Tijuca, Teresópolis - RJ",
+    "screen": "Tijuca, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3475,7 +3481,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3491,7 +3497,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "324583",
-    "name": "Casa Aconchegante com 3 Quartos e Quintal Amplo na Fazendinha",
+    "name": "Casa com 3 Quartos e Amplo Quintal na Fazendinha",
     "price": 550000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -3511,7 +3517,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Fazendinha, Teresópolis - RJ",
+    "screen": "Fazendinha, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3527,7 +3533,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "327545",
-    "name": "Linda Casa em Condomínio com 3 Quartos e Espaço Gourmet no Centro",
+    "name": "Casa em Condomínio com Espaço Gourmet no Centro",
     "price": 1790000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -3547,7 +3553,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3563,7 +3569,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "328343",
-    "name": "Magnífica Casa em Condomínio com 7 Quartos (3 Suítes) e Lazer Completo no Quebra Frascos",
+    "name": "Magnífica Casa em Condomínio no Quebra Frascos",
     "price": 4500000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3583,7 +3589,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "07 Quartos",
-    "screen": "Quebra Frascos, Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -3599,7 +3605,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "331549",
-    "name": "Linda Casa em Condomínio com 5 Quartos (1 Suíte) e Lazer Completo no Alto",
+    "name": "Linda Casa em Condomínio com 5 Quartos no Alto",
     "price": 2370000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -3619,7 +3625,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -3635,7 +3641,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "333353",
-    "name": "Linda Casa em Condomínio com 3 Quartos (2 Suítes) em Albuquerque",
+    "name": "Casa em Condomínio com 3 Quartos em Albuquerque",
     "price": 1430000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -3655,7 +3661,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3671,7 +3677,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "334009",
-    "name": "Belíssima Residência com 4 Quartos (1 Suíte) e Garagem em Teresópolis",
+    "name": "Belíssima Residência com 4 Quartos no Golfe",
     "price": 1250000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -3691,7 +3697,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Golfe, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3703,11 +3709,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Imóvel composto por 2 andares, com excelente estrutura e conforto:\n\n• Sala ampla em 2 ambientes\n• 4 quartos no total, sendo 1 suíte master com closet\n• 2 quartos na parte térrea\n• Cozinha ampla\n• 1 escritório grande reversível para quarto\n• Sala de TV\n• Varanda grande no piso superior\n• Ar-condicionado em toda a casa\n• Piscina\n• Casa de caseiro\n• Portão eletrônico\n• Energia solar e aquecimento solar\n• Circuito interno de câmeras\n• Cisterna com capacidade para 15 mil litros\n• 4 vagas de garagem cobertas\n• Espaço para mais 4 veículos sem cobertura\n• Terreno plano e ótima localização no Golf\n\nImóvel ideal para quem busca espaço, conforto, segurança e excelente localização.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/334009",
-    "bairro": "Teresópolis"
+    "bairro": "Golfe"
   },
   {
     "sku": "335207",
-    "name": "Magnífica Casa Linear em Condomínio com 5 Quartos (4 Suítes) e Lazer Completo no Quebra Frascos",
+    "name": "Casa Linear em Condomínio no Quebra Frascos",
     "price": 6950000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -3727,7 +3733,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Quebra Frascos, Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -3743,7 +3749,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "340889",
-    "name": "Parque das Flores: Linda Residência com Amplo Quintal e Vista no Alto",
+    "name": "Parque das Flores: Residência com Amplo Quintal",
     "price": 330000,
     "cat": "Casas",
     "badge": "Oportunidade",
@@ -3763,7 +3769,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3779,7 +3785,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "344048",
-    "name": "Terreno Plano em Condomínio de 360m² Pronto para Construir na Prata",
+    "name": "Terreno Plano em Condomínio de 360m² na Prata",
     "price": 300000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -3799,7 +3805,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Prata, Teresópolis - RJ",
+    "screen": "Prata, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -3815,7 +3821,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "344628",
-    "name": "Excelente Terreno em Condomínio de 1.200m² com Linda Vista para a Natureza em Bonsucesso",
+    "name": "Excelente Terreno em Condomínio em Bonsucesso",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -3835,7 +3841,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Bonsucesso, Teresópolis - RJ",
+    "screen": "Bonsucesso, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -3851,7 +3857,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "349640",
-    "name": "Lindo Apartamento de 1 Quarto no Alto",
+    "name": "Lindo Apartamento de 1 Quarto com Garagem no Alto",
     "price": 480000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3871,7 +3877,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3887,7 +3893,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "350028",
-    "name": "Apartamento de Alto Padrão de 3 Quartos (2 Suítes) com Garagem na Tijuca",
+    "name": "Apartamento Alto Padrão com 3 Quartos na Tijuca",
     "price": 1400000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -3907,7 +3913,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Tijuca, Teresópolis - RJ",
+    "screen": "Tijuca, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3923,7 +3929,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351133",
-    "name": "Sala comercial no centro da cidade com 29m² à venda por R$ 320.000, Varzea- Teresópolis/RJ",
+    "name": "Sala Comercial Moderna de 29m² no Centro da Várzea",
     "price": 320000,
     "cat": "Comerciais",
     "badge": "Vista Panorâmica",
@@ -3943,7 +3949,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -3959,7 +3965,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351142",
-    "name": "Cobertura de Alto Padrão com 3 Quartos e Terraço Panorâmico na Tijuca",
+    "name": "Cobertura Alto Padrão com Terraço na Tijuca",
     "price": 3900000,
     "cat": "Coberturas",
     "badge": "Alto Padrão",
@@ -3979,7 +3985,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Tijuca, Teresópolis - RJ",
+    "screen": "Tijuca, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -3995,7 +4001,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351544",
-    "name": "Magnífica Casa em Condomínio com 3 Quartos e Piscina no Carlos Guinle",
+    "name": "Linda Casa em Condomínio com Piscina no Carlos Guinle",
     "price": 2890000,
     "cat": "Casas em Condomínio",
     "badge": "Alto Padrão",
@@ -4015,7 +4021,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Carlos Guinle, Teresópolis - RJ",
+    "screen": "Carlos Guinle, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -4031,7 +4037,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351605",
-    "name": "Belíssima Residência com 5 Quartos (3 Suítes) e Quintal Amplo no Alto",
+    "name": "Belíssima Residência com 5 Quartos no Alto",
     "price": 1490000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4051,7 +4057,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4067,7 +4073,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351613",
-    "name": "Linda Casa em Condomínio e Lazer Completo em Albuquerque",
+    "name": "Linda Casa em Condomínio com Lazer em Albuquerque",
     "price": 1490000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -4087,7 +4093,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4116,7 +4122,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -4145,7 +4151,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -4161,7 +4167,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351660",
-    "name": "Espetacular Cobertura Duplex e Terraço Panorâmico no Alto",
+    "name": "Cobertura Duplex com Terraço Panorâmico no Alto",
     "price": 980000,
     "cat": "Coberturas",
     "badge": "Vista Panorâmica",
@@ -4181,7 +4187,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4197,7 +4203,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351691",
-    "name": "Bela Casa com 3 Quartos (2 Suítes) e Garagem no Caxangá",
+    "name": "Bela Casa com 3 Quartos e Garagem no Caxangá",
     "price": 870000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4217,7 +4223,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Caxangá, Teresópolis - RJ",
+    "screen": "Caxangá, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4251,7 +4257,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -4287,7 +4293,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -4303,7 +4309,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351900",
-    "name": "Lindo Sítio de 55.000m² com Área Verde Preservada em Boa União",
+    "name": "Lindo Sítio de 55.000m² com Área Verde em Boa União",
     "price": 550000,
     "cat": "Sítios & Rurais",
     "badge": "Destaque",
@@ -4323,7 +4329,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Boa União, Teresópolis - RJ",
+    "screen": "Boa União, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4339,7 +4345,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "351956",
-    "name": "Linda Casa Duplex em Condomínio (3 Suítes) e Lazer Completo em Pimenteiras",
+    "name": "Casa Duplex em Condomínio com Lazer em Pimenteiras",
     "price": 1730000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -4359,7 +4365,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Pimenteiras, Teresópolis - RJ",
+    "screen": "Pimenteiras, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4375,7 +4381,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "352510",
-    "name": "Belíssima Residência com 5 Quartos (3 Suítes) e Garagem em Albuquerque",
+    "name": "Belíssima Residência com 5 Quartos em Albuquerque",
     "price": 1200000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4395,7 +4401,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4411,7 +4417,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "352582",
-    "name": "Belíssima Residência com 5 Quartos (2 Suítes) e Garagem no Centro",
+    "name": "Belíssima Residência com 5 Quartos no Centro",
     "price": 1200000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4431,7 +4437,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4447,7 +4453,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "352715",
-    "name": "Cobertura de Alto Padrão com 3 Quartos (2 Suítes) e Espaço Gourmet em Agriões",
+    "name": "Cobertura de Alto Padrão com Espaço Gourmet",
     "price": 1590000,
     "cat": "Coberturas",
     "badge": "Vista Panorâmica",
@@ -4467,7 +4473,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Agriões, Teresópolis - RJ",
+    "screen": "Agriões, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4483,7 +4489,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "354057",
-    "name": "Excelente Terreno em Condomínio de 304m² Pronto para Construir no Centro",
+    "name": "Excelente Terreno em Condomínio de 304m² no Centro",
     "price": 300000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4503,7 +4509,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -4539,7 +4545,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4555,7 +4561,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "358578",
-    "name": "Excelente Apartamento de 3 Quartos com Garagem na Várzea",
+    "name": "Excelente Apartamento de 3 Quartos na Várzea",
     "price": 500000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -4575,7 +4581,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4591,7 +4597,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "359706",
-    "name": "Belíssima Residência com 5 Quartos (2 Suítes) e Quintal Amplo em Teresópolis",
+    "name": "Bela Residência com 5 Quartos e Amplo Quintal",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4611,7 +4617,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Três Córregos, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4623,11 +4629,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Casa à venda em Três Córregos – Teresópolis\n\nUma propriedade ampla, confortável e cercada pelo verde, perfeita para quem busca qualidade de vida, espaço e lazer em meio à natureza.\n\nSão 5 quartos, sendo 2 suítes, e 6 vagas, além de uma estrutura completa para aproveitar cada momento:\n\n• Piscina\n• Churrasqueira com forno de pizza\n• Lareira\n• Varanda com vista panorâmica\n• Amplo jardim e quintal\n• Pomar e horta\n• Cozinha espaçosa com armários\n• Lavanderia e despensa\n• Dependência de empregados\n• Casa de caseiro\n• Canil\n• Acesso para pessoas com deficiência\n\nUma casa completa, com ambientes generosos e muito verde, ideal tanto para moradia quanto para quem deseja ter um refúgio em Teresópolis.\n\n📍 Três Córregos – Teresópolis/RJ\n🏡 5 quartos | 2 suítes | 6 vagas\n\nAgende sua visita e venha conhecer pessoalmente.\n\nValores sujeitos a alteração sem aviso prévio. Consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/359706",
-    "bairro": "Teresópolis"
+    "bairro": "Três Córregos"
   },
   {
     "sku": "360152",
-    "name": "Linda Casa em Condomínio com 3 Quartos (1 Suíte) e Piscina no Alto",
+    "name": "Linda Casa em Condomínio com Piscina no Alto",
     "price": 1800000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -4647,7 +4653,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "03 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4662,7 +4668,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "360168",
-    "name": "Belíssima Residência com 4 Quartos (3 Suítes) e Garagem no Alto",
+    "name": "Belíssima Residência com 4 Quartos no Alto",
     "price": 3290000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -4682,7 +4688,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "04 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -4718,7 +4724,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Pimenteiras, Teresópolis - RJ",
+    "screen": "Pimenteiras, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4734,7 +4740,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "360982",
-    "name": "Excelente Terreno de 170m² no Centro",
+    "name": "Excelente Terreno de 170m² Plano no Centro",
     "price": 90000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4754,7 +4760,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -4770,7 +4776,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "361253",
-    "name": "Excelente Terreno em Condomínio Pronto para Construir no Alto",
+    "name": "Terreno em Condomínio Pronto para Construir no Alto",
     "price": 110000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -4790,7 +4796,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -4806,7 +4812,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "361892",
-    "name": "Bela Casa em Teresópolis",
+    "name": "Bela Residência com Linda Vista para a Natureza",
     "price": 780000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4826,7 +4832,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4838,11 +4844,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Imagine acordar cercado pela natureza, respirar ar puro, ouvir o silêncio da serra e, ao mesmo tempo, estar à frente de um empreendimento com potencial para gerar renda e crescer. Esse é o Village dos Alpes, uma propriedade especial para quem deseja unir qualidade de vida, hospitalidade e investimento em um só lugar.Com 4.000 m² de terreno, distribuídos em platôs que valorizam o aproveitamento da área, o imóvel oferece um cenário ideal para viver momentos de tranquilidade e desenvolver um projeto de hospedagem cada vez mais completo. A propriedade já conta com um chalé de 55 m² pronto e em pleno funcionamento, criando a possibilidade de começar — ou dar continuidade — a uma operação de hospedagem com charme, privacidade e conexão com a natureza.   Força da oportunidade O que ela representa\nRenda em andamento Um chalé de 55 m² já está pronto e em pleno funcionamento, com potencial de continuidade na hospedagem.\nExpansão encaminhada O segundo chalé possui aproximadamente 60% da obra concluída, reduzindo a distância até a ampliação do projeto.\nLiberdade para crescer Cerca de 2.000 m² no 3º platô permitem estudar novas construções e experiências para os hóspedes.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/361892",
-    "bairro": "Teresópolis"
+    "bairro": "Albuquerque"
   },
   {
     "sku": "362585",
-    "name": "Belíssima Residência com 4 Quartos (1 Suíte) e Garagem no Golfe",
+    "name": "Belíssima Residência com 4 Quartos no Golfe",
     "price": 1800000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4862,7 +4868,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "04 Quartos",
-    "screen": "Golfe, Teresópolis - RJ",
+    "screen": "Golfe, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4878,7 +4884,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "362708",
-    "name": "Apartamento de Alto Padrão de 3 Quartos com Garagem em Agriões",
+    "name": "Apartamento de Alto Padrão com 3 Quartos em Agriões",
     "price": 1050000,
     "cat": "Apartamentos",
     "badge": "Destaque",
@@ -4898,7 +4904,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Agriões, Teresópolis - RJ",
+    "screen": "Agriões, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4914,7 +4920,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "362859",
-    "name": "Vallee Verte Residencial: Terreno Exclusivo em Condomínio de Alto Padrão",
+    "name": "Vallee Verte: Terreno em Condomínio Alto Padrão",
     "price": 460000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -4929,7 +4935,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Green Valley, Teresópolis - RJ",
+    "screen": "Green Valley, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4945,7 +4951,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "363002",
-    "name": "Casa Aconchegante com 2 Quartos em Teresópolis",
+    "name": "Casa Aconchegante com 2 Quartos e Linda Vista",
     "price": 480000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -4965,7 +4971,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Cascata dos Amores, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -4977,11 +4983,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Casa com piscina, vista para as montanhas e potencial para chalés.\nCasa acolhedora com 2 quartos e varanda ,  2 banheiros, salas de estar e jantar, cozinha, área de serviço e varanda ampla. Possui churrasqueira, piscina, contato com a natureza e uma linda vista para as montanhas. O terreno oferece excelente potencial para construção de chalés, sendo ideal para morar, descansar ou investir.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/363002",
-    "bairro": "Teresópolis"
+    "bairro": "Cascata dos Amores"
   },
   {
     "sku": "364646",
-    "name": "Terreno Totalmente Plano de 500m² Pronto para Construir em Albuquerque",
+    "name": "Terreno Totalmente Plano de 500m² em Albuquerque",
     "price": 280000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5001,7 +5007,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -5017,7 +5023,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "365568",
-    "name": "Charmosa Casa Linear em Condomínio com 2 Quartos e Espaço Gourmet em Teresópolis",
+    "name": "Charmosa Casa Linear com Espaço Gourmet e Horta",
     "price": 580000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5037,7 +5043,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5049,11 +5055,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Encantadora casa linear, ideal para quem busca conforto e praticidade com 2 quartos, sendo uma suíte, este imóvel oferece espaços amplos e bem iluminados. A sala integrada à cozinha americana proporciona um ambiente perfeito para momentos em família e com amigos.\n\nO destaque da casa fica por conta da área externa, onde você encontrará uma deliciosa churrasqueira, um fogão a lenha e um forno a lenha, perfeito para reunir a família em incríveis almoços e jantares, com aquele toque especial das refeições caseiras.\n\nO terreno conta com um lindo jardim, criando um espaço relaxante e harmonioso. Além disso, o condomínio oferece uma infraestrutura completa, incluindo uma horta compartilhada, onde você pode cultivar seus próprios temperos e verduras.\n\nEsta é a oportunidade perfeita para viver com qualidade, cercado pela natureza e em um ambiente familiar. Venha conhecer e se encantar por cada detalhe deste imóvel que pode ser o seu próxima lar.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/365568",
-    "bairro": "Teresópolis"
+    "bairro": "Albuquerque"
   },
   {
     "sku": "365690",
-    "name": "Excelente Terreno de 1.500m² Pronto para Construir no Parque do Imbuí",
+    "name": "Excelente Terreno de 1.500m² no Parque do Imbuí",
     "price": 650000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5073,7 +5079,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Parque do Imbuí, Teresópolis - RJ",
+    "screen": "Parque do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -5089,7 +5095,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "365785",
-    "name": "Excelente Terreno em Condomínio de 1.500m² no Parque do Imbuí",
+    "name": "Terreno em Condomínio de 1.500m² no Parque do Imbuí",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5108,7 +5114,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Parque do Imbuí, Teresópolis - RJ",
+    "screen": "Parque do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -5124,7 +5130,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366063",
-    "name": "Excelente Terreno em Condomínio de 378m² Pronto para Construir no Centro",
+    "name": "Excelente Terreno em Condomínio de 378m² no Centro",
     "price": 150000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5144,7 +5150,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -5160,7 +5166,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366486",
-    "name": "Belíssima Residência com 2 Quartos (1 Suíte) e Quintal Amplo no Taumaturgo",
+    "name": "Belíssima Residência com 2 Quartos no Taumaturgo",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5180,7 +5186,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Taumaturgo, Teresópolis - RJ",
+    "screen": "Taumaturgo, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5196,7 +5202,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366538",
-    "name": "Lindo Apartamento de 1 Quarto com Garagem em Albuquerque",
+    "name": "Lindo Apartamento de 1 Quarto em Albuquerque",
     "price": 280000,
     "cat": "Apartamentos",
     "badge": "Oportunidade",
@@ -5216,7 +5222,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5232,7 +5238,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366546",
-    "name": "Galpão Estruturado de 846m² em Localização Privilegiada em São Pedro",
+    "name": "Galpão Estruturado de 846m² em São Pedro",
     "price": 1400000,
     "cat": "Comerciais",
     "badge": "Destaque",
@@ -5252,7 +5258,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "São Pedro, Teresópolis - RJ",
+    "screen": "São Pedro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5268,7 +5274,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366563",
-    "name": "Belíssima Residência Duplex com 4 Quartos (2 Suítes) e Quintal Amplo na Cascata do Imbuí",
+    "name": "Residência Duplex com 4 Quartos na Cascata do Imbuí",
     "price": 1100000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5288,7 +5294,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Cascata do Imbuí, Teresópolis - RJ",
+    "screen": "Cascata do Imbuí, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5304,7 +5310,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "366687",
-    "name": "Excelente Terreno em Condomínio de 300m² Pronto para Construir em Albuquerque",
+    "name": "Excelente Terreno em Condomínio em Albuquerque",
     "price": 250000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5323,7 +5329,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -5339,7 +5345,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "367872",
-    "name": "Linda Casa em Condomínio com 5 Quartos (4 Suítes) em Vargem Grande",
+    "name": "Linda Casa em Condomínio em Vargem Grande",
     "price": 1565000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5359,7 +5365,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5395,7 +5401,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5411,7 +5417,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "368193",
-    "name": "Charmosa Casa Linear em Condomínio em Teresópolis",
+    "name": "Charmosa Casa Linear em Condomínio Fechado",
     "price": 447000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5431,7 +5437,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Teresópolis - RJ",
+    "screen": "Cotia, Guapimirim/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5443,11 +5449,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": ",,,\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/368193",
-    "bairro": "Teresópolis"
+    "bairro": "Cotia"
   },
   {
     "sku": "368216",
-    "name": "Charmosa Casa Linear em Condomínio com 1 Quarto (1 Suíte) em Teresópolis",
+    "name": "Charmosa Casa Linear em Condomínio Fechado",
     "price": 367000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5467,7 +5473,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Cotia, Guapimirim/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5479,11 +5485,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Casa em condomínio à venda em Guapimirim, no bairro Cotia, no Condiminio Ipe. Com 142,8 m², 1 quarto (1 suíte) e 1 vaga, oferece conforto, praticidade e excelente localização. Destaques: acesso para deficientes, ventilação natural, piso frio, área de serviço e quintal, além de vista panorâmica. Condomínio com interfone, muros e ruas asfaltadas, perto de escolas, hospitais, shopping e transporte público, com fácil acesso às vias principais. Ideal para quem busca tranquilidade sem abrir mão da conveniência. Agende sua visita.\n\n#casacondominio #guapimirim #cotia #condiminioipe #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/368216",
-    "bairro": "Teresópolis"
+    "bairro": "Cotia"
   },
   {
     "sku": "368359",
-    "name": "Linda Casa em Condomínio com 1 Quarto (2 Suítes) e Espaço Gourmet no Quebra Frascos",
+    "name": "Casa em Condomínio com Gourmet no Quebra Frascos",
     "price": 1500000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -5503,7 +5509,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Quebra Frascos, Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5519,7 +5525,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "369325",
-    "name": "Magnífica Casa em Condomínio com 10 Quartos (9 Suítes) e Lazer Completo em Teresópolis",
+    "name": "Magnífica Casa em Condomínio com Lazer em Cotia",
     "price": 4990000,
     "cat": "Casas",
     "badge": "Alto Padrão",
@@ -5539,7 +5545,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "10 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Cotia, Guapimirim/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -5551,11 +5557,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Casa à venda em Guapimirim, ideal para grandes grupos, toda infaestrutura para alugar, no bairro Cotia, dentro do Condomínio Encontro das Aguas. Com 2.190 m², 10 quartos (9 suítes) e 20 vagas, une espaço e conforto em ambientes integrados. Destaques: piscina, churrasqueira, amplo jardim, quintal gramado, cozinha grande com despensa e armários, escritório, área de serviço, dependência e casas de apoio (caseiro e fundo), além de acesso para deficientes. Próxima a escolas, hospitais, shopping, vias e transporte. Agende sua visita e venha conhecer pessoalmente.\n\n#casa #guapimirim #cotia #condominioencontrodasaguas #acessoparadeficientes\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/369325",
-    "bairro": "Teresópolis"
+    "bairro": "Cotia"
   },
   {
     "sku": "369342",
-    "name": "Charmosa Casa em Condomínio com 2 Quartos (1 Suíte) e Lazer Completo na Granja Guarani",
+    "name": "Charmosa Casa em Condomínio na Granja Guarani",
     "price": 550000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5575,7 +5581,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Granja Guarani, Teresópolis - RJ",
+    "screen": "Granja Guarani, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5591,7 +5597,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "369741",
-    "name": "Excelente Casa em Condomínio com 1 Quarto (2 Suítes) e Lazer Completo em Albuquerque",
+    "name": "Excelente Casa em Condomínio com Lazer em Albuquerque",
     "price": 850000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5611,7 +5617,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5627,7 +5633,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "369760",
-    "name": "Linda Casa em Condomínio com 3 Quartos (1 Suíte) no Quebra Frascos",
+    "name": "Casa em Condomínio com 3 Quartos no Quebra Frascos",
     "price": 2150000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -5647,7 +5653,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Quebra Frascos, Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [
@@ -5663,7 +5669,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "370022",
-    "name": "Excelente Casa em Condomínio com 3 Quartos em Vargem Grande",
+    "name": "Casa em Condomínio com 3 Quartos em Vargem Grande",
     "price": 1100000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5683,7 +5689,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Vargem Grande, Teresópolis - RJ",
+    "screen": "Vargem Grande, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5699,7 +5705,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "371659",
-    "name": "Linda Casa em Condomínio com 4 Quartos (4 Suítes) e Lazer Completo na Várzea",
+    "name": "Linda Casa em Condomínio com 4 Quartos na Várzea",
     "price": 1500000,
     "cat": "Casas em Condomínio",
     "badge": "Vista Panorâmica",
@@ -5719,7 +5725,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Várzea, Teresópolis - RJ",
+    "screen": "Várzea, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5755,7 +5761,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5771,7 +5777,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "377228",
-    "name": "Linda Casa Linear em Condomínio com 3 Quartos (2 Suítes) e Lazer Completo em Albuquerque",
+    "name": "Casa Linear em Condomínio com Lazer em Albuquerque",
     "price": 1300000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -5791,7 +5797,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5807,7 +5813,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "377514",
-    "name": "Excelente Terreno em Teresópolis",
+    "name": "Excelente Terreno Pronto para Construir no Interior",
     "price": 130000,
     "cat": "Terrenos",
     "badge": "Pronto p/ Construir",
@@ -5827,7 +5833,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Construir",
     "warranty": "Habittat House Imobiliária",
     "battery": "Topografia Nobre",
-    "screen": "Teresópolis - RJ",
+    "screen": "Interior, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Condições Facilitadas / Estuda Proposta",
     "boxItems": [
@@ -5839,11 +5845,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "terreno área rural paz e tranquilidade do interior. Aceita carro como parte do pagamento\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/377514",
-    "bairro": "Teresópolis"
+    "bairro": "Interior"
   },
   {
     "sku": "377937",
-    "name": "Belíssima Residência com 1 Quarto (3 Suítes) e Garagem em Teresópolis",
+    "name": "Belíssima Residência com Suítes no Comary",
     "price": 1950000,
     "cat": "Casas",
     "badge": "Vista Panorâmica",
@@ -5863,7 +5869,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Comary, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5875,11 +5881,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Casa à venda em Teresópolis, no Comary,  Com 233 m², 1 quarto e 3 suítes, 4 vagas, oferece conforto e privacidade em uma Área cercada por verde. Destaques: churrasqueira, jardim e gramado, cozinha americana planejada, salas amplas e arejadas, porcelanato e piso laminado, box blindex, lavanderia e fechadura digital. Vista para a montanha e fácil acesso a shopping, transporte e vias principais. Rua asfaltada e clima serrano completam o cenário. Agende sua visita.\n\nAgende visita sem compromisso.\nValores sujeito a alteração sem aviso prévio, consulte disponibilidade.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/377937",
-    "bairro": "Teresópolis"
+    "bairro": "Comary"
   },
   {
     "sku": "378068",
-    "name": "Excelente Apartamento de 1 Quarto (1 Suíte) com Varanda e Vista Livre na Cascata Guarani",
+    "name": "Apartamento com Varanda e Vista na Cascata Guarani",
     "price": 530000,
     "cat": "Apartamentos",
     "badge": "Vista Panorâmica",
@@ -5899,7 +5905,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "1 Quartos",
-    "screen": "Cascata Guarani, Teresópolis - RJ",
+    "screen": "Cascata Guarani, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5935,7 +5941,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5951,7 +5957,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "380800",
-    "name": "Lindo Sítio de 250m² com Área Verde Preservada em Teresópolis",
+    "name": "Lindo Sítio de 250m² com Área Verde nos Pessegueiros",
     "price": 1350000,
     "cat": "Sítios & Rurais",
     "badge": "Destaque",
@@ -5971,7 +5977,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "4 Quartos",
-    "screen": "Teresópolis - RJ",
+    "screen": "Pessegueiros, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -5983,11 +5989,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Sítio em condomínio no bairro Pessegueiros, Teresópolis: 250 m², 4 quartos, ampla sala, cozinha funcional e 1 vaga coberta. More com segurança, tranquilidade e contato com a natureza, em ambiente organizado, com manutenção compartilhada e vizinhança acolhedora. Bairro valorizado, com fácil acesso a serviços, escolas e lazer. Qualidade de vida e praticidade em um só lugar. Agende sua visita e fale agora para conhecer todos os detalhes!\n#Chácara #Teresópolis #Pessegueiros #Condomínio #Oportunidade #Natureza #Segurança #4Quartos #Imóveis #RJ #Venda\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/380800",
-    "bairro": "Teresópolis"
+    "bairro": "Pessegueiros"
   },
   {
     "sku": "381734",
-    "name": "Charmosa Casa em Condomínio com 2 Quartos (1 Suíte) em Albuquerque",
+    "name": "Charmosa Casa em Condomínio em Albuquerque",
     "price": 360000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -6007,7 +6013,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "2 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -6023,7 +6029,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "381807",
-    "name": "Excelente Casa em Condomínio com 5 Quartos (4 Suítes) no Centro",
+    "name": "Casa em Condomínio com 5 Quartos no Centro",
     "price": 950000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -6043,7 +6049,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "5 Quartos",
-    "screen": "Centro, Teresópolis - RJ",
+    "screen": "Centro, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -6059,7 +6065,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "381827",
-    "name": "Excelente Casa em Condomínio com 3 Quartos e Espaço Gourmet na Cascata dos Amores",
+    "name": "Casa em Condomínio com Espaço Gourmet na Cascata",
     "price": 799000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -6079,7 +6085,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Cascata dos Amores, Teresópolis - RJ",
+    "screen": "Cascata dos Amores, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -6095,7 +6101,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "381829",
-    "name": "Linda Casa em Condomínio e Lazer Completo em Teresópolis",
+    "name": "Linda Casa em Condomínio com Lazer Completo",
     "price": 1700000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -6115,7 +6121,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "Excelente Posição Solar",
-    "screen": "Teresópolis - RJ",
+    "screen": "Quebra Frascos, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -6127,11 +6133,11 @@ export const allImoveisData: ProductItem[] = [
     ],
     "description": "Um refúgio encantador em meio à natureza de Teresópolis\nImagine viver ou investir em um verdadeiro refúgio cercado pelo verde, onde a tranquilidade, a natureza e o charme da serra se encontram em perfeita harmonia.\nLocalizada em uma região bucólica de Teresópolis, esta linda propriedade proporciona uma experiência única de contato com a natureza, cercada por uma exuberante flora, fauna e árvores frutíferas que tornam cada momento ainda mais especial.\n\nA casa possui um encantador quintal, cuidadosamente integrado ao ambiente natural, criando o cenário perfeito para momentos de descanso, confraternização e lazer. Entre os destaques estão a piscina, sauna, ofurô, churrasqueira e um agradável jardim, espaços que convidam a aproveitar a propriedade em todas as estações do ano.\n\nMais do que uma residência, o imóvel apresenta excelente potencial para exploração comercial e geração de renda, podendo ser destinado a diferentes modalidades de locação e experiências:\n\n🏡 Aluguel de temporada e hospedagem por plataformas como Airbnb;\n💍 Locação para casamentos e celebrações intimistas;\n🎉 Festas, aniversários e eventos particulares;\n🌿 Retiros, encontros e experiências em meio à natureza;\n📸 Produções fotográficas e eventos especiais.\nO amplo espaço externo, a beleza natural e a estrutura de lazer formam um conjunto especialmente atrativo para quem busca um imóvel que alie qualidade de vida, exclusividade e possibilidades de investimento.\nUm lugar para desacelerar, respirar ar puro, ouvir os sons da natureza e criar memórias inesquecíveis — seja para morar, desfrutar com a família ou transformar em uma fonte de renda através da locação por temporada e realização de eventos.\n\nUma propriedade especial em Teresópolis, onde a natureza é protagonista e cada detalhe convida a viver momentos extraordinários.\n\n📲 Agende sua visita com Ismael Dias • Habittat House\nWhatsApp / Telefone: (21) 96463-9999",
     "url": "https://habittathouse.com.br/imovel/381829",
-    "bairro": "Teresópolis"
+    "bairro": "Quebra Frascos"
   },
   {
     "sku": "381834",
-    "name": "Linda Casa em Condomínio com 3 Quartos (3 Suítes) e Lazer Completo no Alto",
+    "name": "Linda Casa em Condomínio com Lazer Completo no Alto",
     "price": 1500000,
     "cat": "Casas em Condomínio",
     "badge": "Segurança 24h",
@@ -6151,7 +6157,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Alto, Teresópolis - RJ",
+    "screen": "Alto, Teresópolis/RJ",
     "camera": "Lazer e Sossego",
     "chip": "Aceita Financiamento Bancário",
     "boxItems": [
@@ -6167,7 +6173,7 @@ export const allImoveisData: ProductItem[] = [
   },
   {
     "sku": "382383",
-    "name": "Mansão Espetacular de Alto Padrão com Suítes e Lazer Completo em Albuquerque",
+    "name": "Mansão de Alto Padrão com Lazer em Albuquerque",
     "price": 2200000,
     "cat": "Casas",
     "badge": "Destaque",
@@ -6187,7 +6193,7 @@ export const allImoveisData: ProductItem[] = [
     "condition": "Pronto para Morar",
     "warranty": "Habittat House Imobiliária",
     "battery": "3 Quartos",
-    "screen": "Albuquerque, Teresópolis - RJ",
+    "screen": "Albuquerque, Teresópolis/RJ",
     "camera": "Vista Panorâmica da Serra",
     "chip": "Estuda Permuta e Proposta à Vista",
     "boxItems": [

@@ -324,14 +324,14 @@ Gostaria de agendar uma visita guiada com você para conhecer o local!`;
                   <Link
                     to="/imovel/$sku"
                     params={{ sku: targetSku }}
-                    className="font-black text-sm sm:text-base text-slate-900 dark:text-white line-clamp-2 leading-snug cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition block"
+                    className="font-black text-sm sm:text-base text-slate-900 dark:text-white card-property-title cursor-pointer hover:text-blue-600 dark:hover:text-sky-400 transition block"
                     title={item.name}
                   >
                     {item.name}
                   </Link>
                   <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5 truncate">
                     <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                    <span>{item.screen || "Teresópolis/RJ"}</span>
+                    <span>{item.screen || `${item.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
                   </div>
                   <div className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-medium line-clamp-1">
                     {item.specs}

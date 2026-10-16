@@ -1151,4 +1151,27 @@ html.theme-black-piano body {
   }
 }
 
+/* ============ Padronização de 2 Linhas para Título de Imóveis ============ */
+.card-property-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.35rem;
+  max-height: 2.35rem;
+  height: 2.35rem;
+  line-height: 1.175rem;
+}
+
+@media (min-width: 640px) {
+  .card-property-title {
+    min-height: 2.75rem;
+    max-height: 2.75rem;
+    height: 2.75rem;
+    line-height: 1.375rem;
+  }
+}
+
 

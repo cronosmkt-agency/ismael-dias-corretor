@@ -388,7 +388,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
                   <span>Localização</span>
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
-                  {product.screen || "Teresópolis - RJ"}
+                  {product.screen || `${product.bairro || "Teresópolis"}, Teresópolis/RJ`}
                 </div>
               </div>
 

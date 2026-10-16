@@ -418,7 +418,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
 
             <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 whitespace-nowrap shrink-0">
               <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-              <span>{property.bairro || "Teresópolis/RJ"}</span>
+              <span>{property.screen || `${property.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
             </span>
 
             <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 whitespace-nowrap shrink-0">
@@ -560,7 +560,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               <div className="flex items-center justify-between gap-1.5 min-w-0">
                 <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1 min-w-0 shrink">
                   <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
-                  <span className="truncate">{property.bairro || "Teresópolis/RJ"}</span>
+                  <span className="truncate">{property.screen || `${property.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
                 </span>
                 <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
                   Cód. #{property.sku || sku}
@@ -869,9 +869,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                     <div>
                       <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
                         <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
-                        <span>{rel.bairro || "Teresópolis"}</span>
+                        <span>{rel.screen || `${rel.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
                       </span>
-                      <h4 className="font-bold text-xs text-slate-900 dark:text-white line-clamp-2 mt-1 group-hover:text-blue-500 transition-colors">
+                      <h4 className="font-bold text-xs card-property-title text-slate-900 dark:text-white mt-1 group-hover:text-blue-500 transition-colors">
                         {rel.name}
                       </h4>
                     </div>
