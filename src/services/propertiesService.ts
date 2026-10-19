@@ -5,7 +5,7 @@
 
 import { allImoveisData } from "@/data/imoveisData";
 import { lancamentosProducts } from "@/data/storeData";
-import type { ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/types/imovel";
 import {
   isSupabaseConfigured,
   fetchPropertiesFromSupabase,

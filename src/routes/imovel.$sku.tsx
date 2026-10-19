@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Home,
   MapPin,
@@ -23,8 +23,9 @@ import {
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
-import type { ProductItem } from "@/components/ProductDetailModal";
+import { ThemeSelectorModal } from "@/components/ThemeSelectorModal";
+import { useHabittatTheme } from "@/hooks/useHabittatTheme";
+import type { ProductItem } from "@/types/imovel";
 import {
   getPropertyBySku,
   getRelatedProperties,
@@ -119,7 +120,7 @@ export const Route = createFileRoute("/imovel/$sku")({
 
 function PropertyDetailPage() {
   const { sku } = Route.useParams();
-  const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
+  const { currentTheme, setCurrentTheme, toggleTheme } = useHabittatTheme();
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -127,37 +128,6 @@ function PropertyDetailPage() {
   const siteSettings: SiteSettings = useMemo(() => getSiteSettings(), []);
   const property = useMemo(() => getPropertyBySku(sku), [sku]);
   const relatedProperties = useMemo(() => getRelatedProperties(sku, 4), [sku]);
-
-  // Tema inicial do usuário
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("habittat_theme") as ThemeMode | null;
-      if (saved === "black-piano" || saved === "white") {
-        setCurrentTheme(saved);
-        const root = document.documentElement;
-        root.classList.remove("theme-white", "theme-black-piano", "dark");
-        if (saved === "black-piano") {
-          root.classList.add("theme-black-piano", "dark");
-        } else {
-          root.classList.add("theme-white");
-        }
-      }
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const next: ThemeMode = currentTheme === "black-piano" ? "white" : "black-piano";
-    setCurrentTheme(next);
-    const root = document.documentElement;
-    root.classList.remove("theme-white", "theme-black-piano", "dark");
-    if (next === "black-piano") {
-      root.classList.add("theme-black-piano", "dark");
-      localStorage.setItem("habittat_theme", "black-piano");
-    } else {
-      root.classList.add("theme-white");
-      localStorage.setItem("habittat_theme", "white");
-    }
-  };
 
   // SEO dinâmico no cliente e analytics
   useEffect(() => {
@@ -232,7 +202,7 @@ function PropertyDetailPage() {
   const currentImg = images[activeImgIndex] || property.img;
   const canonicalUrl = getPropertyCanonicalUrl(property.sku || sku);
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = useCallback(() => {
     trackWhatsAppClick(
       property.sku || sku,
       property.name,
@@ -261,9 +231,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
     const targetNumber = siteSettings.whatsappNumber || WHATSAPP_NUMBER;
     const url = `https://wa.me/${targetNumber.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
-  };
+  }, [property, sku, isSold, canonicalUrl, siteSettings.whatsappNumber]);
 
-  const handleShare = async () => {
+  const handleShare = useCallback(async () => {
     if (navigator.share) {
       try {
         await navigator.share({
@@ -284,15 +254,15 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
     } catch (_) {
       toast.info(`Link do imóvel: ${canonicalUrl}`);
     }
-  };
+  }, [property.name, property.price, canonicalUrl]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     if (typeof window !== "undefined" && window.history.length > 1) {
       window.history.back();
     } else {
       window.location.href = "/loja";
     }
-  };
+  }, []);
 
   const featuresList = property.features && property.features.length > 0
     ? property.features

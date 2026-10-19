@@ -1,4 +1,4 @@
-import type { ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/types/imovel";
 import { allImoveisData } from "@/data/imoveisData";
 import {
   Building2,

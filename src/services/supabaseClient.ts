@@ -3,7 +3,7 @@
  * Utiliza a API PostgREST nativa do Supabase (Zero dependências extras, ultra-rápido, compatível com Vercel).
  */
 
-import type { ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/types/imovel";
 import { getSiteSettings } from "./settingsService";
 
 const SUPABASE_STORAGE_URL_KEY = "ismael_supabase_url_custom";

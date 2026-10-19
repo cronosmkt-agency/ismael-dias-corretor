@@ -14,8 +14,9 @@ import {
   Home,
   DollarSign,
 } from "lucide-react";
-import { ThemeSelectorModal, type ThemeMode } from "@/components/ThemeSelectorModal";
-import type { ProductItem } from "@/components/ProductDetailModal";
+import { ThemeSelectorModal } from "@/components/ThemeSelectorModal";
+import { useHabittatTheme } from "@/hooks/useHabittatTheme";
+import type { ProductItem } from "@/types/imovel";
 import {
   defaultProducts,
   fmt,
@@ -54,7 +55,7 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://ismael-dias-corretor.vercel.app/" }],
   }),
 
   component: BrandStore,
@@ -71,29 +72,15 @@ function BackgroundOrbs() {
   );
 }
 
-/* ---------- 3D Floating Tilt House Image (Desktop Only) ---------- */
+/* ---------- Floating House Image (Desktop Optimized) ---------- */
 function TiltHouse() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative flex justify-center items-center"
-      style={{ transformStyle: "preserve-3d" }}
-    >
+    <div className="relative flex justify-center items-center">
       <div
-        ref={glowRef}
         aria-hidden="true"
+        className="pointer-events-none absolute w-[360px] h-[360px] rounded-full blur-[50px] z-0"
         style={{
-          position: "absolute",
-          width: "360px",
-          height: "360px",
-          borderRadius: "50%",
           background: "radial-gradient(circle at 50% 50%, rgba(2,132,199,0.22), transparent 65%)",
-          filter: "blur(50px)",
-          pointerEvents: "none",
-          zIndex: 0,
         }}
       />
       <img
@@ -785,49 +772,18 @@ function ReviewsAndLocation() {
    MAIN COMPONENT: BrandStore (Home Page)
    ========================================================================= */
 function BrandStore() {
-  const [currentTheme, setCurrentTheme] = useState<ThemeMode>("white");
+  const { currentTheme, setCurrentTheme, toggleTheme } = useHabittatTheme();
   const [productList, setProductList] = useState<ProductItem[]>(defaultProducts);
 
-  // Sync theme
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("habittat_theme") as ThemeMode | null;
-      if (saved === "black-piano" || saved === "white") {
-        setCurrentTheme(saved);
-        const root = document.documentElement;
-        root.classList.remove("theme-white", "theme-black-piano", "dark");
-        if (saved === "black-piano") {
-          root.classList.add("theme-black-piano", "dark");
-        } else {
-          root.classList.add("theme-white");
-        }
-      }
-      trackPageView("/");
+    trackPageView("/");
+    // Defer heavy initial property seeding so initial paint is instantaneous
+    const timer = setTimeout(() => {
       seedInitialAnalyticsIfEmpty(getAllProperties());
+    }, 400);
 
-      const onThemeChanged = (e: any) => {
-        if (e.detail?.theme) {
-          setCurrentTheme(e.detail.theme);
-        }
-      };
-      window.addEventListener("theme-changed", onThemeChanged);
-      return () => window.removeEventListener("theme-changed", onThemeChanged);
-    }
+    return () => clearTimeout(timer);
   }, []);
-
-  const toggleTheme = () => {
-    const next: ThemeMode = currentTheme === "black-piano" ? "white" : "black-piano";
-    setCurrentTheme(next);
-    const root = document.documentElement;
-    root.classList.remove("theme-white", "theme-black-piano", "dark");
-    if (next === "black-piano") {
-      root.classList.add("theme-black-piano", "dark");
-    } else {
-      root.classList.add("theme-white");
-    }
-    localStorage.setItem("habittat_theme", next);
-    window.dispatchEvent(new CustomEvent("theme-changed", { detail: { theme: next } }));
-  };
 
   return (
     <div className="relative min-h-screen overflow-x-hidden text-slate-900 dark:text-white transition-colors duration-300">

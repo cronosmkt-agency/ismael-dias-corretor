@@ -48,30 +48,37 @@ function getTodayString(): string {
 }
 
 /**
- * Registra a visualização de uma página
+ * Registra a visualização de uma página de forma assíncrona não-bloqueante
  */
-export function trackPageView(path: string): void {
+export function trackPageView(
+  path: string,
+  _propertyName?: string,
+  _sku?: string,
+  _bairro?: string
+): void {
   if (typeof window === "undefined") return;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY_PAGEVIEWS);
-    const views: PageViewEvent[] = raw ? JSON.parse(raw) : [];
+  queueMicrotask(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY_PAGEVIEWS);
+      const views: PageViewEvent[] = raw ? JSON.parse(raw) : [];
 
-    views.push({
-      path,
-      timestamp: Date.now(),
-      date: getTodayString(),
-    });
+      views.push({
+        path,
+        timestamp: Date.now(),
+        date: getTodayString(),
+      });
 
-    // Mantém no máximo os últimos 5.000 eventos para não estourar storage
-    const trimmed = views.slice(-5000);
-    localStorage.setItem(STORAGE_KEY_PAGEVIEWS, JSON.stringify(trimmed));
-  } catch (err) {
-    console.error("Erro ao registrar page view:", err);
-  }
+      // Mantém no máximo os últimos 5.000 eventos para não estourar storage
+      const trimmed = views.slice(-5000);
+      localStorage.setItem(STORAGE_KEY_PAGEVIEWS, JSON.stringify(trimmed));
+    } catch (err) {
+      console.error("Erro ao registrar page view:", err);
+    }
+  });
 }
 
 /**
- * Registra um clique no botão de WhatsApp de um imóvel específico
+ * Registra um clique no botão de WhatsApp de um imóvel específico de forma assíncrona não-bloqueante
  */
 export function trackWhatsAppClick(
   sku: string,
@@ -80,24 +87,26 @@ export function trackWhatsAppClick(
   price: number = 0
 ): void {
   if (typeof window === "undefined") return;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY_CLICKS);
-    const clicks: WhatsAppClickEvent[] = raw ? JSON.parse(raw) : [];
+  queueMicrotask(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY_CLICKS);
+      const clicks: WhatsAppClickEvent[] = raw ? JSON.parse(raw) : [];
 
-    clicks.push({
-      sku: sku || "sem-sku",
-      propertyName: propertyName || "Imóvel",
-      bairro: bairro || "Teresópolis",
-      price: price || 0,
-      timestamp: Date.now(),
-      date: getTodayString(),
-    });
+      clicks.push({
+        sku: sku || "sem-sku",
+        propertyName: propertyName || "Imóvel",
+        bairro: bairro || "Teresópolis",
+        price: price || 0,
+        timestamp: Date.now(),
+        date: getTodayString(),
+      });
 
-    const trimmed = clicks.slice(-5000);
-    localStorage.setItem(STORAGE_KEY_CLICKS, JSON.stringify(trimmed));
-  } catch (err) {
-    console.error("Erro ao registrar clique no WhatsApp:", err);
-  }
+      const trimmed = clicks.slice(-5000);
+      localStorage.setItem(STORAGE_KEY_CLICKS, JSON.stringify(trimmed));
+    } catch (err) {
+      console.error("Erro ao registrar clique no WhatsApp:", err);
+    }
+  });
 }
 
 /**

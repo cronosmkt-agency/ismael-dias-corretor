@@ -1,4 +1,4 @@
-import type { ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/types/imovel";
 
 export const ALL_BAIRROS = [
   "Todos",

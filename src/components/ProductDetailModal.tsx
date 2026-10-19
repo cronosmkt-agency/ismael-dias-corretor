@@ -23,32 +23,8 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/storeData";
 import { trackWhatsAppClick } from "@/services/analyticsService";
 
-export interface ProductItem {
-  name: string;
-  price: number;
-  cat: string;
-  badge: string;
-  img: string;
-  images?: string[];
-  specs?: string;
-  storage?: string;
-  condition?: string;
-  warranty?: string;
-  battery?: string;
-  screen?: string;
-  camera?: string;
-  chip?: string;
-  boxItems?: string[];
-  features?: string[];
-  quantity?: number;
-  imeis?: string[];
-  sku?: string;
-  description?: string;
-  bairro?: string;
-  url?: string;
-  instagram?: string;
-  instagramUrl?: string;
-}
+import type { ProductItem } from "@/types/imovel";
+export type { ProductItem };
 
 interface ProductDetailModalProps {
   product: ProductItem | null;

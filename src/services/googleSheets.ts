@@ -1,5 +1,5 @@
 // Legacy Google Sheets integration stub (cleaned up to prevent bundling unused assets)
-import type { ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/types/imovel";
 
 export const DEVICE_IMAGES: Record<string, string> = {};
 export const STORAGE_SHEET_URL_KEY = "custom_google_sheet_csv_url";

@@ -67,7 +67,7 @@ import {
 } from "recharts";
 import { toast } from "sonner";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import type { ProductItem } from "@/components/ProductDetailModal";
+import type { ProductItem } from "@/types/imovel";
 import {
   getAllProperties,
   updateProperty,
