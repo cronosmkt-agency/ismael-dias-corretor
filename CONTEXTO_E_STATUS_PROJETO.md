@@ -314,6 +314,19 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
       * SKUs `#307902` e `#351652`: títulos e localizações perfeitamente calibrados em 2 linhas.
     * **Garantia Geométrica com Classe `.card-property-title`:** Criada classe utilitária no CSS com `-webkit-line-clamp: 2`, `height: 2.35rem` no mobile e `2.75rem` no desktop, travando matematicamente a altura dos títulos para que nunca estoure em 3 linhas nem encolha em 1 linha, mantendo alinhamento perfeito de localização, preço e botões em qualquer tela.
     * **Deploy Contínuo:** Commit `d24bc7d6c95d10b33bbd1ced87b0de046a26b832` compilado com status **SUCCESS** e online na Vercel.
+22. **Execução Completa da Auditoria de Performance e Otimização Global do Site:**
+    * **Desacoplamento de `ProductItem` para `src/types/imovel.ts`:** Criado módulo de tipos dedicado, removendo completamente a importação do componente `ProductDetailModal.tsx` (29.8 KB) do bundle inicial de todas as páginas e rotas.
+    * **Criação do Hook Centralizado `useHabittatTheme`:** Eliminadas mais de 100 linhas de código duplicado de manipulação de tema (`useState`, `useEffect`, `toggleTheme`) que estavam replicadas em `/loja`, `/lancamentos`, `/imovel/:sku` e `/`. O hook gerencia sincronização com DOM (`theme-white`, `theme-black-piano`, `dark`), `localStorage` e eventos customizados entre abas.
+    * **Componente Memoizado `PropertyCard` (`React.memo`):** Extraído o cartão de imóvel em `/loja` e `/lancamentos` para componente memoizado com `React.memo`. Ao digitar no campo de busca ou alterar filtros, apenas os cartões modificados são avaliados, eliminando o custo de reconstruir 16+ cards a cada tecla.
+    * **Prevenção de CLS (Cumulative Layout Shift):** Definidas dimensões explícitas `width={400}` e `height={300}` nas imagens dos cartões de imóveis para estabilidade visual no carregamento mobile.
+    * **Throttling com `requestAnimationFrame` no `SiteNavbar.tsx`:** O listener de scroll da barra de navegação agora utiliza flag de ticking alinhada ao ciclo de renderização da GPU, eliminando dezenas de `setState` por segundo durante rolagem rápida.
+    * **Execução Não-Bloqueante de Analytics (`queueMicrotask`):** As funções `trackPageView` e `trackWhatsAppClick` agora rodam via microtasks assíncronas, impedindo que leitura e escrita de `localStorage` (`JSON.parse` e `JSON.stringify`) causem micro-travamentos na thread da interface.
+    * **Callbacks Estáveis com `useCallback`:** Funções de compartilhamento, voltar e disparar mensagem de WhatsApp protegidas com `useCallback` em todas as rotas.
+    * **Inicialização Não-Bloqueante da Homepage (`index.tsx`):** O seed de dados de demonstração de analytics foi diferido com `setTimeout`, permitindo que o First Contentful Paint (FCP) da página inicial seja imediato.
+    * **Remoção de Dead Code em `TiltHouse`:** Limpeza de referências não utilizadas e otimização visual sem peso computacional.
+    * **Deduplicação de Canonical URL para SEO:** Removido o `<link rel="canonical">` genérico do `__root.tsx`, permitindo que cada página (`/`, `/loja`, `/lancamentos`, `/imovel/:sku`) emita sua URL canônica estrita sem duplicatas nos motores de busca.
+    * **Divisão de Chunks no Rollup (`vite.config.ts`):** Configurado `manualChunks` para segregar pacotes de gráficos e analytics pesados (`vendor-recharts`), reduzindo o tamanho do bundle transferido para visitantes das páginas públicas.
+    * **Deploy Contínuo:** Commit `bec2acb5835945b88949912bfa8aef44ab2ec56f` compilado com status **SUCCESS** e online na Vercel.
 
 ---
 
