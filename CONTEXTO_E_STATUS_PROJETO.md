@@ -327,6 +327,11 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
     * **Deduplicação de Canonical URL para SEO:** Removido o `<link rel="canonical">` genérico do `__root.tsx`, permitindo que cada página (`/`, `/loja`, `/lancamentos`, `/imovel/:sku`) emita sua URL canônica estrita sem duplicatas nos motores de busca.
     * **Divisão de Chunks no Rollup (`vite.config.ts`):** Configurado `manualChunks` para segregar pacotes de gráficos e analytics pesados (`vendor-recharts`), reduzindo o tamanho do bundle transferido para visitantes das páginas públicas.
     * **Deploy Contínuo:** Commit `bec2acb5835945b88949912bfa8aef44ab2ec56f` compilado com status **SUCCESS** e online na Vercel.
+23. **Sincronização com Novos Imóveis da Habittat House (Outubro 2026):**
+    * **Varredura e Mineração Completa:** Realizada verificação automatizada no site oficial da Habittat House (`habittathouse.com.br`) cruzando sitemap XML e listagem dinâmica.
+    * **15 Novos Imóveis Catalogados:** Base de imóveis expandida de 175 para **190 imóveis reais**, com fotos de alta resolução do CloudFront, descrições, metragens, coordenadas e valores.
+    * **Padronização Visual:** Títulos calibrados em 2 linhas, localizações estritas no formato `Bairro, Cidade/UF`, badges de oportunidade e contatos atualizados exclusivamente para Ismael Dias (`(21) 96463-9999`).
+    * **Materiais de Anúncio:** Geradas automaticamente 15 novas pastas em `Imoveis/` com modelos `anuncio_facebook.md` prontos para cópia e colagem no Facebook Marketplace.
 
 ---
 

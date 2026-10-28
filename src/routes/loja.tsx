@@ -126,6 +126,9 @@ const SHORT_BAIRRO_MAP: Record<string, string> = {
   "Taumaturgo": "Taumaturgo",
   "Venda Nova": "Venda Nova",
   "Vila Muqui": "Vila Muqui",
+  "Prata dos Aredes": "P. Aredes",
+  "Pessegueiros": "Pessegueiros",
+  "Caneca Fina": "Caneca Fina",
 };
 
 function formatShortBairro(name: string): string {
