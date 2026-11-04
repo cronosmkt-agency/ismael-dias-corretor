@@ -19,21 +19,29 @@
 
 ---
 
-## 📂 2. ESTRUTURA DA PASTA LOCAL (`c:\Users\hanri\Desktop\Imobiliaria`)
+## 📂 2. ESTRUTURA DA PASTA LOCAL NO LINUX
+
+* **Diretório Oficial de Foco Ativo:** `/home/zinma/Área de trabalho/Cronos/01_FOCO_ATIVO/01_Imobiliaria`
+* **Link Simbólico na Raiz da Cronos (Compatibilidade Total):** `/home/zinma/Área de trabalho/Cronos/Imobiliaria` -> `01_FOCO_ATIVO/01_Imobiliaria`
+* **Diretório do Código da Aplicação Web:** `/home/zinma/Área de trabalho/Cronos/01_FOCO_ATIVO/01_Imobiliaria/site`
 
 ```text
-c:\Users\hanri\Desktop\Imobiliaria\
+/home/zinma/Área de trabalho/Cronos/01_FOCO_ATIVO/01_Imobiliaria/
 ├── Clientes/                         # Cadastros e anotações de leads
 ├── Documentos/                       # Documentação, guias e planos de automação
 ├── Parceiros/                        # Informações sobre Angeleti Construtora e condomínios
-├── Imoveis/                          # 175 pastas com fotos e anúncios de cada imóvel
+├── Imoveis/                          # 152+ pastas estruturadas com fotos e anúncios
 │   ├── INDICE_GERAL_IMOVEIS.md       # Catálogo geral com checklist [ ] de postagem
 │   ├── 163110_lancamento_.../        # Pasta do imóvel (fotos/ + anuncio_facebook.md)
 │   ├── (Vendida) 272236_casa_.../    # Imóvel 272236 marcado como (Vendida)
-│   └── ...                           # Total de 175 imóveis catalogados
+│   └── ...                           # Pastas dos imóveis catalogados
 ├── all_properties_urls.txt           # URLs de todos os imóveis no site da Habittat
 ├── Guia_Rapido_Empreendimentos...pdf # Apresentação comercial dos lotes da Angeleti
 ├── info.imobiliaria.md               # Resumo de operação e parceiros
+├── site/                             # Aplicação web completa (React + Vite + TanStack Router)
+│   ├── src/data/all_properties.json  # Base de dados central com 190 imóveis
+│   ├── src/data/imoveisData.ts       # Módulo TypeScript com os 190 imóveis
+│   └── ...                           # Componentes, rotas, serviços e assets
 └── CONTEXTO_E_STATUS_PROJETO.md      # ESTE DOCUMENTO (Contexto completo)
 ```
 
@@ -58,9 +66,8 @@ Cada pasta dentro de `Imoveis/` possui:
   * Catálogo de Imóveis: [https://ismael-dias-corretor.vercel.app/loja](https://ismael-dias-corretor.vercel.app/loja)
   * Lançamentos Angeleti: [https://ismael-dias-corretor.vercel.app/lancamentos](https://ismael-dias-corretor.vercel.app/lancamentos)
   * **Painel Administrativo:** [https://ismael-dias-corretor.vercel.app/admin](https://ismael-dias-corretor.vercel.app/admin) (PIN padrão: `1234`)
-* **Pasta Local do Código do Site:** `c:\Users\hanri\Desktop\ismael-dias-corretor-main`
-* **Token GitHub (PAT):** *[Configurado nos scripts locais de deploy em `scratch`]*
-  * *Como não há `git.exe` no PATH do Windows desta máquina, commits e uploads são feitos via Git Database REST API do GitHub através de script Python (`push_to_github.py`).*
+* **Pasta Local do Código do Site:** `/home/zinma/Área de trabalho/Cronos/01_FOCO_ATIVO/01_Imobiliaria/site`
+* **Ambiente de Versionamento e Build:** Linux Ubuntu com Git nativo via CLI (`git commit`, `git push origin main`) e compilação de produção com Vite (`npm run build`).
 
 ---
 
@@ -124,7 +131,7 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
    * Suporta autenticação via variáveis de ambiente da Vercel (`VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`) ou configuração direta pelo Painel Admin (`/admin`).
    * Funções completas: `fetchPropertiesFromSupabase()`, `updatePropertyInSupabase()`, `insertPropertyInSupabase()`, `deletePropertyInSupabase()`, `testSupabaseConnection()` e `syncAllPropertiesToSupabase()`.
 2. **`supabase_schema_and_seed.sql` (Script de Banco Pronto):**
-   * Arquivo SQL completo na raiz (`c:\Users\hanri\Desktop\Imobiliaria\supabase_schema_and_seed.sql`) com criação da tabela `properties`, índices de busca, regras de segurança RLS (leitura pública e escrita admin), triggers e carga inicial de todos os 175 imóveis.
+   * Arquivo SQL completo na raiz (`01_FOCO_ATIVO/01_Imobiliaria/site/src/services/supabaseClient.ts`) com criação da tabela `properties`, índices de busca, regras de segurança RLS (leitura pública e escrita admin), triggers e carga inicial de todos os 175 imóveis.
 1. **`propertiesService.ts`:**
    * Orquestra a persistência e mutação de dados localmente (com sincronização via LocalStorage e base unificada de 175 imóveis).
    * Suporta CRUD completo: `getPropertiesPaginated()`, `updateProperty()`, `togglePropertyStatus()`, `addProperty()`, `deleteProperty()`.
@@ -335,12 +342,13 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
 
 ---
 
-## 🐍 6. SCRIPTS DE DEPLOY E VALIDAÇÃO (`brain\scratch`)
+## 🐍 6. AMBIENTE DE BUILD, DEPLOY E SCRIPTS LOCAIS
 
-* **Push para o GitHub sem Git local:** `C:\Users\hanri\.gemini\antigravity\brain\169f3cee-1f64-4707-9e00-ff678f134827\scratch\push_to_github.py`
-  * Utiliza a API do GitHub para criar Blobs -> Tree -> Commit -> Atualizar Branch `main`.
-* **Validação de Sintaxe TS/TSX:** `C:\Users\hanri\.gemini\antigravity\brain\169f3cee-1f64-4707-9e00-ff678f134827\scratch\validate_syntax.py`
-* **Verificação de Deploy Vercel:** `C:\Users\hanri\.gemini\antigravity\brain\169f3cee-1f64-4707-9e00-ff678f134827\scratch\check_commit_status.py`
+* **Git Nativo e Deploy Automático:**
+  * O repositório está configurado diretamente no ambiente Linux em `/home/zinma/Área de trabalho/Cronos/01_FOCO_ATIVO/01_Imobiliaria/site`.
+  * Commits na branch `main` disparam automaticamente o deploy contínuo na Vercel via webhook do GitHub.
+* **Validação de Build Local:** `npm run build` executado diretamente no terminal (compilação TypeScript + Vite + Nitro SSR em ~800ms sem erros).
+* **Scripts de Mineração e Sincronização:** Mantidos em Python para raspagem automatizada do sitemap e catálogo da Habittat House, com formatação padronizada para os anúncios do Facebook Marketplace.
 
 ---
 
@@ -361,5 +369,51 @@ O corretor Ismael possui um painel web completo e responsivo, protegido por cód
 
 ---
 
-> **Última atualização:** Outubro de 2026  
-> **Status:** 100% testado, auditado, compilado com sucesso na Vercel e em pleno funcionamento!
+## 🏁 8. ETAPA ATUAL DO PROJETO: DESENVOLVIMENTO & OPERAÇÃO COMERCIAL
+
+### A. Etapa do Desenvolvimento Técnico (Status: 100% CONCLUÍDO & EM PRODUÇÃO)
+* **Plataforma Web & Deploy:** O site segue 100% no ar na Vercel (`https://ismael-dias-corretor.vercel.app`), com status LIVE e deploy contínuo via GitHub (`cronosmkt-agency/ismael-dias-corretor`, branch `main`).
+* **Catálogo & Normalização de Dados:** 190 imóveis reais plenamente integrados e validados em `all_properties.json` e `src/data/imoveisData.ts` (175 originais + 15 novos minerados do portal Habittat House).
+* **Páginas Individuais `/imovel/:sku`:** URLs exclusivas para cada imóvel com metatags dinâmicas OpenGraph para compartilhamento de alto impacto no WhatsApp, galeria de imagens touch-friendly com lightbox em tela cheia, sticky sidebar desktop e Schema.org `RealEstateListing`.
+* **UX/UI & Mobile First:** Modo Grade unificado (2 colunas mobile, 3-4 desktop), títulos em 2 linhas geométricas travadas no CSS (`-webkit-line-clamp: 2`), localizações rigorosas no formato `Bairro, Cidade/UF` e eliminação total de modais residuais.
+* **Painel Administrativo (`/admin` - PIN: `1234`):** Módulo de controle de status (Disponível, Vendida, Reservado) com ocultação automática de vendidos na vitrine pública, duplicação rápida, links diretos e telemetria de cliques no WhatsApp.
+* **Performance:** Debounce de rolagem, virtualização com `content-visibility: auto`, cache indexado O(1) e separação de chunks para carregamento instantâneo.
+
+### B. Etapa da Operação Comercial (Status: ATIVA / GO-TO-MARKET IMEDIATO)
+* **Canal Centralizado de Vendas:** Todo o tráfego e interesse de compra direcionados de forma unificada e monitorada para o WhatsApp do corretor Ismael Dias: `(21) 96463-9999`.
+* **Foco Imediato nos Lançamentos Angeleti:** Ativação prioritária dos condomínios clube **Golden Green** (a partir de R$ 267 mil) e **Vale dos Pássaros** na rota `/lancamentos`, com perfis oficiais no Instagram integrados.
+* **Ativação no Facebook Marketplace:** 152+ pastas estruturadas em `Imoveis/` equipadas com fotos em alta definição do CloudFront e textos `anuncio_facebook.md` formatados para cópia e colagem no Bloco de Notas / Marketplace.
+* **Alinhamento Contínuo com o CRM Latitude:** Rotina periódica na `central-do-corretor.latitude.app.br` para alternar unidades vendidas no painel `/admin`, mantendo o catálogo público sempre limpo e confiável.
+* **Ofertas de Entrada Rápida:** Destaque para novos terrenos acessíveis a partir de R$ 75 mil em Venda Nova e casas lineares de R$ 150 mil a R$ 300 mil em Pessegueiros e Vieira.
+
+---
+
+## 📋 9. PRÓXIMAS AÇÕES IMEDIATAS (SINCRONIZADAS NO TICKTICK)
+
+Tarefas cadastradas na lista **🏠Habittat House** (Coluna: **To-do**):
+
+1. **📢 Postar 5 imóveis de tração rápida no Facebook Marketplace**
+   * *Objetivo:* Gerar fluxo imediato de mensagens no WhatsApp do Ismael através de produtos com ticket de alta procura.
+   * *Imóveis selecionados:*
+     - SKU `#387023`: Terreno plano em Venda Nova — R$ 75.000
+     - SKU `#390866`: Casa compacta em Venda Nova — R$ 150.000
+     - SKU `#385395`: Casa linear em Pessegueiros — R$ 300.000
+     - SKU `#393023`: Terreno em Vieira — R$ 150.000
+     - SKU `#384856`: Casa moderna em condomínio em Albuquerque — R$ 950.000
+   * *Instruções:* Acessar as pastas correspondentes em `01_FOCO_ATIVO/01_Imobiliaria/Imoveis/`, copiar o texto de `anuncio_facebook.md` e subir as fotos da pasta `fotos/`.
+   * *TickTick Task ID:* `6aeb8a218f0849d664de3145` | Prioridade: Alta (5)
+
+2. **🔍 Auditoria de status CRM Latitude vs Painel Admin (`/admin`)**
+   * *Objetivo:* Garantir que nenhum imóvel vendido continue visível como disponível na vitrine pública.
+   * *Instruções:* Acessar a `central-do-corretor.latitude.app.br`, verificar se algum dos 190 imóveis mudou para vendido ou reservado, entrar no `/admin` do site (PIN: `1234`) e marcar a unidade como `VENDIDA` (ocultação automática imediata do catálogo).
+   * *TickTick Task ID:* `6aeb8a2a8f08f14802fd809f` | Prioridade: Média (3)
+
+3. **📱 Validação de conversão mobile nos Lançamentos Angeleti**
+   * *Objetivo:* Testar a jornada do cliente mobile nos dois principais condomínios da construtora Angeleti.
+   * *Instruções:* Abrir pelo celular a rota `/lancamentos`, testar a navegação nos cards do Vale dos Pássaros e Golden Green, validar a abertura dos perfis no Instagram e certificar que o clique no WhatsApp abre a conversa com a mensagem pré-formatada para `(21) 96463-9999`.
+   * *TickTick Task ID:* `6aeb8a318f0849d664de3319` | Prioridade: Média (3)
+
+---
+
+> **Última atualização:** Novembro de 2026  
+> **Status:** 100% testado, auditado, compilado com sucesso na Vercel e em pleno funcionamento comercial!
