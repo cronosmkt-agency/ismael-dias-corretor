@@ -102,13 +102,18 @@ export function getAllProperties(): ProductItem[] {
     if (rawSupabaseCache && isSupabaseConfigured()) {
       const parsed = JSON.parse(rawSupabaseCache);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        cachedSupabaseList = parsed;
-        return parsed;
+        // Se o cache tiver menos imóveis que a base estática atual (ex: 175 vs 190), descarta o cache defasado
+        if (parsed.length >= allImoveisData.length) {
+          cachedSupabaseList = parsed;
+          return parsed;
+        } else {
+          localStorage.removeItem(STORAGE_KEY_SUPABASE_CACHE);
+        }
       }
     }
   } catch (_) {}
 
-  // 4. Fallback: Base unificada local de 175 imóveis com overrides do admin
+  // 4. Fallback: Base unificada local de imóveis com overrides do admin
   try {
     const rawOverrides = localStorage.getItem(STORAGE_KEY_OVERRIDES);
     const overrides: Record<string, Partial<ProductItem>> = rawOverrides
@@ -472,6 +477,8 @@ export function resetPropertiesToDefault(): void {
   localStorage.removeItem(STORAGE_KEY_OVERRIDES);
   localStorage.removeItem(STORAGE_KEY_ADDED);
   localStorage.removeItem(STORAGE_KEY_DELETED);
+  localStorage.removeItem(STORAGE_KEY_SUPABASE_CACHE);
+  invalidatePropertiesCache();
   window.dispatchEvent(new CustomEvent("properties-data-changed", { detail: { reset: true } }));
 }
 

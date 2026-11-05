@@ -568,7 +568,7 @@ export function AdminDashboardPage() {
       settingsForm.supabaseUrl,
       settingsForm.supabaseAnonKey
     );
-    toast.info("Iniciando envio dos 175 imóveis para o PostgreSQL na nuvem...");
+    toast.info(`Iniciando envio dos ${properties.length} imóveis para o PostgreSQL na nuvem...`);
     const res = await syncAllPropertiesToSupabase(properties);
     setSupabaseSyncing(false);
     if (res.success) {
@@ -606,7 +606,7 @@ export function AdminDashboardPage() {
   const handleResetCatalog = () => {
     if (
       window.confirm(
-        "Atenção: Isso restaurará todos os 175 imóveis originais da Habittat House e descartará edições manuais. Continuar?"
+        "Atenção: Isso restaurará todos os imóveis originais da Habittat House e descartará edições manuais. Continuar?"
       )
     ) {
       resetPropertiesToDefault();
@@ -1980,7 +1980,7 @@ export function AdminDashboardPage() {
                       className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer disabled:opacity-50 shadow-md shadow-emerald-600/20"
                     >
                       <Cloud className={`w-3.5 h-3.5 ${supabaseSyncing ? "animate-bounce" : ""}`} />
-                      <span>{supabaseSyncing ? "Enviando Imóveis..." : "Enviar 175 Imóveis para Nuvem"}</span>
+                      <span>{supabaseSyncing ? "Enviando Imóveis..." : `Enviar ${properties.length} Imóveis para Nuvem`}</span>
                     </button>
                   </div>
                 </div>
@@ -2049,7 +2049,7 @@ export function AdminDashboardPage() {
                     <span>Restaurar Catálogo Original da Habittat</span>
                   </h4>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Restaura os 175 imóveis originais minerados do site da Habittat House
+                    Restaura todos os imóveis originais minerados do site da Habittat House
                   </p>
                 </div>
                 <button

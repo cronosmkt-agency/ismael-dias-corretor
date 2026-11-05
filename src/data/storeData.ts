@@ -202,7 +202,7 @@ export const lancamentosProducts: ProductItem[] = [
 ];
 
 /* -------------------------------------------------------------
-   PRODUTOS — CARTEIRA COMPLETA DE IMÓVEIS (175 Imóveis Reais)
+   PRODUTOS — CARTEIRA COMPLETA DE IMÓVEIS (190 Imóveis Reais)
 ------------------------------------------------------------- */
 export const imoveisAvulsosProducts: ProductItem[] = allImoveisData;
 
