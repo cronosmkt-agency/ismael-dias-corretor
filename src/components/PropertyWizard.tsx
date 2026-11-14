@@ -17,6 +17,7 @@ import {
   Compass,
   SlidersHorizontal,
   ChevronRight,
+  CheckCircle2,
 } from "lucide-react";
 import type { ProductItem } from "@/types/imovel";
 import { fmt, WHATSAPP_NUMBER } from "@/data/storeData";
@@ -49,6 +50,8 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
     estimatedPrice: "",
     details: "",
   });
+
+  const [selectedPropertyDetail, setSelectedPropertyDetail] = useState<ScoredProperty | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -86,6 +89,7 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
       paymentMethod: undefined,
     });
     setStep(1);
+    setSelectedPropertyDetail(null);
   };
 
   const handleContactWhatsApp = (prop: ProductItem, highlight: string) => {
@@ -695,99 +699,209 @@ Podemos conversar sobre a avaliação comercial?`;
            ========================================================================= */}
         {step === 8 && (
           <div className="flex-1 flex flex-col justify-between animate-in fade-in duration-300 overflow-hidden">
-            <div className="text-center mb-2 shrink-0">
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <Sparkles className="w-3 h-3" />
-                <span>Os 3 Melhores Imóveis para o seu Perfil</span>
-              </div>
-            </div>
-
-            {/* Container dos 3 Cards: Carrossel Snap no mobile, Grid 3 colunas no Desktop */}
-            <div className="flex sm:grid sm:grid-cols-3 gap-2.5 sm:gap-3.5 overflow-x-auto snap-x snap-mandatory pb-1 -mx-1 px-1 sm:mx-0 sm:px-0">
-              {recommendedProperties.map((item, idx) => {
-                const prop = item.property;
-                return (
-                  <div
-                    key={prop.sku || idx}
-                    className="min-w-[82%] sm:min-w-0 snap-center shrink-0 flex flex-col rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md hover:shadow-lg transition flex-1 justify-between"
+            {selectedPropertyDetail ? (
+              /* =========================================================
+                 VISUALIZAÇÃO DO IMÓVEL ABERTO (DETALHADO COM BOTÃO VOLTAR)
+                 ========================================================= */
+              <div className="flex-1 flex flex-col justify-between overflow-y-auto sm:overflow-hidden pr-0.5 animate-in fade-in zoom-in-95 duration-200">
+                {/* Botão Superior para Voltar para as 3 Opções */}
+                <div className="flex items-center justify-between mb-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPropertyDetail(null)}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold text-slate-800 dark:text-slate-100 transition active:scale-95 cursor-pointer"
                   >
-                    <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0">
-                      <img
-                        src={prop.img || (prop.images && prop.images[0]) || "/favicon.png"}
-                        alt={prop.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-                        <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-blue-600 text-white shadow-xs">
-                          {item.highlightBadge.split("•")[0]}
-                        </span>
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-slate-900/80 text-white backdrop-blur-xs">
-                          #{prop.sku}
-                        </span>
+                    <ArrowLeft className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
+                    <span>Voltar para as 3 opções</span>
+                  </button>
+
+                  <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">
+                    #{selectedPropertyDetail.property.sku}
+                  </span>
+                </div>
+
+                {/* Card Detalhado do Imóvel Selecionado */}
+                <div className="flex-1 flex flex-col sm:flex-row gap-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden p-3 shadow-md">
+                  {/* Foto Principal */}
+                  <div className="relative w-full sm:w-1/2 aspect-[16/10] sm:aspect-auto sm:h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
+                    <img
+                      src={
+                        selectedPropertyDetail.property.img ||
+                        (selectedPropertyDetail.property.images && selectedPropertyDetail.property.images[0]) ||
+                        "/favicon.png"
+                      }
+                      alt={selectedPropertyDetail.property.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2">
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-600 text-white shadow-sm">
+                        {selectedPropertyDetail.highlightBadge.split("•")[0]}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Informações Completas */}
+                  <div className="flex-1 flex flex-col justify-between py-0.5">
+                    <div>
+                      <div className="flex items-center gap-1 text-[11px] text-slate-500 font-semibold mb-0.5">
+                        <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                        <span>{selectedPropertyDetail.property.screen || selectedPropertyDetail.property.bairro || "Teresópolis/RJ"}</span>
                       </div>
+
+                      <h3 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white leading-snug">
+                        {selectedPropertyDetail.property.name}
+                      </h3>
+
+                      <div className="mt-1 text-lg sm:text-xl font-black text-emerald-600 dark:text-emerald-400">
+                        {fmt(selectedPropertyDetail.property.price)}
+                      </div>
+
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                        {selectedPropertyDetail.property.storage || selectedPropertyDetail.property.specs || "Excelente oportunidade na serra"}
+                      </div>
+
+                      {/* Motivos do Match */}
+                      {selectedPropertyDetail.matchReasons.length > 0 && (
+                        <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1">
+                          {selectedPropertyDetail.matchReasons.map((reason, rIdx) => (
+                            <span
+                              key={rIdx}
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60"
+                            >
+                              <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
+                              <span>{reason}</span>
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
-                    <div className="p-2.5 sm:p-3 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-1 text-[10px] text-slate-500 font-semibold mb-0.5">
-                          <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
-                          <span className="truncate">{prop.screen || prop.bairro || "Teresópolis/RJ"}</span>
-                        </div>
+                    {/* Botões de Ação do Imóvel Aberto */}
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => handleContactWhatsApp(selectedPropertyDetail.property, selectedPropertyDetail.highlightBadge)}
+                        className="btn-primary-glow w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm text-white shadow-md active:scale-95 transition"
+                      >
+                        <WhatsAppIcon className="w-4 h-4" />
+                        <span>Quero este Imóvel no WhatsApp</span>
+                      </button>
 
-                        <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 leading-tight">
-                          {prop.name}
-                        </h3>
-
-                        <div className="mt-1 text-sm sm:text-base font-black text-emerald-600 dark:text-emerald-400">
-                          {fmt(prop.price)}
-                        </div>
-                      </div>
-
-                      <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between text-[11px] text-slate-500 px-1 pt-0.5">
                         <button
                           type="button"
-                          onClick={() => handleContactWhatsApp(prop, item.highlightBadge)}
-                          className="btn-primary-glow w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg sm:rounded-xl font-bold text-xs text-white shadow-xs active:scale-95 transition"
+                          onClick={() => setSelectedPropertyDetail(null)}
+                          className="hover:text-slate-900 dark:hover:text-white font-medium"
                         >
-                          <WhatsAppIcon className="w-3.5 h-3.5" />
-                          <span>Quero este Imóvel</span>
+                          ← Ver outras opções
                         </button>
-
                         <Link
                           to="/imovel/$sku"
-                          params={{ sku: prop.sku || "" }}
-                          className="w-full text-center text-[10px] font-semibold text-slate-500 hover:text-slate-800 dark:hover:text-white transition py-0.5"
+                          params={{ sku: selectedPropertyDetail.property.sku || "" }}
+                          className="font-bold text-blue-600 dark:text-sky-400 hover:underline"
                         >
-                          Ver Fotos & Detalhes
+                          Ver ficha completa
                         </Link>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              </div>
+            ) : (
+              /* =========================================================
+                 LISTA DAS 3 OPÇÕES (UM ABAIXO DO OUTRO NO MOBILE)
+                 ========================================================= */
+              <>
+                <div className="text-center mb-1 shrink-0">
+                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 mb-0.5">
+                    <Sparkles className="w-3 h-3" />
+                    <span>Os 3 Melhores Imóveis para o seu Perfil</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Toque em uma das opções abaixo para abrir os detalhes:
+                  </p>
+                </div>
 
-            {/* Ações Inferiores Discretas */}
-            <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] shrink-0">
-              <button
-                type="button"
-                onClick={handleReset}
-                className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-900 dark:hover:text-white font-medium"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Refazer</span>
-              </button>
+                {/* NO MOBILE: UM ABAIXO DO OUTRO (FLEX-COL). NO DESKTOP: GRID 3 COLUNAS */}
+                <div className="flex flex-col sm:grid sm:grid-cols-3 gap-2 sm:gap-3 overflow-y-auto sm:overflow-visible pr-0.5 max-h-[calc(100dvh-13.5rem)] sm:max-h-none">
+                  {recommendedProperties.map((item, idx) => {
+                    const prop = item.property;
+                    return (
+                      <div
+                        key={prop.sku || idx}
+                        onClick={() => setSelectedPropertyDetail(item)}
+                        className="flex sm:flex-col items-center sm:items-stretch gap-2.5 sm:gap-0 p-2 sm:p-0 rounded-xl sm:rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 shadow-xs hover:shadow-md transition cursor-pointer active:scale-[0.98] group text-left overflow-hidden shrink-0"
+                      >
+                        {/* Foto miniatura no mobile, foto em cima no desktop */}
+                        <div className="relative w-20 h-20 sm:w-full sm:aspect-[16/10] rounded-lg sm:rounded-none overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
+                          <img
+                            src={prop.img || (prop.images && prop.images[0]) || "/favicon.png"}
+                            alt={prop.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute top-1 left-1 sm:top-2 sm:left-2">
+                            <span className="px-1.5 sm:px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-black bg-blue-600 text-white shadow-xs">
+                              {item.highlightBadge.split("•")[0]}
+                            </span>
+                          </div>
+                        </div>
 
-              <Link
-                to="/loja"
-                className="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-sky-400 hover:underline"
-              >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Catálogo Completo (200 imóveis)</span>
-              </Link>
-            </div>
+                        {/* Detalhes do Imóvel */}
+                        <div className="flex-1 min-w-0 sm:p-3 flex flex-col justify-between">
+                          <div>
+                            <div className="flex items-center gap-1 text-[10px] text-slate-500 font-semibold mb-0.5">
+                              <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                              <span className="truncate">{prop.screen || prop.bairro || "Teresópolis/RJ"}</span>
+                            </div>
+
+                            <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 leading-tight group-hover:text-blue-600 transition">
+                              {prop.name}
+                            </h3>
+
+                            <div className="mt-1 text-sm sm:text-base font-black text-emerald-600 dark:text-emerald-400">
+                              {fmt(prop.price)}
+                            </div>
+                          </div>
+
+                          <div className="mt-1 sm:mt-2.5 flex items-center justify-between sm:pt-2 sm:border-t sm:border-slate-100 dark:sm:border-slate-800">
+                            <span className="text-[10px] text-slate-500 truncate hidden sm:inline">
+                              {prop.storage || prop.specs || "Disponível"}
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 dark:text-sky-400 group-hover:translate-x-0.5 transition-transform ml-auto">
+                              <span>Abrir Imóvel</span>
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Ações Inferiores Discretas */}
+                <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] shrink-0">
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-900 dark:hover:text-white font-medium cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Refazer</span>
+                  </button>
+
+                  <Link
+                    to="/loja"
+                    className="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-sky-400 hover:underline"
+                  >
+                    <SlidersHorizontal className="w-3.5 h-3.5" />
+                    <span>Catálogo Completo</span>
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
+        )}
         )}
 
         {/* =========================================================================

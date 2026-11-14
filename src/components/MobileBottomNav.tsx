@@ -29,7 +29,7 @@ export function MobileBottomNav() {
               isInicio ? "scale-110 stroke-[2.5]" : "stroke-[1.8]"
             }`}
           />
-          <span className="text-[10px] leading-none">Início</span>
+          <span className="text-[10px] leading-none">Guia</span>
         </Link>
 
         {/* Lançamentos */}
@@ -66,7 +66,7 @@ export function MobileBottomNav() {
               isLoja ? "scale-110 stroke-[2.5]" : "stroke-[1.8]"
             }`}
           />
-          <span className="text-[10px] leading-none">Imóveis</span>
+          <span className="text-[10px] leading-none">Catálogo</span>
         </Link>
       </div>
     </nav>
