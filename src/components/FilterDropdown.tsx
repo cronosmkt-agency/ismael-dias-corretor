@@ -77,28 +77,28 @@ export function FilterDropdown({
           setIsOpen((prev) => !prev);
           setSearchTerm("");
         }}
-        className={`w-full flex items-center justify-between gap-1 px-1.5 sm:px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none min-w-0 focus:outline-hidden outline-none ${
+        className={`w-full flex items-center justify-between gap-0.5 sm:gap-1 px-1 sm:px-2.5 py-1.5 rounded-xl text-[10px] min-[370px]:text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-2xs border select-none min-w-0 focus:outline-hidden outline-none tracking-tight ${
           !isDefault
-            ? "bg-blue-50/90 dark:bg-sky-950/70 border-blue-400 dark:border-sky-600 text-blue-700 dark:text-sky-300 ring-2 ring-blue-500/20"
-            : "glass border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 bg-white/90 dark:bg-slate-900/90"
+            ? "bg-[#1A3828]/10 dark:bg-[#C5A880]/15 border-[#1A3828]/40 dark:border-[#C5A880]/50 text-[#1A3828] dark:text-[#C5A880] ring-2 ring-[#1A3828]/20 dark:ring-[#C5A880]/20"
+            : "glass border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-[#1A3828]/40 dark:hover:border-[#C5A880]/40 bg-white/90 dark:bg-slate-900/90"
         }`}
       >
         <div className="flex items-center gap-1 min-w-0 flex-1 justify-center sm:justify-start">
-          <Icon className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+          <Icon className="w-3.5 h-3.5 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
           <span className="truncate text-center sm:text-left">
             {displayText}
           </span>
         </div>
         <ChevronDown
           className={`w-3 h-3 text-slate-400 transition-transform duration-200 shrink-0 ${
-            isOpen ? "rotate-180 text-blue-500" : ""
+            isOpen ? "rotate-180 text-[#1A3828] dark:text-[#C5A880]" : ""
           }`}
         />
       </button>
 
       {isOpen && (
         <div
-          className={`absolute ${alignmentClass} top-full mt-1.5 z-[100] min-w-[210px] sm:min-w-[230px] max-w-[calc(100vw-28px)] rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 max-h-72 flex flex-col`}
+          className={`absolute ${alignmentClass} top-full mt-1.5 z-[100] min-w-[200px] sm:min-w-[230px] max-w-[calc(100vw-24px)] rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 max-h-72 flex flex-col`}
         >
           {searchable && (
             <div className="p-1 mb-1 border-b border-slate-100 dark:border-slate-800">
@@ -108,7 +108,7 @@ export function FilterDropdown({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Buscar bairro..."
-                className="w-full px-2.5 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-none focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                className="w-full px-2.5 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-none focus:outline-hidden focus:ring-1 focus:ring-[#1A3828] dark:focus:ring-[#C5A880]"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>
@@ -132,7 +132,7 @@ export function FilterDropdown({
                     }}
                     className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer text-left ${
                       isSelected
-                        ? "bg-blue-600 text-white font-bold"
+                        ? "bg-[#1A3828] dark:bg-[#C5A880] text-white dark:text-[#0D0E11] font-bold shadow-xs"
                         : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`}
                   >

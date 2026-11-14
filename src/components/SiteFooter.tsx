@@ -45,13 +45,22 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               className="font-bold mb-4"
               style={{ color: "var(--text-primary)" }}
             >
-              Empreendimentos
+              Navegação & Empreendimentos
             </div>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
+                  to="/"
+                  className="transition hover:text-[#C5A880] font-semibold"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Guia Interativo de Imóveis
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/lancamentos"
-                  className="transition hover:text-blue-600 font-semibold"
+                  className="transition hover:text-[#C5A880] font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   Golden Green Residencial (Albuquerque)
@@ -60,7 +69,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               <li>
                 <Link
                   to="/lancamentos"
-                  className="transition hover:text-blue-600 font-semibold"
+                  className="transition hover:text-[#C5A880] font-semibold"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   Vale dos Pássaros (Prata)
@@ -69,10 +78,10 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               <li>
                 <Link
                   to="/loja"
-                  className="transition hover:text-blue-600"
+                  className="transition hover:text-[#C5A880]"
                   style={{ color: "var(--text-secondary)" }}
                 >
-                  Casas & Coberturas em Teresópolis
+                  Catálogo Completo de Imóveis
                 </Link>
               </li>
               <li>
@@ -138,7 +147,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
               style={{ color: "var(--text-secondary)" }}
             >
               <div className="flex items-start gap-2 text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                <MapPin className="w-4 h-4 shrink-0 text-blue-500 mt-0.5" />
+                <MapPin className="w-4 h-4 shrink-0 text-[#C5A880] mt-0.5" />
                 <span>{ADDRESS_DISPLAY}</span>
               </div>
               <a
@@ -156,10 +165,10 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-sky-400 transition"
+                className="flex items-center gap-2 hover:text-[#C5A880] transition"
               >
                 <Instagram
-                  className="w-4 h-4 shrink-0 text-sky-500"
+                  className="w-4 h-4 shrink-0 text-[#C5A880]"
                 />{" "}
                 {INSTAGRAM_HANDLE}
               </a>
@@ -204,7 +213,7 @@ export function SiteFooter({ currentTheme }: { currentTheme?: ThemeMode }) {
             <span>•</span>
             <Link
               to="/admin"
-              className="hover:text-blue-500 transition flex items-center gap-1 font-semibold text-slate-400 dark:text-slate-500 hover:underline cursor-pointer"
+              className="hover:text-[#C5A880] transition flex items-center gap-1 font-semibold text-slate-400 dark:text-slate-500 hover:underline cursor-pointer"
               title="Acesso exclusivo do corretor"
             >
               <Lock className="w-3 h-3 text-slate-400" />

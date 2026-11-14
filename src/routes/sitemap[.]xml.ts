@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { allImoveisData } from "@/data/imoveisData";
+import { lancamentosProducts } from "@/data/storeData";
 
 const BASE_URL = "https://ismael-dias-corretor.vercel.app";
 
@@ -23,17 +24,28 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/lancamentos", lastmod: today, changefreq: "weekly", priority: "0.9" },
         ];
 
-        // Todos os imóveis com link exclusivo /imovel/{sku}
-        allImoveisData.forEach((item) => {
-          if (item.sku) {
-            entries.push({
-              path: `/imovel/${encodeURIComponent(String(item.sku))}`,
-              lastmod: today,
-              changefreq: "weekly",
-              priority: "0.8",
-            });
-          }
-        });
+        // Todos os imóveis e lançamentos com links limpos, únicos e canônicos /imovel/{sku}
+        const seenSkus = new Set<string>();
+        const allProperties = [...lancamentosProducts, ...allImoveisData];
+
+        for (const item of allProperties) {
+          if (!item.sku) continue;
+          const cleanSku = encodeURIComponent(String(item.sku).trim());
+          if (!cleanSku || seenSkus.has(cleanSku)) continue;
+          seenSkus.add(cleanSku);
+
+          const isSold =
+            item.badge === "VENDIDA" ||
+            item.condition === "VENDIDA" ||
+            item.condition?.includes("VENDIDA");
+
+          entries.push({
+            path: `/imovel/${cleanSku}`,
+            lastmod: today,
+            changefreq: isSold ? "monthly" : "weekly",
+            priority: isSold ? "0.5" : "0.8",
+          });
+        }
 
         const urls = entries.map((e) =>
           [

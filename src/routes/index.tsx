@@ -79,7 +79,7 @@ function BrandStore() {
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
       {/* Área Central: O Guia Interativo ocupa 100% da tela sem rolagem de página */}
-      <main className="flex-1 w-full h-full flex flex-col justify-center items-center px-2.5 sm:px-4 pt-16 sm:pt-20 pb-14 sm:pb-4 overflow-hidden">
+      <main className="flex-1 w-full h-full flex flex-col justify-center items-center pt-20 sm:pt-24 pb-16 sm:pb-6 px-3 sm:px-4 overflow-hidden">
         <PropertyWizard allProperties={productList} />
       </main>
 

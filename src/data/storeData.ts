@@ -14,7 +14,7 @@ import {
 export const STORE_NAME = "Ismael Dias — Corretor de Imóveis | Habittat House";
 export const BROKER_NAME = "Ismael Dias";
 export const BROKER_ROLE = "Corretor de Imóveis na Habittat House";
-export const REAL_ESTATE_AGENCY = "Habittat House Imobiliária";
+export const REAL_ESTATE_AGENCY = "Habittat House";
 export const WHATSAPP_NUMBER = "5521964639999";
 export const WHATSAPP = "https://wa.me/" + WHATSAPP_NUMBER;
 export const PHONE_DISPLAY = "(21) 96463-9999";
@@ -202,7 +202,7 @@ export const lancamentosProducts: ProductItem[] = [
 ];
 
 /* -------------------------------------------------------------
-   PRODUTOS — CARTEIRA COMPLETA DE IMÓVEIS (212 Imóveis Reais)
+   PRODUTOS — CARTEIRA COMPLETA DE IMÓVEIS (190 Imóveis Reais)
 ------------------------------------------------------------- */
 export const imoveisAvulsosProducts: ProductItem[] = allImoveisData;
 

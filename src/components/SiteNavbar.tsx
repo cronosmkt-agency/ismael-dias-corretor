@@ -34,7 +34,7 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
     }
 
     setThemeNotice({
-      text: willBeDark ? "Modo Black ativado" : "Modo Branco ativado",
+      text: willBeDark ? "Modo Black Piano ativado" : "Modo Branco Linho ativado",
       isDark: willBeDark,
     });
 
@@ -142,14 +142,14 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
           <div
             className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black shadow-xl backdrop-blur-xl border ${
               themeNotice?.isDark
-                ? "bg-slate-950/92 text-white border-slate-700/80 shadow-[0_8px_25px_rgba(0,0,0,0.6)]"
-                : "bg-white/95 text-slate-900 border-slate-200/90 shadow-[0_8px_25px_rgba(0,0,0,0.12)]"
+                ? "bg-[#0b1310]/95 text-[#FAF8F5] border-[#C5A880]/30 shadow-[0_8px_25px_rgba(0,0,0,0.65)]"
+                : "bg-white/95 text-[#121316] border-[#1A3828]/15 shadow-[0_8px_25px_rgba(26,56,40,0.12)]"
             }`}
           >
             {themeNotice?.isDark ? (
-              <MoonStar className="w-3.5 h-3.5 text-sky-400" />
+              <MoonStar className="w-3.5 h-3.5 text-[#C5A880]" />
             ) : (
-              <Sun className="w-3.5 h-3.5 text-amber-500" />
+              <Sun className="w-3.5 h-3.5 text-[#1A3828]" />
             )}
             <span>{themeNotice?.text}</span>
           </div>
@@ -186,14 +186,14 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
           <div
             className={`flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-black shadow-lg backdrop-blur-xl border ${
               themeNotice?.isDark
-                ? "bg-slate-950/92 text-white border-slate-700/80 shadow-[0_6px_20px_rgba(0,0,0,0.5)]"
-                : "bg-white/95 text-slate-900 border-slate-200/90 shadow-[0_6px_20px_rgba(0,0,0,0.1)]"
+                ? "bg-[#0b1310]/95 text-[#FAF8F5] border-[#C5A880]/30 shadow-[0_6px_20px_rgba(0,0,0,0.55)]"
+                : "bg-white/95 text-[#121316] border-[#1A3828]/15 shadow-[0_6px_20px_rgba(26,56,40,0.1)]"
             }`}
           >
             {themeNotice?.isDark ? (
-              <MoonStar className="w-3 h-3 text-sky-400" />
+              <MoonStar className="w-3 h-3 text-[#C5A880]" />
             ) : (
-              <Sun className="w-3 h-3 text-amber-500" />
+              <Sun className="w-3 h-3 text-[#1A3828]" />
             )}
             <span>{themeNotice?.text}</span>
           </div>
@@ -219,12 +219,12 @@ export function ThemeToggleSwitch({
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={isDark ? "Mudar para Branco Titânio" : "Mudar para Black"}
-      title={isDark ? "Mudar para Branco Titânio" : "Mudar para Black"}
+      aria-label={isDark ? "Mudar para Branco Linho" : "Mudar para Black Piano"}
+      title={isDark ? "Mudar para Branco Linho" : "Mudar para Black Piano"}
       className={`relative inline-flex items-center w-[66px] h-[34px] p-[3px] rounded-full transition-all duration-300 cursor-pointer select-none shrink-0 ${
         isDark
-          ? "bg-[#18202f] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] border border-slate-700/70"
-          : "bg-[#e2e8f0] shadow-[inset_0_2px_4px_rgba(0,0,0,0.14)] border border-slate-300/80"
+          ? "bg-[#0b1310] shadow-[inset_0_2px_4px_rgba(0,0,0,0.7)] border border-[#C5A880]/30"
+          : "bg-[#e5ede7] shadow-[inset_0_2px_4px_rgba(26,56,40,0.12)] border border-[#1A3828]/20"
       } hover:opacity-95 active:scale-95 ${className}`}
     >
       {/* Background Reference Track Icons */}
@@ -232,14 +232,14 @@ export function ThemeToggleSwitch({
         {/* Left: Sun icon visible when knob slides to the right (dark mode) */}
         <Sun
           className={`w-4 h-4 transition-all duration-300 ${
-            isDark ? "text-slate-500 opacity-90 scale-100" : "opacity-0 scale-75"
+            isDark ? "text-[#C5A880]/70 opacity-90 scale-100" : "opacity-0 scale-75"
           }`}
           strokeWidth={2.4}
         />
         {/* Right: MoonStar icon visible when knob slides to the left (light mode) */}
         <MoonStar
           className={`w-4 h-4 transition-all duration-300 ${
-            !isDark ? "text-slate-400 opacity-90 scale-100" : "opacity-0 scale-75"
+            !isDark ? "text-[#1A3828]/70 opacity-90 scale-100" : "opacity-0 scale-75"
           }`}
           strokeWidth={2.4}
         />
@@ -249,18 +249,18 @@ export function ThemeToggleSwitch({
       <div
         className={`relative z-10 w-[28px] h-[28px] rounded-full flex items-center justify-center transition-all duration-300 ease-out ${
           isDark
-            ? "translate-x-[32px] bg-gradient-to-b from-[#3b82f6] to-[#1d4ed8] text-white shadow-[0_4px_10px_rgba(37,99,235,0.45),0_1px_3px_rgba(0,0,0,0.2)]"
-            : "translate-x-0 bg-gradient-to-b from-[#ffa31a] to-[#f97316] text-white shadow-[0_4px_10px_rgba(249,115,22,0.45),0_1px_3px_rgba(0,0,0,0.15)]"
+            ? "translate-x-[32px] bg-gradient-to-b from-[#dfca9e] to-[#C5A880] text-[#0d1611] shadow-[0_4px_12px_rgba(197,168,128,0.5),0_1px_3px_rgba(0,0,0,0.4)]"
+            : "translate-x-0 bg-gradient-to-b from-[#244d37] to-[#1A3828] text-[#FAF8F5] shadow-[0_4px_10px_rgba(26,56,40,0.35),0_1px_3px_rgba(0,0,0,0.15)]"
         }`}
       >
         {isDark ? (
           <MoonStar
-            className="w-4 h-4 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] animate-in fade-in duration-200"
+            className="w-4 h-4 text-[#0d1611] drop-shadow-[0_1px_1px_rgba(255,255,255,0.2)] animate-in fade-in duration-200"
             strokeWidth={2.5}
           />
         ) : (
           <Sun
-            className="w-4 h-4 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.25)] animate-in fade-in duration-200"
+            className="w-4 h-4 text-[#C5A880] drop-shadow-[0_1px_1px_rgba(0,0,0,0.25)] animate-in fade-in duration-200"
             strokeWidth={2.5}
           />
         )}

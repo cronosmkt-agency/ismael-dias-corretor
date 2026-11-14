@@ -66,7 +66,7 @@ export const Route = createFileRoute("/imovel/$sku")({
         price: property.price,
         priceCurrency: "BRL",
         availability:
-          property.badge === "VENDIDA"
+          property.badge === "VENDIDA" || property.condition?.includes("VENDIDA")
             ? "https://schema.org/Sold"
             : "https://schema.org/InStock",
       },
@@ -120,7 +120,7 @@ export const Route = createFileRoute("/imovel/$sku")({
 
 function PropertyDetailPage() {
   const { sku } = Route.useParams();
-  const { currentTheme, setCurrentTheme, toggleTheme } = useHabittatTheme();
+  const { currentTheme, setCurrentTheme, toggleTheme, isDark } = useHabittatTheme();
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -143,7 +143,7 @@ function PropertyDetailPage() {
     setActiveImgIndex(0);
     setIsLightboxOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [sku]);
+  }, [sku, property]);
 
   // Teclado para a galeria e lightbox
   useEffect(() => {
@@ -178,7 +178,7 @@ function PropertyDetailPage() {
             <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
               <Link
                 to="/loja"
-                className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition"
+                className="px-5 py-2.5 rounded-xl bg-[#1A3828] hover:bg-[#254f39] text-[#C5A880] border border-[#C5A880]/30 font-bold text-xs shadow-md transition"
               >
                 Ver Todos os Imóveis Disponíveis
               </Link>
@@ -196,8 +196,15 @@ function PropertyDetailPage() {
     );
   }
 
-  const isSold = property.badge === "VENDIDA" || property.condition?.includes("VENDIDA");
-  const isReserved = property.badge === "RESERVADO";
+  const isSold =
+    property.badge === "VENDIDA" ||
+    property.condition === "VENDIDA" ||
+    property.condition?.includes("VENDIDA");
+  const isReserved =
+    property.badge === "RESERVADO" ||
+    property.condition === "RESERVADO" ||
+    property.condition?.includes("RESERVADO");
+
   const images = property.images && property.images.length > 0 ? property.images : [property.img];
   const currentImg = images[activeImgIndex] || property.img;
   const canonicalUrl = getPropertyCanonicalUrl(property.sku || sku);
@@ -212,20 +219,9 @@ function PropertyDetailPage() {
 
     let text = "";
     if (isSold) {
-      text = `Olá, Ismael Dias! Vi no seu site que o imóvel *${property.name}* (Cód. #${property.sku || ""}) foi vendido.
-
-Gostaria de saber se você tem outras opções semelhantes disponíveis na mesma região (${property.bairro || "Teresópolis"})!`;
+      text = `Olá, Ismael Dias! Vi no seu site que o imóvel *${property.name}* (Cód. #${property.sku || ""}) foi vendido.\n\nGostaria de saber se você tem outras opções semelhantes disponíveis na mesma região (${property.bairro || "Teresópolis"})!`;
     } else {
-      text = `Olá, Ismael Dias! Vi este imóvel no seu site e tenho interesse:
-
-🏡 *Imóvel:* ${property.name}
-🔢 *Código:* #${property.sku || "Habittat"}
-📍 *Localização:* ${property.bairro || "Teresópolis/RJ"}
-📐 *Metragem / Área:* ${property.storage || "Área Privativa"}
-💰 *Valor:* ${fmt(property.price)}
-✨ *Status:* ${property.badge || "Disponível"}
-
-Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: ${canonicalUrl}`;
+      text = `Olá, Ismael Dias! Vi este imóvel no seu site e tenho interesse:\n\n🏡 *Imóvel:* ${property.name}\n🔢 *Código:* #${property.sku || "Habittat"}\n📍 *Localização:* ${property.bairro || "Teresópolis/RJ"}\n📐 *Metragem / Área:* ${property.storage || "Área Privativa"}\n💰 *Valor:* ${fmt(property.price)}\n✨ *Status:* ${property.badge || "Disponível"}\n\nGostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: ${canonicalUrl}`;
     }
 
     const targetNumber = siteSettings.whatsappNumber || WHATSAPP_NUMBER;
@@ -264,20 +260,21 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
     }
   }, []);
 
-  const featuresList = property.features && property.features.length > 0
-    ? property.features
-    : [
-        "Documentação 100% verificada",
-        "Infraestrutura de água, luz e saneamento",
-        "Localização privilegiada na serra fluminense",
-        "Assessoria exclusiva com Ismael Dias",
-      ];
+  const featuresList =
+    property.features && property.features.length > 0
+      ? property.features
+      : [
+          "Documentação 100% verificada",
+          "Infraestrutura de água, luz e saneamento",
+          "Localização privilegiada na serra fluminense",
+          "Assessoria exclusiva com Ismael Dias",
+        ];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden lg:overflow-x-visible bg-background text-foreground flex flex-col justify-between">
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
 
-      {/* Top Header Mobile: Compacto, limpo e profissional */}
+      {/* Top Header Mobile: Compacto, limpo e nobre */}
       <header className="sm:hidden fixed top-0 left-0 right-0 z-40 h-14 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-3 flex items-center justify-between shadow-xs">
         <button
           type="button"
@@ -290,7 +287,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         </button>
 
         <div className="flex flex-col items-center min-w-0 px-2 text-center">
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-sky-400">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#1A3828] dark:text-[#C5A880]">
             #{property.sku || sku}
           </span>
           <span className="text-xs font-black text-slate-900 dark:text-white truncate max-w-[170px]">
@@ -305,7 +302,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             aria-label="Compartilhar imóvel"
             className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 active:scale-95 transition cursor-pointer"
           >
-            <Share2 className="w-4 h-4 text-blue-500" />
+            <Share2 className="w-4 h-4 text-[#1A3828] dark:text-[#C5A880]" />
           </button>
           <button
             type="button"
@@ -313,7 +310,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             aria-label="Alternar tema"
             className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 active:scale-95 transition cursor-pointer"
           >
-            {currentTheme === "dark" ? (
+            {isDark ? (
               <Sun className="w-4 h-4 text-amber-400" />
             ) : (
               <MoonStar className="w-4 h-4 text-slate-600 dark:text-slate-300" />
@@ -336,7 +333,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 text-xs font-bold transition shadow-xs cursor-pointer active:scale-95 border border-slate-200/80 dark:border-slate-700/80 group"
             title="Voltar para a listagem mantendo seus filtros e posição"
           >
-            <ArrowLeft className="w-4 h-4 text-blue-600 dark:text-sky-400 group-hover:-translate-x-0.5 transition-transform" />
+            <ArrowLeft className="w-4 h-4 text-[#1A3828] dark:text-[#C5A880] group-hover:-translate-x-0.5 transition-transform" />
             <span>Voltar</span>
           </button>
 
@@ -344,14 +341,14 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             aria-label="Breadcrumb"
             className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 overflow-x-auto whitespace-nowrap py-1"
           >
-            <Link to="/" className="hover:text-blue-600 dark:hover:text-sky-400 transition">
+            <Link to="/" className="hover:text-[#1A3828] dark:hover:text-[#C5A880] transition">
               Início
             </Link>
             <span>/</span>
             <button
               type="button"
               onClick={handleBack}
-              className="hover:text-blue-600 dark:hover:text-sky-400 transition cursor-pointer"
+              className="hover:text-[#1A3828] dark:hover:text-[#C5A880] transition cursor-pointer"
             >
               Imóveis
             </button>
@@ -360,13 +357,13 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               {property.bairro || "Teresópolis"}
             </span>
             <span>/</span>
-            <span className="text-blue-600 dark:text-sky-400 font-bold">
+            <span className="text-[#1A3828] dark:text-[#C5A880] font-bold">
               #{property.sku || sku}
             </span>
           </nav>
         </div>
 
-        {/* Header Desktop do Imóvel: Badges + Título Grande */}
+        {/* Header Desktop do Imóvel: Badges + Título Nobre */}
         <div className="hidden sm:block mb-6 space-y-2">
           <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             {(isSold || isReserved) && (
@@ -381,13 +378,13 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               </span>
             )}
 
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1 whitespace-nowrap shrink-0">
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#1A3828]/10 dark:bg-[#C5A880]/15 text-[#1A3828] dark:text-[#C5A880] border border-[#1A3828]/20 dark:border-[#C5A880]/30 flex items-center gap-1 whitespace-nowrap shrink-0">
               <Trees className="w-3.5 h-3.5 shrink-0" />
               <span>{property.cat}</span>
             </span>
 
             <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 whitespace-nowrap shrink-0">
-              <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
               <span>{property.screen || `${property.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
             </span>
 
@@ -405,18 +402,18 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-start w-full min-w-0 max-w-full">
           {/* Coluna Esquerda: Galeria de Fotos + Especificações + Descrição (8 colunas) */}
           <div className="lg:col-span-8 space-y-4 sm:space-y-6 w-full min-w-0 max-w-full overflow-hidden">
-            {/* Foto Principal com Galeria e Miniaturas — Padrão Card de Imóvel */}
+            {/* Foto Principal com Galeria e Miniaturas — Proporção Otimizada */}
             <div className="relative rounded-2xl sm:rounded-3xl p-2 sm:p-4 glass border border-slate-200/70 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 shadow-sm flex flex-col gap-2 sm:gap-3 w-full min-w-0 max-w-full overflow-hidden">
               <div
                 onClick={() => setIsLightboxOpen(true)}
-                className="relative w-full h-52 sm:h-80 lg:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden cursor-zoom-in group bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 min-w-0 shadow-inner"
+                className="relative w-full aspect-4/3 sm:aspect-16/10 lg:aspect-auto lg:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden cursor-zoom-in group bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 min-w-0 shadow-inner"
               >
                 <img
                   src={currentImg}
                   alt={property.name}
                   fetchPriority="high"
                   decoding="async"
-                  className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-102"
+                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-102"
                 />
 
                 {/* Gradiente sutil inferior para legibilidade perfeita dos selos */}
@@ -435,8 +432,8 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                       {isSold ? "🔴 Vendida" : "🟡 Reservado"}
                     </span>
                   )}
-                  <span className="text-[10px] sm:text-xs font-extrabold px-2 py-0.5 rounded-md bg-black/65 text-white backdrop-blur-md shadow-md flex items-center gap-1">
-                    <Trees className="w-3 h-3 text-emerald-400 shrink-0" />
+                  <span className="text-[10px] sm:text-xs font-extrabold px-2 py-0.5 rounded-md bg-black/65 text-white backdrop-blur-md shadow-md flex items-center gap-1 border border-white/10">
+                    <Trees className="w-3 h-3 text-[#C5A880] shrink-0" />
                     <span>{property.cat}</span>
                   </span>
                 </div>
@@ -448,13 +445,13 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                     e.stopPropagation();
                     setIsLightboxOpen(true);
                   }}
-                  className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1 px-2 py-1 rounded-lg bg-black/70 hover:bg-black/90 text-white text-[10px] sm:text-xs font-bold backdrop-blur-xs transition shadow-md cursor-pointer"
+                  className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-black/70 hover:bg-black/90 text-white text-[10px] sm:text-xs font-bold backdrop-blur-xs transition shadow-md cursor-pointer border border-white/10 active:scale-95"
                 >
-                  <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C5A880]" />
                   <span>Tela cheia</span>
                 </button>
 
-                {/* Metragem Sobreposta (Padrão Card de Imóvel) */}
+                {/* Metragem Sobreposta */}
                 {property.storage && (
                   <span className="absolute bottom-2.5 left-2.5 z-10 px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-900/85 text-white backdrop-blur-xs shadow-xs border border-white/10">
                     {property.storage}
@@ -462,7 +459,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 )}
 
                 {/* Contador de Fotos */}
-                <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold backdrop-blur-xs">
+                <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold backdrop-blur-xs border border-white/10">
                   {activeImgIndex + 1} / {images.length}
                 </div>
 
@@ -475,7 +472,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         e.stopPropagation();
                         setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
                       }}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-xs transition cursor-pointer shadow-md"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-xs transition cursor-pointer shadow-md border border-white/10 active:scale-95"
                       aria-label="Foto anterior"
                     >
                       <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -486,7 +483,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         e.stopPropagation();
                         setActiveImgIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
                       }}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-xs transition cursor-pointer shadow-md"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-xs transition cursor-pointer shadow-md border border-white/10 active:scale-95"
                       aria-label="Próxima foto"
                     >
                       <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -495,7 +492,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 )}
               </div>
 
-              {/* Tira de Miniaturas (Thumbnails) no mesmo padrão do Modal de Detalhes - Isolado contra estouro de largura */}
+              {/* Tira de Miniaturas (Thumbnails) */}
               {images.length > 1 && (
                 <div className="w-full min-w-0 max-w-full overflow-hidden">
                   <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1 px-0.5 scrollbar-none w-full min-w-0 max-w-full">
@@ -504,9 +501,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                         key={imgUrl + idx}
                         type="button"
                         onClick={() => setActiveImgIndex(idx)}
-                        className={`relative w-11 h-11 sm:w-16 sm:h-16 shrink-0 rounded-lg sm:rounded-xl overflow-hidden border-2 transition cursor-pointer ${
+                        className={`relative w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-lg sm:rounded-xl overflow-hidden border-2 transition cursor-pointer ${
                           activeImgIndex === idx
-                            ? "border-blue-600 dark:border-sky-400 scale-105 shadow-sm"
+                            ? "border-[#1A3828] dark:border-[#C5A880] ring-2 ring-[#C5A880]/50 scale-105 shadow-md"
                             : "border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100"
                         }`}
                       >
@@ -524,12 +521,12 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               )}
             </div>
 
-            {/* Card Mobile de Título & Preço & Ações Rápidas (Logo abaixo da foto no celular) */}
-            <div className="sm:hidden p-3 rounded-2xl glass border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-sm space-y-2.5 w-full min-w-0 max-w-full overflow-hidden">
+            {/* Card Mobile de Título & Preço & Ações Rápidas */}
+            <div className="sm:hidden p-3.5 rounded-2xl glass border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-sm space-y-2.5 w-full min-w-0 max-w-full overflow-hidden">
               {/* Badges de Localização e Código */}
               <div className="flex items-center justify-between gap-1.5 min-w-0">
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-sky-400 border border-blue-500/20 flex items-center gap-1 min-w-0 shrink">
-                  <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#1A3828]/10 dark:bg-[#C5A880]/15 text-[#1A3828] dark:text-[#C5A880] border border-[#1A3828]/20 dark:border-[#C5A880]/30 flex items-center gap-1 min-w-0 shrink">
+                  <MapPin className="w-3 h-3 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
                   <span className="truncate">{property.screen || `${property.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
                 </span>
                 <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
@@ -557,12 +554,12 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 </span>
               </div>
 
-              {/* Botões de Ação Imediata */}
+              {/* Botões de Ação Imediata Mobile */}
               <div className="grid grid-cols-2 gap-2 pt-0.5 w-full min-w-0">
                 <button
                   type="button"
                   onClick={handleWhatsApp}
-                  className="py-2 px-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center justify-center gap-1 shadow-md active:scale-95 transition cursor-pointer min-w-0 overflow-hidden"
+                  className="py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition cursor-pointer min-w-0 overflow-hidden"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
                   <span className="truncate">WhatsApp</span>
@@ -570,9 +567,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 <button
                   type="button"
                   onClick={handleWhatsApp}
-                  className="py-2 px-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md active:scale-95 transition cursor-pointer min-w-0 overflow-hidden"
+                  className="py-2.5 px-2 rounded-xl bg-[#1A3828] hover:bg-[#254f39] text-[#C5A880] border border-[#C5A880]/30 font-bold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition cursor-pointer min-w-0 overflow-hidden"
                 >
-                  <CalendarCheck className="w-4 h-4 shrink-0" />
+                  <CalendarCheck className="w-4 h-4 shrink-0 text-[#C5A880]" />
                   <span className="truncate">Agendar Visita</span>
                 </button>
               </div>
@@ -581,7 +578,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             {/* Destaques / Especificações Principais */}
             <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3 sm:space-y-4 w-full min-w-0 max-w-full overflow-hidden">
               <h2 className="text-xs sm:text-sm font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-blue-500" />
+                <Sparkles className="w-4 h-4 text-[#C5A880]" />
                 <span>Características Principais</span>
               </h2>
 
@@ -617,7 +614,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   <span className="text-[10px] uppercase font-bold text-slate-400 block truncate">
                     Código do Imóvel
                   </span>
-                  <span className="text-xs sm:text-sm font-black text-blue-600 dark:text-sky-400 truncate block">
+                  <span className="text-xs sm:text-sm font-black text-[#1A3828] dark:text-[#C5A880] truncate block">
                     #{property.sku || sku}
                   </span>
                 </div>
@@ -632,9 +629,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   {featuresList.map((f, i) => (
                     <span
                       key={i}
-                      className="px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-semibold bg-blue-50/80 dark:bg-blue-950/40 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-blue-900/50 flex items-center gap-1.5 max-w-full"
+                      className="px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-semibold bg-[#1A3828]/5 dark:bg-[#1A3828]/30 text-[#1A3828] dark:text-[#e4d5be] border border-[#1A3828]/15 dark:border-[#C5A880]/20 flex items-center gap-1.5 max-w-full"
                     >
-                      <Check className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-[#C5A880] shrink-0" />
                       <span className="break-words">{f}</span>
                     </span>
                   ))}
@@ -645,7 +642,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             {/* Descrição Completa do Imóvel */}
             <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3 sm:space-y-4 w-full min-w-0 max-w-full overflow-hidden">
               <h2 className="text-sm sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
-                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 shrink-0" />
+                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
                 <span>Sobre este Imóvel</span>
               </h2>
 
@@ -663,7 +660,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             {/* Card do Corretor Ismael Dias para Mobile */}
             <div className="lg:hidden p-3.5 rounded-2xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3 w-full min-w-0 max-w-full overflow-hidden">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-11 h-11 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white text-sm shadow-md shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#1A3828] border border-[#C5A880]/40 flex items-center justify-center font-black text-[#C5A880] text-sm shadow-md shrink-0">
                   ID
                 </div>
                 <div className="min-w-0">
@@ -671,9 +668,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                     {siteSettings.realtorName || "Ismael Dias"}
                   </h3>
                   <span className="text-[11px] text-slate-500 dark:text-slate-400 block truncate">
-                    {siteSettings.agencyName || "Habittat House Imobiliária"}
+                    {siteSettings.agencyName || "Habittat House"}
                   </span>
-                  <span className="text-[10px] font-bold text-blue-600 dark:text-sky-400 block truncate">
+                  <span className="text-[10px] font-bold text-[#1A3828] dark:text-[#C5A880] block truncate">
                     {siteSettings.creci || "CRECI-RJ Ativo"}
                   </span>
                 </div>
@@ -684,7 +681,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               </p>
 
               <div className="pt-2 flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
-                <Phone className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
                 <span>{siteSettings.phoneDisplay || PHONE_DISPLAY}</span>
               </div>
             </div>
@@ -693,8 +690,8 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
           {/* Coluna Direita: Box de Preço + Botões de Ação + Card do Corretor (Desktop: 4 colunas sticky) */}
           <div className="hidden lg:block lg:col-span-4 space-y-5 lg:sticky lg:top-28 self-start">
             {/* Card de Valor & Condições */}
-            <div className="p-6 rounded-3xl glass border border-blue-500/25 dark:border-sky-500/30 shadow-xl space-y-4 bg-white/95 dark:bg-slate-900/90 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
+            <div className="p-6 rounded-3xl glass border border-[#1A3828]/20 dark:border-[#C5A880]/30 shadow-xl space-y-4 bg-white/95 dark:bg-slate-900/90 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#1A3828]/5 dark:bg-[#C5A880]/5 rounded-full blur-2xl pointer-events-none" />
 
               <div>
                 <span className="text-[11px] uppercase font-black text-slate-400 tracking-wider block">
@@ -723,9 +720,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               <button
                 type="button"
                 onClick={handleWhatsApp}
-                className="w-full py-3 px-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all active:scale-98 cursor-pointer"
+                className="w-full py-3 px-4 rounded-2xl bg-[#1A3828] hover:bg-[#254f39] text-[#C5A880] border border-[#C5A880]/30 font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-98 cursor-pointer"
               >
-                <CalendarCheck className="w-4 h-4 shrink-0" />
+                <CalendarCheck className="w-4 h-4 shrink-0 text-[#C5A880]" />
                 <span>Agendar Visita no Imóvel</span>
               </button>
 
@@ -742,7 +739,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   </>
                 ) : (
                   <>
-                    <Share2 className="w-4 h-4 text-blue-500" />
+                    <Share2 className="w-4 h-4 text-[#1A3828] dark:text-[#C5A880]" />
                     <span>Compartilhar Este Imóvel</span>
                   </>
                 )}
@@ -758,7 +755,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             {/* Card do Corretor Ismael Dias Desktop */}
             <div className="p-5 rounded-3xl glass border border-slate-200/70 dark:border-slate-800 shadow-sm space-y-3 bg-white/95 dark:bg-slate-900/90">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center font-black text-white text-base shadow-md shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#1A3828] border border-[#C5A880]/40 flex items-center justify-center font-black text-[#C5A880] text-base shadow-md shrink-0">
                   ID
                 </div>
                 <div className="min-w-0">
@@ -772,9 +769,9 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                     </span>
                   </div>
                   <span className="text-xs text-slate-500 dark:text-slate-400 block truncate">
-                    {siteSettings.agencyName || "Habittat House Imobiliária"}
+                    {siteSettings.agencyName || "Habittat House"}
                   </span>
-                  <span className="text-[11px] font-bold text-blue-600 dark:text-sky-400 block truncate">
+                  <span className="text-[11px] font-bold text-[#1A3828] dark:text-[#C5A880] block truncate">
                     {siteSettings.creci || "CRECI-RJ Ativo"}
                   </span>
                 </div>
@@ -785,7 +782,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
               </p>
 
               <div className="pt-2 flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
-                <Phone className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
                 <span>{siteSettings.phoneDisplay || PHONE_DISPLAY}</span>
               </div>
             </div>
@@ -807,7 +804,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
 
               <Link
                 to="/loja"
-                className="text-xs font-bold text-blue-600 dark:text-sky-400 hover:underline flex items-center gap-1 self-start sm:self-center"
+                className="text-xs font-bold text-slate-700 dark:text-[#C5A880] hover:text-[#1A3828] dark:hover:text-[#C5A880] hover:underline flex items-center gap-1 self-start sm:self-center"
               >
                 <span>Ver todos os {property.cat || "imóveis"}</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -838,10 +835,10 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   <div className="p-3.5 space-y-2 flex-1 flex flex-col justify-between">
                     <div>
                       <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                        <MapPin className="w-3 h-3 text-[#1A3828] dark:text-[#C5A880] shrink-0" />
                         <span>{rel.screen || `${rel.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
                       </span>
-                      <h4 className="font-bold text-xs card-property-title text-slate-900 dark:text-white mt-1 group-hover:text-blue-500 transition-colors">
+                      <h4 className="font-bold text-xs card-property-title text-slate-900 dark:text-white mt-1 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                         {rel.name}
                       </h4>
                     </div>
@@ -850,7 +847,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                       <span className="text-sm font-black text-slate-900 dark:text-white">
                         {fmt(rel.price)}
                       </span>
-                      <span className="text-[11px] font-bold text-blue-600 dark:text-sky-400">
+                      <span className="text-[11px] font-bold text-[#1A3828] dark:text-[#C5A880]">
                         Ver Detalhes →
                       </span>
                     </div>
@@ -862,18 +859,18 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
         )}
       </main>
 
-      {/* Lightbox / Zoom em Tela Cheia */}
+      {/* Lightbox / Zoom em Tela Cheia — Z-Index z-[100] corrigido com colchetes arbitrários */}
       {isLightboxOpen && (
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-100 bg-black/95 backdrop-blur-md flex items-center justify-center p-2 sm:p-6"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-2 sm:p-6"
           onClick={() => setIsLightboxOpen(false)}
         >
           <button
             onClick={() => setIsLightboxOpen(false)}
             aria-label="Fechar tela cheia"
-            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+            className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition cursor-pointer active:scale-95"
           >
             <X className="w-6 h-6" />
           </button>
@@ -885,7 +882,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   e.stopPropagation();
                   setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
                 }}
-                className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition cursor-pointer"
+                className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition cursor-pointer active:scale-95"
                 aria-label="Foto anterior"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -895,7 +892,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   e.stopPropagation();
                   setActiveImgIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
                 }}
-                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition cursor-pointer"
+                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition cursor-pointer active:scale-95"
                 aria-label="Próxima foto"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -922,13 +919,13 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
       {/* Footer */}
       <SiteFooter currentTheme={currentTheme} />
 
-      {/* Barra Fixa de Conversão Mobile */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200/90 dark:border-slate-800 p-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] flex items-center justify-between gap-3">
+      {/* Barra Fixa de Conversão Mobile com Safe Area Inset Bottom */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200/90 dark:border-slate-800 pt-2.5 px-4 pb-[max(0.65rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.12)] flex items-center justify-between gap-3">
         <div className="min-w-0">
           <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
             Valor do Imóvel
           </span>
-          <span className="text-base font-black text-slate-900 dark:text-white truncate block">
+          <span className="text-base font-black text-[#1A3828] dark:text-[#C5A880] truncate block">
             {fmt(property.price)}
           </span>
         </div>
@@ -940,7 +937,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             aria-label="Compartilhar"
             className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 active:scale-95 transition cursor-pointer"
           >
-            <Share2 className="w-4 h-4 text-blue-500" />
+            <Share2 className="w-4 h-4 text-[#1A3828] dark:text-[#C5A880]" />
           </button>
           <button
             type="button"

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import React, { useState, useEffect, useRef, useMemo, useDeferredValue, useCallback } from "react";
 import {
   Home,
@@ -182,6 +182,7 @@ export const Route = createFileRoute("/loja")({
 });
 
 function LojaPage() {
+  const navigate = useNavigate();
   const { currentTheme, setCurrentTheme, toggleTheme } = useHabittatTheme();
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(getSiteSettings());
   const [productList, setProductList] = useState<ProductItem[]>(getAllProperties());
@@ -305,12 +306,12 @@ function LojaPage() {
     window.addEventListener("site-settings-changed", handleSettingsChanged);
 
     if (typeof window !== "undefined") {
-      // Detecção de SKU direto via URL query (?sku=123) -> redireciona para a página própria do imóvel
+      // Detecção de SKU direto via URL query (?sku=123) -> redireciona para a página própria do imóvel via router SPA
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const skuParam = urlParams.get("sku");
         if (skuParam) {
-          window.location.href = `/imovel/${skuParam}`;
+          navigate({ to: "/imovel/$sku", params: { sku: skuParam }, replace: true });
         }
       } catch (_) {}
     }
@@ -474,14 +475,14 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
       <ThemeSelectorModal currentTheme={currentTheme} onThemeChange={setCurrentTheme} />
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <main className="pt-24 sm:pt-28 pb-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
+      <main className="pt-24 sm:pt-28 pb-36 sm:pb-24 px-2.5 sm:px-6 max-w-7xl mx-auto">
         {/* H1 Semântico Oculto para SEO e Acessibilidade */}
         <h1 className="sr-only">
           Casas, Coberturas e Residências à Venda em Teresópolis - Ismael Dias Corretor
         </h1>
 
         {/* Container Mestre Unificado: Busca + Botão Seleção de Categorias + Filtros */}
-        <div className="mt-2 sm:mt-4 max-w-xl sm:max-w-2xl lg:max-w-4xl mx-auto glass rounded-2xl sm:rounded-3xl p-2 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-2 relative z-30">
+        <div className="mt-2 sm:mt-4 max-w-xl sm:max-w-2xl lg:max-w-4xl mx-auto glass rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 border border-slate-200/80 dark:border-slate-800/80 shadow-xs space-y-1.5 sm:space-y-2 relative z-30">
           {/* Linha 1: Barra de Busca + Botão de Seleção de Categorias */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <div className="relative flex-1 min-w-0">
@@ -491,7 +492,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
                 placeholder="Buscar código (#SKU), condomínio, rua..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8.5 sm:pl-9 pr-14 py-1.5 sm:py-2 rounded-xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition text-slate-900 dark:text-white"
+                className="w-full pl-8.5 sm:pl-9 pr-14 py-1.5 sm:py-2 rounded-xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-[#1A3828]/50 dark:focus:ring-[#C5A880]/50 transition text-slate-900 dark:text-white"
               />
               {searchQuery && (
                 <button
@@ -632,7 +633,7 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
           )}
 
           {/* Linha 2: Filtros Dropdown (Bairro, Preço, Ordenar) — Grid 3 colunas para manter proporção perfeita e nunca estourar */}
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 w-full py-0.5 relative z-20">
+          <div className="grid grid-cols-3 gap-1 sm:gap-2 w-full py-0.5 relative z-20">
             {/* Dropdown Bairro */}
             <FilterDropdown
               icon={MapPin}
@@ -702,10 +703,10 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
             </p>
             <button
               onClick={() => setVisibleCount((prev) => prev + 16)}
-              className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+              className="btn-primary-glow px-6 sm:px-8 py-3 rounded-2xl text-white font-bold text-xs sm:text-sm flex items-center gap-2.5 shadow-lg border border-[#C5A880]/30 hover:border-[#C5A880]/60 cursor-pointer active:scale-95 transition-all"
             >
               <span>Carregar Mais Imóveis</span>
-              <span className="px-2 py-0.5 rounded-full bg-white/20 text-[11px] font-black">
+              <span className="px-2 py-0.5 rounded-full bg-[#C5A880]/20 text-[#C5A880] border border-[#C5A880]/30 text-[11px] font-black leading-none">
                 +{Math.min(16, filtered.length - displayed.length)}
               </span>
             </button>
@@ -713,9 +714,9 @@ Gostaria de agendar uma visita com você para conhecer o imóvel!`;
         )}
 
         {/* Banner de Atendimento com Ismael Dias */}
-        <div className="mt-16 rounded-3xl p-6 sm:p-10 glass border border-blue-500/30 shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 rounded-3xl p-6 sm:p-10 glass border border-[#1A3828]/20 dark:border-[#C5A880]/30 shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-sky-400 mb-3 border border-blue-500/20">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#1A3828]/10 dark:bg-[#C5A880]/15 text-[#1A3828] dark:text-[#C5A880] mb-3 border border-[#1A3828]/20 dark:border-[#C5A880]/30">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Atendimento com Ismael Dias</span>
             </div>

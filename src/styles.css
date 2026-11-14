@@ -305,12 +305,12 @@ html.theme-black-piano .btn-primary-glow {
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  background: rgba(26, 111, 232, 0.08);
-  border: 1px solid rgba(26, 111, 232, 0.3);
-  color: #1a6fe8;
+  background: rgba(26, 56, 40, 0.08);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  color: #1a3828;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 8px rgba(26, 111, 232, 0.1);
+  box-shadow: 0 2px 8px rgba(26, 56, 40, 0.08);
   transition: all 0.25s ease;
 }
 
@@ -324,39 +324,40 @@ html.theme-black-piano .btn-primary-glow {
 .product-modal-container {
   border-radius: 24px;
   background: #ffffff;
-  color: #0d1b3e;
-  border: 1px solid rgba(26, 111, 232, 0.15);
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  color: #121316;
+  border: 1px solid rgba(26, 56, 40, 0.15);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
 }
 
 .product-modal-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #fbfbf9;
+  border: 1px solid rgba(26, 56, 40, 0.10);
   border-radius: 14px;
 }
 
 .product-modal-price-box {
-  background: rgba(241, 245, 249, 0.8);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(244, 242, 236, 0.8);
+  border: 1px solid rgba(197, 168, 128, 0.35);
   border-radius: 16px;
 }
 
 .product-modal-footer {
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
+  background: #fbfbf9;
+  border-top: 1px solid rgba(26, 56, 40, 0.10);
 }
 
 .btn-chat-modal {
-  background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #1a3828 0%, #244d37 100%);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  box-shadow: 0 4px 14px rgba(26, 56, 40, 0.25);
   transition: all 0.2s ease;
 }
 
 .btn-chat-modal:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.08);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.45);
+  box-shadow: 0 6px 18px rgba(26, 56, 40, 0.35);
 }
 
 /* ============ Product Card ============ */
@@ -498,7 +499,7 @@ html.theme-black-piano .btn-primary-glow {
 .header-top-bar {
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #1A6FE8, #2979FF, #00C2FF, #4DA6FF, #1A6FE8, #2979FF, #00C2FF, #1A6FE8);
+  background: linear-gradient(90deg, #1a3828, #2a523a, #c5a880, #e0cfb3, #c5a880, #2a523a, #1a3828);
   background-size: 300% 100%;
   animation: gradientSlide 3s linear infinite;
 }
@@ -710,7 +711,7 @@ div[style*="Edit with Lovable"],
   width: 380px;
   height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,111,232,0.10) 0%, rgba(41,121,255,0.06) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.14) 0%, rgba(26, 56, 40, 0.06) 40%, transparent 70%);
   pointer-events: none;
   z-index: 9998;
   will-change: transform;
@@ -721,17 +722,17 @@ div[style*="Edit with Lovable"],
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(26,111,232,0.55);
+  background: rgba(197, 168, 128, 0.85);
   pointer-events: none;
   z-index: 9999;
   transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
   will-change: transform;
-  box-shadow: 0 0 10px rgba(26,111,232,0.4), 0 0 20px rgba(26,111,232,0.2);
+  box-shadow: 0 0 10px rgba(197, 168, 128, 0.5), 0 0 20px rgba(26, 56, 40, 0.25);
 }
 .cursor-dot.hovered {
   width: 20px;
   height: 20px;
-  background: rgba(26,111,232,0.3);
+  background: rgba(197, 168, 128, 0.45);
 }
 @media (max-width: 768px), (hover: none) {
   .cursor-glow-orb, .cursor-dot { display: none !important; }
@@ -755,7 +756,7 @@ footer {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%) scale(0);
-  background: radial-gradient(circle, rgba(26,111,232,0.25) 0%, rgba(41,121,255,0.12) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.3) 0%, rgba(26, 56, 40, 0.15) 50%, transparent 70%);
   animation: ripple-expand 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 @keyframes ripple-expand {
@@ -806,80 +807,80 @@ footer {
 
 html.theme-black-piano, 
 html.theme-black-piano body {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), rgba(0, 0, 0, 0) 70%), #000000 !important;
-  color: #f8fafc !important;
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(197, 168, 128, 0.09), rgba(0, 0, 0, 0) 70%), #0d0e11 !important;
+  color: #f6f7f9 !important;
 }
 
 .theme-black-piano .brand-bg {
-  background: radial-gradient(ellipse 100% 60% at 50% -10%, rgba(14, 165, 233, 0.14), rgba(0, 0, 0, 0) 65%), #000000 !important;
+  background: radial-gradient(ellipse 100% 60% at 50% -10%, rgba(197, 168, 128, 0.10), rgba(0, 0, 0, 0) 65%), #0d0e11 !important;
 }
 
 .theme-black-piano .brand-orb-1 {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0) 70%) !important;
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.12) 0%, rgba(197, 168, 128, 0) 70%) !important;
 }
 
 .theme-black-piano .brand-orb-2 {
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0) 70%) !important;
+  background: radial-gradient(circle, rgba(26, 56, 40, 0.16) 0%, rgba(26, 56, 40, 0) 70%) !important;
 }
 
 .theme-black-piano .brand-orb-3 {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(99, 102, 241, 0) 70%) !important;
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.07) 0%, rgba(197, 168, 128, 0) 70%) !important;
 }
 
 .theme-black-piano .deco-shape {
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(197, 168, 128, 0.18) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7) !important;
 }
 
 .theme-black-piano .glass {
-  background: rgba(14, 18, 28, 0.75) !important;
+  background: rgba(20, 22, 27, 0.82) !important;
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.85),
     0 2px 10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
 .theme-black-piano .glass-strong {
-  background: rgba(10, 14, 24, 0.88) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(16, 18, 22, 0.90) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.85) !important;
 }
 
 .theme-black-piano .glass-card {
-  background: rgba(14, 18, 28, 0.75) !important;
+  background: rgba(20, 22, 27, 0.82) !important;
   backdrop-filter: blur(28px) !important;
   -webkit-backdrop-filter: blur(28px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.9),
     0 2px 12px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, border-color .35s ease;
 }
 
 .theme-black-piano .glass-card:hover {
   transform: translateY(-8px) scale(1.015);
-  border-color: rgba(56, 189, 248, 0.55) !important;
+  border-color: rgba(197, 168, 128, 0.50) !important;
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.98),
-    0 0 35px rgba(56, 189, 248, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    0 0 35px rgba(197, 168, 128, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
 }
 
 .theme-black-piano .navbar-desk {
-  background: rgba(7, 9, 15, 0.82) !important;
+  background: rgba(13, 14, 17, 0.85) !important;
   backdrop-filter: blur(28px) !important;
   -webkit-backdrop-filter: blur(28px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.85) !important;
 }
 
 .theme-black-piano .navbar-desk.scrolled {
-  background: rgba(5, 7, 12, 0.96) !important;
+  background: rgba(10, 11, 14, 0.96) !important;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.95) !important;
 }
 
@@ -888,65 +889,70 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .nav-link-desk:hover {
-  color: #38bdf8 !important;
+  color: #c5a880 !important;
 }
 
 .theme-black-piano .badge-aberto {
-  background: rgba(56, 189, 248, 0.12) !important;
-  border: 1px solid rgba(56, 189, 248, 0.28) !important;
-  color: #38bdf8 !important;
+  background: rgba(26, 56, 40, 0.35) !important;
+  border: 1px solid rgba(197, 168, 128, 0.35) !important;
+  color: #c5a880 !important;
 }
 
 .theme-black-piano .header-top-bar {
-  background: linear-gradient(90deg, #0284c7, #38bdf8, #818cf8, #38bdf8, #0284c7) !important;
+  background: linear-gradient(90deg, #1a3828, #2a523a, #c5a880, #e0cfb3, #c5a880, #2a523a, #1a3828) !important;
   background-size: 300% 100% !important;
 }
 
 .theme-black-piano .nav-pill {
-  background: rgba(10, 14, 24, 0.82) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+  background: rgba(16, 18, 23, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
 .theme-black-piano .nav-pill.scrolled {
-  background: rgba(6, 8, 14, 0.95) !important;
+  background: rgba(11, 13, 17, 0.96) !important;
 }
 
 .theme-black-piano .mobile-menu {
-  background: rgba(10, 14, 24, 0.95) !important;
+  background: rgba(16, 18, 23, 0.96) !important;
   backdrop-filter: blur(32px) !important;
   -webkit-backdrop-filter: blur(32px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.95) !important;
 }
 
 .theme-black-piano .btn-glass {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  color: #38bdf8 !important;
+  border: 1px solid rgba(197, 168, 128, 0.35) !important;
+  color: #c5a880 !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
 .theme-black-piano .btn-glass:hover {
-  border-color: rgba(56, 189, 248, 0.6) !important;
-  background: rgba(56, 189, 248, 0.16) !important;
-  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.28) !important;
+  border-color: rgba(197, 168, 128, 0.65) !important;
+  background: rgba(197, 168, 128, 0.14) !important;
+  box-shadow: 0 8px 30px rgba(197, 168, 128, 0.22) !important;
 }
 
 .theme-black-piano .btn-primary-glow {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #38bdf8 100%) !important;
-  box-shadow: 0 6px 25px rgba(56, 189, 248, 0.4) !important;
+  background: linear-gradient(135deg, #1a3828 0%, #244d37 50%, #153022 100%) !important;
+  border: 1px solid rgba(197, 168, 128, 0.40) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(197, 168, 128, 0.2) !important;
 }
 
 .theme-black-piano .btn-primary-glow:hover {
-  box-shadow: 0 10px 40px rgba(56, 189, 248, 0.6) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(197, 168, 128, 0.35) !important;
+  filter: brightness(1.08);
 }
 
 .theme-black-piano .btn-pedir-agora {
-  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%) !important;
-  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45) !important;
+  background: linear-gradient(135deg, #1a3828 0%, #2a523a 100%) !important;
+  border: 1px solid rgba(197, 168, 128, 0.35) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
 }
 
 .theme-black-piano .btn-whatsapp {
@@ -958,35 +964,35 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .btn-outline-glass {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   color: #f1f5f9 !important;
 }
 .theme-black-piano .btn-outline-glass:hover {
-  background: rgba(56, 189, 248, 0.15) !important;
-  border-color: rgba(56, 189, 248, 0.5) !important;
-  color: #38bdf8 !important;
+  background: rgba(197, 168, 128, 0.14) !important;
+  border-color: rgba(197, 168, 128, 0.50) !important;
+  color: #c5a880 !important;
 }
 
 .theme-black-piano .product-card {
-  background: rgba(14, 18, 28, 0.78) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  background: rgba(20, 22, 27, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
 }
 .theme-black-piano .product-card:hover {
-  border-color: rgba(56, 189, 248, 0.55) !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(56, 189, 248, 0.22) !important;
+  border-color: rgba(197, 168, 128, 0.50) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(197, 168, 128, 0.18) !important;
 }
 .theme-black-piano .product-image-box {
-  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, rgba(0, 0, 0, 0) 75%) !important;
+  background: radial-gradient(circle at center, rgba(197, 168, 128, 0.12) 0%, rgba(0, 0, 0, 0) 75%) !important;
 }
 
 .theme-black-piano .section-pill {
-  background: rgba(56, 189, 248, 0.16) !important;
-  border: 1px solid rgba(56, 189, 248, 0.6) !important;
-  color: #38bdf8 !important;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6) !important;
+  background: rgba(197, 168, 128, 0.12) !important;
+  border: 1px solid rgba(197, 168, 128, 0.45) !important;
+  color: #c5a880 !important;
+  box-shadow: 0 0 16px rgba(197, 168, 128, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.20) !important;
+  text-shadow: 0 0 10px rgba(197, 168, 128, 0.40) !important;
 }
 
 .theme-black-piano .product-badge-novo {
@@ -998,10 +1004,10 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .product-modal-container {
-  background: #090c15 !important;
+  background: #0f1211 !important;
   color: #f8fafc !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(56, 189, 248, 0.15) !important;
+  border: 1px solid rgba(197, 168, 128, 0.22) !important;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(197, 168, 128, 0.12) !important;
 }
 
 .theme-black-piano .product-modal-container h2 {
@@ -1009,8 +1015,8 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .product-modal-box {
-  background: rgba(18, 24, 38, 0.95) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(22, 28, 24, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
   color: #ffffff !important;
 }
@@ -1024,13 +1030,13 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .product-modal-price-box {
-  background: rgba(14, 21, 37, 0.95) !important;
-  border: 1px solid rgba(56, 189, 248, 0.45) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: rgba(22, 28, 24, 0.95) !important;
+  border: 1px solid rgba(197, 168, 128, 0.45) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(197, 168, 128, 0.15) !important;
 }
 
 .theme-black-piano .product-modal-price-box .price-label {
-  color: #38bdf8 !important;
+  color: #c5a880 !important;
 }
 
 .theme-black-piano .product-modal-price-box .price-installments {
@@ -1038,8 +1044,8 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .product-modal-footer {
-  background: #05070c !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #0a0d0c !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.10) !important;
 }
 
 .theme-black-piano .product-modal-footer .footer-helper {
@@ -1047,14 +1053,14 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .product-modal-footer .footer-phone {
-  color: #38bdf8 !important;
+  color: #c5a880 !important;
 }
 
 .theme-black-piano input,
 .theme-black-piano select,
 .theme-black-piano textarea {
-  background: rgba(14, 18, 28, 0.85) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: rgba(20, 24, 22, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
   color: #f8fafc !important;
 }
 
@@ -1066,27 +1072,27 @@ html.theme-black-piano body {
 .theme-black-piano input:focus,
 .theme-black-piano select:focus,
 .theme-black-piano textarea:focus {
-  border-color: #38bdf8 !important;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25) !important;
+  border-color: #c5a880 !important;
+  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.25) !important;
 }
 
 .theme-black-piano select option {
-  background: #0b0f19 !important;
+  background: #0d1210 !important;
   color: #f8fafc !important;
 }
 
 .theme-black-piano footer {
-  background: rgba(8, 10, 16, 0.85) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.10) !important;
+  background: rgba(13, 15, 14, 0.88) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .theme-black-piano .cursor-glow-orb {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(14, 165, 233, 0.06) 40%, transparent 70%) !important;
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.18) 0%, rgba(26, 56, 40, 0.08) 40%, transparent 70%) !important;
 }
 
 .theme-black-piano .cursor-dot {
-  background: rgba(56, 189, 248, 0.85) !important;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(56, 189, 248, 0.4) !important;
+  background: rgba(197, 168, 128, 0.90) !important;
+  box-shadow: 0 0 12px rgba(197, 168, 128, 0.8), 0 0 24px rgba(197, 168, 128, 0.4) !important;
 }
 
 /* ============ Custom Chat Scrollbar ============ */
@@ -1132,7 +1138,7 @@ html.theme-black-piano body {
 }
 
 .theme-black-piano .chat-messages-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.85);
+  background: rgba(197, 168, 128, 0.85);
 }
 
 /* ============ Sonner Notifications (Below Header Pill & Fast) ============ */

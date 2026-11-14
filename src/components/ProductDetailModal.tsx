@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   X,
   ArrowLeft,
@@ -46,22 +46,94 @@ export function ProductDetailModal({
 }: ProductDetailModalProps) {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const pushedHistoryRef = useRef(false);
 
   useEffect(() => {
     setActiveImgIndex(0);
     setIsLightboxOpen(false);
   }, [product]);
 
+  // Fechamento seguro unificando histórico do navegador e lightbox
+  const safeClose = () => {
+    if (isLightboxOpen) {
+      setIsLightboxOpen(false);
+      return;
+    }
+    if (pushedHistoryRef.current) {
+      pushedHistoryRef.current = false;
+      try {
+        if (window.history.state?.modalOpen) {
+          window.history.back();
+        }
+      } catch (_) {}
+    }
+    onClose();
+  };
+
+  // Suporte nativo ao botão 'Voltar' do navegador e Android
+  useEffect(() => {
+    if (!isOpen || !product) return;
+
+    try {
+      window.history.pushState({ modalOpen: true, sku: product.sku }, "");
+      pushedHistoryRef.current = true;
+    } catch (_) {}
+
+    const handlePopState = () => {
+      if (isLightboxOpen) {
+        setIsLightboxOpen(false);
+        try {
+          window.history.pushState({ modalOpen: true, sku: product.sku }, "");
+        } catch (_) {}
+        return;
+      }
+      if (pushedHistoryRef.current) {
+        pushedHistoryRef.current = false;
+        onClose();
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      if (pushedHistoryRef.current) {
+        pushedHistoryRef.current = false;
+        try {
+          if (window.history.state?.modalOpen) {
+            window.history.back();
+          }
+        } catch (_) {}
+      }
+    };
+  }, [isOpen, product, isLightboxOpen, onClose]);
+
+  // Elimina layout shift de 17px no desktop compensando a largura da scrollbar
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+
+    document.body.style.overflow = "hidden";
+    if (scrollBarWidth > 0) {
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    }
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+    };
+  }, [isOpen]);
+
+  // Atalhos de teclado (Escape e navegação por setas)
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (isLightboxOpen) {
-          setIsLightboxOpen(false);
-        } else {
-          onClose();
-        }
+        safeClose();
       }
       if (e.key === "ArrowLeft") {
         setActiveImgIndex((prev) => (prev > 0 ? prev - 1 : (product?.images?.length || 1) - 1));
@@ -72,14 +144,13 @@ export function ProductDetailModal({
         }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
     };
-  }, [isOpen, onClose, product, isLightboxOpen]);
+  }, [isOpen, product, isLightboxOpen]);
 
   if (!isOpen || !product) return null;
 
@@ -174,30 +245,30 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
         {/* Backdrop */}
         <div
           className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fade-in"
-          onClick={onClose}
+          onClick={safeClose}
         />
 
         {/* Modal Container — 100% da tela no Mobile */}
         <div
-          className="relative w-full h-[100dvh] sm:h-auto sm:max-w-[760px] my-0 sm:my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[100dvh] sm:max-h-[88vh] flex flex-col rounded-none sm:rounded-3xl border-0 sm:border border-slate-200/80 dark:border-white/10"
+          className="relative w-full h-[100dvh] sm:h-auto sm:max-w-[760px] my-0 sm:my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[100dvh] sm:max-h-[88vh] flex flex-col rounded-none sm:rounded-3xl border-0 sm:border border-stone-200/80 dark:border-white/10"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header bar: Botão voltar, apenas número do imóvel e botão compartilhar */}
-          <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+          <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-stone-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md">
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={onClose}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 transition cursor-pointer active:scale-95 shrink-0 border border-slate-200 dark:border-slate-700"
+                onClick={safeClose}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-100 transition cursor-pointer active:scale-95 shrink-0 border border-stone-200 dark:border-stone-700"
                 title="Voltar para as 3 opções"
               >
-                <ArrowLeft className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
+                <ArrowLeft className="w-3.5 h-3.5 text-[#1A3828] dark:text-[#C5A880]" />
                 <span>Voltar</span>
               </button>
 
               {product.sku && (
-                <span className="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 whitespace-nowrap">
-                  <Hash className="w-3 h-3 text-blue-500 shrink-0" />
+                <span className="text-xs font-extrabold px-2.5 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700 flex items-center gap-1 whitespace-nowrap">
+                  <Hash className="w-3 h-3 text-[#C5A880] shrink-0" />
                   <span>{product.sku}</span>
                 </span>
               )}
@@ -207,7 +278,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               <button
                 type="button"
                 onClick={handleShare}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-blue-800/80 transition cursor-pointer active:scale-95 shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-[#1A3828]/5 hover:bg-[#1A3828]/10 dark:bg-[#C5A880]/10 dark:hover:bg-[#C5A880]/20 text-[#1A3828] dark:text-[#C5A880] border border-[#1A3828]/20 dark:border-[#C5A880]/30 transition cursor-pointer active:scale-95 shadow-2xs"
                 title="Compartilhar imóvel"
               >
                 <Share2 className="w-3.5 h-3.5" />
@@ -215,9 +286,9 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               </button>
 
               <button
-                onClick={onClose}
+                onClick={safeClose}
                 aria-label="Fechar detalhes"
-                className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-full text-stone-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
@@ -462,21 +533,21 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
           </div>
 
           {/* Compromissos de Segurança & Procedência */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700 dark:text-slate-200 font-semibold">
-            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
-              <Building2 className="w-4 h-4 text-sky-400 shrink-0" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-stone-700 dark:text-stone-200 font-semibold">
+            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-stone-50 dark:bg-stone-800/60 rounded-xl border border-stone-200/60 dark:border-white/10">
+              <Building2 className="w-4 h-4 text-[#C5A880] shrink-0" />
               <span>
                 {isDirectIncorporadora
                   ? "Angeleti Construtora: +20 anos de tradição"
                   : "Habittat House: Atendimento Especializado"}
               </span>
             </div>
-            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-stone-50 dark:bg-stone-800/60 rounded-xl border border-stone-200/60 dark:border-white/10">
+              <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
               <span>Segurança jurídica com documentação verificada</span>
             </div>
-            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
-              <CalendarCheck className="w-4 h-4 text-indigo-400 shrink-0" />
+            <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-stone-50 dark:bg-stone-800/60 rounded-xl border border-stone-200/60 dark:border-white/10">
+              <CalendarCheck className="w-4 h-4 text-[#C5A880] shrink-0" />
               <span>Agende sua visita diretamente com Ismael Dias</span>
             </div>
           </div>
@@ -510,23 +581,23 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
         </div>
 
         {/* Footer Actions */}
-        <div className="product-modal-footer px-3.5 sm:px-6 py-2.5 sm:py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 shrink-0 border-t border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+        <div className="product-modal-footer px-3.5 sm:px-6 py-2.5 sm:py-3.5 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 shrink-0 border-t border-stone-200/80 dark:border-white/10 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md">
           {/* Trust info */}
-          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-300">
-            <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold whitespace-nowrap">
-              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+          <div className="flex items-center gap-2 text-xs text-stone-500 dark:text-stone-300">
+            <div className="flex items-center gap-1 text-[#1A3828] dark:text-[#C5A880] font-bold whitespace-nowrap">
+              <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
               <span>Habittat House</span>
             </div>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
-            <div className="text-slate-600 dark:text-slate-300 font-medium whitespace-nowrap">
-              WhatsApp: <span className="font-extrabold text-slate-900 dark:text-sky-300">{PHONE_DISPLAY}</span>
+            <span className="text-stone-300 dark:text-stone-700">•</span>
+            <div className="text-stone-600 dark:text-stone-300 font-medium whitespace-nowrap">
+              WhatsApp: <span className="font-extrabold text-stone-900 dark:text-[#C5A880]">{PHONE_DISPLAY}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto justify-end min-w-0">
             <button
-              onClick={onClose}
-              className="px-3.5 py-2 sm:py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-center shrink-0"
+              onClick={safeClose}
+              className="px-3.5 py-2 sm:py-2 rounded-full text-xs sm:text-sm font-bold border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer text-center shrink-0"
             >
               ← Voltar às Opções
             </button>
@@ -534,10 +605,12 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
             <button
               onClick={handleWhatsApp}
               className={`flex-1 sm:flex-none btn-whatsapp px-3 sm:px-6 py-2 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer shadow-md transition-all active:scale-95 text-white whitespace-nowrap min-w-0 ${
-                isSold ? "bg-blue-600 hover:bg-blue-500" : "bg-emerald-600 hover:bg-emerald-500"
+                isSold
+                  ? "bg-[#1A3828] hover:bg-[#2A523A] dark:bg-[#C5A880] dark:hover:bg-[#B3956E] text-white dark:text-[#0D0E11]"
+                  : "bg-emerald-700 hover:bg-emerald-600 text-white"
               }`}
             >
-              <WhatsAppIcon className="w-4 h-4 shrink-0 text-white" />
+              <WhatsAppIcon className={`w-4 h-4 shrink-0 ${isSold ? "text-white dark:text-[#0D0E11]" : "text-white"}`} />
               <span className="truncate">{isSold ? "Opções Semelhantes" : "Consultar / Agendar Visita"}</span>
             </button>
           </div>
@@ -616,7 +689,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
                   onClick={() => setActiveImgIndex(i)}
                   className={`relative w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-lg overflow-hidden border-2 transition cursor-pointer ${
                     activeImgIndex === i
-                      ? "border-blue-500 scale-105 shadow-md"
+                      ? "border-[#1A3828] dark:border-[#C5A880] scale-105 shadow-md"
                       : "border-transparent opacity-50 hover:opacity-100"
                   }`}
                 >

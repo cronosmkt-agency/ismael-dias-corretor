@@ -69,6 +69,7 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
   });
 
   const [selectedProductModal, setSelectedProductModal] = useState<ProductItem | null>(null);
+  const [replacedNotice, setReplacedNotice] = useState<string | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -101,6 +102,14 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
         return { ...prev, essentials: curr.filter((k) => k !== key) };
       }
       if (curr.length >= 2) {
+        // Feedback tátil via Vibration API no celular
+        if (typeof window !== "undefined" && "vibrate" in navigator) {
+          try {
+            navigator.vibrate(25);
+          } catch (_) {}
+        }
+        setReplacedNotice("Seleção atualizada (máx. 2 itens)");
+        setTimeout(() => setReplacedNotice(null), 1800);
         return { ...prev, essentials: [curr[1], key] };
       }
       return { ...prev, essentials: [...curr, key] };
@@ -169,7 +178,7 @@ Podemos conversar sobre a avaliação comercial?`;
       ref={containerRef}
       className="w-full max-w-3xl mx-auto flex flex-col justify-center items-center h-full max-h-full font-sans"
     >
-      <div className="relative w-full rounded-2xl sm:rounded-3xl bg-[#FBFBF9]/95 dark:bg-[#0D0E11]/95 backdrop-blur-2xl border border-stone-200/90 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-4 sm:p-6 lg:p-7 flex flex-col justify-between max-h-[calc(100dvh-7.5rem)] sm:max-h-[calc(100dvh-6.5rem)] overflow-hidden transition-all duration-300">
+      <div className="relative w-full rounded-2xl sm:rounded-3xl bg-[#FBFBF9]/95 dark:bg-[#0D0E11]/95 backdrop-blur-2xl border border-stone-200/90 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-3.5 sm:p-6 lg:p-7 flex flex-col justify-between max-h-[calc(100dvh-9.25rem)] sm:max-h-[calc(100dvh-7.5rem)] overflow-hidden transition-all duration-300">
         
         {/* Barra de Progresso Superior */}
         {step <= 7 && step !== 10 && (
@@ -521,8 +530,8 @@ Podemos conversar sobre a avaliação comercial?`;
             PASSO 5: FAIXA DE INVESTIMENTO
            ========================================================================= */}
         {step === 5 && (
-          <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
-            <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200 overflow-y-auto sm:overflow-visible overscroll-contain pr-0.5">
+            <div className="flex items-center gap-2 mb-1 sm:mb-1.5 shrink-0">
               <button
                 type="button"
                 onClick={() => setStep(4)}
@@ -531,12 +540,12 @@ Podemos conversar sobre a avaliação comercial?`;
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              <h2 className="font-serif text-sm sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
                 Qual a sua faixa de investimento prevista?
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mt-1.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2.5 mt-1 sm:mt-1.5">
               {[
                 { key: "ate_300k", label: "Até R$ 300 mil", desc: "Oportunidades, terrenos e compactos" },
                 { key: "300k_600k", label: "R$ 300 mil a R$ 600 mil", desc: "Primeiro imóvel na serra e ótimo custo-benefício" },
@@ -548,19 +557,19 @@ Podemos conversar sobre a avaliação comercial?`;
                   key={opt.key}
                   type="button"
                   onClick={() => handleSelectSimple("priceRange", opt.key, 6)}
-                  className={`flex items-center justify-between p-3 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer ${
+                  className={`flex items-center justify-between py-2 px-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 active:scale-[0.98] transition-all text-left group cursor-pointer ${
                     opt.span ? "sm:col-span-2" : ""
                   }`}
                 >
-                  <div>
-                    <h3 className="font-serif font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <div className="min-w-0 pr-1">
+                    <h3 className="font-serif font-bold text-[11px] sm:text-sm text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors truncate">
                       {opt.label}
                     </h3>
-                    <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    <p className="text-[9.5px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1 sm:line-clamp-none">
                       {opt.desc}
                     </p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] shrink-0 transition-colors" />
+                  <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-400 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] shrink-0 transition-colors ml-1" />
                 </button>
               ))}
             </div>
@@ -586,9 +595,17 @@ Podemos conversar sobre a avaliação comercial?`;
                   O que é indispensável na sua escolha?
                 </h2>
               </div>
-              <span className="text-[11px] font-sans font-medium text-stone-600 dark:text-stone-300">
-                {(answers.essentials || []).length}/2 selecionados
-              </span>
+              <div className="shrink-0">
+                {replacedNotice ? (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-sans font-bold bg-[#1A3828]/10 dark:bg-[#C5A880]/15 text-[#1A3828] dark:text-[#C5A880] border border-[#1A3828]/20 dark:border-[#C5A880]/30 animate-in fade-in duration-200 shadow-2xs">
+                    {replacedNotice}
+                  </span>
+                ) : (
+                  <span className="text-[11px] font-sans font-medium text-stone-600 dark:text-stone-300">
+                    {(answers.essentials || []).length}/2 selecionados
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 sm:gap-2.5 mt-1.5">
@@ -607,7 +624,7 @@ Podemos conversar sobre a avaliação comercial?`;
                     key={item.key}
                     type="button"
                     onClick={() => toggleEssential(item.key)}
-                    className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-xl border transition text-left cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-xl border transition-all active:scale-[0.97] text-left cursor-pointer ${
                       isSelected
                         ? "border-[#1A3828] dark:border-[#C5A880] bg-[#1A3828]/5 dark:bg-[#C5A880]/10 shadow-xs"
                         : "border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/60 hover:border-stone-300 dark:hover:border-stone-700"
@@ -774,15 +791,27 @@ Podemos conversar sobre a avaliação comercial?`;
             </div>
 
             {/* Ações Inferiores Discretas */}
-            <div className="mt-2 pt-2 border-t border-stone-200/70 dark:border-stone-800 flex items-center justify-between text-[11px] shrink-0">
-              <button
-                type="button"
-                onClick={handleReset}
-                className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 font-sans font-medium cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Refazer Consulta</span>
-              </button>
+            <div className="mt-2 pt-2 border-t border-stone-200/70 dark:border-stone-800 flex flex-wrap items-center justify-between gap-2 text-[11px] shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStep(7)}
+                  className="inline-flex items-center gap-1 text-stone-600 dark:text-stone-300 hover:text-[#1A3828] dark:hover:text-[#C5A880] font-sans font-medium cursor-pointer transition-colors"
+                  title="Refinar escolhas sem perder os dados preenchidos"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Voltar ao Passo 7</span>
+                </button>
+                <span className="text-stone-300 dark:text-stone-700">|</span>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 font-sans font-medium cursor-pointer transition-colors"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Refazer Consulta</span>
+                </button>
+              </div>
 
               <Link
                 to="/loja"
@@ -799,8 +828,8 @@ Podemos conversar sobre a avaliação comercial?`;
             PASSO 10: FORMULÁRIO DE PROPRIETÁRIO
            ========================================================================= */}
         {step === 10 && (
-          <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
-            <div className="flex items-center gap-2 mb-2">
+          <div className="flex-1 flex flex-col justify-start sm:justify-center animate-in fade-in duration-200 overflow-y-auto overscroll-contain pr-1 max-h-[calc(100dvh-10rem)] sm:max-h-none touch-pan-y">
+            <div className="flex items-center gap-2 mb-2 shrink-0">
               <button
                 type="button"
                 onClick={() => setStep(1)}
@@ -819,7 +848,7 @@ Podemos conversar sobre a avaliação comercial?`;
               </div>
             </div>
 
-            <form onSubmit={handleSellerSubmit} className="space-y-2 sm:space-y-3 font-sans">
+            <form onSubmit={handleSellerSubmit} className="space-y-2 sm:space-y-3 font-sans pb-3 sm:pb-0">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div>
                   <label className="block text-[11px] font-bold text-stone-700 dark:text-stone-300 mb-0.5">

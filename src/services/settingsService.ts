@@ -25,7 +25,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   phoneDisplay: "(21) 96463-9999",
   whatsappNumber: "5521964639999",
   creci: "CRECI-RJ Ativo",
-  agencyName: "Habittat House Imobiliária",
+  agencyName: "Habittat House",
   agencyAddress: "Rodovia Dr. Rogério Moura Estevão, 3835 - Albuquerque, Teresópolis/RJ",
   instagramUrl: "https://instagram.com/ismaeldias.corretor",
   defaultWhatsAppMessage: "Olá Ismael! Vi um imóvel no seu site e gostaria de mais informações e agendar uma visita.",

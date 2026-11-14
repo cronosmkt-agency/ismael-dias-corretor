@@ -32,3 +32,17 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+
+# Local scratch and scripts
+scratch_*.py
+captacao/
+olx-brazil-scraper-master/
+Imoveis/
+Documentos/
+Parceiros/
+*.xlsx
+*.bat
+all_properties_urls.txt
+
+__pycache__/
+*.pdf
