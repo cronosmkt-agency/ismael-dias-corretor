@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   X,
+  ArrowLeft,
   ShieldCheck,
   Building2,
   CheckCircle2,
@@ -143,9 +144,19 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
           className="relative w-full h-[100dvh] sm:h-auto sm:max-w-[760px] my-0 sm:my-auto product-modal-container overflow-hidden shadow-2xl z-10 max-h-[100dvh] sm:max-h-[88vh] flex flex-col rounded-none sm:rounded-3xl border-0 sm:border border-slate-200/80 dark:border-white/10"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header bar com badges e botão fechar */}
+          {/* Header bar com botão voltar, badges e botão fechar */}
           <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-white/10 shrink-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={onClose}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition cursor-pointer active:scale-95 shrink-0 border border-slate-200 dark:border-slate-700"
+                title="Voltar para as 3 opções"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
+                <span>Voltar</span>
+              </button>
+
               <span
                 className={`text-[10px] sm:text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs border whitespace-nowrap shrink-0 ${
                   isSold
@@ -472,7 +483,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               onClick={onClose}
               className="px-3.5 py-2 sm:py-2 rounded-full text-xs sm:text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-center shrink-0"
             >
-              Fechar
+              ← Voltar às Opções
             </button>
 
             <button
