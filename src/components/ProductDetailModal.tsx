@@ -88,6 +88,16 @@ export function ProductDetailModal({
   const imagesList = product.images && product.images.length > 0 ? product.images : [product.img];
   const currentImg = imagesList[activeImgIndex] || product.img;
 
+  const isDirectIncorporadora = Boolean(
+    (product.warranty && product.warranty.toLowerCase().includes("angeleti")) ||
+    (product.name && (product.name.toLowerCase().includes("golden green") || product.name.toLowerCase().includes("vale dos pássaros"))) ||
+    (product.chip && product.chip.toLowerCase().includes("incorporadora")) ||
+    (product.cat && product.cat.toLowerCase().includes("lançamento"))
+  );
+
+  const catLower = (product.cat || "").toLowerCase();
+  const isTerreno = catLower.includes("terreno") || catLower.includes("lote");
+
   const handleWhatsApp = () => {
     let text = "";
     if (isSold) {
@@ -316,18 +326,26 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               <div className="mt-2.5 sm:mt-3 product-modal-price-box p-3 sm:p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/60 border border-slate-200/70 dark:border-white/10">
                 <div className="flex items-center justify-between">
                   <span className="price-label text-[10px] sm:text-[11px] uppercase font-extrabold tracking-wider text-slate-500 dark:text-sky-300">
-                    A partir de
+                    {isDirectIncorporadora ? "A partir de" : "Valor de Venda"}
                   </span>
-                  <span className="text-[10px] font-black px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                    DIRETO C/ INCORPORADORA
-                  </span>
+                  {isDirectIncorporadora ? (
+                    <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                      DIRETO C/ INCORPORADORA
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-sky-400">
+                      {product.condition || product.badge || "DISPONÍVEL"}
+                    </span>
+                  )}
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-gradient-blue mt-0.5 text-blue-600 dark:text-sky-400">
                   {fmt(product.price)}
                 </div>
                 <div className="price-installments mt-1 flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-700 dark:text-slate-200 font-medium">
                   <CreditCard className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                  <span>{product.chip || "15% de entrada e saldo em até 120 parcelas"}</span>
+                  <span>
+                    {product.chip || (isDirectIncorporadora ? "15% de entrada e saldo em até 120 parcelas" : "Aceita Financiamento Bancário / Estuda Proposta")}
+                  </span>
                 </div>
               </div>
 
@@ -375,11 +393,20 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
 
               <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Trees className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Topografia & Terreno</span>
+                  {isTerreno ? (
+                    <>
+                      <Trees className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Topografia & Terreno</span>
+                    </>
+                  ) : (
+                    <>
+                      <Home className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Configuração</span>
+                    </>
+                  )}
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-emerald-600 dark:text-emerald-400 leading-snug break-words">
-                  {product.battery || "Pronto para Construir"}
+                  {product.battery || (isTerreno ? "Pronto para Construir" : "Pronto para Morar")}
                 </div>
               </div>
 
@@ -396,10 +423,10 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
               <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
                 <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
                   <CreditCard className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                  <span>Pagamento Facilitado</span>
+                  <span>Condições</span>
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
-                  {product.chip || "15% + 120 parcelas"}
+                  {product.chip || (isDirectIncorporadora ? "15% + 120 parcelas" : "Financiamento / À Vista")}
                 </div>
               </div>
             </div>
@@ -434,15 +461,19 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
             </ul>
           </div>
 
-          {/* Compromissos de Segurança */}
+          {/* Compromissos de Segurança & Procedência */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700 dark:text-slate-200 font-semibold">
             <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
               <Building2 className="w-4 h-4 text-sky-400 shrink-0" />
-              <span>Angeleti Construtora: +20 anos de tradição</span>
+              <span>
+                {isDirectIncorporadora
+                  ? "Angeleti Construtora: +20 anos de tradição"
+                  : "Habittat House: Atendimento Especializado"}
+              </span>
             </div>
             <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Segurança jurídica com RGI e escritura</span>
+              <span>Segurança jurídica com documentação verificada</span>
             </div>
             <div className="product-modal-box p-2.5 sm:p-3 flex items-center gap-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-white/10">
               <CalendarCheck className="w-4 h-4 text-indigo-400 shrink-0" />
