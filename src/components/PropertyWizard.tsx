@@ -750,32 +750,40 @@ Podemos conversar sobre a avaliação comercial?`;
                   <div
                     key={prop.sku || idx}
                     onClick={() => setSelectedProductModal(prop)}
-                    className="flex sm:flex-col items-center sm:items-stretch gap-2.5 sm:gap-0 p-2 sm:p-0 rounded-xl sm:rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 shadow-xs hover:shadow-md transition cursor-pointer active:scale-[0.98] group text-left overflow-hidden shrink-0"
+                    className="flex sm:flex-col items-center sm:items-stretch gap-3 sm:gap-0 p-2.5 sm:p-0 rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 shadow-xs hover:shadow-md transition cursor-pointer active:scale-[0.98] group text-left overflow-hidden shrink-0"
                   >
                     {/* Foto miniatura no mobile, foto em cima no desktop */}
-                    <div className="relative w-20 h-20 sm:w-full sm:aspect-[16/10] rounded-lg sm:rounded-none overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
+                    <div className="relative w-24 h-24 sm:w-full sm:aspect-[16/10] rounded-xl sm:rounded-none overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
                       <img
                         src={prop.img || (prop.images && prop.images[0]) || "/favicon.png"}
                         alt={prop.name}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute top-1 left-1 sm:top-2 sm:left-2">
-                        <span className="px-1.5 sm:px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-black bg-blue-600 text-white shadow-xs">
-                          {item.highlightBadge.split("•")[0]}
+                      {/* Selo de Match Elegante e Sem Quebra de Linha */}
+                      <div className="absolute top-1.5 left-1.5">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-blue-600/95 text-white shadow-md backdrop-blur-xs whitespace-nowrap">
+                          <Sparkles className="w-2.5 h-2.5 text-amber-300 shrink-0" />
+                          <span>{item.matchPercentage}% Match</span>
                         </span>
                       </div>
                     </div>
 
                     {/* Detalhes do Imóvel */}
-                    <div className="flex-1 min-w-0 sm:p-3 flex flex-col justify-between">
+                    <div className="flex-1 min-w-0 sm:p-3 flex flex-col justify-between py-0.5">
                       <div>
-                        <div className="flex items-center gap-1 text-[10px] text-slate-500 font-semibold mb-0.5">
-                          <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
-                          <span className="truncate">{prop.screen || prop.bairro || "Teresópolis/RJ"}</span>
+                        <div className="flex items-center justify-between gap-1 mb-0.5">
+                          <div className="flex items-center gap-1 text-[10px] text-slate-500 font-semibold truncate">
+                            <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                            <span className="truncate">{prop.screen || prop.bairro || "Teresópolis/RJ"}</span>
+                          </div>
+
+                          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[9px] font-extrabold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 whitespace-nowrap shrink-0">
+                            {idx === 0 ? "🥇 1ª Opção" : idx === 1 ? "🥈 2ª Opção" : "🥉 3ª Opção"}
+                          </span>
                         </div>
 
-                        <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 leading-tight group-hover:text-blue-600 transition">
+                        <h3 className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 leading-tight group-hover:text-blue-600 transition">
                           {prop.name}
                         </h3>
 
@@ -784,7 +792,7 @@ Podemos conversar sobre a avaliação comercial?`;
                         </div>
                       </div>
 
-                      <div className="mt-1 sm:mt-2.5 flex items-center justify-between sm:pt-2 sm:border-t sm:border-slate-100 dark:sm:border-slate-800">
+                      <div className="mt-1 sm:mt-2 flex items-center justify-between pt-1 sm:pt-2 sm:border-t sm:border-slate-100 dark:sm:border-slate-800">
                         <span className="text-[10px] text-slate-500 truncate hidden sm:inline">
                           {prop.storage || prop.specs || "Disponível"}
                         </span>
