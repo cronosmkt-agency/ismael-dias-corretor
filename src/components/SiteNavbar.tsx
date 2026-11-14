@@ -64,9 +64,9 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: "Início", path: "/" },
+    { label: "Guia 3 Imóveis", path: "/" },
     { label: "Lançamentos", path: "/lancamentos", hasDot: true },
-    { label: "Imóveis", path: "/loja" },
+    { label: "Catálogo Completo", path: "/loja" },
   ];
 
   return (

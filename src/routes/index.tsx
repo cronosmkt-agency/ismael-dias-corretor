@@ -33,6 +33,7 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { trackPageView, seedInitialAnalyticsIfEmpty } from "@/services/analyticsService";
 import { getAllProperties } from "@/services/propertiesService";
+import { PropertyWizard } from "@/components/PropertyWizard";
 
 const heroHouse = "/imoveis/mansao-neoclassica.png";
 
@@ -139,89 +140,51 @@ function SectionTitle({
 }
 
 /* =========================================================================
-   1. HERO SECTION (Ismael Dias Corretor Habittat House)
+   1. HERO SECTION COM O GUIA INTERATIVO (Guide-First Experience)
    ========================================================================= */
-function Hero() {
+function HeroWithWizard({ allProperties }: { allProperties: ProductItem[] }) {
   return (
     <section
       id="inicio"
-      className="hero-section-fold relative pt-20 pb-4 sm:pt-24 sm:pb-8 lg:py-0 px-4 sm:px-6 overflow-hidden"
+      className="hero-section-fold relative pt-20 pb-6 sm:pt-24 sm:pb-10 px-3 sm:px-6 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-20 my-auto">
-        {/* Left Column */}
-        <div className="lg:col-span-7 text-center lg:text-left flex flex-col justify-center">
-          {/* Eyebrow Pill — Compacto e Auto-Ajustável (w-fit) */}
-          <div className="inline-flex w-fit self-center lg:self-start items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-xs mb-3 sm:mb-4 whitespace-nowrap">
-            <Building2 className="w-3.5 h-3.5 shrink-0 text-blue-600 dark:text-sky-400" />
-            <span className="hidden sm:inline">Parceria Oficial Angeleti Construtora (+20 anos) • Teresópolis/RJ</span>
-            <span className="sm:hidden">Angeleti Construtora (+20 anos) • Teresópolis</span>
-          </div>
-
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-slate-900 dark:text-white">
-            Seu lote ou casa em{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 dark:from-sky-400 dark:via-blue-400 dark:to-teal-300">
-              condomínio fechado
-            </span>
-            <br />
-            em Teresópolis.
-          </h1>
-
-          {/* Value Prop Subtitle */}
-          <p className="mt-3 sm:mt-5 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Encontre o terreno ou residência ideal para você e sua família nos condomínios{" "}
-            <strong className="text-slate-900 dark:text-white font-bold">Golden Green</strong> e{" "}
-            <strong className="text-slate-900 dark:text-white font-bold">Vale dos Pássaros</strong>.
-            Entrada a partir de 15% e{" "}
-            <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">
-              saldo em até 120 parcelas direto com a incorporadora Angeleti!
-            </strong> 🏔️🌲
-          </p>
-
-          {/* Action CTAs — Clean (Apenas 2 botões elegantes) */}
-          <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center lg:justify-start">
-            <Link
-              to="/lancamentos"
-              className="btn-primary-glow inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm text-white shadow-lg active:scale-95 transition"
-            >
-              <Trees className="w-4 h-4" />
-              <span>Ver Lançamentos</span>
-            </Link>
-
-            <Link
-              to="/loja"
-              className="inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-full font-bold text-sm border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 shadow-sm active:scale-95 transition"
-            >
-              <Home className="w-4 h-4" />
-              <span>Imóveis Avulsos</span>
-            </Link>
-          </div>
-
-          {/* Micro Trust Indicators — Habittat House e Angeleti lado a lado, 15% + 120x centralizado abaixo no mobile */}
-          <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300">
-            {/* Linha 1 no mobile: Habittat House e Angeleti um ao lado do outro */}
-            <div className="flex items-center justify-center gap-2 w-full sm:w-auto">
-              <div className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 whitespace-nowrap text-[11px] sm:text-xs">
-                <Building2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Habittat House Imobiliária</span>
-              </div>
-              <div className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 whitespace-nowrap text-[11px] sm:text-xs">
-                <Trees className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                <span>Angeleti (+20 anos)</span>
-              </div>
-            </div>
-
-            {/* Linha 2 no mobile: 15% + 120x Direto centralizado abaixo */}
-            <div className="flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 font-black shadow-2xs whitespace-nowrap text-[11px] sm:text-xs">
-              <DollarSign className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              <span>15% + 120x Direto</span>
-            </div>
-          </div>
+      <div className="max-w-4xl mx-auto w-full relative z-20 text-center">
+        {/* Eyebrow Pill */}
+        <div className="inline-flex w-fit items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-blue-50/90 dark:bg-sky-950/60 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800/80 shadow-2xs mb-3">
+          <Building2 className="w-3.5 h-3.5 shrink-0 text-blue-600 dark:text-sky-400" />
+          <span>Ismael Dias • Habittat House Imobiliária & Angeleti Construtora</span>
         </div>
 
-        {/* Right Column: 3D Tilt House Image on Desktop */}
-        <div className="hidden lg:flex lg:col-span-5 justify-center items-center">
-          <TiltHouse />
+        {/* Main Title */}
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-slate-900 dark:text-white">
+          Encontre seu imóvel ideal em Teresópolis{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-500 to-emerald-500 dark:from-sky-400 dark:via-blue-400 dark:to-teal-300">
+            em 1 minuto
+          </span>
+        </h1>
+
+        {/* Value Prop Subtitle */}
+        <p className="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+          Sem perda de tempo: escolha as opções abaixo para receber a recomendação dos 3 melhores imóveis do nosso catálogo para o seu perfil e investimento:
+        </p>
+
+        {/* O GUIA INTERATIVO DE ALTA CONVERSÃO */}
+        <div className="mt-4">
+          <PropertyWizard allProperties={allProperties} />
+        </div>
+
+        {/* Atalho elegante para o catálogo tradicional */}
+        <div className="mt-4 flex items-center justify-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <span>Prefere busca livre com todos os filtros?</span>
+            <Link
+              to="/loja"
+              className="font-bold text-blue-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1"
+            >
+              <span>Ver Catálogo Completo (200 imóveis)</span>
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -773,16 +736,24 @@ function ReviewsAndLocation() {
    ========================================================================= */
 function BrandStore() {
   const { currentTheme, setCurrentTheme, toggleTheme } = useHabittatTheme();
-  const [productList, setProductList] = useState<ProductItem[]>(defaultProducts);
+  const [productList, setProductList] = useState<ProductItem[]>(() => getAllProperties());
 
   useEffect(() => {
     trackPageView("/");
+    const handlePropsChanged = () => {
+      setProductList(getAllProperties());
+    };
+    window.addEventListener("properties-data-changed", handlePropsChanged);
+
     // Defer heavy initial property seeding so initial paint is instantaneous
     const timer = setTimeout(() => {
       seedInitialAnalyticsIfEmpty(getAllProperties());
     }, 400);
 
-    return () => clearTimeout(timer);
+    return () => {
+      window.removeEventListener("properties-data-changed", handlePropsChanged);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -792,8 +763,8 @@ function BrandStore() {
       <SiteNavbar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
       <main>
-        {/* 1. Hero com Empreendimentos e Imóveis */}
-        <Hero />
+        {/* 1. Guia Interativo de Decisão Rápida (Abertura Direta) */}
+        <HeroWithWizard allProperties={productList} />
 
         {/* 2. Destaques: Lotes Golden Green e Vale dos Pássaros */}
         <FeaturedProducts products={productList} />
