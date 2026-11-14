@@ -83,32 +83,10 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/admin'
-    | '/chat'
-    | '/lancamentos'
-    | '/loja'
-    | '/sitemap.xml'
-    | '/imovel/$sku'
+  fullPaths: '/' | '/admin' | '/chat' | '/lancamentos' | '/loja' | '/sitemap.xml' | '/imovel/$sku'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/admin'
-    | '/chat'
-    | '/lancamentos'
-    | '/loja'
-    | '/sitemap.xml'
-    | '/imovel/$sku'
-  id:
-    | '__root__'
-    | '/'
-    | '/admin'
-    | '/chat'
-    | '/lancamentos'
-    | '/loja'
-    | '/sitemap.xml'
-    | '/imovel/$sku'
+  to: '/' | '/admin' | '/chat' | '/lancamentos' | '/loja' | '/sitemap.xml' | '/imovel/$sku'
+  id: '__root__' | '/' | '/admin' | '/chat' | '/lancamentos' | '/loja' | '/sitemap.xml' | '/imovel/$sku'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {

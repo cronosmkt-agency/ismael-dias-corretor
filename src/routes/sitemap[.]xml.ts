@@ -23,7 +23,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/lancamentos", lastmod: today, changefreq: "weekly", priority: "0.9" },
         ];
 
-        // Todos os 175 imóveis com link exclusivo /imovel/{sku}
+        // Todos os imóveis com link exclusivo /imovel/{sku}
         allImoveisData.forEach((item) => {
           if (item.sku) {
             entries.push({
