@@ -97,7 +97,7 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
                 >
                   <span>{link.label}</span>
                   {link.hasDot && (
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_#10b981]" />
+                    <span className="w-2 h-2 rounded-full bg-[#C5A880] animate-pulse shadow-[0_0_6px_rgba(197,168,128,0.6)]" />
                   )}
                 </Link>
               );
@@ -116,16 +116,16 @@ export function SiteNavbar({ currentTheme, toggleTheme }: SiteNavbarProps) {
 
             <span
               className="h-5 border-l"
-              style={{ borderColor: "rgba(var(--blue-rgb),0.18)" }}
+              style={{ borderColor: "rgba(197, 168, 128, 0.3)" }}
             />
 
             <a
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pedir-agora text-xs py-2 px-4 rounded-full flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white"
+              className="btn-pedir-agora text-xs py-2 px-4 rounded-full flex items-center gap-1.5 bg-[#1A3828] hover:bg-[#2A523A] text-white border border-[#C5A880]/30 shadow-xs"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5" />
+              <WhatsAppIcon className="w-3.5 h-3.5 text-[#C5A880]" />
               <span>Agendar Visita</span>
             </a>
           </div>

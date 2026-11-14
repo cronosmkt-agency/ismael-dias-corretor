@@ -21,16 +21,16 @@ export const PropertyCard = React.memo(function PropertyCard({
       {/* Badge Superior com SKU */}
       <div className="flex items-center justify-between gap-1 mb-1.5 min-w-0">
         <span
-          className={`text-[9px] sm:text-xs font-extrabold px-1.5 sm:px-2 py-0.5 rounded-md border whitespace-nowrap shrink-0 truncate max-w-[125px] sm:max-w-none ${
+          className={`text-[9px] sm:text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-md border whitespace-nowrap shrink-0 truncate max-w-[125px] sm:max-w-none ${
             isSold
               ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30"
-              : "bg-blue-50 dark:bg-sky-950/70 text-blue-700 dark:text-sky-300 border border-blue-200/60 dark:border-sky-800/60"
+              : "bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 border-stone-200 dark:border-stone-700/60"
           }`}
         >
           {prod.badge}
         </span>
         {prod.sku && (
-          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 whitespace-nowrap shrink-0">
+          <span className="text-[10px] font-medium text-stone-400 dark:text-stone-500 whitespace-nowrap shrink-0">
             #{prod.sku}
           </span>
         )}
@@ -64,25 +64,25 @@ export const PropertyCard = React.memo(function PropertyCard({
           <Link
             to="/imovel/$sku"
             params={{ sku: String(prod.sku) }}
-            className="text-xs sm:text-sm font-black card-property-title text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-sky-400 transition block"
+            className="font-serif font-bold text-xs sm:text-sm card-property-title text-slate-900 dark:text-stone-100 hover:text-[#1A3828] dark:hover:text-[#C5A880] transition block leading-snug"
             title={prod.name}
           >
             {prod.name}
           </Link>
 
-          <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 flex items-center gap-1">
-            <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+          <p className="text-[10px] sm:text-[11px] text-stone-500 dark:text-stone-400 line-clamp-1 mt-0.5 flex items-center gap-1 font-sans">
+            <MapPin className="w-3 h-3 text-[#C5A880] shrink-0" />
             <span>{prod.screen || `${prod.bairro || "Teresópolis"}, Teresópolis/RJ`}</span>
           </p>
         </div>
 
-        <div className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-slate-100 dark:border-slate-800/60">
+        <div className="mt-2 pt-1.5 sm:mt-2.5 sm:pt-2 border-t border-stone-100 dark:border-stone-800/60">
           <div className="flex items-baseline gap-1 min-w-0">
-            <span className="text-[13px] sm:text-lg font-black text-blue-600 dark:text-sky-400 truncate">
+            <span className="font-serif font-bold text-[13px] sm:text-base text-[#1A3828] dark:text-[#C5A880] truncate">
               {fmt(prod.price)}
             </span>
           </div>
-          <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+          <p className="text-[9px] sm:text-[10px] text-stone-500 dark:text-stone-400 truncate mt-0.5">
             {prod.chip || "Condições facilitadas"}
           </p>
         </div>

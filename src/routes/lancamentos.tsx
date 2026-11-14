@@ -347,10 +347,10 @@ Gostaria de agendar uma visita guiada com você no local!`;
               onClick={() => setIsCategoryOpen((prev) => !prev)}
               className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 border select-none ${
                 activeFilter !== "Todos"
-                  ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white border-blue-500 shadow-sm"
+                  ? "bg-gradient-to-r from-[#1A3828] to-[#2A523A] dark:from-[#C5A880] dark:to-[#B39366] text-white dark:text-[#0D0E11] border-[#1A3828] dark:border-[#C5A880] shadow-sm"
                   : isCategoryOpen
-                  ? "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-sky-400 border-blue-300 dark:border-sky-700 shadow-2xs"
-                  : "bg-slate-100/90 dark:bg-slate-800/90 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border-slate-200/80 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 shadow-2xs"
+                  ? "bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] border-[#1A3828]/40 dark:border-[#C5A880]/40 shadow-2xs"
+                  : "bg-stone-100/90 dark:bg-stone-800/90 hover:bg-stone-200/80 dark:hover:bg-stone-700/80 border-stone-200/80 dark:border-stone-700/80 text-stone-700 dark:text-stone-200 shadow-2xs"
               }`}
               title="Filtrar por Categoria"
             >
@@ -389,7 +389,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
                       setActiveFilter("Todos");
                       setIsCategoryOpen(false);
                     }}
-                    className="text-[10px] sm:text-xs font-bold text-blue-600 dark:text-sky-400 hover:underline cursor-pointer"
+                    className="text-[10px] sm:text-xs font-bold text-[#1A3828] dark:text-[#C5A880] hover:underline cursor-pointer"
                   >
                     Ver Todos ({productList.length})
                   </button>
@@ -414,16 +414,16 @@ Gostaria de agendar uma visita guiada com você no local!`;
                       }}
                       className={`group relative flex flex-col items-center justify-between w-full h-[54px] sm:h-[64px] p-1 sm:p-1.5 rounded-xl border transition-all duration-150 cursor-pointer text-center select-none shadow-2xs ${
                         isActive
-                          ? "bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600 dark:to-sky-600 border-blue-500 dark:border-sky-400 text-white shadow-xs scale-102"
-                          : "bg-white/95 dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800/80 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/70"
+                          ? "bg-gradient-to-br from-[#1A3828] to-[#2A523A] dark:from-[#C5A880] dark:to-[#B39366] border-[#1A3828] dark:border-[#C5A880] text-white dark:text-[#0D0E11] shadow-xs scale-102"
+                          : "bg-white/95 dark:bg-stone-900/90 border-stone-200/80 dark:border-stone-800/80 text-stone-700 dark:text-stone-300 hover:border-[#1A3828]/40 dark:hover:border-[#C5A880]/40 hover:bg-stone-50 dark:hover:bg-stone-800/70"
                       }`}
                     >
                       {/* Badge Contador no Canto Superior Direito */}
                       <span
                         className={`absolute top-0.5 right-0.5 sm:top-1 sm:right-1 text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0 rounded-full font-black leading-none transition-colors ${
                           isActive
-                            ? "bg-white/30 text-white"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60"
+                            ? "bg-white/30 text-white dark:text-[#0D0E11]"
+                            : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200/60 dark:border-stone-700/60"
                         }`}
                       >
                         {count}
@@ -433,8 +433,8 @@ Gostaria de agendar uma visita guiada com você no local!`;
                       <div
                         className={`p-1 rounded-lg transition-all duration-200 ${
                           isActive
-                            ? "bg-white/20 text-white"
-                            : "bg-blue-50/80 dark:bg-slate-800/80 text-blue-600 dark:text-sky-400 group-hover:scale-105"
+                            ? "bg-white/20 text-white dark:text-[#0D0E11]"
+                            : "bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] group-hover:scale-105"
                         }`}
                       >
                         <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
@@ -505,7 +505,7 @@ Gostaria de agendar uma visita guiada com você no local!`;
               <button
                 type="button"
                 onClick={handleClearAllFilters}
-                className="text-blue-600 dark:text-sky-400 hover:underline font-bold shrink-0 ml-2 cursor-pointer"
+                className="text-[#1A3828] dark:text-[#C5A880] hover:underline font-bold shrink-0 ml-2 cursor-pointer"
               >
                 Limpar filtros
               </button>

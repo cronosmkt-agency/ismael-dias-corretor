@@ -12,17 +12,17 @@ import { PropertyWizard } from "@/components/PropertyWizard";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Guia do Imóvel Perfeito em Teresópolis | Ismael Dias Corretor" },
+      { title: "Curadoria Imobiliária em Teresópolis | Ismael Dias • Habittat House" },
       {
         name: "description",
         content:
-          "Encontre seu imóvel ideal em Teresópolis em 1 minuto. Guia interativo e consultoria exclusiva com o corretor Ismael Dias na Habittat House.",
+          "Encontre seu imóvel ideal em Teresópolis com a assessoria exclusiva do corretor Ismael Dias na Habittat House. Curadoria personalizada de casas em condomínio, coberturas e terrenos.",
       },
-      { property: "og:title", content: "Guia do Imóvel Perfeito | Ismael Dias Corretor" },
+      { property: "og:title", content: "Curadoria Imobiliária | Ismael Dias • Habittat House" },
       {
         property: "og:description",
         content:
-          "Descubra as 3 melhores opções de casas, terrenos e apartamentos em Teresópolis com o corretor Ismael Dias.",
+          "Curadoria exclusiva de casas de alto padrão, terrenos e coberturas em Teresópolis com o corretor Ismael Dias.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },

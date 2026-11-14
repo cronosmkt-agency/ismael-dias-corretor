@@ -29,39 +29,39 @@ export function BrandLogo({
         style={{
           width: iconSize,
           height: iconSize,
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%)",
+          background: dark
+            ? "linear-gradient(135deg, #14161b 0%, #1e222a 100%)"
+            : "linear-gradient(135deg, #1a3828 0%, #244d37 100%)",
           boxShadow: dark
-            ? "0 4px 15px rgba(2, 132, 199, 0.35), 0 0 1px rgba(255,255,255,0.2) inset"
-            : "0 4px 12px rgba(15, 23, 42, 0.15)",
-          border: "1px solid rgba(255,255,255,0.15)",
+            ? "0 4px 15px rgba(0, 0, 0, 0.4), 0 0 1px rgba(197, 168, 128, 0.3) inset"
+            : "0 4px 12px rgba(26, 56, 40, 0.2)",
+          border: dark ? "1px solid rgba(197, 168, 128, 0.3)" : "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
-        <Home className="w-5 h-5 text-white drop-shadow-sm" strokeWidth={2.2} />
+        <Home className="w-5 h-5 text-amber-200 drop-shadow-xs" strokeWidth={2} />
       </div>
 
       {/* Wordmark */}
       {showText && (
         <div className="flex flex-col justify-center leading-none">
-          <div className="flex items-center text-sm sm:text-base font-black tracking-tight">
-            <span style={{ color: dark ? "#FFFFFF" : "#0f172a" }}>
+          <div className="flex items-center text-sm sm:text-base font-serif font-black tracking-wider">
+            <span style={{ color: dark ? "#FFFFFF" : "#121316" }}>
               ISMAEL
             </span>
             <span
               style={{
-                background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: dark ? "#c5a880" : "#8b6f47",
               }}
-              className="ml-1"
+              className="ml-1.5"
             >
               DIAS
             </span>
           </div>
           <span
-            className="text-[8px] sm:text-[9.5px] uppercase font-black tracking-wider mt-0.5"
-            style={{ color: dark ? "#38bdf8" : "#0284c7" }}
+            className="text-[8px] sm:text-[9px] uppercase font-sans font-bold tracking-widest mt-0.5"
+            style={{ color: dark ? "#a1a7b4" : "#525866" }}
           >
-            CORRETOR DA HABITTAT HOUSE
+            CORRETOR • HABITTAT HOUSE
           </span>
         </div>
       )}

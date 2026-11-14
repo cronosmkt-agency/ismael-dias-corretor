@@ -17,7 +17,7 @@ import {
   Compass,
   SlidersHorizontal,
   ChevronRight,
-  CheckCircle2,
+  Send,
 } from "lucide-react";
 import type { ProductItem } from "@/types/imovel";
 import { fmt, WHATSAPP_NUMBER } from "@/data/storeData";
@@ -98,7 +98,7 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
     setAnswers((prev) => {
       const curr = prev.essentials || [];
       if (curr.includes(key)) {
-        return { ...prev, essentials: curr.filter((item) => item !== key) };
+        return { ...prev, essentials: curr.filter((k) => k !== key) };
       }
       if (curr.length >= 2) {
         return { ...prev, essentials: [curr[1], key] };
@@ -108,10 +108,6 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
   };
 
   const handleReset = () => {
-    try {
-      sessionStorage.removeItem("wizard_step");
-      sessionStorage.removeItem("wizard_answers");
-    } catch (_) {}
     setAnswers({
       objective: undefined,
       occupants: undefined,
@@ -122,61 +118,22 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
       paymentMethod: undefined,
     });
     setStep(1);
-    setSelectedProductModal(null);
+    try {
+      sessionStorage.removeItem("wizard_step");
+      sessionStorage.removeItem("wizard_answers");
+    } catch (_) {}
   };
 
-  const handleContactWhatsApp = (prop: ProductItem, highlight: string) => {
-    trackWhatsAppClick(prop.sku || "", prop.name, prop.bairro || "Teresópolis", prop.price);
+  const handleContactProperty = (prop: ProductItem, rankLabel: string, highlight?: string) => {
+    trackWhatsAppClick("wizard_match", prop.sku);
 
-    const objLabel =
-      answers.objective === "construir"
-        ? "Construir / Terreno"
-        : "Comprar Imóvel";
+    const text = `Olá, Ismael Dias! 🏡
+Concluí a curadoria no seu site e me interessei pela minha recomendação:
 
-    const occupantsLabel =
-      answers.occupants === "casal"
-        ? "Casal / Solteiro"
-        : answers.occupants === "familia_pequena"
-        ? "Família com filhos"
-        : answers.occupants === "familia_grande"
-        ? "Família grande"
-        : "Investimento / Renda";
-
-    const regLabel =
-      answers.region === "condominios"
-        ? "Condomínios (Albuquerque/GG)"
-        : answers.region === "serra_natureza"
-        ? "Serra & Natureza (Vargem Grande/Alto)"
-        : answers.region === "centro"
-        ? "Centro & Conveniência"
-        : answers.region === "expansao"
-        ? "Regiões em Expansão"
-        : "Melhor opção disponível";
-
-    const payLabel =
-      answers.paymentMethod === "financiamento"
-        ? "Financiamento Bancário"
-        : answers.paymentMethod === "a_vista"
-        ? "À Vista / Recursos Próprios"
-        : answers.paymentMethod === "parcelado"
-        ? "Parcelado Direto com Incorporadora"
-        : answers.paymentMethod === "permuta"
-        ? "Estudo Permuta"
-        : "Consultoria Financeira";
-
-    const text = `Olá, Ismael Dias! 👋
-Fiz o *Guia do Imóvel* no seu site e encontrei o match perfeito para mim!
-
-📋 *Meu Perfil:*
-• *Objetivo:* ${objLabel}
-• *Perfil:* ${occupantsLabel}
-• *Região:* ${regLabel}
-• *Pagamento:* ${payLabel}
-
-🎯 *Imóvel Selecionado:*
-👉 *${prop.name}*
+🏆 *Curadoria:* ${rankLabel}
+✨ *Imóvel:* ${prop.name}
+📍 *Localização:* ${prop.screen || "Teresópolis/RJ"}
 🔢 *Código:* #${prop.sku || "Habittat"}
-📍 *Localização:* ${prop.screen || prop.bairro || "Teresópolis/RJ"}
 💰 *Valor:* ${fmt(prop.price)}
 ✨ *Destaque:* ${highlight || "Recomendado"}
 
@@ -210,26 +167,26 @@ Podemos conversar sobre a avaliação comercial?`;
   return (
     <div
       ref={containerRef}
-      className="w-full max-w-3xl mx-auto flex flex-col justify-center items-center h-full max-h-full"
+      className="w-full max-w-3xl mx-auto flex flex-col justify-center items-center h-full max-h-full font-sans"
     >
-      <div className="relative w-full rounded-2xl sm:rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl p-4 sm:p-6 lg:p-7 flex flex-col justify-between max-h-[calc(100dvh-7.5rem)] sm:max-h-[calc(100dvh-6.5rem)] overflow-hidden transition-all duration-300">
+      <div className="relative w-full rounded-2xl sm:rounded-3xl bg-[#FBFBF9]/95 dark:bg-[#0D0E11]/95 backdrop-blur-2xl border border-stone-200/90 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-4 sm:p-6 lg:p-7 flex flex-col justify-between max-h-[calc(100dvh-7.5rem)] sm:max-h-[calc(100dvh-6.5rem)] overflow-hidden transition-all duration-300">
         
         {/* Barra de Progresso Superior */}
         {step <= 7 && step !== 10 && (
           <div className="mb-3 sm:mb-4 shrink-0">
             <div className="flex items-center justify-between mb-1.5">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-blue-50 dark:bg-sky-950/70 text-blue-600 dark:text-sky-400 border border-blue-200/80 dark:border-sky-800">
-                <Sparkles className="w-3 h-3" />
-                <span>Guia do Imóvel Perfeito</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-serif font-bold tracking-wider uppercase bg-stone-100 dark:bg-stone-900 text-[#1A3828] dark:text-[#C5A880] border border-stone-200 dark:border-white/10">
+                <Sparkles className="w-3 h-3 text-[#C5A880]" />
+                <span>Curadoria Ismael Dias</span>
               </div>
-              <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                Passo {step} de {totalSteps}
+              <span className="text-[11px] font-sans font-medium text-stone-500 dark:text-stone-400">
+                Etapa {step} de {totalSteps}
               </span>
             </div>
 
-            <div className="w-full h-1.5 sm:h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+            <div className="w-full h-1 sm:h-1.5 rounded-full bg-stone-200/70 dark:bg-stone-800/80 overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-600 via-sky-500 to-emerald-500 transition-all duration-300 ease-out"
+                className="h-full bg-gradient-to-r from-[#1A3828] via-[#2A523A] to-[#C5A880] dark:from-[#C5A880] dark:to-[#E8DCC8] transition-all duration-300 ease-out"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -242,11 +199,11 @@ Podemos conversar sobre a avaliação comercial?`;
         {step === 1 && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="text-center mb-2.5 sm:mb-4">
-              <h2 className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                Qual é o seu objetivo hoje?
+              <h2 className="font-serif text-lg sm:text-2xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                Qual é o seu objetivo em Teresópolis?
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Selecione uma das opções para iniciar:
+              <p className="text-[11px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                Selecione uma opção para personalizarmos a sua curadoria:
               </p>
             </div>
 
@@ -254,17 +211,17 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("objective", "comprar", 2)}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-sky-500 bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 dark:hover:bg-sky-950/30 transition text-left group"
+                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-sky-900/60 text-blue-600 dark:text-sky-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Home className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-sky-400 transition-colors">
+                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                     Quero Comprar um Imóvel
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
-                    Casas, apartamentos ou condomínios prontos
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
+                    Casas em condomínio, coberturas ou opções prontas
                   </p>
                 </div>
               </button>
@@ -275,17 +232,17 @@ Podemos conversar sobre a avaliação comercial?`;
                   setAnswers((prev) => ({ ...prev, objective: "construir", propertyType: "terreno" }));
                   setStep(4);
                 }}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50/70 dark:bg-slate-800/40 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/30 transition text-left group"
+                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Trees className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                     Terreno para Construir
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
-                    Lotes residenciais planos com segurança
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
+                    Lotes residenciais com segurança e clube privativo
                   </p>
                 </div>
               </button>
@@ -296,33 +253,33 @@ Podemos conversar sobre a avaliação comercial?`;
                   setAnswers((prev) => ({ ...prev, objective: "vender" }));
                   setStep(10);
                 }}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-amber-500 dark:hover:border-amber-500 bg-slate-50/70 dark:bg-slate-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/30 transition text-left group"
+                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <KeyRound className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                     Quero Vender meu Imóvel
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
-                    Avaliação gratuita e anúncio profissional
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
+                    Avaliação técnica e divulgação para clientes qualificados
                   </p>
                 </div>
               </button>
 
               <Link
                 to="/lancamentos"
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 bg-slate-50/70 dark:bg-slate-800/40 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/30 transition text-left group"
+                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                     Lançamentos Angeleti
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
                     Golden Green & Vale dos Pássaros (120x direto)
                   </p>
                 </div>
@@ -340,12 +297,13 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                Quem vai morar no imóvel?
+              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                Para quem é o imóvel?
               </h2>
             </div>
 
@@ -353,12 +311,12 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("occupants", "casal", 3)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  👫 Só eu ou Casal (sem filhos)
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Individual ou Casal
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
                   1 a 2 quartos, apartamentos práticos ou casas aconchegantes.
                 </p>
               </button>
@@ -366,39 +324,39 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("occupants", "familia_pequena", 3)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  👨‍👩‍👧 Família com filhos
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Família com Filhos
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  3 quartos, quintal, condomínio seguro e lazer infantil.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  3 quartos, quintal amplo, condomínio seguro com infraestrutura infantil.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("occupants", "familia_grande", 3)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  👨‍👩‍👧‍👦 Família grande / Amigos
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Família Ampliada / Amigos
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  4+ quartos, suítes independentes e espaço gourmet amplo.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  4+ quartos, suítes independentes e generoso espaço gourmet.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("occupants", "investimento", 3)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  💼 Investimento / Renda
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Investimento / Renda Patrimonial
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Foco em liquidez, locação por temporada ou valorização.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Foco em liquidez, locação por temporada ou valorização de capital.
                 </p>
               </button>
             </div>
@@ -414,12 +372,13 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                Que tipo de imóvel você busca?
+              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                Que tipologia você busca?
               </h2>
             </div>
 
@@ -427,56 +386,56 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("propertyType", "condominio", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-sky-400 shrink-0" />
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <ShieldCheck className="w-4 h-4 text-[#C5A880] shrink-0" />
                   <span>Casa em Condomínio Fechado</span>
                 </div>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Segurança 24h, portaria, lazer e privacidade.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Segurança 24h, portaria, lazer privativo e privacidade.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("propertyType", "apartamento", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  <Building2 className="w-4 h-4 text-blue-600 dark:text-sky-400 shrink-0" />
-                  <span>Apartamento ou Cobertura</span>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Building2 className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Apartamento ou Cobertura Nobre</span>
                 </div>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Praticidade urbana, próximo ao centro ou com vista panorâmica.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Conveniência urbana, próximo ao centro ou com vista panorâmica.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("propertyType", "casa_avulsa", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  <Home className="w-4 h-4 text-blue-600 dark:text-sky-400 shrink-0" />
-                  <span>Casa ou Sítio Fora de Condomínio</span>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Home className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Casa ou Sítio em Área Aberta</span>
                 </div>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Sem taxa de condomínio, terrenos amplos e muita liberdade.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Sem taxa condominial, terrenos generosos e total liberdade.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("propertyType", "qualquer", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  <Compass className="w-4 h-4 text-blue-600 dark:text-sky-400 shrink-0" />
-                  <span>Estou Aberto a Opções</span>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Compass className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Aberto a Sugestões</span>
                 </div>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Quero ver o melhor imóvel dentro do meu orçamento.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Priorizar a melhor oportunidade dentro do investimento planejado.
                 </p>
               </button>
             </div>
@@ -492,11 +451,12 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => setStep(answers.objective === "construir" ? 1 : 3)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
                 Qual região de Teresópolis você prefere?
               </h2>
             </div>
@@ -505,12 +465,12 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("region", "condominios", 5)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  🏆 Albuquerque & Golden Green
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Albuquerque & Golden Green
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
                   Condomínios de alto padrão com clima ameno e lazer completo.
                 </p>
               </button>
@@ -518,39 +478,39 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("region", "serra_natureza", 5)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  🌿 Serra, Alto & Vargem Grande
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Serra, Alto & Vargem Grande
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Natureza exuberante, montanhas e silêncio.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Natureza exuberante, montanhas, paz e silêncio.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("region", "centro", 5)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  🏙️ Centro, Várzea & Agriões
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Várzea, Centro & Agriões
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Conveniência total: comércio, bancos, colégios e hospitais.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Conveniência total: comércio nobre, gastronomia, colégios e hospitais.
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSelectSimple("region", "qualquer", 5)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-blue-50/40 transition group"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-blue-600">
-                  🗺️ Sem Preferência / Toda Teresópolis
+                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  Sem Preferência / Toda Teresópolis
                 </h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Melhor custo-benefício em qualquer localização.
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Melhor custo-benefício e potencial de valorização na serra.
                 </p>
               </button>
             </div>
@@ -566,18 +526,19 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => setStep(4)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                Qual a sua faixa de investimento?
+              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                Qual a sua faixa de investimento prevista?
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mt-1.5">
               {[
-                { key: "ate_300k", label: "Até R$ 300 mil", desc: "Oportunidades, terrenos e aptos compactos" },
+                { key: "ate_300k", label: "Até R$ 300 mil", desc: "Oportunidades, terrenos e compactos" },
                 { key: "300k_600k", label: "R$ 300 mil a R$ 600 mil", desc: "Primeiro imóvel na serra e ótimo custo-benefício" },
                 { key: "600k_1m", label: "R$ 600 mil a R$ 1 Milhão", desc: "Casas em condomínio e conforto familiar" },
                 { key: "1m_2m", label: "R$ 1 Milhão a R$ 2 Milhões", desc: "Alto padrão em Albuquerque e lazer privativo" },
@@ -587,19 +548,19 @@ Podemos conversar sobre a avaliação comercial?`;
                   key={opt.key}
                   type="button"
                   onClick={() => handleSelectSimple("priceRange", opt.key, 6)}
-                  className={`flex items-center justify-between p-3 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-emerald-500 bg-slate-50/70 dark:bg-slate-800/40 hover:bg-emerald-50/40 transition text-left group ${
+                  className={`flex items-center justify-between p-3 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer ${
                     opt.span ? "sm:col-span-2" : ""
                   }`}
                 >
                   <div>
-                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-emerald-600 transition">
+                    <h3 className="font-serif font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                       {opt.label}
                     </h3>
-                    <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
                       {opt.desc}
                     </p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 shrink-0" />
+                  <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] shrink-0 transition-colors" />
                 </button>
               ))}
             </div>
@@ -616,27 +577,28 @@ Podemos conversar sobre a avaliação comercial?`;
                 <button
                   type="button"
                   onClick={() => setStep(5)}
-                  className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                  className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                  aria-label="Voltar"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
-                <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                  O que é ESSENCIAL?
+                <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                  O que é indispensável na sua escolha?
                 </h2>
               </div>
-              <span className="text-[11px] font-bold text-blue-600 dark:text-sky-400">
+              <span className="text-[11px] font-sans font-medium text-stone-600 dark:text-stone-300">
                 {(answers.essentials || []).length}/2 selecionados
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-2 sm:gap-2.5 mt-1.5">
               {[
-                { key: "seguranca", label: "Segurança 24h", icon: ShieldCheck },
+                { key: "seguranca", label: "Segurança 24h & Portaria", icon: ShieldCheck },
                 { key: "natureza", label: "Área Verde & Vista", icon: Trees },
                 { key: "lazer", label: "Piscina & Gourmet", icon: Waves },
-                { key: "sossego", label: "Sossego & Silêncio", icon: Moon },
-                { key: "alto_padrao", label: "Alto Padrão / Fino", icon: Sparkles },
-                { key: "acesso", label: "Fácil Acesso", icon: Compass },
+                { key: "sossego", label: "Sossego & Privacidade", icon: Moon },
+                { key: "alto_padrao", label: "Acabamento Nobre", icon: Sparkles },
+                { key: "acesso", label: "Acesso Rápido à Cidade", icon: Compass },
               ].map((item) => {
                 const isSelected = (answers.essentials || []).includes(item.key);
                 const IconComponent = item.icon;
@@ -645,37 +607,37 @@ Podemos conversar sobre a avaliação comercial?`;
                     key={item.key}
                     type="button"
                     onClick={() => toggleEssential(item.key)}
-                    className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-xl border-2 transition text-left ${
+                    className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-xl border transition text-left cursor-pointer ${
                       isSelected
-                        ? "border-blue-600 dark:border-sky-500 bg-blue-50/90 dark:bg-sky-950/50 shadow-xs"
-                        : "border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40 hover:border-slate-300"
+                        ? "border-[#1A3828] dark:border-[#C5A880] bg-[#1A3828]/5 dark:bg-[#C5A880]/10 shadow-xs"
+                        : "border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/60 hover:border-stone-300 dark:hover:border-stone-700"
                     }`}
                   >
                     <div
                       className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 ${
                         isSelected
-                          ? "bg-blue-600 text-white"
-                          : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                          ? "bg-[#1A3828] dark:bg-[#C5A880] text-white dark:text-[#0D0E11]"
+                          : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300"
                       }`}
                     >
                       <IconComponent className="w-4 h-4" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-bold text-[11px] sm:text-xs text-slate-900 dark:text-white truncate">
+                      <div className="font-serif font-bold text-[11px] sm:text-xs text-stone-900 dark:text-stone-100 truncate">
                         {item.label}
                       </div>
                     </div>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400 shrink-0" />}
+                    {isSelected && <Check className="w-3.5 h-3.5 text-[#1A3828] dark:text-[#C5A880] shrink-0" />}
                   </button>
                 );
               })}
             </div>
 
-            <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+            <div className="mt-3 pt-2.5 border-t border-stone-200/70 dark:border-stone-800 flex justify-end">
               <button
                 type="button"
                 onClick={() => setStep(7)}
-                className="btn-primary-glow inline-flex items-center gap-1.5 py-2 px-5 rounded-full font-bold text-xs text-white shadow-md active:scale-95 transition"
+                className="btn-primary-glow inline-flex items-center gap-1.5 py-2 px-5 rounded-full font-sans font-bold text-xs text-white shadow-md active:scale-95 transition cursor-pointer"
               >
                 <span>Avançar</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -693,19 +655,20 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => setStep(6)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                Como prefere pagar?
+              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                Qual formato de negociação você prefere?
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-1.5">
               {[
                 { key: "financiamento", label: "Financiamento Bancário", desc: "Caixa, Itaú, Bradesco ou Santander com assessoria Ismael Dias" },
-                { key: "a_vista", label: "Recursos Próprios / À Vista", desc: "Estuda condição ou desconto especial" },
+                { key: "a_vista", label: "Recursos Próprios / À Vista", desc: "Condição especial para pagamento à vista e agilidade de escritura" },
                 { key: "parcelado", label: "Parcelado Direto (sem banco)", desc: "Entrada facilitada + parcelamento direto com incorporadora" },
                 { key: "permuta", label: "Estudo Permuta / Troca", desc: "Avaliar outro imóvel ou veículo como parte de pagamento" },
               ].map((opt) => (
@@ -713,12 +676,12 @@ Podemos conversar sobre a avaliação comercial?`;
                   key={opt.key}
                   type="button"
                   onClick={() => handleSelectSimple("paymentMethod", opt.key, 8)}
-                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-emerald-500 text-left bg-slate-50/70 dark:bg-slate-800/40 hover:bg-emerald-50/40 transition group"
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
                 >
-                  <h3 className="font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-white group-hover:text-emerald-600 transition">
+                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                     {opt.label}
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
                     {opt.desc}
                   </p>
                 </button>
@@ -728,17 +691,20 @@ Podemos conversar sobre a avaliação comercial?`;
         )}
 
         {/* =========================================================================
-            PASSO 8: RESULTADO DOS 3 IMÓVEIS (MATCH PERFEITO)
+            PASSO 8: RESULTADO DOS 3 IMÓVEIS (CURADORIA EXCLUSIVA)
            ========================================================================= */}
         {step === 8 && (
           <div className="flex-1 flex flex-col justify-between animate-in fade-in duration-300 overflow-hidden">
             <div className="text-center mb-1 shrink-0">
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 mb-0.5">
-                <Sparkles className="w-3 h-3" />
-                <span>Os 3 Melhores Imóveis para o seu Perfil</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[10px] font-serif font-bold tracking-wider uppercase bg-stone-100 dark:bg-stone-900 text-[#1A3828] dark:text-[#C5A880] border border-stone-200 dark:border-white/10 mb-0.5">
+                <Sparkles className="w-3 h-3 text-[#C5A880]" />
+                <span>Curadoria Exclusiva • Ismael Dias</span>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                Toque em qualquer opção para abrir a ficha completa com fotos e detalhes:
+              <h2 className="font-serif text-sm sm:text-lg font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                Os 3 Imóveis Selecionados para o seu Perfil
+              </h2>
+              <p className="text-[11px] text-stone-500 dark:text-stone-400">
+                Toque em qualquer opção para abrir a apresentação completa com fotos e detalhes:
               </p>
             </div>
 
@@ -750,21 +716,21 @@ Podemos conversar sobre a avaliação comercial?`;
                   <div
                     key={prop.sku || idx}
                     onClick={() => setSelectedProductModal(prop)}
-                    className="flex sm:flex-col items-center sm:items-stretch gap-3 sm:gap-0 p-2.5 sm:p-0 rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 shadow-xs hover:shadow-md transition cursor-pointer active:scale-[0.98] group text-left overflow-hidden shrink-0"
+                    className="flex sm:flex-col items-center sm:items-stretch gap-3 sm:gap-0 p-2.5 sm:p-0 rounded-2xl border border-stone-200/90 dark:border-stone-800 bg-white dark:bg-stone-900/90 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 shadow-xs hover:shadow-md transition cursor-pointer active:scale-[0.98] group text-left overflow-hidden shrink-0"
                   >
                     {/* Foto miniatura no mobile, foto em cima no desktop */}
-                    <div className="relative w-24 h-24 sm:w-full sm:aspect-[16/10] rounded-xl sm:rounded-none overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
+                    <div className="relative w-24 h-24 sm:w-full sm:aspect-[16/10] rounded-xl sm:rounded-none overflow-hidden bg-stone-100 dark:bg-stone-800 shrink-0">
                       <img
                         src={prop.img || (prop.images && prop.images[0]) || "/favicon.png"}
                         alt={prop.name}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      {/* Selo de Match Elegante e Sem Quebra de Linha */}
+                      {/* Selo de Sinergia Nobre */}
                       <div className="absolute top-1.5 left-1.5">
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-blue-600/95 text-white shadow-md backdrop-blur-xs whitespace-nowrap">
-                          <Sparkles className="w-2.5 h-2.5 text-amber-300 shrink-0" />
-                          <span>{item.matchPercentage}% Match</span>
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-sans font-bold bg-black/65 backdrop-blur-md text-[#F5E6D3] border border-white/15 shadow-sm whitespace-nowrap">
+                          <Sparkles className="w-2.5 h-2.5 text-[#C5A880] shrink-0" />
+                          <span>{item.matchPercentage}% Sinergia</span>
                         </span>
                       </div>
                     </div>
@@ -773,31 +739,31 @@ Podemos conversar sobre a avaliação comercial?`;
                     <div className="flex-1 min-w-0 sm:p-3 flex flex-col justify-between py-0.5">
                       <div>
                         <div className="flex items-center justify-between gap-1 mb-0.5">
-                          <div className="flex items-center gap-1 text-[10px] text-slate-500 font-semibold truncate">
-                            <MapPin className="w-3 h-3 text-blue-500 shrink-0" />
+                          <div className="flex items-center gap-1 text-[10px] text-stone-500 font-medium truncate font-sans">
+                            <MapPin className="w-3 h-3 text-[#C5A880] shrink-0" />
                             <span className="truncate">{prop.screen || prop.bairro || "Teresópolis/RJ"}</span>
                           </div>
 
-                          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[9px] font-extrabold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 whitespace-nowrap shrink-0">
-                            {idx === 0 ? "🥇 1ª Opção" : idx === 1 ? "🥈 2ª Opção" : "🥉 3ª Opção"}
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-sans font-bold tracking-wider uppercase bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700/60 whitespace-nowrap shrink-0">
+                            {idx === 0 ? "Curadoria Principal" : idx === 1 ? "Opção em Destaque" : "Excelente Opção"}
                           </span>
                         </div>
 
-                        <h3 className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 leading-tight group-hover:text-blue-600 transition">
+                        <h3 className="font-serif font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 line-clamp-2 leading-tight group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
                           {prop.name}
                         </h3>
 
-                        <div className="mt-1 text-sm sm:text-base font-black text-emerald-600 dark:text-emerald-400">
+                        <div className="mt-1 font-serif text-sm sm:text-base font-bold text-[#1A3828] dark:text-[#C5A880]">
                           {fmt(prop.price)}
                         </div>
                       </div>
 
-                      <div className="mt-1 sm:mt-2 flex items-center justify-between pt-1 sm:pt-2 sm:border-t sm:border-slate-100 dark:sm:border-slate-800">
-                        <span className="text-[10px] text-slate-500 truncate hidden sm:inline">
+                      <div className="mt-1 sm:mt-2 flex items-center justify-between pt-1 sm:pt-2 sm:border-t sm:border-stone-100 dark:sm:border-stone-800">
+                        <span className="text-[10px] text-stone-500 truncate hidden sm:inline font-sans">
                           {prop.storage || prop.specs || "Disponível"}
                         </span>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 dark:text-sky-400 group-hover:translate-x-0.5 transition-transform ml-auto">
-                          <span>Ver Ficha Completa</span>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-sans font-bold text-[#1A3828] dark:text-[#C5A880] group-hover:translate-x-0.5 transition-transform ml-auto">
+                          <span>Ver Apresentação</span>
                           <ChevronRight className="w-3.5 h-3.5" />
                         </span>
                       </div>
@@ -808,22 +774,22 @@ Podemos conversar sobre a avaliação comercial?`;
             </div>
 
             {/* Ações Inferiores Discretas */}
-            <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] shrink-0">
+            <div className="mt-2 pt-2 border-t border-stone-200/70 dark:border-stone-800 flex items-center justify-between text-[11px] shrink-0">
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-900 dark:hover:text-white font-medium cursor-pointer"
+                className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 font-sans font-medium cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Refazer</span>
+                <span>Refazer Consulta</span>
               </button>
 
               <Link
                 to="/loja"
-                className="inline-flex items-center gap-1 font-bold text-blue-600 dark:text-sky-400 hover:underline"
+                className="inline-flex items-center gap-1 font-sans font-bold text-[#1A3828] dark:text-[#C5A880] hover:underline"
               >
                 <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Catálogo Completo</span>
+                <span>Ver Catálogo Completo</span>
               </Link>
             </div>
           </div>
@@ -838,19 +804,25 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition"
+                className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
+                aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="text-base sm:text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                Anuncie seu Imóvel com Ismael Dias
-              </h2>
+              <div>
+                <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+                  Avaliação & Venda Exclusiva
+                </h2>
+                <p className="text-[11px] text-stone-500 dark:text-stone-400">
+                  Conte com a assessoria direta de Ismael Dias e da Habittat House
+                </p>
+              </div>
             </div>
 
-            <form onSubmit={handleSellerSubmit} className="space-y-2 sm:space-y-3">
+            <form onSubmit={handleSellerSubmit} className="space-y-2 sm:space-y-3 font-sans">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-0.5">
+                  <label className="block text-[11px] font-bold text-stone-700 dark:text-stone-300 mb-0.5">
                     Seu Nome *
                   </label>
                   <input
@@ -859,12 +831,12 @@ Podemos conversar sobre a avaliação comercial?`;
                     value={sellerForm.name}
                     onChange={(e) => setSellerForm({ ...sellerForm, name: e.target.value })}
                     placeholder="Ex: Carlos Eduardo"
-                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs focus:ring-1 focus:ring-amber-500 outline-hidden"
+                    className="w-full px-3 py-1.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs focus:border-[#1A3828] dark:focus:border-[#C5A880] outline-hidden"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-0.5">
+                  <label className="block text-[11px] font-bold text-stone-700 dark:text-stone-300 mb-0.5">
                     WhatsApp com DDD *
                   </label>
                   <input
@@ -873,52 +845,52 @@ Podemos conversar sobre a avaliação comercial?`;
                     value={sellerForm.phone}
                     onChange={(e) => setSellerForm({ ...sellerForm, phone: e.target.value })}
                     placeholder="(21) 99999-9999"
-                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs focus:ring-1 focus:ring-amber-500 outline-hidden"
+                    className="w-full px-3 py-1.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs focus:border-[#1A3828] dark:focus:border-[#C5A880] outline-hidden"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-0.5">
-                    Tipo
+                  <label className="block text-[11px] font-bold text-stone-700 dark:text-stone-300 mb-0.5">
+                    Tipo do Imóvel
                   </label>
                   <select
                     value={sellerForm.propertyType}
                     onChange={(e) => setSellerForm({ ...sellerForm, propertyType: e.target.value })}
-                    className="w-full px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs outline-hidden"
+                    className="w-full px-2 py-1.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs outline-hidden"
                   >
                     <option value="Casa em Condomínio">Casa em Condomínio</option>
                     <option value="Casa Fora de Condomínio">Casa Fora Cond.</option>
-                    <option value="Apartamento / Cobertura">Apartamento</option>
+                    <option value="Apartamento / Cobertura">Apartamento / Cobertura</option>
                     <option value="Terreno / Lote">Terreno / Lote</option>
-                    <option value="Sítio / Área Rural">Sítio / Rural</option>
+                    <option value="Sítio / Área Rural">Sítio / Área Rural</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-0.5">
-                    Bairro
+                  <label className="block text-[11px] font-bold text-stone-700 dark:text-stone-300 mb-0.5">
+                    Bairro em Teresópolis
                   </label>
                   <input
                     type="text"
                     value={sellerForm.bairro}
                     onChange={(e) => setSellerForm({ ...sellerForm, bairro: e.target.value })}
                     placeholder="Ex: Albuquerque"
-                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs outline-hidden"
+                    className="w-full px-3 py-1.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs outline-hidden"
                   />
                 </div>
 
                 <div className="col-span-2 sm:col-span-1">
-                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-0.5">
-                    Pretensão (R$)
+                  <label className="block text-[11px] font-bold text-stone-700 dark:text-stone-300 mb-0.5">
+                    Pretensão de Valor (R$)
                   </label>
                   <input
                     type="text"
                     value={sellerForm.estimatedPrice}
                     onChange={(e) => setSellerForm({ ...sellerForm, estimatedPrice: e.target.value })}
                     placeholder="Ex: 750.000"
-                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs outline-hidden"
+                    className="w-full px-3 py-1.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs outline-hidden"
                   />
                 </div>
               </div>
@@ -927,16 +899,16 @@ Podemos conversar sobre a avaliação comercial?`;
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-white"
+                  className="text-xs text-stone-500 hover:text-stone-800 dark:hover:text-white cursor-pointer"
                 >
                   Voltar
                 </button>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-1.5 py-2 px-4 rounded-full font-bold text-xs bg-amber-500 hover:bg-amber-600 text-white shadow-md active:scale-95 transition"
+                  className="btn-primary-glow inline-flex items-center gap-1.5 py-2 px-4 rounded-full font-bold text-xs text-white shadow-md active:scale-95 transition cursor-pointer"
                 >
-                  <WhatsAppIcon className="w-3.5 h-3.5" />
+                  <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
                   <span>Enviar para Avaliação Gratuita</span>
                 </button>
               </div>
@@ -945,7 +917,7 @@ Podemos conversar sobre a avaliação comercial?`;
         )}
       </div>
 
-      {/* Modal Ficha Completa do Imóvel (com fotos, especificações e contato) */}
+      {/* Modal Apresentação Completa do Imóvel (com fotos, especificações e contato) */}
       <ProductDetailModal
         product={selectedProductModal}
         isOpen={!!selectedProductModal}

@@ -85,7 +85,7 @@ export const Route = createFileRoute("/imovel/$sku")({
         telephone: "+5521964639999",
         worksFor: {
           "@type": "RealEstateAgent",
-          name: "Habittat House Imobiliária",
+          name: "Habittat House",
         },
       },
     };
@@ -396,7 +396,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
             </span>
           </div>
 
-          <h1 className="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+          <h1 className="font-serif text-xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-stone-100 tracking-tight leading-tight">
             {property.name}
           </h1>
         </div>
@@ -548,7 +548,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                   <span className="text-[9px] uppercase font-extrabold text-slate-400 tracking-wider block">
                     Valor de Venda
                   </span>
-                  <div className="text-xl font-black text-blue-600 dark:text-sky-400 truncate">
+                  <div className="text-xl font-serif font-black text-[#1A3828] dark:text-[#C5A880] truncate">
                     {fmt(property.price)}
                   </div>
                 </div>
@@ -700,7 +700,7 @@ Gostaria de agendar uma visita guiada com você e tirar algumas dúvidas! Link: 
                 <span className="text-[11px] uppercase font-black text-slate-400 tracking-wider block">
                   Valor de Venda
                 </span>
-                <div className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mt-1 tracking-tight">
+                <div className="text-3xl lg:text-4xl font-serif font-black text-[#1A3828] dark:text-[#C5A880] mt-1 tracking-tight">
                   {fmt(property.price)}
                 </div>
                 <div className="flex items-center gap-1.5 mt-2 text-xs text-emerald-600 dark:text-emerald-400 font-bold">

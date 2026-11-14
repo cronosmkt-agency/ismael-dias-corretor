@@ -297,7 +297,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
                       onClick={() => setActiveImgIndex(i)}
                       className={`relative w-11 h-11 shrink-0 rounded-lg overflow-hidden border-2 transition cursor-pointer ${
                         activeImgIndex === i
-                          ? "border-blue-600 dark:border-sky-400 scale-105"
+                          ? "border-[#1A3828] dark:border-[#C5A880] scale-105"
                           : "border-transparent opacity-60 hover:opacity-100"
                       }`}
                     >
@@ -312,37 +312,37 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
             <div className="flex flex-col justify-center">
               <h2
                 id="product-modal-title"
-                className="text-lg sm:text-2xl font-black tracking-tight leading-tight text-slate-900 dark:text-white"
+                className="font-serif text-lg sm:text-2xl font-bold tracking-tight leading-tight text-slate-900 dark:text-white"
               >
                 {product.name}
               </h2>
 
               <p className="text-xs sm:text-sm font-semibold mt-1 text-slate-600 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
-                <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
                 <span>{product.screen || "Teresópolis/RJ"}</span>
               </p>
 
               {/* Preço em Destaque */}
-              <div className="mt-2.5 sm:mt-3 product-modal-price-box p-3 sm:p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/60 border border-slate-200/70 dark:border-white/10">
+              <div className="mt-2.5 sm:mt-3 product-modal-price-box p-3 sm:p-4 rounded-xl bg-stone-100/70 dark:bg-stone-900/60 border border-stone-200/80 dark:border-white/10">
                 <div className="flex items-center justify-between">
-                  <span className="price-label text-[10px] sm:text-[11px] uppercase font-extrabold tracking-wider text-slate-500 dark:text-sky-300">
+                  <span className="price-label text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-stone-500 dark:text-stone-400">
                     {isDirectIncorporadora ? "A partir de" : "Valor de Venda"}
                   </span>
                   {isDirectIncorporadora ? (
-                    <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
                       DIRETO C/ INCORPORADORA
                     </span>
                   ) : (
-                    <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-sky-400">
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 border border-stone-200 dark:border-stone-700">
                       {product.condition || product.badge || "DISPONÍVEL"}
                     </span>
                   )}
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-gradient-blue mt-0.5 text-blue-600 dark:text-sky-400">
+                <div className="text-2xl sm:text-3xl font-serif font-black text-[#1A3828] dark:text-[#C5A880] mt-0.5">
                   {fmt(product.price)}
                 </div>
                 <div className="price-installments mt-1 flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-700 dark:text-slate-200 font-medium">
-                  <CreditCard className="w-3.5 h-3.5 text-sky-500 shrink-0" />
+                  <CreditCard className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
                   <span>
                     {product.chip || (isDirectIncorporadora ? "15% de entrada e saldo em até 120 parcelas" : "Aceita Financiamento Bancário / Estuda Proposta")}
                   </span>
@@ -375,15 +375,15 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
 
           {/* Ficha Técnica / Características */}
           <div>
-            <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-slate-100 mb-2 sm:mb-3 flex items-center gap-1.5">
-              <Home className="w-4 h-4 text-sky-400" />
+            <h3 className="font-serif text-sm sm:text-base font-bold text-slate-900 dark:text-stone-100 mb-2 sm:mb-3 flex items-center gap-2">
+              <Home className="w-4 h-4 text-[#C5A880]" />
               Ficha do Imóvel & Diferenciais
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
-                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <Compass className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-stone-900/80 rounded-xl border border-stone-200/80 dark:border-white/10 flex flex-col justify-between">
+                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-stone-500 dark:text-stone-400">
+                  <Compass className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
                   <span>Área / Metragem</span>
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
@@ -391,28 +391,28 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
-                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-stone-900/80 rounded-xl border border-stone-200/80 dark:border-white/10 flex flex-col justify-between">
+                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-stone-500 dark:text-stone-400">
                   {isTerreno ? (
                     <>
-                      <Trees className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <Trees className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                       <span>Topografia & Terreno</span>
                     </>
                   ) : (
                     <>
-                      <Home className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <Home className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                       <span>Configuração</span>
                     </>
                   )}
                 </div>
-                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-emerald-600 dark:text-emerald-400 leading-snug break-words">
+                <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-emerald-800 dark:text-emerald-300 leading-snug break-words">
                   {product.battery || (isTerreno ? "Pronto para Construir" : "Pronto para Morar")}
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
-                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-stone-900/80 rounded-xl border border-stone-200/80 dark:border-white/10 flex flex-col justify-between">
+                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-stone-500 dark:text-stone-400">
+                  <MapPin className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
                   <span>Localização</span>
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
@@ -420,9 +420,9 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
                 </div>
               </div>
 
-              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10 flex flex-col justify-between">
-                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-300">
-                  <CreditCard className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+              <div className="product-modal-box p-2.5 sm:p-3 bg-white dark:bg-stone-900/80 rounded-xl border border-stone-200/80 dark:border-white/10 flex flex-col justify-between">
+                <div className="spec-label flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-stone-500 dark:text-stone-400">
+                  <CreditCard className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
                   <span>Condições</span>
                 </div>
                 <div className="spec-value text-xs sm:text-sm font-extrabold mt-1 text-slate-900 dark:text-white leading-snug break-words">
@@ -434,21 +434,21 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
 
           {/* Descrição Completa do Imóvel se disponível */}
           {product.description ? (
-            <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
-              <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
-                <AlignLeft className="w-4 h-4 text-sky-400" />
+            <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-stone-900/80 rounded-xl border border-stone-200/80 dark:border-white/10">
+              <h3 className="font-serif text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
+                <AlignLeft className="w-4 h-4 text-[#C5A880]" />
                 Descrição Completa:
               </h3>
-              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed whitespace-pre-line font-normal max-h-56 overflow-y-auto pr-1">
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-stone-300 leading-relaxed whitespace-pre-line font-normal max-h-56 overflow-y-auto pr-1">
                 {product.description}
               </p>
             </div>
           ) : null}
 
           {/* O que o empreendimento oferece */}
-          <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200/60 dark:border-white/10">
-            <h3 className="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-slate-800 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
-              <FileCheck2 className="w-4 h-4 text-emerald-400" />
+          <div className="product-modal-box p-3.5 sm:p-5 bg-white dark:bg-stone-900/80 rounded-xl border border-stone-200/80 dark:border-white/10">
+            <h3 className="font-serif text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-2 sm:mb-2.5 flex items-center gap-2">
+              <FileCheck2 className="w-4 h-4 text-[#C5A880]" />
               Infraestrutura & Vantagens Inclusas:
             </h3>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-100 font-medium">

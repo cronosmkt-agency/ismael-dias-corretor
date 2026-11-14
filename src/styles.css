@@ -5,7 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);
   --color-surface: var(--bg-secondary);
@@ -22,63 +23,65 @@
 :root, html.theme-white {
   color-scheme: light;
 
-  /* Backgrounds */
-  --bg-primary: #f0f4ff;
+  /* Backgrounds: Linho Aquecido & Alabaster Nobre */
+  --bg-primary: #fbfbf9;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #e8effe;
+  --bg-tertiary: #f4f2ec;
 
-  /* Accent (trocável pelo seletor de tema) */
-  --blue-primary: #1a6fe8;
-  --blue-vivid: #2979ff;
-  --blue-light: #ebf2ff;
-  --blue-rgb: 26, 111, 232;
-  --blue-vivid-rgb: 41, 121, 255;
+  /* Accent: Verde Floresta Alpino & Champagne Dourado */
+  --blue-primary: #1a3828;
+  --blue-vivid: #244d37;
+  --blue-light: rgba(26, 56, 40, 0.08);
+  --blue-rgb: 26, 56, 40;
+  --blue-vivid-rgb: 36, 77, 55;
+  --accent-gold: #c5a880;
 
-  /* Textos */
-  --text-primary: #0d1b3e;
-  --text-secondary: #4a5568;
-  --text-muted: #718096;
+  /* Textos: Grafite Suave & Carvão Nobre */
+  --text-primary: #121316;
+  --text-secondary: #4a505c;
+  --text-muted: #767d8d;
 
-  /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(var(--blue-rgb), 0.18);
-  --glass-shadow: 0 8px 32px rgba(var(--blue-rgb), 0.12);
+  /* Glass Arquitetônico */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(26, 56, 40, 0.10);
+  --glass-shadow: 0 8px 32px rgba(18, 19, 22, 0.05);
   --glass-blur: blur(20px);
-  --glass-inner-light: rgba(255, 255, 255, 0.9);
+  --glass-inner-light: rgba(255, 255, 255, 0.95);
 }
 
 html.theme-black-piano {
   color-scheme: dark;
 
-  /* Backgrounds: Pure Deep OLED Black Piano */
-  --bg-primary: #000000;
-  --bg-secondary: #08090d;
-  --bg-tertiary: #0f121a;
+  /* Backgrounds: Obsidiana & Grafite Aquecido */
+  --bg-primary: #0d0e11;
+  --bg-secondary: #14161b;
+  --bg-tertiary: #1b1e25;
 
-  /* Accent: Apple Electric Cyan & Titanium Blue */
-  --blue-primary: #38bdf8;
-  --blue-vivid: #0ea5e9;
-  --blue-light: rgba(56, 189, 248, 0.14);
-  --blue-rgb: 56, 189, 248;
-  --blue-vivid-rgb: 14, 165, 233;
+  /* Accent: Champagne Dourado Escovado & Verde Floresta */
+  --blue-primary: #c5a880;
+  --blue-vivid: #d4af37;
+  --blue-light: rgba(197, 168, 128, 0.12);
+  --blue-rgb: 197, 168, 128;
+  --blue-vivid-rgb: 212, 175, 55;
+  --accent-gold: #c5a880;
 
-  /* Textos: High contrast titanium */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  /* Textos: Titânio Claro & Alabaster */
+  --text-primary: #f6f7f9;
+  --text-secondary: #9ea4b2;
+  --text-muted: #6f7584;
 
-  /* Glass Smoked Piano */
-  --glass-bg: rgba(14, 17, 26, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+  /* Glass Smoked */
+  --glass-bg: rgba(20, 22, 27, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
   --glass-blur: blur(24px);
-  --glass-inner-light: rgba(255, 255, 255, 0.16);
+  --glass-inner-light: rgba(255, 255, 255, 0.12);
 }
 
 html, body {
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 40%, var(--bg-tertiary) 100%);
+  background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   width: 100%;
@@ -89,8 +92,16 @@ html, body {
 }
 
 html.theme-black-piano, html.theme-black-piano body {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.15), rgba(0, 0, 0, 0) 70%), #000000;
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(197, 168, 128, 0.08), rgba(0, 0, 0, 0) 70%), #0d0e11;
   color: var(--text-primary);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
 }
 
 * { border-color: var(--glass-border); }
@@ -102,37 +113,37 @@ html.theme-black-piano, html.theme-black-piano body {
 }
 
 
-/* ============ Background orbs (light) ============ */
+/* ============ Background orbs (Serra Ambient Mist) ============ */
 .brand-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 45%, var(--bg-tertiary) 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
 }
 .brand-orb {
   position: absolute;
   border-radius: 9999px;
-  animation: brandFloat 14s ease-in-out infinite;
+  animation: brandFloat 16s ease-in-out infinite;
   transform: translateZ(0);
   contain: strict;
 }
 .brand-orb-1 {
   width: 680px; height: 680px;
   top: -200px; right: -160px;
-  background: radial-gradient(circle, rgba(var(--blue-rgb), 0.08) 0%, rgba(var(--blue-rgb), 0) 70%);
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.08) 0%, rgba(197, 168, 128, 0) 70%);
 }
 .brand-orb-2 {
   width: 600px; height: 600px;
   bottom: -180px; left: -140px;
-  background: radial-gradient(circle, rgba(var(--blue-vivid-rgb), 0.06) 0%, rgba(var(--blue-vivid-rgb), 0) 70%);
+  background: radial-gradient(circle, rgba(26, 56, 40, 0.06) 0%, rgba(26, 56, 40, 0) 70%);
   animation-delay: -3s;
 }
 .brand-orb-3 {
   width: 760px; height: 760px;
   top: 35%; left: 28%;
-  background: radial-gradient(circle, rgba(var(--blue-rgb), 0.05) 0%, rgba(var(--blue-rgb), 0) 70%);
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.05) 0%, rgba(197, 168, 128, 0) 70%);
   animation-delay: -5s;
 }
 @keyframes brandFloat {
@@ -182,7 +193,14 @@ html.theme-black-piano, html.theme-black-piano body {
 
 /* ============ Gradient text ============ */
 .text-gradient-blue {
-  background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-vivid) 100%);
+  background: linear-gradient(135deg, #1a3828 0%, #2d5a40 50%, #c5a880 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html.theme-black-piano .text-gradient-blue {
+  background: linear-gradient(135deg, #f6f7f9 0%, #e2e8f0 50%, #c5a880 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -190,19 +208,26 @@ html.theme-black-piano, html.theme-black-piano body {
 
 /* ============ Buttons ============ */
 .btn-primary-glow {
-  background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-vivid) 100%);
+  background: linear-gradient(135deg, #1a3828 0%, #244d37 100%);
   color: #fff;
   border-radius: 9999px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  transition: box-shadow .3s ease, transform .2s ease;
-  box-shadow: 0 6px 20px rgba(var(--blue-rgb), 0.28);
+  letter-spacing: -0.01em;
+  transition: all .25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(26, 56, 40, 0.22);
   position: relative;
   overflow: hidden;
 }
 .btn-primary-glow:hover {
-  box-shadow: 0 10px 34px rgba(var(--blue-rgb), 0.45);
+  box-shadow: 0 8px 24px rgba(26, 56, 40, 0.35);
   transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+html.theme-black-piano .btn-primary-glow {
+  background: linear-gradient(135deg, #244d37 0%, #1a3828 100%);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 .btn-glass {
   background: rgba(255, 255, 255, 0.7);
