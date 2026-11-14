@@ -902,7 +902,6 @@ Podemos conversar sobre a avaliação comercial?`;
             )}
           </div>
         )}
-        )}
 
         {/* =========================================================================
             PASSO 10: FORMULÁRIO DE PROPRIETÁRIO
