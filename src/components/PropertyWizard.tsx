@@ -70,6 +70,8 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
 
   const [selectedProductModal, setSelectedProductModal] = useState<ProductItem | null>(null);
   const [replacedNotice, setReplacedNotice] = useState<string | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  const [analysisStage, setAnalysisStage] = useState<number>(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -95,6 +97,19 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
     setStep(nextStep);
   };
 
+  const handleFinalizeCuration = (paymentKey: any) => {
+    setAnswers((prev) => ({ ...prev, paymentMethod: paymentKey }));
+    setIsAnalyzing(true);
+    setAnalysisStage(0);
+
+    setTimeout(() => setAnalysisStage(1), 450);
+    setTimeout(() => setAnalysisStage(2), 950);
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      setStep(8);
+    }, 1400);
+  };
+
   const toggleEssential = (key: string) => {
     setAnswers((prev) => {
       const curr = prev.essentials || [];
@@ -102,7 +117,6 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
         return { ...prev, essentials: curr.filter((k) => k !== key) };
       }
       if (curr.length >= 2) {
-        // Feedback tátil via Vibration API no celular
         if (typeof window !== "undefined" && "vibrate" in navigator) {
           try {
             navigator.vibrate(25);
@@ -136,17 +150,75 @@ export function PropertyWizard({ allProperties }: PropertyWizardProps) {
   const handleContactProperty = (prop: ProductItem, rankLabel: string, highlight?: string) => {
     trackWhatsAppClick("wizard_match", prop.sku);
 
-    const text = `Olá, Ismael Dias! 🏡
-Concluí a curadoria no seu site e me interessei pela minha recomendação:
+    const getObjectiveLabel = (obj?: string) => {
+      if (obj === "comprar") return "Comprar Imóvel Pronto";
+      if (obj === "construir") return "Construir meu Refúgio (Terreno)";
+      if (obj === "lancamentos") return "Lançamentos Angeleti";
+      return "Aquisição em Teresópolis";
+    };
 
-🏆 *Curadoria:* ${rankLabel}
-✨ *Imóvel:* ${prop.name}
-📍 *Localização:* ${prop.screen || "Teresópolis/RJ"}
+    const getOccupantsLabel = (occ?: string) => {
+      if (occ === "casal") return "Individual / Casal (1 a 2 quartos)";
+      if (occ === "familia_pequena") return "Família com Filhos (2 a 3 quartos)";
+      if (occ === "familia_grande") return "Família Ampliada (4+ quartos)";
+      if (occ === "investimento") return "Investimento / Renda";
+      return "Moradia";
+    };
+
+    const getPropertyTypeLabel = (pt?: string) => {
+      if (pt === "condominio") return "Casa em Condomínio Fechado";
+      if (pt === "apartamento") return "Apartamento / Cobertura Nobre";
+      if (pt === "casa_avulsa") return "Casa ou Sítio em Área Aberta";
+      if (pt === "terreno") return "Terreno / Lote em Condomínio";
+      if (pt === "comercial") return "Comercial / Ponto";
+      return "Qualquer Tipologia Nobre";
+    };
+
+    const getRegionLabel = (reg?: string) => {
+      if (reg === "condominios") return "Região dos Condomínios (Albuquerque / Green Valley)";
+      if (reg === "serra_natureza") return "Serra & Natureza (Vargem Grande / Alto / Quebra Frascos)";
+      if (reg === "centro") return "Central & Urbano (Várzea / Agriões / Golfe)";
+      if (reg === "expansao") return "Expansão & Tranquilidade (Posse / Vieira / Venda Nova)";
+      return "Qualquer Região de Teresópolis";
+    };
+
+    const getPriceRangeLabel = (pr?: string) => {
+      if (pr === "ate_300k") return "Até R$ 300 mil";
+      if (pr === "300k_600k") return "R$ 300 mil a R$ 600 mil";
+      if (pr === "600k_1m") return "R$ 600 mil a R$ 1 Milhão";
+      if (pr === "1m_2m") return "R$ 1 Milhão a R$ 2 Milhões";
+      if (pr === "acima_2m") return "Acima de R$ 2 Milhões";
+      return "A combinar";
+    };
+
+    const getPaymentLabel = (pm?: string) => {
+      if (pm === "financiamento") return "Financiamento Bancário";
+      if (pm === "a_vista") return "Recursos Próprios / À Vista";
+      if (pm === "parcelado") return "Parcelamento Direto com Incorporadora";
+      if (pm === "permuta") return "Estuda Permuta / Troca";
+      return "Consultoria Personalizada";
+    };
+
+    const text = `Olá, Ismael Dias! 🏡
+Acabei de concluir a Curadoria no seu site (ismaeldias.shop) e gostaria de conversar sobre minha recomendação:
+
+📋 *Meu Perfil de Busca:*
+• Objetivo: ${getObjectiveLabel(answers.objective)}
+• Para quem: ${getOccupantsLabel(answers.occupants)}
+• Tipologia: ${getPropertyTypeLabel(answers.propertyType)}
+• Região: ${getRegionLabel(answers.region)}
+• Investimento: ${getPriceRangeLabel(answers.priceRange)}
+• Pagamento: ${getPaymentLabel(answers.paymentMethod)}
+
+⭐ *Recomendação Selecionada:*
+${rankLabel}
+🏡 *Imóvel:* ${prop.name}
+📍 *Localização:* ${prop.bairro || prop.screen || "Teresópolis/RJ"}
 🔢 *Código:* #${prop.sku || "Habittat"}
 💰 *Valor:* ${fmt(prop.price)}
-✨ *Destaque:* ${highlight || "Recomendado"}
+🔗 *Link:* https://ismaeldias.shop/imovel/${prop.sku || ""}
 
-Gostaria de agendar uma visita e tirar dúvidas!`;
+Podemos conversar sobre as condições e agendar uma visita guiada?`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
   };
@@ -181,7 +253,7 @@ Podemos conversar sobre a avaliação comercial?`;
       <div className="relative w-full rounded-2xl sm:rounded-3xl bg-[#FBFBF9]/95 dark:bg-[#0D0E11]/95 backdrop-blur-2xl border border-stone-200/90 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-3.5 sm:p-6 lg:p-7 flex flex-col justify-between max-h-[calc(100dvh-9.25rem)] sm:max-h-[calc(100dvh-7.5rem)] overflow-hidden transition-all duration-300">
         
         {/* Barra de Progresso Superior */}
-        {step <= 7 && step !== 10 && (
+        {step <= 7 && step !== 10 && !isAnalyzing && (
           <div className="mb-3 sm:mb-4 shrink-0">
             <div className="flex items-center justify-between mb-1.5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-serif font-bold tracking-wider uppercase bg-stone-100 dark:bg-stone-900 text-[#1A3828] dark:text-[#C5A880] border border-stone-200 dark:border-white/10">
@@ -203,9 +275,44 @@ Podemos conversar sobre a avaliação comercial?`;
         )}
 
         {/* =========================================================================
+            MICRO-INTERAÇÃO: ANÁLISE DE CURADORIA (TRANSIÇÃO ENTRE PASSO 7 E 8)
+           ========================================================================= */}
+        {isAnalyzing && (
+          <div className="flex-1 flex flex-col justify-center items-center py-6 sm:py-10 text-center animate-in fade-in duration-300">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-4 flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full border-2 border-[#C5A880]/20 animate-ping" />
+              <div className="absolute inset-0 rounded-full border-2 border-t-[#C5A880] border-r-transparent border-b-[#1A3828] border-l-transparent animate-spin" />
+              <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-[#C5A880] animate-pulse" />
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-serif font-bold uppercase tracking-wider bg-stone-100 dark:bg-stone-900 text-[#1A3828] dark:text-[#C5A880] border border-stone-200 dark:border-white/10 mb-2">
+              <Sparkles className="w-3 h-3 text-[#C5A880]" />
+              <span>Inteligência Imobiliária • Ismael Dias</span>
+            </div>
+
+            <h3 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight transition-all duration-300 min-h-[32px]">
+              {analysisStage === 0 && "Cruzando suas preferências com 212 imóveis..."}
+              {analysisStage === 1 && "Avaliando segurança, zoneamento, lazer e liquidez..."}
+              {analysisStage === 2 && "Curadoria concluída! Selecionando a tríade de ouro..."}
+            </h3>
+
+            <p className="text-[11px] sm:text-xs text-stone-500 dark:text-stone-400 max-w-sm mt-1">
+              Processando o acervo boutique em Teresópolis para entregar recomendações com sinergia absoluta.
+            </p>
+
+            <div className="w-48 sm:w-64 h-1.5 rounded-full bg-stone-200 dark:bg-stone-800 overflow-hidden mt-4">
+              <div
+                className="h-full bg-gradient-to-r from-[#1A3828] via-[#C5A880] to-[#E8DCC8] transition-all duration-400 ease-out"
+                style={{ width: analysisStage === 0 ? "35%" : analysisStage === 1 ? "75%" : "100%" }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================================
             PASSO 1: OBJETIVO PRINCIPAL
            ========================================================================= */}
-        {step === 1 && (
+        {step === 1 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="text-center mb-2.5 sm:mb-4">
               <h2 className="font-serif text-lg sm:text-2xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
@@ -220,78 +327,61 @@ Podemos conversar sobre a avaliação comercial?`;
               <button
                 type="button"
                 onClick={() => handleSelectSimple("objective", "comprar", 2)}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Home className="w-5 h-5" />
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Home className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Comprar Imóvel Pronto</span>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                    Quero Comprar um Imóvel
-                  </h3>
-                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
-                    Casas em condomínio, coberturas ou opções prontas
-                  </p>
-                </div>
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Casas em condomínio, coberturas ou apartamentos de alto padrão prontos para morar.
+                </p>
               </button>
 
               <button
                 type="button"
-                onClick={() => {
-                  setAnswers((prev) => ({ ...prev, objective: "construir", propertyType: "terreno" }));
-                  setStep(4);
-                }}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                onClick={() => handleSelectSimple("objective", "construir", 2)}
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Trees className="w-5 h-5" />
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Trees className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Construir meu Refúgio</span>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                    Terreno para Construir
-                  </h3>
-                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
-                    Lotes residenciais com segurança e clube privativo
-                  </p>
-                </div>
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Lotes e terrenos selecionados com vista panorâmica e infraestrutura completa.
+                </p>
               </button>
 
               <button
                 type="button"
-                onClick={() => {
-                  setAnswers((prev) => ({ ...prev, objective: "vender" }));
-                  setStep(10);
-                }}
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                onClick={() => setStep(10)}
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <KeyRound className="w-5 h-5" />
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <KeyRound className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Avaliar e Vender meu Imóvel</span>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                    Quero Vender meu Imóvel
-                  </h3>
-                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
-                    Avaliação técnica e divulgação para clientes qualificados
-                  </p>
-                </div>
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Divulgue seu imóvel para a base qualificada de clientes de alto padrão da Habittat House.
+                </p>
               </button>
 
               <Link
                 to="/lancamentos"
-                className="flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer block"
               >
-                <div className="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 text-[#1A3828] dark:text-[#C5A880] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Sparkles className="w-5 h-5" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Building2 className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Lançamentos Angeleti</span>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-[#1A3828] dark:text-[#C5A880]">
+                    120x Direto
+                  </span>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                    Lançamentos Angeleti
-                  </h3>
-                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
-                    Golden Green & Vale dos Pássaros (120x direto)
-                  </p>
-                </div>
+                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                  Conheça o Golden Green e Vale dos Pássaros com financiamento direto sem banco.
+                </p>
               </Link>
             </div>
           </div>
@@ -300,7 +390,7 @@ Podemos conversar sobre a avaliação comercial?`;
         {/* =========================================================================
             PASSO 2: QUEM VAI MORAR
            ========================================================================= */}
-        {step === 2 && (
+        {step === 2 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="flex items-center gap-2 mb-1.5">
               <button
@@ -373,9 +463,9 @@ Podemos conversar sobre a avaliação comercial?`;
         )}
 
         {/* =========================================================================
-            PASSO 3: TIPO DE IMÓVEL
+            PASSO 3: TIPO DE IMÓVEL (CONDICIONAL: SE CONSTRUIR -> LOTES)
            ========================================================================= */}
-        {step === 3 && (
+        {step === 3 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="flex items-center gap-2 mb-1.5">
               <button
@@ -387,86 +477,150 @@ Podemos conversar sobre a avaliação comercial?`;
                 <ArrowLeft className="w-4 h-4" />
               </button>
               <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
-                Que tipologia você busca?
+                {answers.objective === "construir"
+                  ? "Que perfil de terreno você procura?"
+                  : "Que tipologia você busca?"}
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-1.5">
-              <button
-                type="button"
-                onClick={() => handleSelectSimple("propertyType", "condominio", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
-              >
-                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  <ShieldCheck className="w-4 h-4 text-[#C5A880] shrink-0" />
-                  <span>Casa em Condomínio Fechado</span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Segurança 24h, portaria, lazer privativo e privacidade.
-                </p>
-              </button>
+            {answers.objective === "construir" ? (
+              // Opções específicas para quem quer construir
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-1.5">
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "condominio", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <ShieldCheck className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Lote em Condomínio Clube</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Portaria 24h, clube com piscina, quadras e segurança total.
+                  </p>
+                </button>
 
-              <button
-                type="button"
-                onClick={() => handleSelectSimple("propertyType", "apartamento", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
-              >
-                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  <Building2 className="w-4 h-4 text-[#C5A880] shrink-0" />
-                  <span>Apartamento ou Cobertura Nobre</span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Conveniência urbana, próximo ao centro ou com vista panorâmica.
-                </p>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "terreno", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Trees className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Terreno em Bairro Nobre</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Vista panorâmica indevassável para as montanhas e privacidade.
+                  </p>
+                </button>
 
-              <button
-                type="button"
-                onClick={() => handleSelectSimple("propertyType", "casa_avulsa", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
-              >
-                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  <Home className="w-4 h-4 text-[#C5A880] shrink-0" />
-                  <span>Casa ou Sítio em Área Aberta</span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Sem taxa condominial, terrenos generosos e total liberdade.
-                </p>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "casa_avulsa", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Home className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Chácara / Gleba com Nascente</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Metragem generosa para refúgio rural, pomar e contato puro com a mata.
+                  </p>
+                </button>
 
-              <button
-                type="button"
-                onClick={() => handleSelectSimple("propertyType", "qualquer", 4)}
-                className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
-              >
-                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  <Compass className="w-4 h-4 text-[#C5A880] shrink-0" />
-                  <span>Aberto a Sugestões</span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Priorizar a melhor oportunidade dentro do investimento planejado.
-                </p>
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "qualquer", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Compass className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Qualquer Lote com Potencial</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Avaliar todas as melhores oportunidades de topografia e valor de m².
+                  </p>
+                </button>
+              </div>
+            ) : (
+              // Opções para imóveis prontos
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-1.5">
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "condominio", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <ShieldCheck className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Casa em Condomínio Fechado</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Segurança 24h, portaria, lazer privativo e privacidade.
+                  </p>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "apartamento", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Building2 className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Apartamento ou Cobertura Nobre</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Conveniência urbana, próximo ao centro ou com vista panorâmica.
+                  </p>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "casa_avulsa", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Home className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Casa ou Sítio em Área Aberta</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Sem taxa condominial, terrenos generosos e total liberdade.
+                  </p>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectSimple("propertyType", "qualquer", 4)}
+                  className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                    <Compass className="w-4 h-4 text-[#C5A880] shrink-0" />
+                    <span>Quero ver as Melhores Oportunidades</span>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                    Sem preferência fixa: apresentar as opções de maior custo-benefício.
+                  </p>
+                </button>
+              </div>
+            )}
           </div>
         )}
 
         {/* =========================================================================
-            PASSO 4: REGIÃO / BAIRROS
+            PASSO 4: REGIÃO PREFERIDA
            ========================================================================= */}
-        {step === 4 && (
+        {step === 4 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="flex items-center gap-2 mb-1.5">
               <button
                 type="button"
-                onClick={() => setStep(answers.objective === "construir" ? 1 : 3)}
+                onClick={() => setStep(3)}
                 className="p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500 transition cursor-pointer"
                 aria-label="Voltar"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
               <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
-                Qual região de Teresópolis você prefere?
+                Em qual região você prefere estar?
               </h2>
             </div>
 
@@ -476,11 +630,12 @@ Podemos conversar sobre a avaliação comercial?`;
                 onClick={() => handleSelectSimple("region", "condominios", 5)}
                 className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  Albuquerque & Golden Green
-                </h3>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <MapPin className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Região dos Condomínios Nobres</span>
+                </div>
                 <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Condomínios de alto padrão com clima ameno e lazer completo.
+                  Albuquerque, Green Valley, Comary, Golfe e Carlos Guinle.
                 </p>
               </button>
 
@@ -489,11 +644,12 @@ Podemos conversar sobre a avaliação comercial?`;
                 onClick={() => handleSelectSimple("region", "serra_natureza", 5)}
                 className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  Serra, Alto & Vargem Grande
-                </h3>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Trees className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Serra & Natureza Preservada</span>
+                </div>
                 <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Natureza exuberante, montanhas, paz e silêncio.
+                  Vargem Grande, Quebra Frascos, Alto, Parque do Imbuí e Tijuca.
                 </p>
               </button>
 
@@ -502,11 +658,12 @@ Podemos conversar sobre a avaliação comercial?`;
                 onClick={() => handleSelectSimple("region", "centro", 5)}
                 className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  Várzea, Centro & Agriões
-                </h3>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Building2 className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Central, Urbano & Gastronomia</span>
+                </div>
                 <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Conveniência total: comércio nobre, gastronomia, colégios e hospitais.
+                  Várzea, Agriões, Centro e proximidades com comércio a pé.
                 </p>
               </button>
 
@@ -515,11 +672,12 @@ Podemos conversar sobre a avaliação comercial?`;
                 onClick={() => handleSelectSimple("region", "qualquer", 5)}
                 className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
               >
-                <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
-                  Sem Preferência / Toda Teresópolis
-                </h3>
+                <div className="flex items-center gap-2 font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                  <Compass className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <span>Aberto a Sugestões de Teresópolis</span>
+                </div>
                 <p className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                  Melhor custo-benefício e potencial de valorização na serra.
+                  Priorizar a qualidade e valor do imóvel antes da localização exata.
                 </p>
               </button>
             </div>
@@ -529,9 +687,9 @@ Podemos conversar sobre a avaliação comercial?`;
         {/* =========================================================================
             PASSO 5: FAIXA DE INVESTIMENTO
            ========================================================================= */}
-        {step === 5 && (
-          <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200 overflow-y-auto sm:overflow-visible overscroll-contain pr-0.5">
-            <div className="flex items-center gap-2 mb-1 sm:mb-1.5 shrink-0">
+        {step === 5 && !isAnalyzing && (
+          <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
+            <div className="flex items-center gap-2 mb-1">
               <button
                 type="button"
                 onClick={() => setStep(4)}
@@ -540,7 +698,7 @@ Podemos conversar sobre a avaliação comercial?`;
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
-              <h2 className="font-serif text-sm sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              <h2 className="font-serif text-base sm:text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
                 Qual a sua faixa de investimento prevista?
               </h2>
             </div>
@@ -579,7 +737,7 @@ Podemos conversar sobre a avaliação comercial?`;
         {/* =========================================================================
             PASSO 6: O QUE É ESSENCIAL (ATÉ 2 ESCOLHAS)
            ========================================================================= */}
-        {step === 6 && (
+        {step === 6 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
@@ -664,9 +822,9 @@ Podemos conversar sobre a avaliação comercial?`;
         )}
 
         {/* =========================================================================
-            PASSO 7: FORMA DE PAGAMENTO
+            PASSO 7: FORMA DE PAGAMENTO (DISPARA A TRANSIÇÃO DE CURADORIA)
            ========================================================================= */}
-        {step === 7 && (
+        {step === 7 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-center animate-in fade-in duration-200">
             <div className="flex items-center gap-2 mb-1.5">
               <button
@@ -692,7 +850,7 @@ Podemos conversar sobre a avaliação comercial?`;
                 <button
                   key={opt.key}
                   type="button"
-                  onClick={() => handleSelectSimple("paymentMethod", opt.key, 8)}
+                  onClick={() => handleFinalizeCuration(opt.key)}
                   className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 dark:border-stone-800 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 bg-white dark:bg-stone-900/60 hover:bg-stone-50 dark:hover:bg-stone-900/90 transition text-left group cursor-pointer"
                 >
                   <h3 className="font-serif font-bold text-xs sm:text-sm md:text-base text-stone-900 dark:text-stone-100 group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
@@ -708,96 +866,151 @@ Podemos conversar sobre a avaliação comercial?`;
         )}
 
         {/* =========================================================================
-            PASSO 8: RESULTADO DOS 3 IMÓVEIS (CURADORIA EXCLUSIVA)
+            PASSO 8: RESULTADO DOS 3 IMÓVEIS (A TRÍADE ESTRATÉGICA DE CURADORIA)
            ========================================================================= */}
-        {step === 8 && (
+        {step === 8 && !isAnalyzing && (
           <div className="flex-1 flex flex-col justify-between animate-in fade-in duration-300 overflow-hidden">
-            <div className="text-center mb-1 shrink-0">
+            {/* Cabeçalho de Resultados */}
+            <div className="text-center mb-1.5 shrink-0">
               <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[10px] font-serif font-bold tracking-wider uppercase bg-stone-100 dark:bg-stone-900 text-[#1A3828] dark:text-[#C5A880] border border-stone-200 dark:border-white/10 mb-0.5">
                 <Sparkles className="w-3 h-3 text-[#C5A880]" />
-                <span>Curadoria Exclusiva • Ismael Dias</span>
+                <span>Tríade de Ouro • Curadoria Ismael Dias</span>
               </div>
               <h2 className="font-serif text-sm sm:text-lg font-bold text-stone-900 dark:text-stone-100 tracking-tight">
                 Os 3 Imóveis Selecionados para o seu Perfil
               </h2>
-              <p className="text-[11px] text-stone-500 dark:text-stone-400">
-                Toque em qualquer opção para abrir a apresentação completa com fotos e detalhes:
+              <p className="text-[10.5px] sm:text-xs text-stone-500 dark:text-stone-400">
+                Toque para abrir a apresentação ou fale direto com Ismael no WhatsApp:
               </p>
             </div>
 
-            {/* NO MOBILE: UM ABAIXO DO OUTRO (FLEX-COL). NO DESKTOP: GRID 3 COLUNAS */}
-            <div className="flex flex-col sm:grid sm:grid-cols-3 gap-2 sm:gap-3 overflow-y-auto sm:overflow-visible pr-0.5 max-h-[calc(100dvh-13.5rem)] sm:max-h-none">
+            {/* Os 3 Cards Estratégicos */}
+            <div className="flex flex-col sm:grid sm:grid-cols-3 gap-2.5 sm:gap-3 overflow-y-auto overscroll-contain pr-0.5 py-1 max-h-[calc(100dvh-17rem)] sm:max-h-[calc(100dvh-14.5rem)] scrollbar-thin">
               {recommendedProperties.map((item, idx) => {
                 const prop = item.property;
+                const isRank1 = idx === 0;
+                const isRank2 = idx === 1;
+
                 return (
                   <div
                     key={prop.sku || idx}
-                    onClick={() => setSelectedProductModal(prop)}
-                    className="flex sm:flex-col items-center sm:items-stretch gap-3 sm:gap-0 p-2.5 sm:p-0 rounded-2xl border border-stone-200/90 dark:border-stone-800 bg-white dark:bg-stone-900/90 hover:border-[#1A3828] dark:hover:border-[#C5A880]/70 shadow-xs hover:shadow-md transition cursor-pointer active:scale-[0.98] group text-left overflow-hidden shrink-0"
+                    className={`group rounded-xl sm:rounded-2xl border transition-all duration-300 flex flex-col justify-between p-2.5 sm:p-3 relative bg-white dark:bg-stone-900/80 hover:shadow-lg ${
+                      isRank1
+                        ? "border-[#C5A880]/80 dark:border-[#C5A880]/60 ring-1 ring-[#C5A880]/30 shadow-md"
+                        : isRank2
+                        ? "border-stone-300/90 dark:border-white/20"
+                        : "border-stone-200 dark:border-white/10"
+                    }`}
                   >
-                    {/* Foto miniatura no mobile, foto em cima no desktop */}
-                    <div className="relative w-24 h-24 sm:w-full sm:aspect-[16/10] rounded-xl sm:rounded-none overflow-hidden bg-stone-100 dark:bg-stone-800 shrink-0">
-                      <img
-                        src={prop.img || (prop.images && prop.images[0]) || "/favicon.png"}
-                        alt={prop.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {/* Selo de Sinergia Nobre */}
-                      <div className="absolute top-1.5 left-1.5">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-sans font-bold bg-black/65 backdrop-blur-md text-[#F5E6D3] border border-white/15 shadow-sm whitespace-nowrap">
-                          <Sparkles className="w-2.5 h-2.5 text-[#C5A880] shrink-0" />
-                          <span>{item.matchPercentage}% Sinergia</span>
+                    {/* Topo do Card com Badge Editorial e Sinergia */}
+                    <div>
+                      <div className="flex items-center justify-between gap-1 mb-1.5">
+                        <span
+                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[9.5px] font-sans font-bold tracking-tight uppercase truncate max-w-[70%] ${
+                            isRank1
+                              ? "bg-[#1A3828] text-[#C5A880] border border-[#C5A880]/40"
+                              : isRank2
+                              ? "bg-stone-800 text-amber-200 border border-amber-300/20"
+                              : "bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700"
+                          }`}
+                        >
+                          {item.highlightBadge}
+                        </span>
+
+                        <span className="text-[10px] font-sans font-bold text-[#1A3828] dark:text-[#C5A880] shrink-0">
+                          {item.matchPercentage}% Sinergia
                         </span>
                       </div>
-                    </div>
 
-                    {/* Detalhes do Imóvel */}
-                    <div className="flex-1 min-w-0 sm:p-3 flex flex-col justify-between py-0.5">
-                      <div>
-                        <div className="flex items-center justify-between gap-1 mb-0.5">
-                          <div className="flex items-center gap-1 text-[10px] text-stone-500 font-medium truncate font-sans">
-                            <MapPin className="w-3 h-3 text-[#C5A880] shrink-0" />
-                            <span className="truncate">{prop.screen || prop.bairro || "Teresópolis/RJ"}</span>
-                          </div>
-
-                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-sans font-bold tracking-wider uppercase bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700/60 whitespace-nowrap shrink-0">
-                            {idx === 0 ? "Curadoria Principal" : idx === 1 ? "Opção em Destaque" : "Excelente Opção"}
+                      {/* Foto com Zoom e Overlay */}
+                      <div
+                        onClick={() => setSelectedProductModal(prop)}
+                        className="relative aspect-16/10 rounded-lg sm:rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 cursor-pointer mb-2"
+                      >
+                        <img
+                          src={prop.img || "https://ismaeldias.shop/favicon.png"}
+                          alt={prop.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white text-[10px] font-sans">
+                          <span className="inline-flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-md text-[9px] font-medium">
+                            <MapPin className="w-2.5 h-2.5 text-[#C5A880]" />
+                            <span className="truncate max-w-[120px]">{prop.bairro || "Teresópolis"}</span>
+                          </span>
+                          <span className="text-[9px] font-semibold text-stone-300">
+                            Cód. #{prop.sku}
                           </span>
                         </div>
+                      </div>
 
-                        <h3 className="font-serif font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 line-clamp-2 leading-tight group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors">
+                      {/* Nome & Preço */}
+                      <div className="mb-1.5">
+                        <h3
+                          onClick={() => setSelectedProductModal(prop)}
+                          className="font-serif font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 line-clamp-2 leading-tight group-hover:text-[#1A3828] dark:group-hover:text-[#C5A880] transition-colors cursor-pointer"
+                        >
                           {prop.name}
                         </h3>
-
-                        <div className="mt-1 font-serif text-sm sm:text-base font-bold text-[#1A3828] dark:text-[#C5A880]">
+                        <div className="mt-0.5 font-serif text-sm sm:text-base font-bold text-[#1A3828] dark:text-[#C5A880]">
                           {fmt(prop.price)}
                         </div>
                       </div>
 
-                      <div className="mt-1 sm:mt-2 flex items-center justify-between pt-1 sm:pt-2 sm:border-t sm:border-stone-100 dark:sm:border-stone-800">
-                        <span className="text-[10px] text-stone-500 truncate hidden sm:inline font-sans">
-                          {prop.storage || prop.specs || "Disponível"}
-                        </span>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-sans font-bold text-[#1A3828] dark:text-[#C5A880] group-hover:translate-x-0.5 transition-transform ml-auto">
-                          <span>Ver Apresentação</span>
-                          <ChevronRight className="w-3.5 h-3.5" />
-                        </span>
+                      {/* Pílulas de Critérios Atendidos */}
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {item.matchedPills.map((pill, pIdx) => (
+                          <span
+                            key={pIdx}
+                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[8.5px] sm:text-[9px] font-sans font-medium bg-stone-100 dark:bg-stone-800/90 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-700/60"
+                          >
+                            <Check className="w-2.5 h-2.5 text-[#1A3828] dark:text-[#C5A880]" />
+                            <span>{pill}</span>
+                          </span>
+                        ))}
                       </div>
+
+                      {/* Parecer Assinado de Ismael Dias */}
+                      <div className="p-2 rounded-lg bg-stone-50 dark:bg-stone-800/40 border border-stone-200/60 dark:border-stone-800 text-[9.5px] sm:text-[10px] text-stone-600 dark:text-stone-300 leading-relaxed font-sans mb-2.5">
+                        <p className="line-clamp-2 sm:line-clamp-3 italic">
+                          "{item.brokerNote}"
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Ações: Ver Apresentação + WhatsApp */}
+                    <div className="pt-2 border-t border-stone-100 dark:border-stone-800 flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProductModal(prop)}
+                        className="flex-1 py-1.5 px-2 rounded-lg bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-200 font-sans font-bold text-[10.5px] sm:text-[11px] transition text-center cursor-pointer truncate"
+                      >
+                        Apresentação
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleContactProperty(prop, item.highlightBadge, item.tagline)}
+                        className="btn-primary-glow inline-flex items-center justify-center gap-1 py-1.5 px-2.5 rounded-lg text-white font-sans font-bold text-[10.5px] sm:text-[11px] shadow-xs active:scale-95 transition cursor-pointer shrink-0"
+                        title="Conversar com Ismael no WhatsApp sobre este imóvel"
+                      >
+                        <WhatsAppIcon className="w-3 h-3 text-white" />
+                        <span className="hidden sm:inline">WhatsApp</span>
+                      </button>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            {/* Ações Inferiores Discretas */}
-            <div className="mt-2 pt-2 border-t border-stone-200/70 dark:border-stone-800 flex flex-wrap items-center justify-between gap-2 text-[11px] shrink-0">
+            {/* Ações Inferiores: Voltar ao Passo 7, Refazer, Ver Catálogo */}
+            <div className="mt-1.5 pt-1.5 border-t border-stone-200/70 dark:border-stone-800 flex flex-wrap items-center justify-between gap-2 text-[10.5px] sm:text-[11px] shrink-0">
               <div className="flex items-center gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => setStep(7)}
                   className="inline-flex items-center gap-1 text-stone-600 dark:text-stone-300 hover:text-[#1A3828] dark:hover:text-[#C5A880] font-sans font-medium cursor-pointer transition-colors"
-                  title="Refinar escolhas sem perder os dados preenchidos"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Voltar ao Passo 7</span>
@@ -818,7 +1031,7 @@ Podemos conversar sobre a avaliação comercial?`;
                 className="inline-flex items-center gap-1 font-sans font-bold text-[#1A3828] dark:text-[#C5A880] hover:underline"
               >
                 <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Ver Catálogo Completo</span>
+                <span>Ver Catálogo Completo (212 Imóveis)</span>
               </Link>
             </div>
           </div>
@@ -928,7 +1141,7 @@ Podemos conversar sobre a avaliação comercial?`;
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="text-xs text-stone-500 hover:text-stone-800 dark:hover:text-white cursor-pointer"
+                  className="text-xs text-stone-500 hover:text-stone-800 dark:hover:white cursor-pointer"
                 >
                   Voltar
                 </button>
