@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { allImoveisData } from "@/data/imoveisData";
 
-const BASE_URL = "https://ismael-dias-corretor.vercel.app";
+const BASE_URL = "https://ismaeldias.shop";
 
 interface SitemapEntry {
   path: string;
@@ -11,7 +11,7 @@ interface SitemapEntry {
   priority?: string;
 }
 
-export const Route = createFileRoute("/sitemap.xml")({
+export const Route = createFileRoute("/sitemap/xml")({
   server: {
     handlers: {
       GET: async () => {

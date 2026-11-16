@@ -202,7 +202,7 @@ Gostaria de agendar uma visita guiada com você e receber mais detalhes!`;
     if (!product) return;
     const shareUrl = typeof window !== "undefined"
       ? `${window.location.origin}/imovel/${encodeURIComponent(String(product.sku || ""))}`
-      : `https://ismael-dias-corretor.vercel.app/imovel/${encodeURIComponent(String(product.sku || ""))}`;
+      : `https://ismaeldias.shop/imovel/${encodeURIComponent(String(product.sku || ""))}`;
     const shareData = {
       title: product.name,
       text: `${product.name} em ${product.bairro || "Teresópolis/RJ"} por ${fmt(product.price)} - Ismael Dias Corretor`,

@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { allImoveisData } from "@/data/imoveisData";
 import { lancamentosProducts } from "@/data/storeData";
 
-const BASE_URL = "https://ismael-dias-corretor.vercel.app";
+const BASE_URL = "https://ismaeldias.shop";
 
 interface SitemapEntry {
   path: string;

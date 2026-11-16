@@ -52,7 +52,7 @@ export const Route = createFileRoute("/imovel/$sku")({
     const title = `${property.name} | Ismael Dias Corretor Teresópolis`;
     const desc = `${property.name}. Imóvel em ${property.bairro || "Teresópolis/RJ"}, valor ${fmt(property.price)}. ${property.storage || ""}. Fotos completas, detalhes e agendamento de visita com Ismael Dias • Habittat House.`;
     const canonical = getPropertyCanonicalUrl(params.sku);
-    const cover = property.img || "https://ismael-dias-corretor.vercel.app/favicon.png";
+    const cover = property.img || "https://ismaeldias.shop/favicon.png";
 
     const schemaJson = {
       "@context": "https://schema.org",

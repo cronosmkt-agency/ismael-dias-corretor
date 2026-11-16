@@ -16,6 +16,7 @@ import { Route as LancamentosRouteImport } from './routes/lancamentos'
 import { Route as LojaRouteImport } from './routes/loja'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ImovelSkuRouteImport } from './routes/imovel.$sku'
+import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,11 @@ const ImovelSkuRoute = ImovelSkuRouteImport.update({
   path: '/imovel/$sku',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapXmlRoute = SitemapXmlRouteImport.update({
+  id: '/sitemap/xml',
+  path: '/sitemap/xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/loja': typeof LojaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/imovel/$sku': typeof ImovelSkuRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/loja': typeof LojaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/imovel/$sku': typeof ImovelSkuRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/loja': typeof LojaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/imovel/$sku': typeof ImovelSkuRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/loja'
     | '/sitemap.xml'
     | '/imovel/$sku'
+    | '/sitemap/xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/loja'
     | '/sitemap.xml'
     | '/imovel/$sku'
+    | '/sitemap/xml'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/loja'
     | '/sitemap.xml'
     | '/imovel/$sku'
+    | '/sitemap/xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   LojaRoute: typeof LojaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ImovelSkuRoute: typeof ImovelSkuRoute
+  SitemapXmlRoute: typeof SitemapXmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImovelSkuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap/xml': {
+      id: '/sitemap/xml'
+      path: '/sitemap/xml'
+      fullPath: '/sitemap/xml'
+      preLoaderRoute: typeof SitemapXmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   LojaRoute: LojaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ImovelSkuRoute: ImovelSkuRoute,
+  SitemapXmlRoute: SitemapXmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

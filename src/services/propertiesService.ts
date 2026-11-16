@@ -212,7 +212,10 @@ export function getRelatedProperties(currentSku?: string, limit = 4): ProductIte
  * Retorna a URL canônica pública de um imóvel
  */
 export function getPropertyCanonicalUrl(sku: string): string {
-  return `https://ismael-dias-corretor.vercel.app/imovel/${encodeURIComponent(sku)}`;
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return `${window.location.origin}/imovel/${encodeURIComponent(sku)}`;
+  }
+  return `https://ismaeldias.shop/imovel/${encodeURIComponent(sku)}`;
 }
 
 export interface PaginatedParams {

@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://ismael-dias-corretor.vercel.app/" }],
+    links: [{ rel: "canonical", href: "https://ismaeldias.shop/" }],
   }),
 
   component: BrandStore,
