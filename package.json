@@ -9,7 +9,12 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "video": "npm --prefix remotion run dev",
+    "video:studio": "npm --prefix remotion run dev",
+    "video:render": "npm --prefix remotion run render",
+    "video:render:tour": "npm --prefix remotion run render:byd:tour",
+    "video:render:reels": "npm --prefix remotion run render:byd:reels"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

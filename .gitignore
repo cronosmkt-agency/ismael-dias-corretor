@@ -46,3 +46,12 @@ all_properties_urls.txt
 
 __pycache__/
 *.pdf
+
+# Remotion
+remotion/out/
+remotion/whisper.cpp/
+
+# Scratch & temporary files
+scratch*
+*.tmp
+
