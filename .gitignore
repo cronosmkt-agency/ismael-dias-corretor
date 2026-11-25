@@ -54,4 +54,6 @@ remotion/whisper.cpp/
 # Scratch & temporary files
 scratch*
 *.tmp
+facebook_marketplace/
+download_facebook_packages.py
 
