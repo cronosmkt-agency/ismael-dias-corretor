@@ -56,6 +56,8 @@ scratch*
 *.tmp
 facebook_marketplace/
 facebook_marketplace_novos_9/
+facebook_marketplace_top_10/
 download_facebook_packages.py
 build_facebook_packages_9_novos.py
+build_top10_marketplace.py
 
